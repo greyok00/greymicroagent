@@ -64,7 +64,7 @@ def main() -> int:
             else:
                 out[rel] = {"size": size, "sha256": _sha256(p)}
     manifest = {
-        "name": "greyagent-hardened",
+        "name": "greymini-hardened",
         "format": 1,
         "hashed_below": MAX_HASH_BYTES,
         "files": out,
