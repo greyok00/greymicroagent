@@ -203,5 +203,5 @@ if [ -f "$ROOT/build/src/greyhound_core.ts" ]; then
   cp "$ROOT/build/src/greyhound_core.ts" "$HOME/.greymini/agent/extensions/greyhound_core.ts"
 fi
 
-node "$CLI" "$@"
+node "$CLI" --append-system-prompt "$ROOT/model/greymini.md" "$@"
 printf '%s\n' "greymini session ended"
