@@ -57,22 +57,24 @@ export async function runAgentLoopContinue(context, config, emit, signal, stream
 function createAgentStream() {
     return new EventStream((event) => event.type === "agent_end", (event) => (event.type === "agent_end" ? event.messages : []));
 }
+// 2026-10-25 (owner order: "remove the loop guard — it intercepts at the
+// worst times, breaks the run, and the model loops anyway"): every tool-call
+// guard below is INERT. Nothing is ever dropped, marked, blocked, or
+// session-banned; runs are never stopped by this machinery. The functions and
+// call sites stay only as dead scaffolding so the surrounding control flow
+// keeps its shape; no path here can fire.
 // Override with CORTEXAGENT_LOOP_GUARD_MAX_REPEATS.
 function loopGuardMaxRepeats() {
-    const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_MAX_REPEATS ?? "10000000", 10);
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 10000000;
+    return Number.POSITIVE_INFINITY;
 }
 function loopGuardContinueMax() {
-    const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_MAX_CONTINUES ?? "0", 10);
-    return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0;
+    return 0;
 }
 function loopGuardArgsMaxRepeats() {
-    const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_ARGS_MAX_REPEATS ?? "10000000", 10);
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 10000000;
+    return Number.POSITIVE_INFINITY;
 }
 function loopGuardCallsPerMessage() {
-    const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_CALLS_PER_MESSAGE ?? "10000000", 10);
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 10000000;
+    return Number.POSITIVE_INFINITY;
 }
 // Drop identical repeat calls from one message, in place. `null` means the
 // message was clean, so the caller can tell "nothing happened" from "capped".
@@ -241,23 +243,11 @@ function blockedCallMessage(name, reason) {
 }
 // Returns a hard-error outcome when the call matches a session block, null when
 // the call may proceed to the real tool.
+// REMOVED 2026-10-25 (owner order): the entire tool-loop guard machinery is
+// inert — nothing is ever blocked. Session blocklists keep existing only so
+// the clearSessionCallBlocks test hook keeps its shape; enforcement is gone.
 function sessionBlockOutcome(toolCall) {
-    const exactReason = sessionBlockedCalls.get(sessionCallKey(toolCall.name, toolCall.arguments));
-    if (exactReason) {
-        return {
-            kind: "immediate",
-            result: createErrorToolResult(blockedCallMessage(toolCall.name, exactReason)),
-            isError: true,
-        };
-    }
-    const shapeReason = sessionBlockedShapes.get(sessionShapeKey(toolCall.name, toolCall.arguments));
-    if (shapeReason) {
-        return {
-            kind: "immediate",
-            result: createErrorToolResult(blockedCallMessage(toolCall.name, shapeReason)),
-            isError: true,
-        };
-    }
+    void toolCall;
     return null;
 }
 // Auth-failure tripwire: a runaway run retrying credentials can lock out the
@@ -319,28 +309,12 @@ async function runLoop(initialContext, newMessages, initialConfig, signal, emit,
     let argsStreakTriggered = false;
     const MAX_ARGS_STREAK_REPEATS = loopGuardArgsMaxRepeats();
     // Session blocklist registration on any exit that ended a run mid-loop:
-    // hard guard stop, or a user abort. Guards reset per run; the blocklist
-    // does not — that is the entire point (2026-10-02 incident).
+    // REMOVED 2026-10-25 (owner order — "remove the loop guard"). This was the
+    // mechanism that turned one aborted repeat into a whole-session ban on an
+    // exact call (the paste showed it looping on its own blocks). The hook
+    // stays as a no-op so its two call sites keep their shape.
     const registerSessionBlocksOnExit = () => {
-        // latestRepeatBurst is set whenever the in-message cap trimmed a burst
-        // in the run's most recent streamed message.
-        if (argsStreakSignature !== null &&
-            ((signal?.aborted && argsStreakCount >= ABORT_BLOCK_MIN_REPEATS) ||
-                ((loopGuardTriggered || argsStreakTriggered) && argsStreakCount >= MAX_LOOP_REPEATS))) {
-            blockSessionCall(argsStreakSignature, signal?.aborted
-                ? `stopped: the user aborted this run while the identical call had already been issued ${argsStreakCount} times in a row.`
-                : `stopped after this run issued the identical call ${argsStreakCount} times in a row.`);
-        }
-        if (shapeGuardTriggered && shapeGuardSignature !== null) {
-            blockSessionShape(shapeGuardSignature, `blocked after same-shaped failing calls repeated ${shapeGuardCount} times with only cosmetic argument changes.`);
-        }
-        if (latestRepeatBurst) {
-            // The burst's most-repeated identical call never even ran (it was
-            // trimmed); registration happens only at the run's exit, after this
-            // message's kept calls already executed — so this cannot strangle the
-            // already-dispatched batch, only future re-issues.
-            blockSessionCall(latestRepeatBurst.worstKey, `stopped: one turn tried to issue the identical call ${latestRepeatBurst.worstCount} times.`);
-        }
+        return;
     };
     // A guard trip has to be visible. markGuardResult writes its marker onto the
     // tool result AFTER that result was already emitted and recorded, so neither

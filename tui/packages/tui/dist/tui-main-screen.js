@@ -218,7 +218,7 @@ export class TuiMainScreen extends TuiBase {
         const logRedraw = (reason) => {
             if (!debugRedraw)
                 return;
-            const logPath = path.join(this.logDirectory, "greyagent-debug.log");
+            const logPath = path.join(this.logDirectory, "greymini-debug.log");
             const msg = `[${new Date().toISOString()}] fullRender: ${reason} (prev=${this.previousLines.length}, new=${newLines.length}, height=${height})\n`;
             fs.mkdirSync(path.dirname(logPath), { recursive: true });
             fs.appendFileSync(logPath, msg);
@@ -378,7 +378,7 @@ export class TuiMainScreen extends TuiBase {
             }
             buffer += "\x1b[2K";
             if (!isImage && visibleWidth(line) > width) {
-                const crashLogPath = path.join(this.logDirectory, "greyagent-crash.log");
+                const crashLogPath = path.join(this.logDirectory, "greymini-crash.log");
                 const crashData = [
                     `Crash at ${new Date().toISOString()}`,
                     `Terminal width: ${width}`,

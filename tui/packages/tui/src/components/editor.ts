@@ -26,13 +26,13 @@ const wordSegmenter = getWordSegmenter();
  * Sub-agent roster shown beneath the prompt input. Sub-agents are sub-processes
  * spawned by the Agent tool that run the SAME large language model as the
  * parent — NOT the separate intern models. Each is defined by a markdown file
- * in the user agent dir (~/.greyagent/agent/agents/*.md). Set GREYAGENT_SUBAGENTS=0
+ * in the user agent dir (~/.greymini/agent/agents/*.md). Set GREYAGENT_SUBAGENTS=0
  * to hide. Each entry renders as a card (max 2 lines): 🤖 + name, then a longer
  * line describing what the sub-agent actually does.
  */
 const SUB_AGENTS_ENABLED = process.env.GREYAGENT_SUBAGENTS !== "0";
 
-const USER_AGENTS_DIR = path.join(os.homedir(), ".greyagent", "agent", "agents");
+const USER_AGENTS_DIR = path.join(os.homedir(), ".greymini", "agent", "agents");
 const SUBAGENT_CACHE_TTL_MS = 5000;
 
 interface SubAgentInfo {
@@ -88,7 +88,7 @@ function discoverSubAgents(): SubAgentInfo[] {
  * mid-flight runs. Cached for 2s to keep render() cheap.
  */
 const ACTIVE_TTL_MS = 2000;
-const SCHEDULER_EVENTS = path.join(os.homedir(), ".greyagent", "scheduler", "tasks.events.jsonl");
+const SCHEDULER_EVENTS = path.join(os.homedir(), ".greymini", "scheduler", "tasks.events.jsonl");
 
 let _activeSet: Set<string> = new Set();
 let _activeAt = 0;

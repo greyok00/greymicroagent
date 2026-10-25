@@ -2825,7 +2825,7 @@ export class InteractiveMode {
 			}
 			text = text.trim();
 			if (!text) return;
-			const dir = process.env.CORTEXAGENT_MEMORY_DIR ?? path.join(os.homedir(), ".greyagent", "memory");
+			const dir = process.env.CORTEXAGENT_MEMORY_DIR ?? path.join(os.homedir(), ".greymini", "memory");
 			fs.mkdirSync(path.join(dir, "hot"), { recursive: true });
 			const line = JSON.stringify({
 				role: "user",

@@ -285,7 +285,7 @@ export abstract class TuiBase extends Container implements TUI {
 		super();
 		this.terminal = terminal;
 		this.logDirectory =
-			logDirectory ?? process.env.GREYAGENT_CODING_AGENT_DIR ?? path.join(os.homedir(), ".greyagent", "agent");
+			logDirectory ?? process.env.GREYAGENT_CODING_AGENT_DIR ?? path.join(os.homedir(), ".greymini", "agent");
 		if (showHardwareCursor !== undefined) {
 			this.showHardwareCursor = showHardwareCursor;
 		}
