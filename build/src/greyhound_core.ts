@@ -17,7 +17,7 @@ import * as path from "node:path";
 //   - ONE server process per TUI session, spawned by the harness itself.
 // Transport stays JSON-RPC over stdio (Node harness → CPython 3.13 .so);
 
-const ROOT = path.join(os.homedir(), "greyagent");
+const ROOT = path.join(os.homedir(), "greymini");
 const CORE_DIR = path.join(ROOT, "core", "greyhound");
 const MANIFEST = path.join(ROOT, "state", "MANIFEST.json");
 
@@ -132,7 +132,7 @@ export default function greyhoundCore(pi: ExtensionAPI): void {
 			await call(conn, "initialize", {
 				protocolVersion: "2024-11-05",
 				capabilities: {},
-				clientInfo: { name: "greyagent-core", version: "0.7.5.1" },
+				clientInfo: { name: "greymini-core", version: "0.7.5.1" },
 			}, 20000);
 			(conn.proc.stdin as any)?.write?.(JSON.stringify({ jsonrpc: "2.0", method: "notifications/initialized" }) + "\n");
 			const listed = (await call(conn, "tools/list", {}, 20000)) as { tools?: ToolSpec[] };

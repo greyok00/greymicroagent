@@ -31,6 +31,7 @@ export GREYAGENT_TEMP="${GREYAGENT_TEMP:-0.6}"
 export GREYAGENT_TOP_P="${GREYAGENT_TOP_P:-0.95}"
 mkdir -p "$GREYAGENT_CODING_AGENT_DIR/sessions" "$GREYAGENT_CODING_AGENT_DIR/extensions"
 mkdir -p "$ROOT/state/audit" "$ROOT/state/logs"
+mkdir -p "$HOME/.greymini/memory/hot" "$HOME/.greymini/state/scheduler" "$HOME/.greymini/mcp-status"
 
 # --- MASK: foreign harness env never reaches this fork or its children -----
 unset CLAUDE_CONFIG_DIR CLAUDE_MODEL_NAME CLAUDE_CODE_SUBAGENT_MODEL \
@@ -60,6 +61,12 @@ export CORTEX_OFFLINE=1
 export CORTEX_SKIP_VERSION_CHECK=1
 # telemetry cannot arm here (settings hard-lock + env pin — both must win)
 export CORTEX_TELEMETRY=0
+# Status panels + hot memory write HERE (owner 2026-10-25: "do not contaminate
+# the two") — the TUI's compiled fallbacks point at ~/.greyagent; these envs
+# must WIN so greymini's memory/scheduler/status state stays in its own home.
+export CORTEXAGENT_MEMORY_DIR="$HOME/.greymini/memory"
+export CORTEXAGENT_STATE_DIR="$HOME/.greymini/state"
+export CORTEXAGENT_STATUS_DIR="$HOME/.greymini/mcp-status"
 # The brain's base URL is set ONCE here (lane when up; the fallback function
 # rewrites it to the direct port). set -u: never reference it unset.
 export GREYAGENT_LOCAL_BASE="${GREYAGENT_LOCAL_BASE:-http://127.0.0.1:${LANE_PORT}/v1}"
