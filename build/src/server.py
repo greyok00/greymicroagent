@@ -15,12 +15,15 @@ ROOT = Path(__file__).resolve().parents[2]
 STATE = ROOT / "state"
 STATE.mkdir(exist_ok=True)
 
-# 2026-10-24 (owner order: fully self-contained, masked, ports >=7080):
-# greyagent serves its OWN renamed llama-server copy from vendor/ — the binary
-# and every llama/ggml lib it needs are patched to resolve $ORIGIN, so this
-# tree never touches the shared /home/grey/llama.cpp build or the lanes other
-# harnesses use (:11435/:11436/:11598/:11599/:11600). Model port: :7080.
-LLAMA_SERVER = str(ROOT / "vendor" / "llamacpp" / "greyagent-server")
+# 2026-10-25 (greymini fork): the server is greymini's OWN freshly built copy
+# from /home/grey/llama.cpp (b3fa6995) — vendor/greymini-server/, binary +
+# every llama/ggml lib patched to resolve $ORIGIN, so this tree never touches
+# the shared /home/grey/llama.cpp build, greyagent's vendored copy, or the
+# lanes other harnesses use (:11435/:11436/:11598/:11599/:11600). Model
+# port: :7080 in phase 1 (4444+ rebinding is phase 2, after the owner runs it
+# as-is). The old build could not load this model (per-layer kv-head array +
+# ollama tensor naming) — the fresh build matches the file's loader layout.
+LLAMA_SERVER = str(ROOT / "vendor" / "greymini-server" / "greymini-server")
 LLAMA_LIB_DIR = str(Path(LLAMA_SERVER).parent)
 LANE_PORT = 7081  # slimtoken lane in front of :7080 (brain traffic only)
 MODEL_PATH = "/home/grey/.greymini/models/qwen3.5-2b-abliterated.gguf"
