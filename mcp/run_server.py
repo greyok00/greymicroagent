@@ -4,7 +4,7 @@
 Kept as PURE SOURCE like build/src/server.py: it is the only entry into a
 compiled server module. Usage: python3 mcp/run_server.py --server <name> [--args ...]
 The server module must expose main() like build's Cython modules do. Registry
-state lives in ~/.greyagent/agent/mcp_registry.json; nothing here talks to any
+state lives in ~/.greymini/agent/mcp_registry.json; nothing here talks to any
 external network on its own.
 """
 from __future__ import annotations

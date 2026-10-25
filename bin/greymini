@@ -92,6 +92,11 @@ export CORTEX_TELEMETRY=0
 export CORTEXAGENT_MEMORY_DIR="$HOME/.greymini/memory"
 export CORTEXAGENT_STATE_DIR="$HOME/.greymini/state"
 export CORTEXAGENT_STATUS_DIR="$HOME/.greymini/mcp-status"
+# The memory MCP server (.so) reads DIFFERENT env names (GREYAGENT_PLATFORM /
+# GREYAGENT_MEMORY_DIR); set them too so every memory consumer agrees on the
+# fork home even if a module's baked default is ever bypassed.
+export GREYAGENT_PLATFORM="greymini"
+export GREYAGENT_MEMORY_DIR="$HOME/.greymini/memory"
 # The brain's base URL is set ONCE here (lane when up; the fallback function
 # rewrites it to the direct port). set -u: never reference it unset.
 export GREYAGENT_LOCAL_BASE="${GREYAGENT_LOCAL_BASE:-http://127.0.0.1:${LANE_PORT}/v1}"

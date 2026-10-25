@@ -4,9 +4,9 @@ import os
 import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-PLATFORM = os.environ.get('GREYAGENT_PLATFORM', 'greyagent')
+PLATFORM = os.environ.get('GREYAGENT_PLATFORM', 'greymini')
 PROFILE = f'platform:{PLATFORM}'
-STORE = Path(os.path.expanduser(os.environ.get('GREYAGENT_MEMORY_DIR', '~/.greyagent/memory')))
+STORE = Path(os.path.expanduser(os.environ.get('GREYAGENT_MEMORY_DIR', '~/.greymini/memory')))
 HOT_FILE = STORE / 'hot' / f'{PLATFORM}.jsonl'
 COLD_JSONL = STORE / 'cold' / f'{PLATFORM}.jsonl'
 COLD_MD = STORE / 'cold' / f'{PLATFORM}.md'
