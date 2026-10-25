@@ -1,0 +1,13 @@
+Package: greyagent
+Version: 0.7.5.1
+Section: utils
+Priority: optional
+Architecture: amd64
+Depends: python3 (>= 3.13), nodejs (>= 22), libc6, libstdc++6, libgcc-s1, libnvidia-ml1 | libcuda1
+Maintainer: grey <local>
+Description: greyagent — hardened offline fork of the cortex agent family
+ Fully Cython-compiled agent core/tools/services; renamed private
+ llama-server (greyagent-server) on port 6666 with its slimtoken lane on
+ 6667; Node TUI under the @greyagent scope; frozen, hash-pinned artifacts
+ (state/MANIFEST.json) and an on-demand, masked lifecycle. Port policy in
+ ~/.greyagent/agent/port_policy.json (:11600 untouched, :11434 dead).

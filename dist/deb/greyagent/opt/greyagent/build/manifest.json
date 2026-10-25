@@ -1,0 +1,170 @@
+{
+ "copied": [
+  {
+   "src": "/home/grey/cortexagent/lib/adapters/base.py",
+   "dst": "tools/adapters_base.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/adapters/searxng_adapter.py",
+   "dst": "tools/adapters_searxng.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/adapters/registry.py",
+   "dst": "tools/adapters_registry.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/browser_control.py",
+   "dst": "tools/browser_control.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/browser_tools.py",
+   "dst": "tools/browser_tools.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/browser_console.py",
+   "dst": "tools/browser_console.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/browser_cdp_guard.py",
+   "dst": "tools/browser_cdp_guard.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/kali_bank.py",
+   "dst": "tools/kali_bank.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/charts.py",
+   "dst": "tools/charts.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/document_adapter.py",
+   "dst": "tools/document_adapter.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/pdf_knowledge.py",
+   "dst": "tools/pdf_knowledge.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/fast_extract.py",
+   "dst": "tools/fast_extract.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/popup_themes.py",
+   "dst": "tools/popup_themes.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/memory_daemon.py",
+   "dst": "services/memory_daemon.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/memory_thin.py",
+   "dst": "services/memory_thin.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/scheduler/store.py",
+   "dst": "services/scheduler_store.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/scheduler/recovery.py",
+   "dst": "services/scheduler_recovery.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/scheduler/ui.py",
+   "dst": "services/scheduler_ui.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/patchright_scraper.py",
+   "dst": "tools/patchright_scraper.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/browser_session.py",
+   "dst": "tools/browser_session.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/browser_ports.py",
+   "dst": "tools/browser_ports.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/research_injection.py",
+   "dst": "tools/research_injection.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/searxng_integrated.py",
+   "dst": "tools/searxng_integrated.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/searx_fallback.py",
+   "dst": "tools/searx_fallback.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/page_clean.py",
+   "dst": "tools/page_clean.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/relevance.py",
+   "dst": "tools/relevance.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/guide_scrub.py",
+   "dst": "tools/guide_scrub.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/keys.py",
+   "dst": "tools/optional/keys.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/greyresearcher_publisher.py",
+   "dst": "tools/optional/publisher.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/greyresearcher_site_builder.py",
+   "dst": "tools/optional/site_builder.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/pdf_export.py",
+   "dst": "tools/optional/pdf_export.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/photos.py",
+   "dst": "tools/optional/photos.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/pipeline_sites.py",
+   "dst": "tools/optional/pipeline_sites.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/site_render.py",
+   "dst": "tools/optional/site_render.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/site_guardrails.py",
+   "dst": "tools/optional/site_guardrails.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/tuning.py",
+   "dst": "tools/optional/tuning.py"
+  },
+  {
+   "src": "/home/grey/greyresearcher/research_integration.py",
+   "dst": "tools/research_integration.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/stealth/__init__.py",
+   "dst": "tools/stealth/__init__.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/stealth/profiles.py",
+   "dst": "tools/stealth/profiles.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/stealth/init_script.py",
+   "dst": "tools/stealth/init_script.py"
+  },
+  {
+   "src": "/home/grey/cortexagent/lib/stealth/seed.py",
+   "dst": "tools/stealth/seed.py"
+  }
+ ],
+ "vendor": [],
+ "errors": []
+}

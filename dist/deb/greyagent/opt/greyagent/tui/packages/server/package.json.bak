@@ -1,0 +1,55 @@
+{
+  "name": "@cortex/server",
+  "version": "0.7.3.2",
+  "description": "experimental server package for cortex",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "import": "./dist/testing/index.js"
+    },
+    "./unix": {
+      "types": "./dist/transports/unix/index.d.ts",
+      "import": "./dist/transports/unix/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "shx rm -rf dist",
+    "dev": "tsgo -p tsconfig.build.json --watch --preserveWatchOutput",
+    "build": "tsgo -p tsconfig.build.json",
+    "test": "vitest --run",
+    "typecheck": "tsgo -p tsconfig.test.json",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "cortex",
+    "server"
+  ],
+  "author": "GreyOK00",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greyok00/cortex.git",
+    "directory": "packages/server"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "dependencies": {
+    "@cortex/ai": "^0.7.3",
+    "@cortex/protocol": "^0.7.3"
+  },
+  "devDependencies": {
+    "shx": "0.4.0",
+    "vitest": "4.1.9"
+  }
+}

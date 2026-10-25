@@ -1,0 +1,20 @@
+[
+ {"id": "V1.1.1", "chapter": "V1", "level": 1, "text": "Define all security-related needs and related security integration requirements."},
+ {"id": "V1.2.2", "chapter": "V1", "level": 1, "text": "Verify application architecture is consistent and safe in multi-tenant contexts."},
+ {"id": "V2.1.1", "chapter": "V2", "level": 1, "text": "Verify user passwords are at least 12 characters and password strength controls exist."},
+ {"id": "V2.2.1", "chapter": "V2", "level": 1, "text": "Verify anti-automation controls are in place to protect against brute-force authentication."},
+ {"id": "V3.2.1", "chapter": "V3", "level": 1, "text": "Verify session tokens are generated using cryptographically secure random number generation."},
+ {"id": "V3.3.1", "chapter": "V3", "level": 1, "text": "Verify logout invalidates the server-side session on every device."},
+ {"id": "V4.1.1", "chapter": "V4", "level": 1, "text": "Verify the application enforces access control at a trusted server-side location."},
+ {"id": "V4.2.1", "chapter": "V4", "level": 1, "text": "Verify role-based permissions are enforced for every function."},
+ {"id": "V5.1.1", "chapter": "V5", "level": 1, "text": "Verify input validation occurs server-side for all inputs."},
+ {"id": "V6.1.1", "chapter": "V6", "level": 1, "text": "Verify use of a proven, maintained crypto library (no homemade crypto)."},
+ {"id": "V7.1.1", "chapter": "V7", "level": 1, "text": "Verify errors do not disclose sensitive technical detail (stack traces, secrets)."},
+ {"id": "V8.1.1", "chapter": "V8", "level": 1, "text": "Verify data protection covers sensitive data at rest and in transit."},
+ {"id": "V9.1.1", "chapter": "V9", "level": 1, "text": "Verify TLS is used for all connectivity, with strong ciphers only."},
+ {"id": "V10.1.1", "chapter": "V10", "level": 1, "text": "Verify malicious content injection defenses applied to all public inputs (XSS/SSRF)."},
+ {"id": "V11.1.1", "chapter": "V11", "level": 1, "text": "Verify business-logic flows cannot be replayed or forced out of order."},
+ {"id": "V12.1.1", "chapter": "V12", "level": 1, "text": "Verify uploaded files are validated by type, size and content, and stored outside webroot."},
+ {"id": "V13.1.1", "chapter": "V13", "level": 1, "text": "Verify API endpoints authenticate and rate-limit properly."},
+ {"id": "V14.1.1", "chapter": "V14", "level": 1, "text": "Verify build/deploy pipeline enforces least privilege and secrets separation."}
+]
