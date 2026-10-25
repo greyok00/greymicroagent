@@ -12,6 +12,7 @@ Exit codes: 0 = GPU free, 1 = held (details on stdout).
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 
@@ -40,8 +41,20 @@ def held_by() -> list[tuple[int, str, int]]:
     return rows
 
 
+def _is_greymini(pid: int) -> bool:
+    """True when the holder is one of OUR OWN instances (owner 2026-10-25:
+    "don't ruin the current running one" — sibling greymini sessions share the
+    card, one instance's boot must never refuse because of another's model).
+    Family test = the real executable path of the holder."""
+    try:
+        exe = os.path.realpath(f"/proc/{pid}/exe")
+    except OSError:
+        return False
+    return exe.endswith("/greymini-server") or "/greymini/vendor/" in exe
+
+
 def main() -> int:
-    holders = held_by()
+    holders = [h for h in held_by() if not _is_greymini(h[0])]
     if not holders:
         return 0
     for pid, name, mb in holders:

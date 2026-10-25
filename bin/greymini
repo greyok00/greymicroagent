@@ -20,8 +20,33 @@ set -uo pipefail
 
 ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
 CLI="$ROOT/tui/packages/coding-agent/dist/cli.js"
-MODEL_PORT=7080
-LANE_PORT=7081
+# --- PORT ALLOCATION (owner 2026-10-25: "don't ruin the current running one;
+# a new launch uses new ports") -----------------------------------------------
+# Slot 1 = the original pair 7080/7081 — a running instance keeps it. Each new
+# launch takes the next FREE pair from greymini's own block:
+#     model 4444 4445 4446 4447  /  lane 4454 4455 4456 4457  (same index)
+# The live listener probe IS the allocation truth: no lockfiles, no registry —
+# a dead session frees its ports on its own. An occupied pair (own or foreign)
+# is skipped, never fought over. 5 slots = 1 original + 4 phase-2 pairs;
+# a 6th simultaneous session refuses with a plain message.
+_lane_ports_free() { ! ss -ltn 2>/dev/null | grep -qE ":$1 |:$2 "; }
+_model_lanes=(7080 4444 4445 4446 4447)
+_lane_bases=(7081 4454 4455 4456 4457)
+MODEL_PORT=""; LANE_PORT=""
+for _k in 0 1 2 3 4; do
+  _mp="${_model_lanes[$_k]}"; _lp="${_lane_bases[$_k]}"
+  if _lane_ports_free "$_mp" "$_lp"; then
+    MODEL_PORT="$_mp"; LANE_PORT="$_lp"; break
+  fi
+done
+if [ -z "$MODEL_PORT" ]; then
+  echo "greymini: all sessions in use (7080 + 4444-4447 pairs) — close one before opening another" >&2
+  exit 1
+fi
+export GREYAGENT_MODEL_PORT="$MODEL_PORT"
+export GREYAGENT_LANE_PORT="$LANE_PORT"
+# the TUI's while-loading health poll must watch THIS session's model port
+export GREYAGENT_MODEL_HEALTH_URL="http://127.0.0.1:${MODEL_PORT}/health"
 # TOOL-DIR-SEPARATION (owner order 2026-10-24): agent's own home = cwd.
 cd "$ROOT"
 
@@ -83,9 +108,14 @@ _lane_up() { curl -s --max-time 2 "http://127.0.0.1:${LANE_PORT}/metrics" >/dev/
 _lane_env() {
   export SLIMTOKEN_MODE="code"
   export SLIMTOKEN_ARTIFACT_DIR="$ROOT/state/slimtoken-artifacts"
-  # 2026-10-24 owner: the distill cap is effectively unlimited on this lane
-  # (the 4096 default could truncate long messages — the env must WIN).
-  export SLIMTOKEN_DISTILL_MAX_CHARS=100000000
+  # 2026-10-25 (64k window): a BOUNDED distill cap — a giant tool result
+  # (cat of a big file) is distilled before the model sees it, so no single
+  # result can blow the context (the exact 400 the owner hit at 32k).
+  # 24000 chars ≈ 6k tokens: generous for real messages, finite for junk,
+  # and ~9% of the 65536 window per result — several in a row still fit.
+  # (The 10-24 "effectively unlimited" order superseded the 4096 default;
+  # at 131k ctx that was free — it no longer is.)
+  export SLIMTOKEN_DISTILL_MAX_CHARS=24000
   export SLIMTOKEN_MINIFY=1 SLIMTOKEN_MINIFY_MESSAGES=1
   export SLIMTOKEN_MINIFY_DEDUP=1 SLIMTOKEN_MINIFY_DISTILL=1
   export SLIMTOKEN_MINIFY_TOOLS=0 SLIMTOKEN_MINIFY_SYSTEM=0
@@ -100,7 +130,7 @@ if ! _lane_up; then
     _lane_direct
   else
     _lane_env
-    "$HOME/.local/bin/slimtoken" serve --upstream "http://127.0.0.1:${MODEL_PORT}" --port "$LANE_PORT" > "$ROOT/state/logs/lane.log" 2>&1 &
+    "$HOME/.local/bin/slimtoken" serve --upstream "http://127.0.0.1:${MODEL_PORT}" --port "$LANE_PORT" > "$ROOT/state/logs/lane.log" 2>&1 &  # slot-shared start log; runtime artifacts are env-isolated
     LANE_PID=$!
     for _ in $(seq 1 10); do _lane_up && break; sleep 1; done
     if _lane_up; then
@@ -125,14 +155,14 @@ cleanup() {
   # server (no spawn this session) is left alone. MODEL_PID here is the
   # background loader; the actual server pid lives in the pid file.
   if [ -n "${MODEL_PID:-}" ] || [ -n "${LANE_PID:-}" ]; then
-    SV_PID="$(cat "$ROOT/state/model-server.pid" 2>/dev/null || true)"
+    SV_PID="$(cat "$ROOT/state/model-server-${MODEL_PORT}.pid" 2>/dev/null || true)"
     if [ -n "$SV_PID" ] && kill -0 "$SV_PID" 2>/dev/null; then
       kill "$SV_PID" 2>/dev/null
       for _ in $(seq 1 15); do kill -0 "$SV_PID" 2>/dev/null || break; sleep 1; done
       kill -9 "$SV_PID" 2>/dev/null || true
     fi
     [ -n "${LANE_PID:-}" ] && kill "$LANE_PID" 2>/dev/null
-    rm -f "$ROOT/state/model-server.pid"
+    rm -f "$ROOT/state/model-server-${MODEL_PORT}.pid"
   fi
   printf '\033[?25h'
 }
@@ -147,7 +177,7 @@ GREYAGENT_MODEL_UP=0
 if ! _up; then
   if python3 "$ROOT/build/src/vram_check.py" 2>/dev/null; then
     : # GPU free — the lane (started above) forwards fine once the model lands
-    python3 - "$ROOT" <<'PY' >> "$ROOT/state/logs/model-boot.log" 2>&1 &
+    python3 - "$ROOT" <<'PY' >> "$ROOT/state/logs/model-boot-${MODEL_PORT}.log" 2>&1 &
 import sys
 sys.path.insert(0, sys.argv[1] + "/build/src")
 import server
@@ -170,7 +200,7 @@ while True:
     time.sleep(5)
 PY
     MODEL_PID=$!
-    echo "greymini: model loading in background (qwen3.5-2b-abliterated on :7080)"
+    echo "greymini: model loading in background (qwen3.5-2b-abliterated on :${MODEL_PORT})"
   else
     GREY_MODEL_LINE="MODEL: another agent holds the GPU — load refused (stop it first)"
     # No model this session = no lane either (a lane forwarding to a dead
