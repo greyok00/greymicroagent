@@ -1,7 +1,7 @@
 #!/bin/bash
-# package_deb.sh — build the greyagent .deb (self-contained hardened fork).
-# dpkg layout: /opt/greyagent = the frozen tree (launcher, compiled modules,
-# tui dist, vendored runtime); /usr/local/bin/greyagent = symlink.
+# package_deb.sh — build the greymini .deb (self-contained portable fork).
+# dpkg layout: /opt/greymini = the frozen tree (launcher, compiled modules,
+# tui dist, vendored runtime); /usr/local/bin/greymini = symlink.
 # The deb's postinst runs bin/verify_compiled.py so a broken install fails
 # loudly at dpkg time, never silently at first boot.
 # Local-only artifact; never uploaded to a repo (owner directive).
@@ -9,28 +9,28 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
 OUT="$ROOT/dist/deb"
-PKGROOT="$OUT/greyagent"
+PKGROOT="$OUT/greymini"
 VERSION="$(python3 "$ROOT/bin/version.sh" 2>/dev/null || true)"
 [ -n "$VERSION" ] || VERSION="$(node "$ROOT/tui/packages/coding-agent/dist/cli.js" --version 2>/dev/null | tail -1 | tr -dc '0-9.')"
 [ -n "$VERSION" ] || VERSION="0.7.5.1"
 
-echo "== packaging greyagent $VERSION =="
+echo "== packaging greymini $VERSION =="
 rm -rf "$OUT"
-mkdir -p "$PKGROOT/DEBIAN" "$PKGROOT/opt/greyagent" "$PKGROOT/usr/local/bin"
+mkdir -p "$PKGROOT/DEBIAN" "$PKGROOT/opt/greymini" "$PKGROOT/usr/local/bin"
 cat > "$PKGROOT/DEBIAN/control" <<EOF
-Package: greyagent
+Package: greymini
 Version: $VERSION
 Section: utils
 Priority: optional
 Architecture: amd64
 Depends: python3 (>= 3.13), nodejs (>= 22), libc6, libstdc++6, libgcc-s1, libnvidia-ml1 | libcuda1
 Maintainer: grey <local>
-Description: greyagent — hardened offline fork of the cortex agent family
+Description: greymini — portable minimized offline fork (2B hybrid)
  Fully Cython-compiled agent core/tools/services; renamed private
- llama-server (greyagent-server) on port 6666 with its slimtoken lane on
- 6667; Node TUI under the @greyagent scope; frozen, hash-pinned artifacts
- (state/MANIFEST.json) and an on-demand, masked lifecycle. Port policy in
- ~/.greyagent/agent/port_policy.json (:11600 untouched, :11434 dead).
+ llama-server (greymini-server) with session slots from :7080 (model) and
+ :7081 (slimtoken lane); Node TUI under the @greyagent scope (its compiled scope); frozen,
+ hash-pinned artifacts (state/MANIFEST.json) and an on-demand, masked
+ lifecycle. Port policy in ~/.greymini/agent/port_policy.json.
 EOF
 # payload: everything, minus transient scratch
 tar -C "$ROOT" \
@@ -40,18 +40,19 @@ tar -C "$ROOT" \
     --exclude='build/src/build' \
     --exclude='state/model-server.log' \
     -cf - bin core tools services build mcp scripts tests tui vendor pytest.ini config \
-    | tar -xf - -C "$PKGROOT/opt/greyagent"
-ln -sf /opt/greyagent/bin/greyagent "$PKGROOT/usr/local/bin/greyagent"
+        state/MANIFEST.json \
+| tar -xf - -C "$PKGROOT/opt/greymini"
+ln -sf /opt/greymini/bin/greymini "$PKGROOT/usr/local/bin/greymini"
 cat > "$PKGROOT/DEBIAN/postinst" <<'EOF'
 #!/bin/bash
 set -e
-if ! python3 /opt/greyagent/bin/verify_compiled.py; then
-  echo "greyagent: frozen-tree verification FAILED after install" >&2
+if ! python3 /opt/greymini/bin/verify_compiled.py; then
+  echo "greymini: frozen-tree verification FAILED after install" >&2
   exit 1
 fi
-echo "greyagent: frozen tree verified. ~/.greyagent/agent seeds on first launch."
+echo "greymini: frozen tree verified. ~/.greymini/agent seeds on first launch."
 EOF
 chmod 755 "$PKGROOT/DEBIAN/postinst"
-du -sh "$PKGROOT/opt/greyagent" | sed 's/^/payload: /'
-dpkg-deb --build "$PKGROOT" "$OUT/greyagent_${VERSION}_amd64.deb"
+du -sh "$PKGROOT/opt/greymini" | sed 's/^/payload: /'
+dpkg-deb --build "$PKGROOT" "$OUT/greymini_${VERSION}_amd64.deb"
 ls -la "$OUT" | grep deb

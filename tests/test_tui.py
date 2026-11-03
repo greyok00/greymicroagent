@@ -7,13 +7,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 
 def test_splash_geometry():
+    # GM-03b (2026-11-03): the splash .so was rebuilt from the mini source —
+    # assert greymini's identity (2B model, mini prompt), not the 27B parent's.
     from ui.splash import SPLASH_TEXT, SPLASH_MIN_W
     assert SPLASH_MIN_W() == 62
     rows = SPLASH_TEXT.split("\n")
     assert max(len(r) for r in rows) <= 90
-    assert "MODEL: qwen3.8-27B" in SPLASH_TEXT
+    assert "MODEL: qwen3.5-2b-abliterated" in SPLASH_TEXT
     assert "AUTHOR: greyok00" in SPLASH_TEXT
-    assert "PROMPT: model/system-prompt.txt" in SPLASH_TEXT
+    assert "PROMPT: model/greymini.md" in SPLASH_TEXT
 
 
 def test_palette_is_8bit_greyscale():
@@ -27,7 +29,8 @@ def test_compact_splash_is_narrow():
     from ui.splash import compact_splash
     lines = compact_splash().split("\n")
     assert max(len(l) for l in lines) < 70
-    assert any("GREYAGENT" in l for l in lines)
+    # mini identity, same GM-03b reason as test_splash_geometry
+    assert any("GREYMINI" in l for l in lines)
 
 
 def test_big_number_renders():

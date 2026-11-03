@@ -70,9 +70,14 @@ def test_system_prompt_minified_and_clean():
 
 
 def test_slimtoken_imports():
-    sys.path.insert(0, "/home/grey/greyagent/vendor/slimtoken/src")
+    # greymini identity: use greymini's own vendored slimtoken, not the
+    # parent fork's (GM-09 cross-family leak). detect() maps a URL to its
+    # ADAPTER name; CANONICAL is the wire shape requests convert into, so
+    # only an anthropic URL detects canonical — an OpenAI URL must not.
+    sys.path.insert(0, "/home/grey/greymini/vendor/slimtoken/src")
     import slimtoken.adapters as a
-    assert a.detect("/v1/chat/completions") == a.CANONICAL
+    assert a.detect("/v1/messages") == a.CANONICAL
+    assert a.detect("/v1/chat/completions") == "openai"
     assert a.roundtrip({"messages": [{"role": "user", "content": "x"}]}, a.CANONICAL)
 
 

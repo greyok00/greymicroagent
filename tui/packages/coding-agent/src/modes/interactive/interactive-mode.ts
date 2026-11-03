@@ -2832,7 +2832,9 @@ export class InteractiveMode {
 				content: text.slice(0, 2000),
 				timestamp: new Date().toISOString().slice(0, 19).replace("T", " "),
 			});
-			fs.appendFileSync(path.join(dir, "hot", "greyagent.jsonl"), `${line}\n`);
+			// GM-17: the mini server reads hot/greymini.jsonl — name it that,
+			// not the parent fork's greyagent.jsonl (dist already does)
+			fs.appendFileSync(path.join(dir, "hot", "greymini.jsonl"), `${line}\n`);
 		} catch {
 			/* best-effort — memory writes must never break the chat */
 		}

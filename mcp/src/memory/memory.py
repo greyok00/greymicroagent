@@ -46,15 +46,21 @@ def _append_jsonl(path: Path, entry: dict) -> None:
 def _read_tail(path: Path, n: int) -> List[dict]:
     if not path.exists():
         return []
+    rows = []
     try:
         size = path.stat().st_size
         with open(path, 'rb') as f:
             f.seek(max(0, size - min(size, n * 4096)))
             tail = f.read().decode('utf-8', errors='replace')
         lines = [l for l in tail.split('\n') if l.strip()]
-        return [json.loads(l) for l in lines[-n:]]
-    except (OSError, ValueError):
+        for l in lines[-n:]:
+            try:
+                rows.append(json.loads(l))
+            except ValueError:
+                continue
+    except OSError:
         return []
+    return rows
 
 def _search_file(path: Path, query: str, limit: int) -> List[dict]:
     if not path.exists():
@@ -80,23 +86,41 @@ def _search_file(path: Path, query: str, limit: int) -> List[dict]:
 def _cold_jsonl() -> List[dict]:
     if not COLD_JSONL.exists():
         return []
+    rows = []
     try:
-        return [json.loads(l) for l in COLD_JSONL.read_text().strip().split('\n') if l.strip()]
-    except (OSError, ValueError):
+        for l in COLD_JSONL.read_text().strip().split('\n'):
+            if not l.strip():
+                continue
+            try:
+                rows.append(json.loads(l))
+            except ValueError:
+                continue
+    except OSError:
+        return []
+    return rows
+
+def _cold_md_lines() -> List[dict]:
+    if not COLD_MD.exists():
+        return []
+    try:
+        return [{'content': l} for l in COLD_MD.read_text(encoding='utf-8', errors='replace').split('\n') if l.strip()]
+    except OSError:
         return []
 TOOLS = [_tool('memory_read', 'Read hot or cold memory.', {'tier': {'type': 'string', 'enum': ['hot', 'cold'], 'description': 'Memory tier.'}, 'limit': {'type': 'number', 'description': 'Max entries (default 20).'}}, ['tier']), _tool('memory_write', "Write to memory. Hot = working buffer (this session's history). Cold = permanent curated fact.", {'content': {'type': 'string', 'description': 'Text or fact to save.'}, 'tier': {'type': 'string', 'enum': ['hot', 'cold'], 'description': 'Target tier (default hot).'}, 'role': {'type': 'string', 'description': 'Role for hot entries (default user).'}}, ['content']), _tool('memory_search', 'Search hot and cold memory. Returns matching entries.', {'query': {'type': 'string'}, 'limit': {'type': 'number', 'description': 'Max matches (default 10).'}}, ['query']), _tool('memory_stats', 'Show hot/cold entry counts and file sizes.', {}, []), _tool('memory_clear', 'Clear hot or cold memory for this platform.', {'tier': {'type': 'string', 'enum': ['hot', 'cold']}}, ['tier'])]
 
+def _int_or(v: Any, default: int) -> int:
+    try:
+        return int(v)
+    except (TypeError, ValueError):
+        return default
+
 def _handle_read(args: Dict[str, Any]) -> Dict[str, Any]:
     tier = args.get('tier', 'hot')
-    limit = int(args.get('limit', 20))
+    limit = _int_or(args.get('limit'), 20)
     if tier == 'hot':
         rows = _read_tail(HOT_FILE, limit)
     elif tier == 'cold':
-        rows = _cold_jsonl()
-        if COLD_MD.exists():
-            md = COLD_MD.read_text(encoding='utf-8', errors='replace')
-            rows = rows + [{'content': l} for l in md.split('\n') if l.strip()]
-        rows = rows[-limit:]
+        rows = _cold_jsonl()[-limit:] + _cold_md_lines()[-limit:]
     else:
         return _err(f'Unknown tier: {tier} (hot + cold only)')
     return _ok(json.dumps(rows, ensure_ascii=False, indent=2))
@@ -120,11 +144,20 @@ def _handle_write(args: Dict[str, Any]) -> Dict[str, Any]:
 
 def _handle_search(args: Dict[str, Any]) -> Dict[str, Any]:
     query = args.get('query', '')
-    limit = int(args.get('limit', 10))
-    if not query.strip():
+    limit = _int_or(args.get('limit'), 10)
+    if not str(query).strip():
         return _ok('[]')
-    out = {'hot': _search_file(HOT_FILE, query, limit), 'cold': _cold_jsonl() and _search_file(COLD_JSONL, query, limit)}
+    out = {'hot': _search_file(HOT_FILE, query, limit), 'cold': _search_file(COLD_JSONL, query, limit), 'cold_md': _search_md(COLD_MD, query, limit)}
     return _ok(json.dumps(out, ensure_ascii=False, indent=2))
+
+def _search_md(path: Path, query: str, limit: int) -> List[dict]:
+    if not path.exists():
+        return []
+    q = query.lower()
+    try:
+        return [{'content': l} for l in path.read_text(encoding='utf-8', errors='replace').split('\n') if l.strip() and q in l.lower()][:limit]
+    except OSError:
+        return []
 
 def _handle_stats(args: Dict[str, Any]) -> Dict[str, Any]:
 
@@ -145,7 +178,13 @@ def _handle_clear(args: Dict[str, Any]) -> Dict[str, Any]:
     cleared = path.stat().st_size if path.exists() else 0
     if path.exists():
         path.write_text('')
-    return _ok(f'cleared {tier} ({cleared} bytes)')
+    # GM-05: clear(cold) must clear BOTH cold files — read(cold) includes the
+    # .md tier, so leaving it truncates what the reader still returns back.
+    cleared_md = 0
+    if tier == 'cold' and COLD_MD.exists():
+        cleared_md = COLD_MD.stat().st_size
+        COLD_MD.write_text('')
+    return _ok(f"cleared {tier} ({cleared + cleared_md} bytes{' incl cold md ' + str(cleared_md) if cleared_md else ''})")
 
 def _dispatch(name: str, args: Dict[str, Any]) -> Dict[str, Any]:
     if name == 'memory_read':
@@ -173,7 +212,13 @@ def _handle_request(req: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     if method == 'tools/call':
         name = params.get('name', '')
         args = params.get('arguments', {})
-        return {'jsonrpc': '2.0', 'id': _id, 'result': _dispatch(name, args)}
+        if not isinstance(args, dict):
+            return {'jsonrpc': '2.0', 'id': _id, 'result': _err('arguments must be an object')}
+        try:
+            result = _dispatch(name, args)
+        except Exception as e:
+            result = _err(f'{type(e).__name__}: {e}')
+        return {'jsonrpc': '2.0', 'id': _id, 'result': result}
     return {'jsonrpc': '2.0', 'id': _id, 'error': {'code': -32601, 'message': f'Method not found: {method}'}}
 
 def main() -> None:
@@ -188,11 +233,26 @@ def main() -> None:
         print(_j.loads(stats['content'][0]['text'])['store'])
         print('memory server: OK')
         return
+    bad_lines = 0
     while True:
-        req = _read_json()
-        if req is None:
+        line = sys.stdin.readline()
+        if not line:
             break
-        resp = _handle_request(req)
+        try:
+            req = json.loads(line)
+        except ValueError:
+            bad_lines += 1
+            if bad_lines == 1:
+                print('memory server: malformed input line skipped', file=sys.stderr)
+            continue
+        if not isinstance(req, dict):
+            continue
+        resp = None
+        try:
+            resp = _handle_request(req)
+        except Exception as e:
+            _id = req.get('id') if isinstance(req, dict) else None
+            resp = {'jsonrpc': '2.0', 'id': _id, 'error': {'code': -32603, 'message': f'{type(e).__name__}: {e}'}}
         if resp is not None:
             _send_json(resp)
 if __name__ == '__main__':

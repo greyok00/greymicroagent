@@ -41,10 +41,39 @@ HOST = "127.0.0.1"
 # auto-compacts at reserveTokens (8192) — two independent guards.
 CTX = int(os.environ.get("GREYAGENT_CTX", "65536"))  # greymini: 64k — the 2B hybrid's KV is tiny
 FA = os.environ.get("GREYAGENT_FA", "on")  # owner 2026-10-24: fill the 16GB card (hybrid model: KV is cheap); ladder steps down 16k until one fits
-NGL = -1
-TEMP = 0.2
-TOP_P = 0.9
+# 2026-10-25 (owner: greymini runs CPU-only): the 27B sibling holds the 16 GB
+# card, so this 2B cannot offload. NGL=0 = CPU+RAM mode — 11.7 tok/s decode
+# measured on this i7-12800H, the accepted price for running beside the 27B.
+NGL = int(os.environ.get("GREYAGENT_NGL", "-1"))
+# 2026-10-25 (owner: "it's not giving any messages"): Qwen3.5 thinks by default.
+# On CPU at ~11 tok/s the reasoning stream ate the whole reply budget and the
+# OpenAI response came back with EMPTY content (finish_reason "length"), which
+# the TUI renders as no message at all. Thinking off is the correct default for
+# this 2B; GREYAGENT_THINKING=on restores it.
+THINKING = os.environ.get("GREYAGENT_THINKING", "off").strip().lower()
+# GM-23 (2026-11-03): ONE sampling place — these server defaults only fire for
+# requests that carry no sampling params (lane probes, doctor). The TUI's
+# models.ts always sends GREYAGENT_TEMP/GREYAGENT_TOP_P (0.6/0.95 from the
+# launcher); the old 0.2/0.9 here meant a param-less caller sampled differently
+# from every TUI turn. Aligned to the family values.
+TEMP = 0.6
+TOP_P = 0.95
 TOP_K = 10
+# 2026-10-28 (owner: "implement ngram-mod"): n-gram speculative decoding.
+# No draft model is loaded — the vendored llama.cpp (b3fa6995) keeps a fixed
+# hash table of observed n-grams (~16 MB, constant cost) and drafts the token
+# that followed the same n-gram before. It only drafts when a long match
+# exists, so short tool-call/classification answers pay nothing while long
+# copy/rewrite/summary output (the case it is documented for, and the one
+# measured fastest on CPU) gets drafted ahead. GREYMINI_SPEC=off disables it
+# and restores the previous boot line; GREYMINI_SPEC=<type> selects another
+# --spec-type (draft-dflash etc. still need their own draft model).
+SPEC = os.environ.get("GREYMINI_SPEC", "ngram-mod").strip().lower()
+SPEC_ARGS = ([] if SPEC in ("", "off", "none", "0") else ["--spec-type", SPEC])
+if SPEC == "ngram-mod":
+    SPEC_ARGS += ["--spec-ngram-mod-n-match", os.environ.get("GREYMINI_SPEC_NMATCH", "24"),
+                  "--spec-ngram-mod-n-min", os.environ.get("GREYMINI_SPEC_NMIN", "48"),
+                  "--spec-ngram-mod-n-max", os.environ.get("GREYMINI_SPEC_NMAX", "64")]
 
 _proc = None
 
@@ -122,6 +151,8 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--cache-type-v", os.environ.get("GREYAGENT_CTYPE", "q4_0"),
         "--metrics",
         "--jinja",
+        *([] if THINKING == "on" else ["--reasoning", "off"]),
+        *SPEC_ARGS,
         "--alias", "greymini",
     ]
     log = open(STATE / "model-server.log", "ab")
@@ -129,6 +160,13 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
     log.flush()
     env = dict(os.environ)
     env["LD_LIBRARY_PATH"] = LLAMA_LIB_DIR  # resolve vendored libs from $ORIGIN
+    # CPU-only mode must HIDE the device, not just pass --n-gpu-layers 0:
+    # common_params_fit_impl probes CUDA during startup and aborts with a
+    # "CUDA error: ... synchronize" core dump when the 27B already holds the
+    # card (reproduced 2026-10-25). With no visible device the probe is skipped
+    # and the model loads cleanly into RAM.
+    if NGL == 0:
+        env["CUDA_VISIBLE_DEVICES"] = ""
 
     def _pdeathsig():  # noqa: E306
         # Linux PR_SET_PDEATHSIG (parent-death signal): if the loader process

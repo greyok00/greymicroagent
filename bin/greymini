@@ -51,6 +51,22 @@ export GREYAGENT_MODEL_HEALTH_URL="http://127.0.0.1:${MODEL_PORT}/health"
 cd "$ROOT"
 
 export GREYAGENT_HOME="$ROOT"
+# GM-07 (2026-11-03): settle-file single-source — models.ts tries
+# $GREYAGENT_ROOT/state/model-ctx-settled.txt FIRST for the fork-aware window;
+# without this export it could only fall through to the greypentest/greyagent
+# paths and compaction aimed above the real window (GM-07's 81920-vs-65536).
+export GREYAGENT_ROOT="$ROOT"
+# GM-09 (2026-11-03): foreign GREYAGENT_* knobs reconfigure this fork through
+# the ${:-} keepers below (greyagent exports CTX 81920 / TEMP 0.9 / UBATCH...,
+# and a leaked one wins because the keeper "preserves" it). The mask only
+# clears non-GREYAGENT names, so reset the shared knobs HERE — before every
+# keeper or boot block reads them. Whatever this launcher does not re-export
+# falls back to THIS fork's baked values (server.py: ctx 65536, thinking off;
+# boot block: NGL 0 CPU-only).
+unset GREYAGENT_CTX GREYAGENT_NGL GREYAGENT_UBATCH GREYAGENT_CTYPE \
+      GREYAGENT_THINKING GREYAGENT_TEMP GREYAGENT_TOP_P \
+      GREYAGENT_LOCAL_BASE GREYAGENT_MEMORY_DIR GREYAGENT_FA \
+      GREYAGENT_PLATFORM 2>/dev/null || true
 export GREYAGENT_CODING_AGENT_DIR="${GREYAGENT_CODING_AGENT_DIR:-$HOME/.greymini/agent}"
 export GREYAGENT_TEMP="${GREYAGENT_TEMP:-0.6}"
 export GREYAGENT_TOP_P="${GREYAGENT_TOP_P:-0.95}"
@@ -181,8 +197,16 @@ GREY_MODEL_LINE="MODEL: qwen3.5-2b-abliterated — loading on :${MODEL_PORT}..."
 GREYAGENT_MODEL_UP=0
 if ! _up; then
   if python3 "$ROOT/build/src/vram_check.py" 2>/dev/null; then
-    : # GPU free — the lane (started above) forwards fine once the model lands
-    python3 - "$ROOT" <<'PY' >> "$ROOT/state/logs/model-boot-${MODEL_PORT}.log" 2>&1 &
+    : # GPU free — full offload (NGL -1); the lane forwards once the model lands
+  else
+    # 2026-10-25 owner: "greymini would be ram/cpu only with greyagent being
+    # all vram." A GPU held by the 27B sibling is therefore NOT a refusal —
+    # this 2B boots CPU-only (11.7 tok/s measured) with its lane kept up,
+    # because the model really is coming. Never evict, never OOM-fight.
+    export GREYAGENT_NGL="${GREYAGENT_NGL:-0}"
+    GREY_MODEL_LINE="MODEL: qwen3.5-2b-abliterated — CPU-only (GPU kept by greyagent)"
+  fi
+  python3 - "$ROOT" <<'PY' >> "$ROOT/state/logs/model-boot-${MODEL_PORT}.log" 2>&1 &
 import sys
 sys.path.insert(0, sys.argv[1] + "/build/src")
 import server
@@ -205,16 +229,7 @@ while True:
     time.sleep(5)
 PY
     MODEL_PID=$!
-    echo "greymini: model loading in background (qwen3.5-2b-abliterated on :${MODEL_PORT})"
-  else
-    GREY_MODEL_LINE="MODEL: another agent holds the GPU — load refused (stop it first)"
-    # No model this session = no lane either (a lane forwarding to a dead
-    # model = 502 on every send — the owner saw exactly that). No lane: the
-    # send errors honestly instead of limping through a fake gateway.
-    [ -n "${LANE_PID:-}" ] && kill "$LANE_PID" 2>/dev/null
-    LANE_PID=""
-    _lane_direct
-  fi
+    echo "greymini: model loading in background (qwen3.5-2b-abliterated on :${MODEL_PORT}, ngl=${GREYAGENT_NGL:--1})"
 fi
 if _up; then
   GREY_MODEL_LINE="MODEL: qwen3.5-2b-abliterated  (up :${MODEL_PORT})"
@@ -238,11 +253,19 @@ sys.stdout.write("\033[?25h")
 PY
 
 # --- front end: forked Node TUI, sessions in ~/.greymini/agent/sessions -----
-# greyhound CORE: deploy the frozen-source loader into the agent dir each boot
-# (owner 2026-10-24: greyhound is part of the core, not an optional MCP server).
-if [ -f "$ROOT/build/src/greyhound_core.ts" ]; then
-  mkdir -p "$HOME/.greymini/agent/extensions"
-  cp "$ROOT/build/src/greyhound_core.ts" "$HOME/.greymini/agent/extensions/greyhound_core.ts"
+# GM-14 (2026-11-03): extensions are owned by the frozen tree. This machine's
+# ~/.greymini/agent is itself a symlink into config/, so the two are the same
+# dir and the copy must be skipped (cp onto itself errors out every boot);
+# on a packaged install (GM-16 deb) the agent dir starts empty and the copy
+# populates it. The dead old block copied build/src/greysearch_core.ts — a
+# file that no longer exists — so its guard silently skipped forever and the
+# extension could vanish with zero error output.
+_ext_src="$HOME/.greymini/agent/extensions"
+if [ -d "$ROOT/config/extensions" ] && [ "$(realpath "$_ext_src" 2>/dev/null)" != "$(realpath "$ROOT/config/extensions")" ]; then
+  mkdir -p "$_ext_src"
+  cp -a "$ROOT/config/extensions/." "$_ext_src/"
+elif [ ! -d "$_ext_src" ]; then
+  echo "greymini: config/extensions missing — extensions will not load" >&2
 fi
 
 node "$CLI" --append-system-prompt "$ROOT/model/greymini.md" "$@"
