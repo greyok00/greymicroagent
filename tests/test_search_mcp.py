@@ -139,3 +139,40 @@ def test_search_health_absent_run_file_probes_instently(tmp_path, monkeypatch):
     monkeypatch.setenv("GREYLOCALRAG_SEARX_BASES", "a.test,b.test")
     h = search_mcp.search_health()
     assert h["ok"] is True and [i["base"] for i in h["instances"]] == ["https://a.test", "https://b.test"]
+
+def test_search_marks_run_in_flight_and_clears_after(tmp_path, monkeypatch):
+    import time
+    runf = tmp_path / "search-run"
+    monkeypatch.setenv("GREYLOCALRAG_SEARCH_RUN_FILE", str(runf))
+    monkeypatch.setattr(search_mcp, "SPACING_S", 0.0)
+    monkeypatch.setattr(search_mcp, "bases", lambda: ["a.test"])
+    seen = {}
+    class R:
+        status = 200
+        def read(self):
+            seen["during"] = runf.exists()
+            time.sleep(0.2)
+            return b'{"results":[{"title":"t","url":"https://u","content":"c"}]}'
+    monkeypatch.setattr(search_mcp, "_fetch", lambda url, t: R())
+    out = search_mcp.search("q", 5)
+    assert out == [{"url": "https://u", "title": "t", "snippet": "c"}]
+    assert seen["during"] is True and not runf.exists()
+
+def test_search_all_fail_clears_run_marker(tmp_path, monkeypatch):
+    import urllib.error
+    runf = tmp_path / "search-run"
+    monkeypatch.setenv("GREYLOCALRAG_SEARCH_RUN_FILE", str(runf))
+    monkeypatch.setattr(search_mcp, "SPACING_S", 0.0)
+    monkeypatch.setattr(search_mcp, "bases", lambda: ["bad.test", "garbage.test"])
+    calls = []
+    class Bad:
+        status = 200
+        def read(self): return b"not json at all"
+    def fake(url, t):
+        calls.append(url)
+        if "garbage.test" in url:
+            return Bad()
+        raise urllib.error.URLError("down")
+    monkeypatch.setattr(search_mcp, "_fetch", fake)
+    out = search_mcp.search("q", 5)
+    assert out == [] and len(calls) == 2 and not runf.exists()

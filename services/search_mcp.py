@@ -66,22 +66,35 @@ def search(query, k=5):
         k = max(1, int(k))
     except (TypeError, ValueError):
         k = 5
-    listings = bases()
-    for i, base in enumerate(listings):
-        if i and SPACING_S > 0:
-            time.sleep(SPACING_S)
-        url = base + "/search?q=" + q + "&format=json"
-        data = None
-        try:
-            resp = _fetch(url, TIMEOUT_S)
-            if getattr(resp, "status", 0) == 200:
-                data = _parse(resp)
-        except Exception:
+    path = run_file()
+    try:
+        os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write("1")
+    except OSError:
+        pass
+    try:
+        listings = bases()
+        for i, base in enumerate(listings):
+            if i and SPACING_S > 0:
+                time.sleep(SPACING_S)
+            url = base + "/search?q=" + q + "&format=json"
             data = None
-        rows = _rows(data)
-        if rows is not None:
-            return [_hit(r) for r in rows if isinstance(r, dict)][:k]
-    return []
+            try:
+                resp = _fetch(url, TIMEOUT_S)
+                if getattr(resp, "status", 0) == 200:
+                    data = _parse(resp)
+            except Exception:
+                data = None
+            rows = _rows(data)
+            if rows is not None:
+                return [_hit(r) for r in rows if isinstance(r, dict)][:k]
+        return []
+    finally:
+        try:
+            os.remove(path)
+        except OSError:
+            pass
 
 
 def health_wait():
