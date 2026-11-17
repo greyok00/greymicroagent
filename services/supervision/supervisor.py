@@ -180,14 +180,8 @@ class Supervisor:
             self._log("sidecar stream lost — continuing observe-only")
 
     def _heal_respawn(self, detail: str):
-        try:
-            import subprocess
-            subprocess.run(["systemctl", "--user", "restart",
-                            "cortex-agent-lane.service"],
-                           capture_output=True, timeout=20)
-            self._log("LADDER-4 respawn cortex-agent-lane")
-        except Exception as e:
-            self._log(f"LADDER-4 respawn failed (logged only): {e}")
+        self._log("respawn unavailable — session processes are launcher-managed; "
+                  "surfacing to the operator")
 
     def new_task(self, task_id: str):
         self.task_id = str(task_id)[:80]

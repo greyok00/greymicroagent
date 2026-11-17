@@ -5,12 +5,13 @@ import json
 import os
 import sys
 import time
+from pathlib import Path
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import supervisor as supervisor_mod  # noqa: E402
 
-SESS_ROOT = os.path.expanduser("~/.cortex-agent/agent/sessions")
+SESS_ROOT = Path(os.environ.get("GREYLOCALRAG_SESS_ROOT") or Path.home() / ".greylocalrag" / "agent" / "sessions")
 
 
 def current_session() -> str | None:

@@ -77,3 +77,32 @@ def test_fresh_events_never_escalate(tmp_path, monkeypatch):
     for i in range(40):
         s.on_event({"turn": i, "kind": "file_change", "path": f"p{i}"})
     assert not s.drain()
+
+
+def test_ladder_node4_respawn_is_logged_noop_without_subprocess(tmp_path, monkeypatch):
+    import sys, types
+    calls = []
+    fake = types.ModuleType("subprocess")
+    fake.run = lambda *a, **kw: calls.append((a, kw))
+    monkeypatch.setitem(sys.modules, "subprocess", fake)
+    state = _state_paths(tmp_path, monkeypatch)
+    s = _fresh_supervisor(sup.Supervisor(task_id="t"))
+    ev = lambda i: {"turn": i, "kind": "tool_call", "tool": "bash",
+                    "args": {"command": "echo loop"}, "digest": "same"}
+    for i in range(12):
+        s.on_event(ev(i))
+    out = s.drain()
+    assert len(out) == 4
+    assert "repeating identical work" in out[0]
+    assert "Stop using bash" in out[1]
+    assert "Task cancelled by supervision" in out[2]
+    assert "still looped after cancellation" in out[3]
+    assert calls == []
+    assert "respawn unavailable — session processes are launcher-managed; " \
+        "surfacing to the operator" in (state / "supervisor.log").read_text()
+    s.on_event(ev(12)); s.on_event(ev(13)); s.on_event(ev(14))
+    final = s.drain()
+    assert len(final) == 1 and "halted this task" in final[0]
+    assert s.fsm.state == "BLOCKED"
+    s.on_event(ev(15))
+    assert s.drain() == []
