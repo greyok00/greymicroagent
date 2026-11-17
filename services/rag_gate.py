@@ -10,6 +10,8 @@ DEFAULT_PORT = 7641
 UPSTREAM_TIMEOUT = 1800
 QUERY_LEN, CHUNK_LEN, CHUNK_CAP, TEXT_CAP = 400, 800, 6, 4800
 DEFAULT_FLOOR = 0.25
+DEFAULT_TEMP = 0.1
+TEMP_MIN, TEMP_MAX = 0.0, 0.2
 
 
 def _upstream():
@@ -28,8 +30,21 @@ def _dbs_list():
     return out or ["commands"]
 
 
+def _state_dir():
+    root = os.environ.get("GREYLOCALRAG_STATE_DIR")
+    return Path(root) if root else Path.home() / ".greylocalrag" / "state"
+
+
 def _offline():
-    return (Path.home() / ".greylocalrag" / "state" / "rag-offline").exists()
+    return (_state_dir() / "rag-offline").exists()
+
+
+def _state_temp():
+    try:
+        f = float((_state_dir() / "rag-temp").read_text(encoding="utf-8", errors="ignore").strip())
+    except (OSError, ValueError):
+        return None
+    return f if f == f else None
 
 
 def _conn(upstream):
@@ -88,12 +103,32 @@ def _grounding(req):
     return {"role": "system", "content": body}
 
 
-def _clamp(req):
+def _num(v):
     try:
-        v = float(req.get("temperature"))
+        f = float(v)
     except (TypeError, ValueError):
+        return None
+    return f if f == f else None
+
+
+def _band(v):
+    return min(max(v, TEMP_MIN), TEMP_MAX)
+
+
+def _clamp(req):
+    if "temperature" in req:
+        t = _num(req.get("temperature"))
+        req["temperature"] = _band(t) if t is not None else DEFAULT_TEMP
         return
-    req["temperature"] = min(max(v, 0.0), 0.2)
+    s = _state_temp()
+    req["temperature"] = _band(s if s is not None else DEFAULT_TEMP)
+
+
+def _clamp_carrier(ch):
+    if "temperature" not in ch:
+        return
+    t = _num(ch.get("temperature"))
+    ch["temperature"] = _band(t) if t is not None else DEFAULT_TEMP
 
 
 def _build(body):
@@ -108,6 +143,7 @@ def _build(body):
     req["messages"].append(msg)
     for ch in req.get("choices") or []:
         if isinstance(ch, dict) and isinstance(ch.get("messages"), list):
+            _clamp_carrier(ch)
             ch["messages"].append(msg)
     return 0, json.dumps(req, ensure_ascii=False).encode("utf-8")
 
