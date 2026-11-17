@@ -167,6 +167,7 @@ Apply exactly these transforms with Edit:
 1. `DBS_ROOT = Path.home() / ".greylocalrag" / "dbs"` replaces any `dbs/` default; `db_dir(name)` returns `DBS_ROOT / name` (mkdir parents True).
 2. Remove every `#` comment line and docstring (use `python3 scripts/minify_and_decomment.py --in services/rag/kbcore.py` if it supports a file arg; otherwise strip by hand).
 3. Keep every function signature byte-identical. No renames, no "improvements" — divergence-check law.
+4. `DBS_ROOT` honors env `GREYLOCALRAG_DBS_ROOT` (controller ruling 2026-11-17 during Task 4, hermetic-test requirement: `DBS_ROOT = Path(os.environ.get("GREYLOCALRAG_DBS_ROOT") or Path.home() / ".greylocalrag" / "dbs")`, applied wherever the root is bound).
 
 - [ ] **Step 2: Write the failing test**
 
