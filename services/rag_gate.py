@@ -56,11 +56,6 @@ def _conn(upstream):
     return HTTPConnection(host, port, timeout=UPSTREAM_TIMEOUT)
 
 
-def _uppath(upstream):
-    u = urlsplit(upstream if isinstance(upstream, str) else "")
-    return (u.path or "/") + (f"?{u.query}" if u.query else "")
-
-
 def _query(req):
     pools = [req.get("messages") or []]
     pools += [(ch.get("messages") or []) for ch in (req.get("choices") or []) if isinstance(ch, dict)]
@@ -152,13 +147,13 @@ def _build(body):
     return 0, json.dumps(req, ensure_ascii=False).encode("utf-8")
 
 
-def handle(body, upstream):
+def handle(body, path, upstream):
     code, out = _build(body)
     if code:
         return code, out
     conn = _conn(upstream)
     try:
-        conn.request("POST", _uppath(upstream), body=out, headers={
+        conn.request("POST", path, body=out, headers={
             "Content-Type": "application/json",
             "Content-Length": str(len(out)),
             "Accept": "application/json, text/event-stream",

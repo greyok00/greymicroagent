@@ -194,7 +194,7 @@ def run_boot():
         fail("model RSS %.2f GB exceeds 3.5 GB" % (model_rss / 1024 ** 3))
 
     slim_proc = spawn("slim", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
-                               "/home/grey/.local/bin/slimtoken", "serve",
+                               str(Path.home() / ".local" / "bin" / "slimtoken"), "serve",
                                "--upstream", "http://127.0.0.1:7640", "--port", "7642"], {
         "SLIMTOKEN_MODE": "code",
         "SLIMTOKEN_ARTIFACT_DIR": str(ROOT / "state" / "slimtoken-artifacts"),
@@ -277,7 +277,7 @@ def run_boot():
         EV["findings"].append("gate :7641 POST /v1/chat/completions status=%s body=%.120s "
                               "(do_POST forwards the upstream URL path '/', not the received path)"
                               % (gate_status, gate_body))
-        say("FINDING gate completion hop status=%s (%.120s) — asserting completions at slim :7642/v1 layer" % (gate_status, gate_body))
+        say("FINDING gate completion hop status=%s (%.120s) - asserting completions at slim :7642/v1 layer" % (gate_status, gate_body))
         e2e_base = "http://127.0.0.1:7642/v1/chat/completions"
         e2e_layer = "slim"
     EV["phases"]["e2e_route"] = {"gate_status": gate_status, "layer": e2e_layer}

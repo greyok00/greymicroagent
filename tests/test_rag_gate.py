@@ -9,14 +9,14 @@ NOTEMP = {"model": "greylocalrag",
           "messages": [{"role": "user", "content": "how do I mirror directories"}]}
 
 def test_temp_clamped():
-    code, out = rag_gate.handle(json.dumps(BODY).encode(), "http://127.0.0.1:1")
+    code, out = rag_gate.handle(json.dumps(BODY).encode(), "/v1/chat/completions", "http://127.0.0.1:1")
     req = json.loads(out)
     assert 0.0 <= req["temperature"] <= 0.2
 
 def test_no_grounding_marker_on_empty_kb(tmp_path, monkeypatch):
     monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
     monkeypatch.delenv("GREYLOCALRAG_DBS", raising=False)
-    code, out = rag_gate.handle(json.dumps(BODY).encode(), "http://127.0.0.1:1")
+    code, out = rag_gate.handle(json.dumps(BODY).encode(), "/v1/chat/completions", "http://127.0.0.1:1")
     msgs = json.loads(out)["messages"]
     assert json.dumps(msgs[-1]).find("NO-KB-GROUNDING") >= 0
 
@@ -28,7 +28,7 @@ def test_grounding_block_injected(tmp_path, monkeypatch):
     monkeypatch.setenv("GREYLOCALRAG_RAG_FLOOR", "0.0")
     db = kb.db_dir("commands"); kb.init_db(db, note="t")
     kb.add_records(db, kb.records_from("robocopy /MIR mirrors a directory tree exactly and completely.", {"t": "robocopy", "src": "t", "url": "u", "date": "d"}), enc=None)
-    code, out = rag_gate.handle(json.dumps(BODY).encode(), "http://127.0.0.1:1")
+    code, out = rag_gate.handle(json.dumps(BODY).encode(), "/v1/chat/completions", "http://127.0.0.1:1")
     last = json.loads(out)["messages"][-1]["content"]
     assert "[KB:commands#1 score=" in last and "robocopy" in last
 
@@ -40,10 +40,10 @@ def test_temp_state_file_applied(tmp_path, monkeypatch):
     body = json.dumps(NOTEMP).encode()
     for text, want in (("0.05", 0.05), ("0.9", 0.2), ("garbage", 0.1), ("0.0", 0.0)):
         (tmp_path / "rag-temp").write_text(text)
-        got = json.loads(rag_gate.handle(body, "http://127.0.0.1:1")[1])["temperature"]
+        got = json.loads(rag_gate.handle(body, "/v1/chat/completions", "http://127.0.0.1:1")[1])["temperature"]
         assert abs(got - want) < 1e-9, text
     (tmp_path / "rag-temp").unlink()
-    got = json.loads(rag_gate.handle(body, "http://127.0.0.1:1")[1])["temperature"]
+    got = json.loads(rag_gate.handle(body, "/v1/chat/completions", "http://127.0.0.1:1")[1])["temperature"]
     assert abs(got - 0.1) < 1e-9
 
 def test_request_null_or_garbage_temp_uses_default(tmp_path, monkeypatch):
@@ -53,7 +53,7 @@ def test_request_null_or_garbage_temp_uses_default(tmp_path, monkeypatch):
         req = dict(NOTEMP)
         req["temperature"] = bad
         body = json.dumps(req).encode()
-        got = json.loads(rag_gate.handle(body, "http://127.0.0.1:1")[1])["temperature"]
+        got = json.loads(rag_gate.handle(body, "/v1/chat/completions", "http://127.0.0.1:1")[1])["temperature"]
         assert abs(got - 0.1) < 1e-9, bad
 
 def test_carrier_temperatures_clamped(tmp_path, monkeypatch):
@@ -67,7 +67,7 @@ def test_carrier_temperatures_clamped(tmp_path, monkeypatch):
         {"messages": [{"role": "user", "content": "c"}]},
         {"temperature": 0.05, "messages": [{"role": "user", "content": "d"}]},
     ]
-    out = json.loads(rag_gate.handle(json.dumps(req).encode(), "http://127.0.0.1:1")[1])
+    out = json.loads(rag_gate.handle(json.dumps(req).encode(), "/v1/chat/completions", "http://127.0.0.1:1")[1])
     assert abs(out["temperature"] - 0.1) < 1e-9
     c1, c2, c3, c4 = out["choices"]
     assert abs(c1["temperature"] - 0.2) < 1e-9
@@ -79,7 +79,7 @@ def test_carrier_temperatures_clamped(tmp_path, monkeypatch):
 def test_offline_toggle_marks_offline(tmp_path, monkeypatch):
     monkeypatch.setenv("GREYLOCALRAG_STATE_DIR", str(tmp_path))
     body = json.dumps(NOTEMP).encode()
-    content = lambda: json.loads(rag_gate.handle(body, "http://127.0.0.1:1")[1])["messages"][-1]["content"]
+    content = lambda: json.loads(rag_gate.handle(body, "/v1/chat/completions", "http://127.0.0.1:1")[1])["messages"][-1]["content"]
     assert "OFFLINE-MODE" not in content()
     (tmp_path / "rag-offline").write_text("")
     assert "OFFLINE-MODE" in content()
@@ -188,3 +188,24 @@ def test_post_unrouted_paths_forward_verbatim(tmp_path, monkeypatch):
     assert seen["req"] == ("POST", "/health")
     payload = out.getvalue()
     assert b"HTTP/1.1 200 OK" in payload and b"ok" in payload
+
+def test_handle_forwards_received_path_not_upstream_path(monkeypatch):
+    seen = {}
+    class FakeResp:
+        status = 200
+        headers = {"Content-Length": "2"}
+        def read(self, *a):
+            return b"ok"
+    class FakeConn:
+        def __init__(self, host, port, timeout=None):
+            pass
+        def request(self, method, path, body=None, headers=None):
+            seen["req"] = (method, path)
+        def getresponse(self):
+            return FakeResp()
+        def close(self):
+            pass
+    monkeypatch.setattr(rag_gate, "HTTPConnection", FakeConn)
+    code, out = rag_gate.handle(json.dumps(BODY).encode(), "/v1/chat/completions", "http://127.0.0.1:9/chat")
+    assert code == 200
+    assert seen["req"] == ("POST", "/v1/chat/completions")
