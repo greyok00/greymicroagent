@@ -86,12 +86,17 @@ deterministic supervision harness (no judge LLM anywhere); greylocalrag vendors
 that machinery as fork-owned code and ships it default-ON, so non-power users
 get the polish without ever configuring it:
 
-- **Loop-guard hold:** an identical re-issued tool call is HELD — neither
-  executed nor refused — until the backing work's state actually changes
-  (diff/state check); stuck runs cap at 300 s; fast tools get a short settle
-  gap. This ports the proven cortex-agent loop-guard so legitimate
-  "wait for the research to finish" loops survive while true no-progress
-  repetition is caught.
+- **Loop-guard hold, diff-based — never indiscriminate (owner order 2026-11-17):**
+  an identical re-issued tool call is HELD — neither executed nor refused —
+  until the backing work's state actually changes (diff + staleness checks:
+  file mtimes, output deltas, process liveness). The guards must never punish
+  legitimate work: a FIRST execution is never blocked; a re-issue whose backing
+  state HAS changed is released immediately; long-running processes that keep
+  producing evidence of progress run to completion — the only cap is
+  staleness-based (runs with ZERO state change cap at 300 s; duration itself
+  is never the criterion); fast tools get only a short settle gap. This ports
+  the proven cortex-agent loop-guard so genuine "wait for it to finish" loops
+  survive while true no-progress repetition is caught.
 - **Supervision core:** fork-owned port of the supervision core with the
   hardened rulebook defaults: repetition_limit 3, error_burst_min 4 in a
   6-event window, storm_min_turns 3, refusal_repeat_limit 3,
@@ -208,9 +213,12 @@ the tree's own verified-compile conventions.
   unfindable.
 - Reuse the existing 9-gate capability bench on the fixed model.
 - Loop/supervision gates: an identical re-issued tool call is HELD until
-  backing state changes (300 s cap on stuck runs); the 3-identical-events
-  detector fires ladder step 1; health polls block rather than tight-poll
-  (no wedge); supervision ships default-ON with no judge LLM anywhere.
+  backing state changes; diff-hold fairness — a FIRST run is never blocked,
+  a re-issue whose backing state changed releases immediately, and a
+  process with continuous state change survives far past 300 s (only
+  zero-progress runs are capped); the 3-identical-events detector fires
+  ladder step 1; health polls block rather than tight-poll (no wedge);
+  supervision ships default-ON with no judge LLM anywhere.
 - Boot gate green; deb portable build only after owner-reviewed plan.
 
 ## 11. Release wave (separate plan phase, publish-gated)
