@@ -81,3 +81,59 @@ def test_status_and_list_sources(tmp_path, monkeypatch):
     urls = {s["url"] for s in src["sources"]}
     assert urls == {"https://x/a", "https://x/b"}
     p.kill()
+
+
+def test_remove_confirm_must_be_boolean_true(tmp_path, monkeypatch):
+    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    p = open_server()
+    call(p, 1, "rag_ingest_text", {"db": "commands", "title": "chkdsk",
+         "text": "chkdsk verifies file system integrity and repairs disk errors.", "source": "seed", "url": "u3"})
+    for n, conf in ((2, "false"), (3, "true"), (4, False)):
+        r = payload(call(p, n, "rag_remove", {"db": "commands", "match": "chkdsk", "confirm": conf}))
+        assert r["removed"] == 0
+    sea = payload(call(p, 5, "rag_search", {"db": "commands", "query": "file system integrity"}))
+    assert sea["hits"] == 1
+    p.kill()
+
+
+def test_remove_empty_match_refused(tmp_path, monkeypatch):
+    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    p = open_server()
+    call(p, 1, "rag_ingest_text", {"db": "commands", "title": "cls",
+         "text": "cls clears the console screen buffer immediately.", "source": "seed", "url": "u4"})
+    ref = payload(call(p, 2, "rag_remove", {"db": "commands", "match": "", "confirm": True}))
+    assert ref["removed"] == 0 and "empty" in ref["note"]
+    sea = payload(call(p, 3, "rag_search", {"db": "commands", "query": "console screen buffer"}))
+    assert sea["hits"] == 1
+    p.kill()
+
+
+def test_ingest_floor_note_not_duplicate(tmp_path, monkeypatch):
+    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    p = open_server()
+    short_text = "sfc scans repairs windows os."
+    assert len(short_text) == 29
+    r = payload(call(p, 1, "rag_ingest_text", {"db": "commands", "title": "floor",
+                   "text": short_text, "source": "seed", "url": "uf"}))
+    assert r["added"] == 0 and "duplicate" not in r["note"].lower() and "chunk" in r["note"].lower()
+    call(p, 2, "rag_ingest_text", {"db": "commands", "title": "iproute",
+         "text": "ipconfig displays the windows network adapter configuration.", "source": "seed", "url": "ug"})
+    dup = payload(call(p, 3, "rag_ingest_text", {"db": "commands", "title": "iproute",
+                  "text": "ipconfig displays the windows network adapter configuration.",
+                  "source": "seed", "url": "ug"}))
+    assert dup["added"] == 0 and "duplicate" in dup["note"].lower()
+    p.kill()
+
+
+def test_remove_stale_stage_cleaned_on_recased_confirm(tmp_path, monkeypatch):
+    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    p = open_server()
+    call(p, 1, "rag_ingest_text", {"db": "commands", "title": "IPConfig",
+         "text": "ipconfig flushes the dns resolver cache and renews dhcp leases.",
+         "source": "seed", "url": "uh"})
+    payload(call(p, 2, "rag_remove", {"db": "commands", "match": "IPConfig"}))
+    assert (tmp_path / "commands" / "pending-remove.json").exists()
+    rem = payload(call(p, 3, "rag_remove", {"db": "commands", "match": "ipconfig", "confirm": True}))
+    assert rem["removed"] == 1
+    assert not (tmp_path / "commands" / "pending-remove.json").exists()
+    p.kill()

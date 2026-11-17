@@ -210,30 +210,38 @@ def tool_ingest_text(a):
     text = str(a.get("text", ""))
     title = str(a.get("title", "")).strip() or "untitled"
     if not text.strip():
-        return {"db": a["db"], "added": 0, "note": "empty text"}
+        return {"db": a["db"], "title": title, "added": 0, "note": "empty text; nothing ingested"}
     base = {"t": title, "src": str(a.get("source", "") or "text"),
             "url": str(a.get("url", "") or ""), "date": str(a.get("date", "") or _today())}
     recs = kb.records_from(text, base)
-    added = kb.add_records(path, recs, None, src="text") if recs else []
-    return {"db": a["db"], "title": title, "added": len(added),
-            "note": "duplicate content already present" if not added else ""}
+    if not recs:
+        return {"db": a["db"], "title": title, "added": 0,
+                "note": "text below the chunk floor produced no records; nothing ingested"}
+    added = kb.add_records(path, recs, None, src="text")
+    if not added:
+        return {"db": a["db"], "title": title, "added": 0,
+                "note": "duplicate of content already in this db; nothing ingested"}
+    return {"db": a["db"], "title": title, "added": len(added), "note": ""}
 
 
 def tool_remove(a):
     path = kb.db_dir(a["db"])
     kb.init_db(path)
     match = str(a.get("match", ""))
-    if not a.get("confirm"):
+    if not match:
+        return {"db": a["db"], "match": match, "removed": 0,
+                "note": "refused: match is empty; specify what to remove, nothing deleted"}
+    if a.get("confirm") is not True:
         ids = _matching(path, match)
         data = _stage(path, a["db"], match, ids)
         return {"db": a["db"], "match": match, "removed": 0, "matched": len(ids),
                 "preview": data["preview"],
-                "note": "refused: nothing deleted; re-call with confirm: true to remove the matched records"}
+                "note": "refused: nothing deleted; pass confirm: true (the boolean true) to remove the matched records"}
     ids = _staged(path, a["db"], match)
     if ids is None:
         ids = _matching(path, match)
     removed, vec = _apply_remove(path, ids)
-    if _staged(path, a["db"], match) is not None:
+    if removed:
         try:
             os.remove(os.path.join(str(path), "pending-remove.json"))
         except OSError:
@@ -265,7 +273,7 @@ TOOLS = [
     ("rag_ingest_text", "Ingest text verbatim into a db with owner-grade provenance (title, source, url, date). Use for command references, notes and guides you trust.",
      {"type": "object", "properties": {"db": {"type": "string"}, "title": {"type": "string"}, "text": {"type": "string"},
        "source": {"type": "string", "description": "where this text came from"}, "url": {"type": "string"}, "date": {"type": "string"}}, "required": ["db", "title", "text"]}),
-    ("rag_remove", "Remove records whose title/url/source contains match. Without confirm it refuses, deletes nothing and stages pending-remove.json; pass confirm: true on a second call to apply.",
+    ("rag_remove", "Remove records whose title/url/source contains match. Refuses without confirm: true (must be the boolean true; empty match refuses outright, nothing ever matches-all), stages pending-remove.json with a preview; re-call with confirm: true to apply.",
      {"type": "object", "properties": {"db": {"type": "string"}, "match": {"type": "string"}, "confirm": {"type": "boolean", "default": False}}, "required": ["db", "match"]}),
     ("rag_list_sources", "Distinct url+date provenance for a db with per-source record counts and a sample title.",
      {"type": "object", "properties": {"db": {"type": "string"}}, "required": ["db"]}),
