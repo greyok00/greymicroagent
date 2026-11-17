@@ -1,0 +1,40 @@
+{
+  "name": "greylocalrag MCP registry template",
+  "updated": "2026-11-17",
+  "note": "Portable seed copied by bin/greylocalrag to ~/.greylocalrag/agent/mcp_registry.json on first launch only (the copy never overwrites). These carry the deb install-root paths from scripts/package_deb.sh: the deb installs the frozen tree at /opt/greylocalrag. On the dev tree the seeding is skipped because the home registry already exists.",
+  "servers": [
+    {
+      "name": "memory",
+      "command": "python3",
+      "enabled": true,
+      "args": [
+        "/opt/greylocalrag/mcp/run_server.py",
+        "--server",
+        "memory"
+      ],
+      "note": "The fork's designed memory surface: hot/cold tiers, per-row tolerant reads, cold-md covered, bad-args surface as errors. Store at ~/.greylocalrag/memory."
+    },
+    {
+      "name": "knowledge",
+      "command": "python3",
+      "enabled": true,
+      "args": [
+        "/opt/greylocalrag/services/rag_mcp.py"
+      ],
+      "note": "The fork-owned RAG surface (tools rag_status/rag_search/rag_ingest_pdf/rag_ingest_urls/rag_ingest_text/rag_remove/rag_list_sources) over the fork KB at ~/.greylocalrag/dbs; rag_remove refuses without confirm and stages pending-remove.json."
+    },
+    {
+      "name": "greysearch",
+      "command": "python3",
+      "enabled": true,
+      "args": [
+        "/opt/greylocalrag/services/search_mcp.py"
+      ],
+      "note": "The fork-owned public searxng lane (tools search/search_health), keyless, no private-tree dependency."
+    }
+  ],
+  "defaults": {
+    "external_on_install": "disabled",
+    "tui_command": "/mcp or /tools"
+  }
+}

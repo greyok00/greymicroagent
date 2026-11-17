@@ -76,6 +76,8 @@ cp -a "$REAL_CONFIG/port_policy.json" "$TREE/config/port_policy.json"
 
 cp -a "$ROOT/README.md" "$TREE/README.md"
 cp -a "$ROOT/THIRD-PARTY-NOTICES.txt" "$TREE/THIRD-PARTY-NOTICES.txt"
+cp -a "$ROOT/config-data" "$TREE/config-data"
+cp -a "$ROOT/LICENSE" "$TREE/LICENSE"
 
 echo "== staging the model package (import closure of build/src) =="
 mkdir -p "$TREE/model"

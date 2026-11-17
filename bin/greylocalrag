@@ -318,5 +318,21 @@ elif [ ! -d "$_ext_src" ]; then
   echo "greylocalrag: config/extensions missing — extensions will not load" >&2
 fi
 
+_seed_mcp_registry() {
+  local reg="$HOME/.greylocalrag/agent/mcp_registry.json"
+  local tpl="$ROOT/config-data/mcp-registry-template.json"
+  if [ -f "$reg" ]; then
+    return 0
+  fi
+  if [ ! -f "$tpl" ]; then
+    echo "greylocalrag: MCP registry template missing (config-data/mcp-registry-template.json) - registry not seeded" >&2
+    return 0
+  fi
+  mkdir -p "$HOME/.greylocalrag/agent"
+  cp "$tpl" "$reg"
+  echo "greylocalrag: seeded ~/.greylocalrag/agent/mcp_registry.json from the bundled template (first launch)"
+}
+_seed_mcp_registry
+
 node "$CLI" --append-system-prompt "$ROOT/model/greylocalrag.md" "$@"
 printf '%s\n' "greylocalrag session ended"

@@ -55,7 +55,10 @@ def probe_ram_gb() -> float:
 
 def open_ctx_default() -> int:
     assumed = os.environ.get("GREYLOCALRAG_ASSUME_RAM_GB")
-    ram = float(assumed) if assumed else probe_ram_gb()
+    try:
+        ram = float(assumed) if assumed else probe_ram_gb()
+    except ValueError:
+        ram = probe_ram_gb()
     return 32768 if ram <= 8 else 65536
 
 
