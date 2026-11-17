@@ -18,7 +18,7 @@ _C = [" ██████╗", "██╔════╝", "██║     ", "�
 _A = [" █████╗ ", "██╔══██╗", "███████║", "██╔══██║", "██║  ██║", "╚═╝  ╚═╝"]
 
 _NAME = "GREYLOCALRAG"
-_BYLINE = "grounded answers from your own knowledge — RAG for CPU-only machines"
+_BYLINE = "grounded answers from your own knowledge - RAG for CPU-only machines"
 _HOWTO = [
     "Ask anything. Answers come from your KB with citations, temperature cold.",
     "No grounded material? The agent asks before it goes searching the web.",
@@ -88,7 +88,7 @@ def big_number(value) -> str:
 
 def compact_splash_lines() -> list:
     out = [shade(7) + _NAME]
-    half = _BYLINE.split("—")
+    half = _BYLINE.split(" - ")
     for part in half:
         out.append(shade(5) + part.strip())
     out.append("")

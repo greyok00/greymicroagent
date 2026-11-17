@@ -243,7 +243,7 @@ trap 'cleanup; exit 143' TERM
 trap 'cleanup; exit 129' HUP
 
 # --- model: VRAM-gated, spawned async (TUI FIRST) ----------------------------
-GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated — loading on :${MODEL_PORT}..."
+GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated - loading on :${MODEL_PORT}..."
 GREYAGENT_MODEL_UP=0
 if ! _up; then
   if python3 "$ROOT/build/src/vram_check.py" 2>/dev/null; then
@@ -254,7 +254,7 @@ if ! _up; then
     # this 2B boots CPU-only (11.7 tok/s measured) with its lane kept up,
     # because the model really is coming. Never evict, never OOM-fight.
     export GREYAGENT_NGL="${GREYAGENT_NGL:-0}"
-    GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated — CPU-only (GPU kept by greyagent)"
+    GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated - CPU-only (GPU kept by greyagent)"
   fi
   python3 - "$ROOT" <<'PY' >> "$ROOT/state/logs/model-boot-${MODEL_PORT}.log" 2>&1 &
 import sys

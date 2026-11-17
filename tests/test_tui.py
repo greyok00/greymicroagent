@@ -7,15 +7,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 
 def test_splash_geometry():
-    # GM-03b (2026-11-03): the splash .so was rebuilt from the mini source —
-    # assert greylocalrag's identity (2B model, mini prompt), not the 27B parent's.
+    # GM-03b canary (2026-11-03, rebased 2026-11-17): a stale splash .so that
+    # shadows build/src/splash.py still carries the old identity, so the test
+    # asserts the new front door is present and the retired 2B line is absent.
     from ui.splash import SPLASH_TEXT, SPLASH_MIN_W
-    assert SPLASH_MIN_W() == 62
+    assert SPLASH_MIN_W() == 75
     rows = SPLASH_TEXT.split("\n")
     assert max(len(r) for r in rows) <= 90
-    assert "MODEL: qwen3.5-2b-abliterated" in SPLASH_TEXT
-    assert "AUTHOR: greyok00" in SPLASH_TEXT
-    assert "PROMPT: model/greylocalrag.md" in SPLASH_TEXT
+    assert "qwen3.5-2b-abliterated" not in SPLASH_TEXT
+    assert "GREYLOCALRAG" in SPLASH_TEXT
+    assert "YOUR RAG" in SPLASH_TEXT
 
 
 def test_palette_is_8bit_greyscale():
