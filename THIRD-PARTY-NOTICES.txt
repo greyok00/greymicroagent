@@ -1,0 +1,151 @@
+Third-party notices for the greylocalrag seed commands knowledge base.
+
+The records in the 'commands' knowledge base were built from the tldr-pages
+project at build time: https://github.com/tldr-pages/tldr
+Those pages are licensed under the Creative Commons Attribution 4.0
+International License (CC-BY-4.0): https://creativecommons.org/licenses/by/4.0/
+License file as fetched at build time: https://raw.githubusercontent.com/tldr-pages/tldr/main/LICENSE.md
+This product stores condensed cards (command name, an original-authored usage
+note, the page synopsis, one usage example and a link), not verbatim pages,
+with per-record attribution (source, url, build date) retained in the database.
+Build date: 2026-11-17
+Pages fetched and ingested: 127 of 134 curated rows
+Pages skipped because no page exists at the pinned path: 7
+
+Fetched pages:
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/ipconfig.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/sc.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/reg.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/robocopy.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/sfc.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/netsh.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/tasklist.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/powercfg.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/winget.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/taskkill.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/cmd.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/dir.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/cd.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/copy.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/del.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/echo.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/findstr.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/forfiles.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/getmac.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/hostname.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/mklink.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/more.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/move.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/netstat.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/nslookup.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/pathping.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/ping.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/rd.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/ren.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/route.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/runas.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/shutdown.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/systeminfo.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/tracert.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/tree.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/type.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/where.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/whoami.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/wmic.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/attrib.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/certutil.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/chkdsk.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/cipher.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/clip.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/cls.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/diskpart.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/doskey.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/driverquery.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/expand.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/fc.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/find.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/for.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/ftype.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/help.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/msg.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/pushd.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/setx.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/sort.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/takeown.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/windows/xcopy.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/ls.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/cp.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/mv.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/rm.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/cat.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/chmod.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/chown.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/ssh.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/df.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/du.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/grep.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/tar.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/curl.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/find.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/head.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/tail.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/sort.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/uniq.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/wc.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/awk.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/sed.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/tr.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/xargs.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/ln.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/mkdir.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/diff.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/file.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/free.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/less.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/which.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/whoami.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/kill.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/ps.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/top.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/sleep.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/uname.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/date.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/env.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/man.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/tee.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/ping.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/gzip.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/nano.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/rsync.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/scp.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/dd.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/systemctl.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/journalctl.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/ip.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/apt.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/apt-get.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/dpkg.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/crontab.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/useradd.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/userdel.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/usermod.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/groupadd.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/hostnamectl.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/timedatectl.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/mount.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/umount.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/ifconfig.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/service.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/shutdown.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/linux/chsh.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/passwd.md
+  https://raw.githubusercontent.com/tldr-pages/tldr/main/pages/common/lsof.md
+
+Skipped pages (404, nothing invented in their place):
+  SKIP 404 windows11/schtasks: no page at pages/windows or pages/common/schtasks.md - not ingested, nothing invented
+  SKIP 404 windows11/dism: no page at pages/windows or pages/common/dism.md - not ingested, nothing invented
+  SKIP 404 windows11/icacls: no page at pages/windows or pages/common/icacls.md - not ingested, nothing invented
+  SKIP 404 windows11/format: no page at pages/windows or pages/common/format.md - not ingested, nothing invented
+  SKIP 404 windows11/bitsadmin: no page at pages/windows or pages/common/bitsadmin.md - not ingested, nothing invented
+  SKIP 404 windows11/gpresult: no page at pages/windows or pages/common/gpresult.md - not ingested, nothing invented
+  SKIP 404 windows11/label: no page at pages/windows or pages/common/label.md - not ingested, nothing invented

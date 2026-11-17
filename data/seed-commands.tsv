@@ -1,0 +1,134 @@
+windows11	ipconfig	Show or renew network adapter settings; ipconfig /all includes DNS and DHCP lease details.
+windows11	sc	Create, start, stop or query Windows services from the command line.
+windows11	schtasks	Schedule a task to run at a given time or on logon; /create, /run and /delete manage entries.
+windows11	reg	Read or edit the Windows registry from the console (reg query, reg add, reg delete).
+windows11	robocopy	Robust directory copier; /MIR mirrors a source tree including deletions.
+windows11	sfc	Scan and repair protected Windows system files with /scannow.
+windows11	dism	Servicing tool for Windows images and the component store (no tldr page at the pinned path; expect a skip).
+windows11	netsh	Configure network interfaces, firewall rules and proxy settings; netsh winsock reset rebuilds the Winsock catalog.
+windows11	icacls	Display or change NTFS access control lists (grant, deny, reset).
+windows11	tasklist	List running processes with PIDs, memory usage and the services backing each one.
+windows11	powercfg	Control power plans and sleep states; powercfg /lastwake reports the last wake source.
+windows11	winget	Install, upgrade and uninstall packages from the Windows package manager.
+windows11	taskkill	End a process by PID or image name; /f forces termination.
+windows11	cmd	Open a Windows command interpreter or run a single command string with /c.
+windows11	dir	List files and subdirectories in a folder with sizes and dates.
+windows11	cd	Show or change the current working directory of the shell.
+windows11	copy	Copy one or more files to another location within the same volume.
+windows11	del	Delete one or more files; wildcards select groups of files.
+windows11	echo	Print text to the console, useful in batch scripts and for @echo off toggling.
+windows11	findstr	Search files for regular-expression or literal string patterns.
+windows11	forfiles	Run a command against each selected file, e.g. files older than N days.
+windows11	format	Format a drive or volume with a chosen file system.
+windows11	getmac	Show the media access control address of each network adapter.
+windows11	hostname	Print the name of the current Windows computer.
+windows11	mklink	Create a symbolic or hard link to a file or directory (needs /d for directory links).
+windows11	more	Display file or piped input one screen at a time.
+windows11	move	Move files or rename a directory.
+windows11	netstat	Show active TCP connections, listening ports and the owning process.
+windows11	nslookup	Query DNS servers for host name or address records.
+windows11	pathping	Trace the route to a host and measure per-hop packet loss over time.
+windows11	ping	Test reachability and round-trip latency of a host with ICMP echo packets.
+windows11	rd	Remove an empty directory, or /s /q to delete a tree without confirmation.
+windows11	ren	Rename one or more files without moving them.
+windows11	route	Show or modify the local IP routing table (route print, route add).
+windows11	runas	Start a program under a different user account than the logged-on one.
+windows11	shutdown	Schedule or cancel a shutdown, reboot or sign-out of the machine.
+windows11	systeminfo	Report machine-level facts: OS build, install date, RAM, hotfixes and network card.
+windows11	tracert	List the routers packets cross on the way to a destination (traceroute).
+windows11	tree	Print an indented tree of a directory and its subdirectories.
+windows11	type	Print the contents of a text file to standard output.
+windows11	where	Locate which path entry a command file is resolved from.
+windows11	whoami	Print the user (and group membership) the shell is running as.
+windows11	wmic	Query the WMI instrumentation layer for system and configuration facts.
+windows11	attrib	Show or change file attributes such as hidden, read-only and system.
+windows11	bitsadmin	Manage background file transfers through the BITS job queue.
+windows11	certutil	Dump, create or verify certificate stores and file hashes from the console.
+windows11	chkdsk	Check a disk for file-system errors and repair them with /f or scan with /scan.
+windows11	cipher	Encrypt folders with EFS or wipe free space so deleted data can no longer be recovered.
+windows11	clip	Copy console or piped input onto the Windows clipboard.
+windows11	cls	Clear the console screen buffer.
+windows11	diskpart	Partition and manage disks from an interactive scripting shell.
+windows11	doskey	Recall and edit command lines, and record macros for the console session.
+windows11	driverquery	List installed device drivers with their state and start mode.
+windows11	expand	Extract files from a cabinet archive (.cab).
+windows11	fc	Compare two files or sets of files and show the differing lines.
+windows11	find	Print lines of a file that contain a given string (exact literal match).
+windows11	for	Run a command once for each item in a file, directory or string list.
+windows11	ftype	Show or change which program opens each file extension class.
+windows11	gpresult	Dump the group policy objects and settings that applied at sign-in.
+windows11	help	List the built-in cmd.exe commands and show help text for one.
+windows11	label	Create, change or delete the volume label of a drive.
+windows11	msg	Send a message to a user, session or session id on the machine.
+windows11	pushd	Save the current directory on a stack and change to a new one (popd returns).
+windows11	setx	Set a user or system environment variable that persists across sessions.
+windows11	sort	Sort lines of piped or file input alphabetically, with /r to reverse.
+windows11	takeown	Assign ownership of a file or directory to the administrator group.
+windows11	xcopy	Copy files and directory trees with attribute and permission preservation.
+linux	ls	List directory contents with sizes, hidden files (ls -la) and human-readable units (ls -lh).
+linux	cp	Copy files and directories; cp -r recurses into trees, cp -a preserves attributes.
+linux	mv	Move or rename files and directories; mv -f overwrites without prompting.
+linux	rm	Remove files or, with rm -rf, a directory tree irreversibly.
+linux	cat	Print or concatenate files to standard output.
+linux	chmod	Change file permission bits numerically (chmod 755) or symbolically (chmod +x).
+linux	chown	Change the owning user and group of a file or directory.
+linux	ssh	Start an OpenSSH client session or run a remote command on another host.
+linux	df	Report file-system disk usage per mounted volume (df -h for human units).
+linux	du	Estimate disk usage of files and directory trees (du -sh sums a directory).
+linux	grep	Select lines matching a regular expression; grep -r recurses, -c counts matches.
+linux	tar	Create or extract archives; compress or extract with tar -czf / tar -xzf (.tar.gz) or -J for .xz.
+linux	curl	Transfer data to or from a URL; -O saves the remote filename, -o names it yourself.
+linux	find	Search a directory tree for files by name, size, age and run actions on the hits.
+linux	head	Print the first lines of each input file (head -n 20).
+linux	tail	Print the last lines of a file; tail -f follows growth, as on log files.
+linux	sort	Sort lines of text alphabetically (-r reverses, -n compares numerically).
+linux	uniq	Filter repeated, adjacent lines and with -c count occurrences of each.
+linux	wc	Count lines, words and bytes of input (wc -l for line counts).
+linux	awk	Pattern-scanning language for column-split text processing and reports.
+linux	sed	Stream editor for find-and-replace and line-range edits (sed s/a/b/g).
+linux	tr	Translate, squeeze or delete characters from standard input.
+linux	xargs	Build and run command lines from standard input, e.g. piping find output into rm.
+linux	ln	Create hard links or, with -s, symbolic links between files.
+linux	mkdir	Create one or more new directories (mkdir -p creates intermediate levels).
+linux	diff	Compare two files line by line; diff -u shows a unified context patch.
+linux	file	Detect the file type of each argument from content, not extension.
+linux	free	Show used and available physical and swap memory (free -h for human units).
+linux	less	Pager for viewing file or pipe output one screen at a time, with search.
+linux	which	Locate a command by searching PATH and printing the first hit.
+linux	whoami	Print the effective user name of the current process.
+linux	kill	Send a signal to a process by pid; kill -9 forces termination.
+linux	ps	Snapshot running processes (ps aux for every process on the system).
+linux	top	Interactive view of processes sorted by CPU and memory, refreshed in place.
+linux	sleep	Pause execution for a given number of seconds; used inside scripts and loops.
+linux	uname	Print kernel name, release and architecture (uname -a shows everything).
+linux	date	Print or set the system date and time in a chosen format.
+linux	env	Run a command in a modified environment or print current variables.
+linux	man	Show the manual page of a command, function or config file format.
+linux	tee	Read standard input and write it to both a file and standard output.
+linux	ping	Send ICMP ECHO_REQUEST packets to a host and report round-trip times.
+linux	gzip	Compress or decompress a file with standards-mode DEFLATE compression.
+linux	nano	Simple terminal text editor with visible key hints at the bottom bar.
+linux	rsync	Synchronize files and directory trees across machines or paths, copying only the deltas.
+linux	scp	Copy files over an SSH connection to or from a remote host.
+linux	dd	Convert and copy a file byte by byte; used for raw disk image writes.
+linux	systemctl	Control the systemd service manager: start, stop, enable, disable and status of units.
+linux	journalctl	Query the systemd journal, filtered by unit, priority or time window.
+linux	ip	Show and manage addresses, routes and links; ip a is the modern ifconfig replacement.
+linux	apt	Debian/Ubuntu package manager front end: apt install, update, upgrade.
+linux	apt-get	Low-level APT client with scriptable install, download and dependency handling.
+linux	dpkg	Debian package file tool: dpkg -i installs, -r removes, -l lists what is registered.
+linux	crontab	Schedule recurring user jobs; crontab -e edits the table, -l lists it.
+linux	useradd	Create a new login account on the system.
+linux	userdel	Delete a login account and, with -r, its home directory.
+linux	usermod	Modify an existing user account, e.g. group membership with -aG.
+linux	groupadd	Create a new system group definition.
+linux	hostnamectl	Query or change the system host name and related machine settings.
+linux	timedatectl	Show or set system clock, time zone and NTP synchronization.
+linux	mount	Attach a file system or image to a directory in the tree.
+linux	umount	Detach a mounted file system once no process holds it open.
+linux	ifconfig	Configure or display network interfaces (legacy tool, superseded by ip).
+linux	service	Run a System V init script or request the systemd unit status of a service.
+linux	shutdown	Schedule a machine shutdown or reboot; shutdown -h now stops immediately.
+linux	chsh	Change a user's default login shell.
+linux	passwd	Change a user's login password.
+linux	lsof	List open files, sockets and the processes holding them (lsof -i :port).
