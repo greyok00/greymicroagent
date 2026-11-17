@@ -177,12 +177,17 @@ def build_queries(leadset: dict, subject: str, max_queries: int = 6) -> list:
 
 # --- greysearch (import-only, never modified) -------------------------------- #
 def _gsearch():
-    import sys
-    gp = "/home/grey/greysearch"
-    if gp not in sys.path:
-        sys.path.insert(0, gp)
-    import greysearch_mcp as g
-    return g
+    return _NoLane()
+
+
+class _NoLane:
+    def dispatch(self, _name, _args):
+        return {"ok": False, "error": _NOLANE_NOTE}
+
+
+_NOLANE_NOTE = ("research lane not wired into lead expansion; start research "
+                "runs from the product search surface and ingest results only "
+                "after the owner agrees")
 
 
 def fire(queries: list) -> dict:
