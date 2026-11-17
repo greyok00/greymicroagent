@@ -214,21 +214,22 @@ def chunk(text, size=2400):
     return out
 
 
-DBS_ROOT = Path.home() / ".greylocalrag" / "dbs"
+DBS_ROOT = Path(os.environ.get("GREYLOCALRAG_DBS_ROOT") or Path.home() / ".greylocalrag" / "dbs")
 
 def db_dir(name):
     if not re.fullmatch(r"[A-Za-z0-9_-]{1,40}", name or ""):
         raise ValueError("bad db name")
-    d = DBS_ROOT / name
+    d = Path(os.environ.get("GREYLOCALRAG_DBS_ROOT") or Path.home() / ".greylocalrag" / "dbs") / name
     d.mkdir(parents=True, exist_ok=True)
     return d
 
 def dbs():
-    if not os.path.isdir(DBS_ROOT):
+    root = Path(os.environ.get("GREYLOCALRAG_DBS_ROOT") or Path.home() / ".greylocalrag" / "dbs")
+    if not os.path.isdir(root):
         return []
     out = []
-    for d in sorted(os.listdir(DBS_ROOT)):
-        p = os.path.join(DBS_ROOT, d)
+    for d in sorted(os.listdir(root)):
+        p = os.path.join(root, d)
         if os.path.isfile(f"{p}/pack.jsonl"):
             n = sum(1 for _ in open(f"{p}/pack.jsonl", encoding="utf-8"))
             out.append({"name": d, "records": n})
