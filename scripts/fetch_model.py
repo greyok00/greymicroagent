@@ -5,19 +5,27 @@ import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, "/home/grey/llama.cpp/gguf-py")
+sys.path.insert(0, str(Path.home() / "llama.cpp" / "gguf-py"))
 
 import numpy as np
 import gguf
 
 MODEL_REF = "huihui_ai/qwen3-vl-abliterated:2b"
-HF_BASE_REPO = "Qwen/Qwen3-VL-2B-Instruct"
-SOURCE_BLOB = "/usr/share/ollama/.ollama/models/blobs/sha256-20ef83c3cae84e1dc03d3faee31c3c4ddda6ca806a8c99dc89d42e3e43e9c2ff"
+MODEL_TAG = "2b"
+MODEL_ORG, MODEL_NAME = "huihui_ai", "qwen3-vl-abliterated"
+REGISTRY = "https://registry.ollama.ai/v2/%s/%s/blobs/sha256:%s"
+SOURCE_BLOB_ENV = "GREYLOCALRAG_SOURCE_BLOB"
+SOURCE_BLOB_DEFAULT = "/usr/share/ollama/.ollama/models/blobs/sha256-20ef83c3cae84e1dc03d3faee31c3c4ddda6ca806a8c99dc89d42e3e43e9c2ff"
 SOURCE_BLOB_SHA256 = "20ef83c3cae84e1dc03d3faee31c3c4ddda6ca806a8c99dc89d42e3e43e9c2ff"
 MODELS_DIR = Path.home() / ".greylocalrag" / "models"
+SOURCE_CACHE = MODELS_DIR / "source-qwen3-vl-2b-abliterated.gguf"
+DOWNLOAD_CHUNK = 8 * 1024 * 1024
 FUSED = MODELS_DIR / "qwen3-vl-2b-abliterated-fused.gguf"
 TEXT = MODELS_DIR / "qwen3-vl-2b-abliterated.gguf"
 MMPROJ = MODELS_DIR / "qwen3-vl-2b-mmproj.gguf"
+
+_env_src = os.environ.get(SOURCE_BLOB_ENV)
+SOURCE_BLOB = _env_src if _env_src else SOURCE_BLOB_DEFAULT
 REPAIR_KEY = "qwen3vl.rope.dimension_sections"
 REPAIR_VALUE = [24, 20, 20, 0]
 DEEPSTACK_KEY = "qwen3vl.num_deepstack_layers"
@@ -304,6 +312,42 @@ def verify():
     log("pinned chain verified")
 
 
+def download():
+    global SOURCE_BLOB
+    import urllib.request
+    url = REGISTRY % (MODEL_ORG, MODEL_NAME, SOURCE_BLOB_SHA256)
+    MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    part = SOURCE_CACHE.with_name(SOURCE_CACHE.name + ".downloading")
+    req = urllib.request.Request(url, headers={"User-Agent": "greylocalrag-fetch/0.1"})
+    got = hashlib.sha256()
+    total = 0
+    log("downloading %s" % url)
+    with urllib.request.urlopen(req, timeout=120) as r, open(part, "wb") as f:
+        expected_len = r.headers.get("Content-Length")
+        if expected_len and int(expected_len) <= 0:
+            part.unlink(missing_ok=True)
+            raise SystemExit("registry reported empty blob - refusing")
+        while True:
+            chunk = r.read(DOWNLOAD_CHUNK)
+            if not chunk:
+                break
+            total += len(chunk)
+            got.update(chunk)
+            f.write(chunk)
+            if total % (64 * DOWNLOAD_CHUNK) == 0:
+                log("downloaded %.2f GB" % (total / 1024 ** 3))
+    digest = got.hexdigest()
+    if digest != SOURCE_BLOB_SHA256:
+        part.unlink(missing_ok=True)
+        raise SystemExit("download sha256 %s != pinned %s - refusing (%d bytes)"
+                         % (digest, SOURCE_BLOB_SHA256, total))
+    os.replace(part, SOURCE_CACHE)
+    log("source blob cached: %s (%d bytes, sha256 pinned)" % (SOURCE_CACHE, total))
+    SOURCE_BLOB = str(SOURCE_CACHE)
+    chain()
+    verify()
+
+
 def main(argv):
     verb = argv[1] if len(argv) > 1 else "ensure"
     if verb == "chain":
@@ -314,8 +358,10 @@ def main(argv):
         verify()
     elif verb == "ensure":
         chain()
+    elif verb == "download":
+        download()
     else:
-        raise SystemExit("unknown verb %r (chain|split|verify|ensure)" % verb)
+        raise SystemExit("unknown verb %r (chain|split|verify|ensure|download)" % verb)
 
 
 if __name__ == "__main__":

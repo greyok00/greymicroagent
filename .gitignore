@@ -7,3 +7,6 @@ keys.json
 *.log
 state/
 research/data/private/
+
+dist/deb/greylocalrag/
+dist/deb/*.deb

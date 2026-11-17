@@ -81,9 +81,10 @@ def _derived(p: Path, root: Path) -> bool:
 
 
 def main() -> int:
+    root = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ROOT
     out = {}
     for d in WALK_DIRS:
-        base = ROOT / d
+        base = root / d
         # GM-02 (2026-11-03): a missing curated walk dir used to become an
         # {"error": "MISSING DIRECTORY"} entry INSIDE files[] — which the gate
         # then read as a missing FILE — silently shipping a smaller frozen set.
@@ -94,9 +95,9 @@ def main() -> int:
                   "silently-smaller manifest", file=sys.stderr)
             return 1
         for p in sorted(base.rglob("*")):
-            if not p.is_file() or _derived(p, ROOT):
+            if not p.is_file() or _derived(p, root):
                 continue
-            rel = str(p.relative_to(ROOT))
+            rel = str(p.relative_to(root))
             try:
                 size = p.stat().st_size
             except OSError:
@@ -111,7 +112,7 @@ def main() -> int:
         "hashed_below": MAX_HASH_BYTES,
         "files": out,
     }
-    path = ROOT / "state" / "MANIFEST.json"
+    path = root / "state" / "MANIFEST.json"
     path.write_text(json.dumps(manifest, indent=1, sort_keys=True) + "\n")
     print(f"MANIFEST: {len(out)} files -> {path}")
     return 0
