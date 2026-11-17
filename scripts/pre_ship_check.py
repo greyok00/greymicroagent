@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -114,6 +115,67 @@ def symlink_findings(root, rel, target):
     return []
 
 
+SMOKE_SKIP = {
+    "setup": "setup.py runs the cython build at import time",
+    "__init__": "package marker, imported with its parent",
+    "greyagent_run": "greyagent family helper, deliberately not staged",
+}
+SMOKE_TIMEOUT = 120
+SMOKE_CHILD = ("import sys, importlib; sys.path.insert(0, sys.argv[2]); "
+               "importlib.import_module(sys.argv[1]); print('OK')")
+
+
+def import_candidates(build_src):
+    stems = {}
+    skipped = []
+    hits = {}
+    for f in sorted(build_src.iterdir()):
+        if not f.is_file():
+            continue
+        if not (f.name.endswith(".py") or ".cpython" in f.name):
+            continue
+        stem = f.name.split(".")[0]
+        hits[stem] = True
+    for stem in sorted(hits):
+        if stem in SMOKE_SKIP:
+            skipped.append((stem, SMOKE_SKIP[stem]))
+        elif stem not in stems:
+            stems[stem] = None
+    return sorted(stems), skipped
+
+
+def import_smoke(root):
+    build_src = root / "build" / "src"
+    findings = []
+    evidence = []
+    if not build_src.is_dir():
+        return [], ["import smoke skipped: no staged build/src present"]
+    env = dict(os.environ)
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    cands, skipped = import_candidates(build_src)
+    for stem, why in skipped:
+        evidence.append("import smoke skipped: %s (%s)" % (stem, why))
+    for name in cands:
+        try:
+            r = subprocess.run([sys.executable, "-B", "-c", SMOKE_CHILD, name, str(build_src)],
+                               cwd=str(root), env=env, capture_output=True, text=True,
+                               timeout=SMOKE_TIMEOUT)
+        except subprocess.TimeoutExpired:
+            findings.append("import smoke timed out after %ds (subprocess killed): %s"
+                            % (SMOKE_TIMEOUT, name))
+            continue
+        out = (r.stdout or "").strip().splitlines()
+        err_tail = (r.stderr or "").strip().splitlines()
+        tail = err_tail[-1] if err_tail and err_tail[-1].strip() else (out[-1] if out else "no output")
+        if r.returncode == 0 and out and out[-1].strip() == "OK":
+            evidence.append("import smoke ok: %s" % name)
+        elif "ModuleNotFoundError" in tail:
+            findings.append("import smoke missing dep: %s: %s" % (name, tail.strip()))
+        else:
+            findings.append("import smoke error: %s rc=%s: %s" % (name, r.returncode, tail.strip()))
+    return findings, evidence
+
+
 def main(argv):
     if len(argv) != 2:
         print(USAGE)
@@ -177,6 +239,11 @@ def main(argv):
         ptxt = policy.read_text(encoding="utf-8", errors="ignore")
         if "7640-7647" not in ptxt:
             findings.append("port policy does not declare the 7640-7647 fork block")
+
+    smoke_findings, smoke_evidence = import_smoke(root)
+    for line in smoke_evidence:
+        print("  " + line)
+    findings.extend(smoke_findings)
 
     if findings:
         print("pre_ship_check: FAIL (%d findings over %d files)" % (len(findings), checked))

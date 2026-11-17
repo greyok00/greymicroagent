@@ -17,7 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 MAX_HASH_BYTES = 64 * 1024 * 1024  # hash everything below this; size-pin above
 
 WALK_DIRS = ["mcp",
-             "core", "tools", "services", "build/src", "vendor/slimtoken/src/slimtoken",
+             "core", "tools", "services", "build/src", "model", "ui",
+             "vendor/slimtoken/src/slimtoken",
              "vendor/llamacpp", "vendor/greylocalrag-server",
              "tui/packages/agent/dist", "tui/packages/ai/dist", "tui/packages/client/dist",
              "tui/packages/coding-agent/dist", "tui/packages/protocol/dist", "tui/packages/server/dist",

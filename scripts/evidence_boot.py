@@ -275,7 +275,8 @@ def run_boot():
         gate_body = e.read().decode("utf-8", "ignore")[:120]
     if gate_status != 200:
         EV["findings"].append("gate :7641 POST /v1/chat/completions status=%s body=%.120s "
-                              "(do_POST forwards the upstream URL path '/', not the received path)"
+                              "(gate forwards the received path since the F2 fix; the completion "
+                              "hop itself failed upstream)"
                               % (gate_status, gate_body))
         say("FINDING gate completion hop status=%s (%.120s) - asserting completions at slim :7642/v1 layer" % (gate_status, gate_body))
         e2e_base = "http://127.0.0.1:7642/v1/chat/completions"

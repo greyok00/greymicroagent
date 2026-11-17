@@ -76,8 +76,20 @@ cp -a "$REAL_CONFIG/port_policy.json" "$TREE/config/port_policy.json"
 
 cp -a "$ROOT/README.md" "$TREE/README.md"
 cp -a "$ROOT/THIRD-PARTY-NOTICES.txt" "$TREE/THIRD-PARTY-NOTICES.txt"
+
+echo "== staging the model package (import closure of build/src) =="
 mkdir -p "$TREE/model"
+for f in "$ROOT"/model/*.py "$ROOT"/model/*.so; do
+    cp -a "$f" "$TREE/model/"
+done
 cp -a "$ROOT/model/greylocalrag.md" "$TREE/model/greylocalrag.txt"
+ls "$TREE/model" | sed 's/^/  model: /'
+echo "== staging the ui package (import closure of app) =="
+mkdir -p "$TREE/ui"
+for f in "$ROOT"/ui/*.so; do
+    cp -a "$f" "$TREE/ui/"
+done
+ls "$TREE/ui" | sed 's/^/  ui: /'
 
 echo "== pruning dev-only payload residue =="
 rm -rf "$TREE/core/greysearch/guides"
@@ -231,7 +243,7 @@ for p in sorted(tree.rglob("*")):
 PY
 
 echo "== stamp compiled modules newest (staleness layer) =="
-find "$TREE/core" "$TREE/tools" "$TREE/services" "$TREE/mcp" -name '*.so' -exec touch {} +
+find "$TREE/core" "$TREE/tools" "$TREE/services" "$TREE/mcp" "$TREE/ui" "$TREE/model" -name '*.so' -exec touch {} +
 
 echo "== regenerate frozen manifest FROM the staged payload =="
 python3 "$ROOT/scripts/gen_manifest.py" "$TREE"
