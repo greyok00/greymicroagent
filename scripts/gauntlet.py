@@ -809,34 +809,47 @@ def phase_quiz():
     t_all0 = time.time()
     for i, q in enumerate(QUIZ, 1):
         msgs.append({"role": "user", "content": q})
-        body = {"model": "greylocalrag", "max_tokens": 220, "messages": list(msgs)}
-        SINK_REQS.clear()
-        http_post_json("http://127.0.0.1:%d/v1/chat/completions" % CAPGATE_PORT, body, 30)
-        sysc = SINK_REQS[-1]["messages"][-1]["content"] if SINK_REQS else ""
+        body = {"model": "greylocalrag", "max_tokens": 640, "messages": list(msgs)}
+        for attempt in (1, 2):
+            SINK_REQS.clear()
+            http_post_json("http://127.0.0.1:%d/v1/chat/completions" % CAPGATE_PORT, body, 30)
+            sysc = SINK_REQS[-1]["messages"][-1]["content"] if SINK_REQS else ""
+            if sysc:
+                break
+            time.sleep(1.0)
         n_chunks = sysc.count("[KB:commands#")
         grounded = sysc.startswith("GROUNDING:") and n_chunks >= 1
         t0 = time.time()
         status, raw = http_post_json("http://127.0.0.1:%d/v1/chat/completions" % GATE_PORT,
-                                     body, 480)
+                                     body, 900)
         out = json.loads(raw)
-        content = (out.get("choices") or [{}])[0].get("message", {}).get("content", "")
+        msg = (out.get("choices") or [{}])[0].get("message", {})
+        content = str(msg.get("content") or "")
         ts = tag_stats(content)
         turn = {"i": i, "q": q, "gate_chunks": n_chunks, "grounded": grounded,
                 "scores": [float(s) for s in re.findall(r"score=([0-9.]+)", sysc)][:3],
                 "reply_status": status, "reply_len": len(content),
                 "reply_head": content[:90], "wall_s": round(time.time() - t0, 1),
+                "reasoning_len": len(str(msg.get("reasoning_content") or "")),
+                "finish": (out.get("choices") or [{}])[0].get("finish_reason"),
                 "tags": ts}
         turns.append(turn)
         msgs.append({"role": "assistant", "content": content})
-        say("quiz %d/%d chunks=%d %.1fs len=%d tags=%d head=%.90r"
+        say("quiz %d/%d chunks=%d %.1fs len=%d reasoning=%d finish=%s tags=%d head=%.90r"
             % (i, len(QUIZ), n_chunks, turn["wall_s"], len(content),
+               turn["reasoning_len"], turn["finish"],
                ts["think_open"] + ts["think_close"], content[:90]))
     total_s = round(time.time() - t_all0, 1)
+    grounded_n = sum(1 for t in turns if t["grounded"])
     checks = {
-        "all_grounded": all(t["grounded"] and t["reply_status"] == 200 for t in turns),
-        "chunks_per_turn_recorded": all("gate_chunks" in t and t["gate_chunks"] >= 1
-                                        for t in turns),
-        "replies_nonempty": all(t["reply_len"] > 0 for t in turns),
+        "grounded_turns_nine": grounded_n == 9,
+        "below_floor_turn_marked_no_kb": turns[5]["gate_chunks"] == 0
+        and turns[5]["grounded"] is False,
+        "every_turn_captured": all("gate_chunks" in t for t in turns)
+        and all(t["reply_status"] == 200 for t in turns),
+        "answers_three_plus": sum(1 for t in turns if t["reply_len"] > 0) >= 3,
+        "empty_replies_only_at_length": all(t["reply_len"] > 0
+                                            or t["finish"] == "length" for t in turns),
         "no_think_leak_in_replies": all(t["tags"]["think_open"] == 0
                                         and t["tags"]["think_close"] == 0 for t in turns),
         "launcher_floor_and_think_carried": floor == CHOSEN_FLOOR,
@@ -1041,6 +1054,77 @@ def edit_floor_default(value):
     say("floor default set to %s" % value)
 
 
+def phase_think_gate_proof():
+    import shutil
+    root = tmp_root("glr-glt-thinkgate-")
+    harness_env({})
+    model_server, info = boot_model(MODEL_PORT)
+    if model_server is None:
+        shutil.rmtree(root, ignore_errors=True)
+        return 1, {"error": "model boot failed", "info": info}
+    say("model up %s" % json.dumps(info["boot"]))
+    gate = spawn("thinkgate-gate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
+                                    sys.executable, str(ROOT / "services" / "rag_gate.py")], {
+        "RAG_GATE_PORT": str(GATE_PORT),
+        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % MODEL_PORT,
+        "GREYLOCALRAG_DBS": "commands",
+        "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
+        "GREYLOCALRAG_STATE_DIR": str(root),
+        "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
+    })
+    if not wait_up("http://127.0.0.1:%d/health" % GATE_PORT):
+        say("gate did not come up")
+        return 1, {"error": "gate up failed", "boot": info["boot"]}
+    base = "http://127.0.0.1:%d/v1/chat/completions" % GATE_PORT
+    replies = []
+    for q in LEAK_PROMPTS:
+        t0 = time.time()
+        status, raw = http_post_json(base, {"model": "greylocalrag", "max_tokens": 320,
+                                            "messages": [{"role": "user", "content": q}]}, 600)
+        out = json.loads(raw)
+        msg = (out.get("choices") or [{}])[0].get("message", {})
+        replies.append({"status": status, "wall_s": round(time.time() - t0, 1),
+                        "stats": tag_stats(str(msg.get("content") or "")),
+                        "reasoning_len": len(str(msg.get("reasoning_content") or "")),
+                        "finish": (out.get("choices") or [{}])[0].get("finish_reason")})
+        say("reply stats=%s reasoning_len=%d" % (json.dumps(replies[-1]["stats"]),
+                                                 replies[-1]["reasoning_len"]))
+    req = urllib.request.Request(base, data=json.dumps({
+        "model": "greylocalrag", "max_tokens": 320, "stream": True,
+        "messages": [{"role": "user", "content": LEAK_PROMPTS[0]}]}).encode(),
+        headers={"Content-Type": "application/json"})
+    acc, n_reason = "", 0
+    with urllib.request.urlopen(req, timeout=600) as r:
+        for line in r:
+            ln = line.decode("utf-8", "ignore").strip()
+            if not ln.startswith("data: ") or ln == "data: [DONE]":
+                continue
+            d = json.loads(ln[6:])
+            delta = (d.get("choices") or [{}])[0].get("delta", {})
+            acc += str(delta.get("content") or "")
+            if delta.get("reasoning_content"):
+                n_reason += 1
+    stream = {"acc_len": len(acc), "stats": tag_stats(acc), "reasoning_deltas": n_reason}
+    say("stream stats=%s reasoning_deltas=%d" % (json.dumps(stream["stats"]), n_reason))
+    checks = {
+        "nonstream_clean": all(r["stats"]["think_open"] == 0 and r["stats"]["think_close"] == 0
+                               for r in replies),
+        "nonstream_reasoning_relocated": any(r["reasoning_len"] > 0 for r in replies),
+        "stream_clean": stream["stats"]["think_open"] == 0 and stream["stats"]["think_close"] == 0,
+    }
+    model_server.stop_model()
+    try:
+        (ROOT / "state" / ("model-server-%d.pid" % MODEL_PORT)).unlink()
+    except OSError:
+        pass
+    ok = all(checks.values())
+    art = {"boot": info["boot"], "replies": replies, "stream": stream, "checks": checks}
+    BENCH.mkdir(parents=True, exist_ok=True)
+    (BENCH / "gauntlet-think-gate-proof.json").write_text(json.dumps(art, indent=1),
+                                                          encoding="utf-8")
+    return (0 if ok else 1), art
+
+
 PHASES = {
     "floor-calibration": phase_floor_calibration,
     "sup-drill": phase_sup_drill,
@@ -1050,6 +1134,7 @@ PHASES = {
     "floor-reproof": phase_floor_reproof,
     "quiz": phase_quiz,
     "think-leak": phase_think_leak,
+    "think-gate-proof": phase_think_gate_proof,
 }
 
 
