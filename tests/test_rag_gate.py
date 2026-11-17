@@ -93,7 +93,7 @@ def test_get_metrics_passthrough(monkeypatch):
             self.status = 200
             self.headers = {"Content-Type": "application/json", "Content-Length": "9"}
             self._chunks = [b'{"m":123}', b""]
-        def read(self, _n):
+        def read(self, _n=None):
             return self._chunks.pop(0)
     class FakeConn:
         def __init__(self, host, port, timeout=None):
@@ -127,7 +127,7 @@ def test_post_forwards_received_path(tmp_path, monkeypatch):
             self.status = 200
             self.headers = {"Content-Type": "application/json", "Content-Length": "2"}
             self._chunks = [b"ok", b""]
-        def read(self, _n):
+        def read(self, _n=None):
             return self._chunks.pop(0)
     class FakeConn:
         def __init__(self, host, port, timeout=None):
@@ -164,7 +164,7 @@ def test_post_unrouted_paths_forward_verbatim(tmp_path, monkeypatch):
             self.status = 200
             self.headers = {"Content-Type": "application/json", "Content-Length": "2"}
             self._chunks = [b"ok", b""]
-        def read(self, _n):
+        def read(self, _n=None):
             return self._chunks.pop(0)
     class FakeConn:
         def __init__(self, host, port, timeout=None):
@@ -189,6 +189,22 @@ def test_post_unrouted_paths_forward_verbatim(tmp_path, monkeypatch):
     payload = out.getvalue()
     assert b"HTTP/1.1 200 OK" in payload and b"ok" in payload
 
+def test_floor_env_knob_gates_chunk_injection(tmp_path, monkeypatch):
+    import rag.kbcore as kb
+    dbs = tmp_path / "dbs"; dbs.mkdir()
+    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(dbs))
+    monkeypatch.setenv("GREYLOCALRAG_DBS", "commands")
+    monkeypatch.delenv("GREYLOCALRAG_RAG_FLOOR", raising=False)
+    db = kb.db_dir("commands"); kb.init_db(db, note="t")
+    kb.add_records(db, kb.records_from("robocopy /MIR mirrors a directory tree exactly and completely.", {"t": "robocopy", "src": "t", "url": "u", "date": "d"}), enc=None)
+    body = json.dumps(NOTEMP).encode()
+    monkeypatch.setenv("GREYLOCALRAG_RAG_FLOOR", "0")
+    last = json.loads(rag_gate.handle(body, "/v1/chat/completions", "http://127.0.0.1:1")[1])["messages"][-1]["content"]
+    assert "[KB:commands#1 score=" in last
+    monkeypatch.setenv("GREYLOCALRAG_RAG_FLOOR", "1000")
+    last = json.loads(rag_gate.handle(body, "/v1/chat/completions", "http://127.0.0.1:1")[1])["messages"][-1]["content"]
+    assert "[NO-KB-GROUNDING]" in last
+
 def test_handle_forwards_received_path_not_upstream_path(monkeypatch):
     seen = {}
     class FakeResp:
@@ -209,3 +225,113 @@ def test_handle_forwards_received_path_not_upstream_path(monkeypatch):
     code, out = rag_gate.handle(json.dumps(BODY).encode(), "/v1/chat/completions", "http://127.0.0.1:9/chat")
     assert code == 200
     assert seen["req"] == ("POST", "/v1/chat/completions")
+
+OPEN = "<" + "think" + ">"
+CLOSE = "<" + "/" + "think" + ">"
+
+
+def _fake_conn(payload, ctype="application/json"):
+    seen = {}
+    class FakeResp:
+        status = 200
+        def __init__(self):
+            self.headers = {"Content-Type": ctype, "Content-Length": str(len(payload))}
+            self._chunks = [payload, b""]
+        def read(self, n=None):
+            return self._chunks.pop(0)
+    class FakeConn:
+        def __init__(self, host, port, timeout=None):
+            pass
+        def request(self, method, path, body=None, headers=None):
+            seen["req"] = (method, path)
+        def getresponse(self):
+            return FakeResp()
+        def close(self):
+            pass
+    return seen, FakeConn
+
+
+def _json_body(content):
+    return json.dumps({"choices": [{"message": {"role": "assistant", "content": content}}]}).encode()
+
+
+def _patch_conn(monkeypatch, conn):
+    monkeypatch.setattr(rag_gate, "HTTPConnection", conn)
+
+
+def test_handle_strips_think_paired(monkeypatch):
+    content = "a%sb" % (OPEN + "x" + CLOSE)
+    body = json.dumps({"choices": [{"message": {"role": "assistant", "content": content}}]}).encode()
+    seen, conn = _fake_conn(body)
+    _patch_conn(monkeypatch, conn)
+    code, out = rag_gate.handle(json.dumps(BODY).encode(), "/v1/chat/completions", "http://127.0.0.1:9")
+    msg = json.loads(out)["choices"][0]["message"]
+    assert msg["content"] == "ab" and msg["reasoning_content"] == "x"
+
+
+def test_handle_strips_unclosed_think(monkeypatch):
+    content = OPEN + "Okay the user wants"
+    body = json.dumps({"choices": [{"message": {"role": "assistant", "content": content}}]}).encode()
+    seen, conn = _fake_conn(body)
+    _patch_conn(monkeypatch, conn)
+    code, out = rag_gate.handle(json.dumps(BODY).encode(), "/v1/chat/completions", "http://127.0.0.1:9")
+    msg = json.loads(out)["choices"][0]["message"]
+    assert msg["content"] == "" and msg["reasoning_content"] == "Okay the user wants"
+
+
+def test_handle_passthrough_without_think(monkeypatch):
+    body = json.dumps({"choices": [{"message": {"role": "assistant", "content": "plain answer"}}]}).encode()
+    seen, conn = _fake_conn(body)
+    _patch_conn(monkeypatch, conn)
+    code, out = rag_gate.handle(json.dumps(BODY).encode(), "/v1/chat/completions", "http://127.0.0.1:9")
+    assert json.loads(out)["choices"][0]["message"]["content"] == "plain answer"
+    assert json.loads(out)["choices"][0]["message"].get("reasoning_content") is None
+
+
+def _sse(*deltas):
+    return b"".join(b'data: {"choices":[{"delta":{"content":%s}}]}\n\n' % json.dumps(d).encode()
+                    for d in deltas) + b"data: [DONE]\n\n"
+
+
+def test_sse_think_relocated_across_chunks():
+    s = rag_gate.SseStripper()
+    out = b""
+    packets = [b'data: {"choices":[{"delta":{"content":"A<th"}}]}\n\n',
+               b'data: {"choices":[{"delta":{"content":"ink>B"}}]}\n\n',
+               b'data: {"choices":[{"delta":{"content":" tail"}}]}\n\n']
+    for piece in packets:
+        out += s.feed(piece)
+    out += s.flush()
+    contents, thinks = [], []
+    for ln in out.split(b"\n"):
+        ln = ln.strip()
+        if ln.startswith(b'data: {"'):
+            d = json.loads(ln[6:])["choices"][0]["delta"]
+            contents.append(d.get("content") or "")
+            if d.get("reasoning_content"):
+                thinks.append(d["reasoning_content"])
+    assert "".join(contents) == "A"
+    assert "".join(thinks) == "B tail"
+
+
+def test_sse_open_tag_split_tiny_chunks():
+    text = "pre " + OPEN + "secret plan" + CLOSE + "post"
+    s = rag_gate.SseStripper()
+    out = b""
+    blob = _sse(text)
+    step, i = 5, 0
+    while i < len(blob):
+        out += s.feed(blob[i:i + step]); i += step
+    out += s.flush()
+    ob, cb = OPEN.encode(), CLOSE.encode()
+    assert ob not in out and cb not in out
+    acc_c, acc_t = [], []
+    for ln in out.split(b"\n"):
+        ln = ln.strip()
+        if ln.startswith(b'data: {"'):
+            d = json.loads(ln[6:])["choices"][0]["delta"]
+            acc_c.append(str(d.get("content") or ""))
+            if d.get("reasoning_content"):
+                acc_t.append(str(d["reasoning_content"]))
+    assert "".join(acc_c) == "pre post"
+    assert "".join(acc_t) == "secret plan" 

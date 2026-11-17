@@ -12,6 +12,191 @@ QUERY_LEN, CHUNK_LEN, CHUNK_CAP, TEXT_CAP = 400, 800, 6, 4800
 DEFAULT_FLOOR = 0.25
 DEFAULT_TEMP = 0.1
 TEMP_MIN, TEMP_MAX = 0.0, 0.2
+THINK_OPEN = "<think>"
+THINK_CLOSE = "</think>"
+
+
+class ThinkStripper:
+    def __init__(self):
+        self.in_think = False
+
+    def feed(self, text, final=False):
+        clean, think, hold = "", "", ""
+        t = text
+        while t:
+            if self.in_think:
+                i = t.find(THINK_CLOSE)
+                if i >= 0:
+                    think += t[:i]
+                    t = t[i + len(THINK_CLOSE):]
+                    self.in_think = False
+                elif final:
+                    think += t
+                    t = ""
+                else:
+                    keep = len(THINK_CLOSE) - 1
+                    if len(t) > keep:
+                        think += t[:-keep]
+                        t = t[-keep:]
+                    hold = t
+                    t = ""
+            else:
+                i = t.find(THINK_OPEN)
+                if i >= 0:
+                    clean += t[:i]
+                    t = t[i + len(THINK_OPEN):]
+                    self.in_think = True
+                elif final:
+                    clean += t
+                    t = ""
+                else:
+                    keep = len(THINK_OPEN) - 1
+                    if len(t) > keep:
+                        clean += t[:-keep]
+                        t = t[-keep:]
+                    hold = t
+                    t = ""
+        return clean, think, hold
+
+
+def _strip_message(msg):
+    c = msg.get("content")
+    if isinstance(c, str) and (THINK_OPEN in c or THINK_CLOSE in c):
+        st = ThinkStripper()
+        clean, think, _ = st.feed(c, final=True)
+        msg["content"] = clean
+        if think:
+            msg["reasoning_content"] = str(msg.get("reasoning_content") or "") + think
+        return True
+    return False
+
+
+def _strip_json_reply(body):
+    try:
+        data = json.loads(body.decode("utf-8", "ignore"))
+    except Exception:
+        return None
+    if not isinstance(data, dict):
+        return None
+    changed = False
+    for ch in data.get("choices") or []:
+        if isinstance(ch, dict):
+            if isinstance(ch.get("message"), dict) and _strip_message(ch["message"]):
+                changed = True
+            d = ch.get("delta")
+            if isinstance(d, dict):
+                c = d.get("content")
+                if isinstance(c, str) and (THINK_OPEN in c or THINK_CLOSE in c):
+                    st = ThinkStripper()
+                    clean, think, _ = st.feed(c, final=True)
+                    d["content"] = clean
+                    if think:
+                        d["reasoning_content"] = str(d.get("reasoning_content") or "") + think
+                    changed = True
+            msg = ch.get("messages")
+            if isinstance(msg, list):
+                for m in msg:
+                    if isinstance(m, dict) and _strip_message(m):
+                        changed = True
+    return json.dumps(data, ensure_ascii=False).encode("utf-8") if changed else None
+
+
+class SseStripper:
+    def __init__(self):
+        self.buf = b""
+        self.pending = ""
+        self.st = ThinkStripper()
+        self.ob = THINK_OPEN.encode()
+        self.cb = THINK_CLOSE.encode()
+        self.engaged = False
+
+    def _delta(self, d, final):
+        c = d.get("content")
+        if not isinstance(c, str):
+            return False
+        full = self.pending + c
+        clean, think, hold = self.st.feed(full, final=final)
+        self.pending = "" if final else hold
+        changed = clean != full or bool(think)
+        if think:
+            d["reasoning_content"] = str(d.get("reasoning_content") or "") + think
+        if clean or self.pending:
+            if clean:
+                d["content"] = clean
+            else:
+                d.pop("content", None)
+        else:
+            d.pop("content", None)
+        return changed
+
+    def _line(self, raw, final=False):
+        try:
+            data = json.loads(raw.decode("utf-8", "ignore"))
+        except Exception:
+            return raw
+        if not isinstance(data, dict):
+            return raw
+        changed = False
+        for ch in data.get("choices") or []:
+            d = ch.get("delta") if isinstance(ch, dict) else None
+            if isinstance(d, dict) and self._delta(d, final):
+                changed = True
+        if not changed:
+            return raw
+        return b"data: " + json.dumps(data, ensure_ascii=False).encode("utf-8") + b"\n"
+
+    def feed(self, chunk):
+        if not self.engaged:
+            self.buf += chunk
+            if len(self.buf) < len(self.ob) and self.ob not in self.buf \
+                    and self.cb not in self.buf:
+                return b""
+            self.engaged = True
+        else:
+            self.buf += chunk
+        if len(self.buf) > 1048576:
+            rest, self.buf = self.buf, b""
+            self.engaged = False
+            return rest
+        lines = self.buf.split(b"\n")
+        self.buf = lines.pop()
+        out = []
+        for ln in lines:
+            s = ln.strip()
+            if s.startswith(b"data: [DONE]"):
+                out.append(self._tail_event())
+                out.append(ln + b"\n")
+            elif s.startswith(b"data: "):
+                out.append(self._line(s[len(b"data: "):]))
+            else:
+                out.append(ln + b"\n")
+        return b"".join(out)
+
+    def _tail_event(self):
+        tail = self.pending
+        self.pending = ""
+        if not tail:
+            return b""
+        if self.st.in_think:
+            ev = {"choices": [{"delta": {"reasoning_content": tail}}]}
+        else:
+            ev = {"choices": [{"delta": {"content": tail}}]}
+        return b"data: " + json.dumps(ev, ensure_ascii=False).encode("utf-8") + b"\n"
+
+    def flush(self):
+        if not self.engaged:
+            return b""
+        rest = self.buf
+        self.buf = b""
+        s = rest.strip()
+        if s.startswith(b"data: ") and not s.endswith(b"[DONE]"):
+            out = self._line(s[len(b"data: "):], final=True)
+        else:
+            out = rest
+            if s.startswith(b"data: [DONE]"):
+                out += self._tail_event()
+        out += self._tail_event()
+        return out
 
 
 def _upstream():
@@ -159,7 +344,12 @@ def handle(body, path, upstream):
             "Accept": "application/json, text/event-stream",
         })
         r = conn.getresponse()
-        return r.status, r.read()
+        raw = r.read()
+        if r.status == 200:
+            stripped = _strip_json_reply(raw)
+            if stripped is not None:
+                raw = stripped
+        return r.status, raw
     except Exception:
         return 0, out
     finally:
@@ -217,23 +407,46 @@ class Gate(BaseHTTPRequestHandler):
         try:
             conn.request(method, self.path, body=body, headers=fwd)
             r = conn.getresponse()
+            ctype = (r.headers.get("Content-Type") or "").lower()
+            completion_post = method == "POST" and \
+                self.path.split("?")[0] == "/v1/chat/completions"
+            whole = None
+            if completion_post and "text/event-stream" not in ctype:
+                whole = r.read()
+                stripped = _strip_json_reply(whole)
+                if stripped is not None:
+                    whole = stripped
             self.send_response_only(r.status)
             skip = {"connection", "keep-alive", "transfer-encoding", "content-length"}
             for k, v in r.headers.items():
                 if k.lower() not in skip:
                     self.send_header(k, v)
-            cl = r.headers.get("Content-Length")
-            if cl is not None:
-                self.send_header("Content-Length", cl)
+            if whole is not None:
+                self.send_header("Content-Length", str(len(whole)))
+            else:
+                cl = r.headers.get("Content-Length")
+                if cl is not None:
+                    self.send_header("Content-Length", cl)
             self.send_header("Connection", "close")
             self.end_headers()
             self.close_connection = True
             sent = True
-            while True:
-                b = r.read(8192)
-                if not b:
-                    break
-                self.wfile.write(b)
+            if whole is not None:
+                self.wfile.write(whole)
+            elif completion_post and "text/event-stream" in ctype:
+                sse = SseStripper()
+                while True:
+                    b = r.read(8192)
+                    if not b:
+                        break
+                    self.wfile.write(sse.feed(b))
+                self.wfile.write(sse.flush())
+            else:
+                while True:
+                    b = r.read(8192)
+                    if not b:
+                        break
+                    self.wfile.write(b)
             self.wfile.flush()
         except Exception:
             if not sent:
