@@ -143,7 +143,7 @@ class Gate(BaseHTTPRequestHandler):
         if self.path.split("?")[0] == "/health":
             self._plain(200, b'{"status":"ok"}')
         else:
-            self._plain(404, b'{"error":"not found"}')
+            self._proxy("GET")
 
     def do_POST(self):
         try:
@@ -167,15 +167,20 @@ class Gate(BaseHTTPRequestHandler):
         self.wfile.write(payload)
 
     def _stream(self, body):
-        path, conn = _conn(_upstream())
+        self._proxy("POST", body)
+
+    def _proxy(self, method, body=None):
+        fwd = {"Accept": "application/json, text/event-stream" if body is not None else "*/*"}
+        auth = self.headers.get("Authorization")
+        if auth:
+            fwd["Authorization"] = auth
+        if body is not None:
+            fwd["Content-Type"] = "application/json"
+            fwd["Content-Length"] = str(len(body))
+        up_path, conn = _conn(_upstream())
         sent = False
         try:
-            fwd = {"Content-Type": "application/json", "Content-Length": str(len(body)),
-                   "Accept": "application/json, text/event-stream"}
-            auth = self.headers.get("Authorization")
-            if auth:
-                fwd["Authorization"] = auth
-            conn.request("POST", path, body=body, headers=fwd)
+            conn.request(method, self.path if method == "GET" else up_path, body=body, headers=fwd)
             r = conn.getresponse()
             self.send_response_only(r.status)
             skip = {"connection", "keep-alive", "transfer-encoding", "content-length"}

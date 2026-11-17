@@ -7,7 +7,7 @@
 #   1. mask: strip every foreign harness envvar before anything starts
 #   2. gate: verify_compiled.py — frozen artifacts, hashes, TUI dist parse
 #   3. chain: slimtoken -> model first (own processes, only if down), RAG gate
-#      in front of the chain; gate down = model direct, slim down = model direct
+#      in front of the chain; gate down = slimtoken direct, slim down = model direct
 #   4. VRAM interlock (plain refusal if another agent holds the GPU)
 #   5. model spawns ASYNC — TUI renders FIRST (never block the UI on the model
 #      port)
@@ -131,8 +131,8 @@ export CORTEXAGENT_STATUS_DIR="$HOME/.greylocalrag/mcp-status"
 export GREYAGENT_PLATFORM="greylocalrag"
 export GREYAGENT_MEMORY_DIR="$HOME/.greylocalrag/memory"
 # The brain's base URL is set ONCE here (the GATE's /v1 when the chain came
-# up; the fallback function rewrites it to the model's direct /v1).
-# set -u: never reference it unset.
+# up; fallbacks point it at slimtoken direct when the gate is down, at the
+# model direct when slimtoken is down). set -u: never reference it unset.
 export GREYAGENT_LOCAL_BASE="${GREYAGENT_LOCAL_BASE:-http://127.0.0.1:${LANE_PORT}/v1}"
 
 MODEL_PID=""
@@ -167,6 +167,8 @@ _lane_env() {
   export SLIMTOKEN_STATS_FILE="$HOME/.local/state/slimtoken/stats-greylocalrag.json"
   mkdir -p "$HOME/.local/state/slimtoken"
 }
+# gate down = slimtoken direct (grounding off); slimtoken down = model direct
+_gate_direct() { export GREYAGENT_LOCAL_BASE="http://127.0.0.1:${SLIM_PORT}/v1"; }
 _lane_direct() { export GREYAGENT_LOCAL_BASE="http://127.0.0.1:${MODEL_PORT}/v1"; }
 
 if ! _slim_up; then
@@ -192,12 +194,13 @@ else
   : # slimtoken already answering (left over or manually started) — use it
 fi
 
-# gate LAST: it forwards to the slimtoken above, so a gate-only failure never
-# takes the chain down (plain message, direct fallback, no fight).
+# gate LAST: it forwards to the slimtoken above. A gate-only failure turns
+# grounding off and drops the brain to the slimtoken direct — the chain keeps
+# running (plain message, no fight).
 if _slim_up && ! _gate_up; then
   if ss -ltn 2>/dev/null | grep -q ":${LANE_PORT} "; then
-    echo "greylocalrag: :${LANE_PORT} occupied by a foreign listener — gate skipped, brain falls back to direct :${MODEL_PORT}" >&2
-    _lane_direct
+    echo "greylocalrag: :${LANE_PORT} occupied by a foreign listener — gate skipped, brain on slimtoken :${SLIM_PORT} (grounding off)" >&2
+    _gate_direct
   else
     python3 "$ROOT/services/rag_gate.py" > "$ROOT/state/logs/gate-${RAG_GATE_PORT}.log" 2>&1 &
     GATE_PID=$!
@@ -205,11 +208,11 @@ if _slim_up && ! _gate_up; then
     if _gate_up; then
       echo "greylocalrag: gate :${LANE_PORT} up (RAG grounding -> slimtoken :${SLIM_PORT} -> model :${MODEL_PORT})"
     elif [ -n "$(kill -0 "${GATE_PID}" 2>/dev/null && echo yes)" ]; then
-      echo "greylocalrag: gate did not come up on :${LANE_PORT} — brain falls back to direct :${MODEL_PORT}" >&2
-      _lane_direct
+      echo "greylocalrag: gate did not come up on :${LANE_PORT} — brain on slimtoken :${SLIM_PORT}, grounding off" >&2
+      _gate_direct
     else
-      echo "greylocalrag: gate failed to start — brain falls back to direct :${MODEL_PORT}" >&2
-      _lane_direct
+      echo "greylocalrag: gate failed to start — brain on slimtoken :${SLIM_PORT}, grounding off" >&2
+      _gate_direct
     fi
   fi
 fi
