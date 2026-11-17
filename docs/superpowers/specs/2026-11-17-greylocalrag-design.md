@@ -15,7 +15,9 @@ asks consent before storing anything. When neither source exists, the agent
 says so instead of inventing an answer.
 
 Target devices: CPU-only machines (8-16 GB RAM, no dGPU), example device class:
-a Surface tablet. The agent runs its own model server, its own retrieval
+a Surface tablet. Windows is the primary host target and gets a real
+installer; Linux ships as a co-equal second artifact (.deb). The agent runs
+its own model server, its own retrieval
 engine, and its own search lane entirely on the user's machine. No cloud
 model, no external model dependency, nothing shared with other software on
 the host.
@@ -134,6 +136,11 @@ else.
 
 ## 8. Splash screen (product front door)
 
+Full splash redesign, not a tweak: the launcher's splash module
+(`build/src/splash.py`, whose compiled form the boot gate already flags for
+rebuild) is replaced entirely. The splash is the first thing a non-power
+user sees, so it must teach the product in five seconds.
+
 ASCII logo in the fork's 8-bit greyscale style, byline, one short how-to
 paragraph, and the ingestor commands printed on first launch:
 
@@ -181,8 +188,20 @@ the tree's own verified-compile conventions.
 3. Model distribution: companion gguf download with pinned checksums at
    install (weights are not re-shipped in the deb; licenses for the
    abliterated weights are verified before bundling is even considered).
-4. Packaging deb/portable; README states ports 7640-7647 as the product's
-   own block.
+4. Packaging, both artifacts (owner 2026-11-17: "windows is going to be the
+   target here so an installer would be great but also linux source or .deb
+   is also good so do both"):
+   - Linux: .deb via the existing packaging script (buildable and testable
+     on this machine immediately).
+   - Windows (primary target): NSIS/Inno-style installer + portable zip.
+     Requires a dedicated Windows build pass: Windows cython (.pyd) builds
+     of the compiled modules (the tree ships Linux .so files that cannot
+     run on Windows), a Windows build of the model server from the pinned
+     llama.cpp commit (b3fa6995), a Windows bootstrap replacing the bash
+     launcher, and the node TUI bundled as-is (it is portable). The Windows
+     artifact is built and tested on Windows hardware or a VM — a Linux
+     cross-compile is not trusted for this. Ports 7640-7647 policy carries
+     over; the installer handles the Windows firewall first-run prompt.
 5. Publish only when the owner says ready. Verify the artifact, not the log.
 
 ## 12. Non-goals
@@ -200,6 +219,5 @@ the tree's own verified-compile conventions.
 - Vision path: the extracted gguf carries no separate projector blob, so
   image input via the own server is unverified — text-first by default;
   vision verified at boot if the weights include it.
-- Windows-as-host: product targets CPU-only machines generally, but the
-  first release is Linux (deb). A Windows build is a later wave unless the
-  owner directs otherwise (e.g. the Surface tablet's OS choice).
+- Windows build environment: access to Windows hardware or a VM for the
+  Windows build pass (pyd modules, model server exe, installer testing).
