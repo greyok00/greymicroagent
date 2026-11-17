@@ -46,7 +46,20 @@ HOST = "127.0.0.1"
 # a 400 in normal use: the lane distills any single tool result over
 # SLIMTOKEN_DISTILL_MAX_CHARS (launcher, 24000 ≈ 6k tokens) and the TUI
 # auto-compacts at reserveTokens (8192) — two independent guards.
-CTX = int(os.environ.get("GREYAGENT_CTX", "65536"))  # greylocalrag: 64k — the 2B hybrid's KV is tiny
+def probe_ram_gb() -> float:
+    try:
+        return int(open("/proc/meminfo").readline().split()[1]) / 1048576
+    except Exception:
+        return 64.0
+
+
+def open_ctx_default() -> int:
+    assumed = os.environ.get("GREYLOCALRAG_ASSUME_RAM_GB")
+    ram = float(assumed) if assumed else probe_ram_gb()
+    return 32768 if ram <= 8 else 65536
+
+
+CTX = int(os.environ.get("GREYAGENT_CTX", str(open_ctx_default())))  # greylocalrag: 64k — the 2B hybrid's KV is tiny
 FA = os.environ.get("GREYAGENT_FA", "on")  # owner 2026-10-24: fill the 16GB card (hybrid model: KV is cheap); ladder steps down 16k until one fits
 # 2026-10-25 (owner: greylocalrag runs CPU-only): the 27B sibling holds the 16 GB
 # card, so this 2B cannot offload. NGL=0 = CPU+RAM mode — 11.7 tok/s decode
@@ -111,7 +124,8 @@ def start_model(timeout: float = 300.0) -> dict:
     # settles and is reused on the next boot. With the card to itself this
     # lands near ~100k tokens; smaller steps exist for when VRAM is shared.
     ctx_note = STATE / "model-ctx-settled.txt"
-    candidates = sorted(set(list(range(CTX, 24576, -16384)) + [32768]), reverse=True)
+    base = open_ctx_default()
+    candidates = sorted(set(list(range(base, 24576, -16384)) + [32768]), reverse=True)
     # greylocalrag: 32k floor — the ladder stops AT 32768, never lower
     # (owner 2026-10-25: 64k default; a shrunken window would re-introduce
     # the overflow class, so the ladder never goes below half)
@@ -151,7 +165,7 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--temp", str(TEMP),
         "--top-p", str(TOP_P),
         "--top-k", str(TOP_K),
-        "--threads", "8",
+        "--threads", os.environ.get("GREYLOCALRAG_THREADS", "4"),
         "--flash-attn", FA,
         "--parallel", os.environ.get("GREYAGENT_PARALLEL", "1"),
         "--ubatch-size", os.environ.get("GREYAGENT_UBATCH", "128"),
@@ -191,7 +205,10 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
                              preexec_fn=_pdeathsig)
     # pid file so the launcher can kill the server on exit even after this
     # loader process has already returned (model outlives the spawn job).
-    (STATE / f"model-server-{PORT}.pid").write_text(str(_proc.pid))  # per-slot: sibling sessions never reap each other
+    try:
+        (STATE / f"model-server-{PORT}.pid").write_text(str(_proc.pid))  # per-slot: sibling sessions never reap each other
+    except Exception:
+        pass
     t0 = time.time()
     while time.time() - t0 < timeout:
         if is_ready():
