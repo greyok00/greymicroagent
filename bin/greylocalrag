@@ -3,16 +3,18 @@
 # fork (owner order: same harness, different model + shorter context). Owner
 # 2026-11-17: this fork gets completely unique ports (block 7640-7647) never
 # used by anything else, its own renamed model server, and custom configs.
-# Boot order (identical to greyagent):
-#   1. mask: strip every foreign harness env var before anything starts
+# Boot order (per session slot; the RAG gate sits in front of the chain):
+#   1. mask: strip every foreign harness envvar before anything starts
 #   2. gate: verify_compiled.py — frozen artifacts, hashes, TUI dist parse
-#   3. lane: slimtoken :7641 -> model :7640 (own process, only if down)
+#   3. chain: slimtoken -> model first (own processes, only if down), RAG gate
+#      in front of the chain; gate down = model direct, slim down = model direct
 #   4. VRAM interlock (plain refusal if another agent holds the GPU)
-#   5. model spawns ASYNC — TUI renders FIRST (never block the UI on :7640)
-#   6. exit reaps ONLY what THIS session spawned (model pid file + lane),
+#   5. model spawns ASYNC — TUI renders FIRST (never block the UI on the model
+#      port)
+#   6. exit reaps ONLY what THIS session spawned (model pid file + slim + gate),
 #      never a pre-existing server, never a foreign lane.
-# Port policy lives in ~/.greylocalrag/agent/port_policy.json (:11600 untouched,
-# :11434 dead, other families' lanes :11435/:11436/:11598/:11599 off limits).
+# Port policy lives in ~/.greylocalrag/agent/port_policy.json: this fork owns
+# its 7640-7647 block alone — every other family's port is off limits.
 # Model home: ~/.greylocalrag (model file, agent sessions) — nothing touched in
 # greyagent/claude/cortexagent homes.
 
@@ -25,28 +27,39 @@ CLI="$ROOT/tui/packages/coding-agent/dist/cli.js"
 # greylocalrag owns port block 7640-7647 outright (owner 2026-11-17: completely
 # unique ports never used by anything else — verified free against every
 # port_policy.json and every live listener; below the Linux ephemeral range, so
-# the kernel never auto-assigns them). Each launch takes the next FREE pair:
-#     model 7640 7642 7644 7646  /  lane 7641 7643 7645 7647  (same index)
+# the kernel never auto-assigns them). Each launch takes the next FREE triple:
+#     model 7640 7643  /  gate 7641 7644  /  slimtoken 7642 7645  (same index)
 # The live listener probe IS the allocation truth: no lockfiles, no registry —
-# a dead session frees its ports on its own. An occupied pair (own or foreign)
-# is skipped, never fought over. 4 slots; a 5th simultaneous session refuses
-# with a plain message.
-_lane_ports_free() { ! ss -ltn 2>/dev/null | grep -qE ":$1 |:$2 "; }
-_model_lanes=(7640 7642 7644 7646)
-_lane_bases=(7641 7643 7645 7647)
-MODEL_PORT=""; LANE_PORT=""
-for _k in 0 1 2 3; do
-  _mp="${_model_lanes[$_k]}"; _lp="${_lane_bases[$_k]}"
-  if _lane_ports_free "$_mp" "$_lp"; then
-    MODEL_PORT="$_mp"; LANE_PORT="$_lp"; break
+# a dead session frees its ports on its own. All three ports of a triple must
+# be free; an occupied one (own or foreign) skips the whole triple, never
+# fights. Two live sessions; the spare pair 7646-7647 expands the block for a
+# future third session (widen the arrays to activate it).
+_ports_free() { ! ss -ltn 2>/dev/null | grep -qE ":$1 |:$2 |:$3 "; }
+_models=(7640 7643 7646)
+_lanes=(7641 7644 7647)
+_slims=(7642 7645)
+MODEL_PORT=""; LANE_PORT=""; SLIM_PORT=""
+for _k in "${!_models[@]}"; do
+  _mp="${_models[$_k]}"; _gp="${_lanes[$_k]}"; _sp="${_slims[$_k]:-}"
+  [ -z "$_sp" ] && continue
+  if _ports_free "$_mp" "$_gp" "$_sp"; then
+    MODEL_PORT="$_mp"; LANE_PORT="$_gp"; SLIM_PORT="$_sp"; break
   fi
 done
 if [ -z "$MODEL_PORT" ]; then
   echo "greylocalrag: all sessions in use (7640-7647 block) — close one before opening another" >&2
+  echo "greylocalrag: the spare pair 7646-7647 expands the block for a future third session" >&2
   exit 1
 fi
 export GREYAGENT_MODEL_PORT="$MODEL_PORT"
 export GREYAGENT_LANE_PORT="$LANE_PORT"
+export RAG_GATE_PORT="$LANE_PORT"
+export GREYAGENT_SLIM_PORT="$SLIM_PORT"
+export GREYLOCALRAG_UPSTREAM="http://127.0.0.1:${SLIM_PORT}"
+export GREYLOCALRAG_DBS="commands"
+export GREYLOCALRAG_DBS_ROOT="$HOME/.greylocalrag/dbs"
+export GREYLOCALRAG_RAG_FLOOR="${GREYLOCALRAG_RAG_FLOOR:-0.25}"
+mkdir -p "$GREYLOCALRAG_DBS_ROOT"
 # the TUI's while-loading health poll must watch THIS session's model port
 export GREYAGENT_MODEL_HEALTH_URL="http://127.0.0.1:${MODEL_PORT}/health"
 # TOOL-DIR-SEPARATION (owner order 2026-10-24): agent's own home = cwd.
@@ -117,19 +130,22 @@ export CORTEXAGENT_STATUS_DIR="$HOME/.greylocalrag/mcp-status"
 # fork home even if a module's baked default is ever bypassed.
 export GREYAGENT_PLATFORM="greylocalrag"
 export GREYAGENT_MEMORY_DIR="$HOME/.greylocalrag/memory"
-# The brain's base URL is set ONCE here (lane when up; the fallback function
-# rewrites it to the direct port). set -u: never reference it unset.
+# The brain's base URL is set ONCE here (the GATE's /v1 when the chain came
+# up; the fallback function rewrites it to the model's direct /v1).
+# set -u: never reference it unset.
 export GREYAGENT_LOCAL_BASE="${GREYAGENT_LOCAL_BASE:-http://127.0.0.1:${LANE_PORT}/v1}"
 
 MODEL_PID=""
-LANE_PID=""
+SLIM_PID=""
+GATE_PID=""
 _up() { curl -s --max-time 2 "http://127.0.0.1:${MODEL_PORT}/health" 2>/dev/null | grep -q '"status":"ok"'; }
 
-# --- lane: OUR slimtoken on :7641, in front of the model :7640 ---------------
-# Started as a background process OF THIS SESSION (no systemd footprint,
+# --- chain: slimtoken -> model behind, RAG gate in front (this session's ports) ---
+# Started as background processes OF THIS SESSION (no systemd footprint,
 # nothing stays always-on). Port conflict = plain refusal + direct fallback,
 # never a fight with another family's listener.
-_lane_up() { curl -s --max-time 2 "http://127.0.0.1:${LANE_PORT}/metrics" >/dev/null 2>&1; }
+_slim_up() { curl -s --max-time 2 "http://127.0.0.1:${SLIM_PORT}/metrics" >/dev/null 2>&1; }
+_gate_up() { curl -s --max-time 2 "http://127.0.0.1:${LANE_PORT}/health" 2>/dev/null | grep -q '"status":"ok"'; }
 _lane_env() {
   export SLIMTOKEN_MODE="code"
   export SLIMTOKEN_ARTIFACT_DIR="$ROOT/state/slimtoken-artifacts"
@@ -153,27 +169,49 @@ _lane_env() {
 }
 _lane_direct() { export GREYAGENT_LOCAL_BASE="http://127.0.0.1:${MODEL_PORT}/v1"; }
 
-if ! _lane_up; then
-  if ss -ltn 2>/dev/null | grep -q ":${LANE_PORT} "; then
-    echo "greylocalrag: :${LANE_PORT} occupied by a foreign listener — lane skipped, brain falls back to direct :${MODEL_PORT}" >&2
+if ! _slim_up; then
+  if ss -ltn 2>/dev/null | grep -q ":${SLIM_PORT} "; then
+    echo "greylocalrag: :${SLIM_PORT} occupied by a foreign listener — slimtoken skipped, brain falls back to direct :${MODEL_PORT}" >&2
     _lane_direct
   else
     _lane_env
-    "$HOME/.local/bin/slimtoken" serve --upstream "http://127.0.0.1:${MODEL_PORT}" --port "$LANE_PORT" > "$ROOT/state/logs/lane.log" 2>&1 &  # slot-shared start log; runtime artifacts are env-isolated
-    LANE_PID=$!
-    for _ in $(seq 1 10); do _lane_up && break; sleep 1; done
-    if _lane_up; then
-      echo "greylocalrag: lane :${LANE_PORT} up (slimtoken -> :${MODEL_PORT})"
-    elif [ -n "$(kill -0 "${LANE_PID}" 2>/dev/null && echo yes)" ]; then
-      echo "greylocalrag: lane did not come up on :${LANE_PORT} — brain falls back to direct :${MODEL_PORT}" >&2
+    "$HOME/.local/bin/slimtoken" serve --upstream "http://127.0.0.1:${MODEL_PORT}" --port "$SLIM_PORT" > "$ROOT/state/logs/lane.log" 2>&1 &  # slot-shared start log; runtime artifacts are env-isolated
+    SLIM_PID=$!
+    for _ in $(seq 1 10); do _slim_up && break; sleep 1; done
+    if _slim_up; then
+      echo "greylocalrag: slimtoken :${SLIM_PORT} up (-> model :${MODEL_PORT})"
+    elif [ -n "$(kill -0 "${SLIM_PID}" 2>/dev/null && echo yes)" ]; then
+      echo "greylocalrag: slimtoken did not come up on :${SLIM_PORT} — brain falls back to direct :${MODEL_PORT}" >&2
       _lane_direct
     else
-      echo "greylocalrag: lane failed to start — brain falls back to direct :${MODEL_PORT}" >&2
+      echo "greylocalrag: slimtoken failed to start — brain falls back to direct :${MODEL_PORT}" >&2
       _lane_direct
     fi
   fi
 else
-  : # lane already answering (left over or manually started) — use it
+  : # slimtoken already answering (left over or manually started) — use it
+fi
+
+# gate LAST: it forwards to the slimtoken above, so a gate-only failure never
+# takes the chain down (plain message, direct fallback, no fight).
+if _slim_up && ! _gate_up; then
+  if ss -ltn 2>/dev/null | grep -q ":${LANE_PORT} "; then
+    echo "greylocalrag: :${LANE_PORT} occupied by a foreign listener — gate skipped, brain falls back to direct :${MODEL_PORT}" >&2
+    _lane_direct
+  else
+    python3 "$ROOT/services/rag_gate.py" > "$ROOT/state/logs/gate-${RAG_GATE_PORT}.log" 2>&1 &
+    GATE_PID=$!
+    for _ in $(seq 1 10); do _gate_up && break; sleep 1; done
+    if _gate_up; then
+      echo "greylocalrag: gate :${LANE_PORT} up (RAG grounding -> slimtoken :${SLIM_PORT} -> model :${MODEL_PORT})"
+    elif [ -n "$(kill -0 "${GATE_PID}" 2>/dev/null && echo yes)" ]; then
+      echo "greylocalrag: gate did not come up on :${LANE_PORT} — brain falls back to direct :${MODEL_PORT}" >&2
+      _lane_direct
+    else
+      echo "greylocalrag: gate failed to start — brain falls back to direct :${MODEL_PORT}" >&2
+      _lane_direct
+    fi
+  fi
 fi
 export GREYAGENT_LOCAL_BASE="${GREYAGENT_LOCAL_BASE:-http://127.0.0.1:${MODEL_PORT}/v1}"
 
@@ -183,14 +221,15 @@ cleanup() {
   # Reap the model THIS session spawned (VRAM returns on exit). A pre-existing
   # server (no spawn this session) is left alone. MODEL_PID here is the
   # background loader; the actual server pid lives in the pid file.
-  if [ -n "${MODEL_PID:-}" ] || [ -n "${LANE_PID:-}" ]; then
+  if [ -n "${MODEL_PID:-}" ] || [ -n "${SLIM_PID:-}" ] || [ -n "${GATE_PID:-}" ]; then
     SV_PID="$(cat "$ROOT/state/model-server-${MODEL_PORT}.pid" 2>/dev/null || true)"
     if [ -n "$SV_PID" ] && kill -0 "$SV_PID" 2>/dev/null; then
       kill "$SV_PID" 2>/dev/null
       for _ in $(seq 1 15); do kill -0 "$SV_PID" 2>/dev/null || break; sleep 1; done
       kill -9 "$SV_PID" 2>/dev/null || true
     fi
-    [ -n "${LANE_PID:-}" ] && kill "$LANE_PID" 2>/dev/null
+    [ -n "${SLIM_PID:-}" ] && kill "$SLIM_PID" 2>/dev/null
+    [ -n "${GATE_PID:-}" ] && kill "$GATE_PID" 2>/dev/null
     rm -f "$ROOT/state/model-server-${MODEL_PORT}.pid"
   fi
   printf '\033[?25h'
@@ -205,7 +244,7 @@ GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated — loading on :${MODEL_PORT}...
 GREYAGENT_MODEL_UP=0
 if ! _up; then
   if python3 "$ROOT/build/src/vram_check.py" 2>/dev/null; then
-    : # GPU free — full offload (NGL -1); the lane forwards once the model lands
+    : # GPU free — full offload (NGL -1); the chain forwards once the model lands
   else
     # 2026-10-25 owner: "greylocalrag would be ram/cpu only with greyagent being
     # all vram." A GPU held by the 27B sibling is therefore NOT a refusal —
