@@ -77,6 +77,36 @@ VRAM interlock, async model spawn, splash, TUI). The launcher's slot arrays
 become triples: session 1 = 7640/7641/7642, session 2 = 7643/7644/7645,
 7646-7647 spare-expansion (a third session later just widens the block).
 
+### 3.2 Loop prevention and supervision (ported from the cortex-agent family)
+
+greymini's own behavior audit showed the failure class this product must never
+ship with: runaway loops ("WHY ARE YOU LOOPING"), instruction drift, empty
+replies, polling wedges. The cortex-agent family already solved these with a
+deterministic supervision harness (no judge LLM anywhere); greylocalrag vendors
+that machinery as fork-owned code and ships it default-ON, so non-power users
+get the polish without ever configuring it:
+
+- **Loop-guard hold:** an identical re-issued tool call is HELD — neither
+  executed nor refused — until the backing work's state actually changes
+  (diff/state check); stuck runs cap at 300 s; fast tools get a short settle
+  gap. This ports the proven cortex-agent loop-guard so legitimate
+  "wait for the research to finish" loops survive while true no-progress
+  repetition is caught.
+- **Supervision core:** fork-owned port of the supervision core with the
+  hardened rulebook defaults: repetition_limit 3, error_burst_min 4 in a
+  6-event window, storm_min_turns 3, refusal_repeat_limit 3,
+  length_storm_limit 3; detector threshold 3 identical events; escalation
+  ladder steer -> force-alternative -> cancel -> respawn -> stop-and-surface,
+  targeting at most 3 wasted model turns; the stats sidecar carries no
+  authority over the agent. Events land in-steer and an event stream, never
+  in hidden control channels.
+- **Blocking health polls:** status/health polls of long-running work (greysearch
+  runs, model loads) block until state changes (bounded wait + re-poll
+  tunables, cortex-agent pattern) instead of tight-polling — the wedge class
+  is closed at the mechanism level.
+- The /rag surface exposes supervision STATUS in plain words ("held a repeat
+  call — still waiting on the search", "recovered from a stuck run"), not knobs.
+
 ## 4. Knowledge base subsystem
 
 - **Self-contained.** The retrieval engine is vendored into the fork tree
@@ -177,6 +207,10 @@ the tree's own verified-compile conventions.
   nothing, accept stores with provenance; remove then makes the records
   unfindable.
 - Reuse the existing 9-gate capability bench on the fixed model.
+- Loop/supervision gates: an identical re-issued tool call is HELD until
+  backing state changes (300 s cap on stuck runs); the 3-identical-events
+  detector fires ladder step 1; health polls block rather than tight-poll
+  (no wedge); supervision ships default-ON with no judge LLM anywhere.
 - Boot gate green; deb portable build only after owner-reviewed plan.
 
 ## 11. Release wave (separate plan phase, publish-gated)
