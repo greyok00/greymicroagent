@@ -581,6 +581,23 @@ def test_seed_lists_both_platforms():
 
 ---
 
+### Task 16b: Orphan-proof service spawning (controller-added after Task 16 evidence finding)
+
+**Files:**
+- Modify: `bin/greylocalrag` (slimtoken + gate spawn lines route through a pdeathsig wrapper)
+- Create: `services/child_wrap.py` (tiny stdlib wrapper: prctl PR_SET_PDEATHSIG SIGTERM on itself, then os.execvp the given argv)
+- Test: `tests/test_child_wrap.py`
+
+**Interfaces:**
+- Produces: `child_wrap.py` execs any argv with PR_SET_PDEATHSIG(SIGTERM) set so a SIGKILLed/dead launcher bash can never leak slim/gate children (the PDEATHSIG class already closing the model-orphan leak at the loader level). Launcher spawn lines: `python3 "$ROOT/services/child_wrap.py" "$HOME/.local/bin/slimtoken" serve ...` and `python3 "$ROOT/services/child_wrap.py" python3 "$ROOT/services/rag_gate.py" ...`.
+- CONTRACT: on parent death in ANY exit path (including SIGKILL of the launcher), children receive SIGTERM (reaped by kernel semantics; no PPID-1 orphans). First executions never blocked (that law is unaffected — this is process lifecycle, not tool policing).
+
+- [ ] **Step 1: Failing test** — spawn `python3 services/child_wrap.py python3 -c "import time,os;print(os.getpid(),flush=True);time.sleep(30)"`, kill the parent bash with SIGKILL, assert within 3 s the child is gone (kill -0 fails) — no sleep-based flakiness, straight pids.
+- [ ] **Step 2: Implement** (stdlib only, comment-free), rewire the two launcher spawn lines, `bash -n`, gen_manifest && verify_compiled.
+- [ ] **Step 3: Full pytest -q green**; commit "fix: orphan-proof spawning — pdeathsig wrapper for slim+gate children".
+
+---
+
 ## Self-review notes (fixed during drafting)
 
 - Spec coverage map: compile pass (T1), base spec (T2/T16), KB vendoring (T3), gate + clamp + markers (T4/T13), launcher chain + ports law (T5), MCP ingest/remove + consent (T6/T9), /rag commands + offline/temp toggles (T7/T13), public search lane + blocking health (T8), supervision + rulebook + ladder + fairness (T10), loop-guard tiers + diff-hold law (T11), splash (T12), seed KB + licenses (T14), card (T13/T15), tests + bench (T16), release scrub + packaging + Windows prep + publish gate (T17). Spec sections 12 (non-goals) and 2 (hards) are constraints, not tasks — carried in Global Constraints.
