@@ -177,7 +177,7 @@ if ! _slim_up; then
     _lane_direct
   else
     _lane_env
-    "$HOME/.local/bin/slimtoken" serve --upstream "http://127.0.0.1:${MODEL_PORT}" --port "$SLIM_PORT" > "$ROOT/state/logs/lane.log" 2>&1 &  # slot-shared start log; runtime artifacts are env-isolated
+    python3 "$ROOT/services/child_wrap.py" "$HOME/.local/bin/slimtoken" serve --upstream "http://127.0.0.1:${MODEL_PORT}" --port "$SLIM_PORT" > "$ROOT/state/logs/lane.log" 2>&1 &  # slot-shared start log; runtime artifacts are env-isolated
     SLIM_PID=$!
     for _ in $(seq 1 10); do _slim_up && break; sleep 1; done
     if _slim_up; then
@@ -202,7 +202,7 @@ if _slim_up && ! _gate_up; then
     echo "greylocalrag: :${LANE_PORT} occupied by a foreign listener — gate skipped, brain on slimtoken :${SLIM_PORT} (grounding off)" >&2
     _gate_direct
   else
-    python3 "$ROOT/services/rag_gate.py" > "$ROOT/state/logs/gate-${RAG_GATE_PORT}.log" 2>&1 &
+    python3 "$ROOT/services/child_wrap.py" python3 "$ROOT/services/rag_gate.py" > "$ROOT/state/logs/gate-${RAG_GATE_PORT}.log" 2>&1 &
     GATE_PID=$!
     for _ in $(seq 1 10); do _gate_up && break; sleep 1; done
     if _gate_up; then
