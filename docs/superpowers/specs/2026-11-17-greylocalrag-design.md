@@ -42,6 +42,12 @@ the host.
    :11600) are never touched, listened on, or proxied by this fork.
 7. Cleanup kills only pids this session captured. No name-pattern sweeps.
 8. Publish gate: nothing is pushed or released without explicit owner OK.
+9. **Build hygiene (owner 2026-11-17):** the build ships no diary. No .md
+   files or notes inside the build except exactly one README; no
+   incident-class strings anywhere ("WHY ARE YOU LOOPING" or similar);
+   shipped code is as comment-free as the build allows (compiled/minified);
+   private notes are fine privately but are included in the build, packaged
+   artifact, and published repo NOWHERE, no matter what.
 
 ## 3. Architecture
 
@@ -225,8 +231,17 @@ the tree's own verified-compile conventions.
 
 1. Scrub: fresh git history (single commit), no sessions/state/logs/deb
    artifacts, no host-locked paths in shipped configs, no personal data.
+   No .md ships except exactly one README: design specs/plans, AUDIT.md,
+   PLAN.md, COMPARISON.md, handoff notes are local-only — never packaged,
+   never committed to the published repo. An automated grep gate runs
+   before packaging and must show ZERO: incident-class strings ("WHY ARE
+   YOU LOOPING", verbatim owner quotes), /home/grey host paths, and
+   excluded-file references — evidence, not intent.
 2. Apache-2 LICENSE, exactly one README (with splash screenshots), no
-   comments / minified per the code-shipping default, no codename leakage.
+   codename leakage. Shipped code is compiled (cython/.so) or minified
+   (TUI dist) so the build itself strips comments; any plain-text file
+   that must ship is comment-free. Private working-tree comments are
+   fine and stay private by exclusion, not hope.
 3. Model distribution: companion gguf download with pinned checksums at
    install (weights are not re-shipped in the deb; licenses for the
    abliterated weights are verified before bundling is even considered).
