@@ -103,10 +103,16 @@ def test_ram_probe_env_override():
 
 def test_threads_is_four(monkeypatch):
     captured = {}
-    monkeypatch.setattr(subprocess, "Popen", lambda cmd, **k: captured.update(cmd=cmd) or subprocess.Popen(["true"]))
-    monkeypatch.setattr(server, "is_ready", lambda: True)
+    class FakeProc:
+        returncode = 0
+        def poll(self): return 0
+    def fake_popen(cmd, **k):
+        captured.update(cmd=cmd); return FakeProc()
+    monkeypatch.setattr(subprocess, "Popen", fake_popen)
+    monkeypatch.setattr(server, "is_ready", lambda: False)
     server.start_model(timeout=5)
-    assert "--threads" in captured["cmd"] and captured["cmd"][captured["cmd"].index("--threads") + 1] == "4"
+    idx = captured["cmd"].index("--threads")
+    assert captured["cmd"][idx + 1] == "4"
 ```
 
 - [ ] **Step 2: Run to verify failure**
@@ -427,8 +433,11 @@ def test_repetition_limit_and_ladder_first_step():
     out = s.drain()
     assert out and out[0].split("|")[0] == "steer"
 
-def test_long_progress_never_capped():
-    for i in range(40): s.on_event({"turn": i, "kind": "file_change", "path": f"p{i}"})  # keep a fresh Supervisor per run in real code
+def test_fresh_events_never_escalate():
+    s = sup.Supervisor(task_id="t")
+    for i in range(40):
+        s.on_event({"turn": i, "kind": "file_change", "path": f"p{i}"})
+    assert not s.drain()
 ```
 Adjust names to the ported APIs while porting if the source differs, but the three behaviors are fixed: identical-events threshold 3, repetition_limit 3 fires `steer`, a stream of fresh distinct events produces NO ladder action regardless of count (duration/steps never the criterion).
 - [ ] **Step 3: Run to verify** → PASS. **Step 4: Commit** `git add -A && git commit -m "feat: supervision core ported — rulebook constants, no-authority sidecar, fairness preserved"`
