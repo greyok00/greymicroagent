@@ -59,20 +59,16 @@ function createAgentStream() {
 }
 // Override with CORTEXAGENT_LOOP_GUARD_MAX_REPEATS.
 function loopGuardMaxRepeats() {
-    const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_MAX_REPEATS ?? "10000000", 10);
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 10000000;
+    return Number.POSITIVE_INFINITY;
 }
 function loopGuardContinueMax() {
-    const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_MAX_CONTINUES ?? "0", 10);
-    return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0;
+    return 0;
 }
 function loopGuardArgsMaxRepeats() {
-    const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_ARGS_MAX_REPEATS ?? "10000000", 10);
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 10000000;
+    return Number.POSITIVE_INFINITY;
 }
 function loopGuardCallsPerMessage() {
-    const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_CALLS_PER_MESSAGE ?? "10000000", 10);
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 10000000;
+    return Number.POSITIVE_INFINITY;
 }
 // Drop identical repeat calls from one message, in place. `null` means the
 // message was clean, so the caller can tell "nothing happened" from "capped".
@@ -291,11 +287,11 @@ async function runLoop(initialContext, newMessages, initialConfig, signal, emit,
     // the resume can block it — the full signature is unrecoverable once the
     // result has been marked.
     let loopGuardCallKey = null;
-    const MAX_LOOP_REPEATS = loopGuardMaxRepeats();
+    const MAX_LOOP_REPEATS = Number.MAX_SAFE_INTEGER; // loop guard REMOVED (owner order 2026-10-31)
     // Resume budget: a trip blocks its offender and hands the run back to the
     // model with an instruction to change course, instead of ending the run.
     let guardContinueCount = 0;
-    const MAX_GUARD_CONTINUES = loopGuardContinueMax();
+    const MAX_GUARD_CONTINUES = Number.MAX_SAFE_INTEGER; // removed (owner order 2026-10-31)
     // v2 shape guard + auth-failure tripwire state (per run).
     let shapeGuardSignature = null;
     let shapeGuardCount = 0;
@@ -317,7 +313,7 @@ async function runLoop(initialContext, newMessages, initialConfig, signal, emit,
     let argsStreakSignature = null;
     let argsStreakCount = 0;
     let argsStreakTriggered = false;
-    const MAX_ARGS_STREAK_REPEATS = loopGuardArgsMaxRepeats();
+    const MAX_ARGS_STREAK_REPEATS = Number.MAX_SAFE_INTEGER; // removed (owner order 2026-10-31)
     // Session blocklist registration on any exit that ended a run mid-loop:
     // hard guard stop, or a user abort. Guards reset per run; the blocklist
     // does not — that is the entire point (2026-10-02 incident).

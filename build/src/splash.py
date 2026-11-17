@@ -47,7 +47,7 @@ def splash_lines() -> list:
         out.append(shade(4) + line if i < 8 else shade(2) + line)
     out.append("")
     for line in ["MODEL: qwen3.5-2b-abliterated", "AUTHOR: greyok00",
-                 "PROMPT: model/greymini.md"]:
+                 "PROMPT: model/greylocalrag.md"]:
         out.append(shade(6) + line)
     out.append("")
     out.append(shade(2) + "ctrl+c quit | ctrl+n new | ctrl+k sched | ctrl+f mem")
@@ -84,9 +84,9 @@ def big_number(value) -> str:
 def compact_splash_lines() -> list:
     dev = _D[1]
     w = SPLASH_MIN_W()
-    return [shade(5) + dev.rjust((w + len(dev)) // 2), "", shade(7) + "GREYMINI",
+    return [shade(5) + dev.rjust((w + len(dev)) // 2), "", shade(7) + "GREYLOCALRAG",
             shade(5) + "MODEL: qwen3.5-2b-abliterated", shade(5) + "AUTHOR: greyok00",
-            shade(5) + "PROMPT: model/greymini.md", "",
+            shade(5) + "PROMPT: model/greylocalrag.md", "",
             shade(2) + "ctrl+c quit | ctrl+n new | ctrl+k sched | ctrl+f mem"]
 
 def compact_splash() -> str:

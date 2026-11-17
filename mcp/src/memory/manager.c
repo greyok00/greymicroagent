@@ -5,7 +5,7 @@
     "distutils": {
         "name": "manager",
         "sources": [
-            "/home/grey/greymini/mcp/src/memory/manager.py"
+            "/home/grey/greylocalrag/mcp/src/memory/manager.py"
         ]
     },
     "module_name": "manager"

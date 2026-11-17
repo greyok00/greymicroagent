@@ -1,6 +1,6 @@
 ---
 name: slimtoken-optimizer
-description: Shrink LLM prompts before sending them — collapse duplicate tool results, distill old turns, minify tool schemas and system prompts, prune to a token budget, and (opt-in) prune large HTML tool results. On the output side, the proxy can cap/truncate streamed completions and strip lead-in filler. The default `code` mode rewrites no tool result at all; the `realtime` mode is the lossy one. Any stage can be switched via the SLIMTOKEN_* env knobs. Works with any local or cloud model via the slimtoken CLI or MCP server.
+description: Shrink LLM prompts before sending them — collapse duplicate tool results, distill old turns, minify tool schemas and system prompts, prune to a token budget, and (opt-in) prune large HTML tool results. On the output side, the proxy can cap/truncate streamed completions and strip lead-in filler. The default `code` mode rewrites a tool result only when it is byte-identical to an earlier copy (append-only stubbing keeps prompt caches warm); the `realtime` mode is the lossy one. Any stage can be switched via the SLIMTOKEN_* env knobs. Works with any local or cloud model via the slimtoken CLI or MCP server.
 ---
 
 # slimtoken-optimizer
@@ -33,7 +33,7 @@ slimtoken optimize --input request.json                 # default mode: dedup + 
 slimtoken optimize -i request.json --max-input-tokens 8192   # also prune to a budget
 # stdin works too:  cat request.json | slimtoken optimize
 
-# See recommended local-model configs + measured reduction by VRAM tier
+# See recommended local-model configs + measured reduction by GPU VRAM tier
 slimtoken presets --measure            # 4 / 8 / 16 GB tiers, real % drop
 slimtoken presets --vram-gb 8 --measure
 ```
@@ -56,8 +56,10 @@ CLI — nothing is reimplemented.
 `SLIMTOKEN_MODE` picks one of two modes. Every stage is also a raw `SLIMTOKEN_*`
 switch, and a switch you set explicitly overrides the mode for that one knob.
 
-- **`code`** (default) — dedup + distill only. **No tool result is ever rewritten,
-  old or new**, and tool schemas are untouched. Use it for agent work.
+- **`code`** (default) — dedup + distill only. A tool result is rewritten only when it is
+  byte-identical to an earlier copy (append-only stubbing since 0.7.2: the later copy is
+  stubbed, earlier messages stay byte-stable for prompt caches). Tool schemas are untouched.
+  Use it for agent work.
 - **`realtime`** — every stage on, including the one that rewrites old tool
   results and the one that strips tool-schema fields, with prose cut to 160 chars.
   Lossy on purpose, for conversation. Do not run agent work in it.
@@ -71,8 +73,12 @@ switch, and a switch you set explicitly overrides the mode for that one knob.
 - Turn on the opt-in DOM stage: `SLIMTOKEN_MINIFY_DOM=1` (prune large HTML
   tool_results).
 - Output side: `SLIMTOKEN_FILLER` strips lead-in filler ("Sure!",
-  "Here is the code:") from the streamed response head — **on by default**,
-  `=0` to disable; `SLIMTOKEN_STATS_FILE` persists cumulative minify stats.
+  "Here is the code:") from the streamed response head. **Off by default** — the
+  output filter is inactive unless an output env knob is set (verified 2026-10-31:
+  `output_filter.from_env()` returns None with no env); responses are passed through
+  byte-identical unless filtered deliberately. Set `SLIMTOKEN_MAX_TOKENS`,
+  `SLIMTOKEN_STOP`, or `SLIMTOKEN_FILLER=1/0` to control it.
+  `SLIMTOKEN_STATS_FILE` persists cumulative minify stats.
 
 All stages are **pair-safe**: tool_use/tool_result pairs are never split or
 reordered, and code fences are preserved.

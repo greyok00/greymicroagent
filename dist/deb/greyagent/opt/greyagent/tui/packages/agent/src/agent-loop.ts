@@ -135,23 +135,19 @@ function createAgentStream(): EventStream<AgentEvent, AgentMessage[]> {
 
 // Override with CORTEXAGENT_LOOP_GUARD_MAX_REPEATS.
 function loopGuardMaxRepeats(): number {
-	const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_MAX_REPEATS ?? "10000000", 10);
-	return Number.isFinite(parsed) && parsed > 0 ? parsed : 10000000;
+	return Number.POSITIVE_INFINITY; // loop guard REMOVED (owner order 2026-10-31)
 }
 
 function loopGuardContinueMax(): number {
-	const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_MAX_CONTINUES ?? "0", 10);
-	return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0;
+	return 0; // loop guard REMOVED
 }
 
 function loopGuardArgsMaxRepeats(): number {
-	const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_ARGS_MAX_REPEATS ?? "10000000", 10);
-	return Number.isFinite(parsed) && parsed > 0 ? parsed : 10000000;
+	return Number.POSITIVE_INFINITY; // loop guard REMOVED
 }
 
 function loopGuardCallsPerMessage(): number {
-	const parsed = Number.parseInt(process.env.CORTEXAGENT_LOOP_GUARD_CALLS_PER_MESSAGE ?? "10000000", 10);
-	return Number.isFinite(parsed) && parsed > 0 ? parsed : 10000000;
+	return Number.POSITIVE_INFINITY; // loop guard REMOVED
 }
 
 type RepeatedToolCallBurst = {

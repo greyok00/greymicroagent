@@ -194,11 +194,11 @@ sys.stdout.write("\033[?25h")
 PY
 
 # --- front end: forked Node TUI, sessions in ~/.greyagent/agent/sessions ----
-# greyhound CORE: deploy the frozen-source loader into the agent dir each boot
-# (owner 2026-10-24: greyhound is part of the core, not an optional MCP server).
-if [ -f "$ROOT/build/src/greyhound_core.ts" ]; then
+# greysearch CORE: deploy the frozen-source loader into the agent dir each boot
+# (owner 2026-10-24: greysearch is part of the core, not an optional MCP server).
+if [ -f "$ROOT/build/src/greysearch_core.ts" ]; then
   mkdir -p "$HOME/.greyagent/agent/extensions"
-  cp "$ROOT/build/src/greyhound_core.ts" "$HOME/.greyagent/agent/extensions/greyhound_core.ts"
+  cp "$ROOT/build/src/greysearch_core.ts" "$HOME/.greyagent/agent/extensions/greysearch_core.ts"
 fi
 
 node "$CLI" "$@"

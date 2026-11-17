@@ -1,3 +1,0 @@
-from setuptools import setup
-from Cython.Build import cythonize
-setup(ext_modules=cythonize([r'/home/grey/greyagent/mcp/src/greyteam/creds_store.py', r'/home/grey/greyagent/mcp/src/greyteam/exec_gate.py', r'/home/grey/greyagent/mcp/src/greyteam/greyteam.py', r'/home/grey/greyagent/mcp/src/greyteam/http_safe.py', r'/home/grey/greyagent/mcp/src/greyteam/kali_bank.py', r'/home/grey/greyagent/mcp/src/greyteam/py_sandbox.py', r'/home/grey/greyagent/mcp/src/greyteam/scan_builders.py', r'/home/grey/greyagent/mcp/src/greyteam/store.py'], compiler_directives={'language_level': '3', 'annotation_typing': False}), zip_safe=False)

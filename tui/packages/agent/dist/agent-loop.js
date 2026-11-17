@@ -281,11 +281,11 @@ async function runLoop(initialContext, newMessages, initialConfig, signal, emit,
     // the resume can block it — the full signature is unrecoverable once the
     // result has been marked.
     let loopGuardCallKey = null;
-    const MAX_LOOP_REPEATS = loopGuardMaxRepeats();
+    const MAX_LOOP_REPEATS = Number.MAX_SAFE_INTEGER; // loop guard REMOVED (owner order 2026-10-31)
     // Resume budget: a trip blocks its offender and hands the run back to the
     // model with an instruction to change course, instead of ending the run.
     let guardContinueCount = 0;
-    const MAX_GUARD_CONTINUES = loopGuardContinueMax();
+    const MAX_GUARD_CONTINUES = Number.MAX_SAFE_INTEGER; // removed (owner order 2026-10-31)
     // v2 shape guard + auth-failure tripwire state (per run).
     let shapeGuardSignature = null;
     let shapeGuardCount = 0;
@@ -307,7 +307,7 @@ async function runLoop(initialContext, newMessages, initialConfig, signal, emit,
     let argsStreakSignature = null;
     let argsStreakCount = 0;
     let argsStreakTriggered = false;
-    const MAX_ARGS_STREAK_REPEATS = loopGuardArgsMaxRepeats();
+    const MAX_ARGS_STREAK_REPEATS = Number.MAX_SAFE_INTEGER; // removed (owner order 2026-10-31)
     // Session blocklist registration on any exit that ended a run mid-loop:
     // REMOVED 2026-10-25 (owner order — "remove the loop guard"). This was the
     // mechanism that turned one aborted repeat into a whole-session ban on an

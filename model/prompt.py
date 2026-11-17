@@ -1,6 +1,6 @@
 """System prompt loader.
 
-GM-08/GM-22 (2026-11-03): the mini prompt is model/greymini.md — the retired
+GM-08/GM-22 (2026-11-03): the mini prompt is model/greylocalrag.md — the retired
 model/system-prompt.txt (parent fork's file, removed in commit abd7b233) was
 still the compiled module's dependency, so every import of model.prompt
 crashed at module level and took core.loop / wiring / ui.app down with it.
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-PROMPT_FILE = Path(__file__).resolve().parent / "greymini.md"
+PROMPT_FILE = Path(__file__).resolve().parent / "greylocalrag.md"
 
 _FILE_MISSING = (
-    "greymini, local agent on this machine. Operator speaks with you "
+    "greylocalrag, local agent on this machine. Operator speaks with you "
     "directly. State the outcome first, then reasoning."
 )
 

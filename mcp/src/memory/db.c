@@ -5,7 +5,7 @@
     "distutils": {
         "name": "db",
         "sources": [
-            "/home/grey/greymini/mcp/src/memory/db.py"
+            "/home/grey/greylocalrag/mcp/src/memory/db.py"
         ]
     },
     "module_name": "db"
@@ -2590,7 +2590,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u__2 __pyx_string_tab[23]
 #define __pyx_kp_u__3 __pyx_string_tab[24]
 #define __pyx_kp_u_db_py __pyx_string_tab[25]
-#define __pyx_kp_u_greymini __pyx_string_tab[26]
+#define __pyx_kp_u_greylocalrag __pyx_string_tab[26]
 #define __pyx_kp_u_jsonl __pyx_string_tab[27]
 #define __pyx_kp_u_memory_db __pyx_string_tab[28]
 #define __pyx_kp_u_memory_sock __pyx_string_tab[29]
@@ -6464,7 +6464,7 @@ static PyObject *__pyx_pf_2db_8MemoryDB_22_mirror_to_jsonl(CYTHON_UNUSED PyObjec
  *     def _mirror_to_jsonl(self, tier: str, platform: str, key: str, value: Any) -> None:
  *         data = {'tier': tier, 'platform': platform, 'key': key, 'value': value, 'timestamp': datetime.now().isoformat()}             # <<<<<<<<<<<<<<
  *         line = json.dumps(data) + '\n'
- *         daemon_socket = Path.home() / '.greymini' / 'memory.sock'
+ *         daemon_socket = Path.home() / '.greylocalrag' / 'memory.sock'
 */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -6518,7 +6518,7 @@ static PyObject *__pyx_pf_2db_8MemoryDB_22_mirror_to_jsonl(CYTHON_UNUSED PyObjec
  *     def _mirror_to_jsonl(self, tier: str, platform: str, key: str, value: Any) -> None:
  *         data = {'tier': tier, 'platform': platform, 'key': key, 'value': value, 'timestamp': datetime.now().isoformat()}
  *         line = json.dumps(data) + '\n'             # <<<<<<<<<<<<<<
- *         daemon_socket = Path.home() / '.greymini' / 'memory.sock'
+ *         daemon_socket = Path.home() / '.greylocalrag' / 'memory.sock'
  *         if daemon_socket.exists():
 */
   __pyx_t_2 = NULL;
@@ -6556,7 +6556,7 @@ static PyObject *__pyx_pf_2db_8MemoryDB_22_mirror_to_jsonl(CYTHON_UNUSED PyObjec
   /* "db.py":109
  *         data = {'tier': tier, 'platform': platform, 'key': key, 'value': value, 'timestamp': datetime.now().isoformat()}
  *         line = json.dumps(data) + '\n'
- *         daemon_socket = Path.home() / '.greymini' / 'memory.sock'             # <<<<<<<<<<<<<<
+ *         daemon_socket = Path.home() / '.greylocalrag' / 'memory.sock'             # <<<<<<<<<<<<<<
  *         if daemon_socket.exists():
  *             try:
 */
@@ -6586,7 +6586,7 @@ static PyObject *__pyx_pf_2db_8MemoryDB_22_mirror_to_jsonl(CYTHON_UNUSED PyObjec
     if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
-  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_greymini); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_mstate_global->__pyx_kp_u_greylocalrag); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_memory_sock); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 109, __pyx_L1_error)
@@ -6597,7 +6597,7 @@ static PyObject *__pyx_pf_2db_8MemoryDB_22_mirror_to_jsonl(CYTHON_UNUSED PyObjec
 
   /* "db.py":110
  *         line = json.dumps(data) + '\n'
- *         daemon_socket = Path.home() / '.greymini' / 'memory.sock'
+ *         daemon_socket = Path.home() / '.greylocalrag' / 'memory.sock'
  *         if daemon_socket.exists():             # <<<<<<<<<<<<<<
  *             try:
  *                 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
@@ -6617,7 +6617,7 @@ static PyObject *__pyx_pf_2db_8MemoryDB_22_mirror_to_jsonl(CYTHON_UNUSED PyObjec
   if (__pyx_t_9) {
 
     /* "db.py":111
- *         daemon_socket = Path.home() / '.greymini' / 'memory.sock'
+ *         daemon_socket = Path.home() / '.greylocalrag' / 'memory.sock'
  *         if daemon_socket.exists():
  *             try:             # <<<<<<<<<<<<<<
  *                 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
@@ -6900,7 +6900,7 @@ static PyObject *__pyx_pf_2db_8MemoryDB_22_mirror_to_jsonl(CYTHON_UNUSED PyObjec
         }
 
         /* "db.py":111
- *         daemon_socket = Path.home() / '.greymini' / 'memory.sock'
+ *         daemon_socket = Path.home() / '.greylocalrag' / 'memory.sock'
  *         if daemon_socket.exists():
  *             try:             # <<<<<<<<<<<<<<
  *                 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
@@ -6944,7 +6944,7 @@ static PyObject *__pyx_pf_2db_8MemoryDB_22_mirror_to_jsonl(CYTHON_UNUSED PyObjec
       goto __pyx_L6_except_error;
 
       /* "db.py":111
- *         daemon_socket = Path.home() / '.greymini' / 'memory.sock'
+ *         daemon_socket = Path.home() / '.greylocalrag' / 'memory.sock'
  *         if daemon_socket.exists():
  *             try:             # <<<<<<<<<<<<<<
  *                 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
@@ -6972,7 +6972,7 @@ static PyObject *__pyx_pf_2db_8MemoryDB_22_mirror_to_jsonl(CYTHON_UNUSED PyObjec
 
     /* "db.py":110
  *         line = json.dumps(data) + '\n'
- *         daemon_socket = Path.home() / '.greymini' / 'memory.sock'
+ *         daemon_socket = Path.home() / '.greylocalrag' / 'memory.sock'
  *         if daemon_socket.exists():             # <<<<<<<<<<<<<<
  *             try:
  *                 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
@@ -8991,7 +8991,7 @@ __Pyx_RefNannySetupContext("PyInit_db", 0);
  * STORE_DIR = _store_dir()
  * DB_PATH = STORE_DIR / 'memory.db'             # <<<<<<<<<<<<<<
  * DB_DIR = STORE_DIR
- * DAEMON_SOCKET = Path.home() / '.greymini' / 'memory.sock'
+ * DAEMON_SOCKET = Path.home() / '.greylocalrag' / 'memory.sock'
 */
   __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_STORE_DIR); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
@@ -9005,7 +9005,7 @@ __Pyx_RefNannySetupContext("PyInit_db", 0);
  * STORE_DIR = _store_dir()
  * DB_PATH = STORE_DIR / 'memory.db'
  * DB_DIR = STORE_DIR             # <<<<<<<<<<<<<<
- * DAEMON_SOCKET = Path.home() / '.greymini' / 'memory.sock'
+ * DAEMON_SOCKET = Path.home() / '.greylocalrag' / 'memory.sock'
  * SCHEMA_SQL = '\nPRAGMA journal_mode = WAL;\nPRAGMA busy_timeout = 5000;\nPRAGMA synchronous = NORMAL;\nPRAGMA wal_autocheckpoint = 500;\nPRAGMA foreign_keys = ON;\n\nCREATE TABLE IF NOT EXISTS Checkpoints (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    last_command TEXT    NOT NULL,\n    context      JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Hot (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    key          TEXT    NOT NULL,\n    value        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Cold (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    category     TEXT    NOT NULL,\n    confidence   REAL    NOT NULL,\n    source       TEXT    NOT NULL,\n    tags         JSON    NOT NULL,\n    entry        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Logs (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    level        TEXT    NOT NULL,\n    message      TEXT    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n'
 */
   __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_STORE_DIR); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 30, __pyx_L1_error)
@@ -9016,7 +9016,7 @@ __Pyx_RefNannySetupContext("PyInit_db", 0);
   /* "db.py":31
  * DB_PATH = STORE_DIR / 'memory.db'
  * DB_DIR = STORE_DIR
- * DAEMON_SOCKET = Path.home() / '.greymini' / 'memory.sock'             # <<<<<<<<<<<<<<
+ * DAEMON_SOCKET = Path.home() / '.greylocalrag' / 'memory.sock'             # <<<<<<<<<<<<<<
  * SCHEMA_SQL = '\nPRAGMA journal_mode = WAL;\nPRAGMA busy_timeout = 5000;\nPRAGMA synchronous = NORMAL;\nPRAGMA wal_autocheckpoint = 500;\nPRAGMA foreign_keys = ON;\n\nCREATE TABLE IF NOT EXISTS Checkpoints (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    last_command TEXT    NOT NULL,\n    context      JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Hot (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    key          TEXT    NOT NULL,\n    value        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Cold (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    category     TEXT    NOT NULL,\n    confidence   REAL    NOT NULL,\n    source       TEXT    NOT NULL,\n    tags         JSON    NOT NULL,\n    entry        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Logs (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    level        TEXT    NOT NULL,\n    message      TEXT    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n'
  * 
 */
@@ -9035,7 +9035,7 @@ __Pyx_RefNannySetupContext("PyInit_db", 0);
     if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 31, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
   }
-  __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_8, __pyx_mstate_global->__pyx_kp_u_greymini); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_t_8, __pyx_mstate_global->__pyx_kp_u_greylocalrag); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = __Pyx_PyNumber_Divide(__pyx_t_5, __pyx_mstate_global->__pyx_kp_u_memory_sock); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 31, __pyx_L1_error)
@@ -9046,7 +9046,7 @@ __Pyx_RefNannySetupContext("PyInit_db", 0);
 
   /* "db.py":32
  * DB_DIR = STORE_DIR
- * DAEMON_SOCKET = Path.home() / '.greymini' / 'memory.sock'
+ * DAEMON_SOCKET = Path.home() / '.greylocalrag' / 'memory.sock'
  * SCHEMA_SQL = '\nPRAGMA journal_mode = WAL;\nPRAGMA busy_timeout = 5000;\nPRAGMA synchronous = NORMAL;\nPRAGMA wal_autocheckpoint = 500;\nPRAGMA foreign_keys = ON;\n\nCREATE TABLE IF NOT EXISTS Checkpoints (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    last_command TEXT    NOT NULL,\n    context      JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Hot (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    key          TEXT    NOT NULL,\n    value        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Cold (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    category     TEXT    NOT NULL,\n    confidence   REAL    NOT NULL,\n    source       TEXT    NOT NULL,\n    tags         JSON    NOT NULL,\n    entry        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Logs (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    level        TEXT    NOT NULL,\n    message      TEXT    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n'             # <<<<<<<<<<<<<<
  * 
  * class MemoryDB:
@@ -9552,7 +9552,7 @@ const char* const cstring = "x\332\265V\315W\333V\026\017\262\317\2048t\022'\320
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
     #else /* compression: none (5715 bytes) */
-const char* const bytes = "\n\n            DELETE FROM Logs\n            WHERE timestamp < ?\n            \n            DELETE FROM Memory_Cold\n            WHERE timestamp < ?\n            \n            DELETE FROM Memory_Hot\n            WHERE timestamp < ?\n            Dict[str, Any]\n            INSERT INTO Checkpoints (profile, last_command, context, timestamp)\n            VALUES (?, ?, ?, ?)\n            \n            INSERT INTO Logs (level, message, timestamp)\n            VALUES (?, ?, ?)\n            \n            INSERT INTO Memory_Cold (category, confidence, source, tags, entry, timestamp)\n            VALUES (?, ?, ?, ?, ?, ?)\n            \n            INSERT INTO Memory_Hot (profile, key, value, timestamp)\n            VALUES (?, ?, ?, ?)\n            List[Dict]List[str]Optional[Any]PRAGMA busy_timeout=5000PRAGMA foreign_keys=ONPRAGMA journal_mode=WAL\nPRAGMA journal_mode = WAL;\nPRAGMA busy_timeout = 5000;\nPRAGMA synchronous = NORMAL;\nPRAGMA wal_autocheckpoint = 500;\nPRAGMA foreign_keys = ON;\n\nCREATE TABLE IF NOT EXISTS Checkpoints (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    last_command TEXT    NOT NULL,\n    context      JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Hot (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    key          TEXT    NOT NULL,\n    value        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Cold (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    category     TEXT    NOT NULL,\n    confidence   REAL    NOT NULL,\n    source       TEXT    NOT NULL,\n    tags         JSON    NOT NULL,\n    entry        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Logs (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    level        TEXT    NOT NULL,\n    message      TEXT    NOT NULL,\n    timestamp    TEXT    NOT NULL""\n);\nPRAGMA query_only=ONPRAGMA synchronous=NORMALPRAGMA wal_autocheckpoint=500\n            SELECT COUNT(DISTINCT category)\n            FROM Memory_Cold\n            \n            SELECT COUNT(*), SUM(LENGTH(value))\n            FROM Memory_Hot\n            \n            SELECT entry FROM Memory_Cold\n            WHERE category = ?\n            ORDER BY timestamp DESC\n            \n            SELECT value FROM Memory_Hot\n            WHERE profile = ? AND key = ?\n            ORDER BY timestamp DESC\n            LIMIT 1\n            .?db.py.greymini.jsonlmemory.dbmemory.socksqlite3.Connectionutf-8AF_UNIXAnyCFGCLAUDE_CODE_SESSION_IDDAEMON_SOCKETDB_DIRDB_PATHDictGREYAGENT_MEMORY_DIRListMemoryDBMemoryDB.__init__MemoryDB._ensure_initializedMemoryDB._get_connectionMemoryDB._get_writerMemoryDB._mirror_to_jsonlMemoryDB.cleanup_old_entriesMemoryDB.get_statsMemoryDB.read_memory_coldMemoryDB.read_memory_hotMemoryDB.readerMemoryDB.write_checkpointMemoryDB.write_logMemoryDB.write_memory_coldMemoryDB.write_memory_hotNoneO_APPENDO_CREATO_WRONLYOptionalPath__Pyx_PyDict_NextRef_REPO_ROOTSCHEMA_SQLSOCK_STREAMSTORE_DIRVACUUMa__annotate__asyncio.coroutinesbase_dircategorycheck_same_threadcleanup_old_entriescline_in_tracebackcloseclscoldcold_countcommitconfidenceconnect_connectioncontextcurrent_threadcursorcutoffdaemon_socketdatadatetimedaysdb__doc__dumpsencodeencoding_ensure_initialized__enter__entryenvenvironerrorexecuteexecutescriptexist_okexists__exit__expanduserffdfetchallfetchone__file__float__func__get_get_connectionget_stats_get_writerhomehothot_byteshot_counthot_dirhot_size__init___initializedinsertint_is_coroutineisoformatisolation_levelitemsjsonjsonl_filekeylast_commandlevellib.configlineloads__main__memory_dir_memory_readermessage__metaclass___mirror_to_jsonlmkdir__module____name__nowopenosparentparentspathpathlibplatformpop__prepare__profile__qualname__read_memory_coldread_memory_hotreaderresolvereturnrowselfsendallsession_dirsession_idsessions__set_name__setdefaultse""ttimeoutsocksocketsourcesqlite3_store_dirstrsystags__test__threadingtiertimetimedeltatimeouttimestamptypingurivaluevalueswarmwarm_byteswritewrite_checkpointwrite_logwrite_memory_coldwrite_memory_hotwriter\320\004\033\2301\330\010\r\210T\220\027\230\001\330\010\021\220\022\2207\230!\330\010\016\210h\220a\220q\330\010\023\220;\230f\240I\250Q\330\010\023\2209\230C\230q\330\010\016\210h\220a\220q\330\010\025\220V\2309\240B\240a\240s\250#\250Q\330\010\020\220\007\220{\240(\250#\250X\260\\\300\035\310j\320Xf\320fg\320\004\"\240&\250\013\2601\330\010\022\220(\230$\230c\240\022\2409\250A\250U\260&\270\n\300!\330\010\r\210T\220\034\230Q\330\010\021\220\022\2207\230!\330\010\016\210h\220a\320\027o\320op\330\010\016\210h\220a\320\027p\320pq\330\010\016\210h\220a\320\027i\320ij\330\010\n\210'\220\021\330\010\n\210(\220!\2201\320\004\030\230\001\330\010\013\2104\210w\220a\220y\240\017\250t\2601\330\014\025\220_\240B\320&8\270\007\270x\300q\310\t\320QY\320Y]\320]m\320ms\360\000\000t\001F\002\360\000\000F\002M\002\360\000\000M\002Q\002\360\000\000Q\002R\002\330\014\025\220_\240B\240o\260X\270Q\270a\330\010\017\210y\230\017\240r\250\021\200A\330\010\014\320\014 \240\001\200A\330 !\330\010\013\2103\210m\2303\230a\330\014\017\210\177\230g\240X\250Q\250i\260x\270t\320CS\320SY\320Yk\320kl\330\014\017\210|\2308\2401\240A\330\014\017\210|\2308\2401\240A\330\014\017\210|\2308\2401\240A\330\014\017\210|\2308\2401\240A\330\014\017\210|\2308\2401\240A\330\014\017\210|\230>\250\021\250!\330\010\017\210s\220!\320\000\024\220A\330\004\n\210\"\210H\220D\230\001\230\021\330\004\007\200q\330\010\017\210t\2201\220B\220e\230;\240a\240q\330\004\021\220\022\2208\2304\230q\240\001\330\004\017\210t\2201\220C\220q\330\004\007\200q\330\010\026\220i\230r\240\033\250B\250a\330\010\023\2206\230\021\230(\240&\250\t\260\021\330\010\017\210q\330\004\013\2101\320\004%\240_\260J\270l\310(\320RS\330\010\020\220\010\230\006\230l\250*\260G\2705\300\t\310\027\320P]\320]e\320ei\320ik\320ku\320uv\330\010\017\210t\2206""\230\021\230&\240\002\240!\330\010\030\230\004\230E\240\023\240B\240l\260\"\260A\330\010\013\210=\230\007\230q\330\014\r\330\025\033\2307\240!\2406\250\032\2606\3209J\310!\330\024\030\230\013\2401\240A\330\024\030\230\010\240\001\240\023\240A\240Q\330\024\030\230\010\240\001\240\024\240W\250A\250Q\330\024\025\330\024\032\230(\320\"5\260Q\340\010\022\220*\230B\230a\330\010\017\210v\220Q\220h\230f\240I\250Q\330\010\025\220X\230R\230r\240\021\240!\330\010\t\330\014\021\220\022\2205\230\001\230\023\230A\230]\250\"\250J\260b\270\002\270)\3002\300R\300{\320RS\330\014\r\330\020\022\220&\230\001\230\024\230T\240\027\250\001\250\021\340\020\022\220&\230\001\230\021\330\017\020\330\021\025\220Q\220l\240%\240y\260\014\270A\330\020\021\220\026\220q\230\001\320\004%\240Q\330\010\013\2104\210w\220a\220z\240\021\330\014\025\220T\230\034\240Q\330\014\024\320\024$\240A\320\004\035\230Q\330\010\017\210t\320\023#\2401\320\004(\320(;\270>\310\031\320RS\330\010\r\210T\220\034\230Q\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030]\002\360\000\000]\002f\002\360\000\000f\002t\002\360\000\000t\002x\002\360\000\000x\002~\002\360\000\000~\002\177\002\360\000\000\177\002I\003\360\000\000I\003Q\003\360\000\000Q\003U\003\360\000\000U\003W\003\360\000\000W\003a\003\360\000\000a\003b\003\330\010\n\210'\220\021\320\004)\250\030\260\021\330\010\r\210T\220\027\230\001\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030[\002\360\000\000[\002\\\002\330\010\017\210q\220\004\220F\230!\2303\230a\230t\2404\240w\250f\260I\270Q\320\004*\320*;\270?\310+\320Ug\320gp\320pq\330\010\r\210T\220\034\230Q\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030n\002\360\000\000n\002x\002\360\000\000x\002D\003\360\000\000D\003L\003\360\000\000L\003P\003\360\000\000P\003V\003\360\000\000V\003W\003\360\000\000W\003^\003\360\000\000^\003b\003\360\000\000b\003h\003\360\000\000h\003i\003\360\000\000i\003q\003\360\000\000q\003y\003\360\000\000y\003}\003\360\000\000}\003\177""\003\360\000\000\177\003I\004\360\000\000I\004J\004\330\010\n\210'\220\021\320\004\037\230~\250X\260Q\330\010\r\210T\220\034\230Q\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030C\002\360\000\000C\002J\002\360\000\000J\002S\002\360\000\000S\002[\002\360\000\000[\002_\002\360\000\000_\002a\002\360\000\000a\002k\002\360\000\000k\002l\002\330\010\n\210'\220\021\320\004(\250\n\260,\270h\300a\330\010\r\210T\220\034\230Q\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030Q\002\360\000\000Q\002Z\002\360\000\000Z\002_\002\360\000\000_\002c\002\360\000\000c\002i\002\360\000\000i\002j\002\360\000\000j\002r\002\360\000\000r\002z\002\360\000\000z\002~\002\360\000\000~\002@\003\360\000\000@\003J\003\360\000\000J\003K\003\330\010\n\210'\220\021\330\010\014\320\014\035\230Q\230g\240Y\250e\2601\320\004'\240z\260\030\270\021\330\010\r\210T\220\027\230\001\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030z\002\360\000\000z\002C\003\360\000\000C\003D\003\330\010\016\210f\220I\230Q\330\010\013\2101\330\014\023\2204\220v\230Q\230c\240\021\240!\330\010\017\210q";
+const char* const bytes = "\n\n            DELETE FROM Logs\n            WHERE timestamp < ?\n            \n            DELETE FROM Memory_Cold\n            WHERE timestamp < ?\n            \n            DELETE FROM Memory_Hot\n            WHERE timestamp < ?\n            Dict[str, Any]\n            INSERT INTO Checkpoints (profile, last_command, context, timestamp)\n            VALUES (?, ?, ?, ?)\n            \n            INSERT INTO Logs (level, message, timestamp)\n            VALUES (?, ?, ?)\n            \n            INSERT INTO Memory_Cold (category, confidence, source, tags, entry, timestamp)\n            VALUES (?, ?, ?, ?, ?, ?)\n            \n            INSERT INTO Memory_Hot (profile, key, value, timestamp)\n            VALUES (?, ?, ?, ?)\n            List[Dict]List[str]Optional[Any]PRAGMA busy_timeout=5000PRAGMA foreign_keys=ONPRAGMA journal_mode=WAL\nPRAGMA journal_mode = WAL;\nPRAGMA busy_timeout = 5000;\nPRAGMA synchronous = NORMAL;\nPRAGMA wal_autocheckpoint = 500;\nPRAGMA foreign_keys = ON;\n\nCREATE TABLE IF NOT EXISTS Checkpoints (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    last_command TEXT    NOT NULL,\n    context      JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Hot (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    key          TEXT    NOT NULL,\n    value        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Cold (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    category     TEXT    NOT NULL,\n    confidence   REAL    NOT NULL,\n    source       TEXT    NOT NULL,\n    tags         JSON    NOT NULL,\n    entry        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Logs (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    level        TEXT    NOT NULL,\n    message      TEXT    NOT NULL,\n    timestamp    TEXT    NOT NULL""\n);\nPRAGMA query_only=ONPRAGMA synchronous=NORMALPRAGMA wal_autocheckpoint=500\n            SELECT COUNT(DISTINCT category)\n            FROM Memory_Cold\n            \n            SELECT COUNT(*), SUM(LENGTH(value))\n            FROM Memory_Hot\n            \n            SELECT entry FROM Memory_Cold\n            WHERE category = ?\n            ORDER BY timestamp DESC\n            \n            SELECT value FROM Memory_Hot\n            WHERE profile = ? AND key = ?\n            ORDER BY timestamp DESC\n            LIMIT 1\n            .?db.py.greylocalrag.jsonlmemory.dbmemory.socksqlite3.Connectionutf-8AF_UNIXAnyCFGCLAUDE_CODE_SESSION_IDDAEMON_SOCKETDB_DIRDB_PATHDictGREYAGENT_MEMORY_DIRListMemoryDBMemoryDB.__init__MemoryDB._ensure_initializedMemoryDB._get_connectionMemoryDB._get_writerMemoryDB._mirror_to_jsonlMemoryDB.cleanup_old_entriesMemoryDB.get_statsMemoryDB.read_memory_coldMemoryDB.read_memory_hotMemoryDB.readerMemoryDB.write_checkpointMemoryDB.write_logMemoryDB.write_memory_coldMemoryDB.write_memory_hotNoneO_APPENDO_CREATO_WRONLYOptionalPath__Pyx_PyDict_NextRef_REPO_ROOTSCHEMA_SQLSOCK_STREAMSTORE_DIRVACUUMa__annotate__asyncio.coroutinesbase_dircategorycheck_same_threadcleanup_old_entriescline_in_tracebackcloseclscoldcold_countcommitconfidenceconnect_connectioncontextcurrent_threadcursorcutoffdaemon_socketdatadatetimedaysdb__doc__dumpsencodeencoding_ensure_initialized__enter__entryenvenvironerrorexecuteexecutescriptexist_okexists__exit__expanduserffdfetchallfetchone__file__float__func__get_get_connectionget_stats_get_writerhomehothot_byteshot_counthot_dirhot_size__init___initializedinsertint_is_coroutineisoformatisolation_levelitemsjsonjsonl_filekeylast_commandlevellib.configlineloads__main__memory_dir_memory_readermessage__metaclass___mirror_to_jsonlmkdir__module____name__nowopenosparentparentspathpathlibplatformpop__prepare__profile__qualname__read_memory_coldread_memory_hotreaderresolvereturnrowselfsendallsession_dirsession_idsessions__set_name__setdefaultse""ttimeoutsocksocketsourcesqlite3_store_dirstrsystags__test__threadingtiertimetimedeltatimeouttimestamptypingurivaluevalueswarmwarm_byteswritewrite_checkpointwrite_logwrite_memory_coldwrite_memory_hotwriter\320\004\033\2301\330\010\r\210T\220\027\230\001\330\010\021\220\022\2207\230!\330\010\016\210h\220a\220q\330\010\023\220;\230f\240I\250Q\330\010\023\2209\230C\230q\330\010\016\210h\220a\220q\330\010\025\220V\2309\240B\240a\240s\250#\250Q\330\010\020\220\007\220{\240(\250#\250X\260\\\300\035\310j\320Xf\320fg\320\004\"\240&\250\013\2601\330\010\022\220(\230$\230c\240\022\2409\250A\250U\260&\270\n\300!\330\010\r\210T\220\034\230Q\330\010\021\220\022\2207\230!\330\010\016\210h\220a\320\027o\320op\330\010\016\210h\220a\320\027p\320pq\330\010\016\210h\220a\320\027i\320ij\330\010\n\210'\220\021\330\010\n\210(\220!\2201\320\004\030\230\001\330\010\013\2104\210w\220a\220y\240\017\250t\2601\330\014\025\220_\240B\320&8\270\007\270x\300q\310\t\320QY\320Y]\320]m\320ms\360\000\000t\001F\002\360\000\000F\002M\002\360\000\000M\002Q\002\360\000\000Q\002R\002\330\014\025\220_\240B\240o\260X\270Q\270a\330\010\017\210y\230\017\240r\250\021\200A\330\010\014\320\014 \240\001\200A\330 !\330\010\013\2103\210m\2303\230a\330\014\017\210\177\230g\240X\250Q\250i\260x\270t\320CS\320SY\320Yk\320kl\330\014\017\210|\2308\2401\240A\330\014\017\210|\2308\2401\240A\330\014\017\210|\2308\2401\240A\330\014\017\210|\2308\2401\240A\330\014\017\210|\2308\2401\240A\330\014\017\210|\230>\250\021\250!\330\010\017\210s\220!\320\000\024\220A\330\004\n\210\"\210H\220D\230\001\230\021\330\004\007\200q\330\010\017\210t\2201\220B\220e\230;\240a\240q\330\004\021\220\022\2208\2304\230q\240\001\330\004\017\210t\2201\220C\220q\330\004\007\200q\330\010\026\220i\230r\240\033\250B\250a\330\010\023\2206\230\021\230(\240&\250\t\260\021\330\010\017\210q\330\004\013\2101\320\004%\240_\260J\270l\310(\320RS\330\010\020\220\010\230\006\230l\250*\260G\2705\300\t\310\027\320P]\320]e\320ei\320ik\320ku\320uv\330\010\017\210t\2206""\230\021\230&\240\002\240!\330\010\030\230\004\230E\240\023\240B\240l\260\"\260A\330\010\013\210=\230\007\230q\330\014\r\330\025\033\2307\240!\2406\250\032\2606\3209J\310!\330\024\030\230\013\2401\240A\330\024\030\230\010\240\001\240\023\240A\240Q\330\024\030\230\010\240\001\240\024\240W\250A\250Q\330\024\025\330\024\032\230(\320\"5\260Q\340\010\022\220*\230B\230a\330\010\017\210v\220Q\220h\230f\240I\250Q\330\010\025\220X\230R\230r\240\021\240!\330\010\t\330\014\021\220\022\2205\230\001\230\023\230A\230]\250\"\250J\260b\270\002\270)\3002\300R\300{\320RS\330\014\r\330\020\022\220&\230\001\230\024\230T\240\027\250\001\250\021\340\020\022\220&\230\001\230\021\330\017\020\330\021\025\220Q\220l\240%\240y\260\014\270A\330\020\021\220\026\220q\230\001\320\004%\240Q\330\010\013\2104\210w\220a\220z\240\021\330\014\025\220T\230\034\240Q\330\014\024\320\024$\240A\320\004\035\230Q\330\010\017\210t\320\023#\2401\320\004(\320(;\270>\310\031\320RS\330\010\r\210T\220\034\230Q\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030]\002\360\000\000]\002f\002\360\000\000f\002t\002\360\000\000t\002x\002\360\000\000x\002~\002\360\000\000~\002\177\002\360\000\000\177\002I\003\360\000\000I\003Q\003\360\000\000Q\003U\003\360\000\000U\003W\003\360\000\000W\003a\003\360\000\000a\003b\003\330\010\n\210'\220\021\320\004)\250\030\260\021\330\010\r\210T\220\027\230\001\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030[\002\360\000\000[\002\\\002\330\010\017\210q\220\004\220F\230!\2303\230a\230t\2404\240w\250f\260I\270Q\320\004*\320*;\270?\310+\320Ug\320gp\320pq\330\010\r\210T\220\034\230Q\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030n\002\360\000\000n\002x\002\360\000\000x\002D\003\360\000\000D\003L\003\360\000\000L\003P\003\360\000\000P\003V\003\360\000\000V\003W\003\360\000\000W\003^\003\360\000\000^\003b\003\360\000\000b\003h\003\360\000\000h\003i\003\360\000\000i\003q\003\360\000\000q\003y\003\360\000\000y\003}\003\360\000\000}\003\177""\003\360\000\000\177\003I\004\360\000\000I\004J\004\330\010\n\210'\220\021\320\004\037\230~\250X\260Q\330\010\r\210T\220\034\230Q\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030C\002\360\000\000C\002J\002\360\000\000J\002S\002\360\000\000S\002[\002\360\000\000[\002_\002\360\000\000_\002a\002\360\000\000a\002k\002\360\000\000k\002l\002\330\010\n\210'\220\021\320\004(\250\n\260,\270h\300a\330\010\r\210T\220\034\230Q\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030Q\002\360\000\000Q\002Z\002\360\000\000Z\002_\002\360\000\000_\002c\002\360\000\000c\002i\002\360\000\000i\002j\002\360\000\000j\002r\002\360\000\000r\002z\002\360\000\000z\002~\002\360\000\000~\002@\003\360\000\000@\003J\003\360\000\000J\003K\003\330\010\n\210'\220\021\330\010\014\320\014\035\230Q\230g\240Y\250e\2601\320\004'\240z\260\030\270\021\330\010\r\210T\220\027\230\001\330\010\021\220\022\2207\230!\330\010\016\210h\220a\360\000\000\030z\002\360\000\000z\002C\003\360\000\000C\003D\003\330\010\016\210f\220I\230Q\330\010\013\2101\330\014\023\2204\220v\230Q\230c\240\021\240!\330\010\017\210q";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif

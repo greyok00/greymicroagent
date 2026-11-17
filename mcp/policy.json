@@ -1,5 +1,5 @@
 {
-  "mode": "greyteam-hardened-v1",
+  "mode": "greypentest-hardened-v1",
   "execution_mode": "allowlist",
   "allowlist": [
     "/usr/bin/nmap", "/usr/bin/nikto", "/usr/bin/gobuster", "/usr/bin/ffuf",

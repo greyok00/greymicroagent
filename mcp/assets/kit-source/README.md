@@ -1,4 +1,4 @@
-# Grey kit — single source for every Greyhound site theme
+# Grey kit — single source for every greysearch-built site theme
 
 Vendored from /home/grey/audit-site/site-kit (the compiled grey ui-framework
 kit: tokens + 8 themes + document bridge + switcher). site_render.ensure_kit

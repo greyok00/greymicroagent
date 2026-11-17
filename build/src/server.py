@@ -15,23 +15,30 @@ ROOT = Path(__file__).resolve().parents[2]
 STATE = ROOT / "state"
 STATE.mkdir(exist_ok=True)
 
-# 2026-10-25 (greymini fork): the server is greymini's OWN freshly built copy
-# from /home/grey/llama.cpp (b3fa6995) — vendor/greymini-server/, binary +
+# 2026-10-25 (greylocalrag fork): the server is greylocalrag's OWN freshly built copy
+# from /home/grey/llama.cpp (b3fa6995) — vendor/greylocalrag-server/ (binary renamed
+# from greymini-server 2026-11-17 so the name is fork-unique) +
 # every llama/ggml lib patched to resolve $ORIGIN, so this tree never touches
 # the shared /home/grey/llama.cpp build, greyagent's vendored copy, or the
 # lanes other harnesses use (:11435/:11436/:11598/:11599/:11600). Model
-# port: phase 1 kept :7080/:7081. Owner 2026-10-25 ("don't ruin the current
-# running one; a new launch uses new ports"): the launcher ALLOCATES a slot and
-# exports GREYAGENT_MODEL_PORT/GREYAGENT_LANE_PORT — slot 1 stays 7080/7081
-# (the original instance keeps it), new sessions take 4444-4447 / 4454-4457.
+# port: owner 2026-11-17 gave this fork the unique block 7640-7647 (nothing
+# else on the machine claims it; below the ephemeral range): the launcher
+# ALLOCATES a slot and exports GREYAGENT_MODEL_PORT/GREYAGENT_LANE_PORT —
+# pairs (7640,7641) through (7646,7647).
 # Defaults here keep a direct, un-slotted boot working. The old build could
 # not load this model (per-layer kv-head array + ollama tensor naming) — the
 # fresh build matches the file's loader layout.
-LLAMA_SERVER = str(ROOT / "vendor" / "greymini-server" / "greymini-server")
+LLAMA_SERVER = str(ROOT / "vendor" / "greylocalrag-server" / "greylocalrag-server")
 LLAMA_LIB_DIR = str(Path(LLAMA_SERVER).parent)
-LANE_PORT = int(os.environ.get("GREYAGENT_LANE_PORT", "7081"))
-MODEL_PATH = "/home/grey/.greymini/models/qwen3.5-2b-abliterated.gguf"
-PORT = int(os.environ.get("GREYAGENT_MODEL_PORT", "7080"))
+LANE_PORT = int(os.environ.get("GREYAGENT_LANE_PORT", "7641"))
+# Owner 2026-11-16: RAG default model = huihui qwen3-vl 2B (abliterated), served
+# from the fork-own gguf (weights are a symlink to the immutable ollama store
+# blob). The classic 2B stays available via GREYLOCALRAG_MODEL_PATH override.
+MODEL_PATH = os.environ.get(
+    "GREYLOCALRAG_MODEL_PATH",
+    "/home/grey/.greylocalrag/models/qwen3-vl-2b-abliterated.gguf",
+)
+PORT = int(os.environ.get("GREYAGENT_MODEL_PORT", "7640"))
 HOST = "127.0.0.1"
 # Owner 2026-10-25: "increase context window to 64k and ensure truncation
 # doesn't happen." Default 65536; boot ladder steps down 16k (64k → 48k → 32k)
@@ -39,9 +46,9 @@ HOST = "127.0.0.1"
 # a 400 in normal use: the lane distills any single tool result over
 # SLIMTOKEN_DISTILL_MAX_CHARS (launcher, 24000 ≈ 6k tokens) and the TUI
 # auto-compacts at reserveTokens (8192) — two independent guards.
-CTX = int(os.environ.get("GREYAGENT_CTX", "65536"))  # greymini: 64k — the 2B hybrid's KV is tiny
+CTX = int(os.environ.get("GREYAGENT_CTX", "65536"))  # greylocalrag: 64k — the 2B hybrid's KV is tiny
 FA = os.environ.get("GREYAGENT_FA", "on")  # owner 2026-10-24: fill the 16GB card (hybrid model: KV is cheap); ladder steps down 16k until one fits
-# 2026-10-25 (owner: greymini runs CPU-only): the 27B sibling holds the 16 GB
+# 2026-10-25 (owner: greylocalrag runs CPU-only): the 27B sibling holds the 16 GB
 # card, so this 2B cannot offload. NGL=0 = CPU+RAM mode — 11.7 tok/s decode
 # measured on this i7-12800H, the accepted price for running beside the 27B.
 NGL = int(os.environ.get("GREYAGENT_NGL", "-1"))
@@ -53,10 +60,11 @@ NGL = int(os.environ.get("GREYAGENT_NGL", "-1"))
 THINKING = os.environ.get("GREYAGENT_THINKING", "off").strip().lower()
 # GM-23 (2026-11-03): ONE sampling place — these server defaults only fire for
 # requests that carry no sampling params (lane probes, doctor). The TUI's
-# models.ts always sends GREYAGENT_TEMP/GREYAGENT_TOP_P (0.6/0.95 from the
-# launcher); the old 0.2/0.9 here meant a param-less caller sampled differently
-# from every TUI turn. Aligned to the family values.
-TEMP = 0.6
+# models.ts always sends GREYAGENT_TEMP/GREYAGENT_TOP_P (0.1/0.95 from the
+# launcher; owner 2026-11-16 set the 0.0-0.2 RAG band — ollama's own params
+# blob wanted temp 1, this fork deliberately runs cold); the old 0.6 here meant
+# a param-less caller sampled differently from every TUI turn. Aligned.
+TEMP = 0.1
 TOP_P = 0.95
 TOP_K = 10
 # 2026-10-28 (owner: "implement ngram-mod"): n-gram speculative decoding.
@@ -65,15 +73,15 @@ TOP_K = 10
 # that followed the same n-gram before. It only drafts when a long match
 # exists, so short tool-call/classification answers pay nothing while long
 # copy/rewrite/summary output (the case it is documented for, and the one
-# measured fastest on CPU) gets drafted ahead. GREYMINI_SPEC=off disables it
-# and restores the previous boot line; GREYMINI_SPEC=<type> selects another
+# measured fastest on CPU) gets drafted ahead. GREYLOCALRAG_SPEC=off disables it
+# and restores the previous boot line; GREYLOCALRAG_SPEC=<type> selects another
 # --spec-type (draft-dflash etc. still need their own draft model).
-SPEC = os.environ.get("GREYMINI_SPEC", "ngram-mod").strip().lower()
+SPEC = os.environ.get("GREYLOCALRAG_SPEC", "ngram-mod").strip().lower()
 SPEC_ARGS = ([] if SPEC in ("", "off", "none", "0") else ["--spec-type", SPEC])
 if SPEC == "ngram-mod":
-    SPEC_ARGS += ["--spec-ngram-mod-n-match", os.environ.get("GREYMINI_SPEC_NMATCH", "24"),
-                  "--spec-ngram-mod-n-min", os.environ.get("GREYMINI_SPEC_NMIN", "48"),
-                  "--spec-ngram-mod-n-max", os.environ.get("GREYMINI_SPEC_NMAX", "64")]
+    SPEC_ARGS += ["--spec-ngram-mod-n-match", os.environ.get("GREYLOCALRAG_SPEC_NMATCH", "24"),
+                  "--spec-ngram-mod-n-min", os.environ.get("GREYLOCALRAG_SPEC_NMIN", "48"),
+                  "--spec-ngram-mod-n-max", os.environ.get("GREYLOCALRAG_SPEC_NMAX", "64")]
 
 _proc = None
 
@@ -94,7 +102,7 @@ def start_model(timeout: float = 300.0) -> dict:
     global _proc
     if is_ready():
         return {"ok": True, "already": True}
-    # NO auto-kill in greymini (owner 2026-10-25: sibling instances must never
+    # NO auto-kill in greylocalrag (owner 2026-10-25: sibling instances must never
     # be killed by a sibling's boot; the launcher's VRAM gate REFUSES foreign
     # holders instead — refuse-only policy).
     # Fill-the-card ladder (owner 2026-10-24: "increase to 16gb ... greyagent
@@ -104,7 +112,7 @@ def start_model(timeout: float = 300.0) -> dict:
     # lands near ~100k tokens; smaller steps exist for when VRAM is shared.
     ctx_note = STATE / "model-ctx-settled.txt"
     candidates = sorted(set(list(range(CTX, 24576, -16384)) + [32768]), reverse=True)
-    # greymini: 32k floor — the ladder stops AT 32768, never lower
+    # greylocalrag: 32k floor — the ladder stops AT 32768, never lower
     # (owner 2026-10-25: 64k default; a shrunken window would re-introduce
     # the overflow class, so the ladder never goes below half)
     try:
@@ -153,7 +161,7 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--jinja",
         *([] if THINKING == "on" else ["--reasoning", "off"]),
         *SPEC_ARGS,
-        "--alias", "greymini",
+        "--alias", "greylocalrag",
     ]
     log = open(STATE / "model-server.log", "ab")
     log.write(("\n=== boot attempt ctx=%d ===\n" % ctx_size).encode())

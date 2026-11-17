@@ -1,0 +1,280 @@
+#!/bin/bash
+# greylocalrag launcher — greyagent's launcher, copied 2026-10-25 for the greylocalrag
+# fork (owner order: same harness, different model + shorter context). Owner
+# 2026-11-17: this fork gets completely unique ports (block 7640-7647) never
+# used by anything else, its own renamed model server, and custom configs.
+# Boot order (identical to greyagent):
+#   1. mask: strip every foreign harness env var before anything starts
+#   2. gate: verify_compiled.py — frozen artifacts, hashes, TUI dist parse
+#   3. lane: slimtoken :7641 -> model :7640 (own process, only if down)
+#   4. VRAM interlock (plain refusal if another agent holds the GPU)
+#   5. model spawns ASYNC — TUI renders FIRST (never block the UI on :7640)
+#   6. exit reaps ONLY what THIS session spawned (model pid file + lane),
+#      never a pre-existing server, never a foreign lane.
+# Port policy lives in ~/.greylocalrag/agent/port_policy.json (:11600 untouched,
+# :11434 dead, other families' lanes :11435/:11436/:11598/:11599 off limits).
+# Model home: ~/.greylocalrag (model file, agent sessions) — nothing touched in
+# greyagent/claude/cortexagent homes.
+
+set -uo pipefail
+
+ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
+CLI="$ROOT/tui/packages/coding-agent/dist/cli.js"
+# --- PORT ALLOCATION (owner 2026-10-25: "don't ruin the current running one;
+# a new launch uses new ports") -----------------------------------------------
+# greylocalrag owns port block 7640-7647 outright (owner 2026-11-17: completely
+# unique ports never used by anything else — verified free against every
+# port_policy.json and every live listener; below the Linux ephemeral range, so
+# the kernel never auto-assigns them). Each launch takes the next FREE pair:
+#     model 7640 7642 7644 7646  /  lane 7641 7643 7645 7647  (same index)
+# The live listener probe IS the allocation truth: no lockfiles, no registry —
+# a dead session frees its ports on its own. An occupied pair (own or foreign)
+# is skipped, never fought over. 4 slots; a 5th simultaneous session refuses
+# with a plain message.
+_lane_ports_free() { ! ss -ltn 2>/dev/null | grep -qE ":$1 |:$2 "; }
+_model_lanes=(7640 7642 7644 7646)
+_lane_bases=(7641 7643 7645 7647)
+MODEL_PORT=""; LANE_PORT=""
+for _k in 0 1 2 3; do
+  _mp="${_model_lanes[$_k]}"; _lp="${_lane_bases[$_k]}"
+  if _lane_ports_free "$_mp" "$_lp"; then
+    MODEL_PORT="$_mp"; LANE_PORT="$_lp"; break
+  fi
+done
+if [ -z "$MODEL_PORT" ]; then
+  echo "greylocalrag: all sessions in use (7640-7647 block) — close one before opening another" >&2
+  exit 1
+fi
+export GREYAGENT_MODEL_PORT="$MODEL_PORT"
+export GREYAGENT_LANE_PORT="$LANE_PORT"
+# the TUI's while-loading health poll must watch THIS session's model port
+export GREYAGENT_MODEL_HEALTH_URL="http://127.0.0.1:${MODEL_PORT}/health"
+# TOOL-DIR-SEPARATION (owner order 2026-10-24): agent's own home = cwd.
+cd "$ROOT"
+
+export GREYAGENT_HOME="$ROOT"
+# GM-07 (2026-11-03): settle-file single-source — models.ts tries
+# $GREYAGENT_ROOT/state/model-ctx-settled.txt FIRST for the fork-aware window;
+# without this export it could only fall through to the greypentest/greyagent
+# paths and compaction aimed above the real window (GM-07's 81920-vs-65536).
+export GREYAGENT_ROOT="$ROOT"
+# GM-09 (2026-11-03): foreign GREYAGENT_* knobs reconfigure this fork through
+# the ${:-} keepers below (greyagent exports CTX 81920 / TEMP 0.9 / UBATCH...,
+# and a leaked one wins because the keeper "preserves" it). The mask only
+# clears non-GREYAGENT names, so reset the shared knobs HERE — before every
+# keeper or boot block reads them. Whatever this launcher does not re-export
+# falls back to THIS fork's baked values (server.py: ctx 65536, thinking off;
+# boot block: NGL 0 CPU-only).
+unset GREYAGENT_CTX GREYAGENT_NGL GREYAGENT_UBATCH GREYAGENT_CTYPE \
+      GREYAGENT_THINKING GREYAGENT_TEMP GREYAGENT_TOP_P \
+      GREYAGENT_LOCAL_BASE GREYAGENT_MEMORY_DIR GREYAGENT_FA \
+      GREYAGENT_PLATFORM 2>/dev/null || true
+export GREYAGENT_CODING_AGENT_DIR="${GREYAGENT_CODING_AGENT_DIR:-$HOME/.greylocalrag/agent}"
+# Owner 2026-11-16: this fork runs cold — 0.0-0.2 band, baked at 0.1. The RAG
+# gate clamps every request into the band regardless of what arrives.
+export GREYAGENT_TEMP="${GREYAGENT_TEMP:-0.1}"
+export GREYAGENT_TOP_P="${GREYAGENT_TOP_P:-0.95}"
+mkdir -p "$GREYAGENT_CODING_AGENT_DIR/sessions" "$GREYAGENT_CODING_AGENT_DIR/extensions"
+mkdir -p "$ROOT/state/audit" "$ROOT/state/logs"
+mkdir -p "$HOME/.greylocalrag/memory/hot" "$HOME/.greylocalrag/state/scheduler" "$HOME/.greylocalrag/mcp-status"
+
+# --- MASK: foreign harness env never reaches this fork or its children -----
+unset CLAUDE_CONFIG_DIR CLAUDE_MODEL_NAME CLAUDE_CODE_SUBAGENT_MODEL \
+      CLAUDE_CODE_MAX_CONTEXT_TOKENS CLAUDE_CODE_AUTO_COMPACT_WINDOW \
+      CLAUDE_CODE_MAX_OUTPUT_TOKENS CLAUDE_CODE_DISABLE_UPDATE \
+      CLAUDE_CODE_DISABLE_TERMINAL_TITLE CLAUDE_CODE_USE_BEDROCK \
+      CLAUDE_CODE_USE_VERTEX CLAUDE_CODE_ENTRYPOINT CLAUDECODE 2>/dev/null || true
+unset ANTHROPIC_API_KEY ANTHROPIC_BASE_URL ANTHROPIC_AUTH_TOKEN ANTHROPIC_MODEL 2>/dev/null || true
+unset PI_API_KEY PI_BASE_URL PI_DEV_API_KEY 2>/dev/null || true
+unset CORTEXAGENT_CONFIG_DIR CORTEXAGENT_STATE_DIR CORTEXAGENT_MEMORY_DIR \
+      CORTEXAGENT_MEMORY_SOCKET CORTEXAGENT_MCP_CONFIG CORTEXAGENT_REPO \
+      CORTEXAGENT_PLATFORM CORTEXAGENT_CLOUD_LANE CORTEXAGENT_OLLAMA_DIRECT \
+      CORTEXAGENT_LOCAL_BASE CORTEXAGENT_MODEL CORTEXAGENT_MODEL_NAME \
+      CORTEXAGENT_MCP_SERVERS CORTEXAGENT_DISABLED_TOOLS CORTEXAGENT_SKILLS_DIR \
+      CORTEXAGENT_CONTROL_SOCK 2>/dev/null || true
+unset OLLAMA_HOST LLAMA_BASE_URL 2>/dev/null || true
+
+# --- FROZEN-TREE GATE: no boot on a desynced artifact set (fail loudly) ------
+if ! python3 "$ROOT/bin/verify_compiled.py"; then
+  echo "greylocalrag: frozen-tree check FAILED — TUI not started (see lines above)" >&2
+  exit 1
+fi
+
+export GREYAGENT_OFFLINE=1
+export GREYAGENT_SKIP_VERSION_CHECK=1
+export CORTEX_OFFLINE=1
+export CORTEX_SKIP_VERSION_CHECK=1
+# telemetry cannot arm here (settings hard-lock + env pin — both must win)
+export CORTEX_TELEMETRY=0
+# Status panels + hot memory write HERE (owner 2026-10-25: "do not contaminate
+# the two") — the TUI's compiled fallbacks point at ~/.greyagent; these envs
+# must WIN so greylocalrag's memory/scheduler/status state stays in its own home.
+export CORTEXAGENT_MEMORY_DIR="$HOME/.greylocalrag/memory"
+export CORTEXAGENT_STATE_DIR="$HOME/.greylocalrag/state"
+export CORTEXAGENT_STATUS_DIR="$HOME/.greylocalrag/mcp-status"
+# The memory MCP server (.so) reads DIFFERENT env names (GREYAGENT_PLATFORM /
+# GREYAGENT_MEMORY_DIR); set them too so every memory consumer agrees on the
+# fork home even if a module's baked default is ever bypassed.
+export GREYAGENT_PLATFORM="greylocalrag"
+export GREYAGENT_MEMORY_DIR="$HOME/.greylocalrag/memory"
+# The brain's base URL is set ONCE here (lane when up; the fallback function
+# rewrites it to the direct port). set -u: never reference it unset.
+export GREYAGENT_LOCAL_BASE="${GREYAGENT_LOCAL_BASE:-http://127.0.0.1:${LANE_PORT}/v1}"
+
+MODEL_PID=""
+LANE_PID=""
+_up() { curl -s --max-time 2 "http://127.0.0.1:${MODEL_PORT}/health" 2>/dev/null | grep -q '"status":"ok"'; }
+
+# --- lane: OUR slimtoken on :7641, in front of the model :7640 ---------------
+# Started as a background process OF THIS SESSION (no systemd footprint,
+# nothing stays always-on). Port conflict = plain refusal + direct fallback,
+# never a fight with another family's listener.
+_lane_up() { curl -s --max-time 2 "http://127.0.0.1:${LANE_PORT}/metrics" >/dev/null 2>&1; }
+_lane_env() {
+  export SLIMTOKEN_MODE="code"
+  export SLIMTOKEN_ARTIFACT_DIR="$ROOT/state/slimtoken-artifacts"
+  # 2026-10-25 (64k window): a BOUNDED distill cap — a giant tool result
+  # (cat of a big file) is distilled before the model sees it, so no single
+  # result can blow the context (the exact 400 the owner hit at 32k).
+  # 24000 chars ≈ 6k tokens: generous for real messages, finite for junk,
+  # and ~9% of the 65536 window per result — several in a row still fit.
+  # (The 10-24 "effectively unlimited" order superseded the 4096 default;
+  # at 131k ctx that was free — it no longer is.)
+  export SLIMTOKEN_DISTILL_MAX_CHARS=24000
+  export SLIMTOKEN_MINIFY=1 SLIMTOKEN_MINIFY_MESSAGES=1
+  export SLIMTOKEN_MINIFY_DEDUP=1 SLIMTOKEN_MINIFY_DISTILL=1
+  # 2026-11-08 (owner: "same slimtoken settings as pi"): schema minify
+  # (tools) + system minify ON — pi-validated profile, zero tool breakage.
+  export SLIMTOKEN_MINIFY_TOOLS=1 SLIMTOKEN_MINIFY_SYSTEM=1
+  export SLIMTOKEN_KEEP_LAST=4 SLIMTOKEN_MINIFY_BUDGET=1000000
+  # 2026-11-08 (owner): hard-savings ledger for this lane — `slimtoken savings`
+  export SLIMTOKEN_STATS_FILE="$HOME/.local/state/slimtoken/stats-greylocalrag.json"
+  mkdir -p "$HOME/.local/state/slimtoken"
+}
+_lane_direct() { export GREYAGENT_LOCAL_BASE="http://127.0.0.1:${MODEL_PORT}/v1"; }
+
+if ! _lane_up; then
+  if ss -ltn 2>/dev/null | grep -q ":${LANE_PORT} "; then
+    echo "greylocalrag: :${LANE_PORT} occupied by a foreign listener — lane skipped, brain falls back to direct :${MODEL_PORT}" >&2
+    _lane_direct
+  else
+    _lane_env
+    "$HOME/.local/bin/slimtoken" serve --upstream "http://127.0.0.1:${MODEL_PORT}" --port "$LANE_PORT" > "$ROOT/state/logs/lane.log" 2>&1 &  # slot-shared start log; runtime artifacts are env-isolated
+    LANE_PID=$!
+    for _ in $(seq 1 10); do _lane_up && break; sleep 1; done
+    if _lane_up; then
+      echo "greylocalrag: lane :${LANE_PORT} up (slimtoken -> :${MODEL_PORT})"
+    elif [ -n "$(kill -0 "${LANE_PID}" 2>/dev/null && echo yes)" ]; then
+      echo "greylocalrag: lane did not come up on :${LANE_PORT} — brain falls back to direct :${MODEL_PORT}" >&2
+      _lane_direct
+    else
+      echo "greylocalrag: lane failed to start — brain falls back to direct :${MODEL_PORT}" >&2
+      _lane_direct
+    fi
+  fi
+else
+  : # lane already answering (left over or manually started) — use it
+fi
+export GREYAGENT_LOCAL_BASE="${GREYAGENT_LOCAL_BASE:-http://127.0.0.1:${MODEL_PORT}/v1}"
+
+cleanup() {
+  trap '' INT TERM
+  [ -n "$(jobs -p)" ] && jobs -p | xargs -r kill 2>/dev/null
+  # Reap the model THIS session spawned (VRAM returns on exit). A pre-existing
+  # server (no spawn this session) is left alone. MODEL_PID here is the
+  # background loader; the actual server pid lives in the pid file.
+  if [ -n "${MODEL_PID:-}" ] || [ -n "${LANE_PID:-}" ]; then
+    SV_PID="$(cat "$ROOT/state/model-server-${MODEL_PORT}.pid" 2>/dev/null || true)"
+    if [ -n "$SV_PID" ] && kill -0 "$SV_PID" 2>/dev/null; then
+      kill "$SV_PID" 2>/dev/null
+      for _ in $(seq 1 15); do kill -0 "$SV_PID" 2>/dev/null || break; sleep 1; done
+      kill -9 "$SV_PID" 2>/dev/null || true
+    fi
+    [ -n "${LANE_PID:-}" ] && kill "$LANE_PID" 2>/dev/null
+    rm -f "$ROOT/state/model-server-${MODEL_PORT}.pid"
+  fi
+  printf '\033[?25h'
+}
+trap cleanup EXIT
+trap 'cleanup; exit 130' INT
+trap 'cleanup; exit 143' TERM
+trap 'cleanup; exit 129' HUP
+
+# --- model: VRAM-gated, spawned async (TUI FIRST) ----------------------------
+GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated — loading on :${MODEL_PORT}..."
+GREYAGENT_MODEL_UP=0
+if ! _up; then
+  if python3 "$ROOT/build/src/vram_check.py" 2>/dev/null; then
+    : # GPU free — full offload (NGL -1); the lane forwards once the model lands
+  else
+    # 2026-10-25 owner: "greylocalrag would be ram/cpu only with greyagent being
+    # all vram." A GPU held by the 27B sibling is therefore NOT a refusal —
+    # this 2B boots CPU-only (11.7 tok/s measured) with its lane kept up,
+    # because the model really is coming. Never evict, never OOM-fight.
+    export GREYAGENT_NGL="${GREYAGENT_NGL:-0}"
+    GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated — CPU-only (GPU kept by greyagent)"
+  fi
+  python3 - "$ROOT" <<'PY' >> "$ROOT/state/logs/model-boot-${MODEL_PORT}.log" 2>&1 &
+import sys
+sys.path.insert(0, sys.argv[1] + "/build/src")
+import server
+d = server.start_model(timeout=600)
+pid = int(d.get("pid") or 0)
+print(str(pid or ""))
+if not d.get("ok"):
+    sys.stderr.write("model boot failed: %s\n" % d.get("error", "unknown"))
+    sys.exit(0)
+# Session-long watcher: the loader STAYS ALIVE for the whole session so
+# PR_SET_PDEATHSIG keeps its real meaning ("server dies if the loader dies
+# for ANY reason") instead of firing on the designed loader-exit (that bug
+# killed the model 60 ms after "listening" — owner saw connection errors).
+import os, time
+while True:
+    try:
+        os.kill(pid, 0)
+    except (ProcessLookupError, PermissionError):
+        break  # server died on its own — exit quietly
+    time.sleep(5)
+PY
+    MODEL_PID=$!
+    echo "greylocalrag: model loading in background (qwen3-vl-2b-abliterated on :${MODEL_PORT}, ngl=${GREYAGENT_NGL:--1})"
+fi
+if _up; then
+  GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated  (up :${MODEL_PORT})"
+  GREYAGENT_MODEL_UP=1
+fi
+export GREYAGENT_MODEL_UP
+
+# --- splash: 8-bit greyscale (editable source build/src/splash.py wins) -----
+printf '\033]0;GreyLocalRag\007'
+python3 - "$ROOT" "$GREY_MODEL_LINE" <<'PY' 2>/dev/null || true
+import sys, time
+sys.path.insert(0, "%s/build/src" % sys.argv[1])
+import splash
+for ln in splash.splash_lines():
+    sys.stdout.write(ln + "\033[0m\033[K\n")
+sys.stdout.write("\033[38;5;240m" + sys.argv[2] + "\033[0m\033[K\n")
+sys.stdout.write("\033[?25l")
+sys.stdout.flush()
+time.sleep(0.4)
+sys.stdout.write("\033[?25h")
+PY
+
+# --- front end: forked Node TUI, sessions in ~/.greylocalrag/agent/sessions -----
+# GM-14 (2026-11-03): extensions are owned by the frozen tree. This machine's
+# ~/.greylocalrag/agent is itself a symlink into config/, so the two are the same
+# dir and the copy must be skipped (cp onto itself errors out every boot);
+# on a packaged install (GM-16 deb) the agent dir starts empty and the copy
+# populates it. The dead old block copied build/src/greysearch_core.ts — a
+# file that no longer exists — so its guard silently skipped forever and the
+# extension could vanish with zero error output.
+_ext_src="$HOME/.greylocalrag/agent/extensions"
+if [ -d "$ROOT/config/extensions" ] && [ "$(realpath "$_ext_src" 2>/dev/null)" != "$(realpath "$ROOT/config/extensions")" ]; then
+  mkdir -p "$_ext_src"
+  cp -a "$ROOT/config/extensions/." "$_ext_src/"
+elif [ ! -d "$_ext_src" ]; then
+  echo "greylocalrag: config/extensions missing — extensions will not load" >&2
+fi
+
+node "$CLI" --append-system-prompt "$ROOT/model/greylocalrag.md" "$@"
+printf '%s\n' "greylocalrag session ended"
