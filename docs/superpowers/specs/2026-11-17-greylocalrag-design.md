@@ -14,8 +14,11 @@ agent searches the web once (greysearch), offers to store what it found, and
 asks consent before storing anything. When neither source exists, the agent
 says so instead of inventing an answer.
 
-Target devices: CPU-only machines (8-16 GB RAM, no dGPU), example device class:
-a Surface tablet. Windows is the primary host target and gets a real
+Target devices: CPU-only machines with the base spec **8 GB RAM and a
+quad-core CPU** (owner 2026-11-17 base floor; Surface tablet class). The
+product must boot, load the fixed model, and hold a working context ladder
+entirely within the base spec — richer machines get the same defaults,
+never extra. Windows is the primary host target and gets a real
 installer; Linux ships as a co-equal second artifact (.deb). The agent runs
 its own model server, its own retrieval
 engine, and its own search lane entirely on the user's machine. No cloud
@@ -61,7 +64,11 @@ One session occupies three ports inside the unique block:
   to the immutable ollama-store blob during development; a release fetches the
   gguf with a pinned checksum instead). CPU-only mode by default (NGL 0 when a
   GPU is present-but-held is still available via the existing VRAM interlock),
-  context ladder 64k with 32k floor, thinking off, sampling pinned 0.1.
+  tuned to the base spec: spawn threads 4 (quad-core; the old 8 thrashed),
+  ubatch 128 unchanged, and the context ladder OPENS at the base-spec default —
+  32,768 on systems probing at most 8 GB total RAM, else 64k — never stepping
+  below its existing 32,768 floor; thinking off, sampling pinned 0.1. The
+  model, its size, and the 0.0-0.2 band are untouched in every case.
 - **slimtoken** `:7642` — existing vendored request-filter lane; distills
   oversized tool results before the model sees them. Unchanged behavior.
 - **RAG gate** `:7641` — the only new moving part. A small loopback-only
@@ -218,6 +225,10 @@ the tree's own verified-compile conventions.
   nothing, accept stores with provenance; remove then makes the records
   unfindable.
 - Reuse the existing 9-gate capability bench on the fixed model.
+- Base-spec gate: inside a constrained environment (memory cap 8 GB + 4
+  threads, e.g. cgroup or ulimit + taskset) the FULL chain — model server,
+  slimtoken, gate, TUI — boots and answers. Fitting the base spec is
+  tested evidence, not a claim.
 - Loop/supervision gates: an identical re-issued tool call is HELD until
   backing state changes; diff-hold fairness — a FIRST run is never blocked,
   a re-issue whose backing state changed releases immediately, and a
