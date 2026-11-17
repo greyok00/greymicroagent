@@ -58,7 +58,7 @@ export GREYAGENT_SLIM_PORT="$SLIM_PORT"
 export GREYLOCALRAG_UPSTREAM="http://127.0.0.1:${SLIM_PORT}"
 export GREYLOCALRAG_DBS="commands"
 export GREYLOCALRAG_DBS_ROOT="$HOME/.greylocalrag/dbs"
-export GREYLOCALRAG_RAG_FLOOR="${GREYLOCALRAG_RAG_FLOOR:-0.25}"
+export GREYLOCALRAG_RAG_FLOOR="${GREYLOCALRAG_RAG_FLOOR:-19.0}"
 mkdir -p "$GREYLOCALRAG_DBS_ROOT"
 # the TUI's while-loading health poll must watch THIS session's model port
 export GREYAGENT_MODEL_HEALTH_URL="http://127.0.0.1:${MODEL_PORT}/health"

@@ -209,7 +209,7 @@ def run_boot():
         "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:7642",
         "GREYLOCALRAG_DBS": "commands",
         "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-        "GREYLOCALRAG_RAG_FLOOR": "0.25",
+        "GREYLOCALRAG_RAG_FLOOR": "19.0",
     }
     gate_proc = spawn("gate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                sys.executable, str(ROOT / "services" / "rag_gate.py")], gate_env)
