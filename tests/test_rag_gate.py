@@ -117,3 +117,74 @@ def test_get_metrics_passthrough(monkeypatch):
     payload = out.getvalue()
     assert b'{"m":123}' in payload
     assert b"Content-Length: 9" in payload and b"Connection: close" in payload and b"Transfer-Encoding" not in payload
+
+def test_post_forwards_received_path(tmp_path, monkeypatch):
+    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYLOCALRAG_STATE_DIR", str(tmp_path))
+    seen = {}
+    class FakeResp:
+        def __init__(self):
+            self.status = 200
+            self.headers = {"Content-Type": "application/json", "Content-Length": "2"}
+            self._chunks = [b"ok", b""]
+        def read(self, _n):
+            return self._chunks.pop(0)
+    class FakeConn:
+        def __init__(self, host, port, timeout=None):
+            pass
+        def request(self, method, path, body=None, headers=None):
+            seen["req"] = (method, path, body)
+        def getresponse(self):
+            return FakeResp()
+        def close(self):
+            pass
+    monkeypatch.setattr(rag_gate, "HTTPConnection", FakeConn)
+    out = io.BytesIO()
+    h = object.__new__(rag_gate.Gate)
+    h.path = "/v1/chat/completions"
+    h.requestline = "POST /v1/chat/completions HTTP/1.1"
+    h.request_version = "HTTP/1.1"
+    h.headers = {"Content-Type": "application/json", "Content-Length": str(len(json.dumps(BODY).encode()))}
+    h.wfile = out
+    h.rfile = io.BytesIO(json.dumps(BODY).encode())
+    h.do_POST()
+    method, path, body = seen["req"]
+    assert (method, path) == ("POST", "/v1/chat/completions")
+    up = json.loads(body)
+    assert up["temperature"] <= 0.2 and "NO-KB-GROUNDING" in up["messages"][-1]["content"]
+    payload = out.getvalue()
+    assert b"HTTP/1.1 200 OK" in payload and b"ok" in payload
+
+def test_post_unrouted_paths_forward_verbatim(tmp_path, monkeypatch):
+    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYLOCALRAG_STATE_DIR", str(tmp_path))
+    seen = {}
+    class FakeResp:
+        def __init__(self):
+            self.status = 200
+            self.headers = {"Content-Type": "application/json", "Content-Length": "2"}
+            self._chunks = [b"ok", b""]
+        def read(self, _n):
+            return self._chunks.pop(0)
+    class FakeConn:
+        def __init__(self, host, port, timeout=None):
+            pass
+        def request(self, method, path, body=None, headers=None):
+            seen["req"] = (method, path)
+        def getresponse(self):
+            return FakeResp()
+        def close(self):
+            pass
+    monkeypatch.setattr(rag_gate, "HTTPConnection", FakeConn)
+    out = io.BytesIO()
+    h = object.__new__(rag_gate.Gate)
+    h.path = "/health"
+    h.requestline = "POST /health HTTP/1.1"
+    h.request_version = "HTTP/1.1"
+    h.headers = {"Content-Type": "application/json", "Content-Length": str(len(json.dumps(BODY).encode()))}
+    h.wfile = out
+    h.rfile = io.BytesIO(json.dumps(BODY).encode())
+    h.do_POST()
+    assert seen["req"] == ("POST", "/health")
+    payload = out.getvalue()
+    assert b"HTTP/1.1 200 OK" in payload and b"ok" in payload

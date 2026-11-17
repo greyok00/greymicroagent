@@ -51,10 +51,14 @@ def _conn(upstream):
     u = urlsplit(upstream if isinstance(upstream, str) else "")
     host = u.hostname or "127.0.0.1"
     port = u.port or (443 if u.scheme == "https" else 80)
-    path = (u.path or "/") + (f"?{u.query}" if u.query else "")
     if u.scheme == "https":
-        return path, HTTPSConnection(host, port, timeout=UPSTREAM_TIMEOUT)
-    return path, HTTPConnection(host, port, timeout=UPSTREAM_TIMEOUT)
+        return HTTPSConnection(host, port, timeout=UPSTREAM_TIMEOUT)
+    return HTTPConnection(host, port, timeout=UPSTREAM_TIMEOUT)
+
+
+def _uppath(upstream):
+    u = urlsplit(upstream if isinstance(upstream, str) else "")
+    return (u.path or "/") + (f"?{u.query}" if u.query else "")
 
 
 def _query(req):
@@ -152,9 +156,9 @@ def handle(body, upstream):
     code, out = _build(body)
     if code:
         return code, out
-    path, conn = _conn(upstream)
+    conn = _conn(upstream)
     try:
-        conn.request("POST", path, body=out, headers={
+        conn.request("POST", _uppath(upstream), body=out, headers={
             "Content-Type": "application/json",
             "Content-Length": str(len(out)),
             "Accept": "application/json, text/event-stream",
@@ -213,10 +217,10 @@ class Gate(BaseHTTPRequestHandler):
         if body is not None:
             fwd["Content-Type"] = "application/json"
             fwd["Content-Length"] = str(len(body))
-        up_path, conn = _conn(_upstream())
+        conn = _conn(_upstream())
         sent = False
         try:
-            conn.request(method, self.path if method == "GET" else up_path, body=body, headers=fwd)
+            conn.request(method, self.path, body=body, headers=fwd)
             r = conn.getresponse()
             self.send_response_only(r.status)
             skip = {"connection", "keep-alive", "transfer-encoding", "content-length"}
