@@ -168,7 +168,7 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--temp", str(TEMP),
         "--top-p", str(TOP_P),
         "--top-k", str(TOP_K),
-        "--threads", os.environ.get("GREYMICROAGENT_THREADS", "4"),
+        "--threads", os.environ.get("GREYMICROAGENT_THREADS", "8"),
         "--flash-attn", FA,
         "--parallel", os.environ.get("GREYAGENT_PARALLEL", "1"),
         "--ubatch-size", os.environ.get("GREYAGENT_UBATCH", "128"),

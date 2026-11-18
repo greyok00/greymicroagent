@@ -8,9 +8,10 @@ import * as path from "node:path";
 // of standing servers: each call spawns
 //   python3 <root>/services/internal_tools.py call <tool>
 // with a JSON args object on stdin and reads one JSON result on stdout.
-// Every tool routes through the agent's own registry (core.wiring), so the
-// TUI and the agent loop share one tool set. No JSON-RPC, no registry
-// file, no long-lived child process.
+// Kept lean (owner 2026-11-18): the chat tool list drives CPU prefill cost,
+// so only the tools the chat model actually uses register here; knowledge
+// upkeep stays on the /rag command; remaining tools live in the python
+// registry (core.wiring) and the bridge can still invoke every one of them.
 
 const ROOT =
 	process.env.GREYAGENT_ROOT ?? path.join(os.homedir(), "greymicroagent");
@@ -78,122 +79,18 @@ const OBJ: Record<string, unknown> = { type: "object", properties: {} };
 
 const TOOLS: InternalTool[] = [
 	{
-		name: "terminal",
-		description:
-			"Run a terminal command: bash on Linux, PowerShell on Windows. args: command (string), timeout (seconds, optional).",
-		timeout: 3600000,
-		params: {
-			type: "object",
-			properties: { command: { type: "string" }, timeout: { type: "integer" } },
-			required: ["command"],
-		},
-	},
-	{
-		name: "powershell",
-		description:
-			"Run a PowerShell command (pwsh on Linux, powershell.exe on Windows builds). args: command, timeout (seconds, optional).",
-		timeout: 3600000,
-		params: {
-			type: "object",
-			properties: { command: { type: "string" }, timeout: { type: "integer" } },
-			required: ["command"],
-		},
-	},
-	{
-		name: "rag_status",
-		description: "List local knowledge bases with record counts.",
-		timeout: 30000,
-		params: OBJ,
-	},
-	{
 		name: "rag_search",
-		description:
-			"Search a local knowledge base offline. args: db (name), query, k (optional, default 5).",
+		description: "Search the operator's knowledge base offline. args: db, query, k(optional).",
 		timeout: 60000,
 		params: {
 			type: "object",
-			properties: {
-				db: { type: "string" },
-				query: { type: "string" },
-				k: { type: "integer" },
-			},
+			properties: { db: { type: "string" }, query: { type: "string" }, k: { type: "integer" } },
 			required: ["db", "query"],
 		},
 	},
 	{
-		name: "rag_ingest_text",
-		description:
-			"Ingest text into a knowledge base. CONSENT-GATED: pass confirm=true. args: db, text, confirm.",
-		timeout: 120000,
-		params: {
-			type: "object",
-			properties: {
-				db: { type: "string" },
-				text: { type: "string" },
-				confirm: { type: "boolean" },
-			},
-			required: ["db", "text", "confirm"],
-		},
-	},
-	{
-		name: "rag_ingest_pdf",
-		description:
-			"Ingest a PDF into a knowledge base. CONSENT-GATED: pass confirm=true. args: db, path, confirm.",
-		timeout: 300000,
-		params: {
-			type: "object",
-			properties: {
-				db: { type: "string" },
-				path: { type: "string" },
-				confirm: { type: "boolean" },
-			},
-			required: ["db", "path", "confirm"],
-		},
-	},
-	{
-		name: "rag_ingest_urls",
-		description:
-			"Ingest web pages into a knowledge base. CONSENT-GATED: pass confirm=true. args: db, urls (string list), confirm.",
-		timeout: 300000,
-		params: {
-			type: "object",
-			properties: {
-				db: { type: "string" },
-				urls: { type: "array", items: { type: "string" } },
-				confirm: { type: "boolean" },
-			},
-			required: ["db", "urls", "confirm"],
-		},
-	},
-	{
-		name: "rag_remove",
-		description:
-			"Two-step removal: the first call previews matches, the confirmed repeat deletes. args: db, match, confirm.",
-		timeout: 60000,
-		params: {
-			type: "object",
-			properties: {
-				db: { type: "string" },
-				match: { type: "string" },
-				confirm: { type: "boolean" },
-			},
-			required: ["db", "match"],
-		},
-	},
-	{
-		name: "rag_list_sources",
-		description: "List sources recorded in a knowledge base. args: db.",
-		timeout: 30000,
-		params: {
-			type: "object",
-			properties: { db: { type: "string" } },
-			required: ["db"],
-		},
-	},
-	{
 		name: "search",
-		description:
-			"Quick web search over the local search lanes. args: query, k (optional).",
+		description: "Quick web search. args: query, k(optional).",
 		timeout: 90000,
 		params: {
 			type: "object",
@@ -202,37 +99,19 @@ const TOOLS: InternalTool[] = [
 		},
 	},
 	{
-		name: "search_health",
-		description: "Check the quick-search lane health.",
-		timeout: 30000,
-		params: OBJ,
-	},
-	{
 		name: "greysearch",
-		description:
-			"Deep web research: multi-lane search plus full-page scraping; call ONCE for a research task rather than scraping pages yourself. args: query, max_results (optional).",
+		description: "Deep web research: search lanes plus full-page scraping. args: query, max_results(optional).",
 		timeout: 420000,
 		params: {
 			type: "object",
-			properties: {
-				query: { type: "string" },
-				max_results: { type: "integer" },
-			},
+			properties: { query: { type: "string" }, max_results: { type: "integer" } },
 			required: ["query"],
 		},
-		snippet:
-			"greysearch is the core deep-research capability (multi-lane search + page scraping). For any web research task, call it once instead of scraping pages yourself.",
-	},
-	{
-		name: "greysearch_health",
-		description: "Check the deep-research lane health.",
-		timeout: 30000,
-		params: OBJ,
+		snippet: "greysearch is the deep-research capability: for any web research task, call it once instead of scraping pages yourself.",
 	},
 	{
 		name: "browser_open",
-		description:
-			"Read ONE web page in a real headless chromium: {title, text, url_final, links, status}. http(s) urls only. args: url.",
+		description: "Read one web page in headless chromium. args: url. http(s) only.",
 		timeout: 180000,
 		params: {
 			type: "object",
@@ -241,14 +120,8 @@ const TOOLS: InternalTool[] = [
 		},
 	},
 	{
-		name: "browser_close",
-		description: "Free the shared browser opened by browser_open. Idempotent.",
-		timeout: 30000,
-		params: OBJ,
-	},
-	{
 		name: "memory_append",
-		description: "Save memory. args: content (string).",
+		description: "Save a memory entry. args: content.",
 		timeout: 15000,
 		params: {
 			type: "object",
@@ -258,7 +131,7 @@ const TOOLS: InternalTool[] = [
 	},
 	{
 		name: "memory_search",
-		description: "Search memory. args: query (string).",
+		description: "Search memory. args: query.",
 		timeout: 15000,
 		params: {
 			type: "object",
@@ -267,10 +140,24 @@ const TOOLS: InternalTool[] = [
 		},
 	},
 	{
-		name: "memory_read",
-		description: "Recent memory entries.",
-		timeout: 15000,
-		params: OBJ,
+		name: "terminal",
+		description: "Run a terminal command: bash on Linux, PowerShell on Windows. args: command, timeout(optional seconds).",
+		timeout: 3600000,
+		params: {
+			type: "object",
+			properties: { command: { type: "string" }, timeout: { type: "integer" } },
+			required: ["command"],
+		},
+	},
+	{
+		name: "powershell",
+		description: "Run a PowerShell command (pwsh Linux, powershell.exe Windows). args: command, timeout(optional seconds).",
+		timeout: 3600000,
+		params: {
+			type: "object",
+			properties: { command: { type: "string" }, timeout: { type: "integer" } },
+			required: ["command"],
+		},
 	},
 	{
 		name: "skills_list",
@@ -280,8 +167,7 @@ const TOOLS: InternalTool[] = [
 	},
 	{
 		name: "skill",
-		description:
-			"Read one local skill playbook in full. args: name (from skills_list).",
+		description: "Read one skill playbook in full. args: name (from skills_list).",
 		timeout: 15000,
 		params: {
 			type: "object",
