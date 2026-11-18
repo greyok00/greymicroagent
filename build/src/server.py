@@ -59,6 +59,8 @@ def open_ctx_default() -> int:
         ram = float(assumed) if assumed else probe_ram_gb()
     except ValueError:
         ram = probe_ram_gb()
+    if ram <= 4:
+        return 16384  # tablets: Helix 2 / Surface, 4 GB class
     return 32768 if ram <= 8 else 65536
 
 
@@ -67,7 +69,10 @@ FA = os.environ.get("GREYAGENT_FA", "on")  # owner 2026-10-24: fill the 16GB car
 # 2026-10-25 (owner: greymicroagent runs CPU-only): the 27B sibling holds the 16 GB
 # card, so this 2B cannot offload. NGL=0 = CPU+RAM mode — 11.7 tok/s decode
 # measured on this i7-12800H, the accepted price for running beside the 27B.
-NGL = int(os.environ.get("GREYAGENT_NGL", "-1"))
+# 2026-11-18 (owner: target devices = Lenovo Helix 2 + Surface, iGPU only,
+# LOW SYSTEM RESOURCE): the product is CPU+RAM by construction. The GPU
+# ladder is gone; GREYAGENT_NGL env can still force offload for tests.
+NGL = int(os.environ.get("GREYAGENT_NGL", "0") or 0)
 # 2026-10-25 (owner: "it's not giving any messages"): Qwen3.5 thinks by default.
 # On CPU at ~11 tok/s the reasoning stream ate the whole reply budget and the
 # OpenAI response came back with EMPTY content (finish_reason "length"), which

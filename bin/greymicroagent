@@ -287,7 +287,7 @@ while True:
     time.sleep(5)
 PY
     MODEL_PID=$!
-    echo "greymicroagent: model loading in background (qwen3-vl-2b-abliterated on :${MODEL_PORT}, ngl=${GREYAGENT_NGL:--1})"
+    echo "greymicroagent: model loading in background on :${MODEL_PORT}"
 fi
 if _up; then
   GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated  (up :${MODEL_PORT})"
