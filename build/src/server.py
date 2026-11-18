@@ -46,25 +46,7 @@ HOST = "127.0.0.1"
 # a 400 in normal use: the lane distills any single tool result over
 # SLIMTOKEN_DISTILL_MAX_CHARS (launcher, 24000 ≈ 6k tokens) and the TUI
 # auto-compacts at reserveTokens (8192) — two independent guards.
-def probe_ram_gb() -> float:
-    try:
-        return int(open("/proc/meminfo").readline().split()[1]) / 1048576
-    except Exception:
-        return 64.0
-
-
-def open_ctx_default() -> int:
-    assumed = os.environ.get("GREYMICROAGENT_ASSUME_RAM_GB")
-    try:
-        ram = float(assumed) if assumed else probe_ram_gb()
-    except ValueError:
-        ram = probe_ram_gb()
-    if ram <= 4:
-        return 16384  # tablets: Helix 2 / Surface, 4 GB class
-    return 32768 if ram <= 8 else 65536
-
-
-CTX = int(os.environ.get("GREYAGENT_CTX", str(open_ctx_default())))  # greymicroagent: 64k — the 2B hybrid's KV is tiny
+CTX = int(os.environ.get("GREYAGENT_CTX", "65536"))  # FIXED window, one configuration (owner law: CPU/RAM only, no ladder, no tiers).  # greymicroagent: 64k — the 2B hybrid's KV is tiny
 FA = os.environ.get("GREYAGENT_FA", "on")  # owner 2026-10-24: fill the 16GB card (hybrid model: KV is cheap); ladder steps down 16k until one fits
 # 2026-10-25 (owner: greymicroagent runs CPU-only): the 27B sibling holds the 16 GB
 # card, so this 2B cannot offload. NGL=0 = CPU+RAM mode — 11.7 tok/s decode
@@ -72,7 +54,7 @@ FA = os.environ.get("GREYAGENT_FA", "on")  # owner 2026-10-24: fill the 16GB car
 # 2026-11-18 (owner: target devices = Lenovo Helix 2 + Surface, iGPU only,
 # LOW SYSTEM RESOURCE): the product is CPU+RAM by construction. The GPU
 # ladder is gone; GREYAGENT_NGL env can still force offload for tests.
-NGL = int(os.environ.get("GREYAGENT_NGL", "0") or 0)
+NGL = int(os.environ.get("GREYAGENT_NGL", "0") or 0)  # CPU/RAM ONLY (owner law): baked 0; env override for tests, nothing automatic.
 # 2026-10-25 (owner: "it's not giving any messages"): Qwen3.5 thinks by default.
 # On CPU at ~11 tok/s the reasoning stream ate the whole reply budget and the
 # OpenAI response came back with EMPTY content (finish_reason "length"), which
@@ -154,45 +136,16 @@ def is_ready() -> bool:
 
 
 def start_model(timeout: float = 300.0) -> dict:
+    """Boot once with the fixed configuration. No ladder, no tiers, no
+    stepping down: a failed boot is a hard error naming what broke
+    (owner 2026-11-18: 'stop making tiers')."""
     global _proc
     if is_ready():
         return {"ok": True, "already": True}
-    # NO auto-kill in greymicroagent (owner 2026-10-25: sibling instances must never
-    # be killed by a sibling's boot; the launcher's VRAM gate REFUSES foreign
-    # holders instead — refuse-only policy).
-    # Fill-the-card ladder (owner 2026-10-24: "increase to 16gb ... greyagent
-    # takes vram precedence"): boot the largest window the card can hold.
-    # Each OOM costs one boot cycle only; the first size that stays up
-    # settles and is reused on the next boot. With the card to itself this
-    # lands near ~100k tokens; smaller steps exist for when VRAM is shared.
-    ctx_note = STATE / "model-ctx-settled.txt"
-    base = open_ctx_default()
-    candidates = sorted(set(list(range(base, 24576, -16384)) + [32768]), reverse=True)
-    # greymicroagent: 32k floor — the ladder stops AT 32768, never lower
-    # (owner 2026-10-25: 64k default; a shrunken window would re-introduce
-    # the overflow class, so the ladder never goes below half)
-    try:
-        settled = int(ctx_note.read_text().strip())
-        if 8192 <= settled and settled not in candidates:
-            # A previously settled size is a LAST-RESORT fallback: the big
-            # ladder is always tried first, so a fuller card still fills.
-            if settled < candidates[-1]:
-                candidates.append(settled)
-    except Exception:
-        pass
-    last_err = None
-    for ctx in candidates:
-        result = _boot_server(ctx, timeout)
-        if result.get("ok"):
-            try:
-                ctx_note.write_text(str(result.get("ctx") or ctx))
-            except Exception:
-                pass
-            return result
-        last_err = result.get("error")
-        if ctx == candidates[-1]:
-            break
-    return {"ok": False, "error": last_err or "no ctx size held"}
+    result = _boot_server(CTX, timeout)
+    if result.get("ok"):
+        return result
+    return result
 
 
 def _boot_server(ctx_size: int, timeout: float) -> dict:
