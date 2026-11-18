@@ -124,6 +124,10 @@ TOP_K = 10
 # --spec-type (draft-dflash etc. still need their own draft model).
 SPEC = os.environ.get("GREYMICROAGENT_SPEC", "ngram-mod").strip().lower()
 SPEC_ARGS = ([] if SPEC in ("", "off", "none", "0") else ["--spec-type", SPEC])
+# 2026-11-18 runaway guard: ngram spec drafting accelerates self-repeats,
+# so loops starve by penalty (env-off with GREYMICROAGENT_REPEAT_PENALTY=off).
+_RP = os.environ.get("GREYMICROAGENT_REPEAT_PENALTY", "1.05").strip().lower()
+_RPN = os.environ.get("GREYMICROAGENT_REPEAT_LAST_N", "256")
 if SPEC == "ngram-mod":
     SPEC_ARGS += ["--spec-ngram-mod-n-match", os.environ.get("GREYMICROAGENT_SPEC_NMATCH", "24"),
                   "--spec-ngram-mod-n-min", os.environ.get("GREYMICROAGENT_SPEC_NMIN", "48"),
@@ -211,6 +215,8 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--jinja",
         *([] if THINKING == "on" else ["--reasoning", "off"]),
         *SPEC_ARGS,
+        *([] if _RP in ("", "off", "none", "0") else ["--repeat-penalty", _RP]),
+        *([] if _RP in ("", "off", "none", "0") else ["--repeat-last-n", _RPN]),
         "--alias", "greymicroagent",
     ]
     log = open(STATE / "model-server.log", "ab")

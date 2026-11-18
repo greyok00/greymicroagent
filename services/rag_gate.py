@@ -314,6 +314,22 @@ def _clamp(req):
     req["temperature"] = _band(s if s is not None else DEFAULT_TEMP)
 
 
+
+_RUNAWAY_CAP = int(os.environ.get("GREYMICROAGENT_MAX_TOKENS", "8192") or 8192)
+
+
+def _cap_tokens(req):
+    # 2026-11-18 (owner: silent runaway at ~750 tok/s): a repetition loop
+    # inside reasoning generated 27k+ invisible tokens because ngram
+    # speculative drafting accelerates self-repeats and no max_tokens was
+    # set. The gate caps every request so no generation can run forever.
+    try:
+        n = int(req.get("max_tokens"))
+    except (TypeError, ValueError):
+        n = None
+    req["max_tokens"] = _RUNAWAY_CAP if n is None or n <= 0 else min(n, _RUNAWAY_CAP)
+
+
 def _clamp_carrier(ch):
     if "temperature" not in ch:
         return
@@ -329,11 +345,13 @@ def _build(body):
     if not isinstance(req, dict) or not isinstance(req.get("messages"), list):
         return 400, b'{"error":"no messages array"}'
     _clamp(req)
+    _cap_tokens(req)
     msg = _grounding(req)
     req["messages"].append(msg)
     for ch in req.get("choices") or []:
         if isinstance(ch, dict) and isinstance(ch.get("messages"), list):
             _clamp_carrier(ch)
+            _cap_tokens(ch)
             ch["messages"].append(msg)
     return 0, json.dumps(req, ensure_ascii=False).encode("utf-8")
 
