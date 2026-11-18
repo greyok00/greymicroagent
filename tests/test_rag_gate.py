@@ -32,6 +32,26 @@ def test_grounding_block_injected(tmp_path, monkeypatch):
     last = json.loads(out)["messages"][-1]["content"]
     assert "[KB:commands#1 score=" in last and "robocopy" in last
 
+def test_grounding_searches_dbs_in_order(tmp_path, monkeypatch):
+    import rag.kbcore as kb
+    dbs = tmp_path / "dbs"; dbs.mkdir()
+    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(dbs))
+    monkeypatch.setenv("GREYLOCALRAG_DBS", "commands,general")
+    monkeypatch.setenv("GREYLOCALRAG_RAG_FLOOR", "0.0")
+    body = json.dumps({"model": "greylocalrag",
+                       "messages": [{"role": "user",
+                                     "content": "what does robocopy /MIR do and how should claims be ordered"}]})
+    for name, text in (("commands", "robocopy /MIR mirrors a source tree completely."),
+                       ("general", "claim ordering advice: order the claims first, then the ordered evidence that holds them.")):
+        db = kb.db_dir(name); kb.init_db(db, note="t")
+        kb.add_records(db, kb.records_from(text, {"t": name, "src": "t", "url": "u", "date": "d"}), enc=None)
+    code, out = rag_gate.handle(body.encode(), "/v1/chat/completions", "http://127.0.0.1:1")
+    last = json.loads(out)["messages"][-1]["content"]
+    first = last.index("[KB:")
+    second = last.index("[KB:", first + 1)
+    assert last[first:second].startswith("[KB:commands#") and "[KB:general#" in last
+    assert "robocopy" in last and "claim" in last
+
 def test_no_request_logging(tmp_path):
     assert not list(tmp_path.rglob("*.log"))
 

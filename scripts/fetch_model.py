@@ -28,6 +28,8 @@ _env_src = os.environ.get(SOURCE_BLOB_ENV)
 SOURCE_BLOB = _env_src if _env_src else SOURCE_BLOB_DEFAULT
 REPAIR_KEY = "qwen3vl.rope.dimension_sections"
 REPAIR_VALUE = [24, 20, 20, 0]
+CHAT_TEMPLATE_KEY = "tokenizer.chat_template"
+CHAT_TEMPLATE_VALUE = "{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|' + message['role'] + '|>' + '\\n' + message['content'].strip() + '\\n<|end|>\\n' %}{{ content }}{% endfor %}{% if add_generation_prompt %}{% if enable_thinking %}<|begin_of_thinking|>{% else %}<|begin_of_response|>{% endif %}{% endif %}"
 DEEPSTACK_KEY = "qwen3vl.num_deepstack_layers"
 VISION_PREFIX = "qwen3vl.vision."
 FILE_TYPE_F16 = 1
@@ -107,6 +109,7 @@ def build_fused(out_path):
         writer.add_key_value(field.name, field.contents(), field.types[0],
                              sub_type=field.types[-1] if field.types[0] == gguf.GGUFValueType.ARRAY else None)
     writer.add_key_value(REPAIR_KEY, REPAIR_VALUE, gguf.GGUFValueType.ARRAY, sub_type=gguf.GGUFValueType.INT32)
+    writer.add_key_value(CHAT_TEMPLATE_KEY, CHAT_TEMPLATE_VALUE, gguf.GGUFValueType.STRING, sub_type=None)
     for t in reader.tensors:
         writer.add_tensor_info(t.name, t.data.shape, t.data.dtype, t.data.nbytes, t.tensor_type)
     writer.write_header_to_file()
@@ -120,6 +123,8 @@ def build_fused(out_path):
     src_kv = kv_map(reader)
     assert out_kv[REPAIR_KEY] == REPAIR_VALUE, "repair key bad"
     del out_kv[REPAIR_KEY]
+    assert out_kv[CHAT_TEMPLATE_KEY] == CHAT_TEMPLATE_VALUE, "chat template bad"
+    del out_kv[CHAT_TEMPLATE_KEY]
     assert set(src_kv) == set(out_kv), "kv keys lost"
     for k in src_kv:
         assert out_kv[k] == src_kv[k], "kv drift on %s" % k

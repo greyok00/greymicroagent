@@ -33,3 +33,11 @@ def test_floor_calibration_artifact_agrees_when_present():
     band = data["max_margin_band"]
     assert band and min(band) <= 19.0 <= max(band) + 0.01
     assert data["summary"]["clean_max"] == 0.0
+
+
+def test_dbs_default_covers_commands_and_general():
+    text = LAUNCHER.read_text(encoding="utf-8")
+    m = re.search(r'GREYLOCALRAG_DBS="?([^"\n]+)"?', text)
+    assert m, "launcher must export GREYLOCALRAG_DBS"
+    names = [x.strip() for x in m.group(1).split(",") if x.strip()]
+    assert names[0] == "commands" and names[1] == "general"
