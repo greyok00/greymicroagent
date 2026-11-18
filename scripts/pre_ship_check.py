@@ -28,16 +28,12 @@ REQUIRED_FILES = [
     ("THIRD-PARTY-NOTICES.txt", "third-party license notices"),
     ("state/MANIFEST.json", "frozen-tree manifest"),
     ("bin/greymicroagent", "launcher"),
-    ("config-data/mcp-registry-template.json",
-     "first-launch MCP registry template"),
-    ("config-data/extensions/rag.ts", "shipped TUI extension record"),
+        ("config-data/extensions/rag.ts", "shipped TUI extension record"),
     ("config-data/extensions/loop-guard.ts", "shipped TUI extension record"),
     ("config-data/extensions/internal_tools.ts", "shipped TUI extension record"),
     ("config-data/extensions/lib/shared.ts",
      "shared extension lib rides with the shipped record"),
 ]
-REGISTRY_TMPL_REL = "config-data/mcp-registry-template.json"
-REGISTRY_SERVER_NAMES = ("memory", "knowledge", "greysearch", "browser")
 BINARY_MAX = 512 * 1024 * 1024
 CHUNK = 32 * 1024 * 1024
 OVERLAP = 64
@@ -122,48 +118,6 @@ def symlink_findings(root, rel, target):
     abs_res = os.path.normpath(os.path.join(base, target))
     if not abs_res.startswith(str(root) + os.sep) and abs_res != str(root):
         return ["%s: symlink escapes the payload: %s" % (rel, target)]
-    return []
-
-
-def registry_template_findings(root):
-    path = root / REGISTRY_TMPL_REL
-    if not path.is_file():
-        return ["missing MCP registry template: %s (first-launch seeding cannot run)"
-                % REGISTRY_TMPL_REL]
-    text = path.read_text(encoding="utf-8", errors="ignore")
-    if "/home/" in text:
-        return ["MCP registry template carries a host path: %s" % REGISTRY_TMPL_REL]
-    try:
-        data = json.loads(text)
-    except ValueError:
-        return ["MCP registry template is not valid json: %s" % REGISTRY_TMPL_REL]
-    servers = data.get("servers")
-    if not isinstance(servers, list):
-        return ["MCP registry template has no servers list: %s" % REGISTRY_TMPL_REL]
-    names = []
-    for entry in servers:
-        if not isinstance(entry, dict):
-            return ["MCP registry template server entry is not an object: %s"
-                    % REGISTRY_TMPL_REL]
-        name = entry.get("name")
-        names.append(name)
-        if entry.get("command") != "python3" or not entry.get("args"):
-            return ["MCP registry template server %s is not a python3 argv entry"
-                    % name]
-        for arg in entry["args"]:
-            if not isinstance(arg, str):
-                return ["MCP registry template server %s carries a non-string arg"
-                        % name]
-            if arg.startswith("/home/"):
-                return ["MCP registry template carries a host path: %s"
-                        % REGISTRY_TMPL_REL]
-            if arg.startswith("/") and not arg.startswith("/opt/greymicroagent/"):
-                return ["MCP registry template server %s arg %s is outside the "
-                        "/opt/greymicroagent install root" % (name, arg)]
-    missing = [n for n in REGISTRY_SERVER_NAMES if n not in names]
-    if missing:
-        return ["MCP registry template is missing server entries: %s"
-                % ", ".join(missing)]
     return []
 
 
@@ -292,7 +246,6 @@ def main(argv):
         if "7640-7647" not in ptxt:
             findings.append("port policy does not declare the 7640-7647 fork block")
 
-    findings.extend(registry_template_findings(root))
 
     smoke_findings, smoke_evidence = import_smoke(root)
     for line in smoke_evidence:

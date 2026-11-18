@@ -125,9 +125,8 @@ export CORTEX_TELEMETRY=0
 export CORTEXAGENT_MEMORY_DIR="$HOME/.greymicroagent/memory"
 export CORTEXAGENT_STATE_DIR="$HOME/.greymicroagent/state"
 export CORTEXAGENT_STATUS_DIR="$HOME/.greymicroagent/mcp-status"
-# The memory MCP server (.so) reads DIFFERENT env names (GREYAGENT_PLATFORM /
-# GREYAGENT_MEMORY_DIR); set them too so every memory consumer agrees on the
-# fork home even if a module's baked default is ever bypassed.
+# Memory tools (internal, no servers) agree on the fork home through these
+# env names even if a module's baked default is ever bypassed.
 export GREYAGENT_PLATFORM="greymicroagent"
 export GREYAGENT_MEMORY_DIR="$HOME/.greymicroagent/memory"
 # The brain's base URL is set ONCE here (the GATE's /v1 when the chain came
@@ -334,21 +333,6 @@ elif [ ! -d "$_ext_src" ]; then
   echo "greymicroagent: extension record missing - extensions will not load" >&2
 fi
 
-_seed_mcp_registry() {
-  local reg="$HOME/.greymicroagent/agent/mcp_registry.json"
-  local tpl="$ROOT/config-data/mcp-registry-template.json"
-  if [ -f "$reg" ]; then
-    return 0
-  fi
-  if [ ! -f "$tpl" ]; then
-    echo "greymicroagent: MCP registry template missing (config-data/mcp-registry-template.json) - registry not seeded" >&2
-    return 0
-  fi
-  mkdir -p "$HOME/.greymicroagent/agent"
-  cp "$tpl" "$reg"
-  echo "greymicroagent: seeded ~/.greymicroagent/agent/mcp_registry.json from the bundled template (first launch)"
-}
-_seed_mcp_registry
 
 node "$CLI" --append-system-prompt "$ROOT/model/greymicroagent.md" "$@"
 printf '%s\n' "greymicroagent session ended"
