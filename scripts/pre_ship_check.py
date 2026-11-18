@@ -22,12 +22,12 @@ SERVICE_PY_WHITELIST = [
     "services/supervision/supervisor.py",
 ]
 REQUIRED_FILES = [
-    ("model/greylocalrag.txt", "model card ships as .txt"),
+    ("model/greymicroagent.txt", "model card ships as .txt"),
     ("config-data/port_policy.json", "fork port policy ships with the payload"),
     ("README.md", "product README"),
     ("THIRD-PARTY-NOTICES.txt", "third-party license notices"),
     ("state/MANIFEST.json", "frozen-tree manifest"),
-    ("bin/greylocalrag", "launcher"),
+    ("bin/greymicroagent", "launcher"),
     ("config-data/mcp-registry-template.json",
      "first-launch MCP registry template"),
     ("config-data/extensions/rag.ts", "shipped TUI extension record"),
@@ -85,7 +85,7 @@ def law_findings(p, rel, vendored):
 def comment_findings(rel, path, vendored):
     if vendored:
         return []
-    if not (rel.endswith(".sh") or rel == "bin/greylocalrag"):
+    if not (rel.endswith(".sh") or rel == "bin/greymicroagent"):
         return []
     out = []
     try:
@@ -157,9 +157,9 @@ def registry_template_findings(root):
             if arg.startswith("/home/"):
                 return ["MCP registry template carries a host path: %s"
                         % REGISTRY_TMPL_REL]
-            if arg.startswith("/") and not arg.startswith("/opt/greylocalrag/"):
+            if arg.startswith("/") and not arg.startswith("/opt/greymicroagent/"):
                 return ["MCP registry template server %s arg %s is outside the "
-                        "/opt/greylocalrag install root" % (name, arg)]
+                        "/opt/greymicroagent install root" % (name, arg)]
     missing = [n for n in REGISTRY_SERVER_NAMES if n not in names]
     if missing:
         return ["MCP registry template is missing server entries: %s"
@@ -277,15 +277,15 @@ def main(argv):
         if not (root / required).is_file():
             findings.append("missing required payload file: %s (%s)" % (required, why))
 
-    launcher = root / "bin" / "greylocalrag"
+    launcher = root / "bin" / "greymicroagent"
     if launcher.is_file():
         ltxt = launcher.read_text(encoding="utf-8", errors="ignore")
-        if "model/greylocalrag.txt" not in ltxt:
-            findings.append("launcher does not point the card at model/greylocalrag.txt")
-        if "model/greylocalrag.md" in ltxt:
+        if "model/greymicroagent.txt" not in ltxt:
+            findings.append("launcher does not point the card at model/greymicroagent.txt")
+        if "model/greymicroagent.md" in ltxt:
             findings.append("launcher still points at the dev card name .md")
-        if "GREYLOCALRAG_MODEL_PATH" not in ltxt:
-            findings.append("launcher does not export GREYLOCALRAG_MODEL_PATH (home-resolved model path)")
+        if "GREYMICROAGENT_MODEL_PATH" not in ltxt:
+            findings.append("launcher does not export GREYMICROAGENT_MODEL_PATH (home-resolved model path)")
     policy = root / "config-data" / "port_policy.json"
     if policy.is_file():
         ptxt = policy.read_text(encoding="utf-8", errors="ignore")

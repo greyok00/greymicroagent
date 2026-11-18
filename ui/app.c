@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "ui.app",
+        "name": "app",
         "sources": [
-            "ui/app.py"
+            "app.py"
         ]
     },
-    "module_name": "ui.app"
+    "module_name": "app"
 }
 END: Cython Metadata */
 
@@ -1137,8 +1137,8 @@ static int __Pyx_init_co_variables(void) {
   #endif
 #endif
 
-#define __PYX_HAVE__ui__app
-#define __PYX_HAVE_API__ui__app
+#define __PYX_HAVE__app
+#define __PYX_HAVE_API__app
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -1356,7 +1356,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "ui/app.py",
+  "app.py",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* Atomics.proto (used by UnpackUnboundCMethod) */
@@ -1533,18 +1533,18 @@ static const char* const __pyx_f[] = {
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr;
-struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit;
-struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr;
+struct __pyx_obj_3app___pyx_scope_struct__genexpr;
+struct __pyx_obj_3app___pyx_scope_struct_1_submit;
+struct __pyx_obj_3app___pyx_scope_struct_2_genexpr;
 
-/* "ui/app.py":49
+/* "app.py":49
  *         try:
  *             with open(HOT_FILE, "r") as fh:
  *                 count = sum(1 for _ in fh)             # <<<<<<<<<<<<<<
  *         except Exception:
  *             count = 0
 */
-struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr {
+struct __pyx_obj_3app___pyx_scope_struct__genexpr {
   PyObject_HEAD
   PyObject *__pyx_genexpr_arg_0;
   PyObject *__pyx_v__;
@@ -1554,27 +1554,27 @@ struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr {
 };
 
 
-/* "ui/app.py":111
+/* "app.py":111
  * 
  * 
  * def submit(text: str) -> None:             # <<<<<<<<<<<<<<
  *     log_write("> " + text)
  *     if text.strip() == "/tools":
 */
-struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit {
+struct __pyx_obj_3app___pyx_scope_struct_1_submit {
   PyObject_HEAD
   PyObject *__pyx_v_text;
 };
 
 
-/* "ui/app.py":115
+/* "app.py":115
  *     if text.strip() == "/tools":
  *         from core.registry import list_tools
  *         log_write(", ".join(t["name"] for t in list_tools(stub=False)))             # <<<<<<<<<<<<<<
  *         return
  * 
 */
-struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr {
+struct __pyx_obj_3app___pyx_scope_struct_2_genexpr {
   PyObject_HEAD
   PyObject *__pyx_genexpr_arg_0;
   PyObject *__pyx_v_t;
@@ -2673,37 +2673,37 @@ static int __Pyx_State_RemoveModule(void*);
 #define __PYX_TYPE_MODULE_PREFIX __PYX_ABI_MODULE_NAME "."
 
 
-/* Module declarations from "ui.app" */
+/* Module declarations from "app" */
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "ui.app"
-extern int __pyx_module_is_main_ui__app;
-int __pyx_module_is_main_ui__app = 0;
+#define __Pyx_MODULE_NAME "app"
+extern int __pyx_module_is_main_app;
+int __pyx_module_is_main_app = 0;
 
-/* Implementation of "ui.app" */
+/* Implementation of "app" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_open;
 static PyObject *__pyx_builtin_sum;
 static PyObject *__pyx_builtin_print;
 /* #### Code section: string_decls ### */
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_2ui_3app_erase(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_2ui_3app_2erase(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_2ui_3app_11ticker_text_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
-static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text); /* proto */
-static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_2ui_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_3app_erase(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_3app_2erase(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_3app_11ticker_text_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
+static PyObject *__pyx_pf_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text); /* proto */
+static PyObject *__pyx_pf_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_ev); /* proto */
-static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_2ui_3app_6submit_2genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
-static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text); /* proto */
-static PyObject *__pyx_pf_2ui_3app_16ctrl_quit(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v__a); /* proto */
-static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_tp_new_2ui_3app___pyx_scope_struct__genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_2ui_3app___pyx_scope_struct_1_submit(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_2ui_3app___pyx_scope_struct_2_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_pf_3app_6submit_run_turn(PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_3app_6submit_2genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0); /* proto */
+static PyObject *__pyx_pf_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text); /* proto */
+static PyObject *__pyx_pf_3app_16ctrl_quit(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v__a); /* proto */
+static PyObject *__pyx_pf_3app_18main(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_tp_new_3app___pyx_scope_struct__genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_3app___pyx_scope_struct_1_submit(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_3app___pyx_scope_struct_2_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2724,12 +2724,12 @@ typedef struct {
   PyObject *__pyx_empty_tuple;
   PyObject *__pyx_empty_bytes;
   PyObject *__pyx_empty_unicode;
-  PyObject *__pyx_type_2ui_3app___pyx_scope_struct__genexpr;
-  PyObject *__pyx_type_2ui_3app___pyx_scope_struct_1_submit;
-  PyObject *__pyx_type_2ui_3app___pyx_scope_struct_2_genexpr;
-  PyTypeObject *__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr;
-  PyTypeObject *__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit;
-  PyTypeObject *__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr;
+  PyObject *__pyx_type_3app___pyx_scope_struct__genexpr;
+  PyObject *__pyx_type_3app___pyx_scope_struct_1_submit;
+  PyObject *__pyx_type_3app___pyx_scope_struct_2_genexpr;
+  PyTypeObject *__pyx_ptype_3app___pyx_scope_struct__genexpr;
+  PyTypeObject *__pyx_ptype_3app___pyx_scope_struct_1_submit;
+  PyTypeObject *__pyx_ptype_3app___pyx_scope_struct_2_genexpr;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_items;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
@@ -2753,18 +2753,18 @@ PyTypeObject *__pyx_CyFunctionType;
 
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *__pyx_freelist_2ui_3app___pyx_scope_struct__genexpr[8];
-int __pyx_freecount_2ui_3app___pyx_scope_struct__genexpr;
+struct __pyx_obj_3app___pyx_scope_struct__genexpr *__pyx_freelist_3app___pyx_scope_struct__genexpr[8];
+int __pyx_freecount_3app___pyx_scope_struct__genexpr;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit *__pyx_freelist_2ui_3app___pyx_scope_struct_1_submit[8];
-int __pyx_freecount_2ui_3app___pyx_scope_struct_1_submit;
+struct __pyx_obj_3app___pyx_scope_struct_1_submit *__pyx_freelist_3app___pyx_scope_struct_1_submit[8];
+int __pyx_freecount_3app___pyx_scope_struct_1_submit;
 #endif
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *__pyx_freelist_2ui_3app___pyx_scope_struct_2_genexpr[8];
-int __pyx_freecount_2ui_3app___pyx_scope_struct_2_genexpr;
+struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *__pyx_freelist_3app___pyx_scope_struct_2_genexpr[8];
+int __pyx_freecount_3app___pyx_scope_struct_2_genexpr;
 #endif
 /* CodeObjectCache.module_state_decls */
 struct __Pyx_CodeObjectCache __pyx_code_cache;
@@ -2833,28 +2833,28 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u__8 __pyx_string_tab[28]
 #define __pyx_kp_u__9 __pyx_string_tab[29]
 #define __pyx_kp_u_add_note __pyx_string_tab[30]
-#define __pyx_kp_u_comp_in __pyx_string_tab[31]
-#define __pyx_kp_u_comp_lossless __pyx_string_tab[32]
-#define __pyx_kp_u_disable __pyx_string_tab[33]
-#define __pyx_kp_u_e __pyx_string_tab[34]
-#define __pyx_kp_u_enable __pyx_string_tab[35]
-#define __pyx_kp_u_gc __pyx_string_tab[36]
-#define __pyx_kp_u_greyagent_needs_a_terminal __pyx_string_tab[37]
-#define __pyx_kp_u_isenabled __pyx_string_tab[38]
-#define __pyx_kp_u_kept __pyx_string_tab[39]
-#define __pyx_kp_u_mem __pyx_string_tab[40]
-#define __pyx_kp_u_mem_2 __pyx_string_tab[41]
-#define __pyx_kp_u_mem_n_a __pyx_string_tab[42]
-#define __pyx_kp_u_memory_sock __pyx_string_tab[43]
-#define __pyx_kp_u_model_s __pyx_string_tab[44]
-#define __pyx_kp_u_model_unavailable_start_the_mode __pyx_string_tab[45]
-#define __pyx_kp_u_new_session __pyx_string_tab[46]
-#define __pyx_kp_u_r __pyx_string_tab[47]
-#define __pyx_kp_u_sched __pyx_string_tab[48]
-#define __pyx_kp_u_tool_s __pyx_string_tab[49]
-#define __pyx_kp_u_tools __pyx_string_tab[50]
-#define __pyx_kp_u_tools_reloaded_d __pyx_string_tab[51]
-#define __pyx_kp_u_ui_app_py __pyx_string_tab[52]
+#define __pyx_kp_u_app_py __pyx_string_tab[31]
+#define __pyx_kp_u_comp_in __pyx_string_tab[32]
+#define __pyx_kp_u_comp_lossless __pyx_string_tab[33]
+#define __pyx_kp_u_disable __pyx_string_tab[34]
+#define __pyx_kp_u_e __pyx_string_tab[35]
+#define __pyx_kp_u_enable __pyx_string_tab[36]
+#define __pyx_kp_u_gc __pyx_string_tab[37]
+#define __pyx_kp_u_greyagent_needs_a_terminal __pyx_string_tab[38]
+#define __pyx_kp_u_isenabled __pyx_string_tab[39]
+#define __pyx_kp_u_kept __pyx_string_tab[40]
+#define __pyx_kp_u_mem __pyx_string_tab[41]
+#define __pyx_kp_u_mem_2 __pyx_string_tab[42]
+#define __pyx_kp_u_mem_n_a __pyx_string_tab[43]
+#define __pyx_kp_u_memory_sock __pyx_string_tab[44]
+#define __pyx_kp_u_model_s __pyx_string_tab[45]
+#define __pyx_kp_u_model_unavailable_start_the_mode __pyx_string_tab[46]
+#define __pyx_kp_u_new_session __pyx_string_tab[47]
+#define __pyx_kp_u_r __pyx_string_tab[48]
+#define __pyx_kp_u_sched __pyx_string_tab[49]
+#define __pyx_kp_u_tool_s __pyx_string_tab[50]
+#define __pyx_kp_u_tools __pyx_string_tab[51]
+#define __pyx_kp_u_tools_reloaded_d __pyx_string_tab[52]
 #define __pyx_kp_u_utf_8 __pyx_string_tab[53]
 #define __pyx_n_u_AF_UNIX __pyx_string_tab[54]
 #define __pyx_n_u_H __pyx_string_tab[55]
@@ -2878,163 +2878,163 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u__21 __pyx_string_tab[73]
 #define __pyx_n_u_a_2 __pyx_string_tab[74]
 #define __pyx_n_u_annotate __pyx_string_tab[75]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[76]
-#define __pyx_n_u_attrs __pyx_string_tab[77]
-#define __pyx_n_u_bool __pyx_string_tab[78]
-#define __pyx_n_u_buf __pyx_string_tab[79]
-#define __pyx_n_u_buffer __pyx_string_tab[80]
-#define __pyx_n_u_c __pyx_string_tab[81]
-#define __pyx_n_u_ch __pyx_string_tab[82]
-#define __pyx_n_u_check_sessions __pyx_string_tab[83]
-#define __pyx_n_u_class_getitem __pyx_string_tab[84]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[85]
-#define __pyx_n_u_close __pyx_string_tab[86]
-#define __pyx_n_u_col __pyx_string_tab[87]
-#define __pyx_n_u_cols __pyx_string_tab[88]
-#define __pyx_n_u_columns __pyx_string_tab[89]
-#define __pyx_n_u_comp __pyx_string_tab[90]
-#define __pyx_n_u_comp_box __pyx_string_tab[91]
-#define __pyx_n_u_compact_splash_lines __pyx_string_tab[92]
-#define __pyx_n_u_compression_stats __pyx_string_tab[93]
-#define __pyx_n_u_connect __pyx_string_tab[94]
-#define __pyx_n_u_content __pyx_string_tab[95]
-#define __pyx_n_u_core __pyx_string_tab[96]
-#define __pyx_n_u_core_loop __pyx_string_tab[97]
-#define __pyx_n_u_core_registry __pyx_string_tab[98]
-#define __pyx_n_u_core_wiring __pyx_string_tab[99]
-#define __pyx_n_u_count __pyx_string_tab[100]
-#define __pyx_n_u_ctrl_quit __pyx_string_tab[101]
-#define __pyx_n_u_d __pyx_string_tab[102]
-#define __pyx_n_u_daemon __pyx_string_tab[103]
-#define __pyx_n_u_daemon_ok __pyx_string_tab[104]
-#define __pyx_n_u_decode __pyx_string_tab[105]
-#define __pyx_n_u_direct __pyx_string_tab[106]
-#define __pyx_n_u_done __pyx_string_tab[107]
-#define __pyx_n_u_enter __pyx_string_tab[108]
-#define __pyx_n_u_entry __pyx_string_tab[109]
-#define __pyx_n_u_erase __pyx_string_tab[110]
-#define __pyx_n_u_error __pyx_string_tab[111]
-#define __pyx_n_u_errors __pyx_string_tab[112]
-#define __pyx_n_u_ev __pyx_string_tab[113]
-#define __pyx_n_u_exists __pyx_string_tab[114]
-#define __pyx_n_u_exit __pyx_string_tab[115]
-#define __pyx_n_u_fd __pyx_string_tab[116]
-#define __pyx_n_u_fh __pyx_string_tab[117]
-#define __pyx_n_u_file __pyx_string_tab[118]
-#define __pyx_n_u_fileno __pyx_string_tab[119]
-#define __pyx_n_u_flush __pyx_string_tab[120]
-#define __pyx_n_u_func __pyx_string_tab[121]
-#define __pyx_n_u_genexpr __pyx_string_tab[122]
-#define __pyx_n_u_get __pyx_string_tab[123]
-#define __pyx_n_u_get_terminal_size __pyx_string_tab[124]
-#define __pyx_n_u_getsignal __pyx_string_tab[125]
-#define __pyx_n_u_i __pyx_string_tab[126]
-#define __pyx_n_u_idle __pyx_string_tab[127]
-#define __pyx_n_u_ignore __pyx_string_tab[128]
-#define __pyx_n_u_insert __pyx_string_tab[129]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[130]
-#define __pyx_n_u_is_ready __pyx_string_tab[131]
-#define __pyx_n_u_isatty __pyx_string_tab[132]
-#define __pyx_n_u_items __pyx_string_tab[133]
-#define __pyx_n_u_lambda __pyx_string_tab[134]
-#define __pyx_n_u_last_in __pyx_string_tab[135]
-#define __pyx_n_u_last_kept __pyx_string_tab[136]
-#define __pyx_n_u_line __pyx_string_tab[137]
-#define __pyx_n_u_lines __pyx_string_tab[138]
-#define __pyx_n_u_list __pyx_string_tab[139]
-#define __pyx_n_u_list_tools __pyx_string_tab[140]
-#define __pyx_n_u_llm __pyx_string_tab[141]
-#define __pyx_n_u_llm_mod __pyx_string_tab[142]
-#define __pyx_n_u_loading __pyx_string_tab[143]
-#define __pyx_n_u_log_write __pyx_string_tab[144]
-#define __pyx_n_u_main __pyx_string_tab[145]
-#define __pyx_n_u_main_2 __pyx_string_tab[146]
-#define __pyx_n_u_mem_box __pyx_string_tab[147]
-#define __pyx_n_u_model_box __pyx_string_tab[148]
-#define __pyx_n_u_model_server __pyx_string_tab[149]
-#define __pyx_n_u_module __pyx_string_tab[150]
-#define __pyx_n_u_n __pyx_string_tab[151]
-#define __pyx_n_u_name __pyx_string_tab[152]
-#define __pyx_n_u_name_2 __pyx_string_tab[153]
-#define __pyx_n_u_next __pyx_string_tab[154]
-#define __pyx_n_u_old_int __pyx_string_tab[155]
-#define __pyx_n_u_old_term __pyx_string_tab[156]
-#define __pyx_n_u_on_event __pyx_string_tab[157]
-#define __pyx_n_u_open __pyx_string_tab[158]
-#define __pyx_n_u_os __pyx_string_tab[159]
-#define __pyx_n_u_output __pyx_string_tab[160]
-#define __pyx_n_u_parent __pyx_string_tab[161]
-#define __pyx_n_u_path __pyx_string_tab[162]
-#define __pyx_n_u_pathlib __pyx_string_tab[163]
-#define __pyx_n_u_pop __pyx_string_tab[164]
-#define __pyx_n_u_print __pyx_string_tab[165]
-#define __pyx_n_u_print_lock __pyx_string_tab[166]
-#define __pyx_n_u_prompt __pyx_string_tab[167]
-#define __pyx_n_u_qualname __pyx_string_tab[168]
-#define __pyx_n_u_r_2 __pyx_string_tab[169]
-#define __pyx_n_u_ratio __pyx_string_tab[170]
-#define __pyx_n_u_read __pyx_string_tab[171]
-#define __pyx_n_u_read_last __pyx_string_tab[172]
-#define __pyx_n_u_register_all __pyx_string_tab[173]
-#define __pyx_n_u_resolve __pyx_string_tab[174]
-#define __pyx_n_u_return __pyx_string_tab[175]
-#define __pyx_n_u_rows __pyx_string_tab[176]
-#define __pyx_n_u_run __pyx_string_tab[177]
-#define __pyx_n_u_run_turn __pyx_string_tab[178]
-#define __pyx_n_u_select __pyx_string_tab[179]
-#define __pyx_n_u_send __pyx_string_tab[180]
-#define __pyx_n_u_services_memory_thin __pyx_string_tab[181]
-#define __pyx_n_u_services_scheduler_store __pyx_string_tab[182]
-#define __pyx_n_u_set_name __pyx_string_tab[183]
-#define __pyx_n_u_setcbreak __pyx_string_tab[184]
-#define __pyx_n_u_setdefault __pyx_string_tab[185]
-#define __pyx_n_u_settimeout __pyx_string_tab[186]
-#define __pyx_n_u_shade __pyx_string_tab[187]
-#define __pyx_n_u_shutil __pyx_string_tab[188]
-#define __pyx_n_u_signal __pyx_string_tab[189]
-#define __pyx_n_u_size __pyx_string_tab[190]
-#define __pyx_n_u_sleep __pyx_string_tab[191]
-#define __pyx_n_u_sock __pyx_string_tab[192]
-#define __pyx_n_u_socket __pyx_string_tab[193]
-#define __pyx_n_u_socket_2 __pyx_string_tab[194]
-#define __pyx_n_u_spin __pyx_string_tab[195]
-#define __pyx_n_u_splash_lines __pyx_string_tab[196]
-#define __pyx_n_u_start __pyx_string_tab[197]
-#define __pyx_n_u_state __pyx_string_tab[198]
-#define __pyx_n_u_state_2 __pyx_string_tab[199]
-#define __pyx_n_u_status __pyx_string_tab[200]
-#define __pyx_n_u_stdin __pyx_string_tab[201]
-#define __pyx_n_u_stdout __pyx_string_tab[202]
-#define __pyx_n_u_str __pyx_string_tab[203]
-#define __pyx_n_u_strip __pyx_string_tab[204]
-#define __pyx_n_u_stub __pyx_string_tab[205]
-#define __pyx_n_u_submit __pyx_string_tab[206]
-#define __pyx_n_u_submit_locals_genexpr __pyx_string_tab[207]
-#define __pyx_n_u_submit_locals_run_turn __pyx_string_tab[208]
-#define __pyx_n_u_submit_locals_run_turn_locals_la __pyx_string_tab[209]
-#define __pyx_n_u_sum __pyx_string_tab[210]
-#define __pyx_n_u_sys __pyx_string_tab[211]
-#define __pyx_n_u_t __pyx_string_tab[212]
-#define __pyx_n_u_target __pyx_string_tab[213]
-#define __pyx_n_u_tcgetattr __pyx_string_tab[214]
-#define __pyx_n_u_tcsetattr __pyx_string_tab[215]
-#define __pyx_n_u_termios __pyx_string_tab[216]
-#define __pyx_n_u_test __pyx_string_tab[217]
-#define __pyx_n_u_text __pyx_string_tab[218]
-#define __pyx_n_u_threading __pyx_string_tab[219]
-#define __pyx_n_u_throw __pyx_string_tab[220]
-#define __pyx_n_u_ticker_loop __pyx_string_tab[221]
-#define __pyx_n_u_ticker_row __pyx_string_tab[222]
-#define __pyx_n_u_ticker_text __pyx_string_tab[223]
-#define __pyx_n_u_ticker_text_locals_genexpr __pyx_string_tab[224]
-#define __pyx_n_u_ticker_write __pyx_string_tab[225]
-#define __pyx_n_u_time __pyx_string_tab[226]
-#define __pyx_n_u_tokens_in __pyx_string_tab[227]
-#define __pyx_n_u_tokens_kept __pyx_string_tab[228]
-#define __pyx_n_u_tokens_per_second __pyx_string_tab[229]
-#define __pyx_n_u_tps __pyx_string_tab[230]
-#define __pyx_n_u_tty __pyx_string_tab[231]
-#define __pyx_n_u_ui_app __pyx_string_tab[232]
+#define __pyx_n_u_app __pyx_string_tab[76]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[77]
+#define __pyx_n_u_attrs __pyx_string_tab[78]
+#define __pyx_n_u_bool __pyx_string_tab[79]
+#define __pyx_n_u_buf __pyx_string_tab[80]
+#define __pyx_n_u_buffer __pyx_string_tab[81]
+#define __pyx_n_u_c __pyx_string_tab[82]
+#define __pyx_n_u_ch __pyx_string_tab[83]
+#define __pyx_n_u_check_sessions __pyx_string_tab[84]
+#define __pyx_n_u_class_getitem __pyx_string_tab[85]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[86]
+#define __pyx_n_u_close __pyx_string_tab[87]
+#define __pyx_n_u_col __pyx_string_tab[88]
+#define __pyx_n_u_cols __pyx_string_tab[89]
+#define __pyx_n_u_columns __pyx_string_tab[90]
+#define __pyx_n_u_comp __pyx_string_tab[91]
+#define __pyx_n_u_comp_box __pyx_string_tab[92]
+#define __pyx_n_u_compact_splash_lines __pyx_string_tab[93]
+#define __pyx_n_u_compression_stats __pyx_string_tab[94]
+#define __pyx_n_u_connect __pyx_string_tab[95]
+#define __pyx_n_u_content __pyx_string_tab[96]
+#define __pyx_n_u_core __pyx_string_tab[97]
+#define __pyx_n_u_core_loop __pyx_string_tab[98]
+#define __pyx_n_u_core_registry __pyx_string_tab[99]
+#define __pyx_n_u_core_wiring __pyx_string_tab[100]
+#define __pyx_n_u_count __pyx_string_tab[101]
+#define __pyx_n_u_ctrl_quit __pyx_string_tab[102]
+#define __pyx_n_u_d __pyx_string_tab[103]
+#define __pyx_n_u_daemon __pyx_string_tab[104]
+#define __pyx_n_u_daemon_ok __pyx_string_tab[105]
+#define __pyx_n_u_decode __pyx_string_tab[106]
+#define __pyx_n_u_direct __pyx_string_tab[107]
+#define __pyx_n_u_done __pyx_string_tab[108]
+#define __pyx_n_u_enter __pyx_string_tab[109]
+#define __pyx_n_u_entry __pyx_string_tab[110]
+#define __pyx_n_u_erase __pyx_string_tab[111]
+#define __pyx_n_u_error __pyx_string_tab[112]
+#define __pyx_n_u_errors __pyx_string_tab[113]
+#define __pyx_n_u_ev __pyx_string_tab[114]
+#define __pyx_n_u_exists __pyx_string_tab[115]
+#define __pyx_n_u_exit __pyx_string_tab[116]
+#define __pyx_n_u_fd __pyx_string_tab[117]
+#define __pyx_n_u_fh __pyx_string_tab[118]
+#define __pyx_n_u_file __pyx_string_tab[119]
+#define __pyx_n_u_fileno __pyx_string_tab[120]
+#define __pyx_n_u_flush __pyx_string_tab[121]
+#define __pyx_n_u_func __pyx_string_tab[122]
+#define __pyx_n_u_genexpr __pyx_string_tab[123]
+#define __pyx_n_u_get __pyx_string_tab[124]
+#define __pyx_n_u_get_terminal_size __pyx_string_tab[125]
+#define __pyx_n_u_getsignal __pyx_string_tab[126]
+#define __pyx_n_u_i __pyx_string_tab[127]
+#define __pyx_n_u_idle __pyx_string_tab[128]
+#define __pyx_n_u_ignore __pyx_string_tab[129]
+#define __pyx_n_u_insert __pyx_string_tab[130]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[131]
+#define __pyx_n_u_is_ready __pyx_string_tab[132]
+#define __pyx_n_u_isatty __pyx_string_tab[133]
+#define __pyx_n_u_items __pyx_string_tab[134]
+#define __pyx_n_u_lambda __pyx_string_tab[135]
+#define __pyx_n_u_last_in __pyx_string_tab[136]
+#define __pyx_n_u_last_kept __pyx_string_tab[137]
+#define __pyx_n_u_line __pyx_string_tab[138]
+#define __pyx_n_u_lines __pyx_string_tab[139]
+#define __pyx_n_u_list __pyx_string_tab[140]
+#define __pyx_n_u_list_tools __pyx_string_tab[141]
+#define __pyx_n_u_llm __pyx_string_tab[142]
+#define __pyx_n_u_llm_mod __pyx_string_tab[143]
+#define __pyx_n_u_loading __pyx_string_tab[144]
+#define __pyx_n_u_log_write __pyx_string_tab[145]
+#define __pyx_n_u_main __pyx_string_tab[146]
+#define __pyx_n_u_main_2 __pyx_string_tab[147]
+#define __pyx_n_u_mem_box __pyx_string_tab[148]
+#define __pyx_n_u_model_box __pyx_string_tab[149]
+#define __pyx_n_u_model_server __pyx_string_tab[150]
+#define __pyx_n_u_module __pyx_string_tab[151]
+#define __pyx_n_u_n __pyx_string_tab[152]
+#define __pyx_n_u_name __pyx_string_tab[153]
+#define __pyx_n_u_name_2 __pyx_string_tab[154]
+#define __pyx_n_u_next __pyx_string_tab[155]
+#define __pyx_n_u_old_int __pyx_string_tab[156]
+#define __pyx_n_u_old_term __pyx_string_tab[157]
+#define __pyx_n_u_on_event __pyx_string_tab[158]
+#define __pyx_n_u_open __pyx_string_tab[159]
+#define __pyx_n_u_os __pyx_string_tab[160]
+#define __pyx_n_u_output __pyx_string_tab[161]
+#define __pyx_n_u_parent __pyx_string_tab[162]
+#define __pyx_n_u_path __pyx_string_tab[163]
+#define __pyx_n_u_pathlib __pyx_string_tab[164]
+#define __pyx_n_u_pop __pyx_string_tab[165]
+#define __pyx_n_u_print __pyx_string_tab[166]
+#define __pyx_n_u_print_lock __pyx_string_tab[167]
+#define __pyx_n_u_prompt __pyx_string_tab[168]
+#define __pyx_n_u_qualname __pyx_string_tab[169]
+#define __pyx_n_u_r_2 __pyx_string_tab[170]
+#define __pyx_n_u_ratio __pyx_string_tab[171]
+#define __pyx_n_u_read __pyx_string_tab[172]
+#define __pyx_n_u_read_last __pyx_string_tab[173]
+#define __pyx_n_u_register_all __pyx_string_tab[174]
+#define __pyx_n_u_resolve __pyx_string_tab[175]
+#define __pyx_n_u_return __pyx_string_tab[176]
+#define __pyx_n_u_rows __pyx_string_tab[177]
+#define __pyx_n_u_run __pyx_string_tab[178]
+#define __pyx_n_u_run_turn __pyx_string_tab[179]
+#define __pyx_n_u_select __pyx_string_tab[180]
+#define __pyx_n_u_send __pyx_string_tab[181]
+#define __pyx_n_u_services_memory_thin __pyx_string_tab[182]
+#define __pyx_n_u_services_scheduler_store __pyx_string_tab[183]
+#define __pyx_n_u_set_name __pyx_string_tab[184]
+#define __pyx_n_u_setcbreak __pyx_string_tab[185]
+#define __pyx_n_u_setdefault __pyx_string_tab[186]
+#define __pyx_n_u_settimeout __pyx_string_tab[187]
+#define __pyx_n_u_shade __pyx_string_tab[188]
+#define __pyx_n_u_shutil __pyx_string_tab[189]
+#define __pyx_n_u_signal __pyx_string_tab[190]
+#define __pyx_n_u_size __pyx_string_tab[191]
+#define __pyx_n_u_sleep __pyx_string_tab[192]
+#define __pyx_n_u_sock __pyx_string_tab[193]
+#define __pyx_n_u_socket __pyx_string_tab[194]
+#define __pyx_n_u_socket_2 __pyx_string_tab[195]
+#define __pyx_n_u_spin __pyx_string_tab[196]
+#define __pyx_n_u_splash_lines __pyx_string_tab[197]
+#define __pyx_n_u_start __pyx_string_tab[198]
+#define __pyx_n_u_state __pyx_string_tab[199]
+#define __pyx_n_u_state_2 __pyx_string_tab[200]
+#define __pyx_n_u_status __pyx_string_tab[201]
+#define __pyx_n_u_stdin __pyx_string_tab[202]
+#define __pyx_n_u_stdout __pyx_string_tab[203]
+#define __pyx_n_u_str __pyx_string_tab[204]
+#define __pyx_n_u_strip __pyx_string_tab[205]
+#define __pyx_n_u_stub __pyx_string_tab[206]
+#define __pyx_n_u_submit __pyx_string_tab[207]
+#define __pyx_n_u_submit_locals_genexpr __pyx_string_tab[208]
+#define __pyx_n_u_submit_locals_run_turn __pyx_string_tab[209]
+#define __pyx_n_u_submit_locals_run_turn_locals_la __pyx_string_tab[210]
+#define __pyx_n_u_sum __pyx_string_tab[211]
+#define __pyx_n_u_sys __pyx_string_tab[212]
+#define __pyx_n_u_t __pyx_string_tab[213]
+#define __pyx_n_u_target __pyx_string_tab[214]
+#define __pyx_n_u_tcgetattr __pyx_string_tab[215]
+#define __pyx_n_u_tcsetattr __pyx_string_tab[216]
+#define __pyx_n_u_termios __pyx_string_tab[217]
+#define __pyx_n_u_test __pyx_string_tab[218]
+#define __pyx_n_u_text __pyx_string_tab[219]
+#define __pyx_n_u_threading __pyx_string_tab[220]
+#define __pyx_n_u_throw __pyx_string_tab[221]
+#define __pyx_n_u_ticker_loop __pyx_string_tab[222]
+#define __pyx_n_u_ticker_row __pyx_string_tab[223]
+#define __pyx_n_u_ticker_text __pyx_string_tab[224]
+#define __pyx_n_u_ticker_text_locals_genexpr __pyx_string_tab[225]
+#define __pyx_n_u_ticker_write __pyx_string_tab[226]
+#define __pyx_n_u_time __pyx_string_tab[227]
+#define __pyx_n_u_tokens_in __pyx_string_tab[228]
+#define __pyx_n_u_tokens_kept __pyx_string_tab[229]
+#define __pyx_n_u_tokens_per_second __pyx_string_tab[230]
+#define __pyx_n_u_tps __pyx_string_tab[231]
+#define __pyx_n_u_tty __pyx_string_tab[232]
 #define __pyx_n_u_ui_splash __pyx_string_tab[233]
 #define __pyx_n_u_up __pyx_string_tab[234]
 #define __pyx_n_u_value __pyx_string_tab[235]
@@ -3081,12 +3081,12 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   __Pyx_State_RemoveModule(NULL);
   #endif
-  Py_CLEAR(clear_module_state->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr);
-  Py_CLEAR(clear_module_state->__pyx_type_2ui_3app___pyx_scope_struct__genexpr);
-  Py_CLEAR(clear_module_state->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit);
-  Py_CLEAR(clear_module_state->__pyx_type_2ui_3app___pyx_scope_struct_1_submit);
-  Py_CLEAR(clear_module_state->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr);
-  Py_CLEAR(clear_module_state->__pyx_type_2ui_3app___pyx_scope_struct_2_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_ptype_3app___pyx_scope_struct__genexpr);
+  Py_CLEAR(clear_module_state->__pyx_type_3app___pyx_scope_struct__genexpr);
+  Py_CLEAR(clear_module_state->__pyx_ptype_3app___pyx_scope_struct_1_submit);
+  Py_CLEAR(clear_module_state->__pyx_type_3app___pyx_scope_struct_1_submit);
+  Py_CLEAR(clear_module_state->__pyx_ptype_3app___pyx_scope_struct_2_genexpr);
+  Py_CLEAR(clear_module_state->__pyx_type_3app___pyx_scope_struct_2_genexpr);
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_slice[i]); }
   for (int i=0; i<7; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<14; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
@@ -3117,12 +3117,12 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_tuple);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_bytes);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_unicode);
-  Py_VISIT(traverse_module_state->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr);
-  Py_VISIT(traverse_module_state->__pyx_type_2ui_3app___pyx_scope_struct__genexpr);
-  Py_VISIT(traverse_module_state->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit);
-  Py_VISIT(traverse_module_state->__pyx_type_2ui_3app___pyx_scope_struct_1_submit);
-  Py_VISIT(traverse_module_state->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr);
-  Py_VISIT(traverse_module_state->__pyx_type_2ui_3app___pyx_scope_struct_2_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_ptype_3app___pyx_scope_struct__genexpr);
+  Py_VISIT(traverse_module_state->__pyx_type_3app___pyx_scope_struct__genexpr);
+  Py_VISIT(traverse_module_state->__pyx_ptype_3app___pyx_scope_struct_1_submit);
+  Py_VISIT(traverse_module_state->__pyx_type_3app___pyx_scope_struct_1_submit);
+  Py_VISIT(traverse_module_state->__pyx_ptype_3app___pyx_scope_struct_2_genexpr);
+  Py_VISIT(traverse_module_state->__pyx_type_3app___pyx_scope_struct_2_genexpr);
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_slice[i]); }
   for (int i=0; i<7; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<14; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
@@ -3144,7 +3144,7 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* "ui/app.py":3
+/* "app.py":3
  * from __future__ import annotations
  * 
  * def erase() -> str:             # <<<<<<<<<<<<<<
@@ -3153,27 +3153,27 @@ return 0;
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_1erase(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_1erase = {"erase", (PyCFunction)__pyx_pw_2ui_3app_1erase, METH_NOARGS, 0};
-static PyObject *__pyx_pw_2ui_3app_1erase(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3app_1erase(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_3app_1erase = {"erase", (PyCFunction)__pyx_pw_3app_1erase, METH_NOARGS, 0};
+static PyObject *__pyx_pw_3app_1erase(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("erase (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_2ui_3app_erase(__pyx_self);
+  __pyx_r = __pyx_pf_3app_erase(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2ui_3app_erase(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_3app_erase(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("erase", 0);
 
-  /* "ui/app.py":4
+  /* "app.py":4
  * 
  * def erase() -> str:
  *     return "\x1b[2K"             # <<<<<<<<<<<<<<
@@ -3185,7 +3185,7 @@ static PyObject *__pyx_pf_2ui_3app_erase(CYTHON_UNUSED PyObject *__pyx_self) {
   __pyx_r = __pyx_mstate_global->__pyx_kp_u_2K;
   goto __pyx_L0;
 
-  /* "ui/app.py":3
+  /* "app.py":3
  * from __future__ import annotations
  * 
  * def erase() -> str:             # <<<<<<<<<<<<<<
@@ -3200,7 +3200,7 @@ static PyObject *__pyx_pf_2ui_3app_erase(CYTHON_UNUSED PyObject *__pyx_self) {
   return __pyx_r;
 }
 
-/* "ui/app.py":34
+/* "app.py":34
  * 
  * 
  * def erase() -> str:             # <<<<<<<<<<<<<<
@@ -3209,27 +3209,27 @@ static PyObject *__pyx_pf_2ui_3app_erase(CYTHON_UNUSED PyObject *__pyx_self) {
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_3erase(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_3erase = {"erase", (PyCFunction)__pyx_pw_2ui_3app_3erase, METH_NOARGS, 0};
-static PyObject *__pyx_pw_2ui_3app_3erase(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3app_3erase(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_3app_3erase = {"erase", (PyCFunction)__pyx_pw_3app_3erase, METH_NOARGS, 0};
+static PyObject *__pyx_pw_3app_3erase(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("erase (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_2ui_3app_2erase(__pyx_self);
+  __pyx_r = __pyx_pf_3app_2erase(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2ui_3app_2erase(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_3app_2erase(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("erase", 0);
 
-  /* "ui/app.py":35
+  /* "app.py":35
  * 
  * def erase() -> str:
  *     return "\x1b[2K"             # <<<<<<<<<<<<<<
@@ -3241,7 +3241,7 @@ static PyObject *__pyx_pf_2ui_3app_2erase(CYTHON_UNUSED PyObject *__pyx_self) {
   __pyx_r = __pyx_mstate_global->__pyx_kp_u_2K;
   goto __pyx_L0;
 
-  /* "ui/app.py":34
+  /* "app.py":34
  * 
  * 
  * def erase() -> str:             # <<<<<<<<<<<<<<
@@ -3256,7 +3256,7 @@ static PyObject *__pyx_pf_2ui_3app_2erase(CYTHON_UNUSED PyObject *__pyx_self) {
   return __pyx_r;
 }
 
-/* "ui/app.py":38
+/* "app.py":38
  * 
  * 
  * def ticker_text() -> str:             # <<<<<<<<<<<<<<
@@ -3265,23 +3265,23 @@ static PyObject *__pyx_pf_2ui_3app_2erase(CYTHON_UNUSED PyObject *__pyx_self) {
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_5ticker_text(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_5ticker_text = {"ticker_text", (PyCFunction)__pyx_pw_2ui_3app_5ticker_text, METH_NOARGS, 0};
-static PyObject *__pyx_pw_2ui_3app_5ticker_text(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3app_5ticker_text(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_3app_5ticker_text = {"ticker_text", (PyCFunction)__pyx_pw_3app_5ticker_text, METH_NOARGS, 0};
+static PyObject *__pyx_pw_3app_5ticker_text(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("ticker_text (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_2ui_3app_4ticker_text(__pyx_self);
+  __pyx_r = __pyx_pf_3app_4ticker_text(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_2ui_3app_11ticker_text_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_3app_11ticker_text_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "ui/app.py":49
+/* "app.py":49
  *         try:
  *             with open(HOT_FILE, "r") as fh:
  *                 count = sum(1 for _ in fh)             # <<<<<<<<<<<<<<
@@ -3289,17 +3289,17 @@ static PyObject *__pyx_gb_2ui_3app_11ticker_text_2generator(__pyx_CoroutineObjec
  *             count = 0
 */
 
-static PyObject *__pyx_pf_2ui_3app_11ticker_text_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
-  struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *__pyx_cur_scope;
+static PyObject *__pyx_pf_3app_11ticker_text_genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
+  struct __pyx_obj_3app___pyx_scope_struct__genexpr *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *)__pyx_tp_new_2ui_3app___pyx_scope_struct__genexpr(__pyx_mstate_global->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_3app___pyx_scope_struct__genexpr *)__pyx_tp_new_3app___pyx_scope_struct__genexpr(__pyx_mstate_global->__pyx_ptype_3app___pyx_scope_struct__genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_3app___pyx_scope_struct__genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 49, __pyx_L1_error)
   } else {
@@ -3309,7 +3309,7 @@ static PyObject *__pyx_pf_2ui_3app_11ticker_text_genexpr(CYTHON_UNUSED PyObject 
   __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_2ui_3app_11ticker_text_2generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_ticker_text_locals_genexpr, __pyx_mstate_global->__pyx_n_u_ui_app); if (unlikely(!gen)) __PYX_ERR(0, 49, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_3app_11ticker_text_2generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_ticker_text_locals_genexpr, __pyx_mstate_global->__pyx_n_u_app); if (unlikely(!gen)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3317,7 +3317,7 @@ static PyObject *__pyx_pf_2ui_3app_11ticker_text_genexpr(CYTHON_UNUSED PyObject 
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ui.app.ticker_text.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.ticker_text.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -3325,9 +3325,9 @@ static PyObject *__pyx_pf_2ui_3app_11ticker_text_genexpr(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_2ui_3app_11ticker_text_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_3app_11ticker_text_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *__pyx_cur_scope = ((struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *)__pyx_generator->closure);
+  struct __pyx_obj_3app___pyx_scope_struct__genexpr *__pyx_cur_scope = ((struct __pyx_obj_3app___pyx_scope_struct__genexpr *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -3448,7 +3448,7 @@ static PyObject *__pyx_gb_2ui_3app_11ticker_text_2generator(__pyx_CoroutineObjec
   return __pyx_r;
 }
 
-/* "ui/app.py":38
+/* "app.py":38
  * 
  * 
  * def ticker_text() -> str:             # <<<<<<<<<<<<<<
@@ -3456,7 +3456,7 @@ static PyObject *__pyx_gb_2ui_3app_11ticker_text_2generator(__pyx_CoroutineObjec
  *     comp_box = ("comp in=%d kept=%d r=%.2f" % (
 */
 
-static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_v_comp = NULL;
   PyObject *__pyx_v_comp_box = NULL;
   CYTHON_UNUSED PyObject *__pyx_v_check_sessions = NULL;
@@ -3468,7 +3468,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   PyObject *__pyx_v_model_box = NULL;
   PyObject *__pyx_v_tps = NULL;
   PyObject *__pyx_v_spin = NULL;
-  PyObject *__pyx_gb_2ui_3app_11ticker_text_2generator = 0;
+  PyObject *__pyx_gb_3app_11ticker_text_2generator = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3499,7 +3499,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ticker_text", 0);
 
-  /* "ui/app.py":39
+  /* "app.py":39
  * 
  * def ticker_text() -> str:
  *     comp = compression_stats()             # <<<<<<<<<<<<<<
@@ -3532,7 +3532,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_comp = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "ui/app.py":43
+  /* "app.py":43
  *         comp.get("last_in") or comp["tokens_in"],
  *         comp.get("last_kept") or comp["tokens_kept"],
  *         comp["ratio"])) if comp["tokens_in"] else "comp lossless"             # <<<<<<<<<<<<<<
@@ -3545,7 +3545,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_5) {
 
-    /* "ui/app.py":41
+    /* "app.py":41
  *     comp = compression_stats()
  *     comp_box = ("comp in=%d kept=%d r=%.2f" % (
  *         comp.get("last_in") or comp["tokens_in"],             # <<<<<<<<<<<<<<
@@ -3576,7 +3576,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "ui/app.py":42
+    /* "app.py":42
  *     comp_box = ("comp in=%d kept=%d r=%.2f" % (
  *         comp.get("last_in") or comp["tokens_in"],
  *         comp.get("last_kept") or comp["tokens_kept"],             # <<<<<<<<<<<<<<
@@ -3607,7 +3607,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "ui/app.py":43
+    /* "app.py":43
  *         comp.get("last_in") or comp["tokens_in"],
  *         comp.get("last_kept") or comp["tokens_kept"],
  *         comp["ratio"])) if comp["tokens_in"] else "comp lossless"             # <<<<<<<<<<<<<<
@@ -3626,7 +3626,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     __pyx_t_9[4] = __pyx_mstate_global->__pyx_kp_u_r;
     __pyx_t_9[5] = __pyx_t_2;
 
-    /* "ui/app.py":40
+    /* "app.py":40
  * def ticker_text() -> str:
  *     comp = compression_stats()
  *     comp_box = ("comp in=%d kept=%d r=%.2f" % (             # <<<<<<<<<<<<<<
@@ -3648,7 +3648,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_comp_box = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "ui/app.py":44
+  /* "app.py":44
  *         comp.get("last_kept") or comp["tokens_kept"],
  *         comp["ratio"])) if comp["tokens_in"] else "comp lossless"
  *     try:             # <<<<<<<<<<<<<<
@@ -3664,7 +3664,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XGOTREF(__pyx_t_12);
     /*try:*/ {
 
-      /* "ui/app.py":45
+      /* "app.py":45
  *         comp["ratio"])) if comp["tokens_in"] else "comp lossless"
  *     try:
  *         from services.memory_thin import check_sessions, HOT_FILE             # <<<<<<<<<<<<<<
@@ -3698,7 +3698,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "ui/app.py":46
+      /* "app.py":46
  *     try:
  *         from services.memory_thin import check_sessions, HOT_FILE
  *         count = 0             # <<<<<<<<<<<<<<
@@ -3708,7 +3708,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_INCREF(__pyx_mstate_global->__pyx_int_0);
       __pyx_v_count = __pyx_mstate_global->__pyx_int_0;
 
-      /* "ui/app.py":47
+      /* "app.py":47
  *         from services.memory_thin import check_sessions, HOT_FILE
  *         count = 0
  *         try:             # <<<<<<<<<<<<<<
@@ -3724,7 +3724,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
         __Pyx_XGOTREF(__pyx_t_16);
         /*try:*/ {
 
-          /* "ui/app.py":48
+          /* "app.py":48
  *         count = 0
  *         try:
  *             with open(HOT_FILE, "r") as fh:             # <<<<<<<<<<<<<<
@@ -3781,7 +3781,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
                   __pyx_v_fh = __pyx_t_8;
                   __pyx_t_8 = 0;
 
-                  /* "ui/app.py":49
+                  /* "app.py":49
  *         try:
  *             with open(HOT_FILE, "r") as fh:
  *                 count = sum(1 for _ in fh)             # <<<<<<<<<<<<<<
@@ -3789,7 +3789,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
  *             count = 0
 */
                   __pyx_t_1 = NULL;
-                  __pyx_t_3 = __pyx_pf_2ui_3app_11ticker_text_genexpr(NULL, __pyx_v_fh); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L23_error)
+                  __pyx_t_3 = __pyx_pf_3app_11ticker_text_genexpr(NULL, __pyx_v_fh); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 49, __pyx_L23_error)
                   __Pyx_GOTREF(__pyx_t_3);
                   __pyx_t_4 = 1;
                   {
@@ -3803,7 +3803,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
                   __Pyx_DECREF_SET(__pyx_v_count, __pyx_t_8);
                   __pyx_t_8 = 0;
 
-                  /* "ui/app.py":48
+                  /* "app.py":48
  *         count = 0
  *         try:
  *             with open(HOT_FILE, "r") as fh:             # <<<<<<<<<<<<<<
@@ -3822,7 +3822,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
                 __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
                 __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
                 /*except:*/ {
-                  __Pyx_AddTraceback("ui.app.ticker_text", __pyx_clineno, __pyx_lineno, __pyx_filename);
+                  __Pyx_AddTraceback("app.ticker_text", __pyx_clineno, __pyx_lineno, __pyx_filename);
                   if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_3, &__pyx_t_1) < 0) __PYX_ERR(0, 48, __pyx_L25_except_error)
                   __Pyx_XGOTREF(__pyx_t_8);
                   __Pyx_XGOTREF(__pyx_t_3);
@@ -3885,7 +3885,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
             __pyx_L32:;
           }
 
-          /* "ui/app.py":47
+          /* "app.py":47
  *         from services.memory_thin import check_sessions, HOT_FILE
  *         count = 0
  *         try:             # <<<<<<<<<<<<<<
@@ -3904,7 +3904,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "ui/app.py":50
+        /* "app.py":50
  *             with open(HOT_FILE, "r") as fh:
  *                 count = sum(1 for _ in fh)
  *         except Exception:             # <<<<<<<<<<<<<<
@@ -3915,7 +3915,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
         if (__pyx_t_22) {
           __Pyx_ErrRestore(0,0,0);
 
-          /* "ui/app.py":51
+          /* "app.py":51
  *                 count = sum(1 for _ in fh)
  *         except Exception:
  *             count = 0             # <<<<<<<<<<<<<<
@@ -3928,7 +3928,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
         }
         goto __pyx_L15_except_error;
 
-        /* "ui/app.py":47
+        /* "app.py":47
  *         from services.memory_thin import check_sessions, HOT_FILE
  *         count = 0
  *         try:             # <<<<<<<<<<<<<<
@@ -3949,7 +3949,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
         __pyx_L18_try_end:;
       }
 
-      /* "ui/app.py":52
+      /* "app.py":52
  *         except Exception:
  *             count = 0
  *         daemon = daemon_ok()             # <<<<<<<<<<<<<<
@@ -3982,7 +3982,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_v_daemon = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "ui/app.py":53
+      /* "app.py":53
  *             count = 0
  *         daemon = daemon_ok()
  *         mem_box = "mem %s e=%d" % ("up" if daemon else "direct", count)             # <<<<<<<<<<<<<<
@@ -4014,7 +4014,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_v_mem_box = ((PyObject*)__pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "ui/app.py":44
+      /* "app.py":44
  *         comp.get("last_kept") or comp["tokens_kept"],
  *         comp["ratio"])) if comp["tokens_in"] else "comp lossless"
  *     try:             # <<<<<<<<<<<<<<
@@ -4033,7 +4033,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "ui/app.py":54
+    /* "app.py":54
  *         daemon = daemon_ok()
  *         mem_box = "mem %s e=%d" % ("up" if daemon else "direct", count)
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -4044,7 +4044,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     if (__pyx_t_22) {
       __Pyx_ErrRestore(0,0,0);
 
-      /* "ui/app.py":55
+      /* "app.py":55
  *         mem_box = "mem %s e=%d" % ("up" if daemon else "direct", count)
  *     except Exception:
  *         mem_box = "mem n/a"             # <<<<<<<<<<<<<<
@@ -4057,7 +4057,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     }
     goto __pyx_L9_except_error;
 
-    /* "ui/app.py":44
+    /* "app.py":44
  *         comp.get("last_kept") or comp["tokens_kept"],
  *         comp["ratio"])) if comp["tokens_in"] else "comp lossless"
  *     try:             # <<<<<<<<<<<<<<
@@ -4078,7 +4078,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     __pyx_L12_try_end:;
   }
 
-  /* "ui/app.py":56
+  /* "app.py":56
  *     except Exception:
  *         mem_box = "mem n/a"
  *     model_box = "model %s" % _state["status"]             # <<<<<<<<<<<<<<
@@ -4096,7 +4096,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_model_box = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "ui/app.py":57
+  /* "app.py":57
  *         mem_box = "mem n/a"
  *     model_box = "model %s" % _state["status"]
  *     if is_ready():             # <<<<<<<<<<<<<<
@@ -4130,7 +4130,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_7) {
 
-    /* "ui/app.py":58
+    /* "app.py":58
  *     model_box = "model %s" % _state["status"]
  *     if is_ready():
  *         tps = llm_mod.LAST_TPS             # <<<<<<<<<<<<<<
@@ -4145,7 +4145,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     __pyx_v_tps = __pyx_t_8;
     __pyx_t_8 = 0;
 
-    /* "ui/app.py":59
+    /* "app.py":59
  *     if is_ready():
  *         tps = llm_mod.LAST_TPS
  *         if tps <= 0.1:             # <<<<<<<<<<<<<<
@@ -4157,7 +4157,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (__pyx_t_7) {
 
-      /* "ui/app.py":60
+      /* "app.py":60
  *         tps = llm_mod.LAST_TPS
  *         if tps <= 0.1:
  *             tps = tokens_per_second()             # <<<<<<<<<<<<<<
@@ -4190,7 +4190,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
       __Pyx_DECREF_SET(__pyx_v_tps, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "ui/app.py":59
+      /* "app.py":59
  *     if is_ready():
  *         tps = llm_mod.LAST_TPS
  *         if tps <= 0.1:             # <<<<<<<<<<<<<<
@@ -4199,7 +4199,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
 */
     }
 
-    /* "ui/app.py":61
+    /* "app.py":61
  *         if tps <= 0.1:
  *             tps = tokens_per_second()
  *         model_box += " %.1f t/s" % tps             # <<<<<<<<<<<<<<
@@ -4214,7 +4214,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_DECREF_SET(__pyx_v_model_box, ((PyObject*)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "ui/app.py":57
+    /* "app.py":57
  *         mem_box = "mem n/a"
  *     model_box = "model %s" % _state["status"]
  *     if is_ready():             # <<<<<<<<<<<<<<
@@ -4223,7 +4223,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
 */
   }
 
-  /* "ui/app.py":62
+  /* "app.py":62
  *             tps = tokens_per_second()
  *         model_box += " %.1f t/s" % tps
  *     spin = SPIN[_state["spin"] % len(SPIN)]             # <<<<<<<<<<<<<<
@@ -4254,7 +4254,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_v_spin = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "ui/app.py":63
+  /* "app.py":63
  *         model_box += " %.1f t/s" % tps
  *     spin = SPIN[_state["spin"] % len(SPIN)]
  *     _state["spin"] = (_state["spin"] + 1) % len(SPIN)             # <<<<<<<<<<<<<<
@@ -4285,7 +4285,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "ui/app.py":64
+  /* "app.py":64
  *     spin = SPIN[_state["spin"] % len(SPIN)]
  *     _state["spin"] = (_state["spin"] + 1) % len(SPIN)
  *     return "  ".join([model_box, "", comp_box, "", spin, "", mem_box])             # <<<<<<<<<<<<<<
@@ -4323,7 +4323,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "ui/app.py":38
+  /* "app.py":38
  * 
  * 
  * def ticker_text() -> str:             # <<<<<<<<<<<<<<
@@ -4338,7 +4338,7 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("ui.app.ticker_text", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.ticker_text", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_comp);
@@ -4352,13 +4352,13 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_XDECREF(__pyx_v_model_box);
   __Pyx_XDECREF(__pyx_v_tps);
   __Pyx_XDECREF(__pyx_v_spin);
-  __Pyx_XDECREF(__pyx_gb_2ui_3app_11ticker_text_2generator);
+  __Pyx_XDECREF(__pyx_gb_3app_11ticker_text_2generator);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "ui/app.py":67
+/* "app.py":67
  * 
  * 
  * def daemon_ok() -> bool:             # <<<<<<<<<<<<<<
@@ -4367,22 +4367,22 @@ static PyObject *__pyx_pf_2ui_3app_4ticker_text(CYTHON_UNUSED PyObject *__pyx_se
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_7daemon_ok(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_7daemon_ok = {"daemon_ok", (PyCFunction)__pyx_pw_2ui_3app_7daemon_ok, METH_NOARGS, 0};
-static PyObject *__pyx_pw_2ui_3app_7daemon_ok(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3app_7daemon_ok(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_3app_7daemon_ok = {"daemon_ok", (PyCFunction)__pyx_pw_3app_7daemon_ok, METH_NOARGS, 0};
+static PyObject *__pyx_pw_3app_7daemon_ok(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("daemon_ok (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_2ui_3app_6daemon_ok(__pyx_self);
+  __pyx_r = __pyx_pf_3app_6daemon_ok(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_v__socket = NULL;
   PyObject *__pyx_v_sock = NULL;
   PyObject *__pyx_v_c = NULL;
@@ -4404,7 +4404,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("daemon_ok", 0);
 
-  /* "ui/app.py":68
+  /* "app.py":68
  * 
  * def daemon_ok() -> bool:
  *     import socket as _socket             # <<<<<<<<<<<<<<
@@ -4417,7 +4417,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
   __pyx_v__socket = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "ui/app.py":69
+  /* "app.py":69
  * def daemon_ok() -> bool:
  *     import socket as _socket
  *     sock = ROOT / "state" / "memory.sock"             # <<<<<<<<<<<<<<
@@ -4435,7 +4435,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
   __pyx_v_sock = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "ui/app.py":70
+  /* "app.py":70
  *     import socket as _socket
  *     sock = ROOT / "state" / "memory.sock"
  *     if not sock.exists():             # <<<<<<<<<<<<<<
@@ -4457,7 +4457,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
   __pyx_t_6 = (!__pyx_t_5);
   if (__pyx_t_6) {
 
-    /* "ui/app.py":71
+    /* "app.py":71
  *     sock = ROOT / "state" / "memory.sock"
  *     if not sock.exists():
  *         return False             # <<<<<<<<<<<<<<
@@ -4469,7 +4469,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
     __pyx_r = Py_False;
     goto __pyx_L0;
 
-    /* "ui/app.py":70
+    /* "app.py":70
  *     import socket as _socket
  *     sock = ROOT / "state" / "memory.sock"
  *     if not sock.exists():             # <<<<<<<<<<<<<<
@@ -4478,7 +4478,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
 */
   }
 
-  /* "ui/app.py":72
+  /* "app.py":72
  *     if not sock.exists():
  *         return False
  *     try:             # <<<<<<<<<<<<<<
@@ -4494,7 +4494,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
     __Pyx_XGOTREF(__pyx_t_8);
     /*try:*/ {
 
-      /* "ui/app.py":73
+      /* "app.py":73
  *         return False
  *     try:
  *         c = _socket.socket(_socket.AF_UNIX, _socket.SOCK_STREAM)             # <<<<<<<<<<<<<<
@@ -4520,7 +4520,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
       __pyx_v_c = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "ui/app.py":74
+      /* "app.py":74
  *     try:
  *         c = _socket.socket(_socket.AF_UNIX, _socket.SOCK_STREAM)
  *         c.settimeout(0.5)             # <<<<<<<<<<<<<<
@@ -4539,7 +4539,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "ui/app.py":75
+      /* "app.py":75
  *         c = _socket.socket(_socket.AF_UNIX, _socket.SOCK_STREAM)
  *         c.settimeout(0.5)
  *         c.connect(str(sock))             # <<<<<<<<<<<<<<
@@ -4561,7 +4561,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "ui/app.py":76
+      /* "app.py":76
  *         c.settimeout(0.5)
  *         c.connect(str(sock))
  *         c.close()             # <<<<<<<<<<<<<<
@@ -4580,7 +4580,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "ui/app.py":77
+      /* "app.py":77
  *         c.connect(str(sock))
  *         c.close()
  *         return True             # <<<<<<<<<<<<<<
@@ -4592,7 +4592,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
       __pyx_r = Py_True;
       goto __pyx_L8_try_return;
 
-      /* "ui/app.py":72
+      /* "app.py":72
  *     if not sock.exists():
  *         return False
  *     try:             # <<<<<<<<<<<<<<
@@ -4606,7 +4606,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "ui/app.py":78
+    /* "app.py":78
  *         c.close()
  *         return True
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -4617,7 +4617,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
     if (__pyx_t_11) {
       __Pyx_ErrRestore(0,0,0);
 
-      /* "ui/app.py":79
+      /* "app.py":79
  *         return True
  *     except Exception:
  *         return False             # <<<<<<<<<<<<<<
@@ -4631,7 +4631,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
     }
     goto __pyx_L6_except_error;
 
-    /* "ui/app.py":72
+    /* "app.py":72
  *     if not sock.exists():
  *         return False
  *     try:             # <<<<<<<<<<<<<<
@@ -4658,7 +4658,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
     goto __pyx_L0;
   }
 
-  /* "ui/app.py":67
+  /* "app.py":67
  * 
  * 
  * def daemon_ok() -> bool:             # <<<<<<<<<<<<<<
@@ -4672,7 +4672,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_AddTraceback("ui.app.daemon_ok", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.daemon_ok", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v__socket);
@@ -4683,7 +4683,7 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "ui/app.py":82
+/* "app.py":82
  * 
  * 
  * def log_write(text: str) -> None:             # <<<<<<<<<<<<<<
@@ -4692,15 +4692,15 @@ static PyObject *__pyx_pf_2ui_3app_6daemon_ok(CYTHON_UNUSED PyObject *__pyx_self
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_9log_write(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_3app_9log_write(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_9log_write = {"log_write", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_2ui_3app_9log_write, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_2ui_3app_9log_write(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_3app_9log_write = {"log_write", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3app_9log_write, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3app_9log_write(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4762,12 +4762,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ui.app.log_write", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.log_write", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_text), (&PyUnicode_Type), 0, "text", 2))) __PYX_ERR(0, 82, __pyx_L1_error)
-  __pyx_r = __pyx_pf_2ui_3app_8log_write(__pyx_self, __pyx_v_text);
+  __pyx_r = __pyx_pf_3app_8log_write(__pyx_self, __pyx_v_text);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4786,7 +4786,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text) {
+static PyObject *__pyx_pf_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text) {
   PyObject *__pyx_v_cols = NULL;
   PyObject *__pyx_v_i = NULL;
   PyObject *__pyx_r = NULL;
@@ -4814,7 +4814,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("log_write", 0);
 
-  /* "ui/app.py":83
+  /* "app.py":83
  * 
  * def log_write(text: str) -> None:
  *     with _print_lock:             # <<<<<<<<<<<<<<
@@ -4861,7 +4861,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
         __Pyx_XGOTREF(__pyx_t_9);
         /*try:*/ {
 
-          /* "ui/app.py":84
+          /* "app.py":84
  * def log_write(text: str) -> None:
  *     with _print_lock:
  *         cols = _state["cols"]             # <<<<<<<<<<<<<<
@@ -4876,7 +4876,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
           __pyx_v_cols = __pyx_t_3;
           __pyx_t_3 = 0;
 
-          /* "ui/app.py":85
+          /* "app.py":85
  *     with _print_lock:
  *         cols = _state["cols"]
  *         sys.stdout.write("\r\n")             # <<<<<<<<<<<<<<
@@ -4901,7 +4901,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "ui/app.py":86
+          /* "app.py":86
  *         cols = _state["cols"]
  *         sys.stdout.write("\r\n")
  *         i = 0             # <<<<<<<<<<<<<<
@@ -4911,7 +4911,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
           __Pyx_INCREF(__pyx_mstate_global->__pyx_int_0);
           __pyx_v_i = __pyx_mstate_global->__pyx_int_0;
 
-          /* "ui/app.py":87
+          /* "app.py":87
  *         sys.stdout.write("\r\n")
  *         i = 0
  *         while i < len(text):             # <<<<<<<<<<<<<<
@@ -4928,7 +4928,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             if (!__pyx_t_11) break;
 
-            /* "ui/app.py":88
+            /* "app.py":88
  *         i = 0
  *         while i < len(text):
  *             sys.stdout.write(text[i:i + cols] + erase() + "\r\n")             # <<<<<<<<<<<<<<
@@ -5006,7 +5006,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "ui/app.py":89
+            /* "app.py":89
  *         while i < len(text):
  *             sys.stdout.write(text[i:i + cols] + erase() + "\r\n")
  *             i += cols             # <<<<<<<<<<<<<<
@@ -5019,7 +5019,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
             __pyx_t_4 = 0;
           }
 
-          /* "ui/app.py":90
+          /* "app.py":90
  *             sys.stdout.write(text[i:i + cols] + erase() + "\r\n")
  *             i += cols
  *         if not text:             # <<<<<<<<<<<<<<
@@ -5035,7 +5035,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
           __pyx_t_17 = (!__pyx_t_11);
           if (__pyx_t_17) {
 
-            /* "ui/app.py":91
+            /* "app.py":91
  *             i += cols
  *         if not text:
  *             sys.stdout.write(erase() + "\r\n")             # <<<<<<<<<<<<<<
@@ -5087,7 +5087,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
             }
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-            /* "ui/app.py":90
+            /* "app.py":90
  *             sys.stdout.write(text[i:i + cols] + erase() + "\r\n")
  *             i += cols
  *         if not text:             # <<<<<<<<<<<<<<
@@ -5096,7 +5096,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
 */
           }
 
-          /* "ui/app.py":92
+          /* "app.py":92
  *         if not text:
  *             sys.stdout.write(erase() + "\r\n")
  *         ticker_write()             # <<<<<<<<<<<<<<
@@ -5128,7 +5128,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-          /* "ui/app.py":93
+          /* "app.py":93
  *             sys.stdout.write(erase() + "\r\n")
  *         ticker_write()
  *         sys.stdout.flush()             # <<<<<<<<<<<<<<
@@ -5153,7 +5153,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-          /* "ui/app.py":83
+          /* "app.py":83
  * 
  * def log_write(text: str) -> None:
  *     with _print_lock:             # <<<<<<<<<<<<<<
@@ -5174,7 +5174,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         /*except:*/ {
-          __Pyx_AddTraceback("ui.app.log_write", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          __Pyx_AddTraceback("app.log_write", __pyx_clineno, __pyx_lineno, __pyx_filename);
           if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_1) < 0) __PYX_ERR(0, 83, __pyx_L9_except_error)
           __Pyx_XGOTREF(__pyx_t_4);
           __Pyx_XGOTREF(__pyx_t_5);
@@ -5237,7 +5237,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
     __pyx_L19:;
   }
 
-  /* "ui/app.py":82
+  /* "app.py":82
  * 
  * 
  * def log_write(text: str) -> None:             # <<<<<<<<<<<<<<
@@ -5256,7 +5256,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
   __Pyx_XDECREF(__pyx_t_14);
   __Pyx_XDECREF(__pyx_t_15);
   __Pyx_XDECREF(__pyx_t_16);
-  __Pyx_AddTraceback("ui.app.log_write", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.log_write", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_cols);
@@ -5266,7 +5266,7 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "ui/app.py":96
+/* "app.py":96
  * 
  * 
  * def ticker_write() -> None:             # <<<<<<<<<<<<<<
@@ -5275,22 +5275,22 @@ static PyObject *__pyx_pf_2ui_3app_8log_write(CYTHON_UNUSED PyObject *__pyx_self
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_11ticker_write(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_11ticker_write = {"ticker_write", (PyCFunction)__pyx_pw_2ui_3app_11ticker_write, METH_NOARGS, 0};
-static PyObject *__pyx_pw_2ui_3app_11ticker_write(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3app_11ticker_write(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_3app_11ticker_write = {"ticker_write", (PyCFunction)__pyx_pw_3app_11ticker_write, METH_NOARGS, 0};
+static PyObject *__pyx_pw_3app_11ticker_write(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("ticker_write (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_2ui_3app_10ticker_write(__pyx_self);
+  __pyx_r = __pyx_pf_3app_10ticker_write(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_v_text = NULL;
   PyObject *__pyx_v_line = NULL;
   PyObject *__pyx_v_col = NULL;
@@ -5313,7 +5313,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ticker_write", 0);
 
-  /* "ui/app.py":97
+  /* "app.py":97
  * 
  * def ticker_write() -> None:
  *     text = ticker_text()             # <<<<<<<<<<<<<<
@@ -5346,7 +5346,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   __pyx_v_text = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "ui/app.py":98
+  /* "app.py":98
  * def ticker_write() -> None:
  *     text = ticker_text()
  *     line = text[:_state["cols"] - 1]             # <<<<<<<<<<<<<<
@@ -5367,7 +5367,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   __pyx_v_line = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "ui/app.py":99
+  /* "app.py":99
  *     text = ticker_text()
  *     line = text[:_state["cols"] - 1]
  *     sys.stdout.write("\x1b[2A\x1b[2K" + line + "\r\n\x1b[2K " + shade(7) +             # <<<<<<<<<<<<<<
@@ -5414,7 +5414,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "ui/app.py":100
+  /* "app.py":100
  *     line = text[:_state["cols"] - 1]
  *     sys.stdout.write("\x1b[2A\x1b[2K" + line + "\r\n\x1b[2K " + shade(7) +
  *                      _state["buffer"] + RESET)             # <<<<<<<<<<<<<<
@@ -5427,7 +5427,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "ui/app.py":99
+  /* "app.py":99
  *     text = ticker_text()
  *     line = text[:_state["cols"] - 1]
  *     sys.stdout.write("\x1b[2A\x1b[2K" + line + "\r\n\x1b[2K " + shade(7) +             # <<<<<<<<<<<<<<
@@ -5439,7 +5439,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "ui/app.py":100
+  /* "app.py":100
  *     line = text[:_state["cols"] - 1]
  *     sys.stdout.write("\x1b[2A\x1b[2K" + line + "\r\n\x1b[2K " + shade(7) +
  *                      _state["buffer"] + RESET)             # <<<<<<<<<<<<<<
@@ -5464,7 +5464,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":101
+  /* "app.py":101
  *     sys.stdout.write("\x1b[2A\x1b[2K" + line + "\r\n\x1b[2K " + shade(7) +
  *                      _state["buffer"] + RESET)
  *     col = min(len(_state["buffer"]) + 4, _state["cols"] - 1)             # <<<<<<<<<<<<<<
@@ -5509,7 +5509,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   __pyx_v_col = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "ui/app.py":102
+  /* "app.py":102
  *                      _state["buffer"] + RESET)
  *     col = min(len(_state["buffer"]) + 4, _state["cols"] - 1)
  *     sys.stdout.write("\x1b[%d;%dH" % (_state["rows"], col))             # <<<<<<<<<<<<<<
@@ -5555,7 +5555,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":96
+  /* "app.py":96
  * 
  * 
  * def ticker_write() -> None:             # <<<<<<<<<<<<<<
@@ -5574,7 +5574,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("ui.app.ticker_write", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.ticker_write", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_text);
@@ -5585,7 +5585,7 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
   return __pyx_r;
 }
 
-/* "ui/app.py":105
+/* "app.py":105
  * 
  * 
  * def _ticker_loop() -> None:             # <<<<<<<<<<<<<<
@@ -5594,22 +5594,22 @@ static PyObject *__pyx_pf_2ui_3app_10ticker_write(CYTHON_UNUSED PyObject *__pyx_
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_13_ticker_loop(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_13_ticker_loop = {"_ticker_loop", (PyCFunction)__pyx_pw_2ui_3app_13_ticker_loop, METH_NOARGS, 0};
-static PyObject *__pyx_pw_2ui_3app_13_ticker_loop(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3app_13_ticker_loop(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_3app_13_ticker_loop = {"_ticker_loop", (PyCFunction)__pyx_pw_3app_13_ticker_loop, METH_NOARGS, 0};
+static PyObject *__pyx_pw_3app_13_ticker_loop(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_ticker_loop (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_2ui_3app_12_ticker_loop(__pyx_self);
+  __pyx_r = __pyx_pf_3app_12_ticker_loop(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2ui_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5622,7 +5622,7 @@ static PyObject *__pyx_pf_2ui_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_ticker_loop", 0);
 
-  /* "ui/app.py":106
+  /* "app.py":106
  * 
  * def _ticker_loop() -> None:
  *     while True:             # <<<<<<<<<<<<<<
@@ -5631,7 +5631,7 @@ static PyObject *__pyx_pf_2ui_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_
 */
   while (1) {
 
-    /* "ui/app.py":107
+    /* "app.py":107
  * def _ticker_loop() -> None:
  *     while True:
  *         ticker_write()             # <<<<<<<<<<<<<<
@@ -5663,7 +5663,7 @@ static PyObject *__pyx_pf_2ui_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "ui/app.py":108
+    /* "app.py":108
  *     while True:
  *         ticker_write()
  *         time.sleep(0.8)             # <<<<<<<<<<<<<<
@@ -5699,7 +5699,7 @@ static PyObject *__pyx_pf_2ui_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "ui/app.py":105
+  /* "app.py":105
  * 
  * 
  * def _ticker_loop() -> None:             # <<<<<<<<<<<<<<
@@ -5715,7 +5715,7 @@ static PyObject *__pyx_pf_2ui_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("ui.app._ticker_loop", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app._ticker_loop", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5723,7 +5723,7 @@ static PyObject *__pyx_pf_2ui_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_
   return __pyx_r;
 }
 
-/* "ui/app.py":111
+/* "app.py":111
  * 
  * 
  * def submit(text: str) -> None:             # <<<<<<<<<<<<<<
@@ -5732,15 +5732,15 @@ static PyObject *__pyx_pf_2ui_3app_12_ticker_loop(CYTHON_UNUSED PyObject *__pyx_
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_15submit(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_3app_15submit(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_15submit = {"submit", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_2ui_3app_15submit, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_2ui_3app_15submit(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_3app_15submit = {"submit", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3app_15submit, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3app_15submit(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5802,12 +5802,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ui.app.submit", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.submit", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_text), (&PyUnicode_Type), 0, "text", 2))) __PYX_ERR(0, 111, __pyx_L1_error)
-  __pyx_r = __pyx_pf_2ui_3app_14submit(__pyx_self, __pyx_v_text);
+  __pyx_r = __pyx_pf_3app_14submit(__pyx_self, __pyx_v_text);
 
   /* function exit code */
   goto __pyx_L0;
@@ -5826,7 +5826,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-/* "ui/app.py":118
+/* "app.py":118
  *         return
  * 
  *     def run_turn() -> None:             # <<<<<<<<<<<<<<
@@ -5835,22 +5835,22 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_6submit_1run_turn(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_6submit_1run_turn = {"run_turn", (PyCFunction)__pyx_pw_2ui_3app_6submit_1run_turn, METH_NOARGS, 0};
-static PyObject *__pyx_pw_2ui_3app_6submit_1run_turn(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3app_6submit_1run_turn(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_3app_6submit_1run_turn = {"run_turn", (PyCFunction)__pyx_pw_3app_6submit_1run_turn, METH_NOARGS, 0};
+static PyObject *__pyx_pw_3app_6submit_1run_turn(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("run_turn (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_2ui_3app_6submit_run_turn(__pyx_self);
+  __pyx_r = __pyx_pf_3app_6submit_run_turn(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "ui/app.py":126
+/* "app.py":126
  *             return
  *         r = run({"prompt": text},
  *                 on_event=lambda ev: log_write("  [tool] %s" % ev.get("name", "")))             # <<<<<<<<<<<<<<
@@ -5859,15 +5859,15 @@ static PyObject *__pyx_pw_2ui_3app_6submit_1run_turn(PyObject *__pyx_self, CYTHO
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_6submit_8run_turn_lambda2(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_3app_6submit_8run_turn_lambda2(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_6submit_8run_turn_lambda2 = {"lambda2", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_2ui_3app_6submit_8run_turn_lambda2, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_2ui_3app_6submit_8run_turn_lambda2(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_3app_6submit_8run_turn_lambda2 = {"lambda2", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3app_6submit_8run_turn_lambda2, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3app_6submit_8run_turn_lambda2(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5929,7 +5929,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("ui.app.submit.run_turn.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.submit.run_turn.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -6000,7 +6000,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("ui.app.submit.run_turn.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.submit.run_turn.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6008,7 +6008,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "ui/app.py":118
+/* "app.py":118
  *         return
  * 
  *     def run_turn() -> None:             # <<<<<<<<<<<<<<
@@ -6016,9 +6016,9 @@ static PyObject *__pyx_lambda_funcdef_lambda2(CYTHON_UNUSED PyObject *__pyx_self
  *         register_all()
 */
 
-static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
-  struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit *__pyx_cur_scope;
-  struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit *__pyx_outer_scope;
+static PyObject *__pyx_pf_3app_6submit_run_turn(PyObject *__pyx_self) {
+  struct __pyx_obj_3app___pyx_scope_struct_1_submit *__pyx_cur_scope;
+  struct __pyx_obj_3app___pyx_scope_struct_1_submit *__pyx_outer_scope;
   PyObject *__pyx_v_r = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -6035,10 +6035,10 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("run_turn", 0);
-  __pyx_outer_scope = (struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_3app___pyx_scope_struct_1_submit *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "ui/app.py":119
+  /* "app.py":119
  * 
  *     def run_turn() -> None:
  *         _state["status"] = "loading"             # <<<<<<<<<<<<<<
@@ -6050,7 +6050,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
   if (unlikely((PyObject_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_status, __pyx_mstate_global->__pyx_n_u_loading) < 0))) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "ui/app.py":120
+  /* "app.py":120
  *     def run_turn() -> None:
  *         _state["status"] = "loading"
  *         register_all()             # <<<<<<<<<<<<<<
@@ -6082,7 +6082,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "ui/app.py":121
+  /* "app.py":121
  *         _state["status"] = "loading"
  *         register_all()
  *         if not is_ready():             # <<<<<<<<<<<<<<
@@ -6117,7 +6117,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
   __pyx_t_6 = (!__pyx_t_5);
   if (__pyx_t_6) {
 
-    /* "ui/app.py":122
+    /* "app.py":122
  *         register_all()
  *         if not is_ready():
  *             _state["status"] = "idle"             # <<<<<<<<<<<<<<
@@ -6129,7 +6129,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
     if (unlikely((PyObject_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_status, __pyx_mstate_global->__pyx_n_u_idle) < 0))) __PYX_ERR(0, 122, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "ui/app.py":123
+    /* "app.py":123
  *         if not is_ready():
  *             _state["status"] = "idle"
  *             log_write("model unavailable  start the model server first")             # <<<<<<<<<<<<<<
@@ -6161,7 +6161,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "ui/app.py":124
+    /* "app.py":124
  *             _state["status"] = "idle"
  *             log_write("model unavailable  start the model server first")
  *             return             # <<<<<<<<<<<<<<
@@ -6172,7 +6172,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "ui/app.py":121
+    /* "app.py":121
  *         _state["status"] = "loading"
  *         register_all()
  *         if not is_ready():             # <<<<<<<<<<<<<<
@@ -6181,7 +6181,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
 */
   }
 
-  /* "ui/app.py":125
+  /* "app.py":125
  *             log_write("model unavailable  start the model server first")
  *             return
  *         r = run({"prompt": text},             # <<<<<<<<<<<<<<
@@ -6196,14 +6196,14 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
   if (unlikely(!__pyx_cur_scope->__pyx_v_text)) { __Pyx_RaiseClosureNameError("text"); __PYX_ERR(0, 125, __pyx_L1_error) }
   if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_prompt, __pyx_cur_scope->__pyx_v_text) < (0)) __PYX_ERR(0, 125, __pyx_L1_error)
 
-  /* "ui/app.py":126
+  /* "app.py":126
  *             return
  *         r = run({"prompt": text},
  *                 on_event=lambda ev: log_write("  [tool] %s" % ev.get("name", "")))             # <<<<<<<<<<<<<<
  *         _state["status"] = "up"
  *         log_write(str(r.get("output") or r.get("error", ""))[:4000])
 */
-  __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_6submit_8run_turn_lambda2, 0, __pyx_mstate_global->__pyx_n_u_submit_locals_run_turn_locals_la, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_3app_6submit_8run_turn_lambda2, 0, __pyx_mstate_global->__pyx_n_u_submit_locals_run_turn_locals_la, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __pyx_t_4 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -6234,7 +6234,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
   __pyx_v_r = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "ui/app.py":127
+  /* "app.py":127
  *         r = run({"prompt": text},
  *                 on_event=lambda ev: log_write("  [tool] %s" % ev.get("name", "")))
  *         _state["status"] = "up"             # <<<<<<<<<<<<<<
@@ -6246,7 +6246,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
   if (unlikely((PyObject_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_status, __pyx_mstate_global->__pyx_n_u_up) < 0))) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "ui/app.py":128
+  /* "app.py":128
  *                 on_event=lambda ev: log_write("  [tool] %s" % ev.get("name", "")))
  *         _state["status"] = "up"
  *         log_write(str(r.get("output") or r.get("error", ""))[:4000])             # <<<<<<<<<<<<<<
@@ -6313,7 +6313,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "ui/app.py":118
+  /* "app.py":118
  *         return
  * 
  *     def run_turn() -> None:             # <<<<<<<<<<<<<<
@@ -6331,7 +6331,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("ui.app.submit.run_turn", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.submit.run_turn", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_r);
@@ -6339,9 +6339,9 @@ static PyObject *__pyx_pf_2ui_3app_6submit_run_turn(PyObject *__pyx_self) {
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_2ui_3app_6submit_4generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_3app_6submit_4generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "ui/app.py":115
+/* "app.py":115
  *     if text.strip() == "/tools":
  *         from core.registry import list_tools
  *         log_write(", ".join(t["name"] for t in list_tools(stub=False)))             # <<<<<<<<<<<<<<
@@ -6349,17 +6349,17 @@ static PyObject *__pyx_gb_2ui_3app_6submit_4generator1(__pyx_CoroutineObject *__
  * 
 */
 
-static PyObject *__pyx_pf_2ui_3app_6submit_2genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
-  struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *__pyx_cur_scope;
+static PyObject *__pyx_pf_3app_6submit_2genexpr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_genexpr_arg_0) {
+  struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("genexpr", 0);
-  __pyx_cur_scope = (struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *)__pyx_tp_new_2ui_3app___pyx_scope_struct_2_genexpr(__pyx_mstate_global->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *)__pyx_tp_new_3app___pyx_scope_struct_2_genexpr(__pyx_mstate_global->__pyx_ptype_3app___pyx_scope_struct_2_genexpr, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 115, __pyx_L1_error)
   } else {
@@ -6369,7 +6369,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_2genexpr(CYTHON_UNUSED PyObject *__py
   __Pyx_INCREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_genexpr_arg_0);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_2ui_3app_6submit_4generator1, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_submit_locals_genexpr, __pyx_mstate_global->__pyx_n_u_ui_app); if (unlikely(!gen)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_3app_6submit_4generator1, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_genexpr, __pyx_mstate_global->__pyx_n_u_submit_locals_genexpr, __pyx_mstate_global->__pyx_n_u_app); if (unlikely(!gen)) __PYX_ERR(0, 115, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -6377,7 +6377,7 @@ static PyObject *__pyx_pf_2ui_3app_6submit_2genexpr(CYTHON_UNUSED PyObject *__py
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("ui.app.submit.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.submit.genexpr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -6385,9 +6385,9 @@ static PyObject *__pyx_pf_2ui_3app_6submit_2genexpr(CYTHON_UNUSED PyObject *__py
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_2ui_3app_6submit_4generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_3app_6submit_4generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *__pyx_cur_scope = ((struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *)__pyx_generator->closure);
+  struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *__pyx_cur_scope = ((struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   PyObject *__pyx_t_1 = NULL;
   Py_ssize_t __pyx_t_2;
@@ -6491,7 +6491,7 @@ static PyObject *__pyx_gb_2ui_3app_6submit_4generator1(__pyx_CoroutineObject *__
   return __pyx_r;
 }
 
-/* "ui/app.py":111
+/* "app.py":111
  * 
  * 
  * def submit(text: str) -> None:             # <<<<<<<<<<<<<<
@@ -6499,11 +6499,11 @@ static PyObject *__pyx_gb_2ui_3app_6submit_4generator1(__pyx_CoroutineObject *__
  *     if text.strip() == "/tools":
 */
 
-static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text) {
-  struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit *__pyx_cur_scope;
+static PyObject *__pyx_pf_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text) {
+  struct __pyx_obj_3app___pyx_scope_struct_1_submit *__pyx_cur_scope;
   PyObject *__pyx_v_list_tools = NULL;
   PyObject *__pyx_v_run_turn = 0;
-  PyObject *__pyx_gb_2ui_3app_6submit_4generator1 = 0;
+  PyObject *__pyx_gb_3app_6submit_4generator1 = 0;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6521,9 +6521,9 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("submit", 0);
-  __pyx_cur_scope = (struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit *)__pyx_tp_new_2ui_3app___pyx_scope_struct_1_submit(__pyx_mstate_global->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_3app___pyx_scope_struct_1_submit *)__pyx_tp_new_3app___pyx_scope_struct_1_submit(__pyx_mstate_global->__pyx_ptype_3app___pyx_scope_struct_1_submit, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_3app___pyx_scope_struct_1_submit *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 111, __pyx_L1_error)
   } else {
@@ -6533,7 +6533,7 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_text);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_text);
 
-  /* "ui/app.py":112
+  /* "app.py":112
  * 
  * def submit(text: str) -> None:
  *     log_write("> " + text)             # <<<<<<<<<<<<<<
@@ -6568,7 +6568,7 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "ui/app.py":113
+  /* "app.py":113
  * def submit(text: str) -> None:
  *     log_write("> " + text)
  *     if text.strip() == "/tools":             # <<<<<<<<<<<<<<
@@ -6581,7 +6581,7 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_6) {
 
-    /* "ui/app.py":114
+    /* "app.py":114
  *     log_write("> " + text)
  *     if text.strip() == "/tools":
  *         from core.registry import list_tools             # <<<<<<<<<<<<<<
@@ -6611,7 +6611,7 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "ui/app.py":115
+    /* "app.py":115
  *     if text.strip() == "/tools":
  *         from core.registry import list_tools
  *         log_write(", ".join(t["name"] for t in list_tools(stub=False)))             # <<<<<<<<<<<<<<
@@ -6648,7 +6648,7 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
       if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    __pyx_t_10 = __pyx_pf_2ui_3app_6submit_2genexpr(NULL, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_10 = __pyx_pf_3app_6submit_2genexpr(NULL, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 115, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = __Pyx_Generator_GetInlinedResult(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
@@ -6680,7 +6680,7 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "ui/app.py":116
+    /* "app.py":116
  *         from core.registry import list_tools
  *         log_write(", ".join(t["name"] for t in list_tools(stub=False)))
  *         return             # <<<<<<<<<<<<<<
@@ -6691,7 +6691,7 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "ui/app.py":113
+    /* "app.py":113
  * def submit(text: str) -> None:
  *     log_write("> " + text)
  *     if text.strip() == "/tools":             # <<<<<<<<<<<<<<
@@ -6700,7 +6700,7 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
 */
   }
 
-  /* "ui/app.py":118
+  /* "app.py":118
  *         return
  * 
  *     def run_turn() -> None:             # <<<<<<<<<<<<<<
@@ -6710,14 +6710,14 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < (0)) __PYX_ERR(0, 118, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_6submit_1run_turn, 0, __pyx_mstate_global->__pyx_n_u_submit_locals_run_turn, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_3app_6submit_1run_turn, 0, __pyx_mstate_global->__pyx_n_u_submit_locals_run_turn, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_run_turn = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "ui/app.py":130
+  /* "app.py":130
  *         log_write(str(r.get("output") or r.get("error", ""))[:4000])
  * 
  *     threading.Thread(target=run_turn, daemon=True).start()             # <<<<<<<<<<<<<<
@@ -6768,7 +6768,7 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "ui/app.py":111
+  /* "app.py":111
  * 
  * 
  * def submit(text: str) -> None:             # <<<<<<<<<<<<<<
@@ -6787,19 +6787,19 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_AddTraceback("ui.app.submit", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.submit", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_list_tools);
   __Pyx_XDECREF(__pyx_v_run_turn);
-  __Pyx_XDECREF(__pyx_gb_2ui_3app_6submit_4generator1);
+  __Pyx_XDECREF(__pyx_gb_3app_6submit_4generator1);
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "ui/app.py":133
+/* "app.py":133
  * 
  * 
  * def ctrl_quit(*_a) -> None:             # <<<<<<<<<<<<<<
@@ -6808,9 +6808,9 @@ static PyObject *__pyx_pf_2ui_3app_14submit(CYTHON_UNUSED PyObject *__pyx_self, 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_17ctrl_quit(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_17ctrl_quit = {"ctrl_quit", (PyCFunction)(void(*)(void))(PyCFunctionWithKeywords)__pyx_pw_2ui_3app_17ctrl_quit, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_2ui_3app_17ctrl_quit(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3app_17ctrl_quit(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_3app_17ctrl_quit = {"ctrl_quit", (PyCFunction)(void(*)(void))(PyCFunctionWithKeywords)__pyx_pw_3app_17ctrl_quit, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_3app_17ctrl_quit(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v__a = 0;
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
@@ -6828,7 +6828,7 @@ static PyObject *__pyx_pw_2ui_3app_17ctrl_quit(PyObject *__pyx_self, PyObject *_
   if (unlikely(__pyx_kwds_len > 0)) {__Pyx_RejectKeywords("ctrl_quit", __pyx_kwds); return NULL;}
   __Pyx_INCREF(__pyx_args);
   __pyx_v__a = __pyx_args;
-  __pyx_r = __pyx_pf_2ui_3app_16ctrl_quit(__pyx_self, __pyx_v__a);
+  __pyx_r = __pyx_pf_3app_16ctrl_quit(__pyx_self, __pyx_v__a);
 
   /* function exit code */
   __Pyx_DECREF(__pyx_v__a);
@@ -6836,7 +6836,7 @@ static PyObject *__pyx_pw_2ui_3app_17ctrl_quit(PyObject *__pyx_self, PyObject *_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2ui_3app_16ctrl_quit(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v__a) {
+static PyObject *__pyx_pf_3app_16ctrl_quit(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v__a) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("ctrl_quit", 0);
@@ -6848,7 +6848,7 @@ static PyObject *__pyx_pf_2ui_3app_16ctrl_quit(CYTHON_UNUSED PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "ui/app.py":137
+/* "app.py":137
  * 
  * 
  * def main() -> None:             # <<<<<<<<<<<<<<
@@ -6857,22 +6857,22 @@ static PyObject *__pyx_pf_2ui_3app_16ctrl_quit(CYTHON_UNUSED PyObject *__pyx_sel
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_2ui_3app_19main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_2ui_3app_19main = {"main", (PyCFunction)__pyx_pw_2ui_3app_19main, METH_NOARGS, 0};
-static PyObject *__pyx_pw_2ui_3app_19main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_3app_19main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_3app_19main = {"main", (PyCFunction)__pyx_pw_3app_19main, METH_NOARGS, 0};
+static PyObject *__pyx_pw_3app_19main(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("main (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_2ui_3app_18main(__pyx_self);
+  __pyx_r = __pyx_pf_3app_18main(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_v_size = NULL;
   PyObject *__pyx_v_signal = NULL;
   PyObject *__pyx_v_old_int = NULL;
@@ -6922,7 +6922,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("main", 0);
 
-  /* "ui/app.py":138
+  /* "app.py":138
  * 
  * def main() -> None:
  *     if not sys.stdin.isatty():             # <<<<<<<<<<<<<<
@@ -6950,7 +6950,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   __pyx_t_7 = (!__pyx_t_6);
   if (__pyx_t_7) {
 
-    /* "ui/app.py":139
+    /* "app.py":139
  * def main() -> None:
  *     if not sys.stdin.isatty():
  *         print("greyagent needs a terminal")             # <<<<<<<<<<<<<<
@@ -6968,7 +6968,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "ui/app.py":140
+    /* "app.py":140
  *     if not sys.stdin.isatty():
  *         print("greyagent needs a terminal")
  *         return             # <<<<<<<<<<<<<<
@@ -6979,7 +6979,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "ui/app.py":138
+    /* "app.py":138
  * 
  * def main() -> None:
  *     if not sys.stdin.isatty():             # <<<<<<<<<<<<<<
@@ -6988,7 +6988,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
 */
   }
 
-  /* "ui/app.py":141
+  /* "app.py":141
  *         print("greyagent needs a terminal")
  *         return
  *     size = shutil.get_terminal_size((80, 24))             # <<<<<<<<<<<<<<
@@ -7024,7 +7024,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   __pyx_v_size = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "ui/app.py":142
+  /* "app.py":142
  *         return
  *     size = shutil.get_terminal_size((80, 24))
  *     _state["cols"], _state["rows"] = size.columns, size.lines             # <<<<<<<<<<<<<<
@@ -7046,7 +7046,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":143
+  /* "app.py":143
  *     size = shutil.get_terminal_size((80, 24))
  *     _state["cols"], _state["rows"] = size.columns, size.lines
  *     import signal             # <<<<<<<<<<<<<<
@@ -7059,7 +7059,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   __pyx_v_signal = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "ui/app.py":144
+  /* "app.py":144
  *     _state["cols"], _state["rows"] = size.columns, size.lines
  *     import signal
  *     old_int = signal.getsignal(signal.SIGINT)             # <<<<<<<<<<<<<<
@@ -7082,7 +7082,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   __pyx_v_old_int = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "ui/app.py":145
+  /* "app.py":145
  *     import signal
  *     old_int = signal.getsignal(signal.SIGINT)
  *     signal.signal(signal.SIGINT, ctrl_quit)             # <<<<<<<<<<<<<<
@@ -7107,7 +7107,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":146
+  /* "app.py":146
  *     old_int = signal.getsignal(signal.SIGINT)
  *     signal.signal(signal.SIGINT, ctrl_quit)
  *     fd = sys.stdin.fileno()             # <<<<<<<<<<<<<<
@@ -7133,7 +7133,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   __pyx_v_fd = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "ui/app.py":147
+  /* "app.py":147
  *     signal.signal(signal.SIGINT, ctrl_quit)
  *     fd = sys.stdin.fileno()
  *     old_term = termios.tcgetattr(fd)             # <<<<<<<<<<<<<<
@@ -7169,7 +7169,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   __pyx_v_old_term = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "ui/app.py":148
+  /* "app.py":148
  *     fd = sys.stdin.fileno()
  *     old_term = termios.tcgetattr(fd)
  *     try:             # <<<<<<<<<<<<<<
@@ -7178,7 +7178,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
 */
   /*try:*/ {
 
-    /* "ui/app.py":149
+    /* "app.py":149
  *     old_term = termios.tcgetattr(fd)
  *     try:
  *         tty.setcbreak(fd)             # <<<<<<<<<<<<<<
@@ -7213,7 +7213,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "ui/app.py":150
+    /* "app.py":150
  *     try:
  *         tty.setcbreak(fd)
  *         attrs = termios.tcgetattr(fd)             # <<<<<<<<<<<<<<
@@ -7249,7 +7249,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     __pyx_v_attrs = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "ui/app.py":151
+    /* "app.py":151
  *         tty.setcbreak(fd)
  *         attrs = termios.tcgetattr(fd)
  *         attrs[0] &= ~termios.ICRNL             # <<<<<<<<<<<<<<
@@ -7274,7 +7274,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     if (unlikely((__Pyx_SetItemInt(__pyx_v_attrs, __pyx_t_9, __pyx_t_2, Py_ssize_t, 1, PyLong_FromSsize_t, 0, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference) < 0))) __PYX_ERR(0, 151, __pyx_L5_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "ui/app.py":152
+    /* "app.py":152
  *         attrs = termios.tcgetattr(fd)
  *         attrs[0] &= ~termios.ICRNL
  *         termios.tcsetattr(fd, termios.TCSANOW, attrs)             # <<<<<<<<<<<<<<
@@ -7315,7 +7315,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "ui/app.py":153
+    /* "app.py":153
  *         attrs[0] &= ~termios.ICRNL
  *         termios.tcsetattr(fd, termios.TCSANOW, attrs)
  *         sys.stdout.write("\033[?25l")             # <<<<<<<<<<<<<<
@@ -7340,7 +7340,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "ui/app.py":154
+    /* "app.py":154
  *         termios.tcsetattr(fd, termios.TCSANOW, attrs)
  *         sys.stdout.write("\033[?25l")
  *         cols = _state["cols"]             # <<<<<<<<<<<<<<
@@ -7355,7 +7355,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     __pyx_v_cols = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "ui/app.py":155
+    /* "app.py":155
  *         sys.stdout.write("\033[?25l")
  *         cols = _state["cols"]
  *         lines = splash_lines() if cols >= 90 else compact_splash_lines()             # <<<<<<<<<<<<<<
@@ -7421,7 +7421,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     __pyx_v_lines = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "ui/app.py":156
+    /* "app.py":156
  *         cols = _state["cols"]
  *         lines = splash_lines() if cols >= 90 else compact_splash_lines()
  *         for line in lines:             # <<<<<<<<<<<<<<
@@ -7480,7 +7480,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "ui/app.py":157
+      /* "app.py":157
  *         lines = splash_lines() if cols >= 90 else compact_splash_lines()
  *         for line in lines:
  *             sys.stdout.write(line[:cols + 12] + erase() + "\r\n")             # <<<<<<<<<<<<<<
@@ -7541,7 +7541,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "ui/app.py":156
+      /* "app.py":156
  *         cols = _state["cols"]
  *         lines = splash_lines() if cols >= 90 else compact_splash_lines()
  *         for line in lines:             # <<<<<<<<<<<<<<
@@ -7551,7 +7551,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "ui/app.py":158
+    /* "app.py":158
  *         for line in lines:
  *             sys.stdout.write(line[:cols + 12] + erase() + "\r\n")
  *         threading.Thread(target=_ticker_loop, daemon=True).start()             # <<<<<<<<<<<<<<
@@ -7605,7 +7605,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "ui/app.py":159
+    /* "app.py":159
  *             sys.stdout.write(line[:cols + 12] + erase() + "\r\n")
  *         threading.Thread(target=_ticker_loop, daemon=True).start()
  *         buf = ""             # <<<<<<<<<<<<<<
@@ -7615,7 +7615,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     __Pyx_INCREF(__pyx_mstate_global->__pyx_kp_u__4);
     __pyx_v_buf = __pyx_mstate_global->__pyx_kp_u__4;
 
-    /* "ui/app.py":160
+    /* "app.py":160
  *         threading.Thread(target=_ticker_loop, daemon=True).start()
  *         buf = ""
  *         while True:             # <<<<<<<<<<<<<<
@@ -7624,7 +7624,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
 */
     while (1) {
 
-      /* "ui/app.py":161
+      /* "app.py":161
  *         buf = ""
  *         while True:
  *             r, _, _ = select.select([sys.stdin], [], [], 0.3)             # <<<<<<<<<<<<<<
@@ -7740,7 +7740,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __Pyx_DECREF_SET(__pyx_v__, __pyx_t_12);
       __pyx_t_12 = 0;
 
-      /* "ui/app.py":162
+      /* "app.py":162
  *         while True:
  *             r, _, _ = select.select([sys.stdin], [], [], 0.3)
  *             if not r:             # <<<<<<<<<<<<<<
@@ -7751,7 +7751,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __pyx_t_6 = (!__pyx_t_7);
       if (__pyx_t_6) {
 
-        /* "ui/app.py":163
+        /* "app.py":163
  *             r, _, _ = select.select([sys.stdin], [], [], 0.3)
  *             if not r:
  *                 continue             # <<<<<<<<<<<<<<
@@ -7760,7 +7760,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
 */
         goto __pyx_L10_continue;
 
-        /* "ui/app.py":162
+        /* "app.py":162
  *         while True:
  *             r, _, _ = select.select([sys.stdin], [], [], 0.3)
  *             if not r:             # <<<<<<<<<<<<<<
@@ -7769,7 +7769,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
 */
       }
 
-      /* "ui/app.py":164
+      /* "app.py":164
  *             if not r:
  *                 continue
  *             ch = os.read(fd, 1).decode("utf-8", errors="ignore")             # <<<<<<<<<<<<<<
@@ -7820,7 +7820,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __Pyx_XDECREF_SET(__pyx_v_ch, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "ui/app.py":165
+      /* "app.py":165
  *                 continue
  *             ch = os.read(fd, 1).decode("utf-8", errors="ignore")
  *             if ch == "\x03":             # <<<<<<<<<<<<<<
@@ -7830,7 +7830,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_ch, __pyx_mstate_global->__pyx_kp_u__10, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 165, __pyx_L5_error)
       if (__pyx_t_6) {
 
-        /* "ui/app.py":166
+        /* "app.py":166
  *             ch = os.read(fd, 1).decode("utf-8", errors="ignore")
  *             if ch == "\x03":
  *                 break             # <<<<<<<<<<<<<<
@@ -7839,7 +7839,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
 */
         goto __pyx_L11_break;
 
-        /* "ui/app.py":165
+        /* "app.py":165
  *                 continue
  *             ch = os.read(fd, 1).decode("utf-8", errors="ignore")
  *             if ch == "\x03":             # <<<<<<<<<<<<<<
@@ -7848,7 +7848,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
 */
       }
 
-      /* "ui/app.py":167
+      /* "app.py":167
  *             if ch == "\x03":
  *                 break
  *             elif ch == "\x0d" or ch == "\x0a":             # <<<<<<<<<<<<<<
@@ -7866,7 +7866,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __pyx_L16_bool_binop_done:;
       if (__pyx_t_6) {
 
-        /* "ui/app.py":168
+        /* "app.py":168
  *                 break
  *             elif ch == "\x0d" or ch == "\x0a":
  *                 if buf.strip():             # <<<<<<<<<<<<<<
@@ -7887,7 +7887,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         if (__pyx_t_6) {
 
-          /* "ui/app.py":169
+          /* "app.py":169
  *             elif ch == "\x0d" or ch == "\x0a":
  *                 if buf.strip():
  *                     submit(buf.strip())             # <<<<<<<<<<<<<<
@@ -7930,7 +7930,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-          /* "ui/app.py":168
+          /* "app.py":168
  *                 break
  *             elif ch == "\x0d" or ch == "\x0a":
  *                 if buf.strip():             # <<<<<<<<<<<<<<
@@ -7939,7 +7939,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
 */
         }
 
-        /* "ui/app.py":170
+        /* "app.py":170
  *                 if buf.strip():
  *                     submit(buf.strip())
  *                 buf = ""             # <<<<<<<<<<<<<<
@@ -7949,7 +7949,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         __Pyx_INCREF(__pyx_mstate_global->__pyx_kp_u__4);
         __Pyx_DECREF_SET(__pyx_v_buf, __pyx_mstate_global->__pyx_kp_u__4);
 
-        /* "ui/app.py":171
+        /* "app.py":171
  *                     submit(buf.strip())
  *                 buf = ""
  *                 _state["buffer"] = buf             # <<<<<<<<<<<<<<
@@ -7961,7 +7961,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         if (unlikely((PyObject_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_buffer, __pyx_v_buf) < 0))) __PYX_ERR(0, 171, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "ui/app.py":172
+        /* "app.py":172
  *                 buf = ""
  *                 _state["buffer"] = buf
  *                 ticker_write()             # <<<<<<<<<<<<<<
@@ -7993,7 +7993,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "ui/app.py":167
+        /* "app.py":167
  *             if ch == "\x03":
  *                 break
  *             elif ch == "\x0d" or ch == "\x0a":             # <<<<<<<<<<<<<<
@@ -8003,7 +8003,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         goto __pyx_L15;
       }
 
-      /* "ui/app.py":173
+      /* "app.py":173
  *                 _state["buffer"] = buf
  *                 ticker_write()
  *             elif ch == "\x7f":             # <<<<<<<<<<<<<<
@@ -8013,7 +8013,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_ch, __pyx_mstate_global->__pyx_kp_u__13, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 173, __pyx_L5_error)
       if (__pyx_t_6) {
 
-        /* "ui/app.py":174
+        /* "app.py":174
  *                 ticker_write()
  *             elif ch == "\x7f":
  *                 buf = buf[:-1]             # <<<<<<<<<<<<<<
@@ -8025,7 +8025,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         __Pyx_DECREF_SET(__pyx_v_buf, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "ui/app.py":175
+        /* "app.py":175
  *             elif ch == "\x7f":
  *                 buf = buf[:-1]
  *                 _state["buffer"] = buf             # <<<<<<<<<<<<<<
@@ -8037,7 +8037,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         if (unlikely((PyObject_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_buffer, __pyx_v_buf) < 0))) __PYX_ERR(0, 175, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "ui/app.py":176
+        /* "app.py":176
  *                 buf = buf[:-1]
  *                 _state["buffer"] = buf
  *                 ticker_write()             # <<<<<<<<<<<<<<
@@ -8069,7 +8069,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "ui/app.py":173
+        /* "app.py":173
  *                 _state["buffer"] = buf
  *                 ticker_write()
  *             elif ch == "\x7f":             # <<<<<<<<<<<<<<
@@ -8079,7 +8079,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         goto __pyx_L15;
       }
 
-      /* "ui/app.py":177
+      /* "app.py":177
  *                 _state["buffer"] = buf
  *                 ticker_write()
  *             elif ch == "\x0e":             # <<<<<<<<<<<<<<
@@ -8089,7 +8089,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_ch, __pyx_mstate_global->__pyx_kp_u__14, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 177, __pyx_L5_error)
       if (__pyx_t_6) {
 
-        /* "ui/app.py":178
+        /* "app.py":178
  *                 ticker_write()
  *             elif ch == "\x0e":
  *                 log_write("new session")             # <<<<<<<<<<<<<<
@@ -8121,7 +8121,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "ui/app.py":177
+        /* "app.py":177
  *                 _state["buffer"] = buf
  *                 ticker_write()
  *             elif ch == "\x0e":             # <<<<<<<<<<<<<<
@@ -8131,7 +8131,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         goto __pyx_L15;
       }
 
-      /* "ui/app.py":179
+      /* "app.py":179
  *             elif ch == "\x0e":
  *                 log_write("new session")
  *             elif ch == "\x12":             # <<<<<<<<<<<<<<
@@ -8141,7 +8141,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_ch, __pyx_mstate_global->__pyx_kp_u__15, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 179, __pyx_L5_error)
       if (__pyx_t_6) {
 
-        /* "ui/app.py":180
+        /* "app.py":180
  *                 log_write("new session")
  *             elif ch == "\x12":
  *                 from core import wiring             # <<<<<<<<<<<<<<
@@ -8171,7 +8171,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "ui/app.py":181
+        /* "app.py":181
  *             elif ch == "\x12":
  *                 from core import wiring
  *                 wiring._state["done"] = False             # <<<<<<<<<<<<<<
@@ -8183,7 +8183,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         if (unlikely((PyObject_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_done, Py_False) < 0))) __PYX_ERR(0, 181, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "ui/app.py":182
+        /* "app.py":182
  *                 from core import wiring
  *                 wiring._state["done"] = False
  *                 n = wiring.register_all()             # <<<<<<<<<<<<<<
@@ -8203,7 +8203,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         __Pyx_XDECREF_SET(__pyx_v_n, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "ui/app.py":183
+        /* "app.py":183
  *                 wiring._state["done"] = False
  *                 n = wiring.register_all()
  *                 log_write("tools reloaded: %d" % n)             # <<<<<<<<<<<<<<
@@ -8238,7 +8238,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "ui/app.py":179
+        /* "app.py":179
  *             elif ch == "\x0e":
  *                 log_write("new session")
  *             elif ch == "\x12":             # <<<<<<<<<<<<<<
@@ -8248,7 +8248,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         goto __pyx_L15;
       }
 
-      /* "ui/app.py":184
+      /* "app.py":184
  *                 n = wiring.register_all()
  *                 log_write("tools reloaded: %d" % n)
  *             elif ch == "\x06":             # <<<<<<<<<<<<<<
@@ -8258,7 +8258,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_ch, __pyx_mstate_global->__pyx_kp_u__16, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 184, __pyx_L5_error)
       if (__pyx_t_6) {
 
-        /* "ui/app.py":185
+        /* "app.py":185
  *                 log_write("tools reloaded: %d" % n)
  *             elif ch == "\x06":
  *                 from services.memory_thin import read_last             # <<<<<<<<<<<<<<
@@ -8288,7 +8288,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "ui/app.py":186
+        /* "app.py":186
  *             elif ch == "\x06":
  *                 from services.memory_thin import read_last
  *                 for entry in read_last(5):             # <<<<<<<<<<<<<<
@@ -8371,7 +8371,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
           __Pyx_XDECREF_SET(__pyx_v_entry, __pyx_t_4);
           __pyx_t_4 = 0;
 
-          /* "ui/app.py":187
+          /* "app.py":187
  *                 from services.memory_thin import read_last
  *                 for entry in read_last(5):
  *                     log_write("mem: " + str(entry.get("content", ""))[:100])             # <<<<<<<<<<<<<<
@@ -8418,7 +8418,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
           }
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-          /* "ui/app.py":186
+          /* "app.py":186
  *             elif ch == "\x06":
  *                 from services.memory_thin import read_last
  *                 for entry in read_last(5):             # <<<<<<<<<<<<<<
@@ -8428,7 +8428,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "ui/app.py":184
+        /* "app.py":184
  *                 n = wiring.register_all()
  *                 log_write("tools reloaded: %d" % n)
  *             elif ch == "\x06":             # <<<<<<<<<<<<<<
@@ -8438,7 +8438,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         goto __pyx_L15;
       }
 
-      /* "ui/app.py":188
+      /* "app.py":188
  *                 for entry in read_last(5):
  *                     log_write("mem: " + str(entry.get("content", ""))[:100])
  *             elif ch == "\x0b":             # <<<<<<<<<<<<<<
@@ -8448,7 +8448,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_ch, __pyx_mstate_global->__pyx_kp_u__17, Py_EQ)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 188, __pyx_L5_error)
       if (__pyx_t_6) {
 
-        /* "ui/app.py":189
+        /* "app.py":189
  *                     log_write("mem: " + str(entry.get("content", ""))[:100])
  *             elif ch == "\x0b":
  *                 from services.scheduler_store import Store             # <<<<<<<<<<<<<<
@@ -8478,7 +8478,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "ui/app.py":190
+        /* "app.py":190
  *             elif ch == "\x0b":
  *                 from services.scheduler_store import Store
  *                 for t in Store().list()[:5]:             # <<<<<<<<<<<<<<
@@ -8575,7 +8575,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
           __Pyx_XDECREF_SET(__pyx_v_t, __pyx_t_12);
           __pyx_t_12 = 0;
 
-          /* "ui/app.py":191
+          /* "app.py":191
  *                 from services.scheduler_store import Store
  *                 for t in Store().list()[:5]:
  *                     log_write("sched: " + str(t)[:100])             # <<<<<<<<<<<<<<
@@ -8616,7 +8616,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
           }
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-          /* "ui/app.py":190
+          /* "app.py":190
  *             elif ch == "\x0b":
  *                 from services.scheduler_store import Store
  *                 for t in Store().list()[:5]:             # <<<<<<<<<<<<<<
@@ -8626,7 +8626,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "ui/app.py":188
+        /* "app.py":188
  *                 for entry in read_last(5):
  *                     log_write("mem: " + str(entry.get("content", ""))[:100])
  *             elif ch == "\x0b":             # <<<<<<<<<<<<<<
@@ -8636,7 +8636,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         goto __pyx_L15;
       }
 
-      /* "ui/app.py":192
+      /* "app.py":192
  *                 for t in Store().list()[:5]:
  *                     log_write("sched: " + str(t)[:100])
  *             elif ch >= " ":             # <<<<<<<<<<<<<<
@@ -8648,7 +8648,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (__pyx_t_6) {
 
-        /* "ui/app.py":193
+        /* "app.py":193
  *                     log_write("sched: " + str(t)[:100])
  *             elif ch >= " ":
  *                 buf += ch             # <<<<<<<<<<<<<<
@@ -8660,7 +8660,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         __Pyx_DECREF_SET(__pyx_v_buf, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "ui/app.py":194
+        /* "app.py":194
  *             elif ch >= " ":
  *                 buf += ch
  *                 _state["buffer"] = buf             # <<<<<<<<<<<<<<
@@ -8672,7 +8672,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         if (unlikely((PyObject_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_buffer, __pyx_v_buf) < 0))) __PYX_ERR(0, 194, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "ui/app.py":195
+        /* "app.py":195
  *                 buf += ch
  *                 _state["buffer"] = buf
  *                 ticker_write()             # <<<<<<<<<<<<<<
@@ -8704,7 +8704,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "ui/app.py":192
+        /* "app.py":192
  *                 for t in Store().list()[:5]:
  *                     log_write("sched: " + str(t)[:100])
  *             elif ch >= " ":             # <<<<<<<<<<<<<<
@@ -8718,7 +8718,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     __pyx_L11_break:;
   }
 
-  /* "ui/app.py":197
+  /* "app.py":197
  *                 ticker_write()
  *     finally:
  *         termios.tcsetattr(fd, termios.TCSADRAIN, old_term)             # <<<<<<<<<<<<<<
@@ -8761,7 +8761,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "ui/app.py":198
+      /* "app.py":198
  *     finally:
  *         termios.tcsetattr(fd, termios.TCSADRAIN, old_term)
  *         signal.signal(signal.SIGINT, old_int)             # <<<<<<<<<<<<<<
@@ -8783,7 +8783,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "ui/app.py":199
+      /* "app.py":199
  *         termios.tcsetattr(fd, termios.TCSADRAIN, old_term)
  *         signal.signal(signal.SIGINT, old_int)
  *         sys.stdout.write(SHOW)             # <<<<<<<<<<<<<<
@@ -8811,7 +8811,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "ui/app.py":200
+      /* "app.py":200
  *         signal.signal(signal.SIGINT, old_int)
  *         sys.stdout.write(SHOW)
  *         sys.stdout.flush()             # <<<<<<<<<<<<<<
@@ -8861,7 +8861,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
       __pyx_t_16 = __pyx_lineno; __pyx_t_17 = __pyx_clineno; __pyx_t_18 = __pyx_filename;
       {
 
-        /* "ui/app.py":197
+        /* "app.py":197
  *                 ticker_write()
  *     finally:
  *         termios.tcsetattr(fd, termios.TCSADRAIN, old_term)             # <<<<<<<<<<<<<<
@@ -8902,7 +8902,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "ui/app.py":198
+        /* "app.py":198
  *     finally:
  *         termios.tcsetattr(fd, termios.TCSADRAIN, old_term)
  *         signal.signal(signal.SIGINT, old_int)             # <<<<<<<<<<<<<<
@@ -8924,7 +8924,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "ui/app.py":199
+        /* "app.py":199
  *         termios.tcsetattr(fd, termios.TCSADRAIN, old_term)
  *         signal.signal(signal.SIGINT, old_int)
  *         sys.stdout.write(SHOW)             # <<<<<<<<<<<<<<
@@ -8952,7 +8952,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "ui/app.py":200
+        /* "app.py":200
  *         signal.signal(signal.SIGINT, old_int)
  *         sys.stdout.write(SHOW)
  *         sys.stdout.flush()             # <<<<<<<<<<<<<<
@@ -9002,7 +9002,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
     __pyx_L6:;
   }
 
-  /* "ui/app.py":137
+  /* "app.py":137
  * 
  * 
  * def main() -> None:             # <<<<<<<<<<<<<<
@@ -9022,7 +9022,7 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
   __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_AddTraceback("ui.app.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("app.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_size);
@@ -9050,16 +9050,16 @@ static PyObject *__pyx_pf_2ui_3app_18main(CYTHON_UNUSED PyObject *__pyx_self) {
 }
 /* #### Code section: module_exttypes ### */
 
-static PyObject *__pyx_tp_new_2ui_3app___pyx_scope_struct__genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_3app___pyx_scope_struct__genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct__genexpr > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr, sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct__genexpr > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_3app___pyx_scope_struct__genexpr, sizeof(struct __pyx_obj_3app___pyx_scope_struct__genexpr))))
   {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_2ui_3app___pyx_scope_struct__genexpr[--__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct__genexpr];
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_3app___pyx_scope_struct__genexpr[--__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct__genexpr];
     #if CYTHON_USE_TYPE_SPECS
     Py_DECREF(Py_TYPE(o));
     #endif
-    memset(o, 0, sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr));
+    memset(o, 0, sizeof(struct __pyx_obj_3app___pyx_scope_struct__genexpr));
     #if CYTHON_COMPILING_IN_LIMITED_API
     (void) PyObject_Init(o, t);
     #else
@@ -9075,11 +9075,11 @@ static PyObject *__pyx_tp_new_2ui_3app___pyx_scope_struct__genexpr(PyTypeObject 
   return o;
 }
 
-static void __pyx_tp_dealloc_2ui_3app___pyx_scope_struct__genexpr(PyObject *o) {
-  struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *p = (struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *)o;
+static void __pyx_tp_dealloc_3app___pyx_scope_struct__genexpr(PyObject *o) {
+  struct __pyx_obj_3app___pyx_scope_struct__genexpr *p = (struct __pyx_obj_3app___pyx_scope_struct__genexpr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_2ui_3app___pyx_scope_struct__genexpr) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_3app___pyx_scope_struct__genexpr) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -9089,9 +9089,9 @@ static void __pyx_tp_dealloc_2ui_3app___pyx_scope_struct__genexpr(PyObject *o) {
   Py_CLEAR(p->__pyx_v__);
   Py_CLEAR(p->__pyx_t_0);
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct__genexpr < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr, sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct__genexpr < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_3app___pyx_scope_struct__genexpr, sizeof(struct __pyx_obj_3app___pyx_scope_struct__genexpr))))
   {
-    __pyx_mstate_global->__pyx_freelist_2ui_3app___pyx_scope_struct__genexpr[__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct__genexpr++] = ((struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *)o);
+    __pyx_mstate_global->__pyx_freelist_3app___pyx_scope_struct__genexpr[__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct__genexpr++] = ((struct __pyx_obj_3app___pyx_scope_struct__genexpr *)o);
   } else
   #endif
   {
@@ -9110,9 +9110,9 @@ static void __pyx_tp_dealloc_2ui_3app___pyx_scope_struct__genexpr(PyObject *o) {
   }
 }
 
-static int __pyx_tp_traverse_2ui_3app___pyx_scope_struct__genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_3app___pyx_scope_struct__genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *p = (struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr *)o;
+  struct __pyx_obj_3app___pyx_scope_struct__genexpr *p = (struct __pyx_obj_3app___pyx_scope_struct__genexpr *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -9129,27 +9129,27 @@ static int __pyx_tp_traverse_2ui_3app___pyx_scope_struct__genexpr(PyObject *o, v
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_2ui_3app___pyx_scope_struct__genexpr_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_2ui_3app___pyx_scope_struct__genexpr},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_2ui_3app___pyx_scope_struct__genexpr},
-  {Py_tp_new, (void *)__pyx_tp_new_2ui_3app___pyx_scope_struct__genexpr},
+static PyType_Slot __pyx_type_3app___pyx_scope_struct__genexpr_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_3app___pyx_scope_struct__genexpr},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_3app___pyx_scope_struct__genexpr},
+  {Py_tp_new, (void *)__pyx_tp_new_3app___pyx_scope_struct__genexpr},
   {0, 0},
 };
-static PyType_Spec __pyx_type_2ui_3app___pyx_scope_struct__genexpr_spec = {
-  "ui.app.__pyx_scope_struct__genexpr",
-  sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr),
+static PyType_Spec __pyx_type_3app___pyx_scope_struct__genexpr_spec = {
+  "app.__pyx_scope_struct__genexpr",
+  sizeof(struct __pyx_obj_3app___pyx_scope_struct__genexpr),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC,
-  __pyx_type_2ui_3app___pyx_scope_struct__genexpr_slots,
+  __pyx_type_3app___pyx_scope_struct__genexpr_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_2ui_3app___pyx_scope_struct__genexpr = {
+static PyTypeObject __pyx_type_3app___pyx_scope_struct__genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ui.app.""__pyx_scope_struct__genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct__genexpr), /*tp_basicsize*/
+  "app.""__pyx_scope_struct__genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_3app___pyx_scope_struct__genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_2ui_3app___pyx_scope_struct__genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_3app___pyx_scope_struct__genexpr, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -9166,7 +9166,7 @@ static PyTypeObject __pyx_type_2ui_3app___pyx_scope_struct__genexpr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_2ui_3app___pyx_scope_struct__genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_3app___pyx_scope_struct__genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -9184,7 +9184,7 @@ static PyTypeObject __pyx_type_2ui_3app___pyx_scope_struct__genexpr = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_2ui_3app___pyx_scope_struct__genexpr, /*tp_new*/
+  __pyx_tp_new_3app___pyx_scope_struct__genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -9217,16 +9217,16 @@ static PyTypeObject __pyx_type_2ui_3app___pyx_scope_struct__genexpr = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_2ui_3app___pyx_scope_struct_1_submit(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_3app___pyx_scope_struct_1_submit(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct_1_submit > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit, sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct_1_submit > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_3app___pyx_scope_struct_1_submit, sizeof(struct __pyx_obj_3app___pyx_scope_struct_1_submit))))
   {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_2ui_3app___pyx_scope_struct_1_submit[--__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct_1_submit];
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_3app___pyx_scope_struct_1_submit[--__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct_1_submit];
     #if CYTHON_USE_TYPE_SPECS
     Py_DECREF(Py_TYPE(o));
     #endif
-    memset(o, 0, sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit));
+    memset(o, 0, sizeof(struct __pyx_obj_3app___pyx_scope_struct_1_submit));
     #if CYTHON_COMPILING_IN_LIMITED_API
     (void) PyObject_Init(o, t);
     #else
@@ -9241,20 +9241,20 @@ static PyObject *__pyx_tp_new_2ui_3app___pyx_scope_struct_1_submit(PyTypeObject 
   return o;
 }
 
-static void __pyx_tp_dealloc_2ui_3app___pyx_scope_struct_1_submit(PyObject *o) {
-  struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit *p = (struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit *)o;
+static void __pyx_tp_dealloc_3app___pyx_scope_struct_1_submit(PyObject *o) {
+  struct __pyx_obj_3app___pyx_scope_struct_1_submit *p = (struct __pyx_obj_3app___pyx_scope_struct_1_submit *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !__Pyx_PyObject_GC_IsFinalized(o))) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_2ui_3app___pyx_scope_struct_1_submit) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_3app___pyx_scope_struct_1_submit) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
   #endif
   Py_CLEAR(p->__pyx_v_text);
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct_1_submit < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit, sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct_1_submit < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_3app___pyx_scope_struct_1_submit, sizeof(struct __pyx_obj_3app___pyx_scope_struct_1_submit))))
   {
-    __pyx_mstate_global->__pyx_freelist_2ui_3app___pyx_scope_struct_1_submit[__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct_1_submit++] = ((struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit *)o);
+    __pyx_mstate_global->__pyx_freelist_3app___pyx_scope_struct_1_submit[__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct_1_submit++] = ((struct __pyx_obj_3app___pyx_scope_struct_1_submit *)o);
   } else
   #endif
   {
@@ -9273,26 +9273,26 @@ static void __pyx_tp_dealloc_2ui_3app___pyx_scope_struct_1_submit(PyObject *o) {
   }
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_2ui_3app___pyx_scope_struct_1_submit_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_2ui_3app___pyx_scope_struct_1_submit},
-  {Py_tp_new, (void *)__pyx_tp_new_2ui_3app___pyx_scope_struct_1_submit},
+static PyType_Slot __pyx_type_3app___pyx_scope_struct_1_submit_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_3app___pyx_scope_struct_1_submit},
+  {Py_tp_new, (void *)__pyx_tp_new_3app___pyx_scope_struct_1_submit},
   {0, 0},
 };
-static PyType_Spec __pyx_type_2ui_3app___pyx_scope_struct_1_submit_spec = {
-  "ui.app.__pyx_scope_struct_1_submit",
-  sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit),
+static PyType_Spec __pyx_type_3app___pyx_scope_struct_1_submit_spec = {
+  "app.__pyx_scope_struct_1_submit",
+  sizeof(struct __pyx_obj_3app___pyx_scope_struct_1_submit),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER,
-  __pyx_type_2ui_3app___pyx_scope_struct_1_submit_slots,
+  __pyx_type_3app___pyx_scope_struct_1_submit_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_2ui_3app___pyx_scope_struct_1_submit = {
+static PyTypeObject __pyx_type_3app___pyx_scope_struct_1_submit = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ui.app.""__pyx_scope_struct_1_submit", /*tp_name*/
-  sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct_1_submit), /*tp_basicsize*/
+  "app.""__pyx_scope_struct_1_submit", /*tp_name*/
+  sizeof(struct __pyx_obj_3app___pyx_scope_struct_1_submit), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_2ui_3app___pyx_scope_struct_1_submit, /*tp_dealloc*/
+  __pyx_tp_dealloc_3app___pyx_scope_struct_1_submit, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -9327,7 +9327,7 @@ static PyTypeObject __pyx_type_2ui_3app___pyx_scope_struct_1_submit = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_2ui_3app___pyx_scope_struct_1_submit, /*tp_new*/
+  __pyx_tp_new_3app___pyx_scope_struct_1_submit, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -9360,16 +9360,16 @@ static PyTypeObject __pyx_type_2ui_3app___pyx_scope_struct_1_submit = {
 };
 #endif
 
-static PyObject *__pyx_tp_new_2ui_3app___pyx_scope_struct_2_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_3app___pyx_scope_struct_2_genexpr(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct_2_genexpr > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr, sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct_2_genexpr > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_3app___pyx_scope_struct_2_genexpr, sizeof(struct __pyx_obj_3app___pyx_scope_struct_2_genexpr))))
   {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_2ui_3app___pyx_scope_struct_2_genexpr[--__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct_2_genexpr];
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_3app___pyx_scope_struct_2_genexpr[--__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct_2_genexpr];
     #if CYTHON_USE_TYPE_SPECS
     Py_DECREF(Py_TYPE(o));
     #endif
-    memset(o, 0, sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr));
+    memset(o, 0, sizeof(struct __pyx_obj_3app___pyx_scope_struct_2_genexpr));
     #if CYTHON_COMPILING_IN_LIMITED_API
     (void) PyObject_Init(o, t);
     #else
@@ -9385,11 +9385,11 @@ static PyObject *__pyx_tp_new_2ui_3app___pyx_scope_struct_2_genexpr(PyTypeObject
   return o;
 }
 
-static void __pyx_tp_dealloc_2ui_3app___pyx_scope_struct_2_genexpr(PyObject *o) {
-  struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *p = (struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *)o;
+static void __pyx_tp_dealloc_3app___pyx_scope_struct_2_genexpr(PyObject *o) {
+  struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *p = (struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_2ui_3app___pyx_scope_struct_2_genexpr) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_3app___pyx_scope_struct_2_genexpr) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -9398,9 +9398,9 @@ static void __pyx_tp_dealloc_2ui_3app___pyx_scope_struct_2_genexpr(PyObject *o) 
   Py_CLEAR(p->__pyx_genexpr_arg_0);
   Py_CLEAR(p->__pyx_v_t);
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct_2_genexpr < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr, sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct_2_genexpr < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_3app___pyx_scope_struct_2_genexpr, sizeof(struct __pyx_obj_3app___pyx_scope_struct_2_genexpr))))
   {
-    __pyx_mstate_global->__pyx_freelist_2ui_3app___pyx_scope_struct_2_genexpr[__pyx_mstate_global->__pyx_freecount_2ui_3app___pyx_scope_struct_2_genexpr++] = ((struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *)o);
+    __pyx_mstate_global->__pyx_freelist_3app___pyx_scope_struct_2_genexpr[__pyx_mstate_global->__pyx_freecount_3app___pyx_scope_struct_2_genexpr++] = ((struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *)o);
   } else
   #endif
   {
@@ -9419,9 +9419,9 @@ static void __pyx_tp_dealloc_2ui_3app___pyx_scope_struct_2_genexpr(PyObject *o) 
   }
 }
 
-static int __pyx_tp_traverse_2ui_3app___pyx_scope_struct_2_genexpr(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_3app___pyx_scope_struct_2_genexpr(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *p = (struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr *)o;
+  struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *p = (struct __pyx_obj_3app___pyx_scope_struct_2_genexpr *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -9435,27 +9435,27 @@ static int __pyx_tp_traverse_2ui_3app___pyx_scope_struct_2_genexpr(PyObject *o, 
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_2ui_3app___pyx_scope_struct_2_genexpr_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_2ui_3app___pyx_scope_struct_2_genexpr},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_2ui_3app___pyx_scope_struct_2_genexpr},
-  {Py_tp_new, (void *)__pyx_tp_new_2ui_3app___pyx_scope_struct_2_genexpr},
+static PyType_Slot __pyx_type_3app___pyx_scope_struct_2_genexpr_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_3app___pyx_scope_struct_2_genexpr},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_3app___pyx_scope_struct_2_genexpr},
+  {Py_tp_new, (void *)__pyx_tp_new_3app___pyx_scope_struct_2_genexpr},
   {0, 0},
 };
-static PyType_Spec __pyx_type_2ui_3app___pyx_scope_struct_2_genexpr_spec = {
-  "ui.app.__pyx_scope_struct_2_genexpr",
-  sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr),
+static PyType_Spec __pyx_type_3app___pyx_scope_struct_2_genexpr_spec = {
+  "app.__pyx_scope_struct_2_genexpr",
+  sizeof(struct __pyx_obj_3app___pyx_scope_struct_2_genexpr),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC,
-  __pyx_type_2ui_3app___pyx_scope_struct_2_genexpr_slots,
+  __pyx_type_3app___pyx_scope_struct_2_genexpr_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_2ui_3app___pyx_scope_struct_2_genexpr = {
+static PyTypeObject __pyx_type_3app___pyx_scope_struct_2_genexpr = {
   PyVarObject_HEAD_INIT(0, 0)
-  "ui.app.""__pyx_scope_struct_2_genexpr", /*tp_name*/
-  sizeof(struct __pyx_obj_2ui_3app___pyx_scope_struct_2_genexpr), /*tp_basicsize*/
+  "app.""__pyx_scope_struct_2_genexpr", /*tp_name*/
+  sizeof(struct __pyx_obj_3app___pyx_scope_struct_2_genexpr), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_2ui_3app___pyx_scope_struct_2_genexpr, /*tp_dealloc*/
+  __pyx_tp_dealloc_3app___pyx_scope_struct_2_genexpr, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -9472,7 +9472,7 @@ static PyTypeObject __pyx_type_2ui_3app___pyx_scope_struct_2_genexpr = {
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_2ui_3app___pyx_scope_struct_2_genexpr, /*tp_traverse*/
+  __pyx_tp_traverse_3app___pyx_scope_struct_2_genexpr, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -9490,7 +9490,7 @@ static PyTypeObject __pyx_type_2ui_3app___pyx_scope_struct_2_genexpr = {
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_2ui_3app___pyx_scope_struct_2_genexpr, /*tp_new*/
+  __pyx_tp_new_3app___pyx_scope_struct_2_genexpr, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -9577,60 +9577,60 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_2ui_3app___pyx_scope_struct__genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr)) __PYX_ERR(0, 49, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_2ui_3app___pyx_scope_struct__genexpr_spec, __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr) < (0)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct__genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_3app___pyx_scope_struct__genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct__genexpr)) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_3app___pyx_scope_struct__genexpr_spec, __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct__genexpr) < (0)) __PYX_ERR(0, 49, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr = &__pyx_type_2ui_3app___pyx_scope_struct__genexpr;
+  __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct__genexpr = &__pyx_type_3app___pyx_scope_struct__genexpr;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr) < (0)) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct__genexpr) < (0)) __PYX_ERR(0, 49, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct__genexpr);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct__genexpr->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct__genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct__genexpr->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct__genexpr->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_2ui_3app___pyx_scope_struct_1_submit_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit)) __PYX_ERR(0, 111, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_2ui_3app___pyx_scope_struct_1_submit_spec, __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_1_submit = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_3app___pyx_scope_struct_1_submit_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_1_submit)) __PYX_ERR(0, 111, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_3app___pyx_scope_struct_1_submit_spec, __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_1_submit) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit = &__pyx_type_2ui_3app___pyx_scope_struct_1_submit;
+  __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_1_submit = &__pyx_type_3app___pyx_scope_struct_1_submit;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_1_submit) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_1_submit);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit->tp_dictoffset && __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_1_submit->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_1_submit->tp_dictoffset && __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_1_submit->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_1_submit->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_2ui_3app___pyx_scope_struct_2_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr)) __PYX_ERR(0, 115, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_2ui_3app___pyx_scope_struct_2_genexpr_spec, __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr) < (0)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_2_genexpr = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_3app___pyx_scope_struct_2_genexpr_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_2_genexpr)) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_3app___pyx_scope_struct_2_genexpr_spec, __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_2_genexpr) < (0)) __PYX_ERR(0, 115, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr = &__pyx_type_2ui_3app___pyx_scope_struct_2_genexpr;
+  __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_2_genexpr = &__pyx_type_3app___pyx_scope_struct_2_genexpr;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr) < (0)) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_2_genexpr) < (0)) __PYX_ERR(0, 115, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_2_genexpr);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_2ui_3app___pyx_scope_struct_2_genexpr->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_2_genexpr->tp_dictoffset && __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_2_genexpr->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_3app___pyx_scope_struct_2_genexpr->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   __Pyx_RefNannyFinishContext();
@@ -9917,13 +9917,13 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_ui__app) {
+  if (__pyx_module_is_main_app) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name_2, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "ui.app")) {
-      if (unlikely((PyDict_SetItemString(modules, "ui.app", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "app")) {
+      if (unlikely((PyDict_SetItemString(modules, "app", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -9941,7 +9941,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "ui/app.py":3
+  /* "app.py":3
  * from __future__ import annotations
  * 
  * def erase() -> str:             # <<<<<<<<<<<<<<
@@ -9951,7 +9951,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 3, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_1erase, 0, __pyx_mstate_global->__pyx_n_u_erase, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3app_1erase, 0, __pyx_mstate_global->__pyx_n_u_erase, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_3);
@@ -9961,7 +9961,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_erase, __pyx_t_3) < (0)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":6
+  /* "app.py":6
  *     return "\x1b[2K"
  * 
  * import os             # <<<<<<<<<<<<<<
@@ -9974,7 +9974,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_os, __pyx_t_3) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":7
+  /* "app.py":7
  * 
  * import os
  * import select             # <<<<<<<<<<<<<<
@@ -9987,7 +9987,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_select, __pyx_t_3) < (0)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":8
+  /* "app.py":8
  * import os
  * import select
  * import shutil             # <<<<<<<<<<<<<<
@@ -10000,7 +10000,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_shutil, __pyx_t_3) < (0)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":9
+  /* "app.py":9
  * import select
  * import shutil
  * import sys             # <<<<<<<<<<<<<<
@@ -10013,7 +10013,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_sys, __pyx_t_3) < (0)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":10
+  /* "app.py":10
  * import shutil
  * import sys
  * import termios             # <<<<<<<<<<<<<<
@@ -10026,7 +10026,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_termios, __pyx_t_3) < (0)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":11
+  /* "app.py":11
  * import sys
  * import termios
  * import threading             # <<<<<<<<<<<<<<
@@ -10039,7 +10039,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_threading, __pyx_t_3) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":12
+  /* "app.py":12
  * import termios
  * import threading
  * import time             # <<<<<<<<<<<<<<
@@ -10052,7 +10052,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_time, __pyx_t_3) < (0)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":13
+  /* "app.py":13
  * import threading
  * import time
  * import tty             # <<<<<<<<<<<<<<
@@ -10065,7 +10065,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_tty, __pyx_t_3) < (0)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":14
+  /* "app.py":14
  * import time
  * import tty
  * from pathlib import Path             # <<<<<<<<<<<<<<
@@ -10089,7 +10089,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":16
+  /* "app.py":16
  * from pathlib import Path
  * 
  * ROOT = Path(__file__).resolve().parent.parent             # <<<<<<<<<<<<<<
@@ -10131,7 +10131,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_ROOT, __pyx_t_3) < (0)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":17
+  /* "app.py":17
  * 
  * ROOT = Path(__file__).resolve().parent.parent
  * sys.path.insert(0, str(ROOT))             # <<<<<<<<<<<<<<
@@ -10162,7 +10162,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":19
+  /* "app.py":19
  * sys.path.insert(0, str(ROOT))
  * 
  * from core import llm as llm_mod             # <<<<<<<<<<<<<<
@@ -10191,7 +10191,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":20
+  /* "app.py":20
  * 
  * from core import llm as llm_mod
  * from core.loop import run, compression_stats             # <<<<<<<<<<<<<<
@@ -10215,7 +10215,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":21
+  /* "app.py":21
  * from core import llm as llm_mod
  * from core.loop import run, compression_stats
  * from core.wiring import register_all             # <<<<<<<<<<<<<<
@@ -10239,7 +10239,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":22
+  /* "app.py":22
  * from core.loop import run, compression_stats
  * from core.wiring import register_all
  * from model.server import is_ready, tokens_per_second             # <<<<<<<<<<<<<<
@@ -10263,7 +10263,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":23
+  /* "app.py":23
  * from core.wiring import register_all
  * from model.server import is_ready, tokens_per_second
  * from ui.splash import compact_splash_lines, shade, splash_lines             # <<<<<<<<<<<<<<
@@ -10287,7 +10287,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":25
+  /* "app.py":25
  * from ui.splash import compact_splash_lines, shade, splash_lines
  * 
  * RESET = "\033[0m"             # <<<<<<<<<<<<<<
@@ -10296,7 +10296,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
 */
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_RESET, __pyx_mstate_global->__pyx_kp_u_0m) < (0)) __PYX_ERR(0, 25, __pyx_L1_error)
 
-  /* "ui/app.py":26
+  /* "app.py":26
  * 
  * RESET = "\033[0m"
  * SHOW = "\033[?25h"             # <<<<<<<<<<<<<<
@@ -10305,7 +10305,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
 */
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_SHOW, __pyx_mstate_global->__pyx_kp_u_25h) < (0)) __PYX_ERR(0, 26, __pyx_L1_error)
 
-  /* "ui/app.py":28
+  /* "app.py":28
  * SHOW = "\033[?25h"
  * 
  * _print_lock = threading.RLock()             # <<<<<<<<<<<<<<
@@ -10330,7 +10330,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_print_lock, __pyx_t_3) < (0)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":29
+  /* "app.py":29
  * 
  * _print_lock = threading.RLock()
  * _state = {"buffer": "", "cols": 80, "rows": 24, "status": "idle",             # <<<<<<<<<<<<<<
@@ -10345,7 +10345,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_status, __pyx_mstate_global->__pyx_n_u_idle) < (0)) __PYX_ERR(0, 29, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_spin, __pyx_mstate_global->__pyx_int_0) < (0)) __PYX_ERR(0, 29, __pyx_L1_error)
 
-  /* "ui/app.py":30
+  /* "app.py":30
  * _print_lock = threading.RLock()
  * _state = {"buffer": "", "cols": 80, "rows": 24, "status": "idle",
  *           "spin": 0, "ticker_row": None}             # <<<<<<<<<<<<<<
@@ -10356,7 +10356,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_state, __pyx_t_3) < (0)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":31
+  /* "app.py":31
  * _state = {"buffer": "", "cols": 80, "rows": 24, "status": "idle",
  *           "spin": 0, "ticker_row": None}
  * SPIN = ""             # <<<<<<<<<<<<<<
@@ -10365,7 +10365,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
 */
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_SPIN, __pyx_mstate_global->__pyx_kp_u__19) < (0)) __PYX_ERR(0, 31, __pyx_L1_error)
 
-  /* "ui/app.py":34
+  /* "app.py":34
  * 
  * 
  * def erase() -> str:             # <<<<<<<<<<<<<<
@@ -10375,7 +10375,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 34, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_3erase, 0, __pyx_mstate_global->__pyx_n_u_erase, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 34, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3app_3erase, 0, __pyx_mstate_global->__pyx_n_u_erase, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
@@ -10385,7 +10385,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_erase, __pyx_t_5) < (0)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "ui/app.py":38
+  /* "app.py":38
  * 
  * 
  * def ticker_text() -> str:             # <<<<<<<<<<<<<<
@@ -10395,7 +10395,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 38, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_5ticker_text, 0, __pyx_mstate_global->__pyx_n_u_ticker_text, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3app_5ticker_text, 0, __pyx_mstate_global->__pyx_n_u_ticker_text, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_3);
@@ -10405,7 +10405,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_ticker_text, __pyx_t_3) < (0)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":67
+  /* "app.py":67
  * 
  * 
  * def daemon_ok() -> bool:             # <<<<<<<<<<<<<<
@@ -10415,7 +10415,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_bool) < (0)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_7daemon_ok, 0, __pyx_mstate_global->__pyx_n_u_daemon_ok, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3app_7daemon_ok, 0, __pyx_mstate_global->__pyx_n_u_daemon_ok, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
@@ -10425,7 +10425,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_daemon_ok, __pyx_t_5) < (0)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "ui/app.py":82
+  /* "app.py":82
  * 
  * 
  * def log_write(text: str) -> None:             # <<<<<<<<<<<<<<
@@ -10436,7 +10436,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __Pyx_GOTREF(__pyx_t_5);
   if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_text, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 82, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < (0)) __PYX_ERR(0, 82, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_9log_write, 0, __pyx_mstate_global->__pyx_n_u_log_write, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3app_9log_write, 0, __pyx_mstate_global->__pyx_n_u_log_write, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_3);
@@ -10446,7 +10446,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_log_write, __pyx_t_3) < (0)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":96
+  /* "app.py":96
  * 
  * 
  * def ticker_write() -> None:             # <<<<<<<<<<<<<<
@@ -10456,7 +10456,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < (0)) __PYX_ERR(0, 96, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_11ticker_write, 0, __pyx_mstate_global->__pyx_n_u_ticker_write, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3app_11ticker_write, 0, __pyx_mstate_global->__pyx_n_u_ticker_write, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
@@ -10466,7 +10466,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_ticker_write, __pyx_t_5) < (0)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "ui/app.py":105
+  /* "app.py":105
  * 
  * 
  * def _ticker_loop() -> None:             # <<<<<<<<<<<<<<
@@ -10476,7 +10476,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < (0)) __PYX_ERR(0, 105, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_13_ticker_loop, 0, __pyx_mstate_global->__pyx_n_u_ticker_loop, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3app_13_ticker_loop, 0, __pyx_mstate_global->__pyx_n_u_ticker_loop, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_3);
@@ -10486,7 +10486,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_ticker_loop, __pyx_t_3) < (0)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":111
+  /* "app.py":111
  * 
  * 
  * def submit(text: str) -> None:             # <<<<<<<<<<<<<<
@@ -10497,7 +10497,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_text, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_15submit, 0, __pyx_mstate_global->__pyx_n_u_submit, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3app_15submit, 0, __pyx_mstate_global->__pyx_n_u_submit, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
@@ -10507,7 +10507,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_submit, __pyx_t_5) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "ui/app.py":133
+  /* "app.py":133
  * 
  * 
  * def ctrl_quit(*_a) -> None:             # <<<<<<<<<<<<<<
@@ -10517,7 +10517,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < (0)) __PYX_ERR(0, 133, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_17ctrl_quit, 0, __pyx_mstate_global->__pyx_n_u_ctrl_quit, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_3app_17ctrl_quit, 0, __pyx_mstate_global->__pyx_n_u_ctrl_quit, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_3);
@@ -10527,7 +10527,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_ctrl_quit, __pyx_t_3) < (0)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "ui/app.py":137
+  /* "app.py":137
  * 
  * 
  * def main() -> None:             # <<<<<<<<<<<<<<
@@ -10537,7 +10537,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < (0)) __PYX_ERR(0, 137, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_2ui_3app_19main, 0, __pyx_mstate_global->__pyx_n_u_main_2, NULL, __pyx_mstate_global->__pyx_n_u_ui_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_3app_19main, 0, __pyx_mstate_global->__pyx_n_u_main_2, NULL, __pyx_mstate_global->__pyx_n_u_app, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_5);
@@ -10547,7 +10547,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_main_2, __pyx_t_5) < (0)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "ui/app.py":203
+  /* "app.py":203
  * 
  * 
  * if __name__ == "__main__":             # <<<<<<<<<<<<<<
@@ -10559,7 +10559,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (__pyx_t_10) {
 
-    /* "ui/app.py":204
+    /* "app.py":204
  * 
  * if __name__ == "__main__":
  *     main()             # <<<<<<<<<<<<<<
@@ -10578,7 +10578,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "ui/app.py":203
+    /* "app.py":203
  * 
  * 
  * if __name__ == "__main__":             # <<<<<<<<<<<<<<
@@ -10586,7 +10586,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
 */
   }
 
-  /* "ui/app.py":1
+  /* "app.py":1
  * from __future__ import annotations             # <<<<<<<<<<<<<<
  * 
  * def erase() -> str:
@@ -10608,7 +10608,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
   __Pyx_XDECREF(__pyx_t_8);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init ui.app", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init app", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -10622,7 +10622,7 @@ __Pyx_RefNannySetupContext("PyInit_app", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init ui.app");
+    PyErr_SetString(PyExc_ImportError, "init app");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -10661,7 +10661,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "ui/app.py":41
+  /* "app.py":41
  *     comp = compression_stats()
  *     comp_box = ("comp in=%d kept=%d r=%.2f" % (
  *         comp.get("last_in") or comp["tokens_in"],             # <<<<<<<<<<<<<<
@@ -10672,7 +10672,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
-  /* "ui/app.py":42
+  /* "app.py":42
  *     comp_box = ("comp in=%d kept=%d r=%.2f" % (
  *         comp.get("last_in") or comp["tokens_in"],
  *         comp.get("last_kept") or comp["tokens_kept"],             # <<<<<<<<<<<<<<
@@ -10683,7 +10683,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
 
-  /* "ui/app.py":48
+  /* "app.py":48
  *         count = 0
  *         try:
  *             with open(HOT_FILE, "r") as fh:             # <<<<<<<<<<<<<<
@@ -10694,7 +10694,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
 
-  /* "ui/app.py":126
+  /* "app.py":126
  *             return
  *         r = run({"prompt": text},
  *                 on_event=lambda ev: log_write("  [tool] %s" % ev.get("name", "")))             # <<<<<<<<<<<<<<
@@ -10705,7 +10705,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[3]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[3]);
 
-  /* "ui/app.py":128
+  /* "app.py":128
  *                 on_event=lambda ev: log_write("  [tool] %s" % ev.get("name", "")))
  *         _state["status"] = "up"
  *         log_write(str(r.get("output") or r.get("error", ""))[:4000])             # <<<<<<<<<<<<<<
@@ -10716,7 +10716,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[4]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[4]);
 
-  /* "ui/app.py":141
+  /* "app.py":141
  *         print("greyagent needs a terminal")
  *         return
  *     size = shutil.get_terminal_size((80, 24))             # <<<<<<<<<<<<<<
@@ -10727,7 +10727,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[5]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[5]);
 
-  /* "ui/app.py":174
+  /* "app.py":174
  *                 ticker_write()
  *             elif ch == "\x7f":
  *                 buf = buf[:-1]             # <<<<<<<<<<<<<<
@@ -10738,7 +10738,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_slice[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_slice[0]);
 
-  /* "ui/app.py":187
+  /* "app.py":187
  *                 from services.memory_thin import read_last
  *                 for entry in read_last(5):
  *                     log_write("mem: " + str(entry.get("content", ""))[:100])             # <<<<<<<<<<<<<<
@@ -10749,7 +10749,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[6]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[6]);
 
-  /* "ui/app.py":190
+  /* "app.py":190
  *             elif ch == "\x0b":
  *                 from services.scheduler_store import Store
  *                 for t in Store().list()[:5]:             # <<<<<<<<<<<<<<
@@ -10816,25 +10816,25 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 10; } index[] = {{1},{4},{9},{6},{6},{8},{4},{13},{3},{4},{179},{1},{1},{1},{1},{1},{1},{1},{1},{1},{30},{2},{1},{3},{0},{2},{2},{1},{2},{2},{8},{8},{13},{7},{3},{6},{2},{26},{9},{6},{4},{5},{7},{11},{8},{50},{11},{3},{7},{11},{6},{18},{9},{5},{7},{1},{8},{5},{8},{4},{4},{20},{5},{5},{4},{4},{6},{11},{4},{5},{9},{7},{6},{1},{2},{12},{18},{5},{4},{3},{6},{1},{2},{14},{17},{18},{5},{3},{4},{7},{4},{8},{20},{17},{7},{7},{4},{9},{13},{11},{5},{9},{1},{6},{9},{6},{6},{4},{9},{5},{5},{5},{6},{2},{6},{8},{2},{2},{8},{6},{5},{8},{7},{3},{17},{9},{1},{4},{6},{6},{13},{8},{6},{5},{8},{7},{9},{4},{5},{4},{10},{3},{7},{7},{9},{8},{4},{7},{9},{12},{10},{1},{4},{8},{4},{7},{8},{8},{4},{2},{6},{6},{4},{7},{3},{5},{11},{6},{12},{1},{5},{4},{9},{12},{7},{6},{4},{3},{8},{6},{4},{20},{24},{12},{9},{10},{10},{5},{6},{6},{4},{5},{4},{6},{7},{4},{12},{5},{6},{5},{6},{5},{6},{3},{5},{4},{6},{23},{24},{42},{3},{3},{1},{6},{9},{9},{7},{8},{4},{9},{5},{12},{10},{11},{28},{12},{4},{9},{11},{17},{3},{3},{6},{9},{2},{5},{6},{6},{5},{99},{2},{122},{20},{2},{274},{81},{5},{22},{105},{120},{657},{9}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2238 bytes) */
-const char* const cstring = "BZh91AY&SYY\310\234S\000\001\033\377\377\377\377\377\376\177\367\377\377\377\377\377\377\277\377\377\364\320\310\306`A\300Dd@@@@P\000@\000`\007\237\017:\253l\226\230\324i\246\226i\261\300\034\rL\221S\312z\233Q\352\036\243M4z\236\247\244mO\023cA\024\332M\250z\006OT\003j=FOQ\240mM=#\3244\006&i\250\031\250\000\032\200\t\250\315\023\t\222\023\023\3222\014\200\000\003CF\200\000\000\000\000\r\0035\0314h\000\0104\310\302h\323\0101\014M0\004di\210b`\004\311\200\002d\0320\000\004d\302d\300\023\010\301\240F\204\320\211?Q\246\246\312m\023H\321\243OSz\240\320h\000\000\320\000\000h\000\007\250\320\000\032\000i\352 \323#\t\243L \30414\300\021\221\246!\211\200\023&\000\t\220h\300\000\021\223\t\223\000L#\004\246\222d\320\020\004\321\251\202i\24124\332\200\006\206\200\000\0004\000\000\320\0004\000\3104\032\006\216\2037\345\370\t\233\235\373\363\371\361?\247\034\213\224E\243\323\323)t?\260f\257\374\252\253\247;\033\020l\337D\006z,\001\212\323\rt\350\204\263\264f\341\245\250m\022\014\032\224\022I$!\225\252,4\000\206\260x\274\355Z\211LM\257\315\337@\347\"(\311t P\251d&\203\22430\207[p\002\250\021\026\242\300\306V\254\312\356;\220M\231j\352\255\3739\243\355\326\266\013$\027\235l\341lE\305\"\226\341\023\211\033\275\242\371\324\t\316s\245(\242\246P,hf-\275\021\367\335\230\310\353\320\243\355sv9|Q\366\374\265\351)x\332\274\256\r\337~\375W\322\177\024y\034{t3.\345\233\210\237\033\205\354>\362\276_\275\271&\261*\213\230\370\036\326\236\\\324}\263\222\037q\360\326\tK'd\233\205\2643\215\005\273\306\3442\004cTc\353a\321\300\016\277u\231\204B\r\220\033L\010\260\204\016\313]u\006\333\205\312\362I\014\234\2728\213\302\263P\031\227\310\rf\001\216\017uz\264\313a\310s1\362\262q\270\005\254Z\371\255\\\320$P\210]\2670S\021\225\035\303\344\2537\245\345\261\022\327G\234\031\347z\220\207^#T\236n\010\303:\336a<`\216\232\232\251\321u\230A\244\016\026z\023\344U\221\337?\226\304\200J\r\006^4(\025\t\307Q\203\244\210 F\271\362\374_9\212s\002s\257\264\341\310\303\177\0351R_t\3531\001\\/fi}[\326F:\253\362_n\3676""\371[\202!b\033\307\206\244\260\263\350DbM\256\216\331UT\342\t\244UL\200P\005\200A\246\224\223T0\316\224\002\203\024\305?\246\t\013g7\005\255%\363\224$fU\341\275\262Z\241\321\211\216\231\335J\nz\317\r\ra\3429\212\261D\342\322l\025s\365\300\034\027\013\311\236\0319\327\370M\271\313\323\322\345\343\351N\235j\354\177\222i\212\024\014\242\226\261\216\303\035\024D\304\214\022JIT\010\226\005\244D\214)\210I\331\246\256\247\270\201\240Q\202<\016R\342c%D\030\251\262\300\307@\260\254\327\2747q\031NG\010\263\244\010q!\307\224\202t,<8u\227_W\177Ga\213;e\255\240\206\246\250\305\035$\207\202\316\204\272[\270{F\375\215\335\303v\032\362\244\244(*4&\000UP\2641m\200p\0371\021v\212$\265\014q\001\031#\261zA4\361\304\017~\372\254\006\266f\264\200\344\022\337\202\333P\231\246\311\272\301@A^d[;od<10\030\252c_>Q\2246\006R\306|D\300AZ\230&\252\231\r\205\314a\250\332\270\236\0021\240\356`\255\226\343~\"\3231V\300\221H&\200\206\306\310\013<\361\316G\010\230\375&-\224\202$C?&+\372\314!\304\330\204MV\225#;\301\204\243\350=\202\246\316BW\341aT\263\033\224$$\344\352v\331\326\326\246\220\235\2273W\234\306d\312\362\276\227P\251\267 `\306;*\026#cg\216\242\312\365B\237!\020>\215\013\233\274\335^V\260\272\271\023UF\315\022\244*E\303\341\342\215\217O\000\332\301\247$itS\300h\271qu\305\334.e\2715A\312\320\2311\307D\t\346m\203I\026:\354x\246c\247-\304\353M\251Fm\222\230\244\233n\335aJ\2337e)\0222^V\225\221\221\274`\276\253c\273\200\337\245\304\261\226;n\245\310\302\362\275&\241\247\033l\206,D\030\t\312\275-\324\0000\260\256\233\202\222@M\375\365x\000\302\014\236\261\354\026\244\245\t\273\206\264\356IPuj(i\024\254\304\304\364\356=\232*\305[\taN>\030\020\327Ws\023\024\326Hn-fh]i\241\263\205W\361*\313\264\\N\360\302\314\247t\010[\032\234\241\224\231\342C\"X*\264\334h\262s0'*\004\005\257\002\232\221\034\\5\207!\n\330\360-v\230\006\250\0161x\t\267l!{7'\023:\321c6\033\343}MiK\216\350SC_\246\333\004*8\246\371\350Uj&\264\261\366\036-\002O}\256+\n'\024\213\026zi/\311|\032\366p\204\242\274o1\336#\256+\000\331\322U""P\267Y8\211\322\231m0Zh\246\001\202/\313P\323\357ph(\213\234\036\013\245\010\320\354\312\225q\241\014\\\215U\205\215]d\3704>bx\341Y\241\3663\333\264\361\235D\007\3412\220h\n0\225\2306p\224\223\215o;\"\240C\004\326\272\200`P\240Q5:\232!l\315q\300\324]\244\202%B\306 \206\014,\266\343j\224\326!\262\312\366:e\245\353@\3223\333=\251_\226\241N\364\276\205$e4\324\234.\327\2169\302\370\360j\034\301\223\235\246\243S\035\364\201\232R\003\026(\312MlF\335\342\001\247\034\374[i\2231l\005\224'v\342-\272\032(\2062JsJT=\030\021\225\t@J\021\224\224\343(\252l\213\272\010\300\341\251Y\240p\350G\205\032$ \234\003\256\313\\\272\326Qi\254\242ao\225\302\320\327\317\032v\361\273;u\315j\347H\261[D0qT\271/{A\341\025\270\036)\000\302\3060w<\346\344\022\315\273\372~n\004[\305\340\265\024\307Y\204Je$~\214\325\260+\200\262\327:\005r\221\366d\2433\326V\356H\305\t\355\340\314lPg&\306z\260\306\261\010\tJV\333\325\251#6K\3638\374\227\311=\276\026b\362\376\211\307o3G/\310\367\206\377\236\316XR\336^\024\302BC|\310^\260\337\n9A\354\367\311\271\250M\274}\260os\224\233\215\362<\r\204\354\220\220$^\215\370\244,4\254cJ;\332e;\244cc\010\320R\007S\3020\227\036\2632\266\001\221.\262\361\343\310Q\255]|^\305\036\311\013 W\334\230\003d\226 _\001\231\344+\t\3069\265\214\322\261\204\206=\263\0204\t \2320\r\032\351B\312J\353\256`\331h\221\250Hd\212\201##\021\033\0005\000\303\r\036\266x%\232`$\224^\"E\246\231\3345l\202uf)\233\242\023|\346\356\220\232\005\355\315\227]\361\274\260\200Q1\322\027\020.6R\334\234\342\014\264~\217*\013\216\010H\310\321u\327,\344\351k\327\246\231\317y[\351\335\t\251<X\250\364\262\323\235\206\366\324\367\362\260\320GA\306P\326\355\265\211\226)\263\272\271\354]\267\335\033n4\366\206N\332H\317\226\323z\256$Z7\302\003\301\307\036'\322\213,\251FuT\2429Z\222\245K\332\301\223'\003\006\216\001U\316Lz\267mG\313\342\"6\222qb\306\314\346\2525\036gV|\233\360w\346\357\013*\265?\303\0172\310\276\315f*\"\322\371\372(\010\220\321\017\355#.\245\344+\351\265(bI\237H\353@\214\374\3212\267\200g\277\004c\216}""\345\270\231\313-\233\014A\336$\032\341D.\215\376N\225\213<$\223\214d\201\326\007\024F\233q\326\030\336\002\020\224\344\322\203\272\302\220Nc@\330Na\235\025\346\2205\016\351UX3\262'\250\214\366\251\325\324\245\0243Sc\021\002L\260SY\243,\031\275\357k\360\373?\326\376\277\276\177?\177\177\177\361\303\377\027rE8P\220Y\310\234S";
-    PyObject *data = __Pyx_DecompressString(cstring, 2238, 2);
+    const struct { const unsigned int length: 10; } index[] = {{1},{4},{9},{6},{6},{8},{4},{13},{3},{4},{179},{1},{1},{1},{1},{1},{1},{1},{1},{1},{30},{2},{1},{3},{0},{2},{2},{1},{2},{2},{8},{6},{8},{13},{7},{3},{6},{2},{26},{9},{6},{4},{5},{7},{11},{8},{50},{11},{3},{7},{11},{6},{18},{5},{7},{1},{8},{5},{8},{4},{4},{20},{5},{5},{4},{4},{6},{11},{4},{5},{9},{7},{6},{1},{2},{12},{3},{18},{5},{4},{3},{6},{1},{2},{14},{17},{18},{5},{3},{4},{7},{4},{8},{20},{17},{7},{7},{4},{9},{13},{11},{5},{9},{1},{6},{9},{6},{6},{4},{9},{5},{5},{5},{6},{2},{6},{8},{2},{2},{8},{6},{5},{8},{7},{3},{17},{9},{1},{4},{6},{6},{13},{8},{6},{5},{8},{7},{9},{4},{5},{4},{10},{3},{7},{7},{9},{8},{4},{7},{9},{12},{10},{1},{4},{8},{4},{7},{8},{8},{4},{2},{6},{6},{4},{7},{3},{5},{11},{6},{12},{1},{5},{4},{9},{12},{7},{6},{4},{3},{8},{6},{4},{20},{24},{12},{9},{10},{10},{5},{6},{6},{4},{5},{4},{6},{7},{4},{12},{5},{6},{5},{6},{5},{6},{3},{5},{4},{6},{23},{24},{42},{3},{3},{1},{6},{9},{9},{7},{8},{4},{9},{5},{12},{10},{11},{28},{12},{4},{9},{11},{17},{3},{3},{9},{2},{5},{6},{6},{5},{99},{2},{122},{20},{2},{274},{81},{5},{22},{105},{120},{657},{9}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2222 bytes) */
+const char* const cstring = "BZh91AY&SYh\316\3358\000\001\033\377\377\377\377\377\376\177\367\377\377\377\377\377\377\277\377\377\364\320\310\306`A\300Dd@@@@P\000@\000`\007\235\360\272\253F\303B\200\005\005\034\001\300\324\311\024\312z\233I\352\036\240\323G\251\352zF\324\361O<\201\024\332M\250`d\365@6\243\324d\365\032\006\324\323#\3244\006&i\250\031\250\000\032\206\223\t\244\304\300B\230jmC&\2154\320\000\000\000\000\000\000\000\001\220\323\023\023@\000\0104\310\302h\323\0101\014M0\004di\210b`\004\311\200\002d\0320\000\004d\302d\300\023\010\301\244\302ji4\247\352\236\243FCCj\000\r4~\250\001\240\000\003@\000\001\240\000\000\000h\r\014jz\2104\310\302h\323\0101\014M0\004di\210b`\004\311\200\002d\0320\000\004d\302d\300\023\010\301)\244\004\002h\002h\230M\004#\324\332\200\365\000mM\000\320\0004\000\000\320\00044\017I\240\000]b\221a|\304\010\276\337\274<6\030\206\0141\205bj\2361\305\306\000\212{R\225y\246\254V\000\347\3060\031\343p\014Z\230l+\030OkJ\256\034Z-\276a\226\350\223I$!\225\352L4\000\207 |_G\205\204\352&\346\361r\300\364Q$j\302\020\"\250\310M\007\"\314\302\035t\300\013 H[\226LkkMn\343\271\004\333\027\016\013\2524ON\253\357\270\272\244=,,\226\0231j\265z\331\250UR\230\031YxYe\226[m\260\024@\230\254\034 +\322f\366\335V\005\n3\346\366}Yl\r\000\370\372(\322OH\263Ic\202\3600\365~\322\362W\306\344\334\245\231\231Ue&\215\357\023\034\267\225\2632\333\220\211fQ\363c~6\264\246\316O\333\344\360\217*8`\017\035iV\231s\026F\\^\025\366\217P\246\r`\206\260\327\266\211\200\330\337*\250\2101\231\001jb,\000\373\263\027YA\267!r\274\322C'6\2362\360*\262\005\351\006.\342\010\025\253\314\327\246\225\316g\003&\234\034\211d\312\352\356\204\273b4\006e\270\301\023\323\002\235\334=\315\n\275Nj\221%\027\235\000\257*P\210\227\246j\236\347\337\214\"\\h\024W\006t\365X\261\243\3540\303H\034*\351Q\215g\033\302^yd\002`*5\367\241\021E8\352Pt\221\004\010\346?/\342\374\346u\250\025\255\276\036\354\315\030\371/\241\366e\266\006\207\204\023D\224\245\231\030\256R\247/LU\261}q2\264\310A\243\030\247\232FL\354t!&\237[^\341\325f\200\374""\362*\313\037\024\201(0\303\230\323\331\030D\362A\302\016\203\227\251\371\017Vu\373ZknP\221\2317h\366\311j\227W\023\223\324:\302NPF\032\032\302\210\220u\212h\026\236\224\353op\001\225p\232\331\\\\\376)\342.s\002\255.R\366\243\323\245\016\260\372\235Q2h\024N\272\300l\254N\202(\252\031\353W\275\307{\210[2\250\202%ZF6B\220]nFM9=%\004\275G\273\224\330\362\345\276\245n\266\204\374Z4\026xsPk\214\275-$nl}\366\2666\306\206\201\303\301\2066{\373\237F\306\325kA\014\253\030\243\323Dx-\210K\275\207s\234\351c\257\250\353\207\201I2\024{n\006\236\007!\345\366B\001\243kG\226;\264\360\307<\2036\317W;\0336\347\220V\343\263(kgkL\010\302k`\367\312\023\266\336E\326\211!G\256\204\250\233\263\220\241\211\201\007#\233\371\270\034\010\353M\\\327i\365\222\204m\326\373 \230\343\016TF\330\354\321I\023\235\244_\335G\206*\235\250[\312\327\334<\336O\320:\212\213\215\036k3\260\224\321\374\2541\245\007y\221\247\202p\376v\016\246\242\304\324!u\354\226B\036\332t.-o>\346\205;\032\357{\263\243JbNV\307n~NJP+v\014\326\3554\232\265\274\361\243\250X\335\230\031i\035\224Vj'J\325!2\"A\233\210\204\005\336\336\225\326\377\014\266T\010`\245\023\220\274}\020\030@c__F\247!}gF\\uJ\216\212u\264\234\300\303\003\016\347\237~\256\000\345\250L\230\362Q\002\273;\007\022L{\r9\324\323Mx\025\2656\350\354\347)$\223t\337\310)\322\356\324\3472f\254KR\272S;\346X\331|\273Y\035Ix\3672\323~\024rP\304\267\211\270\343\245\271\303<\3100mT\364\374\266\205V4\341\350\034\032\326\363:p\264<b\273o\206\245\311)F\\\330\337\266\351(\302{\2248\212wf\305x\366^\355\366gk\thN>\210\020\346Xy\351\212ZLo\"\323d0\274\336\333B\314|{5\364\030\025\30443*\341\002\027\312\307\"\312l\362!\251,\254\301P\350\272\313\020Y[G\033|\232\3103)\320\215\312\244\257\272\222m\361\260\024\034R\223\300M\332\270\206,\336Vl\353}\314\3321\22665\345\034wB\252\033\0367\334!G\3109^*\315\311\257.~\303\311\240M\361\275\305q\032\311\"\345\266\2241\325\214\033\026\270\305\030g\r\020\216\203<\013\302\315\244\247\272\226\357\201\225\332\336\225r;\270ZwN\245\310w\373\375\270\221""\223\235\276\333\245\tE\331\225\025\346\3641\2028,\230\341\310\237-\357\254\256\230Zo~\307\013\372\036U\260\200\375\306S\r\341\035\005\246\\\372\n\025\225\257[\244\240C*\256i\203\002\205\"\231\354ji\205\263\265\304\006%\323\306\021*\0261&@a\346\271]\252SX\226\3152\334\267\341nP\264\215R\352]5\313\205\344\026O\225\255W\214\023\351\262X\357\236vK)\362^Q\t\250\260P4\347\225\262I\355\221\243D\353X\3413\253\"Dl\2377w\013wr\267\022\025\225p\354\242\374!\2760\322MV\251N/\034\221\255\t@J\022\234\325e9*]'w'%-7\330\345\n;-v\306lI\365+\371\343\2146\335l-\333\002\302\031W\023\0029Y\233\373\211\343\315\037c\034!\314\363\213ak\241N\017\213\345L\005\256p\304Z*\021.\212!v\202G(\325\\\317\330\371\270\031q\213\261h\357N!yv\r\026\n\035\240\200\005\235\244\221)\315\033\245L\350\264\265\334\231\234+\323\226\303\261\023iV6\331\266V\210@Ns\276\377\\\247\223\232ue\261\307\362\236\275=\315\206&>3\216\3373\177\235\362>\360\337\371\356\363\202\215\362\362L$$7\346B\372\303~\024y\241\366|\304\336$&\357\236\204\033\356y\251\273\337\221\340s'd\204\201#q\250\360\213\013k\024\322\216\366\231O\351\030\330\230h)\003\251\341\023\031\036\2632\264\001\2212\3031\343\310h\330\256\316\037b\227d\206\210\025\367\006\000\331&\010\027\300e\371\n\302qNmc4\260a\"w\266b\006y$\022\314\003F\272P\303Ie\226L\032\226H\324$(\212\211#\037\t\033\000.\001\211\313=l\340L.pI4^\"E\225\252\351v\210'VcJ\270!7\316n\341\t\240p-\354\272\357\215\346\004\002\211\214\220\310\201m\262\226\344\367\020e\241\364y\250.8!#\037A\327\\\321\310\322\327\257M3\336\362\267\323\270\023R\200\261Q\351e\247?\005\355\252\017\344\340\240\216\213\212B\357\033`\225:\232\2676\375\214\266\373\243m\305\275\237\221\266\2223\345\255\275W\022,\233\341\001\340\343\217\023\351F\212\232h\316\253M\021\312\324\225*^\326\004\2317\370\024\257\312\256jc\325\271f>W\r\021\264\223\207\0266_5\250\324\271\235Z\022o\201\337\033\274\034\232\324\377\023\236R\205\356b\242\242.'\317\321DD\206\210\177i\031U.\341^\315\251G\nM\014C\255\0023\363D\312\336\001\234\374\021\2149\367v""\242f\260\306d1\007t\220l\204\206o.\251\345\324\221Wi\216Q\214\306\035\032\0213Y-\3525\207`\3154\246Y\231\335\032v<\025h(\224\202\271\243\310\332\010\035\316\204FWS>\261\253\327HP\350SD\341\004\202\300D\t\225\031 \2225FU\357\367>\237\014e\376\342Z\265n\335\274+\217\370\273\222)\302\204\203Fv\351\300";
+    PyObject *data = __Pyx_DecompressString(cstring, 2222, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2149 bytes) */
-const char* const cstring = "x\332uTKs\033\307\021&)\322\"\305\207\010>$Y\214\253\226z\332\251\010\014)\312\222eI\016D\221\022e\205/@\226\0349\331Z,\006\300\222\213]`g\226$T\256\212*\227\240*\207\314A\256\332\334\346\224\354\021\207\034\230\252\034p\324\021G\034]\370\005\371\t\371z\226/'\345\252\335\231\336\331\351\236\356\357\373z\3223o~]1\256\247\347\213\206\230\3433o\276Z\270S\326\243;\363f!\203\367kzG\317\321\330\375\241\331}\377\316H/\024\327|\217\255\371\202\031\242l\tc\251.\312\276g8\334(0\327\311\263\300\022\314\255\033\\\004\216-X@\233<ccy\343\326\342\275E\303\362\nF\300\266\231-\270\301\303\274\355Z\2343n\370E#\037:\256p<C\324\253\214\247\215\325\242Q\367C\303c\254`\010\337\250b\337i\007Qf\236\301\231 \303\270iy\236/,\341\370\236\tw\307+\3354\nN\200C\234]F\336+\226\313Y\372\314\350\271?\216M|4lt\325_\272\352o]\365\257\256:\350\252\177w\325?\273\352\357]\365\217\256\372sW\375\3250\276\352\276\377\023\325\374\345#\343W\206U(\230\210\316l\277R5\034\357\241\236]\237s\227q^p\270\225w\231\301\0362\217\214\222]\nX\335*1O\350\324\271a\031\300\240\342x\226\353\360dO\301\330aU\361\260\302*\006\336\3734\030\336\234\205\311\017\352i\356\333;\025\037H\032\327y2\207\236\265k9\256>\247\373\356=\200\265\202\244\356\344?g\301.`.:\001\027\036\333\3037\347@\302\010\036r\273\314\n\367\r\303x#|\337\375=\"\316\221\301\365\000\032\\\337*\320\206\353\205\320\231\263\252\325t\265\036\212\342\255{\231\025\363\345\332\352\353g\317\326s\346\312\352\213\345\325\245\255\265\027/2\331\234\231\333\310\022\371\033\226(\233\346F}\037\357\023\260l\256\261}\261\305\212[\313\331\345\334\326\013\224\260\265\276\236\313>[\177\225]}\272\272\226\313\256/}mfs[\313\231\337f7V\327\262\302\017Xn)\233y\262\225\301_\030k\353\257r\345\200Y\005\323\264\360$t2X\274\356\331\216\237\266\375\300\017\241\016\306-!\002\236G\001\371\260\210\247\310\002\333.\243N{\307<,\234\233\246V\211Yb\302\021\254B\237\3604\035\210#\260l\226\267\354\035\033\004\202Q\027\017\307\033V<N\274\322k\346\375}\232-\224\305\253\010T6\311]\377\017\222\023LP \260""\340y\220\030&\001\272\221!\2437\355\372~U\033\001+9h\202\272\376\330s\002\310\322\366C\354\024\201k\326BG\024\n\0268\367\222\321\364w\n\010\000>\264p\013@\3314\021\227\005z\n\352\350+\316X\020 \032\r\234\355\262}\304G\265\230\205i\026\013EpRt\\\226\214\236_tCNK\241g\233\000\303c\373\325\000\230\3401\2174ir\347-\303\002wJ\244P\247\3402X8\302\361 +a:\334<\206\03661Tw\210\203:!\313\037\270V%_\260\036\001%\354\365\364D\342&\3004h\020\275\240\327\324\222s\335\n\036\023\262%\345\001\017\327/\231{\201CLW,\360\243G4\002q\240\305}l\244\023\225\233\344\034R\211\236\207\216\301\224\214\220\237\357\026\220\202\236\250: \n\204\360]\005\022\034\025T\361X\001V\252\020/\275\270\253\252~\265\n^\204\231\214.\204[\r\3003\340\254\205\226\233\004\017\002\272Y\250t-P*2\241\026\351X\256\013M\370.Rc\"\014\274\300\337\343A\350\3411\351\2233\227n:\346\025(}\307\306\305\226\264\271)\312\032\341dM\367)\252\n ,\034dB\311\342\2602Xv\036\347\356\300(\260\242\025\272\010'\204Sa(\211\227\321\277\274\014v\334\204@b\023\367\022\253\322-B/\342$\023\307\255xZ\315\372\022\321:f\307C\210U\260\202\201b\243\315p\203W\271\010\363\270w+\216H\306\364\003\240\204\223\036\245\017\025\365\277\313\307\265\377\314\372\311\312\221zxX\341u.\220\021\224(l\014\324\344\302\346\207\006i\325\207\316)K\032\367\205\320w\005\004\004\303\3373\205\203\022\003\223:\357\320\304\352\241\245\267\237\230\377\227\376\341?\255B\202U\370;\014W\010)I\033$\347C\263J\004\241G\275\202\000,\242\036:i\\\232\030\023`\303\352\256\345\206L\017<\351w\035\265\3353)\347;\303#\235\376\341\306\035\331'?\215\256D\231N\377\331w\242\261\330\330\223Vg\360|\243\326\351\037\350\014\2164\236\312\273\321ltW\3752~\332\234\357\014\0165fdFn\222qI\246\344U\271I\333\207\032\027\340\240\275\020\225\346(\323\356\231\222\317\020v\350\034-\354&\033\207\033w\345\215\2507JQ\350Lgp\254\221\307\371I\224\221\3638\273\030e\242\234J\251+\352\261\312\307\037\305\371\346@3{\320w0\333\031I\311\024\005X\304!\307[_\252\253jK\341\350)\2319\211>\243V\343\315\330;x|\220o\365""\2672\255\327\0376\243\315v\3174\362\356\037n\017\377\202\212E\216\262\227\262x\"{\345L\264\024\t5\2572G\013\237D\266\232R\233\312\322y6\376\020-F\265\266\261\320\234\325\250\214\266G?k\177\366\305\001\362\031\247 C\235\024b\313m5\030\367v\306/Eg\242y\034q~\2743\242\323J\311\217\243\331\316\340\204L\2533\352^\374\240\371\266\225\3228MH\304\033\227\303\321B\364\215>\035\024\354\023\220c\215\022aL\305r\354\031\231hO\\U@\177Z~\247&`\364k\030\344G\322\222\373Q\240&UF\241\264s\215\331\306\227\032\226\327\000\205\307W\342\245\270\326\354Mv\207D\233\334Q\323j\033\220~s\260xPk\367\244\344%P\321?\332\330l0\271@\360\220\006>\227\223rI\326t\235W\324,\025\220\222\327$C\232D\374\217\375\027\244\365\237K=\003c\215W\010\372*z\256J\361\313\346\215\203\336v\017\376\350A\303\244\213\037i\254\310Y9\337&'*\314j|\037\315\037\363\265\330\330\307A#\000B>\210`L'J\030%\277\245F /c\357\370\307$\227c\317\324\221\354\244\000\314\317\225\035\247\342k\261\025\327\017\372A\370\321\361\303@\302J*\017\344\005Y\213\006U\037JA}{\215\242\314\264\247o@^\003\361V{\3567\255\276\326\365V\355\303\231\017\363\235\351\031\0352\017\0325(6\316J\004\365\030\347\\\000\232\203Z\213\247\303\024\343L\374m\323z\207\004\023\370n\343\317S\312\224\"PsP\032\237\267SW\325\202\312\305\251\204\247/\344\n\332\352>\026.7\027\233\272m\372\307\340\370<\262\242\335\204\314\233\372\360!\005\217\241\306$`\274I\\\221\362\267U/\255\016\020\202\367\223\306\032\227g\345[\364\315lrlQ\023\223\241\316{\033\245\242kQI\375.\256\375\244\377\216{r\\\216D+\352:\004\363i{a\245\245%\377\014\364\234\352\307\tu'\356\003\312'\335\010\032.\"\316E5\026\227\232/\017n\264z5ET-\3748\344R\214\236\222\246U6\036jN5sh\026\374\020\270w\306S\324\313\023\362\016\374\247\242\255hOY\252\336<\333\254%\236\340\226\266\244\246\240\301=\264\341\244ZB\203\217O\312\333\224Lg\3522p\273\035\025\321-\343\3044\r\362{\364\3048\265\265\366\252\321\242\035MF\231\237\371\013A\241!\217\276\250\251R\264\263\024mF\333\324\301S \347\226J6\266/\317\305A3u\262\273==\217O\354Y""\215\276E\346\265\316\324'\360+C4g\342\371x\031\265n6wZS\255\255V\355\264\323\235\346&9-G\323Q^\r\240?\003HA\273n\003\332\253\270\257\362\315\276\346IV\027\2232N\262\377\361\024\227\3375S\207\227\0040YU\233?!\366\320|\247\357\360\341\306\374\177\001*\272@>";
-    PyObject *data = __Pyx_DecompressString(cstring, 2149, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2145 bytes) */
+const char* const cstring = "x\332uTKs\033\307\021&)R\"\305\207\010>$Y\214\253\226z\332\251\010\n)\312\222eI\016D\221\022e\205/@\226\0349\331Z,\006\300\222\213]`g\226$T\256\212*\227\240*\207\314A\256\332\334\346\224\354\021\207\034\350*\037p\324\021G\034]\370\005\371\t\371z\226/'\345\252\335\231\336\331\351\236\356\357\373z\3223o~[1\256\245\347\212\206\270\305g\336|9\177\247\254Gw\346\315|\006\357W\364\216\236\245\261\373}\263\373\376\235\221\236/\256\372\036[\365\0053D\331\022\306b]\224}\317p\270Q`\256\223g\201%\230[7\270\010\034[\260\2006y\306\372\322\372\315\205{\013\206\345\025\214\200m1[p\203\207y\333\2658g\334\360\213F>t\\\341x\206\250W\031O\033+E\243\356\207\206\307X\301\020\276Q\305\276\223\016\242\314<\2033A\206q\303\362<_X\302\361=\023\356\216W\272a\024\234\000\2078;\214\274\227-\227\263\364\251\321\263\177\036\2338=lt\325\337\272\352\037]\365CW\355w\325\217]\365\357\256\372gW\375\253\253\376\332U\1777\214/\273\357\377B5\177\361\310\370\215a\025\n&\2423\253ZMW\353\266_\251\032\216\367P\317\256\317\271\3138/8\334\312\273\314`\017\231GF\311.\005\254n\225\230't\001\334\260\014 Qq<\313ux\262\247`l\263\252xXa\025\003\357}\032\014\357\226\205\311\017\352i\356\333\333\025\037x\032\327x2\207\236\265c9\256>\247\373\356=\340\265\202\244\372\344?g\301\016\300.:\001\027\036\333\3057\347\300\303\010\036r\273\314\n\367\r\303x#|\337\375#\"\336\"\203\353\001d\270\276U\240\r\327\n\241(\336\274\227Y6_\256\256\274~\366l-g.\257\274XZY\334\\}\361\"\223\315\231\271\365,1\277n\211\262i\256\327\367\360>\001\305\346*\333\023\233\254\270\271\224]\312m\276@\346\233kk\271\354\263\265W\331\225\247+\253\271\354\332\342Wf6\267\271\224\371}v}e5+\374\200\345\026\263\231'\233\031\374\205\261\272\366*W\016\230U0M\013O\302%\203U\005\353u\317v\374\264\355\007~\010u0n\t\021\360<R\317\207E<E\026\330v\031\025\332\333\346A\311\3344\265J\314\022\023\216`\025\372\204\247\351@\034\201e\263\274eo\333\240\216\331\276\213\207\343\r+\036'F\3515\363\376\036\315\026*\343U\004*\233\344\256\377\007\311\t&\300\027X\360<H\014\223\000""\321\310\220\321\233v}\277\252\215\200\225\0344A]\177\354:\001di\373!v\212\3005k\241#\n\005\013l{\311h\372\333\005\004\000\023Z\270\005\000m\232\210\313\002=\005u\364\025g,\010\020\215\006\316v\330\036\342\243Z\314\3024\213\205\"h):.KF\317/\272!\247\245\320\263M\200\341\261\275j\000L\360\230\207j4\271\363\226a\201;%\322\246Sp\031,\034\341x\020\2240\035n\036A\017\233H\252;\304A\235\220\345\017\\\253\222/X\217\200\022\366zz\"Y\023`\0324\310]\320kj\261\271n\005\217\t\301\222\346\200\207\353\227\314\335\300!\262+\026\370\321#Z\2008\320\262>2\322\211\276Mr\016\251D\317C\257`JF(\320w\013HAOT\035\020\005B\370\256\002\t\216\n\252x\254\000+U\350\227^\334UU\277Z\005/\302LF\027\332\255\006\340\031p\326B\313M\202\007\001\335,T\272\326(\025\231P\213t,\327\205&|\027\2511\021\006^\340\357\362 \364\360\230\364\311\231K7\035\363\n\224\276c\343bK\032\334\024e\215p\262\246;\024U\005\020\026\0162\241dqP\031,;\217s\267a\024X\321\n]\204\023\302\2510\224\304\313\350\\^\006;nB \261\211\033\211U\351\376\240\027q\222\211\343V<\251f}}h\035\263\243!\304*X\301@\261\321f\270\301\253\\\204y\334\273\025G$c\372\001P\302I\217\322\007\212\372\337\345\243\332\177a\375x\345P=<\254\360:\027\310\010J\0246\006jra\363\003\203\264\352C\347\224%\215{B\350\353\002\002\202\341\357\232\302A\211\201I\235w`b\365\300\322\333\217\315\377K\377\340\237V!\301*\374m\206+\204\224\244\r\222\363\201Y%\202\320\243^A\000\026Q\017\235t\002iX\335\261\334\220\351\201'\235\256\343\265{&\345\\gx\244\323?\334\270#\373\344'\321\345(\323\351?\363N4\026\032\273\322\352\014\236k\324:\375\003\235\301\221\306Sy7\232\215\356\252_\307O\233s\235\301\241\306\214\314\310\r2.\312\224\274\"7h\373P\343<\034\264\027\242\322\034e\332=S\362\031\302\016\235\245\205\235d\343p\343\256\274\036\365F)\n\235\351\014\2165\3628?\2112r\016g\027\243L\224S)uY=V\371\370t\234o\0164\263\373}\373\263\235\221\224LQ\200\005\034r\264\365\245\272\2426\025\216\236\222\231\343\3503j%\336\210\275\375\307\373\371V\177+\323z\375a#\332h\367L#\357\376\341\366\360\257\250X""\344({)\213'\262W\316D\213\221Ps*s\270\360qd\253)\265\241,\235g\343O\321BTk\033\363\315Y\215\312h{\364\323\366\247\237\357#\237q\n2\324I!\266\334R\203qog\374bt*\232\303\021\347\306;#:\255\224\374(\232\355\014N\310\264:\245\356\305\017\232o[)\215\323\204D\274q9\034\315G_\353\323A\301\036\0019\326(\021\306T,\307\236\221\211\366\304\025\005\364\247\345\267j\002F\277\206A\236\226\226\334\213\0025\2512\n\245\235m\3146\276\320\260\274\006(<\276\034/\306\265fo\262;$\332\344\266\232V[\200\364\353\375\205\375Z\273'%/\202\212\376\321\306F\203\311y\202\2074\360\231\234\224\213\262\246\353\274\254f\251\200\224\274*\031\322$\342\177\352?/\255\377\\\354\031\030k\274B\320W\321sU\212_6\257\357\367\266{\360G\017\032&]\374HcY\316\312\27169QaV\343\273h\356\210\257\205\306\036\016\032\001\020\362A\004c:Q\302(\371-6\002y\t{\307?\"\271\034y\246\016e'\005`~\256\3548\025_\215\255\270\276\337\017\302\017\217\037\006\022VRy \317\313Z4\250\372P\n\352\333m\024e\246=}\035\362\032\2107\333\267~\327\352k]k\325>\234\3720\327\231\236\321!\363\240Q\203b\343\254DP\217q\316y\2409\250\265x2L1\316\304\3374\255wH0\201\3576\376<\245L)\0025\007\245\361Y;uE\315\253\\\234Jx\372\\.\243\255\356c\341Rs\241\251\333\246\177\014\216\317#+\332I\310\274\241\017\037R\360\030jL\002\306\033\304\025)\177K\365\322\352\000!x?i\254qyF\276E\337\314&\307\02651\031\352\274\267Q*\272\032\225\324\037\342\332\317\372\357\250'\307\345H\264\254\256A0\237\264\347\227[Z\362\317@\317\211~\234Pw\342>\240|\334\215\240\341\002\342\\Pcq\251\371r\377z\253WSD\325\302\217C.\305\350)iZe\343\241\346T3\207f\301\017\201{g<E\275<!\357\300\177*\332\214v\225\245\352\3153\315Z\342\tniKj\n\032\334E\033N\252E4\370\370\244\274M\311t\246.\001\267\333Q\021\3352NL\323 \277CO\214S[k\257\032-\332\321d\224\371\205\277\020\024\032\362\360\213\232*E;K\321F\264E\035<\005rn\252dc\373\322\2558h\246\216w\267\247\347\360\211=+\3217\310\274\326\231\372\030~e\210\346T<\027/\241\326\215\346vk\252\265\331\252\235t\272\323\334 \247\245h:\312\253\001\364g\000)h\327-@{""\005\367U\276\331\327<\316\352BR\306q\366?\235\340\362\333f\352\340\222\000&+j\343g\304\036\230\357\364\035>\334\230\373/0Q>%";
+    PyObject *data = __Pyx_DecompressString(cstring, 2145, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (3410 bytes) */
-const char* const bytes = ".\033[0m %.1f t/s\033[?25h\033[?25l\033[2A\033[2K\033[2K\r\n\033[2K\342\225\260\342\224\200 .2fNoneNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.\003\r\n\177\016\022\006\013 \342\240\213\342\240\231\342\240\271\342\240\270\342\240\274\342\240\264\342\240\246\342\240\247\342\240\207\342\240\217  ?\342\224\202\r\n\033[;> , add_notecomp in=comp losslessdisable e=enablegcgreyagent needs a terminalisenabled kept=mem mem: mem n/amemory.sockmodel %smodel unavailable \342\200\224 start the model server firstnew session r=sched:   [tool] %s/toolstools reloaded: %dui/app.pyutf-8AF_UNIXHHOT_FILEICRNLLAST_TPSNonePath__Pyx_PyDict_NextRefRESETRLockROOTSHOWSIGINTSOCK_STREAMSPINStoreTCSADRAINTCSANOWThread__a__annotate__asyncio.coroutinesattrsboolbufbuffercchcheck_sessions__class_getitem__cline_in_tracebackclosecolcolscolumnscompcomp_boxcompact_splash_linescompression_statsconnectcontentcorecore.loopcore.registrycore.wiringcountctrl_quitddaemondaemon_okdecodedirectdone__enter__entryeraseerrorerrorsevexists__exit__fdfh__file__filenoflush__func__genexprgetget_terminal_sizegetsignaliidleignoreinsert_is_coroutineis_readyisattyitems<lambda>last_inlast_keptlinelineslistlist_toolsllmllm_modloadinglog_write__main__mainmem_boxmodel_boxmodel.server__module__nname__name__nextold_intold_termon_eventopenosoutputparentpathpathlibpopprint_print_lockprompt__qualname__rratioreadread_lastregister_allresolvereturnrowsrunrun_turnselectsendservices.memory_thinservices.scheduler_store__set_name__setcbreaksetdefaultsettimeoutshadeshutilsignalsizesleepsocksocket_socketspinsplash_linesstart_statestatestatusstdinstdoutstrstripstubsubmitsubmit.<locals>.genexprsubmit.<locals>.run_turnsubmit.<locals>.run_turn.<locals>.<lambda>sumsysttargettcgetattrtcsetattrtermios__test__textthreadingthrow_ticker_loopticker_rowticker_textticker_text.<locals>.genexprticker_writetimetokens_intokens_""kepttokens_per_secondtpsttyui.appui.splashupvaluevalueswiringwrite\320\000\023\2201\330\013\014\330\004\013\2105\220\002\220(\230\"\230A\330\004\007\200t\2104\210w\220a\330\010\017\210q\330\004\005\330\010\014\210G\2207\230!\2307\240*\250G\2601\330\010\t\210\033\220A\220Q\330\010\t\210\030\220\021\220#\220Q\220a\330\010\t\210\026\210q\330\010\017\210q\330\013\014\330\010\017\210q\230A\320\000\024\220H\230A\330\t\n\330\010\017\210v\220Q\220a\330\010\013\2107\220&\230\001\230\021\330\010\014\210A\330\010\016\210b\220\002\220#\220Q\220a\330\014\017\210w\220f\230A\230T\240\021\240\"\240B\240b\250\006\250b\260\005\260S\270\002\270!\330\014\021\220\021\330\010\013\2104\210q\330\014\017\210w\220f\230A\230U\240#\240R\240q\330\010\024\220A\330\010\013\2107\220&\230\001\230\033\240I\250Q\250n\270B\270b\300\004\300A\300X\310Q\230Q\320\000\025\220Q\330\004\013\320\013\034\230A\330\004\017\210q\220\001\330\010\014\210D\220\001\220\033\230C\230t\2401\240A\330\010\014\210D\220\001\220\035\230c\240\024\240Q\240a\330\010\014\210A\210^\2304\230q\320 2\260!\330\004\005\330\010\r\320\r)\320)9\270\021\330\010\020\220\001\330\010\t\330\021\025\220Q\220j\240\010\250\001\330\020\030\230\003\2301\230A\330\017\020\330\014\024\220A\330\010\021\220\031\230!\330\010\022\220.\240\003\2408\250<\260z\300\021\330\013\014\330\010\022\220!\330\004\020\220\013\2302\230V\2401\240A\330\004\007\200x\210q\330\010\016\210g\220Q\330\010\013\2104\210s\220!\330\014\022\320\022#\2401\330\010\025\220\\\240\022\2401\330\004\013\2104\210q\220\006\220a\220x\230r\240\023\240A\240Q\330\004\n\210!\210;\220f\230A\230X\240R\240s\250\"\250C\250q\260\001\330\004\013\2104\210u\220A\220Q\220k\240\025\240j\260\005\260V\2704\270q\320\000\021\220\030\230\021\330\004\r\210Q\210e\2202\220Q\330\004\007\200t\2106\220\023\220C\220q\330\010\r\320\r\"\240!\330\010\021\220\021\220$\220e\2302\230Q\330\010\t\340\004\026\220a\360\030\000\005\016\210W\220A\220W\230J\240g\250U\260&\270\001\320\000\026\220a\320\000\026\220a\330\004\005""\330\010\024\220A\330\010\014\210F\220!\2201\320\004\026\220a\330\010\016\210a\210|\2301\330\010\024\220A\330\010\013\2104\210x\220q\330\014\022\220!\220<\230q\330\014\025\220Q\220a\330\014\r\330\010\014\210C\210r\220\032\2301\330\020\031\230\021\330\010\016\210a\210|\2301\330\010\021\220\021\220#\220Q\220a\220t\2301\230J\240c\250\021\250$\250a\250y\270\004\270B\270a\320\000\026\220a\330\004\013\210;\220a\330\004\013\2104\210r\220\026\220q\230\010\240\002\240!\330\004\007\200w\210f\220A\320\025&\240b\250\005\250R\320/@\300\002\300%\300q\310\003\3101\330\025\033\2301\230J\240b\250\001\330\004\r\210Q\210c\220\021\220&\230\001\230\033\240B\240c\250\026\250q\260\010\270\002\270!\330\004\007\200w\210f\220A\320\025&\240f\250A\250Y\260a\200\016\210a\330\004\007\200t\2103\210f\220G\2301\330\010\r\210Q\210a\330\010\t\330\004\013\2106\320\021#\2402\240T\250\021\330\004\n\210!\2109\220F\230!\230:\240T\250\032\2604\260q\330\013\014\330\004\016\210f\220J\230a\230v\240Q\330\004\n\210'\220\021\220&\230\t\240\021\330\004\t\210\023\210F\220'\230\021\330\004\017\210w\220j\240\001\240\021\330\004\005\330\010\013\210:\220Q\220a\330\010\020\220\007\220z\240\021\240!\330\010\r\210Q\210f\220A\220W\230A\330\010\017\210z\230\021\230$\230g\240Z\250q\330\010\013\2107\220&\230\001\230\021\330\010\017\210v\220Q\220a\330\010\020\220\014\230F\240%\240s\250(\3202F\300a\330\010\014\210H\220A\330\014\017\210w\220f\230A\230T\240\022\2405\250\002\250$\250b\260\005\260S\270\002\270!\330\010\021\220\027\230\001\230\027\240\016\250g\260U\270&\300\001\330\010\016\210a\330\010\t\330\014\017\210s\220$\220f\230G\2401\240A\240S\250\t\260\024\260T\270\021\330\014\017\210t\2201\330\020\021\330\014\021\220\022\2205\230\001\230\024\230R\230w\240a\240y\260\007\260q\330\014\017\210s\220#\220Q\330\020\021\330\021\024\220C\220w\230c\240\023\240C\240q\330\020\023\2203\220f\230A\330\024\032\230!\2303\230f\240A\330\020\026\220a\330\020\026\220a\220|\2401\330\020\034\230A\330\021\024\220C\220q\330\020\026\220c\230\023""\230A\330\020\026\220a\220|\2401\330\020\034\230A\330\021\024\220C\220q\330\020\031\230\021\230!\330\021\024\220C\220q\330\020\025\220\\\240\021\330\020\026\220g\230Q\230j\250\001\330\020\024\220F\230-\240q\330\020\031\230\021\320\032/\250r\260\021\330\021\024\220C\220q\330\020\025\320\0251\260\021\330\020\024\220I\230Y\240a\240q\330\024\035\230Q\230h\240b\250\003\2501\250E\260\024\260Q\260k\300\024\300R\300q\330\021\024\220C\220q\330\020\025\320\0255\260Q\330\020\024\220E\230\025\230b\240\005\240R\240r\250\021\330\024\035\230Q\230j\250\002\250#\250Q\250b\260\002\260!\330\021\024\220C\220q\330\020\027\220q\330\020\026\220a\220|\2401\330\020\034\230A\340\010\017\210z\230\021\230$\230g\240\\\260\021\330\010\016\210g\220Q\220f\230I\240Q\330\010\013\2107\220&\230\001\230\021\330\010\013\2107\220&\230\001\200\017\210q\330\004\013\2101";
+    #else /* compression: none (3404 bytes) */
+const char* const bytes = ".\033[0m %.1f t/s\033[?25h\033[?25l\033[2A\033[2K\033[2K\r\n\033[2K\342\225\260\342\224\200 .2fNoneNote that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.\003\r\n\177\016\022\006\013 \342\240\213\342\240\231\342\240\271\342\240\270\342\240\274\342\240\264\342\240\246\342\240\247\342\240\207\342\240\217  ?\342\224\202\r\n\033[;> , add_noteapp.pycomp in=comp losslessdisable e=enablegcgreyagent needs a terminalisenabled kept=mem mem: mem n/amemory.sockmodel %smodel unavailable \342\200\224 start the model server firstnew session r=sched:   [tool] %s/toolstools reloaded: %dutf-8AF_UNIXHHOT_FILEICRNLLAST_TPSNonePath__Pyx_PyDict_NextRefRESETRLockROOTSHOWSIGINTSOCK_STREAMSPINStoreTCSADRAINTCSANOWThread__a__annotate__appasyncio.coroutinesattrsboolbufbuffercchcheck_sessions__class_getitem__cline_in_tracebackclosecolcolscolumnscompcomp_boxcompact_splash_linescompression_statsconnectcontentcorecore.loopcore.registrycore.wiringcountctrl_quitddaemondaemon_okdecodedirectdone__enter__entryeraseerrorerrorsevexists__exit__fdfh__file__filenoflush__func__genexprgetget_terminal_sizegetsignaliidleignoreinsert_is_coroutineis_readyisattyitems<lambda>last_inlast_keptlinelineslistlist_toolsllmllm_modloadinglog_write__main__mainmem_boxmodel_boxmodel.server__module__nname__name__nextold_intold_termon_eventopenosoutputparentpathpathlibpopprint_print_lockprompt__qualname__rratioreadread_lastregister_allresolvereturnrowsrunrun_turnselectsendservices.memory_thinservices.scheduler_store__set_name__setcbreaksetdefaultsettimeoutshadeshutilsignalsizesleepsocksocket_socketspinsplash_linesstart_statestatestatusstdinstdoutstrstripstubsubmitsubmit.<locals>.genexprsubmit.<locals>.run_turnsubmit.<locals>.run_turn.<locals>.<lambda>sumsysttargettcgetattrtcsetattrtermios__test__textthreadingthrow_ticker_loopticker_rowticker_textticker_text.<locals>.genexprticker_writetimetokens_intokens_""kepttokens_per_secondtpsttyui.splashupvaluevalueswiringwrite\320\000\023\2201\330\013\014\330\004\013\2105\220\002\220(\230\"\230A\330\004\007\200t\2104\210w\220a\330\010\017\210q\330\004\005\330\010\014\210G\2207\230!\2307\240*\250G\2601\330\010\t\210\033\220A\220Q\330\010\t\210\030\220\021\220#\220Q\220a\330\010\t\210\026\210q\330\010\017\210q\330\013\014\330\010\017\210q\230A\320\000\024\220H\230A\330\t\n\330\010\017\210v\220Q\220a\330\010\013\2107\220&\230\001\230\021\330\010\014\210A\330\010\016\210b\220\002\220#\220Q\220a\330\014\017\210w\220f\230A\230T\240\021\240\"\240B\240b\250\006\250b\260\005\260S\270\002\270!\330\014\021\220\021\330\010\013\2104\210q\330\014\017\210w\220f\230A\230U\240#\240R\240q\330\010\024\220A\330\010\013\2107\220&\230\001\230\033\240I\250Q\250n\270B\270b\300\004\300A\300X\310Q\230Q\320\000\025\220Q\330\004\013\320\013\034\230A\330\004\017\210q\220\001\330\010\014\210D\220\001\220\033\230C\230t\2401\240A\330\010\014\210D\220\001\220\035\230c\240\024\240Q\240a\330\010\014\210A\210^\2304\230q\320 2\260!\330\004\005\330\010\r\320\r)\320)9\270\021\330\010\020\220\001\330\010\t\330\021\025\220Q\220j\240\010\250\001\330\020\030\230\003\2301\230A\330\017\020\330\014\024\220A\330\010\021\220\031\230!\330\010\022\220.\240\003\2408\250<\260z\300\021\330\013\014\330\010\022\220!\330\004\020\220\013\2302\230V\2401\240A\330\004\007\200x\210q\330\010\016\210g\220Q\330\010\013\2104\210s\220!\330\014\022\320\022#\2401\330\010\025\220\\\240\022\2401\330\004\013\2104\210q\220\006\220a\220x\230r\240\023\240A\240Q\330\004\n\210!\210;\220f\230A\230X\240R\240s\250\"\250C\250q\260\001\330\004\013\2104\210u\220A\220Q\220k\240\025\240j\260\005\260V\2704\270q\320\000\021\220\030\230\021\330\004\r\210Q\210e\2202\220Q\330\004\007\200t\2106\220\023\220C\220q\330\010\r\320\r\"\240!\330\010\021\220\021\220$\220e\2302\230Q\330\010\t\340\004\026\220a\360\030\000\005\016\210W\220A\220W\230J\240g\250U\260&\270\001\320\000\026\220a\320\000\026\220a\330\004\005\330\010""\024\220A\330\010\014\210F\220!\2201\320\004\026\220a\330\010\016\210a\210|\2301\330\010\024\220A\330\010\013\2104\210x\220q\330\014\022\220!\220<\230q\330\014\025\220Q\220a\330\014\r\330\010\014\210C\210r\220\032\2301\330\020\031\230\021\330\010\016\210a\210|\2301\330\010\021\220\021\220#\220Q\220a\220t\2301\230J\240c\250\021\250$\250a\250y\270\004\270B\270a\320\000\026\220a\330\004\013\210;\220a\330\004\013\2104\210r\220\026\220q\230\010\240\002\240!\330\004\007\200w\210f\220A\320\025&\240b\250\005\250R\320/@\300\002\300%\300q\310\003\3101\330\025\033\2301\230J\240b\250\001\330\004\r\210Q\210c\220\021\220&\230\001\230\033\240B\240c\250\026\250q\260\010\270\002\270!\330\004\007\200w\210f\220A\320\025&\240f\250A\250Y\260a\200\016\210a\330\004\007\200t\2103\210f\220G\2301\330\010\r\210Q\210a\330\010\t\330\004\013\2106\320\021#\2402\240T\250\021\330\004\n\210!\2109\220F\230!\230:\240T\250\032\2604\260q\330\013\014\330\004\016\210f\220J\230a\230v\240Q\330\004\n\210'\220\021\220&\230\t\240\021\330\004\t\210\023\210F\220'\230\021\330\004\017\210w\220j\240\001\240\021\330\004\005\330\010\013\210:\220Q\220a\330\010\020\220\007\220z\240\021\240!\330\010\r\210Q\210f\220A\220W\230A\330\010\017\210z\230\021\230$\230g\240Z\250q\330\010\013\2107\220&\230\001\230\021\330\010\017\210v\220Q\220a\330\010\020\220\014\230F\240%\240s\250(\3202F\300a\330\010\014\210H\220A\330\014\017\210w\220f\230A\230T\240\022\2405\250\002\250$\250b\260\005\260S\270\002\270!\330\010\021\220\027\230\001\230\027\240\016\250g\260U\270&\300\001\330\010\016\210a\330\010\t\330\014\017\210s\220$\220f\230G\2401\240A\240S\250\t\260\024\260T\270\021\330\014\017\210t\2201\330\020\021\330\014\021\220\022\2205\230\001\230\024\230R\230w\240a\240y\260\007\260q\330\014\017\210s\220#\220Q\330\020\021\330\021\024\220C\220w\230c\240\023\240C\240q\330\020\023\2203\220f\230A\330\024\032\230!\2303\230f\240A\330\020\026\220a\330\020\026\220a\220|\2401\330\020\034\230A\330\021\024\220C\220q\330\020\026\220c\230\023\230A\330""\020\026\220a\220|\2401\330\020\034\230A\330\021\024\220C\220q\330\020\031\230\021\230!\330\021\024\220C\220q\330\020\025\220\\\240\021\330\020\026\220g\230Q\230j\250\001\330\020\024\220F\230-\240q\330\020\031\230\021\320\032/\250r\260\021\330\021\024\220C\220q\330\020\025\320\0251\260\021\330\020\024\220I\230Y\240a\240q\330\024\035\230Q\230h\240b\250\003\2501\250E\260\024\260Q\260k\300\024\300R\300q\330\021\024\220C\220q\330\020\025\320\0255\260Q\330\020\024\220E\230\025\230b\240\005\240R\240r\250\021\330\024\035\230Q\230j\250\002\250#\250Q\250b\260\002\260!\330\021\024\220C\220q\330\020\027\220q\330\020\026\220a\220|\2401\330\020\034\230A\340\010\017\210z\230\021\230$\230g\240\\\260\021\330\010\016\210g\220Q\220f\230I\240Q\330\010\013\2107\220&\230\001\230\021\330\010\013\2107\220&\230\001\200\017\210q\330\004\013\2101";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
@@ -10960,72 +10960,72 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 49};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u__21};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_kp_b_iso88591_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 126};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_ev};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_IQnBb_AXQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_IQnBb_AXQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 115};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_t};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_kp_b_iso88591_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_kp_b_iso88591_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 118};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_r_2};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_run_turn, __pyx_mstate->__pyx_kp_b_iso88591_a_a_1_A_4xq_q_Qa_Cr_1_a_1_Qat1J, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_run_turn, __pyx_mstate->__pyx_kp_b_iso88591_a_a_1_A_4xq_q_Qa_Cr_1_a_1_Qat1J, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 0, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 3};
     PyObject* const varnames[] = {0};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_erase, __pyx_mstate->__pyx_kp_b_iso88591_q_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_erase, __pyx_mstate->__pyx_kp_b_iso88591_q_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 0, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 34};
     PyObject* const varnames[] = {0};
-    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_erase, __pyx_mstate->__pyx_kp_b_iso88591_q_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_erase, __pyx_mstate->__pyx_kp_b_iso88591_q_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 13, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 38};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_comp, __pyx_mstate->__pyx_n_u_comp_box, __pyx_mstate->__pyx_n_u_check_sessions, __pyx_mstate->__pyx_n_u_HOT_FILE, __pyx_mstate->__pyx_n_u_count, __pyx_mstate->__pyx_n_u_fh, __pyx_mstate->__pyx_n_u_daemon, __pyx_mstate->__pyx_n_u_mem_box, __pyx_mstate->__pyx_n_u_model_box, __pyx_mstate->__pyx_n_u_tps, __pyx_mstate->__pyx_n_u_spin, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr};
-    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_ticker_text, __pyx_mstate->__pyx_kp_b_iso88591_Q_A_q_D_Ct1A_D_c_Qa_A_4q_2_9_Qj, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_ticker_text, __pyx_mstate->__pyx_kp_b_iso88591_Q_A_q_D_Ct1A_D_c_Qa_A_4q_2_9_Qj, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 67};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_socket_2, __pyx_mstate->__pyx_n_u_sock, __pyx_mstate->__pyx_n_u_c};
-    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_daemon_ok, __pyx_mstate->__pyx_kp_b_iso88591_1_5_A_t4wa_q_G7_7_G1_AQ_Qa_q_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_daemon_ok, __pyx_mstate->__pyx_kp_b_iso88591_1_5_A_t4wa_q_G7_7_G1_AQ_Qa_q_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 82};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_text, __pyx_mstate->__pyx_n_u_cols, __pyx_mstate->__pyx_n_u_i};
-    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_log_write, __pyx_mstate->__pyx_kp_b_iso88591_HA_vQa_7_A_b_Qa_wfAT_Bb_b_S_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_log_write, __pyx_mstate->__pyx_kp_b_iso88591_HA_vQa_7_A_b_Qa_wfAT_Bb_b_S_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 96};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_text, __pyx_mstate->__pyx_n_u_line, __pyx_mstate->__pyx_n_u_col};
-    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_ticker_write, __pyx_mstate->__pyx_kp_b_iso88591_a_a_4r_q_wfA_b_R_q_1_1Jb_Qc_Bc, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_ticker_write, __pyx_mstate->__pyx_kp_b_iso88591_a_a_4r_q_wfA_b_R_q_1_1Jb_Qc_Bc, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 0, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 105};
     PyObject* const varnames[] = {0};
-    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_ticker_loop, __pyx_mstate->__pyx_kp_b_iso88591_a_A_F_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_ticker_loop, __pyx_mstate->__pyx_kp_b_iso88591_a_A_F_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 111};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_text, __pyx_mstate->__pyx_n_u_list_tools, __pyx_mstate->__pyx_n_u_run_turn, __pyx_mstate->__pyx_n_u_run_turn, __pyx_mstate->__pyx_n_u_genexpr, __pyx_mstate->__pyx_n_u_genexpr};
-    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_submit, __pyx_mstate->__pyx_kp_b_iso88591_Qe2Q_t6_Cq_e2Q_a_WAWJgU, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_submit, __pyx_mstate->__pyx_kp_b_iso88591_Qe2Q_t6_Cq_e2Q_a_WAWJgU, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARARGS), 133};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_a_2};
-    __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_ctrl_quit, __pyx_mstate->__pyx_kp_b_iso88591_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_ctrl_quit, __pyx_mstate->__pyx_kp_b_iso88591_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 19, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 137};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_size, __pyx_mstate->__pyx_n_u_signal, __pyx_mstate->__pyx_n_u_old_int, __pyx_mstate->__pyx_n_u_fd, __pyx_mstate->__pyx_n_u_old_term, __pyx_mstate->__pyx_n_u_attrs, __pyx_mstate->__pyx_n_u_cols, __pyx_mstate->__pyx_n_u_lines, __pyx_mstate->__pyx_n_u_line, __pyx_mstate->__pyx_n_u_buf, __pyx_mstate->__pyx_n_u_r_2, __pyx_mstate->__pyx_n_u__21, __pyx_mstate->__pyx_n_u_ch, __pyx_mstate->__pyx_n_u_wiring, __pyx_mstate->__pyx_n_u_n, __pyx_mstate->__pyx_n_u_read_last, __pyx_mstate->__pyx_n_u_entry, __pyx_mstate->__pyx_n_u_Store, __pyx_mstate->__pyx_n_u_t};
-    __pyx_mstate_global->__pyx_codeobj_tab[13] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_ui_app_py, __pyx_mstate->__pyx_n_u_main_2, __pyx_mstate->__pyx_kp_b_iso88591_a_t3fG1_Qa_6_2T_9F_T_4q_fJavQ_F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[13])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[13] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_app_py, __pyx_mstate->__pyx_n_u_main_2, __pyx_mstate->__pyx_kp_b_iso88591_a_t3fG1_Qa_6_2T_9F_T_4q_fJavQ_F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[13])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

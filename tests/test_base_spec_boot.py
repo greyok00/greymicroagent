@@ -3,11 +3,11 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "build", "src")
 import server
 
 def test_ram_probe_env_override():
-    os.environ["GREYLOCALRAG_ASSUME_RAM_GB"] = "8"
+    os.environ["GREYMICROAGENT_ASSUME_RAM_GB"] = "8"
     assert server.open_ctx_default() == 32768
-    os.environ["GREYLOCALRAG_ASSUME_RAM_GB"] = "16"
+    os.environ["GREYMICROAGENT_ASSUME_RAM_GB"] = "16"
     assert server.open_ctx_default() == 65536
-    del os.environ["GREYLOCALRAG_ASSUME_RAM_GB"]
+    del os.environ["GREYMICROAGENT_ASSUME_RAM_GB"]
 
 def test_threads_is_four(monkeypatch):
     captured = {}

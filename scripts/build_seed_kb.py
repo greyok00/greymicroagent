@@ -111,7 +111,7 @@ def main():
         fetched.append(url)
         print(f"OK    {url} -> {len(added)} record(s), card chars={len(text)}")
         time.sleep(SPACING)
-    lines = ["Third-party notices for the greylocalrag seed commands knowledge base.",
+    lines = ["Third-party notices for the greymicroagent seed commands knowledge base.",
              "",
              "The records in the 'commands' knowledge base were built from the tldr-pages",
              "project at build time: https://github.com/tldr-pages/tldr",

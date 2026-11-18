@@ -60,9 +60,9 @@ def test_supervision_runtime_pump():
 
         # Set up environment for the pump
         env = os.environ.copy()
-        env["GREYLOCALRAG_SESS_ROOT"] = str(sess_root)
-        env["GREYLOCALRAG_DBS_ROOT"] = str(tmp_path / "dbs")
-        env["GREYLOCALRAG_STATE_DIR"] = str(state_root)
+        env["GREYMICROAGENT_SESS_ROOT"] = str(sess_root)
+        env["GREYMICROAGENT_DBS_ROOT"] = str(tmp_path / "dbs")
+        env["GREYMICROAGENT_STATE_DIR"] = str(state_root)
 
         # Run supervisor directly (simulating what pump feeds into it)
         sup = Supervisor(task_id="test-runtime")
@@ -101,7 +101,7 @@ def test_supervision_runtime_pump():
         steers = list(sup.drain())
 
         # Check that supervision state directory was created
-        sup_state = Path(os.environ["HOME"]) / ".greylocalrag" / "state" / "supervision"
+        sup_state = Path(os.environ["HOME"]) / ".greymicroagent" / "state" / "supervision"
         if sup_state.exists():
             log_file = sup_state / "supervisor.log"
             if log_file.exists():

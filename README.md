@@ -1,6 +1,6 @@
-# greylocalrag
+# greymicroagent
 
-greylocalrag is a local, offline, grounded AI assistant for the desktop. It
+greymicroagent is a local, offline, grounded AI assistant for the desktop. It
 runs a fixed 2B hybrid vision-language model (huihui qwen3-vl 2B, abliterated)
 through its own private llama.cpp build, and it grounds every answer in a
 knowledge base you own: web pages and documents enter that base only when you
@@ -24,13 +24,13 @@ is a Node application with a compiled scope. A frozen, hash-pinned manifest is
 verified on every boot, so a damaged install refuses to start rather than
 behaving strangely.
 
-Greylocalrag owns the TCP port block 7640-7647 outright (never used by
+Greymicroagent owns the TCP port block 7640-7647 outright (never used by
 anything else on your machine) and refuses to fight any other listener. The
 policy file ships at config/port_policy.json.
 
 ## Install (Linux .deb)
 
-    sudo dpkg -i greylocalrag_<version>_amd64.deb
+    sudo dpkg -i greymicroagent_<version>_amd64.deb
 
 The deb carries no model weights. Fetch the pinned model once:
 
@@ -41,7 +41,7 @@ The command downloads the pinned blob from the ollama registry at
     https://registry.ollama.ai/v2/huihui_ai/qwen3-vl-abliterated/blobs/sha256:20ef83c3cae84e1dc03d3faee31c3c4ddda6ca806a8c99dc89d42e3e43e9c2ff
 
 verifies its sha256 against the pin, repairs the rope metadata, and writes the
-canonical text model to ~/.greylocalrag/models/qwen3-vl-2b-abliterated.gguf
+canonical text model to ~/.greymicroagent/models/qwen3-vl-2b-abliterated.gguf
 (the companion mmproj file for vision is written beside it). A size or hash
 mismatch refuses loudly and writes nothing.
 
@@ -52,10 +52,10 @@ newer), and the usual C/C++ runtime libraries.
 
 Start it from a terminal:
 
-    greylocalrag
+    greymicroagent
 
 The splash screen shows the model boot line, then the terminal UI opens.
-Sessions live in ~/.greylocalrag, model files in ~/.greylocalrag/models, and
+Sessions live in ~/.greymicroagent, model files in ~/.greymicroagent/models, and
 nothing else on the machine is touched.
 
 ## The /rag commands
@@ -96,6 +96,6 @@ placeholder here and is added to this file at release review.
 
 ## License
 
-greylocalrag is licensed under the Apache License, Version 2.0; the license
+greymicroagent is licensed under the Apache License, Version 2.0; the license
 text ships with the source repository as LICENSE. Third-party components are
 listed in THIRD-PARTY-NOTICES.txt.

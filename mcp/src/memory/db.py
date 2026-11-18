@@ -28,7 +28,7 @@ def _store_dir() -> Path:
 STORE_DIR = _store_dir()
 DB_PATH = STORE_DIR / 'memory.db'
 DB_DIR = STORE_DIR
-DAEMON_SOCKET = Path.home() / '.greylocalrag' / 'memory.sock'
+DAEMON_SOCKET = Path.home() / '.greymicroagent' / 'memory.sock'
 SCHEMA_SQL = '\nPRAGMA journal_mode = WAL;\nPRAGMA busy_timeout = 5000;\nPRAGMA synchronous = NORMAL;\nPRAGMA wal_autocheckpoint = 500;\nPRAGMA foreign_keys = ON;\n\nCREATE TABLE IF NOT EXISTS Checkpoints (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    last_command TEXT    NOT NULL,\n    context      JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Hot (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    profile      TEXT    NOT NULL,\n    key          TEXT    NOT NULL,\n    value        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Memory_Cold (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    category     TEXT    NOT NULL,\n    confidence   REAL    NOT NULL,\n    source       TEXT    NOT NULL,\n    tags         JSON    NOT NULL,\n    entry        JSON    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS Logs (\n    id           INTEGER PRIMARY KEY AUTOINCREMENT,\n    level        TEXT    NOT NULL,\n    message      TEXT    NOT NULL,\n    timestamp    TEXT    NOT NULL\n);\n'
 
 class MemoryDB:
@@ -106,7 +106,7 @@ class MemoryDB:
     def _mirror_to_jsonl(self, tier: str, platform: str, key: str, value: Any) -> None:
         data = {'tier': tier, 'platform': platform, 'key': key, 'value': value, 'timestamp': datetime.now().isoformat()}
         line = json.dumps(data) + '\n'
-        daemon_socket = Path.home() / '.greylocalrag' / 'memory.sock'
+        daemon_socket = Path.home() / '.greymicroagent' / 'memory.sock'
         if daemon_socket.exists():
             try:
                 with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:

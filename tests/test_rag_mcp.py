@@ -8,7 +8,7 @@ def rpc(proc, obj):
 
 
 def test_ingest_search_remove_cycle(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
     p = subprocess.Popen([sys.executable, str(SCRIPT)], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     rpc(p, {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}})
     out = rpc(p, {"jsonrpc": "2.0", "id": 2, "method": "tools/call", "params":
@@ -40,7 +40,7 @@ def payload(resp):
 
 
 def test_remove_refuses_without_confirm(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
     p = open_server()
     call(p, 1, "rag_ingest_text", {"db": "commands", "title": "robocopy",
          "text": "robocopy mirrors directories exactly on Windows.", "source": "seed", "url": "u1"})
@@ -53,7 +53,7 @@ def test_remove_refuses_without_confirm(tmp_path, monkeypatch):
 
 
 def test_remove_double_call_then_exhausted(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
     p = open_server()
     call(p, 1, "rag_ingest_text", {"db": "commands", "title": "netsh",
          "text": "netsh resets the network stack and winsOCK catalog.", "source": "seed", "url": "u2"})
@@ -68,7 +68,7 @@ def test_remove_double_call_then_exhausted(tmp_path, monkeypatch):
 
 
 def test_status_and_list_sources(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
     p = open_server()
     call(p, 1, "rag_ingest_text", {"db": "commands", "title": "sfc",
          "text": "sfc scans and repairs protected system files.", "source": "seed", "url": "https://x/a"})
@@ -84,7 +84,7 @@ def test_status_and_list_sources(tmp_path, monkeypatch):
 
 
 def test_remove_confirm_must_be_boolean_true(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
     p = open_server()
     call(p, 1, "rag_ingest_text", {"db": "commands", "title": "chkdsk",
          "text": "chkdsk verifies file system integrity and repairs disk errors.", "source": "seed", "url": "u3"})
@@ -97,7 +97,7 @@ def test_remove_confirm_must_be_boolean_true(tmp_path, monkeypatch):
 
 
 def test_remove_empty_match_refused(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
     p = open_server()
     call(p, 1, "rag_ingest_text", {"db": "commands", "title": "cls",
          "text": "cls clears the console screen buffer immediately.", "source": "seed", "url": "u4"})
@@ -109,7 +109,7 @@ def test_remove_empty_match_refused(tmp_path, monkeypatch):
 
 
 def test_ingest_floor_note_not_duplicate(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
     p = open_server()
     short_text = "sfc scans repairs windows os."
     assert len(short_text) == 29
@@ -126,7 +126,7 @@ def test_ingest_floor_note_not_duplicate(tmp_path, monkeypatch):
 
 
 def test_remove_stale_stage_cleaned_on_recased_confirm(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
     p = open_server()
     call(p, 1, "rag_ingest_text", {"db": "commands", "title": "IPConfig",
          "text": "ipconfig flushes the dns resolver cache and renews dhcp leases.",

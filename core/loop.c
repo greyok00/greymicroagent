@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "core.loop",
+        "name": "loop",
         "sources": [
-            "core/loop.py"
+            "loop.py"
         ]
     },
-    "module_name": "core.loop"
+    "module_name": "loop"
 }
 END: Cython Metadata */
 
@@ -1137,8 +1137,8 @@ static int __Pyx_init_co_variables(void) {
   #endif
 #endif
 
-#define __PYX_HAVE__core__loop
-#define __PYX_HAVE_API__core__loop
+#define __PYX_HAVE__loop
+#define __PYX_HAVE_API__loop
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -1356,7 +1356,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "core/loop.py",
+  "loop.py",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* Atomics.proto (used by UnpackUnboundCMethod) */
@@ -2496,25 +2496,25 @@ static int __Pyx_State_RemoveModule(void*);
 #define __PYX_TYPE_MODULE_PREFIX __PYX_ABI_MODULE_NAME "."
 
 
-/* Module declarations from "core.loop" */
+/* Module declarations from "loop" */
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "core.loop"
-extern int __pyx_module_is_main_core__loop;
-int __pyx_module_is_main_core__loop = 0;
+#define __Pyx_MODULE_NAME "loop"
+extern int __pyx_module_is_main_loop;
+int __pyx_module_is_main_loop = 0;
 
-/* Implementation of "core.loop" */
+/* Implementation of "loop" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_round;
 static PyObject *__pyx_builtin_enumerate;
 /* #### Code section: string_decls ### */
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_4core_4loop_compression_stats(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_stats); /* proto */
-static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_body); /* proto */
-static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text); /* proto */
-static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_content); /* proto */
-static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_task, PyObject *__pyx_v_on_event); /* proto */
+static PyObject *__pyx_pf_4loop_compression_stats(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_4loop_2_record_stats(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_stats); /* proto */
+static PyObject *__pyx_pf_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_body); /* proto */
+static PyObject *__pyx_pf_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text); /* proto */
+static PyObject *__pyx_pf_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_content); /* proto */
+static PyObject *__pyx_pf_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_task, PyObject *__pyx_v_on_event); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2596,9 +2596,9 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u__5 __pyx_string_tab[8]
 #define __pyx_kp_u_add_note __pyx_string_tab[9]
 #define __pyx_kp_u_call_d __pyx_string_tab[10]
-#define __pyx_kp_u_core_loop_py __pyx_string_tab[11]
-#define __pyx_kp_u_empty_prompt __pyx_string_tab[12]
-#define __pyx_kp_u_function_2 __pyx_string_tab[13]
+#define __pyx_kp_u_empty_prompt __pyx_string_tab[11]
+#define __pyx_kp_u_function_2 __pyx_string_tab[12]
+#define __pyx_kp_u_loop_py __pyx_string_tab[13]
 #define __pyx_kp_u_max_steps_reached __pyx_string_tab[14]
 #define __pyx_kp_u_model_unavailable __pyx_string_tab[15]
 #define __pyx_kp_u_parameter __pyx_string_tab[16]
@@ -2658,52 +2658,52 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_content __pyx_string_tab[70]
 #define __pyx_n_u_copy __pyx_string_tab[71]
 #define __pyx_n_u_core_llm __pyx_string_tab[72]
-#define __pyx_n_u_core_loop __pyx_string_tab[73]
-#define __pyx_n_u_core_registry __pyx_string_tab[74]
-#define __pyx_n_u_core_state __pyx_string_tab[75]
-#define __pyx_n_u_core_wiring __pyx_string_tab[76]
-#define __pyx_n_u_d __pyx_string_tab[77]
-#define __pyx_n_u_data __pyx_string_tab[78]
-#define __pyx_n_u_deepcopy __pyx_string_tab[79]
-#define __pyx_n_u_dict __pyx_string_tab[80]
-#define __pyx_n_u_direct __pyx_string_tab[81]
-#define __pyx_n_u_dumps __pyx_string_tab[82]
-#define __pyx_n_u_e __pyx_string_tab[83]
-#define __pyx_n_u_enter __pyx_string_tab[84]
-#define __pyx_n_u_enumerate __pyx_string_tab[85]
-#define __pyx_n_u_environ __pyx_string_tab[86]
-#define __pyx_n_u_error __pyx_string_tab[87]
-#define __pyx_n_u_escape __pyx_string_tab[88]
-#define __pyx_n_u_executor_tool __pyx_string_tab[89]
-#define __pyx_n_u_exit __pyx_string_tab[90]
-#define __pyx_n_u_file __pyx_string_tab[91]
-#define __pyx_n_u_findall __pyx_string_tab[92]
-#define __pyx_n_u_finditer __pyx_string_tab[93]
-#define __pyx_n_u_fn __pyx_string_tab[94]
-#define __pyx_n_u_fname __pyx_string_tab[95]
-#define __pyx_n_u_frame_output __pyx_string_tab[96]
-#define __pyx_n_u_framed __pyx_string_tab[97]
-#define __pyx_n_u_func __pyx_string_tab[98]
-#define __pyx_n_u_function __pyx_string_tab[99]
-#define __pyx_n_u_function_call __pyx_string_tab[100]
-#define __pyx_n_u_get __pyx_string_tab[101]
-#define __pyx_n_u_group __pyx_string_tab[102]
-#define __pyx_n_u_i __pyx_string_tab[103]
-#define __pyx_n_u_id __pyx_string_tab[104]
-#define __pyx_n_u_in_progress __pyx_string_tab[105]
-#define __pyx_n_u_input __pyx_string_tab[106]
-#define __pyx_n_u_insert __pyx_string_tab[107]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[108]
-#define __pyx_n_u_items __pyx_string_tab[109]
-#define __pyx_n_u_json __pyx_string_tab[110]
-#define __pyx_n_u_json_2 __pyx_string_tab[111]
-#define __pyx_n_u_key __pyx_string_tab[112]
-#define __pyx_n_u_kind __pyx_string_tab[113]
-#define __pyx_n_u_last_in __pyx_string_tab[114]
-#define __pyx_n_u_last_kept __pyx_string_tab[115]
-#define __pyx_n_u_list __pyx_string_tab[116]
-#define __pyx_n_u_list_tools __pyx_string_tab[117]
-#define __pyx_n_u_loads __pyx_string_tab[118]
+#define __pyx_n_u_core_registry __pyx_string_tab[73]
+#define __pyx_n_u_core_state __pyx_string_tab[74]
+#define __pyx_n_u_core_wiring __pyx_string_tab[75]
+#define __pyx_n_u_d __pyx_string_tab[76]
+#define __pyx_n_u_data __pyx_string_tab[77]
+#define __pyx_n_u_deepcopy __pyx_string_tab[78]
+#define __pyx_n_u_dict __pyx_string_tab[79]
+#define __pyx_n_u_direct __pyx_string_tab[80]
+#define __pyx_n_u_dumps __pyx_string_tab[81]
+#define __pyx_n_u_e __pyx_string_tab[82]
+#define __pyx_n_u_enter __pyx_string_tab[83]
+#define __pyx_n_u_enumerate __pyx_string_tab[84]
+#define __pyx_n_u_environ __pyx_string_tab[85]
+#define __pyx_n_u_error __pyx_string_tab[86]
+#define __pyx_n_u_escape __pyx_string_tab[87]
+#define __pyx_n_u_executor_tool __pyx_string_tab[88]
+#define __pyx_n_u_exit __pyx_string_tab[89]
+#define __pyx_n_u_file __pyx_string_tab[90]
+#define __pyx_n_u_findall __pyx_string_tab[91]
+#define __pyx_n_u_finditer __pyx_string_tab[92]
+#define __pyx_n_u_fn __pyx_string_tab[93]
+#define __pyx_n_u_fname __pyx_string_tab[94]
+#define __pyx_n_u_frame_output __pyx_string_tab[95]
+#define __pyx_n_u_framed __pyx_string_tab[96]
+#define __pyx_n_u_func __pyx_string_tab[97]
+#define __pyx_n_u_function __pyx_string_tab[98]
+#define __pyx_n_u_function_call __pyx_string_tab[99]
+#define __pyx_n_u_get __pyx_string_tab[100]
+#define __pyx_n_u_group __pyx_string_tab[101]
+#define __pyx_n_u_i __pyx_string_tab[102]
+#define __pyx_n_u_id __pyx_string_tab[103]
+#define __pyx_n_u_in_progress __pyx_string_tab[104]
+#define __pyx_n_u_input __pyx_string_tab[105]
+#define __pyx_n_u_insert __pyx_string_tab[106]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[107]
+#define __pyx_n_u_items __pyx_string_tab[108]
+#define __pyx_n_u_json __pyx_string_tab[109]
+#define __pyx_n_u_json_2 __pyx_string_tab[110]
+#define __pyx_n_u_key __pyx_string_tab[111]
+#define __pyx_n_u_kind __pyx_string_tab[112]
+#define __pyx_n_u_last_in __pyx_string_tab[113]
+#define __pyx_n_u_last_kept __pyx_string_tab[114]
+#define __pyx_n_u_list __pyx_string_tab[115]
+#define __pyx_n_u_list_tools __pyx_string_tab[116]
+#define __pyx_n_u_loads __pyx_string_tab[117]
+#define __pyx_n_u_loop __pyx_string_tab[118]
 #define __pyx_n_u_m __pyx_string_tab[119]
 #define __pyx_n_u_main __pyx_string_tab[120]
 #define __pyx_n_u_max_steps __pyx_string_tab[121]
@@ -2862,7 +2862,7 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* "core/loop.py":39
+/* "loop.py":39
  * 
  * 
  * def compression_stats() -> dict:             # <<<<<<<<<<<<<<
@@ -2871,22 +2871,22 @@ return 0;
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_4loop_1compression_stats(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_4core_4loop_1compression_stats = {"compression_stats", (PyCFunction)__pyx_pw_4core_4loop_1compression_stats, METH_NOARGS, 0};
-static PyObject *__pyx_pw_4core_4loop_1compression_stats(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_4loop_1compression_stats(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_4loop_1compression_stats = {"compression_stats", (PyCFunction)__pyx_pw_4loop_1compression_stats, METH_NOARGS, 0};
+static PyObject *__pyx_pw_4loop_1compression_stats(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("compression_stats (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_4core_4loop_compression_stats(__pyx_self);
+  __pyx_r = __pyx_pf_4loop_compression_stats(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_4loop_compression_stats(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_4loop_compression_stats(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2907,7 +2907,7 @@ static PyObject *__pyx_pf_4core_4loop_compression_stats(CYTHON_UNUSED PyObject *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compression_stats", 0);
 
-  /* "core/loop.py":40
+  /* "loop.py":40
  * 
  * def compression_stats() -> dict:
  *     with _metrics_lock:             # <<<<<<<<<<<<<<
@@ -2954,7 +2954,7 @@ static PyObject *__pyx_pf_4core_4loop_compression_stats(CYTHON_UNUSED PyObject *
         __Pyx_XGOTREF(__pyx_t_9);
         /*try:*/ {
 
-          /* "core/loop.py":41
+          /* "loop.py":41
  * def compression_stats() -> dict:
  *     with _metrics_lock:
  *         return dict(_metrics)             # <<<<<<<<<<<<<<
@@ -2978,7 +2978,7 @@ static PyObject *__pyx_pf_4core_4loop_compression_stats(CYTHON_UNUSED PyObject *
           __pyx_t_1 = 0;
           goto __pyx_L11_try_return;
 
-          /* "core/loop.py":40
+          /* "loop.py":40
  * 
  * def compression_stats() -> dict:
  *     with _metrics_lock:             # <<<<<<<<<<<<<<
@@ -2992,7 +2992,7 @@ static PyObject *__pyx_pf_4core_4loop_compression_stats(CYTHON_UNUSED PyObject *
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         /*except:*/ {
-          __Pyx_AddTraceback("core.loop.compression_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          __Pyx_AddTraceback("loop.compression_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
           if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_5, &__pyx_t_3) < 0) __PYX_ERR(0, 40, __pyx_L9_except_error)
           __Pyx_XGOTREF(__pyx_t_1);
           __Pyx_XGOTREF(__pyx_t_5);
@@ -3074,7 +3074,7 @@ static PyObject *__pyx_pf_4core_4loop_compression_stats(CYTHON_UNUSED PyObject *
     __pyx_L16:;
   }
 
-  /* "core/loop.py":39
+  /* "loop.py":39
  * 
  * 
  * def compression_stats() -> dict:             # <<<<<<<<<<<<<<
@@ -3090,7 +3090,7 @@ static PyObject *__pyx_pf_4core_4loop_compression_stats(CYTHON_UNUSED PyObject *
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("core.loop.compression_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop.compression_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3098,7 +3098,7 @@ static PyObject *__pyx_pf_4core_4loop_compression_stats(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "core/loop.py":44
+/* "loop.py":44
  * 
  * 
  * def _record_stats(stats) -> None:             # <<<<<<<<<<<<<<
@@ -3107,15 +3107,15 @@ static PyObject *__pyx_pf_4core_4loop_compression_stats(CYTHON_UNUSED PyObject *
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_4loop_3_record_stats(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4loop_3_record_stats(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_4loop_3_record_stats = {"_record_stats", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_4loop_3_record_stats, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_4loop_3_record_stats(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4loop_3_record_stats = {"_record_stats", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4loop_3_record_stats, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4loop_3_record_stats(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3177,11 +3177,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("core.loop._record_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop._record_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_4core_4loop_2_record_stats(__pyx_self, __pyx_v_stats);
+  __pyx_r = __pyx_pf_4loop_2_record_stats(__pyx_self, __pyx_v_stats);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -3191,7 +3191,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_stats) {
+static PyObject *__pyx_pf_4loop_2_record_stats(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_stats) {
   PyObject *__pyx_v_tin = NULL;
   PyObject *__pyx_v_tout = NULL;
   PyObject *__pyx_v_ratio = NULL;
@@ -3219,7 +3219,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_record_stats", 0);
 
-  /* "core/loop.py":45
+  /* "loop.py":45
  * 
  * def _record_stats(stats) -> None:
  *     try:             # <<<<<<<<<<<<<<
@@ -3235,7 +3235,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "core/loop.py":46
+      /* "loop.py":46
  * def _record_stats(stats) -> None:
  *     try:
  *         tin = int(getattr(stats, "tokens_in", 0) or 0)             # <<<<<<<<<<<<<<
@@ -3264,7 +3264,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
       __pyx_v_tin = ((PyObject*)__pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "core/loop.py":47
+      /* "loop.py":47
  *     try:
  *         tin = int(getattr(stats, "tokens_in", 0) or 0)
  *         tout = int(getattr(stats, "tokens_out", 0) or 0)             # <<<<<<<<<<<<<<
@@ -3293,7 +3293,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
       __pyx_v_tout = ((PyObject*)__pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "core/loop.py":48
+      /* "loop.py":48
  *         tin = int(getattr(stats, "tokens_in", 0) or 0)
  *         tout = int(getattr(stats, "tokens_out", 0) or 0)
  *         ratio = round(tout / tin, 3) if tin else 0.0             # <<<<<<<<<<<<<<
@@ -3327,7 +3327,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
       __pyx_v_ratio = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "core/loop.py":45
+      /* "loop.py":45
  * 
  * def _record_stats(stats) -> None:
  *     try:             # <<<<<<<<<<<<<<
@@ -3345,7 +3345,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "core/loop.py":49
+    /* "loop.py":49
  *         tout = int(getattr(stats, "tokens_out", 0) or 0)
  *         ratio = round(tout / tin, 3) if tin else 0.0
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -3354,13 +3354,13 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
 */
     __pyx_t_11 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_Exception))));
     if (__pyx_t_11) {
-      __Pyx_AddTraceback("core.loop._record_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("loop._record_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_5, &__pyx_t_8) < 0) __PYX_ERR(0, 49, __pyx_L5_except_error)
       __Pyx_XGOTREF(__pyx_t_4);
       __Pyx_XGOTREF(__pyx_t_5);
       __Pyx_XGOTREF(__pyx_t_8);
 
-      /* "core/loop.py":50
+      /* "loop.py":50
  *         ratio = round(tout / tin, 3) if tin else 0.0
  *     except Exception:
  *         tin, tout, ratio = 0, 0, 0.0             # <<<<<<<<<<<<<<
@@ -3386,7 +3386,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
     }
     goto __pyx_L5_except_error;
 
-    /* "core/loop.py":45
+    /* "loop.py":45
  * 
  * def _record_stats(stats) -> None:
  *     try:             # <<<<<<<<<<<<<<
@@ -3407,7 +3407,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
     __pyx_L8_try_end:;
   }
 
-  /* "core/loop.py":51
+  /* "loop.py":51
  *     except Exception:
  *         tin, tout, ratio = 0, 0, 0.0
  *     with _metrics_lock:             # <<<<<<<<<<<<<<
@@ -3454,7 +3454,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
         __Pyx_XGOTREF(__pyx_t_14);
         /*try:*/ {
 
-          /* "core/loop.py":52
+          /* "loop.py":52
  *         tin, tout, ratio = 0, 0, 0.0
  *     with _metrics_lock:
  *         _metrics["tokens_in"] += tin             # <<<<<<<<<<<<<<
@@ -3478,7 +3478,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-          /* "core/loop.py":53
+          /* "loop.py":53
  *     with _metrics_lock:
  *         _metrics["tokens_in"] += tin
  *         _metrics["tokens_kept"] += tout             # <<<<<<<<<<<<<<
@@ -3502,7 +3502,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-          /* "core/loop.py":54
+          /* "loop.py":54
  *         _metrics["tokens_in"] += tin
  *         _metrics["tokens_kept"] += tout
  *         _metrics["last_in"] = tin             # <<<<<<<<<<<<<<
@@ -3514,7 +3514,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
           if (unlikely((PyObject_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_last_in, __pyx_v_tin) < 0))) __PYX_ERR(0, 54, __pyx_L19_error)
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-          /* "core/loop.py":55
+          /* "loop.py":55
  *         _metrics["tokens_kept"] += tout
  *         _metrics["last_in"] = tin
  *         _metrics["last_kept"] = tout             # <<<<<<<<<<<<<<
@@ -3526,7 +3526,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
           if (unlikely((PyObject_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_last_kept, __pyx_v_tout) < 0))) __PYX_ERR(0, 55, __pyx_L19_error)
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-          /* "core/loop.py":56
+          /* "loop.py":56
  *         _metrics["last_in"] = tin
  *         _metrics["last_kept"] = tout
  *         _metrics["ratio"] = ratio             # <<<<<<<<<<<<<<
@@ -3538,7 +3538,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
           if (unlikely((PyObject_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_ratio, __pyx_v_ratio) < 0))) __PYX_ERR(0, 56, __pyx_L19_error)
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-          /* "core/loop.py":51
+          /* "loop.py":51
  *     except Exception:
  *         tin, tout, ratio = 0, 0, 0.0
  *     with _metrics_lock:             # <<<<<<<<<<<<<<
@@ -3559,7 +3559,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         /*except:*/ {
-          __Pyx_AddTraceback("core.loop._record_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          __Pyx_AddTraceback("loop._record_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
           if (__Pyx_GetException(&__pyx_t_8, &__pyx_t_5, &__pyx_t_13) < 0) __PYX_ERR(0, 51, __pyx_L21_except_error)
           __Pyx_XGOTREF(__pyx_t_8);
           __Pyx_XGOTREF(__pyx_t_5);
@@ -3622,7 +3622,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
     __pyx_L28:;
   }
 
-  /* "core/loop.py":44
+  /* "loop.py":44
  * 
  * 
  * def _record_stats(stats) -> None:             # <<<<<<<<<<<<<<
@@ -3641,7 +3641,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
   __Pyx_XDECREF(__pyx_t_15);
-  __Pyx_AddTraceback("core.loop._record_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop._record_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_tin);
@@ -3652,7 +3652,7 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
   return __pyx_r;
 }
 
-/* "core/loop.py":59
+/* "loop.py":59
  * 
  * 
  * def _compress(body: dict) -> dict:             # <<<<<<<<<<<<<<
@@ -3661,15 +3661,15 @@ static PyObject *__pyx_pf_4core_4loop_2_record_stats(CYTHON_UNUSED PyObject *__p
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_4loop_5_compress(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4loop_5_compress(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_4loop_5_compress = {"_compress", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_4loop_5_compress, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_4loop_5_compress(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4loop_5_compress = {"_compress", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4loop_5_compress, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4loop_5_compress(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3731,12 +3731,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("core.loop._compress", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop._compress", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_body), (&PyDict_Type), 0, "body", 2))) __PYX_ERR(0, 59, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4core_4loop_4_compress(__pyx_self, __pyx_v_body);
+  __pyx_r = __pyx_pf_4loop_4_compress(__pyx_self, __pyx_v_body);
 
   /* function exit code */
   goto __pyx_L0;
@@ -3755,7 +3755,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_body) {
+static PyObject *__pyx_pf_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_body) {
   PyObject *__pyx_v__sys = NULL;
   PyObject *__pyx_v__Path = NULL;
   PyObject *__pyx_v_rootdir = NULL;
@@ -3790,7 +3790,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_compress", 0);
 
-  /* "core/loop.py":60
+  /* "loop.py":60
  * 
  * def _compress(body: dict) -> dict:
  *     import sys as _sys             # <<<<<<<<<<<<<<
@@ -3803,7 +3803,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_v__sys = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/loop.py":61
+  /* "loop.py":61
  * def _compress(body: dict) -> dict:
  *     import sys as _sys
  *     from pathlib import Path as _Path             # <<<<<<<<<<<<<<
@@ -3833,7 +3833,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "core/loop.py":62
+  /* "loop.py":62
  *     import sys as _sys
  *     from pathlib import Path as _Path
  *     rootdir = _Path(__file__).resolve().parent.parent             # <<<<<<<<<<<<<<
@@ -3886,7 +3886,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_v_rootdir = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/loop.py":63
+  /* "loop.py":63
  *     from pathlib import Path as _Path
  *     rootdir = _Path(__file__).resolve().parent.parent
  *     vendor = str(rootdir / "vendor" / "slimtoken" / "src")             # <<<<<<<<<<<<<<
@@ -3907,7 +3907,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_v_vendor = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
 
-  /* "core/loop.py":64
+  /* "loop.py":64
  *     rootdir = _Path(__file__).resolve().parent.parent
  *     vendor = str(rootdir / "vendor" / "slimtoken" / "src")
  *     if vendor not in _sys.path:             # <<<<<<<<<<<<<<
@@ -3920,7 +3920,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (__pyx_t_10) {
 
-    /* "core/loop.py":65
+    /* "loop.py":65
  *     vendor = str(rootdir / "vendor" / "slimtoken" / "src")
  *     if vendor not in _sys.path:
  *         _sys.path.insert(0, vendor)             # <<<<<<<<<<<<<<
@@ -3942,7 +3942,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "core/loop.py":64
+    /* "loop.py":64
  *     rootdir = _Path(__file__).resolve().parent.parent
  *     vendor = str(rootdir / "vendor" / "slimtoken" / "src")
  *     if vendor not in _sys.path:             # <<<<<<<<<<<<<<
@@ -3951,7 +3951,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
 */
   }
 
-  /* "core/loop.py":66
+  /* "loop.py":66
  *     if vendor not in _sys.path:
  *         _sys.path.insert(0, vendor)
  *     try:             # <<<<<<<<<<<<<<
@@ -3967,7 +3967,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XGOTREF(__pyx_t_12);
     /*try:*/ {
 
-      /* "core/loop.py":67
+      /* "loop.py":67
  *         _sys.path.insert(0, vendor)
  *     try:
  *         import os as _os             # <<<<<<<<<<<<<<
@@ -3980,7 +3980,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
       __pyx_v__os = __pyx_t_5;
       __pyx_t_5 = 0;
 
-      /* "core/loop.py":68
+      /* "loop.py":68
  *     try:
  *         import os as _os
  *         _os.environ.setdefault("SLIMTOKEN_MODE", "code")             # <<<<<<<<<<<<<<
@@ -3997,7 +3997,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "core/loop.py":69
+      /* "loop.py":69
  *         import os as _os
  *         _os.environ.setdefault("SLIMTOKEN_MODE", "code")
  *         from slimtoken.pipeline import minify_request             # <<<<<<<<<<<<<<
@@ -4027,7 +4027,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "core/loop.py":70
+      /* "loop.py":70
  *         _os.environ.setdefault("SLIMTOKEN_MODE", "code")
  *         from slimtoken.pipeline import minify_request
  *         from slimtoken.profiles import build_config             # <<<<<<<<<<<<<<
@@ -4057,7 +4057,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "core/loop.py":66
+      /* "loop.py":66
  *     if vendor not in _sys.path:
  *         _sys.path.insert(0, vendor)
  *     try:             # <<<<<<<<<<<<<<
@@ -4077,7 +4077,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "core/loop.py":71
+    /* "loop.py":71
  *         from slimtoken.pipeline import minify_request
  *         from slimtoken.profiles import build_config
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -4088,7 +4088,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     if (__pyx_t_14) {
       __Pyx_ErrRestore(0,0,0);
 
-      /* "core/loop.py":72
+      /* "loop.py":72
  *         from slimtoken.profiles import build_config
  *     except Exception:
  *         return body             # <<<<<<<<<<<<<<
@@ -4102,7 +4102,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     }
     goto __pyx_L6_except_error;
 
-    /* "core/loop.py":66
+    /* "loop.py":66
  *     if vendor not in _sys.path:
  *         _sys.path.insert(0, vendor)
  *     try:             # <<<<<<<<<<<<<<
@@ -4124,7 +4124,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     __pyx_L9_try_end:;
   }
 
-  /* "core/loop.py":73
+  /* "loop.py":73
  *     except Exception:
  *         return body
  *     try:             # <<<<<<<<<<<<<<
@@ -4140,7 +4140,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XGOTREF(__pyx_t_2);
     /*try:*/ {
 
-      /* "core/loop.py":74
+      /* "loop.py":74
  *         return body
  *     try:
  *         cfg = build_config()             # <<<<<<<<<<<<<<
@@ -4173,7 +4173,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
       __pyx_v_cfg = __pyx_t_5;
       __pyx_t_5 = 0;
 
-      /* "core/loop.py":75
+      /* "loop.py":75
  *     try:
  *         cfg = build_config()
  *         out, stats = minify_request(copy.deepcopy(body), cfg)             # <<<<<<<<<<<<<<
@@ -4285,7 +4285,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
       __pyx_v_stats = __pyx_t_7;
       __pyx_t_7 = 0;
 
-      /* "core/loop.py":73
+      /* "loop.py":73
  *     except Exception:
  *         return body
  *     try:             # <<<<<<<<<<<<<<
@@ -4306,7 +4306,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "core/loop.py":76
+    /* "loop.py":76
  *         cfg = build_config()
  *         out, stats = minify_request(copy.deepcopy(body), cfg)
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -4317,7 +4317,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     if (__pyx_t_14) {
       __Pyx_ErrRestore(0,0,0);
 
-      /* "core/loop.py":77
+      /* "loop.py":77
  *         out, stats = minify_request(copy.deepcopy(body), cfg)
  *     except Exception:
  *         return body             # <<<<<<<<<<<<<<
@@ -4331,7 +4331,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     }
     goto __pyx_L14_except_error;
 
-    /* "core/loop.py":73
+    /* "loop.py":73
  *     except Exception:
  *         return body
  *     try:             # <<<<<<<<<<<<<<
@@ -4353,7 +4353,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     __pyx_L17_try_end:;
   }
 
-  /* "core/loop.py":78
+  /* "loop.py":78
  *     except Exception:
  *         return body
  *     try:             # <<<<<<<<<<<<<<
@@ -4369,7 +4369,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XGOTREF(__pyx_t_12);
     /*try:*/ {
 
-      /* "core/loop.py":79
+      /* "loop.py":79
  *         return body
  *     try:
  *         _record_stats(stats)             # <<<<<<<<<<<<<<
@@ -4401,7 +4401,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "core/loop.py":78
+      /* "loop.py":78
  *     except Exception:
  *         return body
  *     try:             # <<<<<<<<<<<<<<
@@ -4422,7 +4422,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "core/loop.py":80
+    /* "loop.py":80
  *     try:
  *         _record_stats(stats)
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -4436,7 +4436,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     }
     goto __pyx_L24_except_error;
 
-    /* "core/loop.py":78
+    /* "loop.py":78
  *     except Exception:
  *         return body
  *     try:             # <<<<<<<<<<<<<<
@@ -4457,7 +4457,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     __pyx_L27_try_end:;
   }
 
-  /* "core/loop.py":82
+  /* "loop.py":82
  *     except Exception:
  *         pass
  *     if isinstance(out, dict) and out.get("messages"):             # <<<<<<<<<<<<<<
@@ -4486,7 +4486,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_L31_bool_binop_done:;
   if (__pyx_t_10) {
 
-    /* "core/loop.py":83
+    /* "loop.py":83
  *         pass
  *     if isinstance(out, dict) and out.get("messages"):
  *         return out             # <<<<<<<<<<<<<<
@@ -4501,7 +4501,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
     __pyx_t_5 = 0;
     goto __pyx_L0;
 
-    /* "core/loop.py":82
+    /* "loop.py":82
  *     except Exception:
  *         pass
  *     if isinstance(out, dict) and out.get("messages"):             # <<<<<<<<<<<<<<
@@ -4510,7 +4510,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
 */
   }
 
-  /* "core/loop.py":84
+  /* "loop.py":84
  *     if isinstance(out, dict) and out.get("messages"):
  *         return out
  *     return body             # <<<<<<<<<<<<<<
@@ -4522,7 +4522,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_r = __pyx_v_body;
   goto __pyx_L0;
 
-  /* "core/loop.py":59
+  /* "loop.py":59
  * 
  * 
  * def _compress(body: dict) -> dict:             # <<<<<<<<<<<<<<
@@ -4539,7 +4539,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_15);
-  __Pyx_AddTraceback("core.loop._compress", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop._compress", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v__sys);
@@ -4557,7 +4557,7 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "core/loop.py":87
+/* "loop.py":87
  * 
  * 
  * def _beautify(text: str) -> str:             # <<<<<<<<<<<<<<
@@ -4566,15 +4566,15 @@ static PyObject *__pyx_pf_4core_4loop_4_compress(CYTHON_UNUSED PyObject *__pyx_s
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_4loop_7_beautify(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4loop_7_beautify(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_4loop_7_beautify = {"_beautify", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_4loop_7_beautify, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_4loop_7_beautify(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4loop_7_beautify = {"_beautify", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4loop_7_beautify, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4loop_7_beautify(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4636,12 +4636,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("core.loop._beautify", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop._beautify", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_text), (&PyUnicode_Type), 0, "text", 2))) __PYX_ERR(0, 87, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4core_4loop_6_beautify(__pyx_self, __pyx_v_text);
+  __pyx_r = __pyx_pf_4loop_6_beautify(__pyx_self, __pyx_v_text);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4660,7 +4660,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text) {
+static PyObject *__pyx_pf_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_text) {
   PyObject *__pyx_v_out = NULL;
   PyObject *__pyx_v_frame_output = NULL;
   PyObject *__pyx_v_framed = NULL;
@@ -4686,7 +4686,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_beautify", 0);
 
-  /* "core/loop.py":88
+  /* "loop.py":88
  * 
  * def _beautify(text: str) -> str:
  *     out = text             # <<<<<<<<<<<<<<
@@ -4696,7 +4696,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_INCREF(__pyx_v_text);
   __pyx_v_out = __pyx_v_text;
 
-  /* "core/loop.py":89
+  /* "loop.py":89
  * def _beautify(text: str) -> str:
  *     out = text
  *     try:             # <<<<<<<<<<<<<<
@@ -4712,7 +4712,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "core/loop.py":90
+      /* "loop.py":90
  *     out = text
  *     try:
  *         from tools.display_frame import frame_output             # <<<<<<<<<<<<<<
@@ -4742,7 +4742,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "core/loop.py":91
+      /* "loop.py":91
  *     try:
  *         from tools.display_frame import frame_output
  *         framed, _ = frame_output(out)             # <<<<<<<<<<<<<<
@@ -4827,7 +4827,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
       __pyx_v__ = __pyx_t_7;
       __pyx_t_7 = 0;
 
-      /* "core/loop.py":92
+      /* "loop.py":92
  *         from tools.display_frame import frame_output
  *         framed, _ = frame_output(out)
  *         out = framed             # <<<<<<<<<<<<<<
@@ -4837,7 +4837,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
       __Pyx_INCREF(__pyx_v_framed);
       __Pyx_DECREF_SET(__pyx_v_out, __pyx_v_framed);
 
-      /* "core/loop.py":89
+      /* "loop.py":89
  * def _beautify(text: str) -> str:
  *     out = text
  *     try:             # <<<<<<<<<<<<<<
@@ -4855,7 +4855,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "core/loop.py":93
+    /* "loop.py":93
  *         framed, _ = frame_output(out)
  *         out = framed
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -4869,7 +4869,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     }
     goto __pyx_L5_except_error;
 
-    /* "core/loop.py":89
+    /* "loop.py":89
  * def _beautify(text: str) -> str:
  *     out = text
  *     try:             # <<<<<<<<<<<<<<
@@ -4890,7 +4890,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     __pyx_L8_try_end:;
   }
 
-  /* "core/loop.py":95
+  /* "loop.py":95
  *     except Exception:
  *         pass
  *     try:             # <<<<<<<<<<<<<<
@@ -4906,7 +4906,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XGOTREF(__pyx_t_1);
     /*try:*/ {
 
-      /* "core/loop.py":96
+      /* "loop.py":96
  *         pass
  *     try:
  *         from tools.display_post import process_output             # <<<<<<<<<<<<<<
@@ -4936,7 +4936,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "core/loop.py":97
+      /* "loop.py":97
  *     try:
  *         from tools.display_post import process_output
  *         out, _ = process_output(out, show_code=True)             # <<<<<<<<<<<<<<
@@ -5025,7 +5025,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
       __Pyx_XDECREF_SET(__pyx_v__, __pyx_t_10);
       __pyx_t_10 = 0;
 
-      /* "core/loop.py":95
+      /* "loop.py":95
  *     except Exception:
  *         pass
  *     try:             # <<<<<<<<<<<<<<
@@ -5043,7 +5043,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "core/loop.py":98
+    /* "loop.py":98
  *         from tools.display_post import process_output
  *         out, _ = process_output(out, show_code=True)
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -5057,7 +5057,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     }
     goto __pyx_L15_except_error;
 
-    /* "core/loop.py":95
+    /* "loop.py":95
  *     except Exception:
  *         pass
  *     try:             # <<<<<<<<<<<<<<
@@ -5078,7 +5078,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     __pyx_L18_try_end:;
   }
 
-  /* "core/loop.py":100
+  /* "loop.py":100
  *     except Exception:
  *         pass
  *     try:             # <<<<<<<<<<<<<<
@@ -5094,7 +5094,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "core/loop.py":101
+      /* "loop.py":101
  *         pass
  *     try:
  *         from tools.display_beautify import beautify as _beautify_fn             # <<<<<<<<<<<<<<
@@ -5124,7 +5124,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "core/loop.py":102
+      /* "loop.py":102
  *     try:
  *         from tools.display_beautify import beautify as _beautify_fn
  *         out = _beautify_fn(out)             # <<<<<<<<<<<<<<
@@ -5157,7 +5157,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
       __Pyx_DECREF_SET(__pyx_v_out, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "core/loop.py":100
+      /* "loop.py":100
  *     except Exception:
  *         pass
  *     try:             # <<<<<<<<<<<<<<
@@ -5175,7 +5175,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "core/loop.py":103
+    /* "loop.py":103
  *         from tools.display_beautify import beautify as _beautify_fn
  *         out = _beautify_fn(out)
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -5189,7 +5189,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     }
     goto __pyx_L25_except_error;
 
-    /* "core/loop.py":100
+    /* "loop.py":100
  *     except Exception:
  *         pass
  *     try:             # <<<<<<<<<<<<<<
@@ -5210,7 +5210,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
     __pyx_L28_try_end:;
   }
 
-  /* "core/loop.py":105
+  /* "loop.py":105
  *     except Exception:
  *         pass
  *     return out             # <<<<<<<<<<<<<<
@@ -5225,7 +5225,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "core/loop.py":87
+  /* "loop.py":87
  * 
  * 
  * def _beautify(text: str) -> str:             # <<<<<<<<<<<<<<
@@ -5239,7 +5239,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_AddTraceback("core.loop._beautify", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop._beautify", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_out);
@@ -5253,7 +5253,7 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "core/loop.py":108
+/* "loop.py":108
  * 
  * 
  * def _parse_text_calls(content: str) -> list:             # <<<<<<<<<<<<<<
@@ -5262,15 +5262,15 @@ static PyObject *__pyx_pf_4core_4loop_6_beautify(CYTHON_UNUSED PyObject *__pyx_s
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_4loop_9_parse_text_calls(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4loop_9_parse_text_calls(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_4loop_9_parse_text_calls = {"_parse_text_calls", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_4loop_9_parse_text_calls, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_4loop_9_parse_text_calls(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4loop_9_parse_text_calls = {"_parse_text_calls", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4loop_9_parse_text_calls, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4loop_9_parse_text_calls(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5332,12 +5332,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("core.loop._parse_text_calls", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop._parse_text_calls", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_content), (&PyUnicode_Type), 0, "content", 2))) __PYX_ERR(0, 108, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4core_4loop_8_parse_text_calls(__pyx_self, __pyx_v_content);
+  __pyx_r = __pyx_pf_4loop_8_parse_text_calls(__pyx_self, __pyx_v_content);
 
   /* function exit code */
   goto __pyx_L0;
@@ -5356,7 +5356,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_content) {
+static PyObject *__pyx_pf_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_content) {
   PyObject *__pyx_v_calls = NULL;
   PyObject *__pyx_v_m = NULL;
   PyObject *__pyx_v_data = NULL;
@@ -5397,7 +5397,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_parse_text_calls", 0);
 
-  /* "core/loop.py":109
+  /* "loop.py":109
  * 
  * def _parse_text_calls(content: str) -> list:
  *     calls = []             # <<<<<<<<<<<<<<
@@ -5409,7 +5409,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
   __pyx_v_calls = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "core/loop.py":110
+  /* "loop.py":110
  * def _parse_text_calls(content: str) -> list:
  *     calls = []
  *     for m in _re.finditer(_PAT_JSON_CALL, content, _re.S):             # <<<<<<<<<<<<<<
@@ -5504,7 +5504,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
     __Pyx_XDECREF_SET(__pyx_v_m, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "core/loop.py":111
+    /* "loop.py":111
  *     calls = []
  *     for m in _re.finditer(_PAT_JSON_CALL, content, _re.S):
  *         try:             # <<<<<<<<<<<<<<
@@ -5520,7 +5520,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
       __Pyx_XGOTREF(__pyx_t_12);
       /*try:*/ {
 
-        /* "core/loop.py":112
+        /* "loop.py":112
  *     for m in _re.finditer(_PAT_JSON_CALL, content, _re.S):
  *         try:
  *             data = _json.loads(m.group(1))             # <<<<<<<<<<<<<<
@@ -5567,7 +5567,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
         __Pyx_XDECREF_SET(__pyx_v_data, __pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "core/loop.py":111
+        /* "loop.py":111
  *     calls = []
  *     for m in _re.finditer(_PAT_JSON_CALL, content, _re.S):
  *         try:             # <<<<<<<<<<<<<<
@@ -5586,7 +5586,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "core/loop.py":113
+      /* "loop.py":113
  *         try:
  *             data = _json.loads(m.group(1))
  *         except Exception:             # <<<<<<<<<<<<<<
@@ -5595,13 +5595,13 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
 */
       __pyx_t_13 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_Exception))));
       if (__pyx_t_13) {
-        __Pyx_AddTraceback("core.loop._parse_text_calls", __pyx_clineno, __pyx_lineno, __pyx_filename);
+        __Pyx_AddTraceback("loop._parse_text_calls", __pyx_clineno, __pyx_lineno, __pyx_filename);
         if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_2, &__pyx_t_3) < 0) __PYX_ERR(0, 113, __pyx_L7_except_error)
         __Pyx_XGOTREF(__pyx_t_1);
         __Pyx_XGOTREF(__pyx_t_2);
         __Pyx_XGOTREF(__pyx_t_3);
 
-        /* "core/loop.py":114
+        /* "loop.py":114
  *             data = _json.loads(m.group(1))
  *         except Exception:
  *             continue             # <<<<<<<<<<<<<<
@@ -5617,7 +5617,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
       }
       goto __pyx_L7_except_error;
 
-      /* "core/loop.py":111
+      /* "loop.py":111
  *     calls = []
  *     for m in _re.finditer(_PAT_JSON_CALL, content, _re.S):
  *         try:             # <<<<<<<<<<<<<<
@@ -5639,7 +5639,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
       __pyx_L12_try_end:;
     }
 
-    /* "core/loop.py":115
+    /* "loop.py":115
  *         except Exception:
  *             continue
  *         items = data if isinstance(data, list) else [data]             # <<<<<<<<<<<<<<
@@ -5662,7 +5662,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
     __Pyx_XDECREF_SET(__pyx_v_items, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "core/loop.py":116
+    /* "loop.py":116
  *             continue
  *         items = data if isinstance(data, list) else [data]
  *         for d in items:             # <<<<<<<<<<<<<<
@@ -5721,7 +5721,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
       __Pyx_XDECREF_SET(__pyx_v_d, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "core/loop.py":117
+      /* "loop.py":117
  *         items = data if isinstance(data, list) else [data]
  *         for d in items:
  *             try:             # <<<<<<<<<<<<<<
@@ -5737,7 +5737,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
         __Pyx_XGOTREF(__pyx_t_10);
         /*try:*/ {
 
-          /* "core/loop.py":118
+          /* "loop.py":118
  *         for d in items:
  *             try:
  *                 fn = d.get("function", d)             # <<<<<<<<<<<<<<
@@ -5757,7 +5757,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
           __Pyx_XDECREF_SET(__pyx_v_fn, __pyx_t_2);
           __pyx_t_2 = 0;
 
-          /* "core/loop.py":119
+          /* "loop.py":119
  *             try:
  *                 fn = d.get("function", d)
  *                 name = fn.get("name", "")             # <<<<<<<<<<<<<<
@@ -5772,7 +5772,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
           __Pyx_XDECREF_SET(__pyx_v_name, __pyx_t_1);
           __pyx_t_1 = 0;
 
-          /* "core/loop.py":120
+          /* "loop.py":120
  *                 fn = d.get("function", d)
  *                 name = fn.get("name", "")
  *                 args = fn.get("arguments", fn.get("input", {}))             # <<<<<<<<<<<<<<
@@ -5806,7 +5806,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
           __Pyx_XDECREF_SET(__pyx_v_args, __pyx_t_1);
           __pyx_t_1 = 0;
 
-          /* "core/loop.py":121
+          /* "loop.py":121
  *                 name = fn.get("name", "")
  *                 args = fn.get("arguments", fn.get("input", {}))
  *                 if isinstance(args, str):             # <<<<<<<<<<<<<<
@@ -5816,7 +5816,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
           __pyx_t_14 = PyUnicode_Check(__pyx_v_args); 
           if (__pyx_t_14) {
 
-            /* "core/loop.py":122
+            /* "loop.py":122
  *                 args = fn.get("arguments", fn.get("input", {}))
  *                 if isinstance(args, str):
  *                     args = _json.loads(args) if args.strip() else {}             # <<<<<<<<<<<<<<
@@ -5873,7 +5873,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
             __Pyx_DECREF_SET(__pyx_v_args, __pyx_t_1);
             __pyx_t_1 = 0;
 
-            /* "core/loop.py":121
+            /* "loop.py":121
  *                 name = fn.get("name", "")
  *                 args = fn.get("arguments", fn.get("input", {}))
  *                 if isinstance(args, str):             # <<<<<<<<<<<<<<
@@ -5882,7 +5882,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
 */
           }
 
-          /* "core/loop.py":123
+          /* "loop.py":123
  *                 if isinstance(args, str):
  *                     args = _json.loads(args) if args.strip() else {}
  *                 if name:             # <<<<<<<<<<<<<<
@@ -5892,7 +5892,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
           __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_name); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 123, __pyx_L17_error)
           if (__pyx_t_14) {
 
-            /* "core/loop.py":124
+            /* "loop.py":124
  *                     args = _json.loads(args) if args.strip() else {}
  *                 if name:
  *                     calls.append({"name": name, "args": args})             # <<<<<<<<<<<<<<
@@ -5906,7 +5906,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
             __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_calls, __pyx_t_1); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 124, __pyx_L17_error)
             __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-            /* "core/loop.py":123
+            /* "loop.py":123
  *                 if isinstance(args, str):
  *                     args = _json.loads(args) if args.strip() else {}
  *                 if name:             # <<<<<<<<<<<<<<
@@ -5915,7 +5915,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
 */
           }
 
-          /* "core/loop.py":117
+          /* "loop.py":117
  *         items = data if isinstance(data, list) else [data]
  *         for d in items:
  *             try:             # <<<<<<<<<<<<<<
@@ -5934,7 +5934,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "core/loop.py":125
+        /* "loop.py":125
  *                 if name:
  *                     calls.append({"name": name, "args": args})
  *             except Exception:             # <<<<<<<<<<<<<<
@@ -5943,13 +5943,13 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
 */
         __pyx_t_13 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_Exception))));
         if (__pyx_t_13) {
-          __Pyx_AddTraceback("core.loop._parse_text_calls", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          __Pyx_AddTraceback("loop._parse_text_calls", __pyx_clineno, __pyx_lineno, __pyx_filename);
           if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_6, &__pyx_t_5) < 0) __PYX_ERR(0, 125, __pyx_L19_except_error)
           __Pyx_XGOTREF(__pyx_t_1);
           __Pyx_XGOTREF(__pyx_t_6);
           __Pyx_XGOTREF(__pyx_t_5);
 
-          /* "core/loop.py":126
+          /* "loop.py":126
  *                     calls.append({"name": name, "args": args})
  *             except Exception:
  *                 continue             # <<<<<<<<<<<<<<
@@ -5965,7 +5965,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
         }
         goto __pyx_L19_except_error;
 
-        /* "core/loop.py":117
+        /* "loop.py":117
  *         items = data if isinstance(data, list) else [data]
  *         for d in items:
  *             try:             # <<<<<<<<<<<<<<
@@ -5987,7 +5987,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
         __pyx_L24_try_end:;
       }
 
-      /* "core/loop.py":116
+      /* "loop.py":116
  *             continue
  *         items = data if isinstance(data, list) else [data]
  *         for d in items:             # <<<<<<<<<<<<<<
@@ -5998,7 +5998,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "core/loop.py":110
+    /* "loop.py":110
  * def _parse_text_calls(content: str) -> list:
  *     calls = []
  *     for m in _re.finditer(_PAT_JSON_CALL, content, _re.S):             # <<<<<<<<<<<<<<
@@ -6009,7 +6009,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/loop.py":127
+  /* "loop.py":127
  *             except Exception:
  *                 continue
  *     for fname, body in _re.findall(_PAT_BLOCK, content, _re.S):             # <<<<<<<<<<<<<<
@@ -6156,7 +6156,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
     __Pyx_XDECREF_SET(__pyx_v_body, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "core/loop.py":128
+    /* "loop.py":128
  *                 continue
  *     for fname, body in _re.findall(_PAT_BLOCK, content, _re.S):
  *         args = {}             # <<<<<<<<<<<<<<
@@ -6168,7 +6168,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
     __Pyx_XDECREF_SET(__pyx_v_args, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "core/loop.py":129
+    /* "loop.py":129
  *     for fname, body in _re.findall(_PAT_BLOCK, content, _re.S):
  *         args = {}
  *         for m in _re.finditer(_PAT_PARAM, body, _re.S):             # <<<<<<<<<<<<<<
@@ -6263,7 +6263,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
       __Pyx_XDECREF_SET(__pyx_v_m, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "core/loop.py":130
+      /* "loop.py":130
  *         args = {}
  *         for m in _re.finditer(_PAT_PARAM, body, _re.S):
  *             args[m.group(1)] = m.group(2)             # <<<<<<<<<<<<<<
@@ -6294,7 +6294,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
       __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "core/loop.py":129
+      /* "loop.py":129
  *     for fname, body in _re.findall(_PAT_BLOCK, content, _re.S):
  *         args = {}
  *         for m in _re.finditer(_PAT_PARAM, body, _re.S):             # <<<<<<<<<<<<<<
@@ -6304,7 +6304,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "core/loop.py":131
+    /* "loop.py":131
  *         for m in _re.finditer(_PAT_PARAM, body, _re.S):
  *             args[m.group(1)] = m.group(2)
  *         if fname:             # <<<<<<<<<<<<<<
@@ -6314,7 +6314,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
     __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_fname); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 131, __pyx_L1_error)
     if (__pyx_t_14) {
 
-      /* "core/loop.py":132
+      /* "loop.py":132
  *             args[m.group(1)] = m.group(2)
  *         if fname:
  *             calls.append({"name": fname, "args": args})             # <<<<<<<<<<<<<<
@@ -6328,7 +6328,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
       __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_calls, __pyx_t_3); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "core/loop.py":131
+      /* "loop.py":131
  *         for m in _re.finditer(_PAT_PARAM, body, _re.S):
  *             args[m.group(1)] = m.group(2)
  *         if fname:             # <<<<<<<<<<<<<<
@@ -6337,7 +6337,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
 */
     }
 
-    /* "core/loop.py":127
+    /* "loop.py":127
  *             except Exception:
  *                 continue
  *     for fname, body in _re.findall(_PAT_BLOCK, content, _re.S):             # <<<<<<<<<<<<<<
@@ -6347,7 +6347,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":133
+  /* "loop.py":133
  *         if fname:
  *             calls.append({"name": fname, "args": args})
  *     seen = set()             # <<<<<<<<<<<<<<
@@ -6359,7 +6359,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
   __pyx_v_seen = ((PyObject*)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "core/loop.py":134
+  /* "loop.py":134
  *             calls.append({"name": fname, "args": args})
  *     seen = set()
  *     uniq = []             # <<<<<<<<<<<<<<
@@ -6371,7 +6371,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
   __pyx_v_uniq = ((PyObject*)__pyx_t_6);
   __pyx_t_6 = 0;
 
-  /* "core/loop.py":135
+  /* "loop.py":135
  *     seen = set()
  *     uniq = []
  *     for c in calls:             # <<<<<<<<<<<<<<
@@ -6395,7 +6395,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
     __Pyx_XDECREF_SET(__pyx_v_c, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "core/loop.py":136
+    /* "loop.py":136
  *     uniq = []
  *     for c in calls:
  *         key = (c["name"], _json.dumps(c["args"], sort_keys=True))             # <<<<<<<<<<<<<<
@@ -6448,7 +6448,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
     __Pyx_XDECREF_SET(__pyx_v_key, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "core/loop.py":137
+    /* "loop.py":137
  *     for c in calls:
  *         key = (c["name"], _json.dumps(c["args"], sort_keys=True))
  *         if key not in seen:             # <<<<<<<<<<<<<<
@@ -6458,7 +6458,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
     __pyx_t_14 = (__Pyx_PySet_ContainsTF(__pyx_v_key, __pyx_v_seen, Py_NE)); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 137, __pyx_L1_error)
     if (__pyx_t_14) {
 
-      /* "core/loop.py":138
+      /* "loop.py":138
  *         key = (c["name"], _json.dumps(c["args"], sort_keys=True))
  *         if key not in seen:
  *             seen.add(key)             # <<<<<<<<<<<<<<
@@ -6467,7 +6467,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
 */
       __pyx_t_18 = PySet_Add(__pyx_v_seen, __pyx_v_key); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 138, __pyx_L1_error)
 
-      /* "core/loop.py":139
+      /* "loop.py":139
  *         if key not in seen:
  *             seen.add(key)
  *             uniq.append(c)             # <<<<<<<<<<<<<<
@@ -6476,7 +6476,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
 */
       __pyx_t_18 = __Pyx_PyList_Append(__pyx_v_uniq, __pyx_v_c); if (unlikely(__pyx_t_18 == ((int)-1))) __PYX_ERR(0, 139, __pyx_L1_error)
 
-      /* "core/loop.py":137
+      /* "loop.py":137
  *     for c in calls:
  *         key = (c["name"], _json.dumps(c["args"], sort_keys=True))
  *         if key not in seen:             # <<<<<<<<<<<<<<
@@ -6485,7 +6485,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
 */
     }
 
-    /* "core/loop.py":135
+    /* "loop.py":135
  *     seen = set()
  *     uniq = []
  *     for c in calls:             # <<<<<<<<<<<<<<
@@ -6495,7 +6495,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
   }
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":140
+  /* "loop.py":140
  *             seen.add(key)
  *             uniq.append(c)
  *     return uniq             # <<<<<<<<<<<<<<
@@ -6507,7 +6507,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
   __pyx_r = __pyx_v_uniq;
   goto __pyx_L0;
 
-  /* "core/loop.py":108
+  /* "loop.py":108
  * 
  * 
  * def _parse_text_calls(content: str) -> list:             # <<<<<<<<<<<<<<
@@ -6524,7 +6524,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_17);
-  __Pyx_AddTraceback("core.loop._parse_text_calls", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop._parse_text_calls", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_calls);
@@ -6546,7 +6546,7 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "core/loop.py":143
+/* "loop.py":143
  * 
  * 
  * def run(task: Dict, on_event: Optional[Callable] = None) -> Dict[str, Any]:             # <<<<<<<<<<<<<<
@@ -6555,15 +6555,15 @@ static PyObject *__pyx_pf_4core_4loop_8_parse_text_calls(CYTHON_UNUSED PyObject 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_4loop_11run(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_4loop_11run(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_4loop_11run = {"run", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_4loop_11run, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_4loop_11run(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_4loop_11run = {"run", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4loop_11run, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_4loop_11run(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -6640,12 +6640,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("core.loop.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_task), (&PyDict_Type), 0, "task", 2))) __PYX_ERR(0, 143, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4core_4loop_10run(__pyx_self, __pyx_v_task, __pyx_v_on_event);
+  __pyx_r = __pyx_pf_4loop_10run(__pyx_self, __pyx_v_task, __pyx_v_on_event);
 
   /* function exit code */
   goto __pyx_L0;
@@ -6664,7 +6664,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_task, PyObject *__pyx_v_on_event) {
+static PyObject *__pyx_pf_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_task, PyObject *__pyx_v_on_event) {
   PyObject *__pyx_v_prompt = NULL;
   PyObject *__pyx_v_system = NULL;
   PyObject *__pyx_v_max_steps = NULL;
@@ -6726,7 +6726,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("run", 0);
 
-  /* "core/loop.py":144
+  /* "loop.py":144
  * 
  * def run(task: Dict, on_event: Optional[Callable] = None) -> Dict[str, Any]:
  *     prompt = task.get("prompt", "")             # <<<<<<<<<<<<<<
@@ -6738,7 +6738,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_v_prompt = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/loop.py":145
+  /* "loop.py":145
  * def run(task: Dict, on_event: Optional[Callable] = None) -> Dict[str, Any]:
  *     prompt = task.get("prompt", "")
  *     system = task.get("system", "")             # <<<<<<<<<<<<<<
@@ -6750,7 +6750,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_v_system = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/loop.py":146
+  /* "loop.py":146
  *     prompt = task.get("prompt", "")
  *     system = task.get("system", "")
  *     max_steps = int(task.get("max_steps", MAX_STEPS))             # <<<<<<<<<<<<<<
@@ -6768,7 +6768,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_v_max_steps = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "core/loop.py":147
+  /* "loop.py":147
  *     system = task.get("system", "")
  *     max_steps = int(task.get("max_steps", MAX_STEPS))
  *     if not prompt or not prompt.strip():             # <<<<<<<<<<<<<<
@@ -6799,7 +6799,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "core/loop.py":148
+    /* "loop.py":148
  *     max_steps = int(task.get("max_steps", MAX_STEPS))
  *     if not prompt or not prompt.strip():
  *         return {"ok": False, "output": "", "error": "empty prompt"}             # <<<<<<<<<<<<<<
@@ -6816,7 +6816,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "core/loop.py":147
+    /* "loop.py":147
  *     system = task.get("system", "")
  *     max_steps = int(task.get("max_steps", MAX_STEPS))
  *     if not prompt or not prompt.strip():             # <<<<<<<<<<<<<<
@@ -6825,7 +6825,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
 */
   }
 
-  /* "core/loop.py":149
+  /* "loop.py":149
  *     if not prompt or not prompt.strip():
  *         return {"ok": False, "output": "", "error": "empty prompt"}
  *     mode = classify_mode(prompt)             # <<<<<<<<<<<<<<
@@ -6858,7 +6858,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_v_mode = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/loop.py":150
+  /* "loop.py":150
  *         return {"ok": False, "output": "", "error": "empty prompt"}
  *     mode = classify_mode(prompt)
  *     if mode == "direct":             # <<<<<<<<<<<<<<
@@ -6868,7 +6868,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_mode, __pyx_mstate_global->__pyx_n_u_direct, Py_EQ)); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 150, __pyx_L1_error)
   if (__pyx_t_3) {
 
-    /* "core/loop.py":151
+    /* "loop.py":151
  *     mode = classify_mode(prompt)
  *     if mode == "direct":
  *         result = _query_llm(prompt, system=system or SYSTEM_PROMPT,             # <<<<<<<<<<<<<<
@@ -6920,7 +6920,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __pyx_v_result = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "core/loop.py":153
+    /* "loop.py":153
  *         result = _query_llm(prompt, system=system or SYSTEM_PROMPT,
  *                             max_tokens=1024)
  *         if result is None:             # <<<<<<<<<<<<<<
@@ -6930,7 +6930,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __pyx_t_3 = (__pyx_v_result == Py_None);
     if (__pyx_t_3) {
 
-      /* "core/loop.py":154
+      /* "loop.py":154
  *                             max_tokens=1024)
  *         if result is None:
  *             return {"ok": False, "output": "", "error": "model unavailable"}             # <<<<<<<<<<<<<<
@@ -6947,7 +6947,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __pyx_t_1 = 0;
       goto __pyx_L0;
 
-      /* "core/loop.py":153
+      /* "loop.py":153
  *         result = _query_llm(prompt, system=system or SYSTEM_PROMPT,
  *                             max_tokens=1024)
  *         if result is None:             # <<<<<<<<<<<<<<
@@ -6956,7 +6956,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
 */
     }
 
-    /* "core/loop.py":155
+    /* "loop.py":155
  *         if result is None:
  *             return {"ok": False, "output": "", "error": "model unavailable"}
  *         return {"ok": True, "output": _beautify(result), "error": ""}             # <<<<<<<<<<<<<<
@@ -6997,7 +6997,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "core/loop.py":150
+    /* "loop.py":150
  *         return {"ok": False, "output": "", "error": "empty prompt"}
  *     mode = classify_mode(prompt)
  *     if mode == "direct":             # <<<<<<<<<<<<<<
@@ -7006,7 +7006,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
 */
   }
 
-  /* "core/loop.py":157
+  /* "loop.py":157
  *         return {"ok": True, "output": _beautify(result), "error": ""}
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -7022,7 +7022,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __Pyx_XGOTREF(__pyx_t_12);
     /*try:*/ {
 
-      /* "core/loop.py":158
+      /* "loop.py":158
  * 
  *     try:
  *         from core.wiring import register_all             # <<<<<<<<<<<<<<
@@ -7052,7 +7052,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "core/loop.py":159
+      /* "loop.py":159
  *     try:
  *         from core.wiring import register_all
  *         register_all()             # <<<<<<<<<<<<<<
@@ -7084,7 +7084,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "core/loop.py":160
+      /* "loop.py":160
  *         from core.wiring import register_all
  *         register_all()
  *         from core.registry import list_tools, _executor_tool             # <<<<<<<<<<<<<<
@@ -7118,7 +7118,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "core/loop.py":157
+      /* "loop.py":157
  *         return {"ok": True, "output": _beautify(result), "error": ""}
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -7137,7 +7137,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "core/loop.py":161
+    /* "loop.py":161
  *         register_all()
  *         from core.registry import list_tools, _executor_tool
  *     except Exception as e:             # <<<<<<<<<<<<<<
@@ -7146,7 +7146,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
 */
     __pyx_t_15 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_Exception))));
     if (__pyx_t_15) {
-      __Pyx_AddTraceback("core.loop.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("loop.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_8, &__pyx_t_2) < 0) __PYX_ERR(0, 161, __pyx_L12_except_error)
       __Pyx_XGOTREF(__pyx_t_1);
       __Pyx_XGOTREF(__pyx_t_8);
@@ -7155,7 +7155,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __pyx_v_e = __pyx_t_8;
       /*try:*/ {
 
-        /* "core/loop.py":162
+        /* "loop.py":162
  *         from core.registry import list_tools, _executor_tool
  *     except Exception as e:
  *         return {"ok": False, "output": "", "error": "registry: %s" % e}             # <<<<<<<<<<<<<<
@@ -7179,7 +7179,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
         goto __pyx_L20_return;
       }
 
-      /* "core/loop.py":161
+      /* "loop.py":161
  *         register_all()
  *         from core.registry import list_tools, _executor_tool
  *     except Exception as e:             # <<<<<<<<<<<<<<
@@ -7230,7 +7230,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     }
     goto __pyx_L12_except_error;
 
-    /* "core/loop.py":157
+    /* "loop.py":157
  *         return {"ok": True, "output": _beautify(result), "error": ""}
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -7252,7 +7252,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __pyx_L15_try_end:;
   }
 
-  /* "core/loop.py":164
+  /* "loop.py":164
  *         return {"ok": False, "output": "", "error": "registry: %s" % e}
  * 
  *     sys_prompt = system or (SYSTEM_PROMPT + (             # <<<<<<<<<<<<<<
@@ -7278,7 +7278,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_v_sys_prompt = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "core/loop.py":170
+  /* "loop.py":170
  *         "correct parameter names  retry once with them."))
  *     messages = [
  *         {"role": "system", "content": sys_prompt},             # <<<<<<<<<<<<<<
@@ -7290,7 +7290,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_role, __pyx_mstate_global->__pyx_n_u_system) < (0)) __PYX_ERR(0, 170, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_content, __pyx_v_sys_prompt) < (0)) __PYX_ERR(0, 170, __pyx_L1_error)
 
-  /* "core/loop.py":171
+  /* "loop.py":171
  *     messages = [
  *         {"role": "system", "content": sys_prompt},
  *         {"role": "user", "content": prompt},             # <<<<<<<<<<<<<<
@@ -7302,7 +7302,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_role, __pyx_mstate_global->__pyx_n_u_user) < (0)) __PYX_ERR(0, 171, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_content, __pyx_v_prompt) < (0)) __PYX_ERR(0, 171, __pyx_L1_error)
 
-  /* "core/loop.py":169
+  /* "loop.py":169
  *         "need; a wrong or missing argument returns an error naming the "
  *         "correct parameter names  retry once with them."))
  *     messages = [             # <<<<<<<<<<<<<<
@@ -7320,7 +7320,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_v_messages = ((PyObject*)__pyx_t_8);
   __pyx_t_8 = 0;
 
-  /* "core/loop.py":173
+  /* "loop.py":173
  *         {"role": "user", "content": prompt},
  *     ]
  *     steps = []             # <<<<<<<<<<<<<<
@@ -7332,7 +7332,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_v_steps = ((PyObject*)__pyx_t_8);
   __pyx_t_8 = 0;
 
-  /* "core/loop.py":174
+  /* "loop.py":174
  *     ]
  *     steps = []
  *     for step in range(1, max_steps + 1):             # <<<<<<<<<<<<<<
@@ -7372,7 +7372,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __Pyx_XDECREF_SET(__pyx_v_step, ((PyObject*)__pyx_t_8));
     __pyx_t_8 = 0;
 
-    /* "core/loop.py":175
+    /* "loop.py":175
  *     steps = []
  *     for step in range(1, max_steps + 1):
  *         steps.append({"id": step, "status": "in_progress"})             # <<<<<<<<<<<<<<
@@ -7386,7 +7386,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __pyx_t_25 = __Pyx_PyList_Append(__pyx_v_steps, __pyx_t_8); if (unlikely(__pyx_t_25 == ((int)-1))) __PYX_ERR(0, 175, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "core/loop.py":176
+    /* "loop.py":176
  *     for step in range(1, max_steps + 1):
  *         steps.append({"id": step, "status": "in_progress"})
  *         comp = _compress({"messages": copy.deepcopy(messages)})             # <<<<<<<<<<<<<<
@@ -7450,7 +7450,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __Pyx_XDECREF_SET(__pyx_v_comp, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "core/loop.py":177
+    /* "loop.py":177
  *         steps.append({"id": step, "status": "in_progress"})
  *         comp = _compress({"messages": copy.deepcopy(messages)})
  *         response = _query_llm_with_tools(             # <<<<<<<<<<<<<<
@@ -7461,7 +7461,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_query_llm_with_tools); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
 
-    /* "core/loop.py":178
+    /* "loop.py":178
  *         comp = _compress({"messages": copy.deepcopy(messages)})
  *         response = _query_llm_with_tools(
  *             comp["messages"], list_tools(stub=False), max_tokens=1024,             # <<<<<<<<<<<<<<
@@ -7498,7 +7498,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __Pyx_GOTREF(__pyx_t_26);
     }
 
-    /* "core/loop.py":179
+    /* "loop.py":179
  *         response = _query_llm_with_tools(
  *             comp["messages"], list_tools(stub=False), max_tokens=1024,
  *             timeout=TOOL_TIMEOUT)             # <<<<<<<<<<<<<<
@@ -7538,7 +7538,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __Pyx_XDECREF_SET(__pyx_v_response, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "core/loop.py":180
+    /* "loop.py":180
  *             comp["messages"], list_tools(stub=False), max_tokens=1024,
  *             timeout=TOOL_TIMEOUT)
  *         if response is None:             # <<<<<<<<<<<<<<
@@ -7548,7 +7548,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __pyx_t_3 = (__pyx_v_response == Py_None);
     if (__pyx_t_3) {
 
-      /* "core/loop.py":181
+      /* "loop.py":181
  *             timeout=TOOL_TIMEOUT)
  *         if response is None:
  *             return {"ok": False, "output": "", "error": "model unavailable"}             # <<<<<<<<<<<<<<
@@ -7566,7 +7566,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       goto __pyx_L0;
 
-      /* "core/loop.py":180
+      /* "loop.py":180
  *             comp["messages"], list_tools(stub=False), max_tokens=1024,
  *             timeout=TOOL_TIMEOUT)
  *         if response is None:             # <<<<<<<<<<<<<<
@@ -7575,7 +7575,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
 */
     }
 
-    /* "core/loop.py":182
+    /* "loop.py":182
  *         if response is None:
  *             return {"ok": False, "output": "", "error": "model unavailable"}
  *         if response["kind"] == "text":             # <<<<<<<<<<<<<<
@@ -7588,7 +7588,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (__pyx_t_3) {
 
-      /* "core/loop.py":183
+      /* "loop.py":183
  *             return {"ok": False, "output": "", "error": "model unavailable"}
  *         if response["kind"] == "text":
  *             calls = _parse_text_calls(response["content"])             # <<<<<<<<<<<<<<
@@ -7624,7 +7624,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __Pyx_XDECREF_SET(__pyx_v_calls, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "core/loop.py":184
+      /* "loop.py":184
  *         if response["kind"] == "text":
  *             calls = _parse_text_calls(response["content"])
  *             if calls:             # <<<<<<<<<<<<<<
@@ -7634,7 +7634,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_calls); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 184, __pyx_L1_error)
       if (__pyx_t_3) {
 
-        /* "core/loop.py":185
+        /* "loop.py":185
  *             calls = _parse_text_calls(response["content"])
  *             if calls:
  *                 response = {"kind": "tool_calls", "calls": calls}             # <<<<<<<<<<<<<<
@@ -7648,7 +7648,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
         __Pyx_DECREF_SET(__pyx_v_response, __pyx_t_8);
         __pyx_t_8 = 0;
 
-        /* "core/loop.py":184
+        /* "loop.py":184
  *         if response["kind"] == "text":
  *             calls = _parse_text_calls(response["content"])
  *             if calls:             # <<<<<<<<<<<<<<
@@ -7658,7 +7658,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
         goto __pyx_L33;
       }
 
-      /* "core/loop.py":187
+      /* "loop.py":187
  *                 response = {"kind": "tool_calls", "calls": calls}
  *             else:
  *                 return {"ok": True, "output": _beautify(response["content"]),             # <<<<<<<<<<<<<<
@@ -7700,7 +7700,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
         __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
         if (PyDict_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u__2) < (0)) __PYX_ERR(0, 187, __pyx_L1_error)
 
-        /* "core/loop.py":188
+        /* "loop.py":188
  *             else:
  *                 return {"ok": True, "output": _beautify(response["content"]),
  *                         "error": "", "steps": steps}             # <<<<<<<<<<<<<<
@@ -7715,7 +7715,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       }
       __pyx_L33:;
 
-      /* "core/loop.py":182
+      /* "loop.py":182
  *         if response is None:
  *             return {"ok": False, "output": "", "error": "model unavailable"}
  *         if response["kind"] == "text":             # <<<<<<<<<<<<<<
@@ -7724,7 +7724,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
 */
     }
 
-    /* "core/loop.py":189
+    /* "loop.py":189
  *                 return {"ok": True, "output": _beautify(response["content"]),
  *                         "error": "", "steps": steps}
  *         calls = response["calls"][:3]             # <<<<<<<<<<<<<<
@@ -7739,7 +7739,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __Pyx_XDECREF_SET(__pyx_v_calls, __pyx_t_28);
     __pyx_t_28 = 0;
 
-    /* "core/loop.py":190
+    /* "loop.py":190
  *                         "error": "", "steps": steps}
  *         calls = response["calls"][:3]
  *         messages.append({"role": "assistant", "content": "",             # <<<<<<<<<<<<<<
@@ -7752,7 +7752,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     if (PyDict_SetItem(__pyx_t_28, __pyx_mstate_global->__pyx_n_u_content, __pyx_mstate_global->__pyx_kp_u__2) < (0)) __PYX_ERR(0, 190, __pyx_L1_error)
     { /* enter inner scope */
 
-      /* "core/loop.py":191
+      /* "loop.py":191
  *         calls = response["calls"][:3]
  *         messages.append({"role": "assistant", "content": "",
  *                          "tool_calls": [             # <<<<<<<<<<<<<<
@@ -7764,7 +7764,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __Pyx_INCREF(__pyx_mstate_global->__pyx_int_0);
       __pyx_t_7 = __pyx_mstate_global->__pyx_int_0;
 
-      /* "core/loop.py":195
+      /* "loop.py":195
  *                               "function": {"name": c["name"],
  *                                            "arguments": (c["args"] if isinstance(c["args"], str) else _json.dumps(c["args"]))}}
  *                              for i, c in enumerate(calls)]})             # <<<<<<<<<<<<<<
@@ -7830,7 +7830,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
         __pyx_t_7 = __pyx_t_27;
         __pyx_t_27 = 0;
 
-        /* "core/loop.py":192
+        /* "loop.py":192
  *         messages.append({"role": "assistant", "content": "",
  *                          "tool_calls": [
  *                              {"id": "call%d" % i, "type": "function",             # <<<<<<<<<<<<<<
@@ -7845,7 +7845,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (PyDict_SetItem(__pyx_t_27, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_function) < (0)) __PYX_ERR(0, 192, __pyx_L36_error)
 
-        /* "core/loop.py":193
+        /* "loop.py":193
  *                          "tool_calls": [
  *                              {"id": "call%d" % i, "type": "function",
  *                               "function": {"name": c["name"],             # <<<<<<<<<<<<<<
@@ -7859,7 +7859,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
         if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_name, __pyx_t_9) < (0)) __PYX_ERR(0, 193, __pyx_L36_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "core/loop.py":194
+        /* "loop.py":194
  *                              {"id": "call%d" % i, "type": "function",
  *                               "function": {"name": c["name"],
  *                                            "arguments": (c["args"] if isinstance(c["args"], str) else _json.dumps(c["args"]))}}             # <<<<<<<<<<<<<<
@@ -7915,7 +7915,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
         if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_27))) __PYX_ERR(0, 191, __pyx_L36_error)
         __Pyx_DECREF(__pyx_t_27); __pyx_t_27 = 0;
 
-        /* "core/loop.py":195
+        /* "loop.py":195
  *                               "function": {"name": c["name"],
  *                                            "arguments": (c["args"] if isinstance(c["args"], str) else _json.dumps(c["args"]))}}
  *                              for i, c in enumerate(calls)]})             # <<<<<<<<<<<<<<
@@ -7937,7 +7937,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     if (PyDict_SetItem(__pyx_t_28, __pyx_mstate_global->__pyx_n_u_tool_calls, __pyx_t_8) < (0)) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "core/loop.py":190
+    /* "loop.py":190
  *                         "error": "", "steps": steps}
  *         calls = response["calls"][:3]
  *         messages.append({"role": "assistant", "content": "",             # <<<<<<<<<<<<<<
@@ -7947,7 +7947,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __pyx_t_25 = __Pyx_PyList_Append(__pyx_v_messages, __pyx_t_28); if (unlikely(__pyx_t_25 == ((int)-1))) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
 
-    /* "core/loop.py":196
+    /* "loop.py":196
  *                                            "arguments": (c["args"] if isinstance(c["args"], str) else _json.dumps(c["args"]))}}
  *                              for i, c in enumerate(calls)]})
  *         outputs = ""             # <<<<<<<<<<<<<<
@@ -7957,7 +7957,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __Pyx_INCREF(__pyx_mstate_global->__pyx_kp_u__2);
     __Pyx_XDECREF_SET(__pyx_v_outputs, __pyx_mstate_global->__pyx_kp_u__2);
 
-    /* "core/loop.py":197
+    /* "loop.py":197
  *                              for i, c in enumerate(calls)]})
  *         outputs = ""
  *         for c in calls:             # <<<<<<<<<<<<<<
@@ -8016,7 +8016,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __Pyx_XDECREF_SET(__pyx_v_c, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "core/loop.py":198
+      /* "loop.py":198
  *         outputs = ""
  *         for c in calls:
  *             result = _executor_tool(c["name"], c.get("args") or {}, TOOL_TIMEOUT)             # <<<<<<<<<<<<<<
@@ -8081,7 +8081,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __Pyx_XDECREF_SET(__pyx_v_result, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "core/loop.py":200
+      /* "loop.py":200
  *             result = _executor_tool(c["name"], c.get("args") or {}, TOOL_TIMEOUT)
  *             outputs += "\n<tool_result tool=%s>\n%s\n</tool_result>" % (
  *                 c["name"], str(result.get("output") or result.get("error", ""))[:8000])             # <<<<<<<<<<<<<<
@@ -8128,7 +8128,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __pyx_t_34[3] = __pyx_t_8;
       __pyx_t_34[4] = __pyx_mstate_global->__pyx_kp_u_tool_result;
 
-      /* "core/loop.py":199
+      /* "loop.py":199
  *         for c in calls:
  *             result = _executor_tool(c["name"], c.get("args") or {}, TOOL_TIMEOUT)
  *             outputs += "\n<tool_result tool=%s>\n%s\n</tool_result>" % (             # <<<<<<<<<<<<<<
@@ -8146,7 +8146,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __Pyx_DECREF_SET(__pyx_v_outputs, ((PyObject*)__pyx_t_8));
       __pyx_t_8 = 0;
 
-      /* "core/loop.py":201
+      /* "loop.py":201
  *             outputs += "\n<tool_result tool=%s>\n%s\n</tool_result>" % (
  *                 c["name"], str(result.get("output") or result.get("error", ""))[:8000])
  *             steps[-1]["tool"] = c["name"]             # <<<<<<<<<<<<<<
@@ -8161,7 +8161,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "core/loop.py":202
+      /* "loop.py":202
  *                 c["name"], str(result.get("output") or result.get("error", ""))[:8000])
  *             steps[-1]["tool"] = c["name"]
  *             if on_event:             # <<<<<<<<<<<<<<
@@ -8171,7 +8171,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
       __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_on_event); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 202, __pyx_L1_error)
       if (__pyx_t_3) {
 
-        /* "core/loop.py":203
+        /* "loop.py":203
  *             steps[-1]["tool"] = c["name"]
  *             if on_event:
  *                 try:             # <<<<<<<<<<<<<<
@@ -8187,7 +8187,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
           __Pyx_XGOTREF(__pyx_t_10);
           /*try:*/ {
 
-            /* "core/loop.py":204
+            /* "loop.py":204
  *             if on_event:
  *                 try:
  *                     on_event({"type": "tool", "name": c["name"], "result": result})             # <<<<<<<<<<<<<<
@@ -8228,7 +8228,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
             }
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-            /* "core/loop.py":203
+            /* "loop.py":203
  *             steps[-1]["tool"] = c["name"]
  *             if on_event:
  *                 try:             # <<<<<<<<<<<<<<
@@ -8252,7 +8252,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
           __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-          /* "core/loop.py":205
+          /* "loop.py":205
  *                 try:
  *                     on_event({"type": "tool", "name": c["name"], "result": result})
  *                 except Exception:             # <<<<<<<<<<<<<<
@@ -8266,7 +8266,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
           }
           goto __pyx_L50_except_error;
 
-          /* "core/loop.py":203
+          /* "loop.py":203
  *             steps[-1]["tool"] = c["name"]
  *             if on_event:
  *                 try:             # <<<<<<<<<<<<<<
@@ -8287,7 +8287,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
           __pyx_L55_try_end:;
         }
 
-        /* "core/loop.py":202
+        /* "loop.py":202
  *                 c["name"], str(result.get("output") or result.get("error", ""))[:8000])
  *             steps[-1]["tool"] = c["name"]
  *             if on_event:             # <<<<<<<<<<<<<<
@@ -8296,7 +8296,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
 */
       }
 
-      /* "core/loop.py":197
+      /* "loop.py":197
  *                              for i, c in enumerate(calls)]})
  *         outputs = ""
  *         for c in calls:             # <<<<<<<<<<<<<<
@@ -8306,7 +8306,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     }
     __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
 
-    /* "core/loop.py":207
+    /* "loop.py":207
  *                 except Exception:
  *                     pass
  *         messages.append({"role": "tool", "content": outputs.strip()})             # <<<<<<<<<<<<<<
@@ -8322,7 +8322,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
     __pyx_t_25 = __Pyx_PyList_Append(__pyx_v_messages, __pyx_t_28); if (unlikely(__pyx_t_25 == ((int)-1))) __PYX_ERR(0, 207, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
 
-    /* "core/loop.py":174
+    /* "loop.py":174
  *     ]
  *     steps = []
  *     for step in range(1, max_steps + 1):             # <<<<<<<<<<<<<<
@@ -8332,7 +8332,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":208
+  /* "loop.py":208
  *                     pass
  *         messages.append({"role": "tool", "content": outputs.strip()})
  *     return {"ok": True, "output": "max steps reached", "error": "", "steps": steps}             # <<<<<<<<<<<<<<
@@ -8348,7 +8348,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "core/loop.py":143
+  /* "loop.py":143
  * 
  * 
  * def run(task: Dict, on_event: Optional[Callable] = None) -> Dict[str, Any]:             # <<<<<<<<<<<<<<
@@ -8370,7 +8370,7 @@ static PyObject *__pyx_pf_4core_4loop_10run(CYTHON_UNUSED PyObject *__pyx_self, 
   __Pyx_XDECREF(__pyx_t_31);
   __Pyx_XDECREF(__pyx_t_32);
   __Pyx_XDECREF(__pyx_t_33);
-  __Pyx_AddTraceback("core.loop.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("loop.run", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_prompt);
@@ -8728,13 +8728,13 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_core__loop) {
+  if (__pyx_module_is_main_loop) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name_2, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "core.loop")) {
-      if (unlikely((PyDict_SetItemString(modules, "core.loop", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "loop")) {
+      if (unlikely((PyDict_SetItemString(modules, "loop", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -8752,7 +8752,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "core/loop.py":3
+  /* "loop.py":3
  * from __future__ import annotations
  * 
  * import copy             # <<<<<<<<<<<<<<
@@ -8765,7 +8765,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_copy, __pyx_t_2) < (0)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":4
+  /* "loop.py":4
  * 
  * import copy
  * import re as _re             # <<<<<<<<<<<<<<
@@ -8778,7 +8778,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_re, __pyx_t_2) < (0)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":5
+  /* "loop.py":5
  * import copy
  * import re as _re
  * import threading             # <<<<<<<<<<<<<<
@@ -8791,7 +8791,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_threading, __pyx_t_2) < (0)) __PYX_ERR(0, 5, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":6
+  /* "loop.py":6
  * import re as _re
  * import threading
  * from typing import Any, Callable, Dict, Optional             # <<<<<<<<<<<<<<
@@ -8815,7 +8815,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":8
+  /* "loop.py":8
  * from typing import Any, Callable, Dict, Optional
  * 
  * import json as _json             # <<<<<<<<<<<<<<
@@ -8828,7 +8828,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_json, __pyx_t_2) < (0)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":10
+  /* "loop.py":10
  * import json as _json
  * 
  * from core.llm import _query_llm, _query_llm_with_tools             # <<<<<<<<<<<<<<
@@ -8852,7 +8852,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":11
+  /* "loop.py":11
  * 
  * from core.llm import _query_llm, _query_llm_with_tools
  * from core.state import classify_mode             # <<<<<<<<<<<<<<
@@ -8876,7 +8876,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":12
+  /* "loop.py":12
  * from core.llm import _query_llm, _query_llm_with_tools
  * from core.state import classify_mode
  * from model.prompt import SYSTEM_PROMPT             # <<<<<<<<<<<<<<
@@ -8900,7 +8900,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":14
+  /* "loop.py":14
  * from model.prompt import SYSTEM_PROMPT
  * 
  * MAX_STEPS = 8             # <<<<<<<<<<<<<<
@@ -8909,7 +8909,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
 */
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_MAX_STEPS, __pyx_mstate_global->__pyx_int_8) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
 
-  /* "core/loop.py":15
+  /* "loop.py":15
  * 
  * MAX_STEPS = 8
  * TOOL_TIMEOUT = 120             # <<<<<<<<<<<<<<
@@ -8918,7 +8918,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
 */
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_TOOL_TIMEOUT, __pyx_mstate_global->__pyx_int_120) < (0)) __PYX_ERR(0, 15, __pyx_L1_error)
 
-  /* "core/loop.py":17
+  /* "loop.py":17
  * TOOL_TIMEOUT = 120
  * 
  * _metrics_lock = threading.Lock()             # <<<<<<<<<<<<<<
@@ -8943,7 +8943,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_metrics_lock, __pyx_t_2) < (0)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":18
+  /* "loop.py":18
  * 
  * _metrics_lock = threading.Lock()
  * _metrics = {"tokens_in": 0, "tokens_kept": 0, "ratio": 0.0,             # <<<<<<<<<<<<<<
@@ -8960,7 +8960,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_metrics, __pyx_t_2) < (0)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":21
+  /* "loop.py":21
  *             "last_in": 0, "last_kept": 0}
  * 
  * _LT = chr(60)             # <<<<<<<<<<<<<<
@@ -8972,7 +8972,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_LT, __pyx_t_2) < (0)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":22
+  /* "loop.py":22
  * 
  * _LT = chr(60)
  * _GT = chr(62)             # <<<<<<<<<<<<<<
@@ -8984,7 +8984,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_GT, __pyx_t_2) < (0)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":23
+  /* "loop.py":23
  * _LT = chr(60)
  * _GT = chr(62)
  * _SLASH = chr(47)             # <<<<<<<<<<<<<<
@@ -8996,7 +8996,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_SLASH, __pyx_t_2) < (0)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":24
+  /* "loop.py":24
  * _GT = chr(62)
  * _SLASH = chr(47)
  * _OPEN_MARKER = _LT + "function="             # <<<<<<<<<<<<<<
@@ -9011,7 +9011,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_OPEN_MARKER, __pyx_t_6) < (0)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":25
+  /* "loop.py":25
  * _SLASH = chr(47)
  * _OPEN_MARKER = _LT + "function="
  * _CLOSE_MARKER = _LT + _SLASH + "function" + _GT             # <<<<<<<<<<<<<<
@@ -9038,7 +9038,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_CLOSE_MARKER, __pyx_t_6) < (0)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":26
+  /* "loop.py":26
  * _OPEN_MARKER = _LT + "function="
  * _CLOSE_MARKER = _LT + _SLASH + "function" + _GT
  * _PARAM_OPEN = _LT + "parameter="             # <<<<<<<<<<<<<<
@@ -9053,7 +9053,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_PARAM_OPEN, __pyx_t_4) < (0)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/loop.py":27
+  /* "loop.py":27
  * _CLOSE_MARKER = _LT + _SLASH + "function" + _GT
  * _PARAM_OPEN = _LT + "parameter="
  * _PARAM_CLOSE = _LT + _SLASH + "parameter" + _GT             # <<<<<<<<<<<<<<
@@ -9080,7 +9080,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_PARAM_CLOSE, __pyx_t_4) < (0)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/loop.py":28
+  /* "loop.py":28
  * _PARAM_OPEN = _LT + "parameter="
  * _PARAM_CLOSE = _LT + _SLASH + "parameter" + _GT
  * _JSON_MARKER_OPEN = _LT + "function_call" + _GT             # <<<<<<<<<<<<<<
@@ -9101,7 +9101,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_JSON_MARKER_OPEN, __pyx_t_6) < (0)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":29
+  /* "loop.py":29
  * _PARAM_CLOSE = _LT + _SLASH + "parameter" + _GT
  * _JSON_MARKER_OPEN = _LT + "function_call" + _GT
  * _JSON_MARKER_CLOSE = _LT + _SLASH + "function_call" + _GT             # <<<<<<<<<<<<<<
@@ -9128,7 +9128,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_JSON_MARKER_CLOSE, __pyx_t_6) < (0)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":31
+  /* "loop.py":31
  * _JSON_MARKER_CLOSE = _LT + _SLASH + "function_call" + _GT
  * 
  * _PAT_JSON_CALL = _re.escape(_JSON_MARKER_OPEN) + r"\s*(\[.*?\]|\{.*?\})\s*" + \             # <<<<<<<<<<<<<<
@@ -9157,7 +9157,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":32
+  /* "loop.py":32
  * 
  * _PAT_JSON_CALL = _re.escape(_JSON_MARKER_OPEN) + r"\s*(\[.*?\]|\{.*?\})\s*" + \
  *     _re.escape(_JSON_MARKER_CLOSE)             # <<<<<<<<<<<<<<
@@ -9183,7 +9183,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
     __Pyx_GOTREF(__pyx_t_6);
   }
 
-  /* "core/loop.py":31
+  /* "loop.py":31
  * _JSON_MARKER_CLOSE = _LT + _SLASH + "function_call" + _GT
  * 
  * _PAT_JSON_CALL = _re.escape(_JSON_MARKER_OPEN) + r"\s*(\[.*?\]|\{.*?\})\s*" + \             # <<<<<<<<<<<<<<
@@ -9197,7 +9197,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_PAT_JSON_CALL, __pyx_t_8) < (0)) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "core/loop.py":33
+  /* "loop.py":33
  * _PAT_JSON_CALL = _re.escape(_JSON_MARKER_OPEN) + r"\s*(\[.*?\]|\{.*?\})\s*" + \
  *     _re.escape(_JSON_MARKER_CLOSE)
  * _PAT_BLOCK = _re.escape(_OPEN_MARKER) + r"\s*([^" + _re.escape(_GT) + r"=]*)\s*" + \             # <<<<<<<<<<<<<<
@@ -9251,7 +9251,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/loop.py":34
+  /* "loop.py":34
  *     _re.escape(_JSON_MARKER_CLOSE)
  * _PAT_BLOCK = _re.escape(_OPEN_MARKER) + r"\s*([^" + _re.escape(_GT) + r"=]*)\s*" + \
  *     _re.escape(_GT) + r"(.*?)" + _re.escape(_CLOSE_MARKER)             # <<<<<<<<<<<<<<
@@ -9277,7 +9277,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
     __Pyx_GOTREF(__pyx_t_4);
   }
 
-  /* "core/loop.py":33
+  /* "loop.py":33
  * _PAT_JSON_CALL = _re.escape(_JSON_MARKER_OPEN) + r"\s*(\[.*?\]|\{.*?\})\s*" + \
  *     _re.escape(_JSON_MARKER_CLOSE)
  * _PAT_BLOCK = _re.escape(_OPEN_MARKER) + r"\s*([^" + _re.escape(_GT) + r"=]*)\s*" + \             # <<<<<<<<<<<<<<
@@ -9289,7 +9289,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/loop.py":34
+  /* "loop.py":34
  *     _re.escape(_JSON_MARKER_CLOSE)
  * _PAT_BLOCK = _re.escape(_OPEN_MARKER) + r"\s*([^" + _re.escape(_GT) + r"=]*)\s*" + \
  *     _re.escape(_GT) + r"(.*?)" + _re.escape(_CLOSE_MARKER)             # <<<<<<<<<<<<<<
@@ -9324,7 +9324,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_PAT_BLOCK, __pyx_t_2) < (0)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/loop.py":35
+  /* "loop.py":35
  * _PAT_BLOCK = _re.escape(_OPEN_MARKER) + r"\s*([^" + _re.escape(_GT) + r"=]*)\s*" + \
  *     _re.escape(_GT) + r"(.*?)" + _re.escape(_CLOSE_MARKER)
  * _PAT_PARAM = _re.escape(_PARAM_OPEN) + r"\s*([^" + _re.escape(_GT) + r"=]*)\s*" + \             # <<<<<<<<<<<<<<
@@ -9378,7 +9378,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "core/loop.py":36
+  /* "loop.py":36
  *     _re.escape(_GT) + r"(.*?)" + _re.escape(_CLOSE_MARKER)
  * _PAT_PARAM = _re.escape(_PARAM_OPEN) + r"\s*([^" + _re.escape(_GT) + r"=]*)\s*" + \
  *     _re.escape(_GT) + r"\s*([\s\S]*?)\s*" + _re.escape(_PARAM_CLOSE)             # <<<<<<<<<<<<<<
@@ -9404,7 +9404,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
     __Pyx_GOTREF(__pyx_t_8);
   }
 
-  /* "core/loop.py":35
+  /* "loop.py":35
  * _PAT_BLOCK = _re.escape(_OPEN_MARKER) + r"\s*([^" + _re.escape(_GT) + r"=]*)\s*" + \
  *     _re.escape(_GT) + r"(.*?)" + _re.escape(_CLOSE_MARKER)
  * _PAT_PARAM = _re.escape(_PARAM_OPEN) + r"\s*([^" + _re.escape(_GT) + r"=]*)\s*" + \             # <<<<<<<<<<<<<<
@@ -9416,7 +9416,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "core/loop.py":36
+  /* "loop.py":36
  *     _re.escape(_GT) + r"(.*?)" + _re.escape(_CLOSE_MARKER)
  * _PAT_PARAM = _re.escape(_PARAM_OPEN) + r"\s*([^" + _re.escape(_GT) + r"=]*)\s*" + \
  *     _re.escape(_GT) + r"\s*([\s\S]*?)\s*" + _re.escape(_PARAM_CLOSE)             # <<<<<<<<<<<<<<
@@ -9451,7 +9451,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_PAT_PARAM, __pyx_t_6) < (0)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":39
+  /* "loop.py":39
  * 
  * 
  * def compression_stats() -> dict:             # <<<<<<<<<<<<<<
@@ -9461,7 +9461,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   if (PyDict_SetItem(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_dict) < (0)) __PYX_ERR(0, 39, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4core_4loop_1compression_stats, 0, __pyx_mstate_global->__pyx_n_u_compression_stats, NULL, __pyx_mstate_global->__pyx_n_u_core_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4loop_1compression_stats, 0, __pyx_mstate_global->__pyx_n_u_compression_stats, NULL, __pyx_mstate_global->__pyx_n_u_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -9471,7 +9471,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_compression_stats, __pyx_t_4) < (0)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/loop.py":44
+  /* "loop.py":44
  * 
  * 
  * def _record_stats(stats) -> None:             # <<<<<<<<<<<<<<
@@ -9481,7 +9481,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < (0)) __PYX_ERR(0, 44, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_4core_4loop_3_record_stats, 0, __pyx_mstate_global->__pyx_n_u_record_stats, NULL, __pyx_mstate_global->__pyx_n_u_core_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_4loop_3_record_stats, 0, __pyx_mstate_global->__pyx_n_u_record_stats, NULL, __pyx_mstate_global->__pyx_n_u_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_6);
@@ -9491,7 +9491,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_record_stats, __pyx_t_6) < (0)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":59
+  /* "loop.py":59
  * 
  * 
  * def _compress(body: dict) -> dict:             # <<<<<<<<<<<<<<
@@ -9502,7 +9502,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __Pyx_GOTREF(__pyx_t_6);
   if (PyDict_SetItem(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_body, __pyx_mstate_global->__pyx_n_u_dict) < (0)) __PYX_ERR(0, 59, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_dict) < (0)) __PYX_ERR(0, 59, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4core_4loop_5_compress, 0, __pyx_mstate_global->__pyx_n_u_compress, NULL, __pyx_mstate_global->__pyx_n_u_core_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4loop_5_compress, 0, __pyx_mstate_global->__pyx_n_u_compress, NULL, __pyx_mstate_global->__pyx_n_u_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -9512,7 +9512,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_compress, __pyx_t_4) < (0)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/loop.py":87
+  /* "loop.py":87
  * 
  * 
  * def _beautify(text: str) -> str:             # <<<<<<<<<<<<<<
@@ -9523,7 +9523,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __Pyx_GOTREF(__pyx_t_4);
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_text, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 87, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 87, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_4core_4loop_7_beautify, 0, __pyx_mstate_global->__pyx_n_u_beautify_2, NULL, __pyx_mstate_global->__pyx_n_u_core_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_4loop_7_beautify, 0, __pyx_mstate_global->__pyx_n_u_beautify_2, NULL, __pyx_mstate_global->__pyx_n_u_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_6);
@@ -9533,7 +9533,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_beautify_2, __pyx_t_6) < (0)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":108
+  /* "loop.py":108
  * 
  * 
  * def _parse_text_calls(content: str) -> list:             # <<<<<<<<<<<<<<
@@ -9544,7 +9544,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __Pyx_GOTREF(__pyx_t_6);
   if (PyDict_SetItem(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_content, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 108, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_list) < (0)) __PYX_ERR(0, 108, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4core_4loop_9_parse_text_calls, 0, __pyx_mstate_global->__pyx_n_u_parse_text_calls, NULL, __pyx_mstate_global->__pyx_n_u_core_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4loop_9_parse_text_calls, 0, __pyx_mstate_global->__pyx_n_u_parse_text_calls, NULL, __pyx_mstate_global->__pyx_n_u_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -9554,7 +9554,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_parse_text_calls, __pyx_t_4) < (0)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/loop.py":143
+  /* "loop.py":143
  * 
  * 
  * def run(task: Dict, on_event: Optional[Callable] = None) -> Dict[str, Any]:             # <<<<<<<<<<<<<<
@@ -9566,7 +9566,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_task, __pyx_mstate_global->__pyx_n_u_Dict) < (0)) __PYX_ERR(0, 143, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_on_event, __pyx_mstate_global->__pyx_kp_u_Optional_Callable) < (0)) __PYX_ERR(0, 143, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_kp_u_Dict_str_Any) < (0)) __PYX_ERR(0, 143, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_4core_4loop_11run, 0, __pyx_mstate_global->__pyx_n_u_run, NULL, __pyx_mstate_global->__pyx_n_u_core_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_4loop_11run, 0, __pyx_mstate_global->__pyx_n_u_run, NULL, __pyx_mstate_global->__pyx_n_u_loop, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_6);
@@ -9577,7 +9577,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_run, __pyx_t_6) < (0)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "core/loop.py":1
+  /* "loop.py":1
  * from __future__ import annotations             # <<<<<<<<<<<<<<
  * 
  * import copy
@@ -9598,7 +9598,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
   __Pyx_XDECREF(__pyx_t_8);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init core.loop", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init loop", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -9612,7 +9612,7 @@ __Pyx_RefNannySetupContext("PyInit_loop", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init core.loop");
+    PyErr_SetString(PyExc_ImportError, "init loop");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -9652,7 +9652,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "core/loop.py":40
+  /* "loop.py":40
  * 
  * def compression_stats() -> dict:
  *     with _metrics_lock:             # <<<<<<<<<<<<<<
@@ -9663,7 +9663,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
-  /* "core/loop.py":68
+  /* "loop.py":68
  *     try:
  *         import os as _os
  *         _os.environ.setdefault("SLIMTOKEN_MODE", "code")             # <<<<<<<<<<<<<<
@@ -9674,7 +9674,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
 
-  /* "core/loop.py":119
+  /* "loop.py":119
  *             try:
  *                 fn = d.get("function", d)
  *                 name = fn.get("name", "")             # <<<<<<<<<<<<<<
@@ -9685,7 +9685,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
 
-  /* "core/loop.py":189
+  /* "loop.py":189
  *                 return {"ok": True, "output": _beautify(response["content"]),
  *                         "error": "", "steps": steps}
  *         calls = response["calls"][:3]             # <<<<<<<<<<<<<<
@@ -9696,7 +9696,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_slice[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_slice[0]);
 
-  /* "core/loop.py":200
+  /* "loop.py":200
  *             result = _executor_tool(c["name"], c.get("args") or {}, TOOL_TIMEOUT)
  *             outputs += "\n<tool_result tool=%s>\n%s\n</tool_result>" % (
  *                 c["name"], str(result.get("output") or result.get("error", ""))[:8000])             # <<<<<<<<<<<<<<
@@ -9710,7 +9710,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[4]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[4]);
 
-  /* "core/loop.py":143
+  /* "loop.py":143
  * 
  * 
  * def run(task: Dict, on_event: Optional[Callable] = None) -> Dict[str, Any]:             # <<<<<<<<<<<<<<
@@ -9777,25 +9777,25 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 10; } index[] = {{1},{14},{179},{18},{244},{0},{2},{5},{1},{8},{6},{12},{12},{9},{17},{17},{10},{12},{6},{7},{23},{16},{15},{19},{3},{13},{8},{4},{3},{18},{17},{3},{4},{9},{4},{12},{8},{12},{11},{10},{14},{10},{4},{5},{20},{1},{6},{14},{13},{12},{1},{12},{4},{9},{9},{18},{8},{9},{12},{4},{12},{1},{5},{3},{13},{18},{4},{4},{9},{17},{7},{4},{8},{9},{13},{10},{11},{1},{4},{8},{4},{6},{5},{1},{9},{9},{7},{5},{6},{14},{8},{8},{7},{8},{2},{5},{12},{6},{8},{8},{13},{3},{5},{1},{2},{11},{5},{6},{13},{5},{5},{4},{3},{4},{7},{9},{4},{10},{5},{1},{8},{9},{10},{8},{8},{13},{14},{4},{12},{10},{4},{8},{2},{8},{2},{3},{3},{6},{7},{9},{6},{17},{4},{7},{3},{14},{6},{12},{10},{21},{5},{3},{2},{13},{12},{7},{8},{6},{6},{4},{7},{5},{3},{4},{12},{10},{9},{9},{18},{18},{9},{3},{5},{6},{4},{5},{3},{5},{4},{3},{4},{10},{6},{4},{8},{4},{9},{7},{3},{9},{11},{10},{4},{10},{22},{19},{18},{4},{4},{6},{4},{4},{6},{6},{17},{135},{99},{204},{723},{348}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2316 bytes) */
-const char* const cstring = "BZh91AY&SY\357\027\353\202\000\001;\377\377\377\377\377\377\377\377\277\377\277\377\377\377\277\377\377\376@@D@@@@@@@@@P\000@\000`\010\037\017<\346\336\236\316\335qu\256\3302\326\353.g\200y\341\023$j\021\351M<\223\324=!\243\362\024\375$\360bh\325=&\206OOF\244\320\036Sjf\246\232=@2\r\003G\251\372Si6\246\236\232 \320\2050L\023&\230A\250G\244\320b\032\000\321\241\240\000\000\000\000\000\0324\000\000\003S\021\240!L&$d\236\324\032&\233@\000\t\200F\t\223\020\310\300\000\00042'\242`\01050\"\024\364'\2444\2321\017P\365\000=A\243@\001\240\032\036\240\000\000\000\000\000\r\000 \311\200\023\000\230\2312`\000L\t\200\230\230&\000\000\000\000L\214\004\300\206\020\002SD&\202ja'\251\215Q\3504&\203M\000h\000\001\240\r\000i\240\000\3204\032\000\0321\251\245zLs?\206o\350?\263\240tdJItT\336\"\"\010\227D\226\351\272\2232@$\t3)\024&T\303\244L\2670\016\326\020\320\022\223u.a\230\271\0010\234\313\257\230NX4\347\254ry\n\314\206\301p\020\024\031\016\300!\301m\001\241\231\332\031\215C\270\272nPLHL\340e[2\220\223Q\335\204@c\211\014\352\206\241\312\240)\301\263dY\264\302\203T'r\006\361r\211\244\313(\327\246T\223\273\211\345(JHB\320\220\220\222\333y\322\227\023\242\211AU\020$$\367\037B\353]H!\001]\226EV\"Nu\021DA\211!c=?O\026\353\363\317\316<\357\007#?\211\034\302\314&\313\201\020e\235\236\342g\267\340\2205\225#c\237\232_WA\277\025QI\277\331Bw\266\265\223\354\241=\327\242\2374c\254l\347t\026\005\345\254\270B\204\211h\031P\341@\005\n\264W\223\307\352\020)\0149\310I\006\256\241\235\202\246\206i\240\002\032B2v\003\024\0252\001\001\0328\004\311\242 @\362\220\031\310\346\257\025\033r1\254?\303\202\336\216\354`bC?\230\220\276.\305\301\210\005\206\027\263a\206>\0310W\004\313\037\351\233<qPHu\272\022Q(\2762P\326\257\363\270psM\306:\033Wl\214\335\037\304\034\362o{\260a\254i\266z\200:\235\375\022\307-\0004\020\223[\340\267$\230\t\024a!\010\223,%'[C\224\306\224\257Y\223\320\352R\220\204\241\213\225\220\264\031\267\007\240\256\222 \036<\326V\003\3548\213,\266\246\367\007\t_\213X\373\261c\321\266\356\201""\202c\307\344FF\217\252-\003\205\3507E\010y\220\201\002\r\236\336\313)~\250\342U\242\326\243]\265Mx\230\325m\177\022%x\355\006vlC\026\343m_\033\nt$lk\266\006\003h\351\214g0{Dd\334:.\373\013\344\267\254\37582\0143\335\r\325E\330\"\036\343\370^\262U\013\264Q\024\353\260\0344\273\033j\007.Vp\275\265M\33599L4\031?\333\017\345e\246\\\0217p`\275\361\304n\271X[r \021\353;\341F7m\275\356E5}]\030\253_R\2045\365\217e\231\225\2233@\244\211\220\266\314\3365%v\357\215\207\002\245\227\271h\207\266i$\244<\204;\264Q\3454JtG\n+\270S\016\017\215\330\266\004\225N\324\0055Sb\307\343\206)]_YLnqHZ;D\317\353\241[\030\326\023&\026|\355^^[\264\261)\232\3215\256\320\210\256.^v\345\203\303\032\371@\202Bt\260\214\22032\325\253PR\215\026\274\200\216N-J_\256\211@\214\256\342\333js\016sX\355\365\242\224\207Xcx\315\241\266gr\205\277qH\252\232\316\211\313B\246\220\0038\311\000\232j'`aR\373\213O}\313w\002[A\021\231\311\023\030\303\264N\207\3141\266\034T\337\270b\273\007\253{\240ms\n\3319\020\3333zM\032\202\265\322I\323t\370fr\334o/\255\274uK\231\311!K\311- LaE\371\300O3\3432\203s\250\330\010\210\230\203T\222\256\322,:\3627\305\036\324\262\352\245\331\235;o(\355\206\027\303+\232aji5\331r#\261\264\317\230\337\321N|\302\324\275\206Y\227b\305F\334\n\006\264\254\023\357\214a\231`\006aLW\336+p\277\003FF\376BC\031\220\333\"5\216\t\3032\027\036Cm\276z\265\271\037>\255\033p)^\312Wi\241\240U\005,\211U\023Ly,\001\3346\004 \026\002\270\214\274\223\306\221\262\225\t\344\231\r.:\272P2q=\207\240\244\251\317T\260\235\342&\202\317H\265\326\366EK\226\0034\272\014\005\013\356\025\267\3654\270b\337=b\245\333y\332\370\352\266LF\3278\256\026\262\254\277\211\317\000TwK\023$9'/\313\270l\352\226K\214\234\205\021p\027\266\t\311&&-\314\321\246\354\361\225\255A&\271\261\270\223JN\342wq\322Mn\025m\3545\256\247\251\332\322\255lN,\023\241X\235!\244\356\222\241\234\266[\205\255e\222\200\261B\2011\337\030\220d\257j\374-\224\311j\313B\254\330\3404&m\341V\200\246\254\003J\010\353\247I=\204\372\271\354(\003,\017\240U\017j\243\030d""\312G\031\325\302\360\225g\200L\010\276\004X\246s\215\312\302\276\020k\332\347\336\2671|\206C\300\2758T-+J\312\322\245&P\330[\260\210D\266\211\256-\340\332\326[\276\341m\266\377p\3346\350\322d\204)\024\244<\235,-\022\310\231\337\200'\000\326&\014\"Ih\212\230\303X\262\264\363A\325`z\215)\330\nd&\215\200\242\262u\337\025m\244\023\342W3a\211\t\023\276\375S\232\340<\204-\200\227\217\273\215\326\030\252\351}x}Pa#\017\\\370a,P\372\244\335(;\224QF\242%W`\313\317\027\360\002\2120_Y\taP\252.\210\327\232UA\315\226u\201A\214\031XZ\324#\263\203\030\225\305S\306\302\314\261\021\246\345\366\325E\220\320(\210\025\277*\226\260\343\351+\201B\335\351\333\031me\273A\355(\021>\t\022\332\215\020\220<\356\222TI\256\245\020P\242\210\224em\356\021\"\242\320\300\372V\213\003k3\264J\330\310D\016`\352\323X\304\253\343%w+\215*\343\226\302\334oC\246\025\262P\214\"\025<V\347\230\256\342\031<\212\001\330\035U(\276\034\031BW\206\023\0206Y\241\030\030P\316R.\034 <\312\222\310\262v\235\001a&\010\200\3003(\330\306\241\252\031\024\250\257c\226E\234I\004\347\014\363\305t\304 \226\362Gj4=tbp\341\233\002!\3212\31494B\360r\021\310\255\370\345\340\266\235\034NJ\3659\341\324\346\207\321\312\3473hL}'\0251\366s\022\033\362c\266G9\215\217\255\303\227\225\343\223\306v\014\311\202:\234\376?7\320\022\360\304\344\222Bh\031\017\341\004\303\274!\035\377^g\276\010\357b$\356\311\372\007\027\021\316aA\023\010\376H\021\302\200\261\301TQ\257\263,M\265\200\304e\363/\230\203O\302\345\224\360\315\235\366M7\274\245\212\364\030^\234\351\364\020U\300N\371\034(\247\334k\266P(\205\026\370\001\3744i|\033I*h&\022\335op\205\272G$`ohGe\302\246\0165\213\006\371RHi\244A{\207Z\243\207=/o\304@\255\322\250jl\202\2540\321\300\2330\330\374P\272T\031\277Ot\035e\236@O\234\315v\222\026\261 \250H\233@\365\205\227\246O3\033\177\344\210w\232\236\360\312\000\037\221q\205\324\236k\246\005]\211\324\003\032\317\033\027?/)\245}\274\033\223\303|\366\301\025\227\351+k\005d\265d\237\356\013*\265\300\222\267\326F\251\313\307)W\017\2426\226\317V\320\312""\361jg\354\020\350C\324\255V\252K\246\204\373.\210I\262\002\262\266#e\206\260\345\206;\217\3642\251i\267\037(\033\347\256\353\261.E\227\326\211\327\213\022^M\345A\315\036\\j\214\310_\\\235\366\030\321\002f\227&\242\367\262\246\243'\027\301\227\234\322\276F\352\346\003\002;\007\202F]\322\301z\220\215\215\025\010$Z$\275\270\337\273H\246U\313rw0e1<B\253\340\024\351B\262\241D\2310\347I4\351(\274\220\311\014\233F\321\315\202\276\353t\220{\210\3474\030\np\251&Tl\"d%\334X\241b\000\364\335\303\235g\376.\344\212p\241!\336/\327\004";
-    PyObject *data = __Pyx_DecompressString(cstring, 2316, 2);
+    const struct { const unsigned int length: 10; } index[] = {{1},{14},{179},{18},{244},{0},{2},{5},{1},{8},{6},{12},{9},{7},{17},{17},{10},{12},{6},{7},{23},{16},{15},{19},{3},{13},{8},{4},{3},{18},{17},{3},{4},{9},{4},{12},{8},{12},{11},{10},{14},{10},{4},{5},{20},{1},{6},{14},{13},{12},{1},{12},{4},{9},{9},{18},{8},{9},{12},{4},{12},{1},{5},{3},{13},{18},{4},{4},{9},{17},{7},{4},{8},{13},{10},{11},{1},{4},{8},{4},{6},{5},{1},{9},{9},{7},{5},{6},{14},{8},{8},{7},{8},{2},{5},{12},{6},{8},{8},{13},{3},{5},{1},{2},{11},{5},{6},{13},{5},{5},{4},{3},{4},{7},{9},{4},{10},{5},{4},{1},{8},{9},{10},{8},{8},{13},{14},{4},{12},{10},{4},{8},{2},{8},{2},{3},{3},{6},{7},{9},{6},{17},{4},{7},{3},{14},{6},{12},{10},{21},{5},{3},{2},{13},{12},{7},{8},{6},{6},{4},{7},{5},{3},{4},{12},{10},{9},{9},{18},{18},{9},{3},{5},{6},{4},{5},{3},{5},{4},{3},{4},{10},{6},{4},{8},{4},{9},{7},{3},{9},{11},{10},{4},{10},{22},{19},{18},{4},{4},{6},{4},{4},{6},{6},{17},{135},{99},{204},{723},{348}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2311 bytes) */
+const char* const cstring = "BZh91AY&SY\337\350\316,\000\001;\377\377\377\377\377\377\377\377\277\377\277\377\377\377\277\377\377\376@@D@@@@@@@@@P\000@\000`\010\037\017<\347oM\236w9)\266\r\333\256m\254\236\001\347\274D\311\032\204\332SO$\365\017Hh\374\205?I<\030\2325OI\241\265==\032\223@yM\251\232\232h\365\000\3104\r\036\247\224\332M\251\247\246\21052\021\240\217@\232`\202M\0314i\210\000\006\206\200\000\000\000\000\000h\320\000\000\rL\200\320\204\t\211\031\0314\000\032\0004\000h\000\000\r\000\r\001\240\310\310d\032\0005=\t\242\023I6LP4\017P\320\000\03244\000\001\240\000\000\000\000\000\000\000 \311\200\023\000\230\2312`\000L\t\200\230\230&\000\000\000\000L\214\004\300\206\020\002SH&\200\246\nzh\325\037\245<Sjd4\323&\206\203@\001\240\000\006\232\r\000\3204\032\000\003h\232S}\216o\356\315\374\207\364\177gJ$b\227II\341\010B\004#\322#\324:\2113$\002@\2232\2112E\013\267\311\025\343\001\332\242\r\000\214[\253c\014\305\210\t\004\244Yl\202Q\271\245-c\227\311U^h,\002\0011\220\354\002\034\026\310\031Y\235\240\314i\035\305\323rbb\"g\003\022\330\214D\232n\354\"\006dLf\230F\2476\200\256\345\273b\335\350\212\221\224\273\220\217'2E\241\247,\n\347YwqL\347\t\315H\274&&&\327\336\225\255\305*\302pfU\013\t\276#\347\235\251\241b\020\024\325R9\310\"\326\315n\010\014Eez\365\361\275{\315\366na\346zy\231\274\204\311,\222dxh\014\2633ZJ\316\374.\006\350\315*k\362\313\370\3303=\316\023\223\376s&\347R\350\276\251\223\333~!\363\2062\306\317v\242\300\274\245\227\010\020\021)\003&\024\007\300\241V\210\362pz\204\nB\016r\022A\253\250g_\251S8\317\201\r!\031[\001\215\372\231 \200\213\030\002\\\301\020 yG\314\344\363W\210\215\270\371\026/p\341\267\302\343T\317Cs\374\203]\316\354\r\220\305\023\321\322H\332\320\244Fb\224j\377\235\345:\272\330\0249\330\321p\212=\"\340\306;\253\210\320\326\033Lcn\033\2653jj\201\313\002\337\326\356\r#M\266\324\201\333\307\320F:3\300\3174\036\257\301rYp \322@\332\014\347P:\213\013\243\224\267R\237Y\"\006\344\234,\204ay\247\277t\306]\221\224V\211k\003#-T\200\372\215\005UXq\275\241\2427\021\212}\244S\326""\313\026\200\273!\221\354Z\222o\241\030\006.Q\265\026C\334\262\004\0102[\252\252\235\312\022\264\025\n\332mf\314\363BCQ\263xp\215\243\264\014\214\330\006\r\304\331\266\032\024\246D\321\231\256@a\276C\025\354\036\321\032\030\335\007\375\210\371*\010~\234\031F5\026\006WM\226\342\036\342\370^\205\025\213)\246*\024\340x\216\310\330\220Se\346\213\333C\335\325\225\226\2621\225\375r\326^a\346[\211\227F\013\337\034Fa\231b\373\222\002\275\227{\262\226\246\373\361\270\365\332\372:\304\331\261Z\221\255\262\233\017\276\357\032\210\300\315W\025\250\210\271\007j\177\233\253\031\271\211T\202\200BQ\022I,\021\201\010\220WF\211\r\027X\211\271\270\262\r\017KH\310\022\350\225x\t\353d\247&~\n.\232?\221\220\335\336\020\256u\311]o\274*cXL\230Y259\230\254\316\304dkBK3A\020\246\016Zv\345C\301\216\3430a\225\254m\343\264\016Gk\0164\010A<c\303\036\275\006L\315\277\3556\017.\273^4\253B+\365\244\375\365\032Re\204-\230\2542a\025\332Uj\351\033\231\255db\247\014\002(\220`\\\271E\325\205\242\233\036Q\3174\340\3460\322\367\231\313\023\216,\244C\342\321\005\261e\025W\347!\205\302\256\354\240\314]J\245\022\r\261'\234\221\244)L\344]7O\202d+\302\322\332W\305S\261\246\240\327\316\220\034}E\230\235\212\351=R\210\363|o \250\251\306\2268S\tQk\341\023hp\336\"m\216?\021\221\242g\r\020\303\002PO\241`<HR\037\212\321\014\247\204\221\2144S\2359\2237\277+\263re\014t\302\002\213\355\r}\346\351\310\230Ky\366\357\265\270\032\327\341Re}\344F1\241\266\004k\033g\004\274\260\361\333S\344\243W{\344\323\227T\005\033YF\314\3636g0\243\177\032\020\327}\027@\035\223PY\000\350\nPk\260\016\366&\251\320%\200d0\257\235\025R\332\005\016An\244U\234\231\232W\220\207B\213\035J\303\006Ej\232\331\021\330\010\004\213\357\"\345\252\320\255 \266\236\220\241f\254\215l:\315\203\001\263\034'\n\331R=\313\306\340RwK\002\3709\027-\305\272li\216[\013\366\025\360\264\013\232\364\344S\022\026\346Hg\267,1\265h\"\3266\265\204Z1w\023\273\216\222j\356\243k\301\253u,\035\253(\325\302P\250N\205Rt\206\213\272JfB\270\356\025\265UF\001R\202\200\230\357L\010""\027\323\216\373\273\t\222\323\212e\031\260\270h&n\001F\200OM\301\235\0048r\234^\242Z%\307\270\025P|\303\234\036\307-@\311SK\326\323\013b4\235\321 \021\360\"\2743\222Y\2449\360\233I\243v\325B\361\030o\013\006\355KX\301v8\026V\2670\260\2208\341T\227\3010\244Q\267[U^\255\335M\265\270n\032\246\321d\204(\223\234\036.\225\325\211^\231\337l\320\004\2418Z\001\315LUF\035\321L\354\016\207\323\202\ntd\340J\332F\300\022\210K\r\360\304TA.\r1\265\330\020H\225\266\351\224\226\333\304B\320\021\361z\230YQ\202\246w\315\007\354\206KQ\341\276\030%x\037DY\245\007fn\023b\326\272-AV\336.]\004\213P\270\350\210\333\223\0300\303\352HXS\215\254\213\024Ji\203*\314\246Ks\\\014h*\026\"\372\314F<$\361\037#\216\006\262\247\003\300[w\032\030\361,\305\266\302d\223\301 \311R$\214:\242a\023\254K\305ReJ@\362\262)M&\262sA2j\020\21416\275\320\211Ae`|\353-A\263\\\324\266\"\350\013X13$\025\nD\016\226\024z\031\314\2055\236\022\231\0202Ps\"\342\014\221}F\022\251\3142\301\325IP\226\211_u\323\372to\026g6\334\243\266\266\223jL\332\021*\233\214\004\013\254\341\020\224\217\200\240s\2030@\021\"5\255\326\326\331R\230\257c\243\"\034IE\004\332(\212\302\r\010T\007\034\221\231kc\024\007\210\226\014\312\231\324O\024\361\010\0002(\344\322\3341n6|\273\334\265\352tC\253\317\017\237\322\3503eL}\007\t1\365\363R\033\361c\220\216\203\032>\247\016f'\207/\210\354\030\323\004:\275\036/?\317\022\360\204\344RBh-\337\317|\023\016\360\204k\336\274\337{\361\336\306I\335\221\364\016.#\234\302\202&\021\374\216#\211\001c\202\250\243_fP\233k\t\210\313\346\3401\006\237\205\313)\342\2317\354\232oyK\035\367\360=9\363\247\240\253\200\236\361\034('\334k\266O\250\005\006\370\002\366*\024~\r\244\225$\023\tn\267\270B\335\023\2220\267\264#\262\341R\007\032\307\207|\250\2444\222 \277\303\255M\303\236\217\267\342 V\350\3235&AV\030h\340M\230l~'\335)\354\340\245\272\016\262\317 'Mf\273I\013X\320S\343\314\236z\302\313\322\347\031\215\277\362D;\315Nxd\200\017\310\270\302\352O5\323\002\256\304\331\341\221g\215\213\237\227\224\322\300\336\035\311\301""\276{`\212\313\364\225\265\206\262Z\262\017\367\005\225Z\340H[\353\037T\345\343\222\253\207\321\033Kh+hd\370\26546\010jB\324\255V\252K\246\204\373.\210H\262\002\262\266\"\346\006\260\346\004\027/t2\350\351\267\033,\033\347\256\353\260\356D\225\326\207\327\211\016VU\365A\315\036\\Zl\307_\\\235\366\030\320\302^\227&\232\366+@\203\215\207\337\310\313\350\237\027o\211\205\020S$\227\n\036\341\270\366\224\244QYHYFE\273R\301x\314\320\315\220\345\335\002\032\013\3103>\021\245jh\262\231\030\256N\225\234iY\311\346\250U\013&\311\265\220s\3553\n\017i\034\244\261t\245\n\027\"\233 \206B8\356E\225`\036\275\354:\355\377\213\271\"\234(Ho\364g\026\000";
+    PyObject *data = __Pyx_DecompressString(cstring, 2311, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2235 bytes) */
-const char* const cstring = "x\332eUKw\323H\026&\215i\234\027\304$LBx\3110\220\007\214\373\230\246\033h\240\373\230\020 \220\304q\354\236\241\233\244u\024\251l\013\313\222\255\222\223x\036\347\260\364R\213Y\324RK-\265\364\322K\226^z\311\351_0?a\276[\212C8,\244\272U\272U\367\273\337\375n)\363\334\324\275w\334s\357*9\273\275\273\351xL\361\252\232\247\254\264\275\252c+&W\014f\231{\314\325<f\265\025xb\003s\311\311V\266V\267\376v\377\341}E\263\r\305e\357\231\356q\205\267\366tK\343\234q\305)+{-\323\362L[\361\332\r\3063\312ZYi;-\305f\314P<Gi\300\357\344\006\257\312l\2053\217\014eA\263m\307\323<\323\261Ul7\355\312\202b\230.\202\230\373\214v\277\320,\3162\371\006yh\326\273\025\315\262\264=\213\355*%\307\261\024\313\344\236R\201+Wl\255\316$F^u\\\017\tq\3355\3456\305\261\255\366c\340p\341Bi\221+G.\334\261\020\004\016\354\220\351-r\315(\024\000q\035\213+\007\246W\225 5\267\322\2523\033yS^^\325\264k\264\336\226)>V4\345\300u\354\212\342\270J\335\344\0349\034\357@\020\257\345\332\034\300\024\346\272\216\214M\016t\254\356\270\224\350W\300\376\374\360_\332\347\266\001Mg\3070\352\231\237\307\0263\313\277,\375\242\031\206\n\326\230\016\254\267\014\034\303\276\263\034\247\221i\264Y\275\341\265\225\206\353`,\267l\235rzZ\327\016QR\326\240\2245\275\312\214\272\203r+-[\333\327L\311\3461\202\247.\253\200R\267\375\223r\213\357\360\345\305w\177<\335]^\202E\223\235w\010\277\263\373\357\235\177\321\370\237\341\362\273\035\276S\334\0050L\306\236|G\344\251 \267ey?\217=91\223\264>\205\002\325\225\365|qU\335\310m\277Y\335\036V\2244\252\276,\251\257\213\371\315\243OG~'W\362[\253\233\352zi\335\321k\033\271\267j\261\264\272U\334tl\026\177\210\235\206bQ\267r\333\271\215\243Cb[zm\345J\352\263\365\374\312\033i\311\323Wr\353\353r&\335\2664\257\252\312\227\272\325>\304#\261m\262Co\233\225\213jq=W|U\\_\333(\345\337P\320\374\363\325\342o@\262\241nm\3477\266J\245|~]-\255m\254\346\177-\251\252z\244p\006\313\255\360c-\241\031\300\264f{\032o\333\272\351dPG\007\"\264\031\337c\032\214r[\375\332(\333{\216\321\246\2063T\335\261\313fE'\025p\275""\\\221\375E>T^\335\302A\252\211\246r5\235\355izM\247U\350B\245\027\n\302\207#\265\036\200xX\260= \323\235F\2334\225\261\254z<B[\322\030\212CNh\013\223\326\201\351B\322\206\241y\232\301X\203\366\033 ,nc\243Uop\344\216\203\231K\003\262\247k\206\331\373&\272F6\005ZUk05\356B\307U\245f05=\320\247\226M\213\321\3336\220(\r&N*\333ej\2262\351V\005m\215\226'm\003\236\320}\374&\031\014G\225h\2520\257\002\222\033\246i\200\032\264IE\022`7\210w\316\\O5\271z\\\007\304\251s\365=wlzj\254]Cp\220\014/[\0165\326\360\350\006\242G\202\346\226\243\031\274\256\252u\r\347\343}\250\312\306#\303sj\314\346\350o\256U\030W\321n\270d?\217\026\024\215\233\201\352\347\262f\213q\217\312(;5\023\367\263J\205m\021\027\224\371\360\355\324\220\033\333\007\275\016W\035\016\3441\033\361\233\037w6\014\370\250\030P\r\017R\226\204\340\273W\245\007\267\177\303i \220\016\200G\204\016\3036[\232\025\007\203\311\334\266\na\234\260\350~\212\263w\351\036\007|\227\341\005\032\215XW\261lP}\004<\272t14\034b\\^\014\361%\351:\026s\035\207t\203\002\330\206\333\202\003\003\215\370W\034%\013\313`e\r[p\311\037\250$in\231\365\230\332\241\221i\230\rF\362?\261\342:\244\"\316\361g@\325\332\234\273\272\204F\257\026\2275\242\007\342\246\177\037&\255=\336\346*\036\032b\"`A\020h\327\232\n\002QqI\243W\305\245\n5U<\263\316\300\033\204\023\303Q\217\r\222\311\221I\016`J\n\\\362/y\313\030&oX\332\3476\377rU\n\373\313\245\206\303=*1\375q\343\337f\3136\233-\020\272\257Y\020\017\364`8n\377\324e\221\035\214\216\r\222\347;\236\237\365s\375SWDn\22083H\236\353\350~\312_\020)\261\020\\\r\365h:\312\221\027\367\323\376\003\221\026\017\202Lt:\372>\322\006\311)\377\214_\360\231\270'~\rn\207\243Qj0>1HNv\376\356?\024\337\013=H\311\000S\376H?\225\306$\266n\006Yi\371W\205\026\033\327\203\221\330\270,\000c\306\177E@\306:i\211f\262?\271\030\312\357\t\177=\030\241c\316u4\004\372t\364u!hR\314\222\177M4\2033\301\357a\363\304\307;a\226\374-\340\316\312\345\361N\226B\254\211\002aM\214v\256\213\221A\342\\\207\201\2035\3616\330\016\016Bm\220\230\354\024\201gN""\\\020\217\202g\201\025\335\000\007\211\263\037\016:\025\277$\000a\242\263\352\317\212\0211\035sv~j\220\034\357<\364\037\013\255\177=\013\036>\003\213G\342\345|\247y\304/\340\020\344\267\376\037A6xN\304E\013\335\324\027N\027Al\234\345\331\017\377D9n\371\373\242\024L\303{$L\035\271!\227\017\347:e\377u\377\332\223n\216@\227\374\031\354{\017>\277\234L\371\247\221\337s\221\0209\261\033\246)\025\257\363\300\277\211d\376\"\366\203\002\321\373\255_\021\277\007^\370\210R\035\357<Ev)rluV\020,\231\362\347EV\274\n^\206\017\242\233QapE\2467.O)\014&f\374\027\220\313|x?lwG\342\343\312\342u`\206\315h\264{\251\227\036\026D\241Z\317\37099\271\021\334%\262e\260/!\344{\367z\205O\211\024HN\210M N\216\376/y\352\314\024\220\214\022\222\307\201F\306\234\270\034\344>%&:\200\234\354$\245\034u1\037\334\243\224&;\377\360\237\001\305\213`9\224\nn\213o\304\335\300\010\227\242,Iz\272?M\312\232\210\265\370\036\304^\014\253Q\255\227\242lr\224\333#\177\305o~\225\033\025:\013\221\256\010\372\326\237\271\025\024\202j\250Aw\023T\226\251+`i3Z\352f?M\315\211oE9x\035\232Q\263\233\354\215\340\350\271t0\023\374\026J\345'A\361\\p!\356\207\263\276\213\311\325\260\006!\\\"n\257\3755X\013\267C\036-v\323\203kw\302\207\204\032\304\337y\324Mu\323\335\307\275\367\375\255B\277\260\335\337.\366\213;\375\235r\277\\\353\327\232\375\246\333wy\237{}\2575\270\232\206dV\303KQ:B\220\013~:V.2\274(\265\227\003t*Q\002'\277\355\026{\211^n01\213\234\247R\320\334\022\232X\203<Ja*\\\216V\242\375n\251\227\352-}\274\377\321E\334\301D\312\277\340\337\213%\026\244\202\364Q\372\251\301\314\025\361LT\301I5\322\220\370ho\376cv0;\367\3518\313\271\360r\364\262\373#\350@\351^\370\267\305X\377\306\203\250\215\360k\037\013\375S\327\305!\362\037V\365\014ZqT\244\372\363\313(\234\274vF\007\023\323\376\017\240VC\307\177\033hpF\003NL\306\234\216\005\351\340G\004 \256\206\331N\016\246\250\241\014\\\003O\340=5\013\0303\242\000\220\332\347I=\274\027\226\320\212\250\334`j\332\377\tK\345 7\230\271,~\220Q\332\240\351Ew\261\227\246\257\331\301\314%1""\033|\023,\206\267\243$d1=C\251\003\357\331\316\241\317\305\"P<\201^N\3430\331\255\022\3124]<\302\302\226\323(\210T^\n\351\217\240\013\207\231@^Y\242v\026b]\014\026\3029\334&\t\272\361\250\335c>\n\362D\354\275$nQ\367\322>\\\"\363\024j\274s\277s\200\233c\202\356\313\034u&\221\336\244K\016\373\377\017\345nn\013";
-    PyObject *data = __Pyx_DecompressString(cstring, 2235, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2230 bytes) */
+const char* const cstring = "x\332eUKw\323H\026&\215\001\347\0051\t\223\020^2\014\344\001\3439\246\351\006\032\350>&\004\010$q\034\273g\350&i\035E*\333\302\262d\253\344$\236\3079,\275\324b\026\265\324RK-\275\364\222\245\227^r\346\027\314O\230\357\226\342\020\016\013\251n\225n\325\375\356w\277[\312\2740u\357=\367\334{J\316n\357n:\036S\274\252\346)+m\257\352\330\212\311\025\203Y\346\036s5\217Ym\005\236\330\300\\r\262\225\255\325\255\277<x\364@\321lCq\331\007\246{\\\341\255=\335\3228g\\q\312\312^\313\264<\323V\274v\203\361\214\262VV\332NK\261\0313\024\317Q\032\360;\271\301\2532[\341\314#CY\320l\333\3614\317tl\025\333M\273\262\240\030\246\213 \346>\243\335/5\213\263L\276A\036\232\365~E\263,m\317b\273J\311q,\3052\271\247T\340\312\025[\2533\211\221W\035\327CB\\wM\271Mql\253\375\0048\\\270PZ\344\312\221\013w,\004\201\003;dz\213\\3\n\005@\\\307\342\312\201\351U%H\315\255\264\352\314F\336\224\227W5\355\032\255\267e\212O\024M9p\035\273\2428\256R79G\016\307;\020\304k\2716\0070\205\271\256#c\223\003\035\253;.%\372\r\260\377~\374\017\355s\333\200\246\263c\030\365\314\317c\213\231\345_\226~\321\014C\005kL\007\326\333\006\2537\274\266\322p\035\214\345\226\255S\036\317,\307id\032\355\272v\210j\262\006e\253\351Uf\324\035TZi\331\332\276fJ\"\217\203?sY\005l\272\355\237\224\333|\207//\276\377\343\331\356\362\022,\232\354\274G\344\235\335\177\355\374\223\306\177\017\227\337\357\360\235\342.0a2\366\364\257\304\233\n^[\226\367\363\330\323\0233\311\3503\210O]Y\317\027W\325\215\334\366\333\325\355a1I\236\352\253\222\372\246\230\337<\372t\344wr%\277\265\272\251\256\227\326\035\275\266\221{\247\026K\253[\305M\307f\361\207\330i\250\023u+\267\235\3338:$\266\245\327V\256\244>_\317\257\274\225\226<}%\267\276.g\322mK\363\252\252|\251[\355C<\022\333&;\364\266Y\271\250\026\327s\305\327\305\365\265\215R\376-\005\315\277X-\376\006$\033\352\326v~c\253T\312\347\327\325\322\332\306j\376\327\222\252\252G\342f\260\334\n?\226\021\372\000Lk\266\247\361\266\255\233N\006Jp\240?\233\361=\246\301(\267\325o\215\262\275\347\030m\3525C\325""\035\273lVt\022\000\327\313\025\331Z\344C\345\325-\034\244\232\350'W\323\331\236\246\327tZ\205<Tz\241 |8R\327\001\210\207\005\333\0032\335i\264\201\205e,\253.\307\241&\344\204<\231\264\016L\027\"6\014\315\323\014\306\032\264\315\000Oq\343\032\255z\203#e\234\307\\\032\2204],\314\3367\321'\262\r\320\234Z\203\251q\3379\256*\245\202\251\351\2015\265lZ\214\336\266\201\374h0qR\331.S{\224I\256*\330j\264<i\033\360\204\352\3437U\1778\252\304N\205y\025p\3330M\003\214\240I*2o\273Ats\346z\252\311\325c\372\021\247\316\325\017\334\261\351\251\261v\r\301\301-\274l9\324X\303\243;\207\036\t\232[\216fp\352\266\272\252\3265\304\300\373P\225=G\206\347\324\230\315\321\325\\\2530\256\242\323p\265~\031-\210\031\367\001\225\316e\315\026\343\036UP6i&\356h\225j\332\">(\373\341\333\251!?\266\017\212\035\256:\034\350cF\3427?nj\030\360Q1\240\"\036T,I\301w\257J\017\356\374\206\323@ \035\000\217H\035\206m\2664+\016\006\223\271m\025\2328a\321\255\0243\340\322\355\r\370.\303\013T\032\261\244b\351@\001\010xt\325bh8\304\272\274\023\342\253\321u,\346:\016i\007E\260\r\267\005\007\006\032\361\2078J\026\226\301\312\032\266\340j?PI\315\3342\3531\265C#\3230\033\214\224\177b\305uHI\234\343\177\200\312\2659wu\t\215^-.kD\017\004N\177<LZ{\274\315U<4\304D\300\202(\320\2515\025\004\242\352\222F\257\212\373\024\212\252xf\235\2017\210'\206\243\036\033$\225#\223\034\300\224\024\271\344_\362\2261L\336\260\264/\035\376\365\252\024\367\327K\r\207{Tb\372\317\306?\313\226m6[ t_\263 \036\350\301p\334\376\251+\";\030\035\033$/t<?\353\347\372\247\256\212\334 qf\220<\337\321\375\224\277 Rb!\270\026\352\321t\224#/\356\247\375\207\"-\036\006\231\350t\364}\244\r\222S\376\031\277\3403q_\374\032\334\tG\243\324`|b\220\234\354\374\315\177$\276\027z\220\222\001\246\374\221~*\215Il\335\n\262\322\362\257\t-6n\004#\261qE\000\306\214\377\232\200\214u\322\022\315d\177r1\224\337\023\376z0B\307\234\357h\010\364\371\350\353B\320\244\230%\377\272h\006g\202\337\303\346\211\217w\303,\371[\300\235\225\313\343\235,\205X\023\005\302\232\030\355""\334\020#\203\304\371\016\003\007k\342]\260\035\034\204\332 1\331)\002\317\234\270(\036\007\317\003+\272\t\016\022\347>\036t*~I\000\302Dg\325\237\025#b:\346\354\302\324 9\336y\344?\021Z\377F\026<|\001\026\217\304\313\205N\363\210_\300!\310\357\374?\202l\360\202\210\213\026\272\251\257\234.\201\3308\313s\037\377\201r\334\366\367E)\230\206\367H\230:rC.\037\317w\312\376\233\376\365\247\335\034\201.\3713\330\367\001|~=\231\362O#\277\027\"!rb7LS*^\347\241\177\013\311\374I\354\007\005\242\367\254_\021\277\007^\370\230R\035\357<Cv)rluV\020,\231\362\347EV\274\016^\205\017\243[QapU\2467.O)\014&f\374\227\220\313|\370 lwG\342\343\312\342M`\206\315h\264{\271\227\036\026D\241Z\317\37099\271\031\334#\262e\260\257!\344{\367{\205\317\211\024HN\210M N\216\376/y\352\314\024\220\214\022\222'\201F\306\234\270\022\344>'&:\200\234\354$\245\034u1\037\334\247\224&;\177\367\237\003\305\313`9\224\nn\213\357\304\275\300\010\227\242,Iz\272?M\312\232\210\265\370\001\304^\n\253Q\255\227\242lr\224\333c\177\305o~\223\033\025:\013\221\256\010\372\326\237\271\035\024\202j\250Aw\023T\226\251\253`i3Z\352f?O\315\211\263\242\034\274\t\315\250\331M\366Fp\364\\:\230\t~\013\245\362\223\240x.\270\030\367\3039\337\305\344ZX\203\020.\023\267\327\377\034\254\205\333!\217\026\273\351\301\365\273\341#B\r\342\357>\356\246\272\351\356\223\336\207\376V\241_\330\356o\027\373\305\235\376N\271_\256\365k\315~\323\355\273\274\317\275\276\327\032\\KC2\253\341\345(\035!\310E?\035+\027\031^\222\332\313\001:\225(\201\223\337u\213\275D/7\230\230E\316S)hn\tM\254A\036\2450\025.G+\321~\267\324K\365\226>=\370\344\"\356`\"\345_\364\357\307\022\013RA\372(\375\324`\346\252x.\252\340\244\032iH|\2647\377);\230\235\373|\234\345\\x%z\325\375\021t\240t/\375;b\254\177\363a\324F\370\265O\205\376\251\033\342\020\371\017\253z\006\2558*R\375\371e\024N^;\243\203\211i\377\007P\253\241\343\317\006\032\234\321\200\023\2231\247cA:\370\021\001\210\253a\266\223\203)j(\003\327\300SxO\315\002\306\214(\000\244\366eR\017\357\207%\264\"*7\230\232\366""\177\302R9\310\rf\256\210\037d\2246hz\331]\354\245\351kv0sY\314\006\337\005\213\341\235(\tYL\317P\352\300{\256s\350s\261\010\024O\241\227\3238Lv\253\2042M\027\217\260\260\3454\n\"\225\227B\372#\350\302a&\220W\226\250\235\205X\027\203\205p\016\267I\202n<j\367\230\217\202<\021{/\213\333\324\275\264\017\227\310<\205\032\357<\350\034\340\346\230\240\3732G\235I\2447\351\222\303\376\377\003\240\016j\\";
+    PyObject *data = __Pyx_DecompressString(cstring, 2230, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (3566 bytes) */
-const char* const bytes = ".Dict[str, Any]Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Optional[Callable] Tool list gives name and short description only; parameter names resolve on execution. Call tools with the arguments you think they need; a wrong or missing argument returns an error naming the correct parameter names \342\200\224 retry once with them.>\n(.*?)?add_notecall%dcore/loop.pyempty promptfunction=max steps reachedmodel unavailableparameter=registry: %s\\s*([^=]*)\\s*\\s*(\\[.*?\\]|\\{.*?\\})\\s*\\s*([\\s\\S]*?)\\s*\n</tool_result>\n<tool_result tool=Any_CLOSE_MARKERCallableDict_GT_JSON_MARKER_CLOSE_JSON_MARKER_OPEN_LTLockMAX_STEPSNone_OPEN_MARKEROptional_PARAM_CLOSE_PARAM_OPEN_PAT_BLOCK_PAT_JSON_CALL_PAT_PARAMPath_Path__Pyx_PyDict_NextRefS_SLASHSLIMTOKEN_MODESYSTEM_PROMPTTOOL_TIMEOUT___annotate__argsargumentsassistantasyncio.coroutinesbeautify_beautify_beautify_fnbodybuild_configccallscfgclassify_modecline_in_tracebackcodecomp_compresscompression_statscontentcopycore.llmcore.loopcore.registrycore.statecore.wiringddatadeepcopydictdirectdumpse__enter__enumerateenvironerrorescape_executor_tool__exit____file__findallfinditerfnfnameframe_outputframed__func__functionfunction_callgetgroupiidin_progressinputinsert_is_coroutineitems_jsonjsonkeykindlast_inlast_keptlistlist_toolsloadsm__main__max_stepsmax_tokensmessages_metrics_metrics_lockminify_requestmodemodel.prompt__module__name__name__okon_eventos_osoutoutputoutputsparameterparent_parse_text_callspathpathlibpopprocess_outputprompt__qualname___query_llm_query_llm_with_toolsratio_rere_record_statsregister_allresolveresponseresultreturnrolerootdirroundrunseen__set_name__setdefaultshow_codeslimtokenslimtoken.pipelineslimtoken.profilessort_keyssrcstatsstatusstepstepsstrstripstubsys_syssys_promptsystemtask__test__textthreadingtimeouttintokens_intokens_kepttokens_outtooltool_callstools.display_beautifytools.d""isplay_frametools.display_posttouttypetypinguniquservaluesvendor\320\000\033\2301\330\t\n\330\010\017\210t\2201\220A\320\000\034\230A\330\004\005\330\010\016\210c\220\021\220'\230\021\230'\240\035\250c\260\023\260A\330\010\017\210s\220!\2207\230!\2307\240.\260\003\2603\260a\330\010\020\220\005\220Q\220e\2302\230U\240&\250\t\260\021\330\013\014\330\010\r\210V\2208\2303\230c\240\021\330\t\n\330\010\020\220\001\320\021!\240\021\330\010\020\220\001\320\021#\2401\330\010\020\220\001\220\035\230a\330\010\020\220\001\220\037\240\001\330\010\020\220\001\220\033\230A\320\000\024\220H\230A\330\004\n\210!\330\004\005\330\010\r\320\r(\250\001\330\010\020\220\004\220L\240\001\240\021\330\010\016\210a\330\013\014\340\004\005\330\010\r\320\r'\240q\330\010\r\210T\220\036\230q\240\005\240Z\250q\330\013\014\340\004\005\330\010\r\320\r+\2501\330\010\016\210l\230!\2301\330\013\014\340\004\013\2101\320\000\024\220I\230Q\330\013\014\330\004\t\210\037\230\001\330\004\016\210e\2201\220I\230X\240R\240w\250a\330\004\r\210S\220\001\220\030\230\022\2309\240B\240l\260\"\260A\330\004\007\200w\210g\220T\230\021\330\010\014\210E\220\027\230\001\230\023\230A\330\004\005\330\017\020\330\010\013\2108\220;\230a\320\0371\260\021\330\010\r\320\r'\240q\330\010\r\320\r'\240q\330\013\014\330\010\017\210q\330\004\005\330\010\016\210l\230!\330\010\r\210X\220^\2401\240D\250\t\260\021\260'\270\021\330\013\014\330\010\017\210q\330\004\005\330\010\025\220Q\220a\330\013\014\340\004\007\200z\220\021\220%\220v\230T\240\023\240D\250\001\250\021\330\010\017\210q\330\004\013\2101\200\016\210f\220J\320\036<\270A\330\004\r\210T\220\024\220Q\220j\240\001\330\004\r\210T\220\024\220Q\220j\240\001\330\004\020\220\003\2201\220D\230\004\230A\230]\250!\330\004\007\200t\2107\220#\220T\230\026\230v\240Q\330\010\020\220\006\220g\230Z\240t\2509\260A\330\004\013\210=\230\001\230\021\330\004\007\200u\210C\210q\330\010\021\220\032\2301\230H\240G\2507\260#\260Q\330\034'\240q\330\010\013\2107\220#\220Q\330\014\024\220F\230'\240\032""\2504\250y\270\001\330\010\020\220\006\220f\230J\240i\250q\260\t\270\031\300!\340\004\005\330\010\r\320\r \240\001\330\010\024\220A\330\010\r\320\r\"\240,\250a\330\004\013\210=\230\001\330\010\020\220\006\220g\230Z\240t\2509\260O\3002\300Q\340\004\021\220\027\230\004\230N\250!\330\010\t\360\010\000\005\020\210q\330\t\021\220\032\230;\240a\330\t\021\220\030\230\033\240A\340\004\014\210A\330\004\010\210\010\220\005\220Q\220c\230\032\2402\240Q\330\010\r\210W\220B\220f\230F\240*\250A\330\010\017\210y\230\002\230,\240d\250)\2601\260A\330\010\023\320\023(\250\001\330\014\020\220\001\220\035\230j\250\001\250\025\250h\260k\300\021\330\014\024\220A\330\010\013\2109\220C\220q\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\013\2108\2201\220H\230C\230q\330\014\024\320\024%\240Q\240h\250a\250q\330\014\017\210q\330\020\034\230H\240N\260)\2701\340\020\030\230\006\230f\240J\250i\260q\270\010\300\001\300\021\330\030!\240\024\240Y\250a\330\010\020\220\010\230\001\230\030\240\022\2401\330\010\020\220\007\220r\230\030\240\035\250k\270\021\330\031'\240q\330\036$\240I\250R\250s\260(\270!\330\036+\2508\2601\260A\260Q\330+9\270\021\270!\270;\300j\320PQ\320QR\320RS\320S\\\320\\f\320fk\320kq\320qr\320rs\320st\320tu\330\035!\240\023\240E\250\031\260!\2601\330\010\022\220!\330\010\014\210E\220\021\330\014\025\220^\2401\240A\240Q\240i\250q\260\004\260A\260X\270S\300\004\300A\330\014\027\220q\330\020\021\220\021\220)\2303\230a\230v\240T\250\021\250*\260C\260v\270T\300\021\300)\3104\310r\320QR\330\014\021\220\022\2202\220Q\220j\240\001\240\021\240!\330\014\017\210q\330\020\021\330\024\034\230B\230h\240h\250h\260a\260q\270\t\300\032\3101\330\027\030\340\010\020\220\007\220r\230\030\240\030\250\033\260G\2706\300\021\330\004\014\210F\220&\230\n\320\"7\260y\300\004\300I\310Q\320\000\037\230x\240q\330\004\014\210A\330\004\010\210\005\210S\220\t\230\021\320\032*\250)\2603\260a\330\010\t\330\014\023\2205\230\006\230a\230q\240\006\240a\240q\330\017\020\330\014\r\330\010\020\220\010\230\n\240!""\2406\250\033\260A\260Q\330\010\014\210E\220\021\330\014\r\330\020\025\220Q\220d\230!\230<\240q\330\020\027\220r\230\024\230Q\230h\240a\330\020\027\220r\230\024\230Q\230m\2502\250T\260\021\260)\2701\330\020\023\220:\230Q\230f\240A\330\024\033\2305\240\006\240a\240y\260\004\260F\270(\300!\330\020\023\2201\330\024\031\230\027\240\002\240(\250&\260\010\270\001\330\023\024\330\020\021\330\004\010\210\007\210x\220s\230(\240!\240<\250y\270\003\2701\330\010\017\210q\330\010\014\210E\220\023\220I\230Q\230l\250&\260\003\2601\330\014\020\220\001\220\021\220&\230\001\230\026\230q\240\006\240a\240q\330\010\013\2101\330\014\021\220\027\230\002\230(\240'\250\030\260\021\330\004\016\210a\330\004\013\2101\330\004\010\210\005\210Q\330\010\017\210q\220\001\220\031\230%\230v\240Q\240a\240q\250\t\260\032\2701\330\010\013\2104\210w\220a\330\014\020\220\004\220A\220Q\330\014\020\220\007\220q\230\001\330\004\013\2101";
+    #else /* compression: none (3556 bytes) */
+const char* const bytes = ".Dict[str, Any]Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Optional[Callable] Tool list gives name and short description only; parameter names resolve on execution. Call tools with the arguments you think they need; a wrong or missing argument returns an error naming the correct parameter names \342\200\224 retry once with them.>\n(.*?)?add_notecall%dempty promptfunction=loop.pymax steps reachedmodel unavailableparameter=registry: %s\\s*([^=]*)\\s*\\s*(\\[.*?\\]|\\{.*?\\})\\s*\\s*([\\s\\S]*?)\\s*\n</tool_result>\n<tool_result tool=Any_CLOSE_MARKERCallableDict_GT_JSON_MARKER_CLOSE_JSON_MARKER_OPEN_LTLockMAX_STEPSNone_OPEN_MARKEROptional_PARAM_CLOSE_PARAM_OPEN_PAT_BLOCK_PAT_JSON_CALL_PAT_PARAMPath_Path__Pyx_PyDict_NextRefS_SLASHSLIMTOKEN_MODESYSTEM_PROMPTTOOL_TIMEOUT___annotate__argsargumentsassistantasyncio.coroutinesbeautify_beautify_beautify_fnbodybuild_configccallscfgclassify_modecline_in_tracebackcodecomp_compresscompression_statscontentcopycore.llmcore.registrycore.statecore.wiringddatadeepcopydictdirectdumpse__enter__enumerateenvironerrorescape_executor_tool__exit____file__findallfinditerfnfnameframe_outputframed__func__functionfunction_callgetgroupiidin_progressinputinsert_is_coroutineitems_jsonjsonkeykindlast_inlast_keptlistlist_toolsloadsloopm__main__max_stepsmax_tokensmessages_metrics_metrics_lockminify_requestmodemodel.prompt__module__name__name__okon_eventos_osoutoutputoutputsparameterparent_parse_text_callspathpathlibpopprocess_outputprompt__qualname___query_llm_query_llm_with_toolsratio_rere_record_statsregister_allresolveresponseresultreturnrolerootdirroundrunseen__set_name__setdefaultshow_codeslimtokenslimtoken.pipelineslimtoken.profilessort_keyssrcstatsstatusstepstepsstrstripstubsys_syssys_promptsystemtask__test__textthreadingtimeouttintokens_intokens_kepttokens_outtooltool_callstools.display_beautifytools.display_fra""metools.display_posttouttypetypinguniquservaluesvendor\320\000\033\2301\330\t\n\330\010\017\210t\2201\220A\320\000\034\230A\330\004\005\330\010\016\210c\220\021\220'\230\021\230'\240\035\250c\260\023\260A\330\010\017\210s\220!\2207\230!\2307\240.\260\003\2603\260a\330\010\020\220\005\220Q\220e\2302\230U\240&\250\t\260\021\330\013\014\330\010\r\210V\2208\2303\230c\240\021\330\t\n\330\010\020\220\001\320\021!\240\021\330\010\020\220\001\320\021#\2401\330\010\020\220\001\220\035\230a\330\010\020\220\001\220\037\240\001\330\010\020\220\001\220\033\230A\320\000\024\220H\230A\330\004\n\210!\330\004\005\330\010\r\320\r(\250\001\330\010\020\220\004\220L\240\001\240\021\330\010\016\210a\330\013\014\340\004\005\330\010\r\320\r'\240q\330\010\r\210T\220\036\230q\240\005\240Z\250q\330\013\014\340\004\005\330\010\r\320\r+\2501\330\010\016\210l\230!\2301\330\013\014\340\004\013\2101\320\000\024\220I\230Q\330\013\014\330\004\t\210\037\230\001\330\004\016\210e\2201\220I\230X\240R\240w\250a\330\004\r\210S\220\001\220\030\230\022\2309\240B\240l\260\"\260A\330\004\007\200w\210g\220T\230\021\330\010\014\210E\220\027\230\001\230\023\230A\330\004\005\330\017\020\330\010\013\2108\220;\230a\320\0371\260\021\330\010\r\320\r'\240q\330\010\r\320\r'\240q\330\013\014\330\010\017\210q\330\004\005\330\010\016\210l\230!\330\010\r\210X\220^\2401\240D\250\t\260\021\260'\270\021\330\013\014\330\010\017\210q\330\004\005\330\010\025\220Q\220a\330\013\014\340\004\007\200z\220\021\220%\220v\230T\240\023\240D\250\001\250\021\330\010\017\210q\330\004\013\2101\200\016\210f\220J\320\036<\270A\330\004\r\210T\220\024\220Q\220j\240\001\330\004\r\210T\220\024\220Q\220j\240\001\330\004\020\220\003\2201\220D\230\004\230A\230]\250!\330\004\007\200t\2107\220#\220T\230\026\230v\240Q\330\010\020\220\006\220g\230Z\240t\2509\260A\330\004\013\210=\230\001\230\021\330\004\007\200u\210C\210q\330\010\021\220\032\2301\230H\240G\2507\260#\260Q\330\034'\240q\330\010\013\2107\220#\220Q\330\014\024\220F\230'\240\032\2504\250y""\270\001\330\010\020\220\006\220f\230J\240i\250q\260\t\270\031\300!\340\004\005\330\010\r\320\r \240\001\330\010\024\220A\330\010\r\320\r\"\240,\250a\330\004\013\210=\230\001\330\010\020\220\006\220g\230Z\240t\2509\260O\3002\300Q\340\004\021\220\027\230\004\230N\250!\330\010\t\360\010\000\005\020\210q\330\t\021\220\032\230;\240a\330\t\021\220\030\230\033\240A\340\004\014\210A\330\004\010\210\010\220\005\220Q\220c\230\032\2402\240Q\330\010\r\210W\220B\220f\230F\240*\250A\330\010\017\210y\230\002\230,\240d\250)\2601\260A\330\010\023\320\023(\250\001\330\014\020\220\001\220\035\230j\250\001\250\025\250h\260k\300\021\330\014\024\220A\330\010\013\2109\220C\220q\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\013\2108\2201\220H\230C\230q\330\014\024\320\024%\240Q\240h\250a\250q\330\014\017\210q\330\020\034\230H\240N\260)\2701\340\020\030\230\006\230f\240J\250i\260q\270\010\300\001\300\021\330\030!\240\024\240Y\250a\330\010\020\220\010\230\001\230\030\240\022\2401\330\010\020\220\007\220r\230\030\240\035\250k\270\021\330\031'\240q\330\036$\240I\250R\250s\260(\270!\330\036+\2508\2601\260A\260Q\330+9\270\021\270!\270;\300j\320PQ\320QR\320RS\320S\\\320\\f\320fk\320kq\320qr\320rs\320st\320tu\330\035!\240\023\240E\250\031\260!\2601\330\010\022\220!\330\010\014\210E\220\021\330\014\025\220^\2401\240A\240Q\240i\250q\260\004\260A\260X\270S\300\004\300A\330\014\027\220q\330\020\021\220\021\220)\2303\230a\230v\240T\250\021\250*\260C\260v\270T\300\021\300)\3104\310r\320QR\330\014\021\220\022\2202\220Q\220j\240\001\240\021\240!\330\014\017\210q\330\020\021\330\024\034\230B\230h\240h\250h\260a\260q\270\t\300\032\3101\330\027\030\340\010\020\220\007\220r\230\030\240\030\250\033\260G\2706\300\021\330\004\014\210F\220&\230\n\320\"7\260y\300\004\300I\310Q\320\000\037\230x\240q\330\004\014\210A\330\004\010\210\005\210S\220\t\230\021\320\032*\250)\2603\260a\330\010\t\330\014\023\2205\230\006\230a\230q\240\006\240a\240q\330\017\020\330\014\r\330\010\020\220\010\230\n\240!\2406\250""\033\260A\260Q\330\010\014\210E\220\021\330\014\r\330\020\025\220Q\220d\230!\230<\240q\330\020\027\220r\230\024\230Q\230h\240a\330\020\027\220r\230\024\230Q\230m\2502\250T\260\021\260)\2701\330\020\023\220:\230Q\230f\240A\330\024\033\2305\240\006\240a\240y\260\004\260F\270(\300!\330\020\023\2201\330\024\031\230\027\240\002\240(\250&\260\010\270\001\330\023\024\330\020\021\330\004\010\210\007\210x\220s\230(\240!\240<\250y\270\003\2701\330\010\017\210q\330\010\014\210E\220\023\220I\230Q\230l\250&\260\003\2601\330\014\020\220\001\220\021\220&\230\001\230\026\230q\240\006\240a\240q\330\010\013\2101\330\014\021\220\027\230\002\230(\240'\250\030\260\021\330\004\016\210a\330\004\013\2101\330\004\010\210\005\210Q\330\010\017\210q\220\001\220\031\230%\230v\240Q\240a\240q\250\t\260\032\2701\330\010\013\2104\210w\220a\330\014\020\220\004\220A\220Q\330\014\020\220\007\220q\230\001\330\004\013\2101";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
@@ -9922,32 +9922,32 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 0, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 39};
     PyObject* const varnames[] = {0};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_loop_py, __pyx_mstate->__pyx_n_u_compression_stats, __pyx_mstate->__pyx_kp_b_iso88591_1_t1A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_loop_py, __pyx_mstate->__pyx_n_u_compression_stats, __pyx_mstate->__pyx_kp_b_iso88591_1_t1A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 44};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_stats, __pyx_mstate->__pyx_n_u_tin, __pyx_mstate->__pyx_n_u_tout, __pyx_mstate->__pyx_n_u_ratio};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_loop_py, __pyx_mstate->__pyx_n_u_record_stats, __pyx_mstate->__pyx_kp_b_iso88591_A_c_c_A_s_7_7_3a_Qe2U_V83c_1_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_loop_py, __pyx_mstate->__pyx_n_u_record_stats, __pyx_mstate->__pyx_kp_b_iso88591_A_c_c_A_s_7_7_3a_Qe2U_V83c_1_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 11, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 59};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_body, __pyx_mstate->__pyx_n_u_sys_2, __pyx_mstate->__pyx_n_u_Path_2, __pyx_mstate->__pyx_n_u_rootdir, __pyx_mstate->__pyx_n_u_vendor, __pyx_mstate->__pyx_n_u_os_2, __pyx_mstate->__pyx_n_u_minify_request, __pyx_mstate->__pyx_n_u_build_config, __pyx_mstate->__pyx_n_u_cfg, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_stats};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_loop_py, __pyx_mstate->__pyx_n_u_compress, __pyx_mstate->__pyx_kp_b_iso88591_IQ_e1IXRwa_S_9Bl_A_wgT_E_A_8_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_loop_py, __pyx_mstate->__pyx_n_u_compress, __pyx_mstate->__pyx_kp_b_iso88591_IQ_e1IXRwa_S_9Bl_A_wgT_E_A_8_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 7, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 87};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_text, __pyx_mstate->__pyx_n_u_out, __pyx_mstate->__pyx_n_u_frame_output, __pyx_mstate->__pyx_n_u_framed, __pyx_mstate->__pyx_n_u__6, __pyx_mstate->__pyx_n_u_process_output, __pyx_mstate->__pyx_n_u_beautify_fn};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_loop_py, __pyx_mstate->__pyx_n_u_beautify_2, __pyx_mstate->__pyx_kp_b_iso88591_HA_L_a_q_T_q_Zq_1_l_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_loop_py, __pyx_mstate->__pyx_n_u_beautify_2, __pyx_mstate->__pyx_kp_b_iso88591_HA_L_a_q_T_q_Zq_1_l_1_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 15, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 108};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_content, __pyx_mstate->__pyx_n_u_calls, __pyx_mstate->__pyx_n_u_m, __pyx_mstate->__pyx_n_u_data, __pyx_mstate->__pyx_n_u_items, __pyx_mstate->__pyx_n_u_d, __pyx_mstate->__pyx_n_u_fn, __pyx_mstate->__pyx_n_u_name, __pyx_mstate->__pyx_n_u_args, __pyx_mstate->__pyx_n_u_fname, __pyx_mstate->__pyx_n_u_body, __pyx_mstate->__pyx_n_u_seen, __pyx_mstate->__pyx_n_u_uniq, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_key};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_loop_py, __pyx_mstate->__pyx_n_u_parse_text_calls, __pyx_mstate->__pyx_kp_b_iso88591_xq_A_S_3a_5_aq_aq_6_AQ_E_Qd_q_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_loop_py, __pyx_mstate->__pyx_n_u_parse_text_calls, __pyx_mstate->__pyx_kp_b_iso88591_xq_A_S_3a_5_aq_aq_6_AQ_E_Qd_q_r, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 22, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 143};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_task, __pyx_mstate->__pyx_n_u_on_event, __pyx_mstate->__pyx_n_u_prompt, __pyx_mstate->__pyx_n_u_system, __pyx_mstate->__pyx_n_u_max_steps, __pyx_mstate->__pyx_n_u_mode, __pyx_mstate->__pyx_n_u_result, __pyx_mstate->__pyx_n_u_register_all, __pyx_mstate->__pyx_n_u_list_tools, __pyx_mstate->__pyx_n_u_executor_tool, __pyx_mstate->__pyx_n_u_e, __pyx_mstate->__pyx_n_u_sys_prompt, __pyx_mstate->__pyx_n_u_messages, __pyx_mstate->__pyx_n_u_steps, __pyx_mstate->__pyx_n_u_step, __pyx_mstate->__pyx_n_u_comp, __pyx_mstate->__pyx_n_u_response, __pyx_mstate->__pyx_n_u_calls, __pyx_mstate->__pyx_n_u_outputs, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_c};
-    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_loop_py, __pyx_mstate->__pyx_n_u_run, __pyx_mstate->__pyx_kp_b_iso88591_fJ_A_T_Qj_T_Qj_1D_A_t7_T_vQ_gZt, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_loop_py, __pyx_mstate->__pyx_n_u_run, __pyx_mstate->__pyx_kp_b_iso88591_fJ_A_T_Qj_T_Qj_1D_A_t7_T_vQ_gZt, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

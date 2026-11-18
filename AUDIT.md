@@ -1,17 +1,17 @@
-# greylocalrag Architecture & Model Audit
+# greymicroagent Architecture & Model Audit
 
 **Date:** 2026-10-27 · **Machine:** i7-12800H (20 threads), 62 GB RAM (26 GB free), RTX A4500 16 GB (held by greyagent's 27B on :7080)
-**Scope:** fork harness at `~/greylocalrag` + the 2B model it runs. All numbers measured live on this machine, CPU-only, NGL=0, 8 threads, ctx 8192 (bench) / 65536 (config default).
+**Scope:** fork harness at `~/greymicroagent` + the 2B model it runs. All numbers measured live on this machine, CPU-only, NGL=0, 8 threads, ctx 8192 (bench) / 65536 (config default).
 
 ---
 
-## 1. What greylocalrag actually is
+## 1. What greymicroagent actually is
 
 A **fork of the greyagent harness**, stripped to one job: run a small abliterated GGUF locally, CPU-first, with a slimtoken lane in front.
 
 | Layer | Path | Notes |
 |---|---|---|
-| Launcher | `bin/greylocalrag` → `~/.local/bin/greylocalrag` | Slot allocation: model 7080 (free-fall 4444–4447), lane 7081 (4454–4457) |
+| Launcher | `bin/greymicroagent` → `~/.local/bin/greymicroagent` | Slot allocation: model 7080 (free-fall 4444–4447), lane 7081 (4454–4457) |
 | Model server | `vendor/greymini-server/greymini-server` | vendored llama.cpp build `b3fa6995` |
 | Boot logic | `build/src/server.py` | ctx ladder 64k→32k floor, thinking **off** by default, `TEMP=0.2` hardcoded, q4_0 KV cache, FA on, NGL=0 CPU mode |
 | Lane | slimtoken, 24 000-char distill cap | client-side in-front filter only (port policy) |
@@ -73,7 +73,7 @@ Harness: `state/bench/model_bench.py` — 9-task agent suite (tool-call JSON, mu
 
 | Model | Size | Where | Status |
 |---|---|---|---|
-| **Huihui-Qwen3.5-4B-abliterated Q4_K_M** | 2.71 GB | `~/.greylocalrag/models/` (downloaded this session) | benched — same pass rate, 2.5× slower |
+| **Huihui-Qwen3.5-4B-abliterated Q4_K_M** | 2.71 GB | `~/.greymicroagent/models/` (downloaded this session) | benched — same pass rate, 2.5× slower |
 | **Huihui-Qwen3.6-35B-A3B Opus-abl IQ3_XXS** | 13.62 GB | `~/models/huihui-qwen36-35b-opus-abliterated/` (already local) | benched — best quality, 2.7 t/s |
 | Huihui-Qwen3.5-9B-abliterated Q4_K_M | ~5.5 GB | HF `mradermacher/Huihui-Qwen3.5-9B-abliterated-GGUF` | not benched (not expected to beat 4B on this suite) |
 | Huihui-Qwen3.5-27B-abliterated | ~13 GB | HF `huihui-ai/Huihui-Qwen3.5-27B-abliterated-GGUF` | not local |
@@ -94,19 +94,19 @@ Harness: `state/bench/model_bench.py` — 9-task agent suite (tool-call JSON, mu
 ```bash
 # 4B as default (same slot, CPU):
 # replace MODEL_PATH in build/src/server.py with:
-#   /home/grey/.greylocalrag/models/Huihui-Qwen3.5-4B-abliterated-Q4_K_M.gguf
-# then: greylocalrag   (launcher picks up the new path)
+#   /home/grey/.greymicroagent/models/Huihui-Qwen3.5-4B-abliterated-Q4_K_M.gguf
+# then: greymicroagent   (launcher picks up the new path)
 
 # 35B-A3B as a SECOND model (batch/think-hard slot):
-cd ~/greylocalrag && nohup env LD_LIBRARY_PATH="$PWD/vendor/greymini-server" \
+cd ~/greymicroagent && nohup env LD_LIBRARY_PATH="$PWD/vendor/greymini-server" \
   CUDA_VISIBLE_DEVICES="" vendor/greymini-server/greymini-server \
   --model /home/grey/models/huihui-qwen36-35b-opus-abliterated/Huihui-Qwen3.6-35B-A3B-Claude-4.7-Opus-abliterated.i1-IQ3_XXS.gguf \
   --host 127.0.0.1 --port 7082 --ctx-size 32768 --n-gpu-layers 0 --threads 8 \
-  --flash-attn off --reasoning off --jinja --alias greylocalrag --metrics \
+  --flash-attn off --reasoning off --jinja --alias greymicroagent --metrics \
   > state/model-boot-7082.log 2>&1 &
 ```
 
-## 7. Best use for greylocalrag (the "perfect use")
+## 7. Best use for greymicroagent (the "perfect use")
 
 **The research-library audit driver** (`handoff/library-agent.py`) is the perfect fit, and it's already built:
 
@@ -122,11 +122,11 @@ cd ~/greylocalrag && nohup env LD_LIBRARY_PATH="$PWD/vendor/greymini-server" \
 
 | File | Path |
 |---|---|
-| This audit | `~/greylocalrag/AUDIT.md` |
-| Comparison doc + charts | `~/greylocalrag/COMPARISON.md` |
-| Bench harness | `~/greylocalrag/state/bench/model_bench.py` |
-| Bench results (JSON) | `~/greylocalrag/state/bench/qwen{2b,4b,35b}.json` |
-| Charts (PNG) | `~/greylocalrag/state/bench/chart-{speed,tasks,tradeoff,ram}.png` |
-| Chart generator | `~/greylocalrag/state/bench/make_charts.py` |
-| Boot logs | `~/greylocalrag/state/bench/boot-{4444,4445,4446}.log` |
-| 4B model (new) | `~/.greylocalrag/models/Huihui-Qwen3.5-4B-abliterated-Q4_K_M.gguf` |
+| This audit | `~/greymicroagent/AUDIT.md` |
+| Comparison doc + charts | `~/greymicroagent/COMPARISON.md` |
+| Bench harness | `~/greymicroagent/state/bench/model_bench.py` |
+| Bench results (JSON) | `~/greymicroagent/state/bench/qwen{2b,4b,35b}.json` |
+| Charts (PNG) | `~/greymicroagent/state/bench/chart-{speed,tasks,tradeoff,ram}.png` |
+| Chart generator | `~/greymicroagent/state/bench/make_charts.py` |
+| Boot logs | `~/greymicroagent/state/bench/boot-{4444,4445,4446}.log` |
+| 4B model (new) | `~/.greymicroagent/models/Huihui-Qwen3.5-4B-abliterated-Q4_K_M.gguf` |

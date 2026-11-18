@@ -17,7 +17,7 @@ _O = [" ██████╗ ", "██╔═══██╗", "██║   █
 _C = [" ██████╗", "██╔════╝", "██║     ", "██║     ", "╚██████╗", " ╚═════╝"]
 _A = [" █████╗ ", "██╔══██╗", "███████║", "██╔══██║", "██║  ██║", "╚═╝  ╚═╝"]
 
-_NAME = "GREYLOCALRAG"
+_NAME = "GREYMICROAGENT"
 _BYLINE = "grounded answers from your own knowledge - RAG for CPU-only machines"
 _HOWTO = [
     "Ask anything. Answers come from your KB with citations, temperature cold.",

@@ -33,7 +33,7 @@ Usage:
 import argparse, json, os, re, shutil, subprocess, sys, time, urllib.request
 from pathlib import Path
 
-ROOT = Path.home() / "grey" / "research-libary"   # greylocalrag fork: the REAL library is ~/grey/research-libary (HOME is /home/grey, project dir is grey)
+ROOT = Path.home() / "grey" / "research-libary"   # greymicroagent fork: the REAL library is ~/grey/research-libary (HOME is /home/grey, project dir is grey)
 HANDOFF = ROOT / "handoff"
 STATE = HANDOFF / "state.json"
 LEDGER = HANDOFF / "ledger.md"

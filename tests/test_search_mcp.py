@@ -12,9 +12,9 @@ def test_search_parses_results(monkeypatch):
 
 def test_health_blocks_then_clears(tmp_path, monkeypatch):
     runf = tmp_path / "search-run"; runf.write_text("1")
-    monkeypatch.setenv("GREYLOCALRAG_SEARCH_RUN_FILE", str(runf))
-    monkeypatch.setenv("GREYLOCALRAG_HEALTH_WAIT_S", "12")
-    monkeypatch.setenv("GREYLOCALRAG_HEALTH_REPOLL_S", "12")
+    monkeypatch.setenv("GREYMICROAGENT_SEARCH_RUN_FILE", str(runf))
+    monkeypatch.setenv("GREYMICROAGENT_HEALTH_WAIT_S", "12")
+    monkeypatch.setenv("GREYMICROAGENT_HEALTH_REPOLL_S", "12")
     import threading, time
     def clear(): time.sleep(13); runf.unlink()
     threading.Thread(target=clear, daemon=True).start()
@@ -23,9 +23,9 @@ def test_health_blocks_then_clears(tmp_path, monkeypatch):
 def test_wait_releases_the_moment_run_file_clears(tmp_path, monkeypatch):
     import threading, time
     runf = tmp_path / "search-run"; runf.write_text("1")
-    monkeypatch.setenv("GREYLOCALRAG_SEARCH_RUN_FILE", str(runf))
-    monkeypatch.setenv("GREYLOCALRAG_HEALTH_WAIT_S", "60")
-    monkeypatch.setenv("GREYLOCALRAG_HEALTH_REPOLL_S", "10")
+    monkeypatch.setenv("GREYMICROAGENT_SEARCH_RUN_FILE", str(runf))
+    monkeypatch.setenv("GREYMICROAGENT_HEALTH_WAIT_S", "60")
+    monkeypatch.setenv("GREYMICROAGENT_HEALTH_REPOLL_S", "10")
     def clear(): time.sleep(1.5); runf.unlink()
     threading.Thread(target=clear, daemon=True).start()
     t0 = time.time()
@@ -36,9 +36,9 @@ def test_wait_releases_the_moment_run_file_clears(tmp_path, monkeypatch):
 def test_wait_cap_is_bounded_no_wedge(tmp_path, monkeypatch):
     import time
     runf = tmp_path / "search-run"; runf.write_text("1")
-    monkeypatch.setenv("GREYLOCALRAG_SEARCH_RUN_FILE", str(runf))
-    monkeypatch.setenv("GREYLOCALRAG_HEALTH_WAIT_S", "1")
-    monkeypatch.setenv("GREYLOCALRAG_HEALTH_REPOLL_S", "10")
+    monkeypatch.setenv("GREYMICROAGENT_SEARCH_RUN_FILE", str(runf))
+    monkeypatch.setenv("GREYMICROAGENT_HEALTH_WAIT_S", "1")
+    monkeypatch.setenv("GREYMICROAGENT_HEALTH_REPOLL_S", "10")
     t0 = time.time()
     waited = search_mcp.health_wait()
     dt = time.time() - t0
@@ -57,7 +57,7 @@ def test_search_failover_across_instances(monkeypatch):
         return R()
     monkeypatch.setattr(search_mcp, "_fetch", fake)
     monkeypatch.setattr(search_mcp, "SPACING_S", 0.0)
-    monkeypatch.setenv("GREYLOCALRAG_SEARX_BASES", "searx.be, search.bus-hit.me")
+    monkeypatch.setenv("GREYMICROAGENT_SEARX_BASES", "searx.be, search.bus-hit.me")
     out = search_mcp.search("q", 2)
     assert out == [{"url": "https://x/1", "title": "t", "snippet": "s"}]
     assert len(calls) == 2 and "searx.be" in calls[0] and "search.bus-hit.me" in calls[1]
@@ -67,7 +67,7 @@ def test_search_k_caps_and_missing_fields_tolerated(monkeypatch):
         status = 200
         def read(self): return b'{"results":[{"title":"a","url":"https://a","content":"x"},{"title":"b","url":"https://b"},{"url":"https://c"},{"title":"d","url":"https://d"}]}'
     monkeypatch.setattr(search_mcp, "_fetch", lambda url, t: R())
-    monkeypatch.setenv("GREYLOCALRAG_SEARX_BASES", "searx.be")
+    monkeypatch.setenv("GREYMICROAGENT_SEARX_BASES", "searx.be")
     out = search_mcp.search("q", 3)
     assert len(out) == 3 and out[0]["snippet"] == "x" and out[1]["snippet"] == "" and out[2]["title"] == ""
 
@@ -77,7 +77,7 @@ def test_search_all_instances_fail_returns_empty(monkeypatch):
         raise urllib.error.URLError("down")
     monkeypatch.setattr(search_mcp, "_fetch", fake)
     monkeypatch.setattr(search_mcp, "SPACING_S", 0.0)
-    monkeypatch.setenv("GREYLOCALRAG_SEARX_BASES", "a.test,b.test")
+    monkeypatch.setenv("GREYMICROAGENT_SEARX_BASES", "a.test,b.test")
     assert search_mcp.search("q", 5) == []
 
 def test_spacing_constant_is_three_seconds():
@@ -86,10 +86,10 @@ def test_spacing_constant_is_three_seconds():
 def test_health_pending_after_cap_skips_probe(tmp_path, monkeypatch):
     import time
     runf = tmp_path / "search-run"; runf.write_text("1")
-    monkeypatch.setenv("GREYLOCALRAG_SEARCH_RUN_FILE", str(runf))
-    monkeypatch.setenv("GREYLOCALRAG_HEALTH_WAIT_S", "1")
-    monkeypatch.setenv("GREYLOCALRAG_HEALTH_REPOLL_S", "10")
-    monkeypatch.setenv("GREYLOCALRAG_SEARX_BASES", "a.test")
+    monkeypatch.setenv("GREYMICROAGENT_SEARCH_RUN_FILE", str(runf))
+    monkeypatch.setenv("GREYMICROAGENT_HEALTH_WAIT_S", "1")
+    monkeypatch.setenv("GREYMICROAGENT_HEALTH_REPOLL_S", "10")
+    monkeypatch.setenv("GREYMICROAGENT_SEARX_BASES", "a.test")
     hits = []
     class R:
         status = 200
@@ -110,8 +110,8 @@ def test_stdio_server_pending_health_offline(tmp_path):
     import json, subprocess, os
     runf = tmp_path / "search-run"; runf.write_text("1")
     script = pathlib.Path(__file__).resolve().parents[1] / "services" / "search_mcp.py"
-    env = {**os.environ, "GREYLOCALRAG_SEARCH_RUN_FILE": str(runf),
-           "GREYLOCALRAG_HEALTH_WAIT_S": "0", "GREYLOCALRAG_SEARX_BASES": "a.test"}
+    env = {**os.environ, "GREYMICROAGENT_SEARCH_RUN_FILE": str(runf),
+           "GREYMICROAGENT_HEALTH_WAIT_S": "0", "GREYMICROAGENT_SEARX_BASES": "a.test"}
     p = subprocess.Popen([sys.executable, str(script)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, env=env)
     def rpc(i, m, params=None):
         msg = {"jsonrpc": "2.0", "id": i, "method": m}
@@ -129,21 +129,21 @@ def test_stdio_server_pending_health_offline(tmp_path):
     p.wait(timeout=5)
 
 def test_search_health_absent_run_file_probes_instently(tmp_path, monkeypatch):
-    monkeypatch.delenv("GREYLOCALRAG_SEARCH_RUN_FILE", raising=False)
-    monkeypatch.setenv("GREYLOCALRAG_HEALTH_REPOLL_S", "300")
+    monkeypatch.delenv("GREYMICROAGENT_SEARCH_RUN_FILE", raising=False)
+    monkeypatch.setenv("GREYMICROAGENT_HEALTH_REPOLL_S", "300")
     monkeypatch.setattr(search_mcp, "_probe_cache", {})
     class R:
         status = 200
         def read(self): return b'{"results":[]}'
     monkeypatch.setattr(search_mcp, "_fetch", lambda url, t: R())
-    monkeypatch.setenv("GREYLOCALRAG_SEARX_BASES", "a.test,b.test")
+    monkeypatch.setenv("GREYMICROAGENT_SEARX_BASES", "a.test,b.test")
     h = search_mcp.search_health()
     assert h["ok"] is True and [i["base"] for i in h["instances"]] == ["https://a.test", "https://b.test"]
 
 def test_search_marks_run_in_flight_and_clears_after(tmp_path, monkeypatch):
     import time
     runf = tmp_path / "search-run"
-    monkeypatch.setenv("GREYLOCALRAG_SEARCH_RUN_FILE", str(runf))
+    monkeypatch.setenv("GREYMICROAGENT_SEARCH_RUN_FILE", str(runf))
     monkeypatch.setattr(search_mcp, "SPACING_S", 0.0)
     monkeypatch.setattr(search_mcp, "bases", lambda: ["a.test"])
     seen = {}
@@ -161,7 +161,7 @@ def test_search_marks_run_in_flight_and_clears_after(tmp_path, monkeypatch):
 def test_search_all_fail_clears_run_marker(tmp_path, monkeypatch):
     import urllib.error
     runf = tmp_path / "search-run"
-    monkeypatch.setenv("GREYLOCALRAG_SEARCH_RUN_FILE", str(runf))
+    monkeypatch.setenv("GREYMICROAGENT_SEARCH_RUN_FILE", str(runf))
     monkeypatch.setattr(search_mcp, "SPACING_S", 0.0)
     monkeypatch.setattr(search_mcp, "bases", lambda: ["bad.test", "garbage.test"])
     calls = []

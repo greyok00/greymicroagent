@@ -37,7 +37,7 @@ class FSM:
 
 
 LEDGER_PATH = os.path.expanduser(
-    "~/.greylocalrag/state/supervision/ledger.json")
+    "~/.greymicroagent/state/supervision/ledger.json")
 
 
 class Ledger:

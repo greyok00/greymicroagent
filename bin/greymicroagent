@@ -1,5 +1,5 @@
 #!/bin/bash
-# greylocalrag launcher — greyagent's launcher, copied 2026-10-25 for the greylocalrag
+# greymicroagent launcher — greyagent's launcher, copied 2026-10-25 for the greymicroagent
 # fork (owner order: same harness, different model + shorter context). Owner
 # 2026-11-17: this fork gets completely unique ports (block 7640-7647) never
 # used by anything else, its own renamed model server, and custom configs.
@@ -13,9 +13,9 @@
 #      port)
 #   6. exit reaps ONLY what THIS session spawned (model pid file + slim + gate),
 #      never a pre-existing server, never a foreign lane.
-# Port policy lives in ~/.greylocalrag/agent/port_policy.json: this fork owns
+# Port policy lives in ~/.greymicroagent/agent/port_policy.json: this fork owns
 # its 7640-7647 block alone — every other family's port is off limits.
-# Model home: ~/.greylocalrag (model file, agent sessions) — nothing touched in
+# Model home: ~/.greymicroagent (model file, agent sessions) — nothing touched in
 # greyagent/claude/cortexagent homes.
 
 set -uo pipefail
@@ -24,7 +24,7 @@ ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
 CLI="$ROOT/tui/packages/coding-agent/dist/cli.js"
 # --- PORT ALLOCATION (owner 2026-10-25: "don't ruin the current running one;
 # a new launch uses new ports") -----------------------------------------------
-# greylocalrag owns port block 7640-7647 outright (owner 2026-11-17: completely
+# greymicroagent owns port block 7640-7647 outright (owner 2026-11-17: completely
 # unique ports never used by anything else — verified free against every
 # port_policy.json and every live listener; below the Linux ephemeral range, so
 # the kernel never auto-assigns them). Each launch takes the next FREE triple:
@@ -47,19 +47,19 @@ for _k in "${!_models[@]}"; do
   fi
 done
 if [ -z "$MODEL_PORT" ]; then
-  echo "greylocalrag: all sessions in use (7640-7647 block) — close one before opening another" >&2
-  echo "greylocalrag: the spare pair 7646-7647 expands the block for a future third session" >&2
+  echo "greymicroagent: all sessions in use (7640-7647 block) — close one before opening another" >&2
+  echo "greymicroagent: the spare pair 7646-7647 expands the block for a future third session" >&2
   exit 1
 fi
 export GREYAGENT_MODEL_PORT="$MODEL_PORT"
 export GREYAGENT_LANE_PORT="$LANE_PORT"
 export RAG_GATE_PORT="$LANE_PORT"
 export GREYAGENT_SLIM_PORT="$SLIM_PORT"
-export GREYLOCALRAG_UPSTREAM="http://127.0.0.1:${SLIM_PORT}"
-export GREYLOCALRAG_DBS="commands,general"
-export GREYLOCALRAG_DBS_ROOT="$HOME/.greylocalrag/dbs"
-export GREYLOCALRAG_RAG_FLOOR="${GREYLOCALRAG_RAG_FLOOR:-7.5}"
-mkdir -p "$GREYLOCALRAG_DBS_ROOT"
+export GREYMICROAGENT_UPSTREAM="http://127.0.0.1:${SLIM_PORT}"
+export GREYMICROAGENT_DBS="commands,general"
+export GREYMICROAGENT_DBS_ROOT="$HOME/.greymicroagent/dbs"
+export GREYMICROAGENT_RAG_FLOOR="${GREYMICROAGENT_RAG_FLOOR:-7.5}"
+mkdir -p "$GREYMICROAGENT_DBS_ROOT"
 # the TUI's while-loading health poll must watch THIS session's model port
 export GREYAGENT_MODEL_HEALTH_URL="http://127.0.0.1:${MODEL_PORT}/health"
 # TOOL-DIR-SEPARATION (owner order 2026-10-24): agent's own home = cwd.
@@ -82,14 +82,14 @@ unset GREYAGENT_CTX GREYAGENT_NGL GREYAGENT_UBATCH GREYAGENT_CTYPE \
       GREYAGENT_THINKING GREYAGENT_TEMP GREYAGENT_TOP_P \
       GREYAGENT_LOCAL_BASE GREYAGENT_MEMORY_DIR GREYAGENT_FA \
       GREYAGENT_PLATFORM 2>/dev/null || true
-export GREYAGENT_CODING_AGENT_DIR="${GREYAGENT_CODING_AGENT_DIR:-$HOME/.greylocalrag/agent}"
+export GREYAGENT_CODING_AGENT_DIR="${GREYAGENT_CODING_AGENT_DIR:-$HOME/.greymicroagent/agent}"
 # Owner 2026-11-16: this fork runs cold — 0.0-0.2 band, baked at 0.1. The RAG
 # gate clamps every request into the band regardless of what arrives.
 export GREYAGENT_TEMP="${GREYAGENT_TEMP:-0.1}"
 export GREYAGENT_TOP_P="${GREYAGENT_TOP_P:-0.95}"
 mkdir -p "$GREYAGENT_CODING_AGENT_DIR/sessions" "$GREYAGENT_CODING_AGENT_DIR/extensions"
 mkdir -p "$ROOT/state/audit" "$ROOT/state/logs"
-mkdir -p "$HOME/.greylocalrag/memory/hot" "$HOME/.greylocalrag/state/scheduler" "$HOME/.greylocalrag/mcp-status"
+mkdir -p "$HOME/.greymicroagent/memory/hot" "$HOME/.greymicroagent/state/scheduler" "$HOME/.greymicroagent/mcp-status"
 
 # --- MASK: foreign harness env never reaches this fork or its children -----
 unset CLAUDE_CONFIG_DIR CLAUDE_MODEL_NAME CLAUDE_CODE_SUBAGENT_MODEL \
@@ -109,7 +109,7 @@ unset OLLAMA_HOST LLAMA_BASE_URL 2>/dev/null || true
 
 # --- FROZEN-TREE GATE: no boot on a desynced artifact set (fail loudly) ------
 if ! python3 "$ROOT/bin/verify_compiled.py"; then
-  echo "greylocalrag: frozen-tree check FAILED — TUI not started (see lines above)" >&2
+  echo "greymicroagent: frozen-tree check FAILED — TUI not started (see lines above)" >&2
   exit 1
 fi
 
@@ -121,15 +121,15 @@ export CORTEX_SKIP_VERSION_CHECK=1
 export CORTEX_TELEMETRY=0
 # Status panels + hot memory write HERE (owner 2026-10-25: "do not contaminate
 # the two") — the TUI's compiled fallbacks point at ~/.greyagent; these envs
-# must WIN so greylocalrag's memory/scheduler/status state stays in its own home.
-export CORTEXAGENT_MEMORY_DIR="$HOME/.greylocalrag/memory"
-export CORTEXAGENT_STATE_DIR="$HOME/.greylocalrag/state"
-export CORTEXAGENT_STATUS_DIR="$HOME/.greylocalrag/mcp-status"
+# must WIN so greymicroagent's memory/scheduler/status state stays in its own home.
+export CORTEXAGENT_MEMORY_DIR="$HOME/.greymicroagent/memory"
+export CORTEXAGENT_STATE_DIR="$HOME/.greymicroagent/state"
+export CORTEXAGENT_STATUS_DIR="$HOME/.greymicroagent/mcp-status"
 # The memory MCP server (.so) reads DIFFERENT env names (GREYAGENT_PLATFORM /
 # GREYAGENT_MEMORY_DIR); set them too so every memory consumer agrees on the
 # fork home even if a module's baked default is ever bypassed.
-export GREYAGENT_PLATFORM="greylocalrag"
-export GREYAGENT_MEMORY_DIR="$HOME/.greylocalrag/memory"
+export GREYAGENT_PLATFORM="greymicroagent"
+export GREYAGENT_MEMORY_DIR="$HOME/.greymicroagent/memory"
 # The brain's base URL is set ONCE here (the GATE's /v1 when the chain came
 # up; fallbacks point it at slimtoken direct when the gate is down, at the
 # model direct when slimtoken is down). set -u: never reference it unset.
@@ -164,7 +164,7 @@ _lane_env() {
   export SLIMTOKEN_MINIFY_TOOLS=1 SLIMTOKEN_MINIFY_SYSTEM=1
   export SLIMTOKEN_KEEP_LAST=4 SLIMTOKEN_MINIFY_BUDGET=1000000
   # 2026-11-08 (owner): hard-savings ledger for this lane — `slimtoken savings`
-  export SLIMTOKEN_STATS_FILE="$HOME/.local/state/slimtoken/stats-greylocalrag.json"
+  export SLIMTOKEN_STATS_FILE="$HOME/.local/state/slimtoken/stats-greymicroagent.json"
   mkdir -p "$HOME/.local/state/slimtoken"
 }
 # gate down = slimtoken direct (grounding off); slimtoken down = model direct
@@ -173,7 +173,7 @@ _lane_direct() { export GREYAGENT_LOCAL_BASE="http://127.0.0.1:${MODEL_PORT}/v1"
 
 if ! _slim_up; then
   if ss -ltn 2>/dev/null | grep -q ":${SLIM_PORT} "; then
-    echo "greylocalrag: :${SLIM_PORT} occupied by a foreign listener — slimtoken skipped, brain falls back to direct :${MODEL_PORT}" >&2
+    echo "greymicroagent: :${SLIM_PORT} occupied by a foreign listener — slimtoken skipped, brain falls back to direct :${MODEL_PORT}" >&2
     _lane_direct
   else
     _lane_env
@@ -181,12 +181,12 @@ if ! _slim_up; then
     SLIM_PID=$!
     for _ in $(seq 1 10); do _slim_up && break; sleep 1; done
     if _slim_up; then
-      echo "greylocalrag: slimtoken :${SLIM_PORT} up (-> model :${MODEL_PORT})"
+      echo "greymicroagent: slimtoken :${SLIM_PORT} up (-> model :${MODEL_PORT})"
     elif [ -n "$(kill -0 "${SLIM_PID}" 2>/dev/null && echo yes)" ]; then
-      echo "greylocalrag: slimtoken did not come up on :${SLIM_PORT} — brain falls back to direct :${MODEL_PORT}" >&2
+      echo "greymicroagent: slimtoken did not come up on :${SLIM_PORT} — brain falls back to direct :${MODEL_PORT}" >&2
       _lane_direct
     else
-      echo "greylocalrag: slimtoken failed to start — brain falls back to direct :${MODEL_PORT}" >&2
+      echo "greymicroagent: slimtoken failed to start — brain falls back to direct :${MODEL_PORT}" >&2
       _lane_direct
     fi
   fi
@@ -199,19 +199,19 @@ fi
 # running (plain message, no fight).
 if _slim_up && ! _gate_up; then
   if ss -ltn 2>/dev/null | grep -q ":${LANE_PORT} "; then
-    echo "greylocalrag: :${LANE_PORT} occupied by a foreign listener — gate skipped, brain on slimtoken :${SLIM_PORT} (grounding off)" >&2
+    echo "greymicroagent: :${LANE_PORT} occupied by a foreign listener — gate skipped, brain on slimtoken :${SLIM_PORT} (grounding off)" >&2
     _gate_direct
   else
     python3 "$ROOT/services/child_wrap.py" python3 "$ROOT/services/rag_gate.py" > "$ROOT/state/logs/gate-${RAG_GATE_PORT}.log" 2>&1 &
     GATE_PID=$!
     for _ in $(seq 1 10); do _gate_up && break; sleep 1; done
     if _gate_up; then
-      echo "greylocalrag: gate :${LANE_PORT} up (RAG grounding -> slimtoken :${SLIM_PORT} -> model :${MODEL_PORT})"
+      echo "greymicroagent: gate :${LANE_PORT} up (RAG grounding -> slimtoken :${SLIM_PORT} -> model :${MODEL_PORT})"
     elif [ -n "$(kill -0 "${GATE_PID}" 2>/dev/null && echo yes)" ]; then
-      echo "greylocalrag: gate did not come up on :${LANE_PORT} — brain on slimtoken :${SLIM_PORT}, grounding off" >&2
+      echo "greymicroagent: gate did not come up on :${LANE_PORT} — brain on slimtoken :${SLIM_PORT}, grounding off" >&2
       _gate_direct
     else
-      echo "greylocalrag: gate failed to start — brain on slimtoken :${SLIM_PORT}, grounding off" >&2
+      echo "greymicroagent: gate failed to start — brain on slimtoken :${SLIM_PORT}, grounding off" >&2
       _gate_direct
     fi
   fi
@@ -249,7 +249,7 @@ if ! _up; then
   if python3 "$ROOT/build/src/vram_check.py" 2>/dev/null; then
     : # GPU free — full offload (NGL -1); the chain forwards once the model lands
   else
-    # 2026-10-25 owner: "greylocalrag would be ram/cpu only with greyagent being
+    # 2026-10-25 owner: "greymicroagent would be ram/cpu only with greyagent being
     # all vram." A GPU held by the 27B sibling is therefore NOT a refusal —
     # this 2B boots CPU-only (11.7 tok/s measured) with its lane kept up,
     # because the model really is coming. Never evict, never OOM-fight.
@@ -279,7 +279,7 @@ while True:
     time.sleep(5)
 PY
     MODEL_PID=$!
-    echo "greylocalrag: model loading in background (qwen3-vl-2b-abliterated on :${MODEL_PORT}, ngl=${GREYAGENT_NGL:--1})"
+    echo "greymicroagent: model loading in background (qwen3-vl-2b-abliterated on :${MODEL_PORT}, ngl=${GREYAGENT_NGL:--1})"
 fi
 if _up; then
   GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated  (up :${MODEL_PORT})"
@@ -288,7 +288,7 @@ fi
 export GREYAGENT_MODEL_UP
 
 # --- splash: 8-bit greyscale (editable source build/src/splash.py wins) -----
-printf '\033]0;GreyLocalRag\007'
+printf '\033]0;GreyMicroagent\007'
 python3 - "$ROOT" "$GREY_MODEL_LINE" <<'PY' 2>/dev/null || true
 import sys, time
 sys.path.insert(0, "%s/build/src" % sys.argv[1])
@@ -302,9 +302,9 @@ time.sleep(0.4)
 sys.stdout.write("\033[?25h")
 PY
 
-# --- front end: forked Node TUI, sessions in ~/.greylocalrag/agent/sessions -----
+# --- front end: forked Node TUI, sessions in ~/.greymicroagent/agent/sessions -----
 # GM-14 (2026-11-03): extensions are owned by the frozen tree. This machine's
-# ~/.greylocalrag/agent is itself a symlink into config/, so the two are the same
+# ~/.greymicroagent/agent is itself a symlink into config/, so the two are the same
 # dir and the copy must be skipped (cp onto itself errors out every boot);
 # on a packaged install (GM-16 deb) the agent dir starts empty and the copy
 # populates it. The dead old block copied build/src/greysearch_core.ts — a
@@ -315,7 +315,7 @@ PY
 # record over the runtime (a runtime edit must be copied back to config-data
 # before the next launch). The self-skip guard stays for the dev-symlink
 # fallback, used only when the record dir is absent.
-_ext_src="$HOME/.greylocalrag/agent/extensions"
+_ext_src="$HOME/.greymicroagent/agent/extensions"
 _ext_record="$ROOT/config-data/extensions"
 _ext_dev="$ROOT/config/extensions"
 if [ -d "$_ext_record" ] && [ "$(realpath "$_ext_src" 2>/dev/null)" != "$(realpath "$_ext_record")" ]; then
@@ -325,24 +325,24 @@ elif [ -d "$_ext_dev" ] && [ "$(realpath "$_ext_src" 2>/dev/null)" != "$(realpat
   mkdir -p "$_ext_src"
   cp -a "$_ext_dev/." "$_ext_src/"
 elif [ ! -d "$_ext_src" ]; then
-  echo "greylocalrag: extension record missing - extensions will not load" >&2
+  echo "greymicroagent: extension record missing - extensions will not load" >&2
 fi
 
 _seed_mcp_registry() {
-  local reg="$HOME/.greylocalrag/agent/mcp_registry.json"
+  local reg="$HOME/.greymicroagent/agent/mcp_registry.json"
   local tpl="$ROOT/config-data/mcp-registry-template.json"
   if [ -f "$reg" ]; then
     return 0
   fi
   if [ ! -f "$tpl" ]; then
-    echo "greylocalrag: MCP registry template missing (config-data/mcp-registry-template.json) - registry not seeded" >&2
+    echo "greymicroagent: MCP registry template missing (config-data/mcp-registry-template.json) - registry not seeded" >&2
     return 0
   fi
-  mkdir -p "$HOME/.greylocalrag/agent"
+  mkdir -p "$HOME/.greymicroagent/agent"
   cp "$tpl" "$reg"
-  echo "greylocalrag: seeded ~/.greylocalrag/agent/mcp_registry.json from the bundled template (first launch)"
+  echo "greymicroagent: seeded ~/.greymicroagent/agent/mcp_registry.json from the bundled template (first launch)"
 }
 _seed_mcp_registry
 
-node "$CLI" --append-system-prompt "$ROOT/model/greylocalrag.md" "$@"
-printf '%s\n' "greylocalrag session ended"
+node "$CLI" --append-system-prompt "$ROOT/model/greymicroagent.md" "$@"
+printf '%s\n' "greymicroagent session ended"

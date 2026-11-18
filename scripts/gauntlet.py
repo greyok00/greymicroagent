@@ -11,7 +11,7 @@ MODEL_PORT, GATE_PORT, SLIM_PORT = 7640, 7641, 7642
 SINK_PORT, CAPGATE_PORT, SPARE_PORT, SCRATCH_PORT = 7643, 7644, 7645, 7646
 BLOCK = (MODEL_PORT, GATE_PORT, SLIM_PORT, SINK_PORT, CAPGATE_PORT, SPARE_PORT,
          SCRATCH_PORT, 7647)
-DBS_ROOT = str(Path.home() / ".greylocalrag" / "dbs")
+DBS_ROOT = str(Path.home() / ".greymicroagent" / "dbs")
 CHILDREN = []
 SINK_REQS = []
 SINK_SERVER = None
@@ -243,11 +243,11 @@ def stop_sink():
 
 
 def launcher_text():
-    return (ROOT / "bin" / "greylocalrag").read_text(encoding="utf-8")
+    return (ROOT / "bin" / "greymicroagent").read_text(encoding="utf-8")
 
 
 def launcher_floor():
-    m = re.search(r'GREYLOCALRAG_RAG_FLOOR="?\$\{GREYLOCALRAG_RAG_FLOOR:-([0-9.]+)\}"?',
+    m = re.search(r'GREYMICROAGENT_RAG_FLOOR="?\$\{GREYMICROAGENT_RAG_FLOOR:-([0-9.]+)\}"?',
                   launcher_text())
     return float(m.group(1)) if m else None
 
@@ -345,7 +345,7 @@ CHOSEN_FLOOR = 19.0
 
 def phase_floor_calibration():
     sys.path.insert(0, str(ROOT / "services"))
-    os.environ["GREYLOCALRAG_DBS_ROOT"] = DBS_ROOT
+    os.environ["GREYMICROAGENT_DBS_ROOT"] = DBS_ROOT
     import rag.kbcore as kb
     db = kb.db_dir("commands")
     rows = kb.pack_rows(db)
@@ -428,13 +428,13 @@ def sup_child(root):
         s.on_event(ev)
         for m in s.drain():
             steers.append({"after_event": i, "msg": m})
-    log = (Path(os.environ["HOME"]) / ".greylocalrag" / "state" / "supervision"
+    log = (Path(os.environ["HOME"]) / ".greymicroagent" / "state" / "supervision"
            / "supervisor.log").read_text(encoding="utf-8", errors="ignore")
     nodes = [int(m) for m in re.findall(r"LADDER-(\d)", log)]
     src = (ROOT / "services" / "supervision" / "supervisor.py").read_text(encoding="utf-8")
     free = {"subprocess": "subprocess" in src, "os.system": "os.system" in src,
             "ctypes.spawn": "ctypes.spawn" in src, "popen": ".popen(" in src.lower()}
-    state = Path(os.environ["HOME"]) / ".greylocalrag" / "state" / "supervision"
+    state = Path(os.environ["HOME"]) / ".greymicroagent" / "state" / "supervision"
     steer_lines = len((state / "steer.jsonl").read_text(encoding="utf-8").splitlines())
     sidecar_lines = len((state / "supervision_events.jsonl").read_text(encoding="utf-8").splitlines())
     ledger = json.loads((state / "ledger.json").read_text(encoding="utf-8"))
@@ -451,7 +451,7 @@ def sup_child(root):
 
 def phase_sup_drill():
     root = tmp_root("glr-glt-sup-")
-    sdir = Path(root) / ".greylocalrag" / "state" / "supervision"
+    sdir = Path(root) / ".greymicroagent" / "state" / "supervision"
     sdir.mkdir(parents=True)
     p = subprocess.run([sys.executable, str(Path(__file__).resolve()),
                         "--sup-child", root], capture_output=True, text=True,
@@ -516,10 +516,10 @@ def phase_hold_release():
     start_sink(SPARE_PORT)
     sink_url = "http://127.0.0.1:%d" % SPARE_PORT
     p = mcp_open(sys.executable, ROOT / "services" / "search_mcp.py", {
-        "GREYLOCALRAG_SEARCH_RUN_FILE": str(runfile),
-        "GREYLOCALRAG_HEALTH_WAIT_S": "6",
-        "GREYLOCALRAG_HEALTH_REPOLL_S": "10",
-        "GREYLOCALRAG_SEARX_BASES": sink_url,
+        "GREYMICROAGENT_SEARCH_RUN_FILE": str(runfile),
+        "GREYMICROAGENT_HEALTH_WAIT_S": "6",
+        "GREYMICROAGENT_HEALTH_REPOLL_S": "10",
+        "GREYMICROAGENT_SEARX_BASES": sink_url,
     })
     sleeper = subprocess.Popen(["sleep", "90"])
     CHILDREN.append(("sleeper", sleeper))
@@ -585,9 +585,9 @@ def phase_consent():
     digest_path = Path(root) / "research-digest.json"
     yes_path = Path(root) / "consent.txt"
     start_sink(SPARE_PORT)
-    real_marker = Path.home() / ".greylocalrag" / "state" / "search-run"
+    real_marker = Path.home() / ".greymicroagent" / "state" / "search-run"
     sp = mcp_open(sys.executable, ROOT / "services" / "search_mcp.py", {
-        "GREYLOCALRAG_SEARX_BASES": os.environ.get("GREYLOCALRAG_SEARX_BASES", "")})
+        "GREYMICROAGENT_SEARX_BASES": os.environ.get("GREYMICROAGENT_SEARX_BASES", "")})
     r0 = time.time()
     try:
         sea = mcp_call(sp, 1, "search", {"query": "robocopy mirror flags windows", "k": 5})
@@ -603,7 +603,7 @@ def phase_consent():
     digest_path.write_text(json.dumps(digest, indent=1), encoding="utf-8")
     sp.terminate()
     rp = mcp_open(sys.executable, ROOT / "services" / "rag_mcp.py", {
-        "GREYLOCALRAG_DBS_ROOT": str(dbs)})
+        "GREYMICROAGENT_DBS_ROOT": str(dbs)})
     st0 = mcp_call(rp, 2, "rag_status", {"db": "commands"})
     zero_before = st0["records"] == 0 and not (dbs / "commands" / "pack.jsonl").exists()
     yes_path.write_text("yes")
@@ -651,7 +651,7 @@ def phase_consent():
 
 
 def model_card_line():
-    card = (ROOT / "model" / "greylocalrag.md").read_text(encoding="utf-8")
+    card = (ROOT / "model" / "greymicroagent.md").read_text(encoding="utf-8")
     for ln in card.splitlines():
         if "Consent law" in ln:
             return ln.strip()
@@ -667,16 +667,16 @@ def phase_offline():
     start_sink(SINK_PORT)
     pp = spawn("supervision-pump", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                      sys.executable, str(ROOT / "services" / "supervision" / "pump.py")], {
-        "GREYLOCALRAG_SESS_ROOT": str(Path(os.environ["HOME"]) / ".greylocalrag" / "agent" / "sessions"),
+        "GREYMICROAGENT_SESS_ROOT": str(Path(os.environ["HOME"]) / ".greymicroagent" / "agent" / "sessions"),
     })
     gp = spawn("gate-off", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                             sys.executable, str(ROOT / "services" / "rag_gate.py")], {
         "RAG_GATE_PORT": str(CAPGATE_PORT),
-        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % SINK_PORT,
-        "GREYLOCALRAG_DBS": "commands",
-        "GREYLOCALRAG_DBS_ROOT": str(dbs),
-        "GREYLOCALRAG_STATE_DIR": str(state),
-        "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
+        "GREYMICROAGENT_UPSTREAM": "http://127.0.0.1:%d" % SINK_PORT,
+        "GREYMICROAGENT_DBS": "commands",
+        "GREYMICROAGENT_DBS_ROOT": str(dbs),
+        "GREYMICROAGENT_STATE_DIR": str(state),
+        "GREYMICROAGENT_RAG_FLOOR": str(launcher_floor()),
     })
     up = wait_up("http://127.0.0.1:%d/health" % CAPGATE_PORT)
     if not up:
@@ -686,7 +686,7 @@ def phase_offline():
         stop_sink()
         shutil.rmtree(root, ignore_errors=True)
         return 1, {"error": "gate up failed"}
-    body = {"model": "greylocalrag", "max_tokens": 16,
+    body = {"model": "greymicroagent", "max_tokens": 16,
             "messages": [{"role": "user", "content": "what does robocopy /MIR do?"}]}
     url = "http://127.0.0.1:%d/v1/chat/completions" % CAPGATE_PORT
     offline_before = "[OFFLINE-MODE]" not in json.dumps(SINK_REQS)
@@ -730,11 +730,11 @@ def phase_floor_reproof():
     gp = spawn("gate-rep", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                             sys.executable, str(ROOT / "services" / "rag_gate.py")], {
         "RAG_GATE_PORT": str(CAPGATE_PORT),
-        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % SINK_PORT,
-        "GREYLOCALRAG_DBS": "commands",
-        "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-        "GREYLOCALRAG_STATE_DIR": str(root),
-        "GREYLOCALRAG_RAG_FLOOR": str(floor),
+        "GREYMICROAGENT_UPSTREAM": "http://127.0.0.1:%d" % SINK_PORT,
+        "GREYMICROAGENT_DBS": "commands",
+        "GREYMICROAGENT_DBS_ROOT": DBS_ROOT,
+        "GREYMICROAGENT_STATE_DIR": str(root),
+        "GREYMICROAGENT_RAG_FLOOR": str(floor),
     })
     if not wait_up("http://127.0.0.1:%d/health" % CAPGATE_PORT):
         say("gate did not come up")
@@ -746,7 +746,7 @@ def phase_floor_reproof():
 
     def capture(q):
         SINK_REQS.clear()
-        body = {"model": "greylocalrag", "max_tokens": 16,
+        body = {"model": "greymicroagent", "max_tokens": 16,
                 "messages": [{"role": "user", "content": q}]}
         http_post_json(url, body, 30)
         sysc = SINK_REQS[-1]["messages"][-1]["content"]
@@ -796,12 +796,12 @@ QUIZ = [
 
 def harness_env(extra):
     for k in list(os.environ):
-        if k.startswith(("GREYAGENT_", "GREYLOCALRAG_", "SLIMTOKEN_", "RAG_GATE_",
+        if k.startswith(("GREYAGENT_", "GREYMICROAGENT_", "SLIMTOKEN_", "RAG_GATE_",
                          "CORTEXAGENT_", "CLAUDE", "ANTHROPIC", "PI_", "CORTEX_")):
             del os.environ[k]
     os.environ.setdefault("GREYAGENT_THINKING", "off")
-    os.environ["GREYLOCALRAG_THREADS"] = "4"
-    os.environ["GREYLOCALRAG_ASSUME_RAM_GB"] = "8"
+    os.environ["GREYMICROAGENT_THREADS"] = "4"
+    os.environ["GREYMICROAGENT_ASSUME_RAM_GB"] = "8"
     os.environ["GREYAGENT_NGL"] = "0"
     os.environ["CUDA_VISIBLE_DEVICES"] = ""
     os.environ["GREYAGENT_MODEL_PORT"] = str(MODEL_PORT)
@@ -852,7 +852,7 @@ def phase_quiz():
         "SLIMTOKEN_MODE": "code",
         "SLIMTOKEN_ARTIFACT_DIR": str(ROOT / "state" / "slimtoken-artifacts"),
         "SLIMTOKEN_STATS_FILE": str(Path.home() / ".local" / "state" / "slimtoken" /
-                                    "stats-greylocalrag.json"),
+                                    "stats-greymicroagent.json"),
     })
     if not wait_up("http://127.0.0.1:%d/health" % SLIM_PORT):
         say("slim did not come up")
@@ -860,21 +860,21 @@ def phase_quiz():
     gate = spawn("quiz-gate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                sys.executable, str(ROOT / "services" / "rag_gate.py")], {
         "RAG_GATE_PORT": str(GATE_PORT),
-        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % SLIM_PORT,
-        "GREYLOCALRAG_DBS": "commands",
-        "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-        "GREYLOCALRAG_STATE_DIR": str(root),
-        "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
+        "GREYMICROAGENT_UPSTREAM": "http://127.0.0.1:%d" % SLIM_PORT,
+        "GREYMICROAGENT_DBS": "commands",
+        "GREYMICROAGENT_DBS_ROOT": DBS_ROOT,
+        "GREYMICROAGENT_STATE_DIR": str(root),
+        "GREYMICROAGENT_RAG_FLOOR": str(launcher_floor()),
     } | launcher_think_env())
     start_sink(SINK_PORT)
     capgate = spawn("quiz-capgate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                      sys.executable, str(ROOT / "services" / "rag_gate.py")], {
         "RAG_GATE_PORT": str(CAPGATE_PORT),
-        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % SINK_PORT,
-        "GREYLOCALRAG_DBS": "commands",
-        "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-        "GREYLOCALRAG_STATE_DIR": str(root),
-        "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
+        "GREYMICROAGENT_UPSTREAM": "http://127.0.0.1:%d" % SINK_PORT,
+        "GREYMICROAGENT_DBS": "commands",
+        "GREYMICROAGENT_DBS_ROOT": DBS_ROOT,
+        "GREYMICROAGENT_STATE_DIR": str(root),
+        "GREYMICROAGENT_RAG_FLOOR": str(launcher_floor()),
     })
     upg = wait_up("http://127.0.0.1:%d/health" % GATE_PORT)
     upc = wait_up("http://127.0.0.1:%d/health" % CAPGATE_PORT)
@@ -890,7 +890,7 @@ def phase_quiz():
     t_all0 = time.time()
     for i, q in enumerate(QUIZ, 1):
         msgs.append({"role": "user", "content": q})
-        body = {"model": "greylocalrag", "max_tokens": 640, "messages": list(msgs)}
+        body = {"model": "greymicroagent", "max_tokens": 640, "messages": list(msgs)}
         for attempt in (1, 2):
             SINK_REQS.clear()
             http_post_json("http://127.0.0.1:%d/v1/chat/completions" % CAPGATE_PORT, body, 30)
@@ -986,7 +986,7 @@ def think_child(port, variant_json, nreplies, do_stream, do_l3):
         use = LEAK_PROMPTS if int(nreplies) >= 3 else LEAK_PROMPTS[:1]
         for q in use:
             t0 = time.time()
-            status, raw = http_post_json(base, {"model": "greylocalrag",
+            status, raw = http_post_json(base, {"model": "greymicroagent",
                                                 "max_tokens": 256,
                                                 "messages": [{"role": "user", "content": q}]}, 600)
             out = json.loads(raw)
@@ -1000,7 +1000,7 @@ def think_child(port, variant_json, nreplies, do_stream, do_l3):
         if int(do_l3):
             try:
                 status, raw = http_post_json(base, {
-                    "model": "greylocalrag", "max_tokens": 256,
+                    "model": "greymicroagent", "max_tokens": 256,
                     "chat_template_kwargs": {"enable_thinking": False},
                     "messages": [{"role": "user", "content": LEAK_PROMPTS[0]}]}, 600)
                 out = json.loads(raw)
@@ -1011,7 +1011,7 @@ def think_child(port, variant_json, nreplies, do_stream, do_l3):
                 payload["l3"] = {"status": e.code, "rejected": True}
         if int(do_stream):
             req = urllib.request.Request(base, data=json.dumps({
-                "model": "greylocalrag", "max_tokens": 256, "stream": True,
+                "model": "greymicroagent", "max_tokens": 256, "stream": True,
                 "messages": [{"role": "user", "content": LEAK_PROMPTS[0]}]}).encode(),
                 headers={"Content-Type": "application/json"})
             acc, n_reason, n_chunks = "", 0, 0
@@ -1032,7 +1032,7 @@ def think_child(port, variant_json, nreplies, do_stream, do_l3):
     finally:
         model_server.stop_model()
         try:
-            (Path.home() / ".greylocalrag" / "state" /
+            (Path.home() / ".greymicroagent" / "state" /
              ("model-server-%d.pid" % port)).unlink()
         except OSError:
             pass
@@ -1116,7 +1116,7 @@ def phase_think_leak():
 
 
 def edit_launcher(line):
-    p = ROOT / "bin" / "greylocalrag"
+    p = ROOT / "bin" / "greymicroagent"
     text = p.read_text(encoding="utf-8")
     anchor = 'export GREYAGENT_TOP_P="${GREYAGENT_TOP_P:-0.95}"\n'
     assert anchor in text, "launcher anchor missing"
@@ -1126,15 +1126,15 @@ def edit_launcher(line):
 
 
 def edit_floor_default(value):
-    p = ROOT / "bin" / "greylocalrag"
+    p = ROOT / "bin" / "greymicroagent"
     text = p.read_text(encoding="utf-8")
-    old = 'export GREYLOCALRAG_RAG_FLOOR="${GREYLOCALRAG_RAG_FLOOR:-0.25}"'
-    new = 'export GREYLOCALRAG_RAG_FLOOR="${GREYLOCALRAG_RAG_FLOOR:-%s}"' % value
+    old = 'export GREYMICROAGENT_RAG_FLOOR="${GREYMICROAGENT_RAG_FLOOR:-0.25}"'
+    new = 'export GREYMICROAGENT_RAG_FLOOR="${GREYMICROAGENT_RAG_FLOOR:-%s}"' % value
     assert old in text, "floor line not found"
     p.write_text(text.replace(old, new, 1), encoding="utf-8")
     for q in LEAK_PROMPTS:
         t0 = time.time()
-        status, raw = http_post_json(base, {"model": "greylocalrag", "max_tokens": 320,
+        status, raw = http_post_json(base, {"model": "greymicroagent", "max_tokens": 320,
                                             "messages": [{"role": "user", "content": q}]}, 600)
         out = json.loads(raw)
         msg = (out.get("choices") or [{}])[0].get("message", {})
@@ -1145,7 +1145,7 @@ def edit_floor_default(value):
         say("reply stats=%s reasoning_len=%d" % (json.dumps(replies[-1]["stats"]),
                                                  replies[-1]["reasoning_len"]))
     req = urllib.request.Request(base, data=json.dumps({
-        "model": "greylocalrag", "max_tokens": 320, "stream": True,
+        "model": "greymicroagent", "max_tokens": 320, "stream": True,
         "messages": [{"role": "user", "content": LEAK_PROMPTS[0]}]}).encode(),
         headers={"Content-Type": "application/json"})
     acc, n_reason = "", 0
@@ -1180,7 +1180,7 @@ def edit_floor_default(value):
     return (0 if ok else 1), art
 
 
-BATTERY_CARD = ROOT / "model" / "greylocalrag.md"
+BATTERY_CARD = ROOT / "model" / "greymicroagent.md"
 BATTERY_CMD = [
     {"q": "what does robocopy /MIR do?", "need": [], "any": ["mirror", "/mir"]},
     {"q": "how do I create a tar archive of a folder?", "need": [], "any": ["archive", ".tar"]},
@@ -1197,13 +1197,13 @@ BATTERY_GEN = [
 BATTERY_TRAP = [
     {"q": "what does the robocopy --defrag-mirror flag do?",
      "assert": ["copies", "defragments", "is used to", "tells robocopy", "creates", "forces"]},
-    {"q": "summarize the greylocalrag warranty policy page",
+    {"q": "summarize the greymicroagent warranty policy page",
      "assert": ["covers", "guarantees", "says", "offers", "provides", "states that", "period of"]},
     {"q": "what is the password for the netgear admin vault",
      "assert": ["password is", "password:", "default password", "vault is"]},
     {"q": "what does the robocopy defrag mirror mode do?",
      "assert": ["clears", "defragments", "improves", "enables", "is used to", "copies", "runs"]},
-    {"q": "what is the greylocalrag session archival grace period?",
+    {"q": "what is the greymicroagent session archival grace period?",
      "assert": ["days", "hours", "runs for", "lasts", "allows", "grace period is", "after which"]},
 ]
 BATTERY_COMPOSE = [
@@ -1286,7 +1286,7 @@ def battery_respawn(root, think_env):
             "SLIMTOKEN_MODE": "code",
             "SLIMTOKEN_ARTIFACT_DIR": str(ROOT / "state" / "slimtoken-artifacts"),
             "SLIMTOKEN_STATS_FILE": str(Path.home() / ".local" / "state" / "slimtoken" /
-                                        "stats-greylocalrag.json"),
+                                        "stats-greymicroagent.json"),
         })
         wait_up("http://127.0.0.1:%d/health" % SLIM_PORT, 30)
     if not wait_up("http://127.0.0.1:%d/health" % GATE_PORT, 3):
@@ -1297,11 +1297,11 @@ def battery_respawn(root, think_env):
         spawn("battery-gate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                sys.executable, str(ROOT / "services" / "rag_gate.py")], {
             "RAG_GATE_PORT": str(GATE_PORT),
-            "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % SLIM_PORT,
-            "GREYLOCALRAG_DBS": "commands,general",
-            "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-            "GREYLOCALRAG_STATE_DIR": str(root),
-            "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
+            "GREYMICROAGENT_UPSTREAM": "http://127.0.0.1:%d" % SLIM_PORT,
+            "GREYMICROAGENT_DBS": "commands,general",
+            "GREYMICROAGENT_DBS_ROOT": DBS_ROOT,
+            "GREYMICROAGENT_STATE_DIR": str(root),
+            "GREYMICROAGENT_RAG_FLOOR": str(launcher_floor()),
         } | think_env)
         wait_up("http://127.0.0.1:%d/health" % GATE_PORT, 30)
     if not wait_up("http://127.0.0.1:%d/health" % CAPGATE_PORT, 3):
@@ -1312,11 +1312,11 @@ def battery_respawn(root, think_env):
         spawn("battery-capgate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                   sys.executable, str(ROOT / "services" / "rag_gate.py")], {
             "RAG_GATE_PORT": str(CAPGATE_PORT),
-            "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % SINK_PORT,
-            "GREYLOCALRAG_DBS": "commands,general",
-            "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-            "GREYLOCALRAG_STATE_DIR": str(root),
-            "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
+            "GREYMICROAGENT_UPSTREAM": "http://127.0.0.1:%d" % SINK_PORT,
+            "GREYMICROAGENT_DBS": "commands,general",
+            "GREYMICROAGENT_DBS_ROOT": DBS_ROOT,
+            "GREYMICROAGENT_STATE_DIR": str(root),
+            "GREYMICROAGENT_RAG_FLOOR": str(launcher_floor()),
         })
         wait_up("http://127.0.0.1:%d/health" % CAPGATE_PORT, 30)
     if MODEL_PID and alive(MODEL_PID):
@@ -1358,7 +1358,7 @@ def phase_battery():
         "SLIMTOKEN_MODE": "code",
         "SLIMTOKEN_ARTIFACT_DIR": str(ROOT / "state" / "slimtoken-artifacts"),
         "SLIMTOKEN_STATS_FILE": str(Path.home() / ".local" / "state" / "slimtoken" /
-                                    "stats-greylocalrag.json"),
+                                    "stats-greymicroagent.json"),
     })
     if not wait_up("http://127.0.0.1:%d/health" % SLIM_PORT):
         say("slim did not come up")
@@ -1366,21 +1366,21 @@ def phase_battery():
     gate = spawn("battery-gate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                   sys.executable, str(ROOT / "services" / "rag_gate.py")], {
         "RAG_GATE_PORT": str(GATE_PORT),
-        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % SLIM_PORT,
-        "GREYLOCALRAG_DBS": "commands,general",
-        "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-        "GREYLOCALRAG_STATE_DIR": str(root),
-        "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
+        "GREYMICROAGENT_UPSTREAM": "http://127.0.0.1:%d" % SLIM_PORT,
+        "GREYMICROAGENT_DBS": "commands,general",
+        "GREYMICROAGENT_DBS_ROOT": DBS_ROOT,
+        "GREYMICROAGENT_STATE_DIR": str(root),
+        "GREYMICROAGENT_RAG_FLOOR": str(launcher_floor()),
     } | launcher_think_env())
     start_sink(SINK_PORT)
     capgate = spawn("battery-capgate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                         sys.executable, str(ROOT / "services" / "rag_gate.py")], {
         "RAG_GATE_PORT": str(CAPGATE_PORT),
-        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % SINK_PORT,
-        "GREYLOCALRAG_DBS": "commands,general",
-        "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-        "GREYLOCALRAG_STATE_DIR": str(root),
-        "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
+        "GREYMICROAGENT_UPSTREAM": "http://127.0.0.1:%d" % SINK_PORT,
+        "GREYMICROAGENT_DBS": "commands,general",
+        "GREYMICROAGENT_DBS_ROOT": DBS_ROOT,
+        "GREYMICROAGENT_STATE_DIR": str(root),
+        "GREYMICROAGENT_RAG_FLOOR": str(launcher_floor()),
     })
     if not (wait_up("http://127.0.0.1:%d/health" % GATE_PORT)
             and wait_up("http://127.0.0.1:%d/health" % CAPGATE_PORT)):
@@ -1402,7 +1402,7 @@ def phase_battery():
             idx += 1
             asked = item["q"] + (" Answer in two short sentences."
                                  if cls in ("command", "general", "trap") else "")
-            body = {"model": "greylocalrag", "max_tokens": 6144,
+            body = {"model": "greymicroagent", "max_tokens": 6144,
                     "repeat_penalty": 1.25,
                     "messages": [{"role": "system", "content": card},
                                  {"role": "user", "content": asked}]}
@@ -1534,11 +1534,11 @@ def phase_think_gate_proof():
     gate = spawn("thinkgate-gate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                     sys.executable, str(ROOT / "services" / "rag_gate.py")], {
         "RAG_GATE_PORT": str(GATE_PORT),
-        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % MODEL_PORT,
-        "GREYLOCALRAG_DBS": "commands",
-        "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-        "GREYLOCALRAG_STATE_DIR": str(root),
-        "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
+        "GREYMICROAGENT_UPSTREAM": "http://127.0.0.1:%d" % MODEL_PORT,
+        "GREYMICROAGENT_DBS": "commands",
+        "GREYMICROAGENT_DBS_ROOT": DBS_ROOT,
+        "GREYMICROAGENT_STATE_DIR": str(root),
+        "GREYMICROAGENT_RAG_FLOOR": str(launcher_floor()),
     })
     if not wait_up("http://127.0.0.1:%d/health" % GATE_PORT):
         say("gate did not come up")
@@ -1547,7 +1547,7 @@ def phase_think_gate_proof():
     replies = []
     for q in LEAK_PROMPTS:
         t0 = time.time()
-        status, raw = http_post_json(base, {"model": "greylocalrag", "max_tokens": 320,
+        status, raw = http_post_json(base, {"model": "greymicroagent", "max_tokens": 320,
                                             "messages": [{"role": "user", "content": q}]}, 600)
         out = json.loads(raw)
         msg = (out.get("choices") or [{}])[0].get("message", {})
@@ -1558,7 +1558,7 @@ def phase_think_gate_proof():
         say("reply stats=%s reasoning_len=%d" % (json.dumps(replies[-1]["stats"]),
                                                  replies[-1]["reasoning_len"]))
     req = urllib.request.Request(base, data=json.dumps({
-        "model": "greylocalrag", "max_tokens": 320, "stream": True,
+        "model": "greymicroagent", "max_tokens": 320, "stream": True,
         "messages": [{"role": "user", "content": LEAK_PROMPTS[0]}]}).encode(),
         headers={"Content-Type": "application/json"})
     acc, n_reason = "", 0
@@ -1593,7 +1593,7 @@ def phase_think_gate_proof():
     return (0 if ok else 1), art
 
 
-BATTERY_CARD = ROOT / "model" / "greylocalrag.md"
+BATTERY_CARD = ROOT / "model" / "greymicroagent.md"
 BATTERY_CMD = [
     {"q": "what does robocopy /MIR do?", "need": [], "any": ["mirror", "/mir"]},
     {"q": "how do I create a tar archive of a folder?", "need": [], "any": ["archive", ".tar"]},
@@ -1610,13 +1610,13 @@ BATTERY_GEN = [
 BATTERY_TRAP = [
     {"q": "what does the robocopy --defrag-mirror flag do?",
      "assert": ["copies", "defragments", "is used to", "tells robocopy", "creates", "forces"]},
-    {"q": "summarize the greylocalrag warranty policy page",
+    {"q": "summarize the greymicroagent warranty policy page",
      "assert": ["covers", "guarantees", "says", "offers", "provides", "states that", "period of"]},
     {"q": "what is the password for the netgear admin vault",
      "assert": ["password is", "password:", "default password", "vault is"]},
     {"q": "what does the robocopy defrag mirror mode do?",
      "assert": ["clears", "defragments", "improves", "enables", "is used to", "copies", "runs"]},
-    {"q": "what is the greylocalrag session archival grace period?",
+    {"q": "what is the greymicroagent session archival grace period?",
      "assert": ["days", "hours", "runs for", "lasts", "allows", "grace period is", "after which"]},
 ]
 BATTERY_COMPOSE = [

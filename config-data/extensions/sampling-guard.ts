@@ -1,5 +1,5 @@
 // sampling-guard.ts — force sane sampling params for the local thinking model.
-// Owner directive 2026-10-18 (carried into greylocalrag 2026-10-23): the
+// Owner directive 2026-10-18 (carried into greymicroagent 2026-10-23): the
 // abliterated Qwen3.6 at temp 1.0 loops and ignores instructions. This
 // extension intercepts every provider request and clamps temperature to 0.6,
 // top_p to 0.95. Reads overrides from env: GREYAGENT_TEMP / GREYAGENT_TOP_P.

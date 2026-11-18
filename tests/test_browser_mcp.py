@@ -7,7 +7,7 @@ SCRIPT = ROOT / "services" / "browser_mcp.py"
 sys.path.insert(0, str(ROOT / "services"))
 import browser_mcp
 
-TITLE = "greylocalrag browser fixture"
+TITLE = "greymicroagent browser fixture"
 MARKER = "the quick brown fox marker ZXQ77"
 LINK_HREF = "https://example.org/fixture-target"
 LINK_TEXT = "fixture link text"
@@ -60,7 +60,7 @@ def _rpc(proc):
 
 
 def _popen(tmp_path):
-    env = {**os.environ, "GREYLOCALRAG_BROWSER_PIDS": str(tmp_path / "pids.json")}
+    env = {**os.environ, "GREYMICROAGENT_BROWSER_PIDS": str(tmp_path / "pids.json")}
     return subprocess.Popen([sys.executable, str(SCRIPT)], stdin=subprocess.PIPE,
                             stdout=subprocess.PIPE, env=env, text=True, bufsize=1)
 

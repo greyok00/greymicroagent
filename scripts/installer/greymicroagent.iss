@@ -1,7 +1,7 @@
-#define AppName "greylocalrag"
+#define AppName "greymicroagent"
 #define AppVersion "0.7.5.1"
 #define AppPublisher "grey"
-#define AppExeName "greylocalrag.exe"
+#define AppExeName "greymicroagent.exe"
 #define BootstrapName "%WAVE_B_BOOTSTRAP_PS1%"
 
 [Setup]
@@ -32,8 +32,8 @@ Source: "THIRD-PARTY-NOTICES.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "config\port_policy.json"; DestDir: "{app}\config"; Flags: ignoreversion
 
 [Dirs]
-Name: "{userappdata}\greylocalrag"; Flags: uninsneveruninstall
-Name: "{userappdata}\greylocalrag\models"; Flags: uninsneveruninstall
+Name: "{userappdata}\greymicroagent"; Flags: uninsneveruninstall
+Name: "{userappdata}\greymicroagent\models"; Flags: uninsneveruninstall
 
 [Icons]
 Name: "{group}\{#AppName}"; Filename: "{app}\{#AppExeName}"

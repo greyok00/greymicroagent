@@ -1,4 +1,4 @@
-Third-party notices for the greylocalrag seed commands knowledge base.
+Third-party notices for the greymicroagent seed commands knowledge base.
 
 The records in the 'commands' knowledge base were built from the tldr-pages
 project at build time: https://github.com/tldr-pages/tldr

@@ -48,8 +48,8 @@ def test_seed_general_builds_db():
                "curated rows:" in result.stdout, f"Unexpected output: {result.stdout}"
     
     # Check that the general DB exists and has the seed provenance
-    # Uses the same DBS_ROOT as the launcher: $HOME/.greylocalrag/dbs
-    db_dir = Path(os.environ.get("HOME", "/home/grey")) / ".greylocalrag" / "dbs" / "general"
+    # Uses the same DBS_ROOT as the launcher: $HOME/.greymicroagent/dbs
+    db_dir = Path(os.environ.get("HOME", "/home/grey")) / ".greymicroagent" / "dbs" / "general"
     assert db_dir.exists(), f"General DB directory should exist at {db_dir}"
     
     prov_path = db_dir / "seed-provenance.json"
@@ -58,7 +58,7 @@ def test_seed_general_builds_db():
     prov = json.loads(prov_path.read_text(encoding="utf-8"))
     assert prov["name"] == "general", "Provenance should be for general DB"
     assert "general-ability seed cards" in prov["note"], "Should mention general-ability seed"
-    assert prov["src"] == "greylocalrag product seed (own-written)", "Should own-written source"
+    assert prov["src"] == "greymicroagent product seed (own-written)", "Should own-written source"
 
 
 def test_seed_general_has_writing_reasoning_browser():

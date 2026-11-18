@@ -3,7 +3,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import * as os from "node:os";
 
-const DIR = path.join(os.homedir(), ".greylocalrag", "mcp-status");
+const DIR = path.join(os.homedir(), ".greymicroagent", "mcp-status");
 const HIDDEN = path.join(DIR, ".hidden.json");
 
 function readHidden(): string[] {
@@ -32,7 +32,7 @@ function listPanels(): string[] {
 }
 
 export default function mcpPanelsExtension(pi: ExtensionAPI): void {
-	// MCP status blocks render via the daemon (none for greylocalrag yet);
+	// MCP status blocks render via the daemon (none for greymicroagent yet);
 	// visibility stays as last written.
 	void readHidden;
 	void writeHidden;

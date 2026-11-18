@@ -47,18 +47,18 @@ import {
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 const HOME = os.homedir();
-// Store paths follow the CORTEXAGENT_* env set by the launcher; default stays ~/.greylocalrag.
-const SCHEDULER_FILE = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greylocalrag"), "scheduler", "tasks.json");
+// Store paths follow the CORTEXAGENT_* env set by the launcher; default stays ~/.greymicroagent.
+const SCHEDULER_FILE = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greymicroagent"), "scheduler", "tasks.json");
 // Real activity source: events.jsonl is the append-only history of every
 // task created/started/done/failed. tasks.json is the snapshot — it
 // empties out as soon as everything finishes, so reading it alone makes
 // the Tasks panel look dead. Merge the two so scheduled-but-not-yet-run
 // tasks are visible.
-const SCHEDULER_EVENTS = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greylocalrag"), "scheduler", "tasks.events.jsonl");
+const SCHEDULER_EVENTS = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greymicroagent"), "scheduler", "tasks.events.jsonl");
 // Execution receipts (append-only): one {task_id, status, started_at} line per
 // scheduler run. The tall Tasks box reads the LAST receipt per task so a task
 // that just ran keeps its ✓ instead of snapping back to plain "scheduled".
-const SCHEDULER_EXEC_FILE = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greylocalrag"), "scheduler", "executions.jsonl");
+const SCHEDULER_EXEC_FILE = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greymicroagent"), "scheduler", "executions.jsonl");
 // Three writers have produced compression numbers, and the panel used to read
 // only the first of them: slimtoken's own state file. When slimtoken restarted
 // it began writing the other two, so the single hardcoded path made the panel
@@ -67,14 +67,14 @@ const SCHEDULER_EXEC_FILE = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.
 // 2026-09-27). Read whichever file was written most recently, and carry its age
 // so a frozen figure is labelled instead of passing as live.
 const TOKEN_FILE = path.join(HOME, ".local", "state", "slimtoken", "stats.json");
-// Store paths follow the CORTEXAGENT_* env set by the launcher; default stays ~/.greylocalrag.
-const TOKEN_FILE_LEGACY = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greylocalrag"), "minify_stats.json");
-const TOKEN_FILE_TRACKER = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greylocalrag"), "token_tracker.json");
+// Store paths follow the CORTEXAGENT_* env set by the launcher; default stays ~/.greymicroagent.
+const TOKEN_FILE_LEGACY = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greymicroagent"), "minify_stats.json");
+const TOKEN_FILE_TRACKER = path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greymicroagent"), "token_tracker.json");
 /** Older than this and the numbers describe a run that has already ended. */
 const COMPRESSION_LIVE_WINDOW_MS = 10 * 60 * 1000;
 // 2026-10-14 (local port): the local agent reads ITS OWN store — env override first.
-const COLD_DIR = path.join(process.env.CORTEXAGENT_MEMORY_DIR ?? path.join(os.homedir(), ".greylocalrag", "memory"), "cold");
-const HOT_DIR = path.join(process.env.CORTEXAGENT_MEMORY_DIR ?? path.join(os.homedir(), ".greylocalrag", "memory"), "hot");
+const COLD_DIR = path.join(process.env.CORTEXAGENT_MEMORY_DIR ?? path.join(os.homedir(), ".greymicroagent", "memory"), "cold");
+const HOT_DIR = path.join(process.env.CORTEXAGENT_MEMORY_DIR ?? path.join(os.homedir(), ".greymicroagent", "memory"), "hot");
 
 const SPINNER = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
 
@@ -385,7 +385,7 @@ function readSlimToken(): CompressionStats {
  * What the footer's ⚡ capsule should say — the panel's number, or an honest
  * "off".
  *
- * The footer used to read `~/.greylocalrag/minify_stats.json` on its own, a
+ * The footer used to read `~/.greymicroagent/minify_stats.json` on its own, a
  * different writer from the panel's, so one screen showed two compression
  * figures at once ("0.0%" beside "75.5%", owner report 2026-09-27). Both now
  * come from this one reader, and neither prints a percentage that no live
@@ -854,7 +854,7 @@ function panelBottom(w: number, padAdjust = 0): string {
 // runs that one-shot every 60s). The TUI is a pure renderer; nothing here
 // spawns the comms browser or pokes the security stack.
 const MCP_STATUS_DIR = process.env.CORTEXAGENT_STATUS_DIR
-	?? path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greylocalrag"), "panel-status");
+	?? path.join(process.env.CORTEXAGENT_STATE_DIR ?? path.join(os.homedir(), ".greymicroagent"), "panel-status");
 const MCP_STALE_MS = 5 * 60 * 1000;
 
 interface HelperStatus {

@@ -15,7 +15,7 @@ def test_splash_geometry():
     rows = SPLASH_TEXT.split("\n")
     assert max(len(r) for r in rows) <= 90
     assert "qwen3.5-2b-abliterated" not in SPLASH_TEXT
-    assert "GREYLOCALRAG" in SPLASH_TEXT
+    assert "GREYMICROAGENT" in SPLASH_TEXT
     assert "YOUR RAG" in SPLASH_TEXT
 
 
@@ -31,7 +31,7 @@ def test_compact_splash_is_narrow():
     lines = compact_splash().split("\n")
     assert max(len(l) for l in lines) < 70
     # mini identity, same GM-03b reason as test_splash_geometry
-    assert any("GREYLOCALRAG" in l for l in lines)
+    assert any("GREYMICROAGENT" in l for l in lines)
 
 
 def test_big_number_renders():

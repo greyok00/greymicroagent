@@ -6,7 +6,7 @@ import * as path from "node:path";
 
 // 2026-10-24 (owner order): attach the family's MCP servers as REAL tools.
 // Security model — nothing auto-installs, nothing enters unlisted:
-//   - only servers listed in ~/.greylocalrag/agent/mcp_registry.json run,
+//   - only servers listed in ~/.greymicroagent/agent/mcp_registry.json run,
 //   - only when enabled:true (compiled .so servers enable only after the
 //     hash rule /mcp enforces — this client never bypasses it),
 //   - the spawned process is the registry's own command line — no downloads,
@@ -18,8 +18,8 @@ import * as path from "node:path";
 // 2026-10-29: env-driven paths — the fork resolves its OWN registry and
 // OWN root via CORTEXAGENT_MCP_CONFIG / GREYAGENT_ROOT env; defaults stay
 // the local layout so the upstream fork still runs unchanged.
-const REGISTRY = process.env.CORTEXAGENT_MCP_CONFIG ?? path.join(os.homedir(), ".greylocalrag", "agent", "mcp_registry.json");
-const ROOT = process.env.GREYAGENT_ROOT ?? path.join(os.homedir(), "greylocalrag");
+const REGISTRY = process.env.CORTEXAGENT_MCP_CONFIG ?? path.join(os.homedir(), ".greymicroagent", "agent", "mcp_registry.json");
+const ROOT = process.env.GREYAGENT_ROOT ?? path.join(os.homedir(), "greymicroagent");
 
 interface RegistryServer {
 	name: string;
@@ -103,7 +103,7 @@ async function handshake(entry: RegistryServer, conn: McpServerConn): Promise<vo
 	await call(conn, "initialize", {
 		protocolVersion: "2024-11-05",
 		capabilities: {},
-		clientInfo: { name: "greylocalrag", version: "0.7.5.1" },
+		clientInfo: { name: "greymicroagent", version: "0.7.5.1" },
 	}, 15000);
 	conn.proc.stdin!.write(JSON.stringify({ jsonrpc: "2.0", method: "notifications/initialized" }) + "\n");
 	const listed = (await call(conn, "tools/list", {}, 15000)) as { tools?: { name: string; description?: string; inputSchema?: Record<string, unknown> }[] };

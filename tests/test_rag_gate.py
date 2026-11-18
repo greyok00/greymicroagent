@@ -2,10 +2,10 @@ import sys, json, pathlib, tempfile, io
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "services"))
 import rag_gate
 
-BODY = {"model": "greylocalrag", "temperature": 0.9,
+BODY = {"model": "greymicroagent", "temperature": 0.9,
         "messages": [{"role": "user", "content": "how do I mirror directories"}]}
 
-NOTEMP = {"model": "greylocalrag",
+NOTEMP = {"model": "greymicroagent",
           "messages": [{"role": "user", "content": "how do I mirror directories"}]}
 
 def test_temp_clamped():
@@ -14,8 +14,8 @@ def test_temp_clamped():
     assert 0.0 <= req["temperature"] <= 0.2
 
 def test_no_grounding_marker_on_empty_kb(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
-    monkeypatch.delenv("GREYLOCALRAG_DBS", raising=False)
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
+    monkeypatch.delenv("GREYMICROAGENT_DBS", raising=False)
     code, out = rag_gate.handle(json.dumps(BODY).encode(), "/v1/chat/completions", "http://127.0.0.1:1")
     msgs = json.loads(out)["messages"]
     assert json.dumps(msgs[-1]).find("NO-KB-GROUNDING") >= 0
@@ -23,9 +23,9 @@ def test_no_grounding_marker_on_empty_kb(tmp_path, monkeypatch):
 def test_grounding_block_injected(tmp_path, monkeypatch):
     import rag.kbcore as kb
     dbs = tmp_path / "dbs"; dbs.mkdir()
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(dbs))
-    monkeypatch.setenv("GREYLOCALRAG_DBS", "commands")
-    monkeypatch.setenv("GREYLOCALRAG_RAG_FLOOR", "0.0")
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(dbs))
+    monkeypatch.setenv("GREYMICROAGENT_DBS", "commands")
+    monkeypatch.setenv("GREYMICROAGENT_RAG_FLOOR", "0.0")
     db = kb.db_dir("commands"); kb.init_db(db, note="t")
     kb.add_records(db, kb.records_from("robocopy /MIR mirrors a directory tree exactly and completely.", {"t": "robocopy", "src": "t", "url": "u", "date": "d"}), enc=None)
     code, out = rag_gate.handle(json.dumps(BODY).encode(), "/v1/chat/completions", "http://127.0.0.1:1")
@@ -35,10 +35,10 @@ def test_grounding_block_injected(tmp_path, monkeypatch):
 def test_grounding_searches_dbs_in_order(tmp_path, monkeypatch):
     import rag.kbcore as kb
     dbs = tmp_path / "dbs"; dbs.mkdir()
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(dbs))
-    monkeypatch.setenv("GREYLOCALRAG_DBS", "commands,general")
-    monkeypatch.setenv("GREYLOCALRAG_RAG_FLOOR", "0.0")
-    body = json.dumps({"model": "greylocalrag",
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(dbs))
+    monkeypatch.setenv("GREYMICROAGENT_DBS", "commands,general")
+    monkeypatch.setenv("GREYMICROAGENT_RAG_FLOOR", "0.0")
+    body = json.dumps({"model": "greymicroagent",
                        "messages": [{"role": "user",
                                      "content": "what does robocopy /MIR do and how should claims be ordered"}]})
     for name, text in (("commands", "robocopy /MIR mirrors a source tree completely."),
@@ -56,7 +56,7 @@ def test_no_request_logging(tmp_path):
     assert not list(tmp_path.rglob("*.log"))
 
 def test_temp_state_file_applied(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_STATE_DIR", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_STATE_DIR", str(tmp_path))
     body = json.dumps(NOTEMP).encode()
     for text, want in (("0.05", 0.05), ("0.9", 0.2), ("garbage", 0.1), ("0.0", 0.0)):
         (tmp_path / "rag-temp").write_text(text)
@@ -67,7 +67,7 @@ def test_temp_state_file_applied(tmp_path, monkeypatch):
     assert abs(got - 0.1) < 1e-9
 
 def test_request_null_or_garbage_temp_uses_default(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_STATE_DIR", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_STATE_DIR", str(tmp_path))
     (tmp_path / "rag-temp").write_text("0.05")
     for bad in (None, "hot"):
         req = dict(NOTEMP)
@@ -77,7 +77,7 @@ def test_request_null_or_garbage_temp_uses_default(tmp_path, monkeypatch):
         assert abs(got - 0.1) < 1e-9, bad
 
 def test_carrier_temperatures_clamped(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_STATE_DIR", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_STATE_DIR", str(tmp_path))
     (tmp_path / "rag-temp").write_text("0.15")
     req = dict(NOTEMP)
     req["temperature"] = "hot"
@@ -97,7 +97,7 @@ def test_carrier_temperatures_clamped(tmp_path, monkeypatch):
     assert c3["messages"][-1]["role"] == "system"
 
 def test_offline_toggle_marks_offline(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_STATE_DIR", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_STATE_DIR", str(tmp_path))
     body = json.dumps(NOTEMP).encode()
     content = lambda: json.loads(rag_gate.handle(body, "/v1/chat/completions", "http://127.0.0.1:1")[1])["messages"][-1]["content"]
     assert "OFFLINE-MODE" not in content()
@@ -139,8 +139,8 @@ def test_get_metrics_passthrough(monkeypatch):
     assert b"Content-Length: 9" in payload and b"Connection: close" in payload and b"Transfer-Encoding" not in payload
 
 def test_post_forwards_received_path(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
-    monkeypatch.setenv("GREYLOCALRAG_STATE_DIR", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_STATE_DIR", str(tmp_path))
     seen = {}
     class FakeResp:
         def __init__(self):
@@ -176,8 +176,8 @@ def test_post_forwards_received_path(tmp_path, monkeypatch):
     assert b"HTTP/1.1 200 OK" in payload and b"ok" in payload
 
 def test_post_unrouted_paths_forward_verbatim(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
-    monkeypatch.setenv("GREYLOCALRAG_STATE_DIR", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_STATE_DIR", str(tmp_path))
     seen = {}
     class FakeResp:
         def __init__(self):
@@ -212,16 +212,16 @@ def test_post_unrouted_paths_forward_verbatim(tmp_path, monkeypatch):
 def test_floor_env_knob_gates_chunk_injection(tmp_path, monkeypatch):
     import rag.kbcore as kb
     dbs = tmp_path / "dbs"; dbs.mkdir()
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(dbs))
-    monkeypatch.setenv("GREYLOCALRAG_DBS", "commands")
-    monkeypatch.delenv("GREYLOCALRAG_RAG_FLOOR", raising=False)
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(dbs))
+    monkeypatch.setenv("GREYMICROAGENT_DBS", "commands")
+    monkeypatch.delenv("GREYMICROAGENT_RAG_FLOOR", raising=False)
     db = kb.db_dir("commands"); kb.init_db(db, note="t")
     kb.add_records(db, kb.records_from("robocopy /MIR mirrors a directory tree exactly and completely.", {"t": "robocopy", "src": "t", "url": "u", "date": "d"}), enc=None)
     body = json.dumps(NOTEMP).encode()
-    monkeypatch.setenv("GREYLOCALRAG_RAG_FLOOR", "0")
+    monkeypatch.setenv("GREYMICROAGENT_RAG_FLOOR", "0")
     last = json.loads(rag_gate.handle(body, "/v1/chat/completions", "http://127.0.0.1:1")[1])["messages"][-1]["content"]
     assert "[KB:commands#1 score=" in last
-    monkeypatch.setenv("GREYLOCALRAG_RAG_FLOOR", "1000")
+    monkeypatch.setenv("GREYMICROAGENT_RAG_FLOOR", "1000")
     last = json.loads(rag_gate.handle(body, "/v1/chat/completions", "http://127.0.0.1:1")[1])["messages"][-1]["content"]
     assert "[NO-KB-GROUNDING]" in last
 

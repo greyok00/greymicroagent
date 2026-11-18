@@ -14,7 +14,7 @@ from detectors import (STRUCTURED_TOOLS, args_conform, error_burst,
                        one_token_storm, refusal_repeat, repetition_tool_loop,
                        length_storm, _digest)
 
-STATE = os.path.expanduser("~/.greylocalrag/state/supervision")
+STATE = os.path.expanduser("~/.greymicroagent/state/supervision")
 STEER_FILE = os.path.join(STATE, "steer.jsonl")
 SIDECAR_STREAM = os.path.join(STATE, "supervision_events.jsonl")
 SUPERVISOR_LOG = os.path.join(STATE, "supervisor.log")

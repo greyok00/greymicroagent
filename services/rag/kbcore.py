@@ -214,17 +214,17 @@ def chunk(text, size=2400):
     return out
 
 
-DBS_ROOT = Path(os.environ.get("GREYLOCALRAG_DBS_ROOT") or Path.home() / ".greylocalrag" / "dbs")
+DBS_ROOT = Path(os.environ.get("GREYMICROAGENT_DBS_ROOT") or Path.home() / ".greymicroagent" / "dbs")
 
 def db_dir(name):
     if not re.fullmatch(r"[A-Za-z0-9_-]{1,40}", name or ""):
         raise ValueError("bad db name")
-    d = Path(os.environ.get("GREYLOCALRAG_DBS_ROOT") or Path.home() / ".greylocalrag" / "dbs") / name
+    d = Path(os.environ.get("GREYMICROAGENT_DBS_ROOT") or Path.home() / ".greymicroagent" / "dbs") / name
     d.mkdir(parents=True, exist_ok=True)
     return d
 
 def dbs():
-    root = Path(os.environ.get("GREYLOCALRAG_DBS_ROOT") or Path.home() / ".greylocalrag" / "dbs")
+    root = Path(os.environ.get("GREYMICROAGENT_DBS_ROOT") or Path.home() / ".greymicroagent" / "dbs")
     if not os.path.isdir(root):
         return []
     out = []

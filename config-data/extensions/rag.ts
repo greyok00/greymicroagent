@@ -4,8 +4,8 @@ import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
 
-const REGISTRY = path.join(os.homedir(), ".greylocalrag", "agent", "mcp_registry.json");
-const STATE_DIR = path.join(os.homedir(), ".greylocalrag", "state");
+const REGISTRY = path.join(os.homedir(), ".greymicroagent", "agent", "mcp_registry.json");
+const STATE_DIR = path.join(os.homedir(), ".greymicroagent", "state");
 const TEMP_FILE = path.join(STATE_DIR, "rag-temp");
 const OFFLINE_FILE = path.join(STATE_DIR, "rag-offline");
 const TEMP_MIN = 0.0;
@@ -27,7 +27,7 @@ interface RagSource {
 }
 
 function defaultDb(): string {
-	return (process.env.GREYLOCALRAG_DBS ?? "commands").split(",")[0].trim() || "commands";
+	return (process.env.GREYMICROAGENT_DBS ?? "commands").split(",")[0].trim() || "commands";
 }
 
 function ragServerCommand(): string[] | null {
@@ -37,7 +37,7 @@ function ragServerCommand(): string[] | null {
 		if (!entry || !entry.enabled) return null;
 		if (entry.command && entry.args?.length) return [entry.command, ...entry.args];
 		if (entry.command) return ["/bin/sh", "-c", entry.command];
-		if (entry.so) return ["/bin/sh", "-c", `python3 ${path.join(os.homedir(), "greylocalrag", "mcp", "run_server.py")} --server ${entry.name}`];
+		if (entry.so) return ["/bin/sh", "-c", `python3 ${path.join(os.homedir(), "greymicroagent", "mcp", "run_server.py")} --server ${entry.name}`];
 		return null;
 	} catch {
 		return null;
@@ -127,7 +127,7 @@ async function ragCall(tool: string, args: Record<string, unknown>, timeoutMs: n
 					jsonrpc: "2.0",
 					id: 1,
 					method: "initialize",
-					params: { protocolVersion: "2024-11-05", capabilities: {}, clientInfo: { name: "greylocalrag", version: "0.7.5.1" } },
+					params: { protocolVersion: "2024-11-05", capabilities: {}, clientInfo: { name: "greymicroagent", version: "0.7.5.1" } },
 				}) + "\n",
 				(err: Error | null | undefined) => {
 					if (err) settle(`could not reach the knowledge service: ${err.message}`);

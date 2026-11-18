@@ -4,7 +4,7 @@ import pathlib
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 RECORD = ROOT / "config-data"
 EXT_DIR = RECORD / "extensions"
-LAUNCHER = ROOT / "bin" / "greylocalrag"
+LAUNCHER = ROOT / "bin" / "greymicroagent"
 LIVE_TS = [
     "greysearch_core.ts",
     "gwp-onboarding.ts",
@@ -78,7 +78,7 @@ def test_port_policy_record_declares_fork_block():
 
 def test_launcher_copies_record_before_dev_symlink():
     text = LAUNCHER.read_text(encoding="utf-8")
-    block = text[text.index('_ext_src="$HOME/.greylocalrag/agent/extensions"'):text.index("_seed_mcp_registry")]
+    block = text[text.index('_ext_src="$HOME/.greymicroagent/agent/extensions"'):text.index("_seed_mcp_registry")]
     record_line = block.index('_ext_record="$ROOT/config-data/extensions"')
     dev_line = block.index('_ext_dev="$ROOT/config/extensions"')
     assert record_line < dev_line, "launcher must prefer the config-data record"

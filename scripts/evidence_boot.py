@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LOGS = ROOT / "state" / "logs"
 PORTS = (7640, 7641, 7642, 7643, 7644)
-DBS_ROOT = str(Path.home() / ".greylocalrag" / "dbs")
+DBS_ROOT = str(Path.home() / ".greymicroagent" / "dbs")
 PAGESZ = os.sysconf("SC_PAGE_SIZE")
 SINK_REQS = []
 CHILDREN = []
@@ -20,8 +20,8 @@ EV = {"fail": [], "findings": [], "phases": {}}
 MODEL_PID = 0
 SINK_SERVER = None
 
-os.environ["GREYLOCALRAG_THREADS"] = "4"
-os.environ["GREYLOCALRAG_ASSUME_RAM_GB"] = "8"
+os.environ["GREYMICROAGENT_THREADS"] = "4"
+os.environ["GREYMICROAGENT_ASSUME_RAM_GB"] = "8"
 
 sys.path.insert(0, str(ROOT / "build" / "src"))
 import server as model_server
@@ -86,7 +86,7 @@ def rss_bytes(pid):
 
 def child_env():
     return {k: v for k, v in os.environ.items()
-            if not k.startswith(("GREYAGENT_", "SLIMTOKEN_", "GREYLOCALRAG_", "RAG_GATE_"))}
+            if not k.startswith(("GREYAGENT_", "SLIMTOKEN_", "GREYMICROAGENT_", "RAG_GATE_"))}
 
 
 def spawn(label, cmd, port_env):
@@ -159,7 +159,7 @@ def preflight():
     blob = os.path.realpath(model_path)
     EV["model"] = {"symlink": str(model_path), "resolves_to": blob, "bytes": os.path.getsize(blob),
                    "model_path": model_server.MODEL_PATH,
-                   "override": "GREYLOCALRAG_MODEL_PATH" in os.environ}
+                   "override": "GREYMICROAGENT_MODEL_PATH" in os.environ}
     say("EVIDENCE model symlink resolves to %s (%d bytes)" % (blob, EV["model"]["bytes"]))
     busy = busy_sockets()
     held = [p for p, b in busy.items() if b]
@@ -198,7 +198,7 @@ def run_boot():
                                "--upstream", "http://127.0.0.1:7640", "--port", "7642"], {
         "SLIMTOKEN_MODE": "code",
         "SLIMTOKEN_ARTIFACT_DIR": str(ROOT / "state" / "slimtoken-artifacts"),
-        "SLIMTOKEN_STATS_FILE": str(Path.home() / ".local" / "state" / "slimtoken" / "stats-greylocalrag.json"),
+        "SLIMTOKEN_STATS_FILE": str(Path.home() / ".local" / "state" / "slimtoken" / "stats-greymicroagent.json"),
     })
     if not http_up([("http://127.0.0.1:7642", "/health"), ("http://127.0.0.1:7642", "/metrics")]):
         fail("slimtoken :7642 did not come up")
@@ -206,10 +206,10 @@ def run_boot():
 
     gate_env = {
         "RAG_GATE_PORT": "7641",
-        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:7642",
-        "GREYLOCALRAG_DBS": "commands",
-        "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-        "GREYLOCALRAG_RAG_FLOOR": "19.0",
+        "GREYMICROAGENT_UPSTREAM": "http://127.0.0.1:7642",
+        "GREYMICROAGENT_DBS": "commands",
+        "GREYMICROAGENT_DBS_ROOT": DBS_ROOT,
+        "GREYMICROAGENT_RAG_FLOOR": "19.0",
     }
     gate_proc = spawn("gate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                sys.executable, str(ROOT / "services" / "rag_gate.py")], gate_env)
@@ -222,7 +222,7 @@ def run_boot():
     say("EVIDENCE sink :7643 up")
     tg_env = dict(gate_env)
     tg_env["RAG_GATE_PORT"] = "7644"
-    tg_env["GREYLOCALRAG_UPSTREAM"] = "http://127.0.0.1:7643"
+    tg_env["GREYMICROAGENT_UPSTREAM"] = "http://127.0.0.1:7643"
     tgate_proc = spawn("temp-gate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
                                      sys.executable, str(ROOT / "services" / "rag_gate.py")], tg_env)
     if not http_up([("http://127.0.0.1:7644", "/health")]):
@@ -235,7 +235,7 @@ def run_boot():
     nolog_q = marker_q
 
     st, _ = http_post_json("http://127.0.0.1:7644/v1/chat/completions", {
-        "model": "greylocalrag", "temperature": 0.9, "max_tokens": 128,
+        "model": "greymicroagent", "temperature": 0.9, "max_tokens": 128,
         "messages": [{"role": "user", "content": seed_q}]}, 60)
     if st != 200 or not SINK_REQS:
         fail("wire-capture path failed status=%s" % st)
@@ -249,7 +249,7 @@ def run_boot():
     say("EVIDENCE clamped 0.9 -> upstream temp %s; system block [GROUNDING]+[KB:commands#] robocopy present" % hot_temp)
 
     st, _ = http_post_json("http://127.0.0.1:7644/v1/chat/completions", {
-        "model": "greylocalrag", "max_tokens": 128,
+        "model": "greymicroagent", "max_tokens": 128,
         "messages": [{"role": "user", "content": nolog_q}]}, 60)
     if st != 200:
         fail("no-kb wire capture failed status=%s" % st)
@@ -268,7 +268,7 @@ def run_boot():
     gate_status = None
     gate_body = ""
     try:
-        gate_status, _ = http_post_json(e2e_base, {"model": "greylocalrag", "max_tokens": 16,
+        gate_status, _ = http_post_json(e2e_base, {"model": "greymicroagent", "max_tokens": 16,
                                                    "messages": [{"role": "user", "content": "ping"}]}, 60)
     except urllib.error.HTTPError as e:
         gate_status = e.code
@@ -287,7 +287,7 @@ def run_boot():
     for label, q, temp in (("seed", seed_q, None), ("garbage_temp_0.9", seed_q, 0.9),
                            ("offtopic", "what is the capital of Portugal and its full history", None),
                            ("oov", marker_q, None)):
-        req = {"model": "greylocalrag", "max_tokens": 256, "messages": [{"role": "user", "content": q}]}
+        req = {"model": "greymicroagent", "max_tokens": 256, "messages": [{"role": "user", "content": q}]}
         if temp is not None:
             req["temperature"] = temp
         t0 = time.time()

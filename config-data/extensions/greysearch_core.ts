@@ -19,7 +19,7 @@ import * as path from "node:path";
 // Transport stays JSON-RPC over stdio (Node harness → CPython 3.13 .so);
 // replaces greyhound_core.ts (old greyhound iteration removed 2026-11-01).
 
-const ROOT = path.join(os.homedir(), "greylocalrag");
+const ROOT = path.join(os.homedir(), "greymicroagent");
 const CORE_DIR = path.join(ROOT, "core", "greysearch");
 const MANIFEST = path.join(ROOT, "state", "MANIFEST.json");
 
@@ -134,7 +134,7 @@ export default function greysearchCore(pi: ExtensionAPI): void {
 			await call(conn, "initialize", {
 				protocolVersion: "2024-11-05",
 				capabilities: {},
-				clientInfo: { name: "greylocalrag-core", version: "1.0.1" },
+				clientInfo: { name: "greymicroagent-core", version: "1.0.1" },
 			}, 20000);
 			(conn.proc.stdin as any)?.write?.(JSON.stringify({ jsonrpc: "2.0", method: "notifications/initialized" }) + "\n");
 			const listed = (await call(conn, "tools/list", {}, 20000)) as { tools?: ToolSpec[] };

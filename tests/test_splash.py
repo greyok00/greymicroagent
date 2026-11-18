@@ -5,7 +5,7 @@ importlib.reload(splash)
 
 def test_front_door_contents():
     rows = "\n".join(splash.splash_lines())
-    for s in ["GREYLOCALRAG", "/rag ingest", "/rag remove", "/rag status", "/rag temp"]:
+    for s in ["GREYMICROAGENT", "/rag ingest", "/rag remove", "/rag status", "/rag temp"]:
         assert s in rows
 def test_lines_nonempty_short():
     ls = splash.splash_lines()

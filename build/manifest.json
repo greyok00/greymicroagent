@@ -73,79 +73,79 @@
    "dst": "services/scheduler_ui.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/patchright_scraper.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/patchright_scraper.py",
    "dst": "tools/patchright_scraper.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/browser_session.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/browser_session.py",
    "dst": "tools/browser_session.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/browser_ports.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/browser_ports.py",
    "dst": "tools/browser_ports.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/research_injection.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/research_injection.py",
    "dst": "tools/research_injection.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/searxng_integrated.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/searxng_integrated.py",
    "dst": "tools/searxng_integrated.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/searx_fallback.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/searx_fallback.py",
    "dst": "tools/searx_fallback.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/page_clean.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/page_clean.py",
    "dst": "tools/page_clean.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/relevance.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/relevance.py",
    "dst": "tools/relevance.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/guide_scrub.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/guide_scrub.py",
    "dst": "tools/guide_scrub.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/keys.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/keys.py",
    "dst": "tools/optional/keys.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/greysearch_publisher.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/greysearch_publisher.py",
    "dst": "tools/optional/publisher.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/greysearch_site_builder.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/greysearch_site_builder.py",
    "dst": "tools/optional/site_builder.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/pdf_export.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/pdf_export.py",
    "dst": "tools/optional/pdf_export.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/photos.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/photos.py",
    "dst": "tools/optional/photos.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/pipeline_sites.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/pipeline_sites.py",
    "dst": "tools/optional/pipeline_sites.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/site_render.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/site_render.py",
    "dst": "tools/optional/site_render.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/site_guardrails.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/site_guardrails.py",
    "dst": "tools/optional/site_guardrails.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/tuning.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/tuning.py",
    "dst": "tools/optional/tuning.py"
   },
   {
-   "src": "/home/grey/greylocalrag/core/greysearch/research_integration.py",
+   "src": "/home/grey/greymicroagent/core/greysearch/research_integration.py",
    "dst": "tools/research_integration.py"
   },
   {

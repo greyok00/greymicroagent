@@ -1,4 +1,4 @@
-# RUNBOOK — local-model audit of the research library (greylocalrag fork)
+# RUNBOOK — local-model audit of the research library (greymicroagent fork)
 
 This kit lets a small LOCAL model (2B–3.5B class) work through the research
 library indefinitely with no cloud dependency. The Python script owns order,
@@ -33,10 +33,10 @@ anything related to it or its names.
 
 ```bash
 cd ~/grey/research-libary
-python3 ~/greylocalrag/handoff/library-agent.py --dry-run          # preview queue + page facts
-python3 ~/greylocalrag/handoff/library-agent.py                    # full autonomous walk
-python3 ~/greylocalrag/handoff/library-agent.py --model huihui_ai/qwen3.5-abliterated:2b --max-pages 5
-python3 ~/greylocalrag/handoff/library-agent.py --page legal/civil-procedure/fed-rule.html
+python3 ~/greymicroagent/handoff/library-agent.py --dry-run          # preview queue + page facts
+python3 ~/greymicroagent/handoff/library-agent.py                    # full autonomous walk
+python3 ~/greymicroagent/handoff/library-agent.py --model huihui_ai/qwen3.5-abliterated:2b --max-pages 5
+python3 ~/greymicroagent/handoff/library-agent.py --page legal/civil-procedure/fed-rule.html
 ```
 
 The driver always works on the real library (`~/grey/research-libary`) no

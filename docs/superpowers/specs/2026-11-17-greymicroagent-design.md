@@ -1,4 +1,4 @@
-# greylocalrag — product design spec (2026-11-17)
+# greymicroagent — product design spec (2026-11-17)
 
 A universal, self-contained, RAG-first local AI agent for machines without
 dedicated GPUs. Public release. Non-power-user audience. Built specifically
@@ -6,7 +6,7 @@ for retrieval-grounded answers.
 
 ## 1. What this product is
 
-greylocalrag is a local AI agent whose answers come from a knowledge base the
+greymicroagent is a local AI agent whose answers come from a knowledge base the
 user builds and controls, not from the model's memory. Every turn passes
 through a deterministic retrieval gate before the model sees it. When local
 knowledge answers the question, the answer cites it. When it does not, the
@@ -28,7 +28,7 @@ the host.
 ## 2. HARD constraints (owner directives, non-negotiable)
 
 1. **Model is FIXED:** `huihui_ai/qwen3-vl-abliterated:2b` served by the
-   vendored `greylocalrag-server` (llama.cpp b3fa6995). No model swap, no size
+   vendored `greymicroagent-server` (llama.cpp b3fa6995). No model swap, no size
    change, no automatic hardware adaptation — now or later. Owner 2026-11-17:
    "no changes no matter what... don't change the model size or anything yet."
 2. **Temperature band 0.0-0.2**, clamped by the gate on every request; baked
@@ -58,9 +58,9 @@ One session occupies three ports inside the unique block:
 
     TUI  ->  RAG gate :7641  ->  slimtoken :7642  ->  model server :7640
 
-- **Model server** `:7640` — vendored llama.cpp (`vendor/greylocalrag-server/`,
+- **Model server** `:7640` — vendored llama.cpp (`vendor/greymicroagent-server/`,
   renamed from greymini-server so the binary name is fork-unique), serving
-  `~/.greylocalrag/models/qwen3-vl-2b-abliterated.gguf` (weights are a symlink
+  `~/.greymicroagent/models/qwen3-vl-2b-abliterated.gguf` (weights are a symlink
   to the immutable ollama-store blob during development; a release fetches the
   gguf with a pinned checksum instead). CPU-only mode by default (NGL 0 when a
   GPU is present-but-held is still available via the existing VRAM interlock),
@@ -81,7 +81,7 @@ One session occupies three ports inside the unique block:
   0.0-0.2 band; (e) when nothing above the floor exists, prepends
   `[NO-KB-GROUNDING]` instead of chunks. The gate stores nothing — no prompt
   logging, no journaling. It serves only this fork.
-- **The card** (`model/greylocalrag.md`) carries the grounding law: answer
+- **The card** (`model/greymicroagent.md`) carries the grounding law: answer
   only from `[KB:]` blocks; with `[NO-KB-GROUNDING]` present, never state
   document facts — run tools or ask to research instead.
 
@@ -95,7 +95,7 @@ become triples: session 1 = 7640/7641/7642, session 2 = 7643/7644/7645,
 greymini's own behavior audit showed the failure class this product must never
 ship with: runaway loops ("WHY ARE YOU LOOPING"), instruction drift, empty
 replies, polling wedges. The cortex-agent family already solved these with a
-deterministic supervision harness (no judge LLM anywhere); greylocalrag vendors
+deterministic supervision harness (no judge LLM anywhere); greymicroagent vendors
 that machinery as fork-owned code and ships it default-ON, so non-power users
 get the polish without ever configuring it:
 
@@ -131,7 +131,7 @@ get the polish without ever configuring it:
   (ported from the owner's private knowledge-ingestor: HTML/PDF extraction,
   heading-aware chunking, MiniLM embeddings, RRF band search, atomic writes,
   job journal with retry/resume). No runtime dependency on that private tree.
-- **Storage** `~/.greylocalrag/dbs/` — plain db folders, format-compatible
+- **Storage** `~/.greymicroagent/dbs/` — plain db folders, format-compatible
   with the private system (pack.jsonl + vectors + ids + manifest), so
   offline search of any db also works with the standalone reader.
 - **Seed database `commands`** — generic, license-clean reference of standard
@@ -192,7 +192,7 @@ user sees, so it must teach the product in five seconds.
 ASCII logo in the fork's 8-bit greyscale style, byline, one short how-to
 paragraph, and the ingestor commands printed on first launch:
 
-    GREYLOCALRAG
+    GREYMICROAGENT
     grounded answers from your own knowledge — RAG for CPU-only machines
 
     HOW TO USE

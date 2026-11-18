@@ -55,7 +55,7 @@ export default function modesExtension(pi: ExtensionAPI): void {
 		if (state.mode !== "plan") return;
 		return {
 			message: {
-				customType: "greylocalrag-plan-mode",
+				customType: "greymicroagent-plan-mode",
 				content: `[PLAN MODE ACTIVE]
 You are in plan mode — read-only exploration. Write tools (edit/write) are disabled.
 Explore the codebase, ask clarifying questions, and produce a numbered plan under a

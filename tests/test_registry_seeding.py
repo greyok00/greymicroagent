@@ -5,7 +5,7 @@ import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-LAUNCHER = ROOT / "bin" / "greylocalrag"
+LAUNCHER = ROOT / "bin" / "greymicroagent"
 TEMPLATE = ROOT / "config-data" / "mcp-registry-template.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -54,7 +54,7 @@ def test_template_carries_the_three_portable_servers():
         assert s.get("enabled") is True, name
         for arg in s["args"]:
             if arg.startswith("/"):
-                assert arg.startswith("/opt/greylocalrag/"), (name, arg)
+                assert arg.startswith("/opt/greymicroagent/"), (name, arg)
 
 
 def test_pre_ship_gate_accepts_the_portable_template(tmp_path):
@@ -73,7 +73,7 @@ def test_pre_ship_gate_rejects_missing_host_and_incomplete_templates(tmp_path):
 
     host = json.loads(TEMPLATE.read_text())
     for s in host["servers"]:
-        s["args"] = [a.replace("/opt/greylocalrag", "/home/grey/greylocalrag")
+        s["args"] = [a.replace("/opt/greymicroagent", "/home/grey/greymicroagent")
                      for a in s["args"]]
     (payload / "config-data" / "mcp-registry-template.json").write_text(json.dumps(host))
     findings = psc.registry_template_findings(payload)
@@ -91,7 +91,7 @@ def test_first_launch_seeds_registry_and_second_launch_never_overwrites(tmp_path
     home.mkdir()
     r = _run_seeding(home, invocations=2)
     assert r.returncode == 0, r.stderr
-    reg = home / ".greylocalrag" / "agent" / "mcp_registry.json"
+    reg = home / ".greymicroagent" / "agent" / "mcp_registry.json"
     assert reg.is_file(), "first launch must land the registry"
     assert reg.read_bytes() == TEMPLATE.read_bytes(), \
         "the seeded copy is the template verbatim"

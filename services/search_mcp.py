@@ -7,8 +7,8 @@ SPACING_S = 3.0
 TIMEOUT_S = 25.0
 SLICE_S = 0.25
 DEFAULT_BASES = "searx.be,search.bus-hit.me,searx.tiekoetter.com"
-RUN_FILE_DEFAULT = os.path.expanduser("~/.greylocalrag/state/search-run")
-PROBE_QUERY = "greylocalrag search lane probe"
+RUN_FILE_DEFAULT = os.path.expanduser("~/.greymicroagent/state/search-run")
+PROBE_QUERY = "greymicroagent search lane probe"
 _probe_cache = {}
 
 
@@ -20,7 +20,7 @@ def _env_f(name, default):
 
 
 def _env_bases():
-    raw = os.environ.get("GREYLOCALRAG_SEARX_BASES", "") or DEFAULT_BASES
+    raw = os.environ.get("GREYMICROAGENT_SEARX_BASES", "") or DEFAULT_BASES
     out = []
     for part in raw.split(","):
         part = part.strip()
@@ -36,11 +36,11 @@ def bases():
 
 
 def run_file():
-    return os.environ.get("GREYLOCALRAG_SEARCH_RUN_FILE", "") or RUN_FILE_DEFAULT
+    return os.environ.get("GREYMICROAGENT_SEARCH_RUN_FILE", "") or RUN_FILE_DEFAULT
 
 
 def _fetch(url, timeout=TIMEOUT_S):
-    req = urllib.request.Request(url, headers={"User-Agent": "greylocalrag-search/0.1"})
+    req = urllib.request.Request(url, headers={"User-Agent": "greymicroagent-search/0.1"})
     return urllib.request.urlopen(req, timeout=timeout)
 
 
@@ -102,7 +102,7 @@ def health_wait():
     if not os.path.exists(path):
         return 0.0
     t0 = time.time()
-    deadline = t0 + max(0.0, _env_f("GREYLOCALRAG_HEALTH_WAIT_S", 240.0))
+    deadline = t0 + max(0.0, _env_f("GREYMICROAGENT_HEALTH_WAIT_S", 240.0))
     while os.path.exists(path):
         now = time.time()
         if now >= deadline:
@@ -127,7 +127,7 @@ def _probe_one(base):
 
 
 def _probed_instances(bases_list):
-    repoll = max(0.0, _env_f("GREYLOCALRAG_HEALTH_REPOLL_S", 10.0))
+    repoll = max(0.0, _env_f("GREYMICROAGENT_HEALTH_REPOLL_S", 10.0))
     out = []
     for base in bases_list:
         ts, cached = _probe_cache.get(base, (0.0, None))
@@ -144,7 +144,7 @@ def search_health():
     if os.path.exists(run_file()):
         return {"instances": [{"base": b, "ok": None, "note": "unprobed"} for b in bases_list],
                 "ok": False, "pending": True,
-                "repoll_s": _env_f("GREYLOCALRAG_HEALTH_REPOLL_S", 10.0),
+                "repoll_s": _env_f("GREYMICROAGENT_HEALTH_REPOLL_S", 10.0),
                 "blocked_s": round(blocked_s, 3)}
     instances = _probed_instances(bases_list)
     return {"instances": instances, "ok": any(i.get("ok") for i in instances),
@@ -160,9 +160,9 @@ def tool_search_health(a):
 
 
 TOOLS = [
-    ("search", "Keyless public web search over user-configurable SearXNG instances (env GREYLOCALRAG_SEARX_BASES, default searx.be, search.bus-hit.me, searx.tiekoetter.com). Returns a list of {url,title,snippet}; empty means every instance failed or nothing matched: do not fabricate results, escalate or re-state the query.",
+    ("search", "Keyless public web search over user-configurable SearXNG instances (env GREYMICROAGENT_SEARX_BASES, default searx.be, search.bus-hit.me, searx.tiekoetter.com). Returns a list of {url,title,snippet}; empty means every instance failed or nothing matched: do not fabricate results, escalate or re-state the query.",
      {"type": "object", "properties": {"query": {"type": "string"}, "k": {"type": "integer", "default": 5}}, "required": ["query"]}),
-    ("search_health", "Search-lane health: blocks while a marked run file (~/.greylocalrag/state/search-run, env GREYLOCALRAG_SEARCH_RUN_FILE) holds the lane, up to GREYLOCALRAG_HEALTH_WAIT_S (default 240 s), releasing the moment the run clears; after the cap it reports pending: true and re-polls no more than every GREYLOCALRAG_HEALTH_REPOLL_S (default 10 s). Returns {instances, ok} with per-instance probe state.",
+    ("search_health", "Search-lane health: blocks while a marked run file (~/.greymicroagent/state/search-run, env GREYMICROAGENT_SEARCH_RUN_FILE) holds the lane, up to GREYMICROAGENT_HEALTH_WAIT_S (default 240 s), releasing the moment the run clears; after the cap it reports pending: true and re-polls no more than every GREYMICROAGENT_HEALTH_REPOLL_S (default 10 s). Returns {instances, ok} with per-instance probe state.",
      {"type": "object", "properties": {}, "required": []}),
 ]
 

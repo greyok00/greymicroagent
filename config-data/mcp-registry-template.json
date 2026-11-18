@@ -1,34 +1,34 @@
 {
-  "name": "greylocalrag MCP registry template",
+  "name": "greymicroagent MCP registry template",
   "updated": "2026-11-17",
-  "note": "Portable seed copied by bin/greylocalrag to ~/.greylocalrag/agent/mcp_registry.json on first launch only (the copy never overwrites). These carry the deb install-root paths from scripts/package_deb.sh: the deb installs the frozen tree at /opt/greylocalrag. On the dev tree the seeding is skipped because the home registry already exists.",
+  "note": "Portable seed copied by bin/greymicroagent to ~/.greymicroagent/agent/mcp_registry.json on first launch only (the copy never overwrites). These carry the deb install-root paths from scripts/package_deb.sh: the deb installs the frozen tree at /opt/greymicroagent. On the dev tree the seeding is skipped because the home registry already exists.",
   "servers": [
     {
       "name": "memory",
       "command": "python3",
       "enabled": true,
       "args": [
-        "/opt/greylocalrag/mcp/run_server.py",
+        "/opt/greymicroagent/mcp/run_server.py",
         "--server",
         "memory"
       ],
-      "note": "The fork's designed memory surface: hot/cold tiers, per-row tolerant reads, cold-md covered, bad-args surface as errors. Store at ~/.greylocalrag/memory."
+      "note": "The fork's designed memory surface: hot/cold tiers, per-row tolerant reads, cold-md covered, bad-args surface as errors. Store at ~/.greymicroagent/memory."
     },
     {
       "name": "knowledge",
       "command": "python3",
       "enabled": true,
       "args": [
-        "/opt/greylocalrag/services/rag_mcp.py"
+        "/opt/greymicroagent/services/rag_mcp.py"
       ],
-      "note": "The fork-owned RAG surface (tools rag_status/rag_search/rag_ingest_pdf/rag_ingest_urls/rag_ingest_text/rag_remove/rag_list_sources) over the fork KB at ~/.greylocalrag/dbs; rag_remove refuses without confirm and stages pending-remove.json."
+      "note": "The fork-owned RAG surface (tools rag_status/rag_search/rag_ingest_pdf/rag_ingest_urls/rag_ingest_text/rag_remove/rag_list_sources) over the fork KB at ~/.greymicroagent/dbs; rag_remove refuses without confirm and stages pending-remove.json."
     },
     {
       "name": "greysearch",
       "command": "python3",
       "enabled": true,
       "args": [
-        "/opt/greylocalrag/services/search_mcp.py"
+        "/opt/greymicroagent/services/search_mcp.py"
       ],
       "note": "The fork-owned public searxng lane (tools search/search_health), keyless, no private-tree dependency."
     },
@@ -37,7 +37,7 @@
       "command": "python3",
       "enabled": true,
       "args": [
-        "/opt/greylocalrag/services/browser_mcp.py"
+        "/opt/greymicroagent/services/browser_mcp.py"
       ],
       "note": "The fork-owned browser lane (tools browser_open/browser_close/browser_health): patchright headless chromium, one shared instance per server, fresh page per call, reads the page back as title + text + top-20 links; browser_health never launches the browser and page content is never written to disk."
     }

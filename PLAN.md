@@ -1,6 +1,6 @@
-# greylocalrag audit + model-fit plan (2026-10-27)
+# greymicroagent audit + model-fit plan (2026-10-27)
 
-Owner ask: audit greylocalrag, find its perfect use, 2B vs 3.5B in real terms with charts,
+Owner ask: audit greymicroagent, find its perfect use, 2B vs 3.5B in real terms with charts,
 deep comparison, find abliterated replacement models (some already local).
 
 ## Steps
@@ -16,5 +16,5 @@ deep comparison, find abliterated replacement models (some already local).
 
 ## Rules
 - Never kill greyagent's server (pid 223763, :7080/:7081, 15.4GB VRAM).
-- greylocalrag test boots use slot 4444/4454+, NGL=0 unless VRAM check passes.
+- greymicroagent test boots use slot 4444/4454+, NGL=0 unless VRAM check passes.
 - All bench numbers measured on THIS machine, never quoted from memory.

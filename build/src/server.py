@@ -15,8 +15,8 @@ ROOT = Path(__file__).resolve().parents[2]
 STATE = ROOT / "state"
 STATE.mkdir(exist_ok=True)
 
-# 2026-10-25 (greylocalrag fork): the server is greylocalrag's OWN freshly built copy
-# from /home/grey/llama.cpp (b3fa6995) — vendor/greylocalrag-server/ (binary renamed
+# 2026-10-25 (greymicroagent fork): the server is greymicroagent's OWN freshly built copy
+# from /home/grey/llama.cpp (b3fa6995) — vendor/greymicroagent-server/ (binary renamed
 # from greymini-server 2026-11-17 so the name is fork-unique) +
 # every llama/ggml lib patched to resolve $ORIGIN, so this tree never touches
 # the shared /home/grey/llama.cpp build, greyagent's vendored copy, or the
@@ -28,15 +28,15 @@ STATE.mkdir(exist_ok=True)
 # Defaults here keep a direct, un-slotted boot working. The old build could
 # not load this model (per-layer kv-head array + ollama tensor naming) — the
 # fresh build matches the file's loader layout.
-LLAMA_SERVER = str(ROOT / "vendor" / "greylocalrag-server" / "greylocalrag-server")
+LLAMA_SERVER = str(ROOT / "vendor" / "greymicroagent-server" / "greymicroagent-server")
 LLAMA_LIB_DIR = str(Path(LLAMA_SERVER).parent)
 LANE_PORT = int(os.environ.get("GREYAGENT_LANE_PORT", "7641"))
 # Owner 2026-11-16: RAG default model = huihui qwen3-vl 2B (abliterated), served
 # from the fork-own gguf (weights are a symlink to the immutable ollama store
-# blob). The classic 2B stays available via GREYLOCALRAG_MODEL_PATH override.
+# blob). The classic 2B stays available via GREYMICROAGENT_MODEL_PATH override.
 MODEL_PATH = os.environ.get(
-    "GREYLOCALRAG_MODEL_PATH",
-    "/home/grey/.greylocalrag/models/qwen3-vl-2b-abliterated.gguf",
+    "GREYMICROAGENT_MODEL_PATH",
+    "/home/grey/.greymicroagent/models/qwen3-vl-2b-abliterated.gguf",
 )
 PORT = int(os.environ.get("GREYAGENT_MODEL_PORT", "7640"))
 HOST = "127.0.0.1"
@@ -54,7 +54,7 @@ def probe_ram_gb() -> float:
 
 
 def open_ctx_default() -> int:
-    assumed = os.environ.get("GREYLOCALRAG_ASSUME_RAM_GB")
+    assumed = os.environ.get("GREYMICROAGENT_ASSUME_RAM_GB")
     try:
         ram = float(assumed) if assumed else probe_ram_gb()
     except ValueError:
@@ -62,9 +62,9 @@ def open_ctx_default() -> int:
     return 32768 if ram <= 8 else 65536
 
 
-CTX = int(os.environ.get("GREYAGENT_CTX", str(open_ctx_default())))  # greylocalrag: 64k — the 2B hybrid's KV is tiny
+CTX = int(os.environ.get("GREYAGENT_CTX", str(open_ctx_default())))  # greymicroagent: 64k — the 2B hybrid's KV is tiny
 FA = os.environ.get("GREYAGENT_FA", "on")  # owner 2026-10-24: fill the 16GB card (hybrid model: KV is cheap); ladder steps down 16k until one fits
-# 2026-10-25 (owner: greylocalrag runs CPU-only): the 27B sibling holds the 16 GB
+# 2026-10-25 (owner: greymicroagent runs CPU-only): the 27B sibling holds the 16 GB
 # card, so this 2B cannot offload. NGL=0 = CPU+RAM mode — 11.7 tok/s decode
 # measured on this i7-12800H, the accepted price for running beside the 27B.
 NGL = int(os.environ.get("GREYAGENT_NGL", "-1"))
@@ -89,15 +89,15 @@ TOP_K = 10
 # that followed the same n-gram before. It only drafts when a long match
 # exists, so short tool-call/classification answers pay nothing while long
 # copy/rewrite/summary output (the case it is documented for, and the one
-# measured fastest on CPU) gets drafted ahead. GREYLOCALRAG_SPEC=off disables it
-# and restores the previous boot line; GREYLOCALRAG_SPEC=<type> selects another
+# measured fastest on CPU) gets drafted ahead. GREYMICROAGENT_SPEC=off disables it
+# and restores the previous boot line; GREYMICROAGENT_SPEC=<type> selects another
 # --spec-type (draft-dflash etc. still need their own draft model).
-SPEC = os.environ.get("GREYLOCALRAG_SPEC", "ngram-mod").strip().lower()
+SPEC = os.environ.get("GREYMICROAGENT_SPEC", "ngram-mod").strip().lower()
 SPEC_ARGS = ([] if SPEC in ("", "off", "none", "0") else ["--spec-type", SPEC])
 if SPEC == "ngram-mod":
-    SPEC_ARGS += ["--spec-ngram-mod-n-match", os.environ.get("GREYLOCALRAG_SPEC_NMATCH", "24"),
-                  "--spec-ngram-mod-n-min", os.environ.get("GREYLOCALRAG_SPEC_NMIN", "48"),
-                  "--spec-ngram-mod-n-max", os.environ.get("GREYLOCALRAG_SPEC_NMAX", "64")]
+    SPEC_ARGS += ["--spec-ngram-mod-n-match", os.environ.get("GREYMICROAGENT_SPEC_NMATCH", "24"),
+                  "--spec-ngram-mod-n-min", os.environ.get("GREYMICROAGENT_SPEC_NMIN", "48"),
+                  "--spec-ngram-mod-n-max", os.environ.get("GREYMICROAGENT_SPEC_NMAX", "64")]
 
 _proc = None
 
@@ -118,7 +118,7 @@ def start_model(timeout: float = 300.0) -> dict:
     global _proc
     if is_ready():
         return {"ok": True, "already": True}
-    # NO auto-kill in greylocalrag (owner 2026-10-25: sibling instances must never
+    # NO auto-kill in greymicroagent (owner 2026-10-25: sibling instances must never
     # be killed by a sibling's boot; the launcher's VRAM gate REFUSES foreign
     # holders instead — refuse-only policy).
     # Fill-the-card ladder (owner 2026-10-24: "increase to 16gb ... greyagent
@@ -129,7 +129,7 @@ def start_model(timeout: float = 300.0) -> dict:
     ctx_note = STATE / "model-ctx-settled.txt"
     base = open_ctx_default()
     candidates = sorted(set(list(range(base, 24576, -16384)) + [32768]), reverse=True)
-    # greylocalrag: 32k floor — the ladder stops AT 32768, never lower
+    # greymicroagent: 32k floor — the ladder stops AT 32768, never lower
     # (owner 2026-10-25: 64k default; a shrunken window would re-introduce
     # the overflow class, so the ladder never goes below half)
     try:
@@ -168,7 +168,7 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--temp", str(TEMP),
         "--top-p", str(TOP_P),
         "--top-k", str(TOP_K),
-        "--threads", os.environ.get("GREYLOCALRAG_THREADS", "4"),
+        "--threads", os.environ.get("GREYMICROAGENT_THREADS", "4"),
         "--flash-attn", FA,
         "--parallel", os.environ.get("GREYAGENT_PARALLEL", "1"),
         "--ubatch-size", os.environ.get("GREYAGENT_UBATCH", "128"),
@@ -178,7 +178,7 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--jinja",
         *([] if THINKING == "on" else ["--reasoning", "off"]),
         *SPEC_ARGS,
-        "--alias", "greylocalrag",
+        "--alias", "greymicroagent",
     ]
     log = open(STATE / "model-server.log", "ab")
     log.write(("\n=== boot attempt ctx=%d ===\n" % ctx_size).encode())

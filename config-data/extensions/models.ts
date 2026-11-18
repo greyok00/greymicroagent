@@ -1,6 +1,6 @@
-// 2026-10-25: greylocalrag fork of greyagent's models.ts. Local GGUF usable in
-// the picker — "greylocalrag-local" carries apiKey "none" so no OAuth/API-key
-// check can block it. Cloud provider catalogs are emptied: greylocalrag is
+// 2026-10-25: greymicroagent fork of greyagent's models.ts. Local GGUF usable in
+// the picker — "greymicroagent-local" carries apiKey "none" so no OAuth/API-key
+// check can block it. Cloud provider catalogs are emptied: greymicroagent is
 // LOCAL-ONLY (same owner order as the cortexagent and greyagent forks).
 
 import type { ExtensionAPI } from "@greyagent/coding-agent";  // 2026-10-24 hardened: renamed scope
@@ -80,7 +80,7 @@ export default function modelsExtension(pi: ExtensionAPI): void {
 		return settled ?? envW ?? 65536;
 	})();
 
-	pi.registerProvider("greylocalrag-local", {
+	pi.registerProvider("greymicroagent-local", {
 		name: `Grey Local (:${LANE_PORT} lane)`,
 		baseUrl: process.env.GREYAGENT_LOCAL_BASE || `http://127.0.0.1:${LANE_PORT}/v1`,
 		apiKey: "none",
@@ -88,7 +88,7 @@ export default function modelsExtension(pi: ExtensionAPI): void {
 		samplingParams: { temperature: SAFE_TEMP, top_p: SAFE_TOP_P },
 		models: [
 			{
-				id: "greylocalrag",
+				id: "greymicroagent",
 				name: `Qwen3.5-2B-abliterated (local, :${MODEL_PORT})`,
 				reasoning: true,
 				input: ["text"],

@@ -200,24 +200,24 @@ class SseStripper:
 
 
 def _upstream():
-    return os.environ.get("GREYLOCALRAG_UPSTREAM") or DEFAULT_UPSTREAM
+    return os.environ.get("GREYMICROAGENT_UPSTREAM") or DEFAULT_UPSTREAM
 
 
 def _floor():
     try:
-        return float(os.environ.get("GREYLOCALRAG_RAG_FLOOR"))
+        return float(os.environ.get("GREYMICROAGENT_RAG_FLOOR"))
     except (TypeError, ValueError):
         return DEFAULT_FLOOR
 
 
 def _dbs_list():
-    out = [x.strip() for x in (os.environ.get("GREYLOCALRAG_DBS") or "commands").split(",") if x.strip()]
+    out = [x.strip() for x in (os.environ.get("GREYMICROAGENT_DBS") or "commands").split(",") if x.strip()]
     return out or ["commands"]
 
 
 def _state_dir():
-    root = os.environ.get("GREYLOCALRAG_STATE_DIR")
-    return Path(root) if root else Path.home() / ".greylocalrag" / "state"
+    root = os.environ.get("GREYMICROAGENT_STATE_DIR")
+    return Path(root) if root else Path.home() / ".greymicroagent" / "state"
 
 
 def _offline():
@@ -357,7 +357,7 @@ def handle(body, path, upstream):
 
 
 class Gate(BaseHTTPRequestHandler):
-    server_version = "greylocalrag-gate"
+    server_version = "greymicroagent-gate"
     sys_version = ""
     protocol_version = "HTTP/1.1"
 

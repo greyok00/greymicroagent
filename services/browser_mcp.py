@@ -10,8 +10,8 @@ TEXT_LIMIT_CHARS = 8000
 TITLE_LIMIT_CHARS = 200
 LINK_LIMIT = 20
 LINK_TEXT_LIMIT = 200
-EXE_ENV = "GREYLOCALRAG_BROWSER_EXE"
-PIDS_ENV = "GREYLOCALRAG_BROWSER_PIDS"
+EXE_ENV = "GREYMICROAGENT_BROWSER_EXE"
+PIDS_ENV = "GREYMICROAGENT_BROWSER_PIDS"
 SIGNATURE_LIMIT = 300
 CHROME_MARKERS = ("/chrome", "/chromium", "/headless_shell", "ms-playwright",
                   "playwright_chromiumdev_profile", "--remote-debugging-pipe")

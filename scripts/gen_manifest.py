@@ -19,7 +19,7 @@ MAX_HASH_BYTES = 64 * 1024 * 1024  # hash everything below this; size-pin above
 WALK_DIRS = ["mcp",
              "core", "tools", "services", "build/src", "model", "ui",
              "vendor/slimtoken/src/slimtoken",
-             "vendor/llamacpp", "vendor/greylocalrag-server",
+             "vendor/llamacpp", "vendor/greymicroagent-server",
              "tui/packages/agent/dist", "tui/packages/ai/dist", "tui/packages/client/dist",
              "tui/packages/coding-agent/dist", "tui/packages/protocol/dist", "tui/packages/server/dist",
              "tui/packages/session-backends/sqlite-node/dist",
@@ -108,7 +108,7 @@ def main() -> int:
             else:
                 out[rel] = {"size": size, "sha256": _sha256(p)}
     manifest = {
-        "name": "greylocalrag-hardened",
+        "name": "greymicroagent-hardened",
         "format": 1,
         "hashed_below": MAX_HASH_BYTES,
         "files": out,

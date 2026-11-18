@@ -14,10 +14,10 @@ MODEL_REF = "huihui_ai/qwen3-vl-abliterated:2b"
 MODEL_TAG = "2b"
 MODEL_ORG, MODEL_NAME = "huihui_ai", "qwen3-vl-abliterated"
 REGISTRY = "https://registry.ollama.ai/v2/%s/%s/blobs/sha256:%s"
-SOURCE_BLOB_ENV = "GREYLOCALRAG_SOURCE_BLOB"
+SOURCE_BLOB_ENV = "GREYMICROAGENT_SOURCE_BLOB"
 SOURCE_BLOB_DEFAULT = "/usr/share/ollama/.ollama/models/blobs/sha256-20ef83c3cae84e1dc03d3faee31c3c4ddda6ca806a8c99dc89d42e3e43e9c2ff"
 SOURCE_BLOB_SHA256 = "20ef83c3cae84e1dc03d3faee31c3c4ddda6ca806a8c99dc89d42e3e43e9c2ff"
-MODELS_DIR = Path.home() / ".greylocalrag" / "models"
+MODELS_DIR = Path.home() / ".greymicroagent" / "models"
 SOURCE_CACHE = MODELS_DIR / "source-qwen3-vl-2b-abliterated.gguf"
 DOWNLOAD_CHUNK = 8 * 1024 * 1024
 FUSED = MODELS_DIR / "qwen3-vl-2b-abliterated-fused.gguf"
@@ -323,7 +323,7 @@ def download():
     url = REGISTRY % (MODEL_ORG, MODEL_NAME, SOURCE_BLOB_SHA256)
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
     part = SOURCE_CACHE.with_name(SOURCE_CACHE.name + ".downloading")
-    req = urllib.request.Request(url, headers={"User-Agent": "greylocalrag-fetch/0.1"})
+    req = urllib.request.Request(url, headers={"User-Agent": "greymicroagent-fetch/0.1"})
     got = hashlib.sha256()
     total = 0
     log("downloading %s" % url)

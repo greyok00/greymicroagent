@@ -1,9 +1,9 @@
 #!/bin/bash
-# package_deb.sh - build the greylocalrag .deb locally. LOCAL ARTIFACT ONLY:
+# package_deb.sh - build the greymicroagent .deb locally. LOCAL ARTIFACT ONLY:
 # the release is owner-gated, nothing here pushes, uploads, or publishes.
 #
-# dpkg layout: /opt/greylocalrag = the frozen tree (launcher, compiled modules,
-# tui dist, vendored runtime); /usr/local/bin/greylocalrag = symlink. The
+# dpkg layout: /opt/greymicroagent = the frozen tree (launcher, compiled modules,
+# tui dist, vendored runtime); /usr/local/bin/greymicroagent = symlink. The
 # postinst runs bin/verify_compiled.py so a broken install fails loudly at
 # dpkg time, never silently at first boot.
 #
@@ -17,18 +17,18 @@
 #      copied REAL files from the repo; the dev `config` symlink is never
 #      staged (a copy of it would carry a host-locked link); README.md,
 #      THIRD-PARTY-NOTICES.txt; the
-#      model card AS model/greylocalrag.txt (the .md dev name never ships);
+#      model card AS model/greymicroagent.txt (the .md dev name never ships);
 #      state/ carries ONLY a manifest regenerated from the staged tree itself,
 #      so every pin matches exactly what the deb installs.
 #   3. MECHANICAL SCRUB on the staged copy only, dev source untouched:
-#      - rebrand "knowledge-ingestor" -> "greylocalrag" (Task 3 carry: the
+#      - rebrand "knowledge-ingestor" -> "greymicroagent" (Task 3 carry: the
 #        kbcore User-Agent and the KB db-format tag; the pre-ship gate flags
 #        the string as FAIL, so the payload copy must not carry it)
-#      - codename purge "greymini" -> "greylocalrag" (also fixed inside the
+#      - codename purge "greymini" -> "greymicroagent" (also fixed inside the
 #        compiled dist fallback paths, which are fork-owned after the rebrand)
 #      - host path purge: "/home/grey/..." -> "$HOME/..." placeholders; the
 #        runtime paths that actually matter are resolved by the staged
-#        launcher export GREYLOCALRAG_MODEL_PATH=$HOME/.greylocalrag/models/...
+#        launcher export GREYMICROAGENT_MODEL_PATH=$HOME/.greymicroagent/models/...
 #      - em dash -> hyphen in shipped text (echo/comment strings law)
 #      - full-line comments stripped from shipped shell surfaces (the
 #        launcher); private dev comments stay private by staging exclusion
@@ -48,19 +48,19 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
 OUT="$ROOT/dist/deb"
-PKGROOT="$OUT/greylocalrag"
-TREE="$PKGROOT/opt/greylocalrag"
+PKGROOT="$OUT/greymicroagent"
+TREE="$PKGROOT/opt/greymicroagent"
 VERSION="$(python3 "$ROOT/bin/version.sh" 2>/dev/null || true)"
 [ -n "$VERSION" ] || VERSION="$(node "$ROOT/tui/packages/coding-agent/dist/cli.js" --version 2>/dev/null | tail -1 | tr -dc '0-9.')"
 [ -n "$VERSION" ] || VERSION="0.7.5.1"
 
-echo "== packaging greylocalrag $VERSION =="
+echo "== packaging greymicroagent $VERSION =="
 echo "== dev-tree sanity: gen_manifest + verify_compiled =="
 python3 "$ROOT/scripts/gen_manifest.py"
 python3 "$ROOT/bin/verify_compiled.py"
 
 rm -rf "$PKGROOT"
-rm -f "$OUT/greylocalrag_${VERSION}_amd64.deb"
+rm -f "$OUT/greymicroagent_${VERSION}_amd64.deb"
 mkdir -p "$TREE" "$PKGROOT/DEBIAN" "$PKGROOT/usr/local/bin" "$TREE/state"
 
 echo "== staging payload (real files, no dev symlinks) =="
@@ -84,7 +84,7 @@ mkdir -p "$TREE/model"
 for f in "$ROOT"/model/*.py "$ROOT"/model/*.so; do
     cp -a "$f" "$TREE/model/"
 done
-cp -a "$ROOT/model/greylocalrag.md" "$TREE/model/greylocalrag.txt"
+cp -a "$ROOT/model/greymicroagent.md" "$TREE/model/greymicroagent.txt"
 ls "$TREE/model" | sed 's/^/  model: /'
 echo "== staging the ui package (import closure of app) =="
 mkdir -p "$TREE/ui"
@@ -115,16 +115,16 @@ find "$TREE/config-data/extensions" -name '*.ga08-bak' -delete
 find "$TREE/config-data/extensions" -name '*.ts.bak' -delete
 
 echo "== package-time patches on the staged launcher =="
-sed -i 's|model/greylocalrag\.md|model/greylocalrag.txt|' "$TREE/bin/greylocalrag"
-python3 - "$TREE/bin/greylocalrag" <<'PY'
+sed -i 's|model/greymicroagent\.md|model/greymicroagent.txt|' "$TREE/bin/greymicroagent"
+python3 - "$TREE/bin/greymicroagent" <<'PY'
 import sys
 p = sys.argv[1]
 t = open(p).read()
-anchor = 'mkdir -p "$GREYLOCALRAG_DBS_ROOT"'
+anchor = 'mkdir -p "$GREYMICROAGENT_DBS_ROOT"'
 assert anchor in t, "launcher anchor missing: %s" % anchor
-line = ('export GREYLOCALRAG_MODEL_PATH="${GREYLOCALRAG_MODEL_PATH:-'
-        '$HOME/.greylocalrag/models/qwen3-vl-2b-abliterated.gguf}"')
-if "GREYLOCALRAG_MODEL_PATH" not in t:
+line = ('export GREYMICROAGENT_MODEL_PATH="${GREYMICROAGENT_MODEL_PATH:-'
+        '$HOME/.greymicroagent/models/qwen3-vl-2b-abliterated.gguf}"')
+if "GREYMICROAGENT_MODEL_PATH" not in t:
     t = t.replace(anchor, anchor + "\n" + line, 1)
 open(p, "w").write(t)
 PY
@@ -141,10 +141,10 @@ TEXT_TAIL = (".py", ".js", ".mjs", ".cjs", ".ts", ".json", ".sh", ".css", ".html
              ".svg", ".xml")
 EMDASH = chr(0x2014)
 REBRANDS = [
-    ("knowledge-ingestor", "greylocalrag"),
-    ("greymini", "greylocalrag"),
-    ("GreyMini", "GreyLocalRag"),
-    ("GREYMINI", "GREYLOCALRAG"),
+    ("knowledge-ingestor", "greymicroagent"),
+    ("greymini", "greymicroagent"),
+    ("GreyMini", "GreyMicroagent"),
+    ("GREYMINI", "GREYMICROAGENT"),
 ]
 PATH_PURGE = [("/home/grey/", "$HOME/"), ("/home/grey", "$HOME")]
 
@@ -183,7 +183,7 @@ for p in sorted(tree.rglob("*")):
         continue
     if not is_text(p, rel):
         continue
-    strip = rel.endswith(".sh") or rel == "bin/greylocalrag"
+    strip = rel.endswith(".sh") or rel == "bin/greymicroagent"
     rewrite(p, p.read_text(encoding="utf-8", errors="ignore"), strip)
     count += 1
 
@@ -257,49 +257,49 @@ echo "== verify_compiled inside the staged tree =="
 python3 "$TREE/bin/verify_compiled.py"
 
 cat > "$PKGROOT/DEBIAN/control" <<EOF
-Package: greylocalrag
+Package: greymicroagent
 Version: $VERSION
 Section: utils
 Priority: optional
 Architecture: amd64
 Depends: python3 (>= 3.13), nodejs (>= 22), libc6, libstdc++6, libgcc-s1, libnvidia-ml1 | libcuda1
 Maintainer: grey <local>
-Description: greylocalrag - portable minimized offline agent (2B hybrid)
+Description: greymicroagent - portable minimized offline agent (2B hybrid)
  Fully Cython-compiled agent core/tools/services; fork-unique private
- llama-server (greylocalrag-server) with session slots inside the fork-owned
+ llama-server (greymicroagent-server) with session slots inside the fork-owned
  7640-7647 port block (:7640 model, :7641 slimtoken lane); Node TUI under the
  @greyagent scope (its compiled scope); frozen, hash-pinned artifacts
  (state/MANIFEST.json) and an on-demand, masked lifecycle. Port policy at
- config-data/port_policy.json; grounding KB at ~/.greylocalrag/dbs.
+ config-data/port_policy.json; grounding KB at ~/.greymicroagent/dbs.
 EOF
 cat > "$PKGROOT/DEBIAN/postinst" <<'EOF'
 #!/bin/bash
 set -e
-if ! python3 /opt/greylocalrag/bin/verify_compiled.py; then
-  echo "greylocalrag: frozen-tree verification FAILED after install" >&2
+if ! python3 /opt/greymicroagent/bin/verify_compiled.py; then
+  echo "greymicroagent: frozen-tree verification FAILED after install" >&2
   exit 1
 fi
-echo "greylocalrag: frozen tree verified. ~/.greylocalrag/agent seeds on first launch."
+echo "greymicroagent: frozen tree verified. ~/.greymicroagent/agent seeds on first launch."
 EOF
 chmod 755 "$PKGROOT/DEBIAN/postinst"
 
 echo "== entry-point symlink into the frozen tree =="
-ln -sfn /opt/greylocalrag/bin/greylocalrag "$PKGROOT/usr/local/bin/greylocalrag"
-[ "$(readlink "$PKGROOT/usr/local/bin/greylocalrag")" = "/opt/greylocalrag/bin/greylocalrag" ] \
+ln -sfn /opt/greymicroagent/bin/greymicroagent "$PKGROOT/usr/local/bin/greymicroagent"
+[ "$(readlink "$PKGROOT/usr/local/bin/greymicroagent")" = "/opt/greymicroagent/bin/greymicroagent" ] \
     || { echo "package_deb: launcher symlink sanity failed"; exit 1; }
 
 du -sh "$TREE" | sed 's/^/payload: /'
-dpkg-deb --build --root-owner-group "$PKGROOT" "$OUT/greylocalrag_${VERSION}_amd64.deb"
+dpkg-deb --build --root-owner-group "$PKGROOT" "$OUT/greymicroagent_${VERSION}_amd64.deb"
 
 echo "== artifact verification (HARD STOP after this: publish is owner-gated) =="
-DEB="$OUT/greylocalrag_${VERSION}_amd64.deb"
+DEB="$OUT/greymicroagent_${VERSION}_amd64.deb"
 dpkg -I "$DEB"
 SCRATCH="$(mktemp -d)"
 dpkg-deb -x "$DEB" "$SCRATCH"
-python3 "$SCRATCH/opt/greylocalrag/bin/verify_compiled.py" \
+python3 "$SCRATCH/opt/greymicroagent/bin/verify_compiled.py" \
     && echo "unpacked-tree verify_compiled: PASS"
-python3 "$ROOT/scripts/pre_ship_check.py" "$SCRATCH/opt/greylocalrag" \
+python3 "$ROOT/scripts/pre_ship_check.py" "$SCRATCH/opt/greymicroagent" \
     && echo "unpacked-tree pre-ship gate: PASS"
-grep -n "7640-7647" "$SCRATCH/opt/greylocalrag/config-data/port_policy.json" | head -2
+grep -n "7640-7647" "$SCRATCH/opt/greymicroagent/config-data/port_policy.json" | head -2
 rm -rf "$SCRATCH"
 ls -la "$OUT" | grep deb

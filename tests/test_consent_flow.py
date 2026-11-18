@@ -8,8 +8,8 @@ QUERY = "keravex mirror alignment spindle"
 
 
 def root_guard(tmp_path):
-    root = os.environ.get("GREYLOCALRAG_DBS_ROOT")
-    assert root == str(tmp_path), "GREYLOCALRAG_DBS_ROOT must be the tmp root before any kbcore import"
+    root = os.environ.get("GREYMICROAGENT_DBS_ROOT")
+    assert root == str(tmp_path), "GREYMICROAGENT_DBS_ROOT must be the tmp root before any kbcore import"
     return root
 
 
@@ -34,7 +34,7 @@ def payload(resp):
 
 
 def test_research_run_never_stores_without_ingest(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
     root_guard(tmp_path)
     p = open_server()
     for i, q in ((1, QUERY), (2, "keravex drill press manual"), (3, "spindle lock")):
@@ -50,7 +50,7 @@ def test_research_run_never_stores_without_ingest(tmp_path, monkeypatch):
 
 
 def test_consent_cycle_ingest_firm_hit_remove_unfindable(tmp_path, monkeypatch):
-    monkeypatch.setenv("GREYLOCALRAG_DBS_ROOT", str(tmp_path))
+    monkeypatch.setenv("GREYMICROAGENT_DBS_ROOT", str(tmp_path))
     root_guard(tmp_path)
     p = open_server()
     sea0 = payload(call(p, 1, "rag_search", {"db": "commands", "query": QUERY}))

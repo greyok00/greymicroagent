@@ -8,5 +8,5 @@ keys.json
 state/
 research/data/private/
 
-dist/deb/greylocalrag/
+dist/deb/greymicroagent/
 dist/deb/*.deb

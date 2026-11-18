@@ -3,14 +3,14 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import * as os from "node:os";
 
-const WINDOW = num(process.env.GREYLOCALRAG_LOOPGUARD_WINDOW, 20);
-const MAX_PER_WINDOW = num(process.env.GREYLOCALRAG_LOOPGUARD_MAX_PER_WINDOW, 5);
-const LIFETIME_MAX = num(process.env.GREYLOCALRAG_LOOPGUARD_LIFETIME_MAX, 40);
-const WAIT_FAST_S = num(process.env.GREYLOCALRAG_LOOPGUARD_WAIT_FAST, 10);
-const WAIT_MCP_S = num(process.env.GREYLOCALRAG_LOOPGUARD_WAIT_MCP, 300);
+const WINDOW = num(process.env.GREYMICROAGENT_LOOPGUARD_WINDOW, 20);
+const MAX_PER_WINDOW = num(process.env.GREYMICROAGENT_LOOPGUARD_MAX_PER_WINDOW, 5);
+const LIFETIME_MAX = num(process.env.GREYMICROAGENT_LOOPGUARD_LIFETIME_MAX, 40);
+const WAIT_FAST_S = num(process.env.GREYMICROAGENT_LOOPGUARD_WAIT_FAST, 10);
+const WAIT_MCP_S = num(process.env.GREYMICROAGENT_LOOPGUARD_WAIT_MCP, 300);
 const SEARCH_RUN_FILE =
-	process.env.GREYLOCALRAG_SEARCH_RUN_FILE ||
-	path.join(os.homedir(), ".greylocalrag", "state", "search-run");
+	process.env.GREYMICROAGENT_SEARCH_RUN_FILE ||
+	path.join(os.homedir(), ".greymicroagent", "state", "search-run");
 
 const LONG_JOB_TOOLS = ["rag_search", "search", "search_health"];
 

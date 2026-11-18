@@ -3,7 +3,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "services"))
 import rag.kbcore as kb
 
-SRC = "greylocalrag product seed (own-written)"
+SRC = "greymicroagent product seed (own-written)"
 URL = "-"
 DB = "general"
 

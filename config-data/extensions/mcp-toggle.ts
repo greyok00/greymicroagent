@@ -8,7 +8,7 @@ import * as path from "node:path";
 // Reads mcp_registry.json; toggles enabled state; shows name, status,
 // kind, command. External servers stay disabled until hash-verified per
 // the owner's supply-chain rule; this surface keeps that order.
-const REGISTRY = path.join(os.homedir(), ".greylocalrag", "agent", "mcp_registry.json");
+const REGISTRY = path.join(os.homedir(), ".greymicroagent", "agent", "mcp_registry.json");
 
 interface McpEntry {
 	name: string;
@@ -52,7 +52,7 @@ async function toggle(ctx: { ui: { notify(msg: string, level?: string): Promise<
 	}
 	if (want && s.so) {
 		// supply-chain rule: compiled external servers enable only hash-verified
-		const soPath = path.join(os.homedir(), "greylocalrag", s.so);
+		const soPath = path.join(os.homedir(), "greymicroagent", s.so);
 		try {
 			sha256(soPath);
 		} catch {
