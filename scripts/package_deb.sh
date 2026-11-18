@@ -190,9 +190,6 @@ for p in sorted(tree.rglob("*")):
 BYTE_PAIRS = [
     (b"/home/grey", b"/home/user"),
     (b"/HOME/GREY", b"/HOME/USER"),
-    (b"greymini", b"localrag"),
-    (b"GreyMini", b"LocalRag"),
-    (b"GREYMINI", b"LOCALRAG"),
 ]
 patched = 0
 for p in sorted(tree.rglob("*")):
