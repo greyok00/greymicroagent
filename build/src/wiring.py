@@ -210,22 +210,24 @@ def register_all() -> int:
          "timeout": {"type": "integer"}}, ["command"]), powershell)
 
     import json as _json
-    from services.rag import kbcore as _kb
+
+    def rag_pass(name: str, a: dict) -> dict:
+        from services import rag_mcp as _r
+        try:
+            r = _r.dispatch(name, a)
+        except Exception as e:
+            return {"ok": False, "output": "", "error": str(e)[:400]}
+        return {"ok": True, "output": (r if isinstance(r, str)
+                                       else _json.dumps(r, default=str))[:40000], "error": ""}
 
     def rag_search(db: str = "", query: str = "", k: int = 5, **kw) -> dict:
         if not (db and query):
             return {"ok": False, "output": "", "error": "missing argument: db, query"}
-        try:
-            hits = _kb.search(_kb.db_dir(str(db)), str(query), max(1, int(k or 5)))
-        except Exception as e:
-            return {"ok": False, "output": "", "error": str(e)[:400]}
-        return {"ok": True, "output": str(hits)[:20000], "error": ""}
+        return rag_pass("rag_search", {"db": str(db), "query": str(query),
+                                       "k": max(1, int(k or 5))})
 
     def rag_status(**kw) -> dict:
-        try:
-            return {"ok": True, "output": _json.dumps(_kb.dbs()), "error": ""}
-        except Exception as e:
-            return {"ok": False, "output": "", "error": str(e)[:400]}
+        return rag_pass("rag_status", {})
 
     registry.register_tool("rag_search", _schema(
         "Search a local knowledge base offline. args: db, query, k.",

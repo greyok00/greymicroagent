@@ -4,20 +4,15 @@ import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
 
-const REGISTRY = path.join(os.homedir(), ".greymicroagent", "agent", "mcp_registry.json");
+// Knowledge tools run through the internal bridge (no MCP stdio servers):
+// one shot per call, python3 services/internal_tools.py call <tool>.
+const ROOT = process.env.GREYAGENT_ROOT ?? path.join(os.homedir(), "greymicroagent");
+const BRIDGE = path.join(ROOT, "services", "internal_tools.py");
 const STATE_DIR = path.join(os.homedir(), ".greymicroagent", "state");
 const TEMP_FILE = path.join(STATE_DIR, "rag-temp");
 const OFFLINE_FILE = path.join(STATE_DIR, "rag-offline");
 const TEMP_MIN = 0.0;
 const TEMP_MAX = 0.2;
-
-interface RegistryServer {
-	name: string;
-	command?: string;
-	args?: string[];
-	so?: string;
-	enabled: boolean;
-}
 
 interface RagSource {
 	url: string;
@@ -30,116 +25,65 @@ function defaultDb(): string {
 	return (process.env.GREYMICROAGENT_DBS ?? "commands").split(",")[0].trim() || "commands";
 }
 
-function ragServerCommand(): string[] | null {
-	try {
-		const reg = JSON.parse(fs.readFileSync(REGISTRY, "utf8")) as { servers: RegistryServer[] };
-		const entry = (reg.servers ?? []).find((s) => s.name === "knowledge");
-		if (!entry || !entry.enabled) return null;
-		if (entry.command && entry.args?.length) return [entry.command, ...entry.args];
-		if (entry.command) return ["/bin/sh", "-c", entry.command];
-		if (entry.so) return ["/bin/sh", "-c", `python3 ${path.join(os.homedir(), "greymicroagent", "mcp", "run_server.py")} --server ${entry.name}`];
-		return null;
-	} catch {
-		return null;
-	}
-}
-
-function plainText(result: Record<string, unknown>): string {
-	const content = result.content as { type?: string; text?: string }[] | undefined;
-	if (!Array.isArray(content)) return JSON.stringify(result);
-	return content
-		.map((c) => (c.type === "text" ? String(c.text ?? "") : ""))
-		.filter(Boolean)
-		.join(" ");
-}
-
 async function ragCall(tool: string, args: Record<string, unknown>, timeoutMs: number): Promise<Record<string, unknown>> {
-	const argv = ragServerCommand();
-	if (!argv) throw new Error("the knowledge service is not registered or is switched off — run /mcp to check it");
-	const proc = childProcess.spawn(argv[0], argv.slice(1), { cwd: os.homedir(), stdio: ["pipe", "pipe", "pipe"] });
-	const stdio = proc.stdio as (NodeJS.ReadableStream | NodeJS.WritableStream)[];
-	stdio.forEach((s) => s && s.unref());
-	proc.unref();
-	try {
-		return await new Promise<Record<string, unknown>>((resolve, reject) => {
-			let buffer = "";
-			let stage = "init";
-			let settled = false;
-			const teardown = () => {
-				clearTimeout(timer);
-				try { proc.removeAllListeners(); } catch {}
-				try { proc.stdin?.destroy(); } catch {}
-				try { proc.stdout?.destroy(); } catch {}
-				try { proc.stderr?.destroy(); } catch {}
-				try { proc.kill("SIGKILL"); } catch {}
-			};
-			const settle = (message: string | null, value?: Record<string, unknown>) => {
-				if (settled) return;
-				settled = true;
-				teardown();
-				if (message === null) resolve(value ?? {});
-				else reject(new Error(message));
-			};
-			const timer = setTimeout(
-				() => settle(`${tool === "rag_ingest_urls" ? "reading the page" : "the knowledge base"} took longer than ${Math.round(timeoutMs / 1000)} seconds and was stopped`),
-				timeoutMs,
-			);
-			proc.stdout!.on("data", (chunk: Buffer) => {
-				buffer += chunk.toString();
-				const pump = () => {
-					const nl = buffer.indexOf("\n");
-					if (nl === -1) return;
-					const line = buffer.slice(0, nl).trim();
-					buffer = buffer.slice(nl + 1);
-					if (line) {
-						let msg: { id?: number; result?: Record<string, unknown> & { isError?: boolean }; error?: { message?: string } };
-						try {
-							msg = JSON.parse(line);
-						} catch {
-							msg = undefined as never;
-						}
-						if (msg && msg.id === 1 && stage === "init") {
-							stage = "call";
-							proc.stdin!.write(JSON.stringify({ jsonrpc: "2.0", method: "notifications/initialized" }) + "\n");
-							proc.stdin!.write(JSON.stringify({ jsonrpc: "2.0", id: 2, method: "tools/call", params: { name: tool, arguments: args } }) + "\n", (err: Error | null | undefined) => {
-								if (err) settle(`could not reach the knowledge service: ${err.message}`);
-							});
-						} else if (msg && msg.id === 2 && stage === "call") {
-							if (msg.error) {
-								settle(String(msg.error.message ?? "the knowledge service reported a problem"));
-							} else if (msg.result?.isError) {
-								const words = plainText(msg.result).replace(/^error:\s*/i, "");
-								settle(words || "the knowledge service reported a problem");
-							} else {
-								settle(null, msg.result ?? {});
-							}
-						}
-					}
-					pump();
-				};
-				pump();
-			});
-			proc.stderr?.resume();
-			proc.on("error", (e: Error) => settle(`could not start the knowledge service: ${e.message}`));
-			proc.on("exit", () => settle("the knowledge service stopped before answering"));
-			proc.stdin!.write(
-				JSON.stringify({
-					jsonrpc: "2.0",
-					id: 1,
-					method: "initialize",
-					params: { protocolVersion: "2024-11-05", capabilities: {}, clientInfo: { name: "greymicroagent", version: "0.7.5.1" } },
-				}) + "\n",
-				(err: Error | null | undefined) => {
-					if (err) settle(`could not reach the knowledge service: ${err.message}`);
-				},
-			);
+	return new Promise<Record<string, unknown>>((resolve, reject) => {
+		let settled = false;
+		let teardown: () => void = () => undefined;
+		const settle = (message: string | null, value?: Record<string, unknown>) => {
+			if (settled) return;
+			settled = true;
+			teardown();
+			if (message === null) resolve(value ?? {});
+			else reject(new Error(message));
+		};
+		let proc: childProcess.ChildProcess;
+		try {
+			proc = childProcess.spawn("python3", [BRIDGE, "call", tool], { cwd: ROOT, stdio: ["pipe", "pipe", "pipe"] });
+		} catch (e) {
+			reject(new Error("could not start the knowledge service: " + String(e)));
+			return;
+		}
+		const stdio = proc.stdio as (NodeJS.ReadableStream | NodeJS.WritableStream)[];
+		stdio.forEach((s) => s && s.unref());
+		proc.unref();
+		const timer = setTimeout(
+			() => settle(`${tool === "rag_ingest_urls" ? "reading the page" : "the knowledge base"} took longer than ${Math.round(timeoutMs / 1000)} seconds and was stopped`),
+			timeoutMs,
+		);
+		teardown = () => {
+			clearTimeout(timer);
+			try { proc.removeAllListeners(); } catch {}
+			try { proc.stdin?.destroy(); } catch {}
+			try { proc.stdout?.destroy(); } catch {}
+			try { proc.stderr?.destroy(); } catch {}
+			try { proc.kill("SIGKILL"); } catch {}
+		};
+		let out = "";
+		proc.stdout?.on("data", (chunk: Buffer) => {
+			out += chunk.toString();
 		});
-	} finally {
-		try { proc.stdin?.destroy(); } catch {}
-		try { proc.stdout?.destroy(); } catch {}
-		try { proc.stderr?.destroy(); } catch {}
-		try { proc.kill("SIGKILL"); } catch {}
-	}
+		proc.stderr?.resume();
+		proc.on("error", (e: Error) => settle(`could not start the knowledge service: ${e.message}`));
+		proc.on("exit", () => {
+			if (settled) return;
+			try {
+				const r = JSON.parse(out) as { ok?: boolean; output?: string; error?: string };
+				if (r && r.ok === false) {
+					settle(String(r.error ?? "the knowledge service reported a problem"));
+					return;
+				}
+				if (r && typeof r.output === "string") {
+					const parsed = JSON.parse(r.output) as Record<string, unknown>;
+					settle(null, parsed ?? {});
+					return;
+				}
+				settle("the knowledge service returned no answer");
+			} catch (e) {
+				settle("the knowledge service returned an unreadable answer: " + String(e));
+			}
+		});
+		proc.stdin?.end(JSON.stringify(args ?? {}));
+	});
 }
 
 function readTemp(): number | null {
@@ -230,7 +174,7 @@ export default function rag(pi: ExtensionAPI): void {
 					return;
 				}
 				if (/^https?:\/\//i.test(target)) {
-					const r = await ragCall("rag_ingest_urls", { db, urls: [target] }, 180000);
+					const r = await ragCall("rag_ingest_urls", { db, urls: [target], confirm: true }, 180000);
 					const per = ((r.urls as { url?: string; added?: number; note?: string }[]) ?? [])[0] ?? {};
 					const added = Number(per.added ?? r.added ?? 0);
 					if (added > 0) await ctx.ui.notify(`Added ${added} ${added === 1 ? "record" : "records"} from that page into ${db}. Say /rag status to see it.`);
@@ -243,7 +187,7 @@ export default function rag(pi: ExtensionAPI): void {
 				}
 				const kind = path.extname(target).toLowerCase();
 				if (kind === ".pdf") {
-					const r = await ragCall("rag_ingest_pdf", { db, path: target }, 120000);
+					const r = await ragCall("rag_ingest_pdf", { db, path: target, confirm: true }, 120000);
 					const added = Number(r.added ?? 0);
 					if (added > 0) await ctx.ui.notify(`Added ${added} ${added === 1 ? "record" : "records"} from ${String(r.title ?? path.basename(target))} into ${db}.`);
 					else await ctx.ui.notify(`Nothing was added — ${r.note ?? "the pdf could not be read"}.`, "warning");
@@ -255,7 +199,7 @@ export default function rag(pi: ExtensionAPI): void {
 						return;
 					}
 					const title = path.basename(target, kind);
-					const r = await ragCall("rag_ingest_text", { db, title, text: fs.readFileSync(target, "utf8"), source: "file", url: target }, 120000);
+					const r = await ragCall("rag_ingest_text", { db, title, text: fs.readFileSync(target, "utf8"), source: "file", url: target, confirm: true }, 120000);
 					const added = Number(r.added ?? 0);
 					if (added > 0) await ctx.ui.notify(`Added ${added} ${added === 1 ? "record" : "records"} from "${title}" into ${db}.`);
 					else await ctx.ui.notify(`Nothing was added from "${title}" — ${r.note ?? "the file could not be read"}.`, "warning");
