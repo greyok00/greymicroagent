@@ -32,7 +32,7 @@ REQUIRED_FILES = [
      "first-launch MCP registry template"),
     ("config-data/extensions/rag.ts", "shipped TUI extension record"),
     ("config-data/extensions/loop-guard.ts", "shipped TUI extension record"),
-    ("config-data/extensions/mcp_client.ts", "shipped TUI extension record"),
+    ("config-data/extensions/internal_tools.ts", "shipped TUI extension record"),
     ("config-data/extensions/lib/shared.ts",
      "shared extension lib rides with the shipped record"),
 ]

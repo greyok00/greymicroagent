@@ -1,12 +1,12 @@
 {
   "name": "greymicroagent MCP registry template",
   "updated": "2026-11-17",
-  "note": "Portable seed copied by bin/greymicroagent to ~/.greymicroagent/agent/mcp_registry.json on first launch only (the copy never overwrites). These carry the deb install-root paths from scripts/package_deb.sh: the deb installs the frozen tree at /opt/greymicroagent. On the dev tree the seeding is skipped because the home registry already exists.",
+  "note": "Internal-tools conversion: the MCP stdio servers no longer spawn. Entries kept disabled for the pre-ship name rules; TUI tools come from config-data/extensions/internal_tools.ts via services/internal_tools.py. First-launch seed never overwrites.",
   "servers": [
     {
       "name": "memory",
-      "command": "python3",
-      "enabled": true,
+      "command": "",
+      "enabled": false,
       "args": [
         "/opt/greymicroagent/mcp/run_server.py",
         "--server",
@@ -16,8 +16,8 @@
     },
     {
       "name": "knowledge",
-      "command": "python3",
-      "enabled": true,
+      "command": "",
+      "enabled": false,
       "args": [
         "/opt/greymicroagent/services/rag_mcp.py"
       ],
@@ -25,8 +25,8 @@
     },
     {
       "name": "greysearch",
-      "command": "python3",
-      "enabled": true,
+      "command": "",
+      "enabled": false,
       "args": [
         "/opt/greymicroagent/services/search_mcp.py"
       ],
@@ -34,8 +34,8 @@
     },
     {
       "name": "browser",
-      "command": "python3",
-      "enabled": true,
+      "command": "",
+      "enabled": false,
       "args": [
         "/opt/greymicroagent/services/browser_mcp.py"
       ],
