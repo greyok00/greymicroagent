@@ -1394,6 +1394,7 @@ def phase_battery():
             ("general", procedural_questions["general"]), 
             ("trap", procedural_questions["trap"]), 
             ("compose", procedural_questions["compose"])]
+    expected_turns = sum(len(items) for _, items in plan)
     t_all0 = time.time()
     turns = []
     idx = 0
@@ -1475,7 +1476,7 @@ def phase_battery():
                     "finish": (out.get("choices") or [{}])[0].get("finish_reason"), "tags": ts}
             turns.append(turn)
             say("battery %d/%d %s chunks=%d %.1fs verdict=%s why=%s len=%d reasoning=%d head=%.80r"
-                % (idx, 16, cls, n_chunks, turn["wall_s"], verdict, why, len(content),
+                % (idx, expected_turns, cls, n_chunks, turn["wall_s"], verdict, why, len(content),
                    turn["reasoning_len"], content[:80]))
     total_s = round(time.time() - t_all0, 1)
     by_cls = {c: [t for t in turns if t["class"] == c]
@@ -1493,11 +1494,11 @@ def phase_battery():
         "hallucination_fails_zero": hallucination_fails == 0,
         "no_think_tags_in_replies": all(t["tags"]["think_open"] == 0
                                         and t["tags"]["think_close"] == 0 for t in turns),
-        "every_turn_recorded": len(turns) == 16 and all(t["reply_status"] == 200 for t in turns),
+        "every_turn_recorded": len(turns) == expected_turns and all(t["reply_status"] == 200 for t in turns),
         "launcher_floor_carried": floor == 7.5,
     }
-    counts = {"commands_grounded_five": passes["command"], "generals_grounded_four": passes["general"],
-              "traps_honest_five": passes["trap"], "compositions_two": passes["compose"],
+    counts = {"commands_pass": passes["command"], "generals_pass": passes["general"],
+              "traps_pass": passes["trap"], "compositions_pass": passes["compose"],
               "content_on_every_turn": sum(1 for t in turns if t["reply_len"] > 0),
               "unverifiable": unverifiable, "other_fails": other_fails}
     ok = all(checks.values())
