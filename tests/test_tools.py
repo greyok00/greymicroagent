@@ -51,7 +51,7 @@ def test_wiring_all_registered():
     assert n >= 25
     from core.registry import execute_tool, TOOLS
     assert execute_tool("files_list", {"path": "."})["ok"]
-    assert "web_search" in TOOLS and "vision" in TOOLS and "kali_bank" in TOOLS
+    assert "web_search" in TOOLS and "vision" in TOOLS
 
 
 def test_parse_document_smoke():

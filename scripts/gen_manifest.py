@@ -24,11 +24,7 @@ WALK_DIRS = ["mcp",
              "tui/packages/coding-agent/dist", "tui/packages/protocol/dist", "tui/packages/server/dist",
              "tui/packages/session-backends/sqlite-node/dist",
              # 2026-10-31 QA (GP-02 class): TS extensions and bin launchers are
-             # runtime load-bearing. (The "greypentest" entry added 2026-10-31
-             # stays out: this fork does NOT vendor the greypentest MCP package —
-             # its registry spawns the standalone tree at /home/grey/greypentest,
-             # so there is nothing to pin here and pinning would demand a dir
-             # that legitimately never exists.)
+             # runtime load-bearing.
              # T21 (2026-11-17): the pinned path is the tracked record in
              # config-data/extensions; the dev runtime copy behind the config/
              # symlink is seeded from that record and is runtime-mutatable, so
@@ -36,9 +32,9 @@ WALK_DIRS = ["mcp",
              "config-data/extensions", "bin"]
 
 # GM-21 (2026-11-03): runtime-mutatable data must never be a frozen pin —
-# mcp/data/ is written by the MCP servers at work time (asvs-seed.json was
-# grown in place by the ASVS merge and its stale 2453 B pin BRICKED every
-# boot). Unpinned = the gate watches code, not work products.
+# mcp/data/ is written by the MCP servers at work time (a stale pin on a
+# work-time data file once BRICKED every boot). Unpinned = the gate
+# watches code, not work products.
 EXCLUDE_PREFIXES = ("mcp/data/",)
 
 

@@ -1,0 +1,7 @@
+[
+  {"q": "what does {command} /{flag} do?", "need": [], "any": ["{flag}", "{command}"]},
+  {"q": "how do I {action} a {object}?", "need": [], "any": ["{action}", "{object}"]},
+  {"q": "explain the purpose of {concept} in {context}", "need": [], "any": ["{concept}", "{context}"]},
+  {"q": "what is the syntax for {operation}?", "need": [], "any": ["{operation}"]},
+  {"q": "how to troubleshoot {issue} when {symptom} occurs?", "need": [], "any": ["{issue}", "{symptom}"]}
+]

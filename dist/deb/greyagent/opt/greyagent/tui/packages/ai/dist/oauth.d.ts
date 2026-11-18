@@ -1,2 +1,0 @@
-export type { OAuthAuthInfo, OAuthCredentials, OAuthDeviceCodeInfo, OAuthLoginCallbacks, OAuthPrompt, OAuthSelectOption, OAuthSelectPrompt, } from "./compat/extension-oauth-types.ts";
-//# sourceMappingURL=oauth.d.ts.map

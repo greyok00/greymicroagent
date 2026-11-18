@@ -15,10 +15,9 @@ import * as path from "node:path";
 // then tools/call per invocation), the MCP standard subset a converted
 // server needs — no third-party client library in the TUI.
 
-// 2026-10-29 (greywebpentest): env-driven paths — the fork resolves its OWN
-// registry and OWN root set by bin/greywebpentest (CORTEXAGENT_MCP_CONFIG /
-// GREYAGENT_ROOT). Defaults stay the greylocalrag layout so the upstream fork
-// still runs unchanged.
+// 2026-10-29: env-driven paths — the fork resolves its OWN registry and
+// OWN root via CORTEXAGENT_MCP_CONFIG / GREYAGENT_ROOT env; defaults stay
+// the local layout so the upstream fork still runs unchanged.
 const REGISTRY = process.env.CORTEXAGENT_MCP_CONFIG ?? path.join(os.homedir(), ".greylocalrag", "agent", "mcp_registry.json");
 const ROOT = process.env.GREYAGENT_ROOT ?? path.join(os.homedir(), "greylocalrag");
 
@@ -29,8 +28,8 @@ interface RegistryServer {
 	args?: string[];
 	so?: string;
 	enabled: boolean;
-	// 2026-10-30 (greypentest): per-suite tool slice — when present, only
-	// these server tools register in this session (web registers all).
+	// 2026-10-30: per-suite tool slice — when present, only these server
+	// tools register in this session (web registers all).
 	tools?: string[];
 }
 

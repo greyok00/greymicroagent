@@ -1,0 +1,7 @@
+[
+  {"q": "what is the best practice for {topic}?", "need": [], "any": ["best practice", "{topic}"]},
+  {"q": "how should one approach {subject} according to experts?", "need": [], "any": ["{subject}", "experts"]},
+  {"q": "explain the principle of {concept} in simple terms", "need": [], "any": ["{concept}", "simple"]},
+  {"q": "what are the key considerations for {area}?", "need": [], "any": ["key considerations", "{area}"]},
+  {"q": "describe the workflow for {process}", "need": [], "any": ["workflow", "{process}"]}
+]

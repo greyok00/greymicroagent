@@ -12,7 +12,7 @@ MODULES = [
     "tools.browser_session", "tools.browser_ports", "tools.browser_cdp_guard",
     "tools.patchright_scraper", "tools.searxng_integrated", "tools.searx_fallback",
     "tools.page_clean", "tools.relevance", "tools.guide_scrub",
-    "tools.research_injection", "tools.kali_bank", "tools.charts",
+    "tools.research_injection", "tools.charts",
     "tools.document_adapter", "tools.pdf_knowledge", "tools.fast_extract",
     "tools.popup_themes", "tools.stealth.profiles", "tools.stealth.init_script",
     "services.memory_thin", "services.memory_daemon",

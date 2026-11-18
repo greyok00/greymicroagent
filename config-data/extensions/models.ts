@@ -68,7 +68,6 @@ export default function modelsExtension(pi: ExtensionAPI): void {
 		// default. First existing file wins.
 		const stateCandidates = [
 			process.env.GREYAGENT_ROOT ? path.join(process.env.GREYAGENT_ROOT, "state", "model-ctx-settled.txt") : null,
-			path.join(os.homedir(), "greypentest", "greypentest", "state", "model-ctx-settled.txt"),
 			path.join(os.homedir(), "greyagent", "state", "model-ctx-settled.txt"),
 		].filter((p): p is string => !!p);
 		for (const p of stateCandidates) {

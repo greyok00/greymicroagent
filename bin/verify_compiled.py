@@ -2,7 +2,7 @@
 """Boot gate: assert the frozen tree is intact (hardened build).
 
 Checks, without hashing anything over MANIFEST.hash_limit:
-  1. every core/tools/services module count: 7 core, 32 tools, 6 services .so
+  1. every core/tools/services module count: 7 core, 31 tools, 6 services .so
   2. every small manifest file exists with matching sha256 (and manifest
      entries that carry an "error" instead of a pin are FATAL — GM-02: an
      error entry inside files[] means generation was contaminated)
@@ -29,7 +29,7 @@ CLI = ROOT / "tui" / "packages" / "coding-agent" / "dist" / "cli.js"
 NM = ROOT / "tui" / "node_modules"
 
 EXPECTED_SO = {
-    "core": 7, "tools": 32, "services": 6,
+    "core": 7, "tools": 31, "services": 6,
 }
 # GM-03b (2026-11-03): .so modules compiled into <dir>/<stem>.so whose .py
 # source is visible under build/src or mcp/src — if the source is NEWER than

@@ -7,9 +7,8 @@ import * as path from "node:path";
 
 // greysearch_core.ts — greysearch is a FIRST-CLASS capability, not an opt-in
 // registry entry (owner orders 2026-10-24 and 2026-11-01: "remove greyhound
-// and fully integrate the latest greysearch"). Shared by the greylocalrag and
-// greypentest TUIs (both agents mount this one extensions dir); the tree is
-// picked off GREYAGENT_PLATFORM, set by each launcher:
+// and fully integrate the latest greysearch"). Runs in this fork's TUI;
+// ROOT always resolves to this tree:
 //   - the compiled modules live IN the frozen tree (core/greysearch/*.so,
 //     every file sha256-pinned in state/MANIFEST.json by gen_manifest);
 //   - this loader verifies the main .so's hash AGAINST THE FROZEN MANIFEST
@@ -20,11 +19,7 @@ import * as path from "node:path";
 // Transport stays JSON-RPC over stdio (Node harness → CPython 3.13 .so);
 // replaces greyhound_core.ts (old greyhound iteration removed 2026-11-01).
 
-const PLATFORM = process.env.GREYAGENT_PLATFORM || "greylocalrag";
-const ROOT =
-	PLATFORM === "greypentest"
-		? path.join(os.homedir(), "greypentest", "greypentest")
-		: path.join(os.homedir(), "greylocalrag");
+const ROOT = path.join(os.homedir(), "greylocalrag");
 const CORE_DIR = path.join(ROOT, "core", "greysearch");
 const MANIFEST = path.join(ROOT, "state", "MANIFEST.json");
 
@@ -139,7 +134,7 @@ export default function greysearchCore(pi: ExtensionAPI): void {
 			await call(conn, "initialize", {
 				protocolVersion: "2024-11-05",
 				capabilities: {},
-				clientInfo: { name: PLATFORM + "-core", version: "1.0.1" },
+				clientInfo: { name: "greylocalrag-core", version: "1.0.1" },
 			}, 20000);
 			(conn.proc.stdin as any)?.write?.(JSON.stringify({ jsonrpc: "2.0", method: "notifications/initialized" }) + "\n");
 			const listed = (await call(conn, "tools/list", {}, 20000)) as { tools?: ToolSpec[] };

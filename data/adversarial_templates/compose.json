@@ -1,0 +1,4 @@
+[
+  {"q": "Using the grounded material, explain {topic} in one paragraph and give one practical example.", "any": ["{topic}"], "min_len": 150, "steps": true},
+  {"q": "Based on the provided information, compare {option_a} and {option_b} and recommend which to use for {use_case}.", "any": ["{option_a}", "{option_b}"], "min_len": 200, "steps": true}
+]

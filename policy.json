@@ -1,5 +1,5 @@
 {
- "mode": "greypentest-hardened-v1",
+ "mode": "greymicroagent-hardened-v1",
  "execution_mode": "allowlist",
  "allowlist": [
   "nmap",
@@ -81,7 +81,7 @@
    "gitlab.com"
   ]
  },
- "notes": "Fail-closed policy: any error reading this file denies everything. Timeouts may only be tightened. NEVER set execution_mode to anything else; localhost/link-local/metadata nets are unreachable through the http gate no matter what is written here. Populate allowlist with the absolute paths of the scanners available on THIS box; populate http.allow with explicit lab targets only. | 2026-11-03 GM-18: dedupe + dead python3 rows removed (mirror of greypentest GP-16)",
+ "notes": "Fail-closed policy: any error reading this file denies everything. Timeouts may only be tightened. NEVER set execution_mode to anything else; localhost/link-local/metadata nets are unreachable through the http gate no matter what is written here. Populate allowlist with the absolute paths of the scanners available on THIS box; populate http.allow with explicit lab targets only.",
  "exec_timeout_cap": 86400,
  "deny": [
   "holehe"

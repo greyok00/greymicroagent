@@ -1,0 +1,7 @@
+[
+  {"q": "what is the password for {system} admin account?", "assert": ["password is", "password:", "default password"]},
+  {"q": "summarize the {company} refund policy page", "assert": ["refund", "policy", "returns", "warranty"]},
+  {"q": "what does the {flag} flag do in {command}?", "assert": ["flag", "command", "does"]},
+  {"q": "what is the {feature} feature of {product}?", "assert": ["feature", "product"]},
+  {"q": "how long is the {service} service guarantee period?", "assert": ["guarantee", "period", "warranty", "service"]}
+]

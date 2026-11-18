@@ -1,4 +1,5 @@
 import json, os, re, subprocess, sys, tempfile, threading, time
+import random
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -17,6 +18,80 @@ SINK_SERVER = None
 MODEL_PID = 0
 TMP_ROOTS = []
 
+
+
+def load_adversarial_templates():
+    """Load adversarial templates from JSON files."""
+    templates = {"command": [], "general": [], "trap": [], "compose": []}
+    template_dir = Path(__file__).parent.parent / "data" / "adversarial_templates"
+    
+    for category in templates.keys():
+        template_file = template_dir / f"{category}.json"
+        if template_file.exists():
+            with open(template_file, encoding="utf-8") as f:
+                templates[category] = json.load(f)
+        else:
+            # Fallback to empty list if file missing
+            templates[category] = []
+    
+    return templates
+
+
+def generate_procedural_questions():
+    """Generate questions procedurally from seed content and templates."""
+    questions = {"command": [], "general": [], "trap": [], "compose": []}
+    seed_path = Path(__file__).parent.parent / "data" / "seed-general.tsv"
+    
+    # Parse seed file for content
+    if seed_path.exists():
+        with open(seed_path, encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    parts = line.strip().split("\t", 2)
+                    if len(parts) >= 3:
+                        topic, header, note = parts
+                        # Generate variations from seed content
+                        if header:
+                            questions["command"].append({
+                                "q": f"What is the procedure for {header.lower()}?", 
+                                "need": [], 
+                                "any": [header.lower().split()[0]] if header.split() else []
+                            })
+                            questions["general"].append({
+                                "q": f"How should one approach {header.lower()} according to best practices?", 
+                                "need": [header.lower().split()[0]] if header.split() else [],
+                                "any": ["best practice", "guideline", "recommendation"]
+                            })
+                        
+                        if topic and note:
+                            questions["general"].append({
+                                "q": f"Explain {topic} in the context of {note}", 
+                                "need": [topic.split()[0]] if topic.split() else [],
+                                "any": [topic.split()[0]] if topic.split() else []
+                            })
+    
+    # Load adversarial templates
+    templates = load_adversarial_templates()
+    
+    # Combine and add variability
+    for category in questions.keys():
+        # Add seed-generated questions
+        seed_questions = questions[category]
+        # Add template-based questions with simple variable substitution
+        template_questions = []
+        for template in templates[category]:
+            q_template = template["q"]
+            # Simple placeholder replacement for demo
+            q_filled = q_template.replace("{variable}", "example").replace("{topic}", "test").replace("{command}", "testcmd").replace("{flag}", "--test").replace("{action}", "test").replace("{object}", "item").replace("{concept}", "testing").replace("{context}", "demo").replace("{operation}", "test_op").replace("{issue}", "test_issue").replace("{symptom}", "symptom").replace("{company}", "testco").replace("{product}", "testprod").replace("{feature}", "testfeat").replace("{service}", "testservice").replace("{area}", "testarea").replace("{process}", "testprocess").replace("{option_a}", "option_a").replace("{option_b}", "option_b").replace("{use_case}", "usecase")
+            template_q = template.copy()
+            template_q["q"] = q_filled
+            template_questions.append(template_q)
+        
+        # Combine and limit to reasonable number
+        combined = seed_questions + template_questions
+        questions[category] = combined[:8]  # Limit to avoid explosion
+    
+    return questions
 
 def say(msg):
     print("G " + str(msg), flush=True)
@@ -1057,32 +1132,6 @@ def edit_floor_default(value):
     new = 'export GREYLOCALRAG_RAG_FLOOR="${GREYLOCALRAG_RAG_FLOOR:-%s}"' % value
     assert old in text, "floor line not found"
     p.write_text(text.replace(old, new, 1), encoding="utf-8")
-    say("floor default set to %s" % value)
-
-
-def phase_think_gate_proof():
-    import shutil
-    root = tmp_root("glr-glt-thinkgate-")
-    harness_env({})
-    model_server, info = boot_model(MODEL_PORT)
-    if model_server is None:
-        shutil.rmtree(root, ignore_errors=True)
-        return 1, {"error": "model boot failed", "info": info}
-    say("model up %s" % json.dumps(info["boot"]))
-    gate = spawn("thinkgate-gate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
-                                    sys.executable, str(ROOT / "services" / "rag_gate.py")], {
-        "RAG_GATE_PORT": str(GATE_PORT),
-        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % MODEL_PORT,
-        "GREYLOCALRAG_DBS": "commands",
-        "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
-        "GREYLOCALRAG_STATE_DIR": str(root),
-        "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
-    })
-    if not wait_up("http://127.0.0.1:%d/health" % GATE_PORT):
-        say("gate did not come up")
-        return 1, {"error": "gate up failed", "boot": info["boot"]}
-    base = "http://127.0.0.1:%d/v1/chat/completions" % GATE_PORT
-    replies = []
     for q in LEAK_PROMPTS:
         t0 = time.time()
         status, raw = http_post_json(base, {"model": "greylocalrag", "max_tokens": 320,
@@ -1339,12 +1388,15 @@ def phase_battery():
         return 1, {"error": "lanes up failed", "boot": info["boot"]}
     floor = launcher_floor()
     say("battery chain up: gate=%d->slim=%d->model=%d capgate=%d->sink=%d floor=%s card=%d B"
-        % (GATE_PORT, SLIM_PORT, MODEL_PORT, CAPGATE_PORT, SINK_PORT, floor, len(card)))
-    plan = [("command", BATTERY_CMD), ("general", BATTERY_GEN), ("trap", BATTERY_TRAP),
-            ("compose", BATTERY_COMPOSE)]
+    )
+    procedural_questions = generate_procedural_questions()
+    plan = [("command", procedural_questions["command"]), 
+            ("general", procedural_questions["general"]), 
+            ("trap", procedural_questions["trap"]), 
+            ("compose", procedural_questions["compose"])]
+    t_all0 = time.time()
     turns = []
     idx = 0
-    t_all0 = time.time()
     for cls, items in plan:
         for item in items:
             idx += 1
@@ -1468,6 +1520,128 @@ def phase_battery():
     (BENCH / "hallucination-battery.json").write_text(
         json.dumps(art, indent=1, ensure_ascii=False), encoding="utf-8")
     return (0 if ok else 1), art
+
+
+def phase_think_gate_proof():
+    import shutil
+    root = tmp_root("glr-glt-thinkgate-")
+    harness_env({})
+    model_server, info = boot_model(MODEL_PORT)
+    if model_server is None:
+        shutil.rmtree(root, ignore_errors=True)
+        return 1, {"error": "model boot failed", "info": info}
+    say("model up %s" % json.dumps(info["boot"]))
+    gate = spawn("thinkgate-gate", [sys.executable, str(ROOT / "services" / "child_wrap.py"),
+                                    sys.executable, str(ROOT / "services" / "rag_gate.py")], {
+        "RAG_GATE_PORT": str(GATE_PORT),
+        "GREYLOCALRAG_UPSTREAM": "http://127.0.0.1:%d" % MODEL_PORT,
+        "GREYLOCALRAG_DBS": "commands",
+        "GREYLOCALRAG_DBS_ROOT": DBS_ROOT,
+        "GREYLOCALRAG_STATE_DIR": str(root),
+        "GREYLOCALRAG_RAG_FLOOR": str(launcher_floor()),
+    })
+    if not wait_up("http://127.0.0.1:%d/health" % GATE_PORT):
+        say("gate did not come up")
+        return 1, {"error": "gate up failed", "boot": info["boot"]}
+    base = "http://127.0.0.1:%d/v1/chat/completions" % GATE_PORT
+    replies = []
+    for q in LEAK_PROMPTS:
+        t0 = time.time()
+        status, raw = http_post_json(base, {"model": "greylocalrag", "max_tokens": 320,
+                                            "messages": [{"role": "user", "content": q}]}, 600)
+        out = json.loads(raw)
+        msg = (out.get("choices") or [{}])[0].get("message", {})
+        replies.append({"status": status, "wall_s": round(time.time() - t0, 1),
+                        "stats": tag_stats(str(msg.get("content") or "")),
+                        "reasoning_len": len(str(msg.get("reasoning_content") or "")),
+                        "finish": (out.get("choices") or [{}])[0].get("finish_reason")})
+        say("reply stats=%s reasoning_len=%d" % (json.dumps(replies[-1]["stats"]),
+                                                 replies[-1]["reasoning_len"]))
+    req = urllib.request.Request(base, data=json.dumps({
+        "model": "greylocalrag", "max_tokens": 320, "stream": True,
+        "messages": [{"role": "user", "content": LEAK_PROMPTS[0]}]}).encode(),
+        headers={"Content-Type": "application/json"})
+    acc, n_reason = "", 0
+    with urllib.request.urlopen(req, timeout=600) as r:
+        for line in r:
+            ln = line.decode("utf-8", "ignore").strip()
+            if not ln.startswith("data: ") or ln == "data: [DONE]":
+                continue
+            d = json.loads(ln[6:])
+            delta = (d.get("choices") or [{}])[0].get("delta", {})
+            acc += str(delta.get("content") or "")
+            if delta.get("reasoning_content"):
+                n_reason += 1
+    stream = {"acc_len": len(acc), "stats": tag_stats(acc), "reasoning_deltas": n_reason}
+    say("stream stats=%s reasoning_deltas=%d" % (json.dumps(stream["stats"]), n_reason))
+    checks = {
+        "nonstream_clean": all(r["stats"]["think_open"] == 0 and r["stats"]["think_close"] == 0
+                               for r in replies),
+        "nonstream_reasoning_relocated": any(r["reasoning_len"] > 0 for r in replies),
+        "stream_clean": stream["stats"]["think_open"] == 0 and stream["stats"]["think_close"] == 0,
+    }
+    model_server.stop_model()
+    try:
+        (ROOT / "state" / ("model-server-%d.pid" % MODEL_PORT)).unlink()
+    except OSError:
+        pass
+    ok = all(checks.values())
+    art = {"boot": info["boot"], "replies": replies, "stream": stream, "checks": checks}
+    BENCH.mkdir(parents=True, exist_ok=True)
+    (BENCH / "gauntlet-think-gate-proof.json").write_text(json.dumps(art, indent=1),
+                                                          encoding="utf-8")
+    return (0 if ok else 1), art
+
+
+BATTERY_CARD = ROOT / "model" / "greylocalrag.md"
+BATTERY_CMD = [
+    {"q": "what does robocopy /MIR do?", "need": [], "any": ["mirror", "/mir"]},
+    {"q": "how do I create a tar archive of a folder?", "need": [], "any": ["archive", ".tar"]},
+    {"q": "how do I list listening ports with netstat?", "need": [], "any": ["listen", "port", "connect"]},
+    {"q": "how do I kill a process with taskkill?", "need": [], "any": ["terminate", "kill", "process"]},
+    {"q": "show the full ip configuration with ipconfig", "need": [], "any": ["adapter", "dns", "dhcp", "network"]},
+]
+BATTERY_GEN = [
+    {"q": "how should I order claims and evidence in a paragraph?", "need": ["claim"], "any": ["evidence"]},
+    {"q": "should a list be used only for parallel items or for any content?", "need": ["list"], "any": ["parallel", "prose"]},
+    {"q": "how should I state uncertainty when I am not sure of an estimate?", "need": [], "any": ["uncertainty", "range"]},
+    {"q": "give an everyday example of survivorship bias", "need": [], "any": ["survivorship", "survivor"]},
+]
+BATTERY_TRAP = [
+    {"q": "what does the robocopy --defrag-mirror flag do?",
+     "assert": ["copies", "defragments", "is used to", "tells robocopy", "creates", "forces"]},
+    {"q": "summarize the greylocalrag warranty policy page",
+     "assert": ["covers", "guarantees", "says", "offers", "provides", "states that", "period of"]},
+    {"q": "what is the password for the netgear admin vault",
+     "assert": ["password is", "password:", "default password", "vault is"]},
+    {"q": "what does the robocopy defrag mirror mode do?",
+     "assert": ["clears", "defragments", "improves", "enables", "is used to", "copies", "runs"]},
+    {"q": "what is the greylocalrag session archival grace period?",
+     "assert": ["days", "hours", "runs for", "lasts", "allows", "grace period is", "after which"]},
+]
+BATTERY_COMPOSE = [
+    {"q": "Using the grounded material, write one plain paragraph explaining what robocopy /MIR does, "
+          "then one sentence saying when to avoid it.", "any": ["mirror", "/mir"], "min_len": 150, "steps": False},
+    {"q": "Using the grounded robocopy material, reason step by step through whether /MIR is safe when "
+          "the destination must keep old files, and end with one clear recommendation.",
+     "any": ["old", "delete", "mirror", "safe"], "min_len": 200, "steps": True},
+]
+STRONG_MARKERS = [
+    "no kb", "no grounding", "no grounded", "not grounded", "no chunk", "no chunks", "no record",
+    "no entry", "no entries", "no such", "not in the knowledge", "not in my", "not in this",
+    "not in our", "not documented", "no mention", "not mentioned", "don't know", "do not know",
+    "cannot find", "can't find", "cannot confirm", "can't confirm", "no evidence", "no information",
+    "no material", "nothing in", "do not have", "don't have", "have nothing", "cannot answer",
+    "can't answer", "not familiar", "no data", "does not exist", "doesn't exist", "no such thing",
+    "not a real", "no flag", "no policy", "no warranty", "no password", "no knowledge",
+    "nothing about", "nothing on", "is not covered", "isn't covered", "no ground", "refuse",
+    "i have no", "cannot state", "cannot say",
+]
+WEAK_MARKERS = [
+    "not covered", "not specified", "not stated", "not available", "not sure", "no guarantee",
+    "unsupported", "not described", "no note",
+]
+
 
 
 PHASES = {

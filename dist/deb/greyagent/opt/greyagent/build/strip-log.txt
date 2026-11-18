@@ -1,2 +1,0 @@
-stripped=1
-flags=/home/grey/greyagent/tools/research_injection.py:54: you are 

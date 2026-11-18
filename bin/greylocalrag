@@ -68,7 +68,7 @@ cd "$ROOT"
 export GREYAGENT_HOME="$ROOT"
 # GM-07 (2026-11-03): settle-file single-source — models.ts tries
 # $GREYAGENT_ROOT/state/model-ctx-settled.txt FIRST for the fork-aware window;
-# without this export it could only fall through to the greypentest/greyagent
+# without this export it could only reach the downstream fallback
 # paths and compaction aimed above the real window (GM-07's 81920-vs-65536).
 export GREYAGENT_ROOT="$ROOT"
 # GM-09 (2026-11-03): foreign GREYAGENT_* knobs reconfigure this fork through

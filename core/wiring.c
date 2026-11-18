@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "core.wiring",
+        "name": "wiring",
         "sources": [
-            "core/wiring.py"
+            "wiring.py"
         ]
     },
-    "module_name": "core.wiring"
+    "module_name": "wiring"
 }
 END: Cython Metadata */
 
@@ -1137,8 +1137,8 @@ static int __Pyx_init_co_variables(void) {
   #endif
 #endif
 
-#define __PYX_HAVE__core__wiring
-#define __PYX_HAVE_API__core__wiring
+#define __PYX_HAVE__wiring
+#define __PYX_HAVE_API__wiring
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -1356,7 +1356,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "core/wiring.py",
+  "wiring.py",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* Atomics.proto (used by UnpackUnboundCMethod) */
@@ -1533,16 +1533,16 @@ static const char* const __pyx_f[] = {
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all;
+struct __pyx_obj_6wiring___pyx_scope_struct__register_all;
 
-/* "core/wiring.py":9
+/* "wiring.py":9
  * 
  * 
  * def register_all() -> int:             # <<<<<<<<<<<<<<
  *     if _state["done"]:
  *         return len(registry.list_tools())
 */
-struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all {
+struct __pyx_obj_6wiring___pyx_scope_struct__register_all {
   PyObject_HEAD
   PyObject *__pyx_v__safe_img;
   PyObject *__pyx_v__sched;
@@ -2400,31 +2400,31 @@ static int __Pyx_State_RemoveModule(void*);
 #define __PYX_TYPE_MODULE_PREFIX __PYX_ABI_MODULE_NAME "."
 
 
-/* Module declarations from "core.wiring" */
+/* Module declarations from "wiring" */
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "core.wiring"
-extern int __pyx_module_is_main_core__wiring;
-int __pyx_module_is_main_core__wiring = 0;
+#define __Pyx_MODULE_NAME "wiring"
+extern int __pyx_module_is_main_wiring;
+int __pyx_module_is_main_wiring = 0;
 
-/* Implementation of "core.wiring" */
+/* Implementation of "wiring" */
 /* #### Code section: global_var ### */
 /* #### Code section: string_decls ### */
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_kw); /* proto */
-static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_query, PyObject *__pyx_v_max_results, PyObject *__pyx_v_kw); /* proto */
-static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_url, PyObject *__pyx_v_max_chars, PyObject *__pyx_v_kw); /* proto */
-static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_self, PyObject *__pyx_v_image_path, PyObject *__pyx_v_question, PyObject *__pyx_v_kw); /* proto */
-static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_path); /* proto */
-static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_kw); /* proto */
+static PyObject *__pyx_pf_6wiring_12register_all_shell_kw(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_kw); /* proto */
+static PyObject *__pyx_pf_6wiring_12register_all_2web_search(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_query, PyObject *__pyx_v_max_results, PyObject *__pyx_v_kw); /* proto */
+static PyObject *__pyx_pf_6wiring_12register_all_4web_fetch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_url, PyObject *__pyx_v_max_chars, PyObject *__pyx_v_kw); /* proto */
+static PyObject *__pyx_pf_6wiring_12register_all_6vision(PyObject *__pyx_self, PyObject *__pyx_v_image_path, PyObject *__pyx_v_question, PyObject *__pyx_v_kw); /* proto */
+static PyObject *__pyx_pf_6wiring_12register_all_8_safe_img(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_path); /* proto */
+static PyObject *__pyx_pf_6wiring_12register_all_10system_status(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_kw); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__pyx_v_content, PyObject *__pyx_v_role, CYTHON_UNUSED PyObject *__pyx_v_kw); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__pyx_v_query, CYTHON_UNUSED PyObject *__pyx_v_kw); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda2(PyObject *__pyx_self, PyObject *__pyx_v_n, CYTHON_UNUSED PyObject *__pyx_v_kw); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__pyx_v_title, PyObject *__pyx_v_kind, PyObject *__pyx_v_prompt, CYTHON_UNUSED PyObject *__pyx_v_kw); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda4(PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_kw); /* proto */
 static PyObject *__pyx_lambda_funcdef_lambda5(PyObject *__pyx_self, PyObject *__pyx_v_series, CYTHON_UNUSED PyObject *__pyx_v_kw); /* proto */
-static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_tp_new_4core_6wiring___pyx_scope_struct__register_all(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_pf_6wiring_register_all(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_tp_new_6wiring___pyx_scope_struct__register_all(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2445,15 +2445,15 @@ typedef struct {
   PyObject *__pyx_empty_tuple;
   PyObject *__pyx_empty_bytes;
   PyObject *__pyx_empty_unicode;
-  PyObject *__pyx_type_4core_6wiring___pyx_scope_struct__register_all;
-  PyTypeObject *__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all;
+  PyObject *__pyx_type_6wiring___pyx_scope_struct__register_all;
+  PyTypeObject *__pyx_ptype_6wiring___pyx_scope_struct__register_all;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_get;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_items;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_tuple[7];
   PyObject *__pyx_codeobj_tab[13];
-  PyObject *__pyx_string_tab[244];
+  PyObject *__pyx_string_tab[239];
   PyObject *__pyx_number_tab[5];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -2469,8 +2469,8 @@ PyTypeObject *__pyx_CyFunctionType;
 
 
 #if CYTHON_USE_FREELISTS
-struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_freelist_4core_6wiring___pyx_scope_struct__register_all[8];
-int __pyx_freecount_4core_6wiring___pyx_scope_struct__register_all;
+struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_freelist_6wiring___pyx_scope_struct__register_all[8];
+int __pyx_freecount_6wiring___pyx_scope_struct__register_all;
 #endif
 /* CodeObjectCache.module_state_decls */
 struct __Pyx_CodeObjectCache __pyx_code_cache;
@@ -2514,236 +2514,231 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_List_scheduler_tasks __pyx_string_tab[11]
 #define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[12]
 #define __pyx_kp_u_Parse_doc_args_file __pyx_string_tab[13]
-#define __pyx_kp_u_Query_the_Kali_playbook_command __pyx_string_tab[14]
-#define __pyx_kp_u_Read_file_args_path __pyx_string_tab[15]
-#define __pyx_kp_u_Recent_memory __pyx_string_tab[16]
-#define __pyx_kp_u_Run_a_sub_task_with_the_local_mo __pyx_string_tab[17]
-#define __pyx_kp_u_Save_memory_args_content __pyx_string_tab[18]
-#define __pyx_kp_u_Schedule_task_args_title_prompt __pyx_string_tab[19]
-#define __pyx_kp_u_Search_memory_args_query __pyx_string_tab[20]
-#define __pyx_kp_u_Status __pyx_string_tab[21]
-#define __pyx_kp_u_Vision_args_image_path __pyx_string_tab[22]
-#define __pyx_kp_u_Web_search_via_local_lanes_and_t __pyx_string_tab[23]
-#define __pyx_kp_u_Write_file_args_path_content __pyx_string_tab[24]
-#define __pyx_kp_u__2 __pyx_string_tab[25]
-#define __pyx_kp_u__3 __pyx_string_tab[26]
-#define __pyx_kp_u_add_note __pyx_string_tab[27]
-#define __pyx_kp_u_calls __pyx_string_tab[28]
-#define __pyx_kp_u_core_wiring_py __pyx_string_tab[29]
-#define __pyx_kp_u_data_image_base64 __pyx_string_tab[30]
-#define __pyx_kp_u_disable __pyx_string_tab[31]
-#define __pyx_kp_u_enable __pyx_string_tab[32]
-#define __pyx_kp_u_gc __pyx_string_tab[33]
-#define __pyx_kp_u_gif __pyx_string_tab[34]
-#define __pyx_kp_u_isenabled __pyx_string_tab[35]
-#define __pyx_kp_u_jpeg __pyx_string_tab[36]
-#define __pyx_kp_u_jpg __pyx_string_tab[37]
-#define __pyx_kp_u_missing_argument_command __pyx_string_tab[38]
-#define __pyx_kp_u_missing_argument_query __pyx_string_tab[39]
-#define __pyx_kp_u_missing_argument_url __pyx_string_tab[40]
-#define __pyx_kp_u_missing_or_bad_image_path __pyx_string_tab[41]
-#define __pyx_kp_u_model_2 __pyx_string_tab[42]
-#define __pyx_kp_u_png __pyx_string_tab[43]
-#define __pyx_kp_u_qwen3_8_27b __pyx_string_tab[44]
-#define __pyx_kp_u_tps __pyx_string_tab[45]
-#define __pyx_kp_u_vision_unavailable __pyx_string_tab[46]
-#define __pyx_kp_u_webp __pyx_string_tab[47]
-#define __pyx_n_u_LAST_TPS __pyx_string_tab[48]
-#define __pyx_n_u_Path __pyx_string_tab[49]
-#define __pyx_n_u_Path_2 __pyx_string_tab[50]
-#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[51]
-#define __pyx_n_u_Store __pyx_string_tab[52]
-#define __pyx_n_u_USAGE __pyx_string_tab[53]
-#define __pyx_n_u_annotate __pyx_string_tab[54]
-#define __pyx_n_u_append __pyx_string_tab[55]
-#define __pyx_n_u_args __pyx_string_tab[56]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[57]
-#define __pyx_n_u_b64 __pyx_string_tab[58]
-#define __pyx_n_u_b64encode __pyx_string_tab[59]
-#define __pyx_n_u_bank_query __pyx_string_tab[60]
-#define __pyx_n_u_base __pyx_string_tab[61]
-#define __pyx_n_u_base64 __pyx_string_tab[62]
-#define __pyx_n_u_bash __pyx_string_tab[63]
-#define __pyx_n_u_browser_mod __pyx_string_tab[64]
-#define __pyx_n_u_browser_tools __pyx_string_tab[65]
-#define __pyx_n_u_calls_2 __pyx_string_tab[66]
-#define __pyx_n_u_charts __pyx_string_tab[67]
-#define __pyx_n_u_charts_mod __pyx_string_tab[68]
-#define __pyx_n_u_choices __pyx_string_tab[69]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[70]
-#define __pyx_n_u_cmd __pyx_string_tab[71]
-#define __pyx_n_u_command __pyx_string_tab[72]
-#define __pyx_n_u_content __pyx_string_tab[73]
-#define __pyx_n_u_core __pyx_string_tab[74]
-#define __pyx_n_u_core_llm __pyx_string_tab[75]
-#define __pyx_n_u_core_registry __pyx_string_tab[76]
-#define __pyx_n_u_core_subagent __pyx_string_tab[77]
-#define __pyx_n_u_core_wiring __pyx_string_tab[78]
-#define __pyx_n_u_create __pyx_string_tab[79]
-#define __pyx_n_u_d __pyx_string_tab[80]
-#define __pyx_n_u_data __pyx_string_tab[81]
-#define __pyx_n_u_decode __pyx_string_tab[82]
-#define __pyx_n_u_delete_file __pyx_string_tab[83]
-#define __pyx_n_u_dict __pyx_string_tab[84]
-#define __pyx_n_u_done __pyx_string_tab[85]
-#define __pyx_n_u_down __pyx_string_tab[86]
-#define __pyx_n_u_edit_file __pyx_string_tab[87]
-#define __pyx_n_u_error __pyx_string_tab[88]
-#define __pyx_n_u_exists __pyx_string_tab[89]
-#define __pyx_n_u_expanduser __pyx_string_tab[90]
-#define __pyx_n_u_file __pyx_string_tab[91]
-#define __pyx_n_u_file_2 __pyx_string_tab[92]
-#define __pyx_n_u_files __pyx_string_tab[93]
-#define __pyx_n_u_files_delete __pyx_string_tab[94]
-#define __pyx_n_u_files_edit __pyx_string_tab[95]
-#define __pyx_n_u_files_list __pyx_string_tab[96]
-#define __pyx_n_u_files_mod __pyx_string_tab[97]
-#define __pyx_n_u_files_read __pyx_string_tab[98]
-#define __pyx_n_u_files_write __pyx_string_tab[99]
-#define __pyx_n_u_func __pyx_string_tab[100]
-#define __pyx_n_u_get __pyx_string_tab[101]
-#define __pyx_n_u_glob __pyx_string_tab[102]
-#define __pyx_n_u_glob_filter __pyx_string_tab[103]
-#define __pyx_n_u_grep __pyx_string_tab[104]
-#define __pyx_n_u_high __pyx_string_tab[105]
-#define __pyx_n_u_image __pyx_string_tab[106]
-#define __pyx_n_u_image_path __pyx_string_tab[107]
-#define __pyx_n_u_image_url __pyx_string_tab[108]
-#define __pyx_n_u_img __pyx_string_tab[109]
-#define __pyx_n_u_int __pyx_string_tab[110]
-#define __pyx_n_u_is_absolute __pyx_string_tab[111]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[112]
-#define __pyx_n_u_is_ready __pyx_string_tab[113]
-#define __pyx_n_u_items __pyx_string_tab[114]
-#define __pyx_n_u_kali_bank __pyx_string_tab[115]
-#define __pyx_n_u_kind __pyx_string_tab[116]
-#define __pyx_n_u_kw __pyx_string_tab[117]
-#define __pyx_n_u_lambda __pyx_string_tab[118]
-#define __pyx_n_u_list __pyx_string_tab[119]
-#define __pyx_n_u_list_dir __pyx_string_tab[120]
-#define __pyx_n_u_list_tools __pyx_string_tab[121]
-#define __pyx_n_u_llm __pyx_string_tab[122]
-#define __pyx_n_u_llm_mod __pyx_string_tab[123]
-#define __pyx_n_u_lower __pyx_string_tab[124]
-#define __pyx_n_u_main __pyx_string_tab[125]
-#define __pyx_n_u_max_chars __pyx_string_tab[126]
-#define __pyx_n_u_max_results __pyx_string_tab[127]
-#define __pyx_n_u_max_tokens __pyx_string_tab[128]
-#define __pyx_n_u_memory_append __pyx_string_tab[129]
-#define __pyx_n_u_memory_read __pyx_string_tab[130]
-#define __pyx_n_u_memory_search __pyx_string_tab[131]
-#define __pyx_n_u_memory_thin __pyx_string_tab[132]
-#define __pyx_n_u_message __pyx_string_tab[133]
-#define __pyx_n_u_messages __pyx_string_tab[134]
-#define __pyx_n_u_model __pyx_string_tab[135]
-#define __pyx_n_u_model_server __pyx_string_tab[136]
-#define __pyx_n_u_module __pyx_string_tab[137]
-#define __pyx_n_u_n __pyx_string_tab[138]
-#define __pyx_n_u_name __pyx_string_tab[139]
-#define __pyx_n_u_new __pyx_string_tab[140]
-#define __pyx_n_u_ok __pyx_string_tab[141]
-#define __pyx_n_u_old __pyx_string_tab[142]
-#define __pyx_n_u_output __pyx_string_tab[143]
-#define __pyx_n_u_p __pyx_string_tab[144]
-#define __pyx_n_u_page __pyx_string_tab[145]
-#define __pyx_n_u_parent __pyx_string_tab[146]
-#define __pyx_n_u_parse_doc __pyx_string_tab[147]
-#define __pyx_n_u_parse_document __pyx_string_tab[148]
-#define __pyx_n_u_path __pyx_string_tab[149]
-#define __pyx_n_u_pathlib __pyx_string_tab[150]
-#define __pyx_n_u_pattern __pyx_string_tab[151]
-#define __pyx_n_u_payload __pyx_string_tab[152]
-#define __pyx_n_u_pop __pyx_string_tab[153]
-#define __pyx_n_u_post __pyx_string_tab[154]
-#define __pyx_n_u_prompt __pyx_string_tab[155]
-#define __pyx_n_u_q __pyx_string_tab[156]
-#define __pyx_n_u_qualname __pyx_string_tab[157]
-#define __pyx_n_u_query __pyx_string_tab[158]
-#define __pyx_n_u_question __pyx_string_tab[159]
-#define __pyx_n_u_r __pyx_string_tab[160]
-#define __pyx_n_u_read_bytes __pyx_string_tab[161]
-#define __pyx_n_u_read_file __pyx_string_tab[162]
-#define __pyx_n_u_read_last __pyx_string_tab[163]
-#define __pyx_n_u_register_all __pyx_string_tab[164]
-#define __pyx_n_u_register_all_locals__safe_img __pyx_string_tab[165]
-#define __pyx_n_u_register_all_locals_lambda __pyx_string_tab[166]
-#define __pyx_n_u_register_all_locals_shell_kw __pyx_string_tab[167]
-#define __pyx_n_u_register_all_locals_system_statu __pyx_string_tab[168]
-#define __pyx_n_u_register_all_locals_vision __pyx_string_tab[169]
-#define __pyx_n_u_register_all_locals_web_fetch __pyx_string_tab[170]
-#define __pyx_n_u_register_all_locals_web_search __pyx_string_tab[171]
-#define __pyx_n_u_register_browser_tools __pyx_string_tab[172]
-#define __pyx_n_u_register_tool __pyx_string_tab[173]
-#define __pyx_n_u_registry __pyx_string_tab[174]
-#define __pyx_n_u_render_series __pyx_string_tab[175]
-#define __pyx_n_u_research_scrape __pyx_string_tab[176]
-#define __pyx_n_u_research_search __pyx_string_tab[177]
-#define __pyx_n_u_resolve __pyx_string_tab[178]
-#define __pyx_n_u_return __pyx_string_tab[179]
-#define __pyx_n_u_role __pyx_string_tab[180]
-#define __pyx_n_u_run_command __pyx_string_tab[181]
-#define __pyx_n_u_safe_img __pyx_string_tab[182]
-#define __pyx_n_u_sched __pyx_string_tab[183]
-#define __pyx_n_u_scheduler_add __pyx_string_tab[184]
-#define __pyx_n_u_scheduler_list __pyx_string_tab[185]
-#define __pyx_n_u_schema __pyx_string_tab[186]
-#define __pyx_n_u_script __pyx_string_tab[187]
-#define __pyx_n_u_search __pyx_string_tab[188]
-#define __pyx_n_u_search_files __pyx_string_tab[189]
-#define __pyx_n_u_search_grep __pyx_string_tab[190]
-#define __pyx_n_u_search_mod __pyx_string_tab[191]
-#define __pyx_n_u_series __pyx_string_tab[192]
-#define __pyx_n_u_server_url __pyx_string_tab[193]
-#define __pyx_n_u_services __pyx_string_tab[194]
-#define __pyx_n_u_services_scheduler_store __pyx_string_tab[195]
-#define __pyx_n_u_set_name __pyx_string_tab[196]
-#define __pyx_n_u_setdefault __pyx_string_tab[197]
-#define __pyx_n_u_shell __pyx_string_tab[198]
-#define __pyx_n_u_shell_kw __pyx_string_tab[199]
-#define __pyx_n_u_spawn __pyx_string_tab[200]
-#define __pyx_n_u_spawn_2 __pyx_string_tab[201]
-#define __pyx_n_u_spawn_subagent __pyx_string_tab[202]
-#define __pyx_n_u_state __pyx_string_tab[203]
-#define __pyx_n_u_str __pyx_string_tab[204]
-#define __pyx_n_u_stream __pyx_string_tab[205]
-#define __pyx_n_u_string __pyx_string_tab[206]
-#define __pyx_n_u_suffix __pyx_string_tab[207]
-#define __pyx_n_u_system __pyx_string_tab[208]
-#define __pyx_n_u_system_status __pyx_string_tab[209]
-#define __pyx_n_u_test __pyx_string_tab[210]
-#define __pyx_n_u_text __pyx_string_tab[211]
-#define __pyx_n_u_timeout __pyx_string_tab[212]
-#define __pyx_n_u_title __pyx_string_tab[213]
-#define __pyx_n_u_tool __pyx_string_tab[214]
-#define __pyx_n_u_tools __pyx_string_tab[215]
-#define __pyx_n_u_tools_charts __pyx_string_tab[216]
-#define __pyx_n_u_tools_document_adapter __pyx_string_tab[217]
-#define __pyx_n_u_tools_kali_bank __pyx_string_tab[218]
-#define __pyx_n_u_tools_research_integration __pyx_string_tab[219]
-#define __pyx_n_u_trust __pyx_string_tab[220]
-#define __pyx_n_u_type __pyx_string_tab[221]
-#define __pyx_n_u_u __pyx_string_tab[222]
-#define __pyx_n_u_uri __pyx_string_tab[223]
-#define __pyx_n_u_url __pyx_string_tab[224]
-#define __pyx_n_u_user __pyx_string_tab[225]
-#define __pyx_n_u_values __pyx_string_tab[226]
-#define __pyx_n_u_vision __pyx_string_tab[227]
-#define __pyx_n_u_web_fetch __pyx_string_tab[228]
-#define __pyx_n_u_web_search __pyx_string_tab[229]
-#define __pyx_n_u_write_file __pyx_string_tab[230]
-#define __pyx_kp_b_iso88591_6_z_Jaq_A __pyx_string_tab[231]
-#define __pyx_kp_b_iso88591_A_E_4q_A_Qixr_1G3d_7_4xxq_8_1 __pyx_string_tab[232]
-#define __pyx_kp_b_iso88591_K_Z_VVW_Q_k_Bd_9Cr_Qa_IQa_2S_F_4 __pyx_string_tab[233]
-#define __pyx_kp_b_iso88591_N_z_B_q_D_2T_Bd_1_4q_F_4y_O1Cz_A __pyx_string_tab[234]
-#define __pyx_kp_b_iso88591_O7_M1DA_q_F_Rt1E_Bd_1_4q_F_4y_O1 __pyx_string_tab[235]
-#define __pyx_kp_b_iso88591_V6_gQa_a __pyx_string_tab[236]
-#define __pyx_kp_b_iso88591_a_vQa_s_8_a_a_N_WA_HL_Q_a_N_8_q __pyx_string_tab[237]
-#define __pyx_kp_b_iso88591_b_A_2T_Bd_83b_AQ_4s_t_Qb_AYa_AQ __pyx_string_tab[238]
-#define __pyx_kp_b_iso88591_fF_Cq_1L_1_aq_a_9_1 __pyx_string_tab[239]
-#define __pyx_kp_b_iso88591_fF_Cq_e5 __pyx_string_tab[240]
-#define __pyx_kp_b_iso88591_m_5V1_c_q_gU_0_lRS_Q __pyx_string_tab[241]
-#define __pyx_kp_b_iso88591_q_1_fJa_Ct_S_87_6_Ya __pyx_string_tab[242]
-#define __pyx_kp_b_iso88591_vZ_7_1 __pyx_string_tab[243]
+#define __pyx_kp_u_Read_file_args_path __pyx_string_tab[14]
+#define __pyx_kp_u_Recent_memory __pyx_string_tab[15]
+#define __pyx_kp_u_Run_a_sub_task_with_the_local_mo __pyx_string_tab[16]
+#define __pyx_kp_u_Save_memory_args_content __pyx_string_tab[17]
+#define __pyx_kp_u_Schedule_task_args_title_prompt __pyx_string_tab[18]
+#define __pyx_kp_u_Search_memory_args_query __pyx_string_tab[19]
+#define __pyx_kp_u_Status __pyx_string_tab[20]
+#define __pyx_kp_u_Vision_args_image_path __pyx_string_tab[21]
+#define __pyx_kp_u_Web_search_via_local_lanes_and_t __pyx_string_tab[22]
+#define __pyx_kp_u_Write_file_args_path_content __pyx_string_tab[23]
+#define __pyx_kp_u__2 __pyx_string_tab[24]
+#define __pyx_kp_u__3 __pyx_string_tab[25]
+#define __pyx_kp_u_add_note __pyx_string_tab[26]
+#define __pyx_kp_u_calls __pyx_string_tab[27]
+#define __pyx_kp_u_data_image_base64 __pyx_string_tab[28]
+#define __pyx_kp_u_disable __pyx_string_tab[29]
+#define __pyx_kp_u_enable __pyx_string_tab[30]
+#define __pyx_kp_u_gc __pyx_string_tab[31]
+#define __pyx_kp_u_gif __pyx_string_tab[32]
+#define __pyx_kp_u_isenabled __pyx_string_tab[33]
+#define __pyx_kp_u_jpeg __pyx_string_tab[34]
+#define __pyx_kp_u_jpg __pyx_string_tab[35]
+#define __pyx_kp_u_missing_argument_command __pyx_string_tab[36]
+#define __pyx_kp_u_missing_argument_query __pyx_string_tab[37]
+#define __pyx_kp_u_missing_argument_url __pyx_string_tab[38]
+#define __pyx_kp_u_missing_or_bad_image_path __pyx_string_tab[39]
+#define __pyx_kp_u_model_2 __pyx_string_tab[40]
+#define __pyx_kp_u_png __pyx_string_tab[41]
+#define __pyx_kp_u_qwen3_8_27b __pyx_string_tab[42]
+#define __pyx_kp_u_tps __pyx_string_tab[43]
+#define __pyx_kp_u_vision_unavailable __pyx_string_tab[44]
+#define __pyx_kp_u_webp __pyx_string_tab[45]
+#define __pyx_kp_u_wiring_py __pyx_string_tab[46]
+#define __pyx_n_u_LAST_TPS __pyx_string_tab[47]
+#define __pyx_n_u_Path __pyx_string_tab[48]
+#define __pyx_n_u_Path_2 __pyx_string_tab[49]
+#define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[50]
+#define __pyx_n_u_Store __pyx_string_tab[51]
+#define __pyx_n_u_USAGE __pyx_string_tab[52]
+#define __pyx_n_u_annotate __pyx_string_tab[53]
+#define __pyx_n_u_append __pyx_string_tab[54]
+#define __pyx_n_u_args __pyx_string_tab[55]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[56]
+#define __pyx_n_u_b64 __pyx_string_tab[57]
+#define __pyx_n_u_b64encode __pyx_string_tab[58]
+#define __pyx_n_u_base __pyx_string_tab[59]
+#define __pyx_n_u_base64 __pyx_string_tab[60]
+#define __pyx_n_u_bash __pyx_string_tab[61]
+#define __pyx_n_u_browser_mod __pyx_string_tab[62]
+#define __pyx_n_u_browser_tools __pyx_string_tab[63]
+#define __pyx_n_u_calls_2 __pyx_string_tab[64]
+#define __pyx_n_u_charts __pyx_string_tab[65]
+#define __pyx_n_u_charts_mod __pyx_string_tab[66]
+#define __pyx_n_u_choices __pyx_string_tab[67]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[68]
+#define __pyx_n_u_cmd __pyx_string_tab[69]
+#define __pyx_n_u_command __pyx_string_tab[70]
+#define __pyx_n_u_content __pyx_string_tab[71]
+#define __pyx_n_u_core __pyx_string_tab[72]
+#define __pyx_n_u_core_llm __pyx_string_tab[73]
+#define __pyx_n_u_core_registry __pyx_string_tab[74]
+#define __pyx_n_u_core_subagent __pyx_string_tab[75]
+#define __pyx_n_u_create __pyx_string_tab[76]
+#define __pyx_n_u_d __pyx_string_tab[77]
+#define __pyx_n_u_data __pyx_string_tab[78]
+#define __pyx_n_u_decode __pyx_string_tab[79]
+#define __pyx_n_u_delete_file __pyx_string_tab[80]
+#define __pyx_n_u_dict __pyx_string_tab[81]
+#define __pyx_n_u_done __pyx_string_tab[82]
+#define __pyx_n_u_down __pyx_string_tab[83]
+#define __pyx_n_u_edit_file __pyx_string_tab[84]
+#define __pyx_n_u_error __pyx_string_tab[85]
+#define __pyx_n_u_exists __pyx_string_tab[86]
+#define __pyx_n_u_expanduser __pyx_string_tab[87]
+#define __pyx_n_u_file __pyx_string_tab[88]
+#define __pyx_n_u_file_2 __pyx_string_tab[89]
+#define __pyx_n_u_files __pyx_string_tab[90]
+#define __pyx_n_u_files_delete __pyx_string_tab[91]
+#define __pyx_n_u_files_edit __pyx_string_tab[92]
+#define __pyx_n_u_files_list __pyx_string_tab[93]
+#define __pyx_n_u_files_mod __pyx_string_tab[94]
+#define __pyx_n_u_files_read __pyx_string_tab[95]
+#define __pyx_n_u_files_write __pyx_string_tab[96]
+#define __pyx_n_u_func __pyx_string_tab[97]
+#define __pyx_n_u_get __pyx_string_tab[98]
+#define __pyx_n_u_glob __pyx_string_tab[99]
+#define __pyx_n_u_glob_filter __pyx_string_tab[100]
+#define __pyx_n_u_grep __pyx_string_tab[101]
+#define __pyx_n_u_high __pyx_string_tab[102]
+#define __pyx_n_u_image __pyx_string_tab[103]
+#define __pyx_n_u_image_path __pyx_string_tab[104]
+#define __pyx_n_u_image_url __pyx_string_tab[105]
+#define __pyx_n_u_img __pyx_string_tab[106]
+#define __pyx_n_u_int __pyx_string_tab[107]
+#define __pyx_n_u_is_absolute __pyx_string_tab[108]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[109]
+#define __pyx_n_u_is_ready __pyx_string_tab[110]
+#define __pyx_n_u_items __pyx_string_tab[111]
+#define __pyx_n_u_kind __pyx_string_tab[112]
+#define __pyx_n_u_kw __pyx_string_tab[113]
+#define __pyx_n_u_lambda __pyx_string_tab[114]
+#define __pyx_n_u_list __pyx_string_tab[115]
+#define __pyx_n_u_list_dir __pyx_string_tab[116]
+#define __pyx_n_u_list_tools __pyx_string_tab[117]
+#define __pyx_n_u_llm __pyx_string_tab[118]
+#define __pyx_n_u_llm_mod __pyx_string_tab[119]
+#define __pyx_n_u_lower __pyx_string_tab[120]
+#define __pyx_n_u_main __pyx_string_tab[121]
+#define __pyx_n_u_max_chars __pyx_string_tab[122]
+#define __pyx_n_u_max_results __pyx_string_tab[123]
+#define __pyx_n_u_max_tokens __pyx_string_tab[124]
+#define __pyx_n_u_memory_append __pyx_string_tab[125]
+#define __pyx_n_u_memory_read __pyx_string_tab[126]
+#define __pyx_n_u_memory_search __pyx_string_tab[127]
+#define __pyx_n_u_memory_thin __pyx_string_tab[128]
+#define __pyx_n_u_message __pyx_string_tab[129]
+#define __pyx_n_u_messages __pyx_string_tab[130]
+#define __pyx_n_u_model __pyx_string_tab[131]
+#define __pyx_n_u_model_server __pyx_string_tab[132]
+#define __pyx_n_u_module __pyx_string_tab[133]
+#define __pyx_n_u_n __pyx_string_tab[134]
+#define __pyx_n_u_name __pyx_string_tab[135]
+#define __pyx_n_u_new __pyx_string_tab[136]
+#define __pyx_n_u_ok __pyx_string_tab[137]
+#define __pyx_n_u_old __pyx_string_tab[138]
+#define __pyx_n_u_output __pyx_string_tab[139]
+#define __pyx_n_u_p __pyx_string_tab[140]
+#define __pyx_n_u_page __pyx_string_tab[141]
+#define __pyx_n_u_parent __pyx_string_tab[142]
+#define __pyx_n_u_parse_doc __pyx_string_tab[143]
+#define __pyx_n_u_parse_document __pyx_string_tab[144]
+#define __pyx_n_u_path __pyx_string_tab[145]
+#define __pyx_n_u_pathlib __pyx_string_tab[146]
+#define __pyx_n_u_pattern __pyx_string_tab[147]
+#define __pyx_n_u_payload __pyx_string_tab[148]
+#define __pyx_n_u_pop __pyx_string_tab[149]
+#define __pyx_n_u_post __pyx_string_tab[150]
+#define __pyx_n_u_prompt __pyx_string_tab[151]
+#define __pyx_n_u_q __pyx_string_tab[152]
+#define __pyx_n_u_qualname __pyx_string_tab[153]
+#define __pyx_n_u_query __pyx_string_tab[154]
+#define __pyx_n_u_question __pyx_string_tab[155]
+#define __pyx_n_u_r __pyx_string_tab[156]
+#define __pyx_n_u_read_bytes __pyx_string_tab[157]
+#define __pyx_n_u_read_file __pyx_string_tab[158]
+#define __pyx_n_u_read_last __pyx_string_tab[159]
+#define __pyx_n_u_register_all __pyx_string_tab[160]
+#define __pyx_n_u_register_all_locals__safe_img __pyx_string_tab[161]
+#define __pyx_n_u_register_all_locals_lambda __pyx_string_tab[162]
+#define __pyx_n_u_register_all_locals_shell_kw __pyx_string_tab[163]
+#define __pyx_n_u_register_all_locals_system_statu __pyx_string_tab[164]
+#define __pyx_n_u_register_all_locals_vision __pyx_string_tab[165]
+#define __pyx_n_u_register_all_locals_web_fetch __pyx_string_tab[166]
+#define __pyx_n_u_register_all_locals_web_search __pyx_string_tab[167]
+#define __pyx_n_u_register_browser_tools __pyx_string_tab[168]
+#define __pyx_n_u_register_tool __pyx_string_tab[169]
+#define __pyx_n_u_registry __pyx_string_tab[170]
+#define __pyx_n_u_render_series __pyx_string_tab[171]
+#define __pyx_n_u_research_scrape __pyx_string_tab[172]
+#define __pyx_n_u_research_search __pyx_string_tab[173]
+#define __pyx_n_u_resolve __pyx_string_tab[174]
+#define __pyx_n_u_return __pyx_string_tab[175]
+#define __pyx_n_u_role __pyx_string_tab[176]
+#define __pyx_n_u_run_command __pyx_string_tab[177]
+#define __pyx_n_u_safe_img __pyx_string_tab[178]
+#define __pyx_n_u_sched __pyx_string_tab[179]
+#define __pyx_n_u_scheduler_add __pyx_string_tab[180]
+#define __pyx_n_u_scheduler_list __pyx_string_tab[181]
+#define __pyx_n_u_schema __pyx_string_tab[182]
+#define __pyx_n_u_script __pyx_string_tab[183]
+#define __pyx_n_u_search __pyx_string_tab[184]
+#define __pyx_n_u_search_files __pyx_string_tab[185]
+#define __pyx_n_u_search_grep __pyx_string_tab[186]
+#define __pyx_n_u_search_mod __pyx_string_tab[187]
+#define __pyx_n_u_series __pyx_string_tab[188]
+#define __pyx_n_u_server_url __pyx_string_tab[189]
+#define __pyx_n_u_services __pyx_string_tab[190]
+#define __pyx_n_u_services_scheduler_store __pyx_string_tab[191]
+#define __pyx_n_u_set_name __pyx_string_tab[192]
+#define __pyx_n_u_setdefault __pyx_string_tab[193]
+#define __pyx_n_u_shell __pyx_string_tab[194]
+#define __pyx_n_u_shell_kw __pyx_string_tab[195]
+#define __pyx_n_u_spawn __pyx_string_tab[196]
+#define __pyx_n_u_spawn_2 __pyx_string_tab[197]
+#define __pyx_n_u_spawn_subagent __pyx_string_tab[198]
+#define __pyx_n_u_state __pyx_string_tab[199]
+#define __pyx_n_u_str __pyx_string_tab[200]
+#define __pyx_n_u_stream __pyx_string_tab[201]
+#define __pyx_n_u_string __pyx_string_tab[202]
+#define __pyx_n_u_suffix __pyx_string_tab[203]
+#define __pyx_n_u_system __pyx_string_tab[204]
+#define __pyx_n_u_system_status __pyx_string_tab[205]
+#define __pyx_n_u_test __pyx_string_tab[206]
+#define __pyx_n_u_text __pyx_string_tab[207]
+#define __pyx_n_u_timeout __pyx_string_tab[208]
+#define __pyx_n_u_title __pyx_string_tab[209]
+#define __pyx_n_u_tools __pyx_string_tab[210]
+#define __pyx_n_u_tools_charts __pyx_string_tab[211]
+#define __pyx_n_u_tools_document_adapter __pyx_string_tab[212]
+#define __pyx_n_u_tools_research_integration __pyx_string_tab[213]
+#define __pyx_n_u_trust __pyx_string_tab[214]
+#define __pyx_n_u_type __pyx_string_tab[215]
+#define __pyx_n_u_u __pyx_string_tab[216]
+#define __pyx_n_u_uri __pyx_string_tab[217]
+#define __pyx_n_u_url __pyx_string_tab[218]
+#define __pyx_n_u_user __pyx_string_tab[219]
+#define __pyx_n_u_values __pyx_string_tab[220]
+#define __pyx_n_u_vision __pyx_string_tab[221]
+#define __pyx_n_u_web_fetch __pyx_string_tab[222]
+#define __pyx_n_u_web_search __pyx_string_tab[223]
+#define __pyx_n_u_wiring __pyx_string_tab[224]
+#define __pyx_n_u_write_file __pyx_string_tab[225]
+#define __pyx_kp_b_iso88591_6_z_Jaq_A __pyx_string_tab[226]
+#define __pyx_kp_b_iso88591_A_E_4q_A_Qixr_1G3d_7_4xxq_8_1 __pyx_string_tab[227]
+#define __pyx_kp_b_iso88591_K_Z_VVW_Q_k_Bd_9Cr_Qa_IQa_2S_F_4 __pyx_string_tab[228]
+#define __pyx_kp_b_iso88591_N_z_B_q_D_2T_Bd_1_4q_F_4y_O1Cz_A __pyx_string_tab[229]
+#define __pyx_kp_b_iso88591_O7_M1DA_q_F_Rt1E_Bd_1_4q_F_4y_O1 __pyx_string_tab[230]
+#define __pyx_kp_b_iso88591_V6_gQa_a __pyx_string_tab[231]
+#define __pyx_kp_b_iso88591_a_vQa_s_8_a_a_N_WA_HL_Q_a_N_8_q __pyx_string_tab[232]
+#define __pyx_kp_b_iso88591_b_A_2T_Bd_83b_AQ_4s_t_Qb_AYa_AQ __pyx_string_tab[233]
+#define __pyx_kp_b_iso88591_fF_Cq_1L_1_aq_a_9_1 __pyx_string_tab[234]
+#define __pyx_kp_b_iso88591_fF_Cq_e5 __pyx_string_tab[235]
+#define __pyx_kp_b_iso88591_m_5V1_c_q_gU_0_lRS_Q __pyx_string_tab[236]
+#define __pyx_kp_b_iso88591_q_1_fJa_Ct_S_87_6_Ya __pyx_string_tab[237]
+#define __pyx_kp_b_iso88591_vZ_7_1 __pyx_string_tab[238]
 #define __pyx_int_5 __pyx_number_tab[0]
 #define __pyx_int_12 __pyx_number_tab[1]
 #define __pyx_int_120 __pyx_number_tab[2]
@@ -2763,11 +2758,11 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   __Pyx_State_RemoveModule(NULL);
   #endif
-  Py_CLEAR(clear_module_state->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all);
-  Py_CLEAR(clear_module_state->__pyx_type_4core_6wiring___pyx_scope_struct__register_all);
+  Py_CLEAR(clear_module_state->__pyx_ptype_6wiring___pyx_scope_struct__register_all);
+  Py_CLEAR(clear_module_state->__pyx_type_6wiring___pyx_scope_struct__register_all);
   for (int i=0; i<7; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<13; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<244; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<239; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<5; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -2791,11 +2786,11 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_tuple);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_bytes);
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_unicode);
-  Py_VISIT(traverse_module_state->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all);
-  Py_VISIT(traverse_module_state->__pyx_type_4core_6wiring___pyx_scope_struct__register_all);
+  Py_VISIT(traverse_module_state->__pyx_ptype_6wiring___pyx_scope_struct__register_all);
+  Py_VISIT(traverse_module_state->__pyx_type_6wiring___pyx_scope_struct__register_all);
   for (int i=0; i<7; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<13; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<244; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<239; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<5; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -2810,7 +2805,7 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* "core/wiring.py":9
+/* "wiring.py":9
  * 
  * 
  * def register_all() -> int:             # <<<<<<<<<<<<<<
@@ -2819,22 +2814,22 @@ return 0;
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_1register_all(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_1register_all = {"register_all", (PyCFunction)__pyx_pw_4core_6wiring_1register_all, METH_NOARGS, 0};
-static PyObject *__pyx_pw_4core_6wiring_1register_all(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6wiring_1register_all(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_6wiring_1register_all = {"register_all", (PyCFunction)__pyx_pw_6wiring_1register_all, METH_NOARGS, 0};
+static PyObject *__pyx_pw_6wiring_1register_all(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("register_all (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_4core_6wiring_register_all(__pyx_self);
+  __pyx_r = __pyx_pf_6wiring_register_all(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "core/wiring.py":47
+/* "wiring.py":47
  *          "glob_filter": {"type": "string"}}, ["pattern"]), search_mod.grep)
  * 
  *     def shell_kw(**kw) -> dict:             # <<<<<<<<<<<<<<
@@ -2843,15 +2838,15 @@ static PyObject *__pyx_pw_4core_6wiring_1register_all(PyObject *__pyx_self, CYTH
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_1shell_kw(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_1shell_kw(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_1shell_kw = {"shell_kw", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_1shell_kw, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_1shell_kw(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_1shell_kw = {"shell_kw", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_1shell_kw, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_1shell_kw(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2887,7 +2882,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     if (unlikely(!__pyx_v_kw)) return NULL;
     __Pyx_GOTREF(__pyx_v_kw);
   }
-  __pyx_r = __pyx_pf_4core_6wiring_12register_all_shell_kw(__pyx_self, __pyx_v_kw);
+  __pyx_r = __pyx_pf_6wiring_12register_all_shell_kw(__pyx_self, __pyx_v_kw);
 
   /* function exit code */
   __Pyx_DECREF(__pyx_v_kw);
@@ -2895,7 +2890,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_kw) {
+static PyObject *__pyx_pf_6wiring_12register_all_shell_kw(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_kw) {
   PyObject *__pyx_v_cmd = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2913,7 +2908,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("shell_kw", 0);
 
-  /* "core/wiring.py":48
+  /* "wiring.py":48
  * 
  *     def shell_kw(**kw) -> dict:
  *         cmd = kw.get("command") or kw.get("cmd") or kw.get("bash") or kw.get("script")             # <<<<<<<<<<<<<<
@@ -2962,7 +2957,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
   __pyx_v_cmd = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/wiring.py":49
+  /* "wiring.py":49
  *     def shell_kw(**kw) -> dict:
  *         cmd = kw.get("command") or kw.get("cmd") or kw.get("bash") or kw.get("script")
  *         if cmd is None and isinstance(kw.get("args"), str):             # <<<<<<<<<<<<<<
@@ -2983,7 +2978,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
   __pyx_L8_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "core/wiring.py":50
+    /* "wiring.py":50
  *         cmd = kw.get("command") or kw.get("cmd") or kw.get("bash") or kw.get("script")
  *         if cmd is None and isinstance(kw.get("args"), str):
  *             cmd = kw["args"]             # <<<<<<<<<<<<<<
@@ -2995,7 +2990,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
     __Pyx_DECREF_SET(__pyx_v_cmd, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "core/wiring.py":49
+    /* "wiring.py":49
  *     def shell_kw(**kw) -> dict:
  *         cmd = kw.get("command") or kw.get("cmd") or kw.get("bash") or kw.get("script")
  *         if cmd is None and isinstance(kw.get("args"), str):             # <<<<<<<<<<<<<<
@@ -3004,7 +2999,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
 */
   }
 
-  /* "core/wiring.py":51
+  /* "wiring.py":51
  *         if cmd is None and isinstance(kw.get("args"), str):
  *             cmd = kw["args"]
  *         if cmd is None:             # <<<<<<<<<<<<<<
@@ -3014,7 +3009,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
   __pyx_t_3 = (__pyx_v_cmd == Py_None);
   if (__pyx_t_3) {
 
-    /* "core/wiring.py":52
+    /* "wiring.py":52
  *             cmd = kw["args"]
  *         if cmd is None:
  *             return {"ok": False, "output": "", "error": "missing argument: command"}             # <<<<<<<<<<<<<<
@@ -3031,7 +3026,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "core/wiring.py":51
+    /* "wiring.py":51
  *         if cmd is None and isinstance(kw.get("args"), str):
  *             cmd = kw["args"]
  *         if cmd is None:             # <<<<<<<<<<<<<<
@@ -3040,7 +3035,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
 */
   }
 
-  /* "core/wiring.py":53
+  /* "wiring.py":53
  *         if cmd is None:
  *             return {"ok": False, "output": "", "error": "missing argument: command"}
  *         return registry._run_command(str(cmd), int(kw.get("timeout") or 3600))             # <<<<<<<<<<<<<<
@@ -3102,7 +3097,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "core/wiring.py":47
+  /* "wiring.py":47
  *          "glob_filter": {"type": "string"}}, ["pattern"]), search_mod.grep)
  * 
  *     def shell_kw(**kw) -> dict:             # <<<<<<<<<<<<<<
@@ -3118,7 +3113,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("core.wiring.register_all.shell_kw", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.shell_kw", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_cmd);
@@ -3127,7 +3122,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "core/wiring.py":59
+/* "wiring.py":59
  *         {"command": {"type": "string"}}, ["command"]), shell_kw)
  * 
  *     def web_search(query: str = "", max_results: int = 12, **kw) -> dict:             # <<<<<<<<<<<<<<
@@ -3136,15 +3131,15 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_shell_kw(CYTHON_UNUSED Py
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_3web_search(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_3web_search(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_3web_search = {"web_search", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_3web_search, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_3web_search(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_3web_search = {"web_search", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_3web_search, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_3web_search(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3226,13 +3221,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     Py_XDECREF(values[__pyx_temp]);
   }
   __Pyx_DECREF(__pyx_v_kw); __pyx_v_kw = 0;
-  __Pyx_AddTraceback("core.wiring.register_all.web_search", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.web_search", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_query), (&PyUnicode_Type), 0, "query", 2))) __PYX_ERR(0, 59, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_max_results), (&PyLong_Type), 0, "max_results", 2))) __PYX_ERR(0, 59, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4core_6wiring_12register_all_2web_search(__pyx_self, __pyx_v_query, __pyx_v_max_results, __pyx_v_kw);
+  __pyx_r = __pyx_pf_6wiring_12register_all_2web_search(__pyx_self, __pyx_v_query, __pyx_v_max_results, __pyx_v_kw);
 
   /* function exit code */
   goto __pyx_L0;
@@ -3252,7 +3247,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_query, PyObject *__pyx_v_max_results, PyObject *__pyx_v_kw) {
+static PyObject *__pyx_pf_6wiring_12register_all_2web_search(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_query, PyObject *__pyx_v_max_results, PyObject *__pyx_v_kw) {
   PyObject *__pyx_v_research_search = NULL;
   PyObject *__pyx_v_q = NULL;
   PyObject *__pyx_v_r = NULL;
@@ -3272,7 +3267,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("web_search", 0);
 
-  /* "core/wiring.py":60
+  /* "wiring.py":60
  * 
  *     def web_search(query: str = "", max_results: int = 12, **kw) -> dict:
  *         from tools.research_integration import research_search             # <<<<<<<<<<<<<<
@@ -3302,7 +3297,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "core/wiring.py":61
+  /* "wiring.py":61
  *     def web_search(query: str = "", max_results: int = 12, **kw) -> dict:
  *         from tools.research_integration import research_search
  *         q = query or kw.get("q") or kw.get("search")             # <<<<<<<<<<<<<<
@@ -3336,7 +3331,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
   __pyx_v_q = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/wiring.py":62
+  /* "wiring.py":62
  *         from tools.research_integration import research_search
  *         q = query or kw.get("q") or kw.get("search")
  *         if not q:             # <<<<<<<<<<<<<<
@@ -3347,7 +3342,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
   __pyx_t_6 = (!__pyx_t_5);
   if (__pyx_t_6) {
 
-    /* "core/wiring.py":63
+    /* "wiring.py":63
  *         q = query or kw.get("q") or kw.get("search")
  *         if not q:
  *             return {"ok": False, "output": "", "error": "missing argument: query"}             # <<<<<<<<<<<<<<
@@ -3364,7 +3359,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "core/wiring.py":62
+    /* "wiring.py":62
  *         from tools.research_integration import research_search
  *         q = query or kw.get("q") or kw.get("search")
  *         if not q:             # <<<<<<<<<<<<<<
@@ -3373,7 +3368,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
 */
   }
 
-  /* "core/wiring.py":64
+  /* "wiring.py":64
  *         if not q:
  *             return {"ok": False, "output": "", "error": "missing argument: query"}
  *         r = research_search(q, max_results=max_results)             # <<<<<<<<<<<<<<
@@ -3410,7 +3405,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
   __pyx_v_r = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/wiring.py":65
+  /* "wiring.py":65
  *             return {"ok": False, "output": "", "error": "missing argument: query"}
  *         r = research_search(q, max_results=max_results)
  *         r.setdefault("trust", "high")             # <<<<<<<<<<<<<<
@@ -3424,7 +3419,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "core/wiring.py":66
+  /* "wiring.py":66
  *         r = research_search(q, max_results=max_results)
  *         r.setdefault("trust", "high")
  *         return r             # <<<<<<<<<<<<<<
@@ -3439,7 +3434,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "core/wiring.py":59
+  /* "wiring.py":59
  *         {"command": {"type": "string"}}, ["command"]), shell_kw)
  * 
  *     def web_search(query: str = "", max_results: int = 12, **kw) -> dict:             # <<<<<<<<<<<<<<
@@ -3453,7 +3448,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("core.wiring.register_all.web_search", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.web_search", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_research_search);
@@ -3464,7 +3459,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "core/wiring.py":68
+/* "wiring.py":68
  *         return r
  * 
  *     def web_fetch(url: str = "", max_chars: int = 20000, **kw) -> dict:             # <<<<<<<<<<<<<<
@@ -3473,15 +3468,15 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_2web_search(CYTHON_UNUSED
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_5web_fetch(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_5web_fetch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_5web_fetch = {"web_fetch", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_5web_fetch, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_5web_fetch(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_5web_fetch = {"web_fetch", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_5web_fetch, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_5web_fetch(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3563,13 +3558,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     Py_XDECREF(values[__pyx_temp]);
   }
   __Pyx_DECREF(__pyx_v_kw); __pyx_v_kw = 0;
-  __Pyx_AddTraceback("core.wiring.register_all.web_fetch", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.web_fetch", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_url), (&PyUnicode_Type), 0, "url", 2))) __PYX_ERR(0, 68, __pyx_L1_error)
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_max_chars), (&PyLong_Type), 0, "max_chars", 2))) __PYX_ERR(0, 68, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4core_6wiring_12register_all_4web_fetch(__pyx_self, __pyx_v_url, __pyx_v_max_chars, __pyx_v_kw);
+  __pyx_r = __pyx_pf_6wiring_12register_all_4web_fetch(__pyx_self, __pyx_v_url, __pyx_v_max_chars, __pyx_v_kw);
 
   /* function exit code */
   goto __pyx_L0;
@@ -3589,7 +3584,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_url, PyObject *__pyx_v_max_chars, PyObject *__pyx_v_kw) {
+static PyObject *__pyx_pf_6wiring_12register_all_4web_fetch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_url, PyObject *__pyx_v_max_chars, PyObject *__pyx_v_kw) {
   PyObject *__pyx_v_research_scrape = NULL;
   PyObject *__pyx_v_u = NULL;
   PyObject *__pyx_v_r = NULL;
@@ -3609,7 +3604,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("web_fetch", 0);
 
-  /* "core/wiring.py":69
+  /* "wiring.py":69
  * 
  *     def web_fetch(url: str = "", max_chars: int = 20000, **kw) -> dict:
  *         from tools.research_integration import research_scrape             # <<<<<<<<<<<<<<
@@ -3639,7 +3634,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "core/wiring.py":70
+  /* "wiring.py":70
  *     def web_fetch(url: str = "", max_chars: int = 20000, **kw) -> dict:
  *         from tools.research_integration import research_scrape
  *         u = url or kw.get("uri") or kw.get("page")             # <<<<<<<<<<<<<<
@@ -3673,7 +3668,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
   __pyx_v_u = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/wiring.py":71
+  /* "wiring.py":71
  *         from tools.research_integration import research_scrape
  *         u = url or kw.get("uri") or kw.get("page")
  *         if not u:             # <<<<<<<<<<<<<<
@@ -3684,7 +3679,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
   __pyx_t_6 = (!__pyx_t_5);
   if (__pyx_t_6) {
 
-    /* "core/wiring.py":72
+    /* "wiring.py":72
  *         u = url or kw.get("uri") or kw.get("page")
  *         if not u:
  *             return {"ok": False, "output": "", "error": "missing argument: url"}             # <<<<<<<<<<<<<<
@@ -3701,7 +3696,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "core/wiring.py":71
+    /* "wiring.py":71
  *         from tools.research_integration import research_scrape
  *         u = url or kw.get("uri") or kw.get("page")
  *         if not u:             # <<<<<<<<<<<<<<
@@ -3710,7 +3705,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
 */
   }
 
-  /* "core/wiring.py":73
+  /* "wiring.py":73
  *         if not u:
  *             return {"ok": False, "output": "", "error": "missing argument: url"}
  *         r = research_scrape(u, max_chars=max_chars)             # <<<<<<<<<<<<<<
@@ -3747,7 +3742,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
   __pyx_v_r = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/wiring.py":74
+  /* "wiring.py":74
  *             return {"ok": False, "output": "", "error": "missing argument: url"}
  *         r = research_scrape(u, max_chars=max_chars)
  *         r.setdefault("trust", "high")             # <<<<<<<<<<<<<<
@@ -3761,7 +3756,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "core/wiring.py":75
+  /* "wiring.py":75
  *         r = research_scrape(u, max_chars=max_chars)
  *         r.setdefault("trust", "high")
  *         return r             # <<<<<<<<<<<<<<
@@ -3776,7 +3771,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "core/wiring.py":68
+  /* "wiring.py":68
  *         return r
  * 
  *     def web_fetch(url: str = "", max_chars: int = 20000, **kw) -> dict:             # <<<<<<<<<<<<<<
@@ -3790,7 +3785,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_AddTraceback("core.wiring.register_all.web_fetch", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.web_fetch", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_research_scrape);
@@ -3801,7 +3796,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "core/wiring.py":139
+/* "wiring.py":132
  *             if hasattr(charts_mod, "render_series") else series), "error": ""})
  * 
  *     def vision(image_path: str = "", question: str = "Describe this image.", **kw) -> dict:             # <<<<<<<<<<<<<<
@@ -3810,15 +3805,15 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_4web_fetch(CYTHON_UNUSED 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_7vision(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_7vision(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_7vision = {"vision", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_7vision, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_7vision(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_7vision = {"vision", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_7vision, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_7vision(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3852,33 +3847,33 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_image_path,&__pyx_mstate_global->__pyx_n_u_question,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len < 0)) __PYX_ERR(0, 139, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len < 0)) __PYX_ERR(0, 132, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 139, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 132, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 139, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 132, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, __pyx_v_kw, values, kwd_pos_args, __pyx_kwds_len, "vision", 1) < (0)) __PYX_ERR(0, 139, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, __pyx_v_kw, values, kwd_pos_args, __pyx_kwds_len, "vision", 1) < (0)) __PYX_ERR(0, 132, __pyx_L3_error)
       if (!values[0]) values[0] = __Pyx_NewRef(((PyObject*)((PyObject*)__pyx_mstate_global->__pyx_kp_u_)));
       if (!values[1]) values[1] = __Pyx_NewRef(((PyObject*)((PyObject*)__pyx_mstate_global->__pyx_kp_u_Describe_this_image)));
     } else {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 139, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 132, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 139, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 132, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
@@ -3891,7 +3886,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("vision", 0, 0, 2, __pyx_nargs); __PYX_ERR(0, 139, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("vision", 0, 0, 2, __pyx_nargs); __PYX_ERR(0, 132, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3899,13 +3894,13 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     Py_XDECREF(values[__pyx_temp]);
   }
   __Pyx_DECREF(__pyx_v_kw); __pyx_v_kw = 0;
-  __Pyx_AddTraceback("core.wiring.register_all.vision", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.vision", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_image_path), (&PyUnicode_Type), 0, "image_path", 2))) __PYX_ERR(0, 139, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_question), (&PyUnicode_Type), 0, "question", 2))) __PYX_ERR(0, 139, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4core_6wiring_12register_all_6vision(__pyx_self, __pyx_v_image_path, __pyx_v_question, __pyx_v_kw);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_image_path), (&PyUnicode_Type), 0, "image_path", 2))) __PYX_ERR(0, 132, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_question), (&PyUnicode_Type), 0, "question", 2))) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_r = __pyx_pf_6wiring_12register_all_6vision(__pyx_self, __pyx_v_image_path, __pyx_v_question, __pyx_v_kw);
 
   /* function exit code */
   goto __pyx_L0;
@@ -3925,9 +3920,9 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_self, PyObject *__pyx_v_image_path, PyObject *__pyx_v_question, PyObject *__pyx_v_kw) {
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
+static PyObject *__pyx_pf_6wiring_12register_all_6vision(PyObject *__pyx_self, PyObject *__pyx_v_image_path, PyObject *__pyx_v_question, PyObject *__pyx_v_kw) {
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
   PyObject *__pyx_v_base64 = NULL;
   PyObject *__pyx_v__post = NULL;
   PyObject *__pyx_v_img = NULL;
@@ -3954,23 +3949,23 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("vision", 0);
-  __pyx_outer_scope = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "core/wiring.py":140
+  /* "wiring.py":133
  * 
  *     def vision(image_path: str = "", question: str = "Describe this image.", **kw) -> dict:
  *         import base64             # <<<<<<<<<<<<<<
  *         from core.llm import _post
  *         img = image_path or kw.get("image") or kw.get("file")
 */
-  __pyx_t_2 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_base64, 0, 0, NULL, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_base64, 0, 0, NULL, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
   __pyx_t_1 = __pyx_t_2;
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_base64 = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/wiring.py":141
+  /* "wiring.py":134
  *     def vision(image_path: str = "", question: str = "Describe this image.", **kw) -> dict:
  *         import base64
  *         from core.llm import _post             # <<<<<<<<<<<<<<
@@ -3979,14 +3974,14 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
 */
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_post};
-    __pyx_t_2 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_core_llm, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_core_llm, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_t_2;
   __Pyx_GOTREF(__pyx_t_1);
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_post};
     __pyx_t_3 = 0; {
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_1, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 141, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_1, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       switch (__pyx_t_3) {
         case 0:
@@ -4000,23 +3995,23 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "core/wiring.py":142
+  /* "wiring.py":135
  *         import base64
  *         from core.llm import _post
  *         img = image_path or kw.get("image") or kw.get("file")             # <<<<<<<<<<<<<<
  *         p = _safe_img(img)
  *         if p is None:
 */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_image_path); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_image_path); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 135, __pyx_L1_error)
   if (!__pyx_t_5) {
   } else {
     __Pyx_INCREF(__pyx_v_image_path);
     __pyx_t_1 = __pyx_v_image_path;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kw, __pyx_mstate_global->__pyx_n_u_image, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kw, __pyx_mstate_global->__pyx_n_u_image, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 135, __pyx_L1_error)
   if (!__pyx_t_5) {
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
@@ -4025,7 +4020,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kw, __pyx_mstate_global->__pyx_n_u_file, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_GetItemDefault(__pyx_v_kw, __pyx_mstate_global->__pyx_n_u_file, Py_None); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_t_4);
   __pyx_t_1 = __pyx_t_4;
@@ -4034,7 +4029,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
   __pyx_v_img = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/wiring.py":143
+  /* "wiring.py":136
  *         from core.llm import _post
  *         img = image_path or kw.get("image") or kw.get("file")
  *         p = _safe_img(img)             # <<<<<<<<<<<<<<
@@ -4043,15 +4038,15 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
 */
   __pyx_t_1 = __pyx_v_img;
   __Pyx_INCREF(__pyx_t_1);
-  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 143, __pyx_L1_error)
-  if (unlikely(!__pyx_cur_scope->__pyx_v__safe_img)) { __Pyx_RaiseClosureNameError("_safe_img"); __PYX_ERR(0, 143, __pyx_L1_error) }
-  __pyx_t_4 = __pyx_pf_4core_6wiring_12register_all_8_safe_img(__pyx_cur_scope->__pyx_v__safe_img, ((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
+  if (!(likely(PyUnicode_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None) || __Pyx_RaiseUnexpectedTypeError("str", __pyx_t_1))) __PYX_ERR(0, 136, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v__safe_img)) { __Pyx_RaiseClosureNameError("_safe_img"); __PYX_ERR(0, 136, __pyx_L1_error) }
+  __pyx_t_4 = __pyx_pf_6wiring_12register_all_8_safe_img(__pyx_cur_scope->__pyx_v__safe_img, ((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_p = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "core/wiring.py":144
+  /* "wiring.py":137
  *         img = image_path or kw.get("image") or kw.get("file")
  *         p = _safe_img(img)
  *         if p is None:             # <<<<<<<<<<<<<<
@@ -4061,7 +4056,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
   __pyx_t_5 = (__pyx_v_p == Py_None);
   if (__pyx_t_5) {
 
-    /* "core/wiring.py":145
+    /* "wiring.py":138
  *         p = _safe_img(img)
  *         if p is None:
  *             return {"ok": False, "output": "", "error": "missing or bad image path"}             # <<<<<<<<<<<<<<
@@ -4069,16 +4064,16 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
  *         data = _post({"model": "qwen3.8-27b",
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 138, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ok, Py_False) < (0)) __PYX_ERR(0, 145, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_output, __pyx_mstate_global->__pyx_kp_u_) < (0)) __PYX_ERR(0, 145, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_missing_or_bad_image_path) < (0)) __PYX_ERR(0, 145, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ok, Py_False) < (0)) __PYX_ERR(0, 138, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_output, __pyx_mstate_global->__pyx_kp_u_) < (0)) __PYX_ERR(0, 138, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_missing_or_bad_image_path) < (0)) __PYX_ERR(0, 138, __pyx_L1_error)
     __pyx_r = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "core/wiring.py":144
+    /* "wiring.py":137
  *         img = image_path or kw.get("image") or kw.get("file")
  *         p = _safe_img(img)
  *         if p is None:             # <<<<<<<<<<<<<<
@@ -4087,7 +4082,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
 */
   }
 
-  /* "core/wiring.py":146
+  /* "wiring.py":139
  *         if p is None:
  *             return {"ok": False, "output": "", "error": "missing or bad image path"}
  *         b64 = base64.b64encode(p.read_bytes()).decode()             # <<<<<<<<<<<<<<
@@ -4103,7 +4098,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
     PyObject *__pyx_callargs[2] = {__pyx_t_9, NULL};
     __pyx_t_8 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_read_bytes, __pyx_callargs+__pyx_t_10, (1-__pyx_t_10) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 146, __pyx_L1_error)
+    if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 139, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
   }
   __pyx_t_10 = 0;
@@ -4112,7 +4107,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
     __pyx_t_6 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_b64encode, __pyx_callargs+__pyx_t_10, (2-__pyx_t_10) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 146, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
   }
   __pyx_t_1 = __pyx_t_6;
@@ -4123,13 +4118,13 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
     __pyx_t_4 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_decode, __pyx_callargs+__pyx_t_10, (1-__pyx_t_10) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_v_b64 = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "core/wiring.py":147
+  /* "wiring.py":140
  *             return {"ok": False, "output": "", "error": "missing or bad image path"}
  *         b64 = base64.b64encode(p.read_bytes()).decode()
  *         data = _post({"model": "qwen3.8-27b",             # <<<<<<<<<<<<<<
@@ -4139,94 +4134,94 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
   __pyx_t_6 = NULL;
   __Pyx_INCREF(__pyx_v__post);
   __pyx_t_1 = __pyx_v__post; 
-  __pyx_t_8 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (PyDict_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_model, __pyx_mstate_global->__pyx_kp_u_qwen3_8_27b) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_model, __pyx_mstate_global->__pyx_kp_u_qwen3_8_27b) < (0)) __PYX_ERR(0, 140, __pyx_L1_error)
 
-  /* "core/wiring.py":148
+  /* "wiring.py":141
  *         b64 = base64.b64encode(p.read_bytes()).decode()
  *         data = _post({"model": "qwen3.8-27b",
  *                       "messages": [{"role": "user", "content": [             # <<<<<<<<<<<<<<
  *                           {"type": "text", "text": question},
  *                           {"type": "image_url",
 */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_role, __pyx_mstate_global->__pyx_n_u_user) < (0)) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_role, __pyx_mstate_global->__pyx_n_u_user) < (0)) __PYX_ERR(0, 141, __pyx_L1_error)
 
-  /* "core/wiring.py":149
+  /* "wiring.py":142
  *         data = _post({"model": "qwen3.8-27b",
  *                       "messages": [{"role": "user", "content": [
  *                           {"type": "text", "text": question},             # <<<<<<<<<<<<<<
  *                           {"type": "image_url",
  *                            "image_url": {"url": "data:image;base64," + b64}}]}],
 */
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_text) < (0)) __PYX_ERR(0, 149, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_text, __pyx_v_question) < (0)) __PYX_ERR(0, 149, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_text) < (0)) __PYX_ERR(0, 142, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_text, __pyx_v_question) < (0)) __PYX_ERR(0, 142, __pyx_L1_error)
 
-  /* "core/wiring.py":150
+  /* "wiring.py":143
  *                       "messages": [{"role": "user", "content": [
  *                           {"type": "text", "text": question},
  *                           {"type": "image_url",             # <<<<<<<<<<<<<<
  *                            "image_url": {"url": "data:image;base64," + b64}}]}],
  *                       "max_tokens": 512, "stream": False}, 120)
 */
-  __pyx_t_11 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_image_url) < (0)) __PYX_ERR(0, 150, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_image_url) < (0)) __PYX_ERR(0, 143, __pyx_L1_error)
 
-  /* "core/wiring.py":151
+  /* "wiring.py":144
  *                           {"type": "text", "text": question},
  *                           {"type": "image_url",
  *                            "image_url": {"url": "data:image;base64," + b64}}]}],             # <<<<<<<<<<<<<<
  *                       "max_tokens": 512, "stream": False}, 120)
  *         if not data:
 */
-  __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_13 = PyNumber_Add(__pyx_mstate_global->__pyx_kp_u_data_image_base64, __pyx_v_b64); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_13 = PyNumber_Add(__pyx_mstate_global->__pyx_kp_u_data_image_base64, __pyx_v_b64); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
-  if (PyDict_SetItem(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_url, __pyx_t_13) < (0)) __PYX_ERR(0, 151, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_url, __pyx_t_13) < (0)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_image_url, __pyx_t_12) < (0)) __PYX_ERR(0, 150, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_image_url, __pyx_t_12) < (0)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "core/wiring.py":148
+  /* "wiring.py":141
  *         b64 = base64.b64encode(p.read_bytes()).decode()
  *         data = _post({"model": "qwen3.8-27b",
  *                       "messages": [{"role": "user", "content": [             # <<<<<<<<<<<<<<
  *                           {"type": "text", "text": question},
  *                           {"type": "image_url",
 */
-  __pyx_t_12 = PyList_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_12 = PyList_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_GIVEREF(__pyx_t_9);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_9) != (0)) __PYX_ERR(0, 148, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_9) != (0)) __PYX_ERR(0, 141, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_11);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_12, 1, __pyx_t_11) != (0)) __PYX_ERR(0, 148, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_12, 1, __pyx_t_11) != (0)) __PYX_ERR(0, 141, __pyx_L1_error);
   __pyx_t_9 = 0;
   __pyx_t_11 = 0;
-  if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_content, __pyx_t_12) < (0)) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_content, __pyx_t_12) < (0)) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
   __Pyx_GIVEREF(__pyx_t_7);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 148, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_12, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 141, __pyx_L1_error);
   __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_messages, __pyx_t_12) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_messages, __pyx_t_12) < (0)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (PyDict_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_max_tokens, __pyx_mstate_global->__pyx_int_512) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_max_tokens, __pyx_mstate_global->__pyx_int_512) < (0)) __PYX_ERR(0, 140, __pyx_L1_error)
 
-  /* "core/wiring.py":152
+  /* "wiring.py":145
  *                           {"type": "image_url",
  *                            "image_url": {"url": "data:image;base64," + b64}}]}],
  *                       "max_tokens": 512, "stream": False}, 120)             # <<<<<<<<<<<<<<
  *         if not data:
  *             return {"ok": False, "output": "", "error": "vision unavailable"}
 */
-  if (PyDict_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_stream, Py_False) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_stream, Py_False) < (0)) __PYX_ERR(0, 140, __pyx_L1_error)
   __pyx_t_10 = 1;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -4245,24 +4240,24 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_v_data = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "core/wiring.py":153
+  /* "wiring.py":146
  *                            "image_url": {"url": "data:image;base64," + b64}}]}],
  *                       "max_tokens": 512, "stream": False}, 120)
  *         if not data:             # <<<<<<<<<<<<<<
  *             return {"ok": False, "output": "", "error": "vision unavailable"}
  *         return {"ok": True, "output": data["choices"][0]["message"]["content"],
 */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_data); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_data); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 146, __pyx_L1_error)
   __pyx_t_14 = (!__pyx_t_5);
   if (__pyx_t_14) {
 
-    /* "core/wiring.py":154
+    /* "wiring.py":147
  *                       "max_tokens": 512, "stream": False}, 120)
  *         if not data:
  *             return {"ok": False, "output": "", "error": "vision unavailable"}             # <<<<<<<<<<<<<<
@@ -4270,16 +4265,16 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
  *                 "error": ""}
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ok, Py_False) < (0)) __PYX_ERR(0, 154, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_output, __pyx_mstate_global->__pyx_kp_u_) < (0)) __PYX_ERR(0, 154, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_vision_unavailable) < (0)) __PYX_ERR(0, 154, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ok, Py_False) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_output, __pyx_mstate_global->__pyx_kp_u_) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_vision_unavailable) < (0)) __PYX_ERR(0, 147, __pyx_L1_error)
     __pyx_r = ((PyObject*)__pyx_t_4);
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "core/wiring.py":153
+    /* "wiring.py":146
  *                            "image_url": {"url": "data:image;base64," + b64}}]}],
  *                       "max_tokens": 512, "stream": False}, 120)
  *         if not data:             # <<<<<<<<<<<<<<
@@ -4288,7 +4283,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
 */
   }
 
-  /* "core/wiring.py":155
+  /* "wiring.py":148
  *         if not data:
  *             return {"ok": False, "output": "", "error": "vision unavailable"}
  *         return {"ok": True, "output": data["choices"][0]["message"]["content"],             # <<<<<<<<<<<<<<
@@ -4296,28 +4291,28 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
  * 
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ok, Py_True) < (0)) __PYX_ERR(0, 155, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_data, __pyx_mstate_global->__pyx_n_u_choices); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ok, Py_True) < (0)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_v_data, __pyx_mstate_global->__pyx_n_u_choices); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_8 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_message); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_message); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_content); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_content); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_output, __pyx_t_8) < (0)) __PYX_ERR(0, 155, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_output, __pyx_t_8) < (0)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_) < (0)) __PYX_ERR(0, 155, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_) < (0)) __PYX_ERR(0, 148, __pyx_L1_error)
   __pyx_r = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "core/wiring.py":139
+  /* "wiring.py":132
  *             if hasattr(charts_mod, "render_series") else series), "error": ""})
  * 
  *     def vision(image_path: str = "", question: str = "Describe this image.", **kw) -> dict:             # <<<<<<<<<<<<<<
@@ -4336,7 +4331,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
-  __Pyx_AddTraceback("core.wiring.register_all.vision", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.vision", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_base64);
@@ -4350,7 +4345,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "core/wiring.py":158
+/* "wiring.py":151
  *                 "error": ""}
  * 
  *     def _safe_img(path: str):             # <<<<<<<<<<<<<<
@@ -4359,15 +4354,15 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_6vision(PyObject *__pyx_s
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_9_safe_img(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_9_safe_img(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_9_safe_img = {"_safe_img", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_9_safe_img, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_9_safe_img(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_9_safe_img = {"_safe_img", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_9_safe_img, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_9_safe_img(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4397,44 +4392,44 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_path,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len < 0)) __PYX_ERR(0, 158, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len < 0)) __PYX_ERR(0, 151, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 158, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 151, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "_safe_img", 0) < (0)) __PYX_ERR(0, 158, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "_safe_img", 0) < (0)) __PYX_ERR(0, 151, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("_safe_img", 1, 1, 1, i); __PYX_ERR(0, 158, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("_safe_img", 1, 1, 1, i); __PYX_ERR(0, 151, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 158, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 151, __pyx_L3_error)
     }
     __pyx_v_path = ((PyObject*)values[0]);
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_safe_img", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 158, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_safe_img", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 151, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("core.wiring.register_all._safe_img", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all._safe_img", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_path), (&PyUnicode_Type), 0, "path", 2))) __PYX_ERR(0, 158, __pyx_L1_error)
-  __pyx_r = __pyx_pf_4core_6wiring_12register_all_8_safe_img(__pyx_self, __pyx_v_path);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_path), (&PyUnicode_Type), 0, "path", 2))) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_r = __pyx_pf_6wiring_12register_all_8_safe_img(__pyx_self, __pyx_v_path);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4453,7 +4448,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_path) {
+static PyObject *__pyx_pf_6wiring_12register_all_8_safe_img(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_path) {
   PyObject *__pyx_v__Path = NULL;
   PyObject *__pyx_v_p = NULL;
   PyObject *__pyx_r = NULL;
@@ -4475,7 +4470,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_safe_img", 0);
 
-  /* "core/wiring.py":159
+  /* "wiring.py":152
  * 
  *     def _safe_img(path: str):
  *         from pathlib import Path as _Path             # <<<<<<<<<<<<<<
@@ -4484,14 +4479,14 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
 */
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_Path};
-    __pyx_t_2 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_pathlib, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_pathlib, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_t_2;
   __Pyx_GOTREF(__pyx_t_1);
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_Path};
     __pyx_t_3 = 0; {
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_1, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 159, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_1, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 152, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       switch (__pyx_t_3) {
         case 0:
@@ -4505,7 +4500,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "core/wiring.py":160
+  /* "wiring.py":153
  *     def _safe_img(path: str):
  *         from pathlib import Path as _Path
  *         p = _Path(path).expanduser()             # <<<<<<<<<<<<<<
@@ -4532,7 +4527,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
     __pyx_t_5 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
   }
   __pyx_t_4 = __pyx_t_5;
@@ -4543,13 +4538,13 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_expanduser, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_p = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/wiring.py":161
+  /* "wiring.py":154
  *         from pathlib import Path as _Path
  *         p = _Path(path).expanduser()
  *         if not p.is_absolute():             # <<<<<<<<<<<<<<
@@ -4563,15 +4558,15 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
     PyObject *__pyx_callargs[2] = {__pyx_t_5, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_is_absolute, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_10 = (!__pyx_t_9);
   if (__pyx_t_10) {
 
-    /* "core/wiring.py":162
+    /* "wiring.py":155
  *         p = _Path(path).expanduser()
  *         if not p.is_absolute():
  *             p = _Path(__file__).resolve().parent.parent / p             # <<<<<<<<<<<<<<
@@ -4581,7 +4576,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
     __pyx_t_7 = NULL;
     __Pyx_INCREF(__pyx_v__Path);
     __pyx_t_6 = __pyx_v__Path; 
-    __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_file_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_file_2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __pyx_t_8 = 1;
     #if CYTHON_UNPACK_METHODS
@@ -4601,7 +4596,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
     __pyx_t_5 = __pyx_t_4;
@@ -4612,22 +4607,22 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
       __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_resolve, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_parent); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_parent); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_parent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_parent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_v_p); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_t_1, __pyx_v_p); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF_SET(__pyx_v_p, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "core/wiring.py":161
+    /* "wiring.py":154
  *         from pathlib import Path as _Path
  *         p = _Path(path).expanduser()
  *         if not p.is_absolute():             # <<<<<<<<<<<<<<
@@ -4636,7 +4631,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
 */
   }
 
-  /* "core/wiring.py":163
+  /* "wiring.py":156
  *         if not p.is_absolute():
  *             p = _Path(__file__).resolve().parent.parent / p
  *         if p.exists() and p.suffix.lower() in (".png", ".jpg", ".jpeg",             # <<<<<<<<<<<<<<
@@ -4650,17 +4645,17 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
     PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
     __pyx_t_4 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_exists, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
-  __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (__pyx_t_9) {
   } else {
     __pyx_t_10 = __pyx_t_9;
     goto __pyx_L5_bool_binop_done;
   }
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_mstate_global->__pyx_n_u_suffix); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_mstate_global->__pyx_n_u_suffix); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_1 = __pyx_t_5;
   __Pyx_INCREF(__pyx_t_1);
@@ -4670,34 +4665,34 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
     __pyx_t_4 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_lower, __pyx_callargs+__pyx_t_8, (1-__pyx_t_8) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
-  __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_png, Py_EQ)); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_png, Py_EQ)); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
   if (!__pyx_t_12) {
   } else {
     __pyx_t_9 = __pyx_t_12;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_jpg, Py_EQ)); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_jpg, Py_EQ)); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
   if (!__pyx_t_12) {
   } else {
     __pyx_t_9 = __pyx_t_12;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_jpeg, Py_EQ)); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_jpeg, Py_EQ)); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
   if (!__pyx_t_12) {
   } else {
     __pyx_t_9 = __pyx_t_12;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_webp, Py_EQ)); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_webp, Py_EQ)); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
   if (!__pyx_t_12) {
   } else {
     __pyx_t_9 = __pyx_t_12;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_gif, Py_EQ)); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_12 = (__Pyx_PyUnicode_Equals(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_gif, Py_EQ)); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
   __pyx_t_9 = __pyx_t_12;
   __pyx_L7_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4706,7 +4701,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_10) {
 
-    /* "core/wiring.py":165
+    /* "wiring.py":158
  *         if p.exists() and p.suffix.lower() in (".png", ".jpg", ".jpeg",
  *                                                ".webp", ".gif"):
  *             return p             # <<<<<<<<<<<<<<
@@ -4718,7 +4713,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
     __pyx_r = __pyx_v_p;
     goto __pyx_L0;
 
-    /* "core/wiring.py":163
+    /* "wiring.py":156
  *         if not p.is_absolute():
  *             p = _Path(__file__).resolve().parent.parent / p
  *         if p.exists() and p.suffix.lower() in (".png", ".jpg", ".jpeg",             # <<<<<<<<<<<<<<
@@ -4727,7 +4722,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
 */
   }
 
-  /* "core/wiring.py":166
+  /* "wiring.py":159
  *                                                ".webp", ".gif"):
  *             return p
  *         return None             # <<<<<<<<<<<<<<
@@ -4738,7 +4733,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
 
-  /* "core/wiring.py":158
+  /* "wiring.py":151
  *                 "error": ""}
  * 
  *     def _safe_img(path: str):             # <<<<<<<<<<<<<<
@@ -4754,7 +4749,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_11);
-  __Pyx_AddTraceback("core.wiring.register_all._safe_img", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all._safe_img", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v__Path);
@@ -4764,7 +4759,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "core/wiring.py":172
+/* "wiring.py":165
  *         {"image_path": {"type": "string"}}, ["image_path"]), vision)
  * 
  *     def system_status(**kw) -> dict:             # <<<<<<<<<<<<<<
@@ -4773,15 +4768,15 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_8_safe_img(CYTHON_UNUSED 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_11system_status(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_11system_status(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_11system_status = {"system_status", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_11system_status, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_11system_status(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_11system_status = {"system_status", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_11system_status, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_11system_status(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4810,7 +4805,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (__pyx_kwds_len > 0) {
     if (unlikely(__Pyx_CheckKeywordStrings("system_status", __pyx_kwds) == -1)) return NULL;
   }
-  __pyx_r = __pyx_pf_4core_6wiring_12register_all_10system_status(__pyx_self, __pyx_v_kw);
+  __pyx_r = __pyx_pf_6wiring_12register_all_10system_status(__pyx_self, __pyx_v_kw);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_kw);
@@ -4818,7 +4813,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_kw) {
+static PyObject *__pyx_pf_6wiring_12register_all_10system_status(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_kw) {
   PyObject *__pyx_v_is_ready = NULL;
   PyObject *__pyx_v_server_url = NULL;
   PyObject *__pyx_v_llm_mod = NULL;
@@ -4838,7 +4833,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("system_status", 0);
 
-  /* "core/wiring.py":173
+  /* "wiring.py":166
  * 
  *     def system_status(**kw) -> dict:
  *         from model.server import is_ready, server_url             # <<<<<<<<<<<<<<
@@ -4847,14 +4842,14 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
 */
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_is_ready,__pyx_mstate_global->__pyx_n_u_server_url};
-    __pyx_t_2 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_model_server, __pyx_imported_names, 2, NULL, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_model_server, __pyx_imported_names, 2, NULL, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_t_2;
   __Pyx_GOTREF(__pyx_t_1);
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_is_ready,__pyx_mstate_global->__pyx_n_u_server_url};
     for (__pyx_t_3=0; __pyx_t_3 < 2; __pyx_t_3++) {
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_1, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_1, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       switch (__pyx_t_3) {
         case 0:
@@ -4872,7 +4867,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "core/wiring.py":174
+  /* "wiring.py":167
  *     def system_status(**kw) -> dict:
  *         from model.server import is_ready, server_url
  *         from core import llm as llm_mod             # <<<<<<<<<<<<<<
@@ -4881,14 +4876,14 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
 */
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_llm};
-    __pyx_t_2 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_core, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_core, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_t_2;
   __Pyx_GOTREF(__pyx_t_1);
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_llm};
     __pyx_t_3 = 0; {
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_1, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 174, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_1, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       switch (__pyx_t_3) {
         case 0:
@@ -4902,7 +4897,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "core/wiring.py":175
+  /* "wiring.py":168
  *         from model.server import is_ready, server_url
  *         from core import llm as llm_mod
  *         return {"ok": True, "output": "model=%s tps=%.1f calls=%d" % (             # <<<<<<<<<<<<<<
@@ -4910,28 +4905,28 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
  *             llm_mod.USAGE["calls"]), "error": ""}
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_ok, Py_True) < (0)) __PYX_ERR(0, 175, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_ok, Py_True) < (0)) __PYX_ERR(0, 168, __pyx_L1_error)
 
-  /* "core/wiring.py":176
+  /* "wiring.py":169
  *         from core import llm as llm_mod
  *         return {"ok": True, "output": "model=%s tps=%.1f calls=%d" % (
  *             is_ready() and server_url() or "down", llm_mod.LAST_TPS,             # <<<<<<<<<<<<<<
  *             llm_mod.USAGE["calls"]), "error": ""}
  * 
 */
-  __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_v_is_ready); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_v_is_ready); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (!__pyx_t_6) {
     goto __pyx_L4_next_or;
   } else {
   }
-  __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_v_server_url); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_v_server_url); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 169, __pyx_L1_error)
   if (!__pyx_t_6) {
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
@@ -4944,28 +4939,28 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
   __Pyx_INCREF(__pyx_mstate_global->__pyx_n_u_down);
   __pyx_t_4 = __pyx_mstate_global->__pyx_n_u_down;
   __pyx_L3_bool_binop_done:;
-  __pyx_t_5 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Str(__pyx_t_4), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Str(__pyx_t_4), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_llm_mod, __pyx_mstate_global->__pyx_n_u_LAST_TPS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_llm_mod, __pyx_mstate_global->__pyx_n_u_LAST_TPS); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyObject_Format(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_1f); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Format(__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_1f); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/wiring.py":177
+  /* "wiring.py":170
  *         return {"ok": True, "output": "model=%s tps=%.1f calls=%d" % (
  *             is_ready() and server_url() or "down", llm_mod.LAST_TPS,
  *             llm_mod.USAGE["calls"]), "error": ""}             # <<<<<<<<<<<<<<
  * 
  *     registry.register_tool("system", _schema(
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_llm_mod, __pyx_mstate_global->__pyx_n_u_USAGE); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_llm_mod, __pyx_mstate_global->__pyx_n_u_USAGE); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_calls_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_Dict_GetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_calls_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_FormatAndDecref(__Pyx_PyNumber_Long(__pyx_t_8), __pyx_mstate_global->__pyx_n_u_d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatAndDecref(__Pyx_PyNumber_Long(__pyx_t_8), __pyx_mstate_global->__pyx_n_u_d); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_9[0] = __pyx_mstate_global->__pyx_kp_u_model_2;
@@ -4975,7 +4970,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
   __pyx_t_9[4] = __pyx_mstate_global->__pyx_kp_u_calls;
   __pyx_t_9[5] = __pyx_t_4;
 
-  /* "core/wiring.py":175
+  /* "wiring.py":168
  *         from model.server import is_ready, server_url
  *         from core import llm as llm_mod
  *         return {"ok": True, "output": "model=%s tps=%.1f calls=%d" % (             # <<<<<<<<<<<<<<
@@ -4983,19 +4978,19 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
  *             llm_mod.USAGE["calls"]), "error": ""}
 */
   __pyx_t_8 = __Pyx_PyUnicode_Join(__pyx_t_9, 6, 6 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5) + 5 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_7) + 7 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4), 127 | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4));
-  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 175, __pyx_L1_error)
+  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_output, __pyx_t_8) < (0)) __PYX_ERR(0, 175, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_output, __pyx_t_8) < (0)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_) < (0)) __PYX_ERR(0, 175, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_) < (0)) __PYX_ERR(0, 168, __pyx_L1_error)
   __pyx_r = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "core/wiring.py":172
+  /* "wiring.py":165
  *         {"image_path": {"type": "string"}}, ["image_path"]), vision)
  * 
  *     def system_status(**kw) -> dict:             # <<<<<<<<<<<<<<
@@ -5010,7 +5005,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("core.wiring.register_all.system_status", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.system_status", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_is_ready);
@@ -5021,7 +5016,7 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
   return __pyx_r;
 }
 
-/* "core/wiring.py":93
+/* "wiring.py":93
  *         "Save memory. args: content",
  *         {"content": {"type": "string"}}, ["content"]),
  *         lambda content, role="user", **kw:             # <<<<<<<<<<<<<<
@@ -5030,15 +5025,15 @@ static PyObject *__pyx_pf_4core_6wiring_12register_all_10system_status(CYTHON_UN
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_12lambda(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_12lambda(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_12lambda = {"lambda", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_12lambda, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_12lambda(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_12lambda = {"lambda", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_12lambda, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_12lambda(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5117,7 +5112,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     Py_XDECREF(values[__pyx_temp]);
   }
   __Pyx_XDECREF(__pyx_v_kw); __pyx_v_kw = 0;
-  __Pyx_AddTraceback("core.wiring.register_all.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -5133,8 +5128,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 }
 
 static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__pyx_v_content, PyObject *__pyx_v_role, CYTHON_UNUSED PyObject *__pyx_v_kw) {
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5145,10 +5140,10 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda", 0);
-  __pyx_outer_scope = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "core/wiring.py":94
+  /* "wiring.py":94
  *         {"content": {"type": "string"}}, ["content"]),
  *         lambda content, role="user", **kw:
  *         {"ok": True, "output": memory_thin.append(content, role), "error": ""})             # <<<<<<<<<<<<<<
@@ -5177,7 +5172,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "core/wiring.py":93
+  /* "wiring.py":93
  *         "Save memory. args: content",
  *         {"content": {"type": "string"}}, ["content"]),
  *         lambda content, role="user", **kw:             # <<<<<<<<<<<<<<
@@ -5190,7 +5185,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("core.wiring.register_all.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5198,7 +5193,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   return __pyx_r;
 }
 
-/* "core/wiring.py":98
+/* "wiring.py":98
  *         "Search memory. args: query",
  *         {"query": {"type": "string"}}, ["query"]),
  *         lambda query, **kw: {"ok": True, "output": memory_thin.search(query),             # <<<<<<<<<<<<<<
@@ -5207,15 +5202,15 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_13lambda1(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_13lambda1(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_13lambda1 = {"lambda1", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_13lambda1, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_13lambda1(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_13lambda1 = {"lambda1", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_13lambda1, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_13lambda1(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5279,7 +5274,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     Py_XDECREF(values[__pyx_temp]);
   }
   __Pyx_XDECREF(__pyx_v_kw); __pyx_v_kw = 0;
-  __Pyx_AddTraceback("core.wiring.register_all.lambda1", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda1", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -5295,8 +5290,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 }
 
 static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__pyx_v_query, CYTHON_UNUSED PyObject *__pyx_v_kw) {
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5307,7 +5302,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda1", 0);
-  __pyx_outer_scope = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
@@ -5336,7 +5331,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("core.wiring.register_all.lambda1", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda1", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5344,7 +5339,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
   return __pyx_r;
 }
 
-/* "core/wiring.py":102
+/* "wiring.py":102
  *     registry.register_tool("memory_read", _schema(
  *         "Recent memory.", {}, []),
  *         lambda n=5, **kw: {"ok": True, "output": memory_thin.read_last(n),             # <<<<<<<<<<<<<<
@@ -5353,15 +5348,15 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_14lambda2(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_14lambda2(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_14lambda2 = {"lambda2", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_14lambda2, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_14lambda2(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_14lambda2 = {"lambda2", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_14lambda2, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_14lambda2(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5428,7 +5423,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     Py_XDECREF(values[__pyx_temp]);
   }
   __Pyx_XDECREF(__pyx_v_kw); __pyx_v_kw = 0;
-  __Pyx_AddTraceback("core.wiring.register_all.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -5444,8 +5439,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 }
 
 static PyObject *__pyx_lambda_funcdef_lambda2(PyObject *__pyx_self, PyObject *__pyx_v_n, CYTHON_UNUSED PyObject *__pyx_v_kw) {
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5456,7 +5451,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(PyObject *__pyx_self, PyObject *__
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda2", 0);
-  __pyx_outer_scope = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
@@ -5485,7 +5480,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(PyObject *__pyx_self, PyObject *__
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("core.wiring.register_all.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5493,7 +5488,7 @@ static PyObject *__pyx_lambda_funcdef_lambda2(PyObject *__pyx_self, PyObject *__
   return __pyx_r;
 }
 
-/* "core/wiring.py":111
+/* "wiring.py":111
  *         {"title": {"type": "string"}, "kind": {"type": "string"},
  *          "prompt": {"type": "string"}}, ["title"]),
  *         lambda title, kind="user", prompt="", **kw: {"ok": True,             # <<<<<<<<<<<<<<
@@ -5502,15 +5497,15 @@ static PyObject *__pyx_lambda_funcdef_lambda2(PyObject *__pyx_self, PyObject *__
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_15lambda3(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_15lambda3(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_15lambda3 = {"lambda3", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_15lambda3, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_15lambda3(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_15lambda3 = {"lambda3", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_15lambda3, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_15lambda3(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5601,7 +5596,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     Py_XDECREF(values[__pyx_temp]);
   }
   __Pyx_XDECREF(__pyx_v_kw); __pyx_v_kw = 0;
-  __Pyx_AddTraceback("core.wiring.register_all.lambda3", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda3", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -5617,8 +5612,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 }
 
 static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__pyx_v_title, PyObject *__pyx_v_kind, PyObject *__pyx_v_prompt, CYTHON_UNUSED PyObject *__pyx_v_kw) {
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5632,14 +5627,14 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda3", 0);
-  __pyx_outer_scope = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_ok, Py_True) < (0)) __PYX_ERR(0, 111, __pyx_L1_error)
 
-  /* "core/wiring.py":112
+  /* "wiring.py":112
  *          "prompt": {"type": "string"}}, ["title"]),
  *         lambda title, kind="user", prompt="", **kw: {"ok": True,
  *             "output": str(_sched.create(title=title, kind=kind,             # <<<<<<<<<<<<<<
@@ -5650,7 +5645,7 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
   __pyx_t_3 = __pyx_cur_scope->__pyx_v__sched;
   __Pyx_INCREF(__pyx_t_3);
 
-  /* "core/wiring.py":113
+  /* "wiring.py":113
  *         lambda title, kind="user", prompt="", **kw: {"ok": True,
  *             "output": str(_sched.create(title=title, kind=kind,
  *                                         payload={"prompt": prompt} if prompt else None)),             # <<<<<<<<<<<<<<
@@ -5684,7 +5679,7 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
     __Pyx_GOTREF(__pyx_t_2);
   }
 
-  /* "core/wiring.py":112
+  /* "wiring.py":112
  *          "prompt": {"type": "string"}}, ["title"]),
  *         lambda title, kind="user", prompt="", **kw: {"ok": True,
  *             "output": str(_sched.create(title=title, kind=kind,             # <<<<<<<<<<<<<<
@@ -5701,7 +5696,7 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "core/wiring.py":111
+  /* "wiring.py":111
  *         {"title": {"type": "string"}, "kind": {"type": "string"},
  *          "prompt": {"type": "string"}}, ["title"]),
  *         lambda title, kind="user", prompt="", **kw: {"ok": True,             # <<<<<<<<<<<<<<
@@ -5716,7 +5711,7 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("core.wiring.register_all.lambda3", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda3", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5724,24 +5719,24 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
   return __pyx_r;
 }
 
-/* "core/wiring.py":117
+/* "wiring.py":117
  *     registry.register_tool("scheduler_list", _schema(
  *         "List scheduler tasks.", {}, []),
  *         lambda **kw: {"ok": True, "output": str(_sched.list()), "error": ""})             # <<<<<<<<<<<<<<
  * 
- *     from tools.kali_bank import bank_query
+ *     from tools.document_adapter import parse_document as _parse_doc
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_16lambda4(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_16lambda4(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_16lambda4 = {"lambda4", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_16lambda4, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_16lambda4(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_16lambda4 = {"lambda4", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_16lambda4, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_16lambda4(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5779,8 +5774,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 }
 
 static PyObject *__pyx_lambda_funcdef_lambda4(PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_kw) {
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5791,7 +5786,7 @@ static PyObject *__pyx_lambda_funcdef_lambda4(PyObject *__pyx_self, CYTHON_UNUSE
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda4", 0);
-  __pyx_outer_scope = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
@@ -5823,7 +5818,7 @@ static PyObject *__pyx_lambda_funcdef_lambda4(PyObject *__pyx_self, CYTHON_UNUSE
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("core.wiring.register_all.lambda4", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda4", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5831,7 +5826,7 @@ static PyObject *__pyx_lambda_funcdef_lambda4(PyObject *__pyx_self, CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "core/wiring.py":135
+/* "wiring.py":128
  *         "Chart data. args: series",
  *         {"series": {"type": "string"}}, ["series"]),
  *         lambda series, **kw: {"ok": True, "output": str(             # <<<<<<<<<<<<<<
@@ -5840,15 +5835,15 @@ static PyObject *__pyx_lambda_funcdef_lambda4(PyObject *__pyx_self, CYTHON_UNUSE
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_4core_6wiring_12register_all_17lambda5(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_6wiring_12register_all_17lambda5(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_4core_6wiring_12register_all_17lambda5 = {"lambda5", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_4core_6wiring_12register_all_17lambda5, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_4core_6wiring_12register_all_17lambda5(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_6wiring_12register_all_17lambda5 = {"lambda5", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_6wiring_12register_all_17lambda5, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_6wiring_12register_all_17lambda5(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5879,32 +5874,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_series,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len < 0)) __PYX_ERR(0, 135, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len < 0)) __PYX_ERR(0, 128, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 135, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 128, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, __pyx_v_kw, values, kwd_pos_args, __pyx_kwds_len, "lambda5", 1) < (0)) __PYX_ERR(0, 135, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, __pyx_v_kw, values, kwd_pos_args, __pyx_kwds_len, "lambda5", 1) < (0)) __PYX_ERR(0, 128, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lambda5", 1, 1, 1, i); __PYX_ERR(0, 135, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("lambda5", 1, 1, 1, i); __PYX_ERR(0, 128, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 135, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 128, __pyx_L3_error)
     }
     __pyx_v_series = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lambda5", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 135, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lambda5", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 128, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -5912,7 +5907,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     Py_XDECREF(values[__pyx_temp]);
   }
   __Pyx_XDECREF(__pyx_v_kw); __pyx_v_kw = 0;
-  __Pyx_AddTraceback("core.wiring.register_all.lambda5", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda5", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
@@ -5928,8 +5923,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 }
 
 static PyObject *__pyx_lambda_funcdef_lambda5(PyObject *__pyx_self, PyObject *__pyx_v_series, CYTHON_UNUSED PyObject *__pyx_v_kw) {
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_outer_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5944,28 +5939,28 @@ static PyObject *__pyx_lambda_funcdef_lambda5(PyObject *__pyx_self, PyObject *__
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lambda5", 0);
-  __pyx_outer_scope = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
+  __pyx_outer_scope = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_ok, Py_True) < (0)) __PYX_ERR(0, 135, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_ok, Py_True) < (0)) __PYX_ERR(0, 128, __pyx_L1_error)
 
-  /* "core/wiring.py":137
+  /* "wiring.py":130
  *         lambda series, **kw: {"ok": True, "output": str(
  *             getattr(charts_mod, "render_series", None)(series)
  *             if hasattr(charts_mod, "render_series") else series), "error": ""})             # <<<<<<<<<<<<<<
  * 
  *     def vision(image_path: str = "", question: str = "Describe this image.", **kw) -> dict:
 */
-  if (unlikely(!__pyx_cur_scope->__pyx_v_charts_mod)) { __Pyx_RaiseClosureNameError("charts_mod"); __PYX_ERR(0, 137, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_charts_mod)) { __Pyx_RaiseClosureNameError("charts_mod"); __PYX_ERR(0, 130, __pyx_L1_error) }
   __pyx_t_3 = __pyx_cur_scope->__pyx_v_charts_mod;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_HasAttr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_render_series); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_HasAttr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_render_series); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_4) {
 
-    /* "core/wiring.py":136
+    /* "wiring.py":129
  *         {"series": {"type": "string"}}, ["series"]),
  *         lambda series, **kw: {"ok": True, "output": str(
  *             getattr(charts_mod, "render_series", None)(series)             # <<<<<<<<<<<<<<
@@ -5973,10 +5968,10 @@ static PyObject *__pyx_lambda_funcdef_lambda5(PyObject *__pyx_self, PyObject *__
  * 
 */
     __pyx_t_5 = NULL;
-    if (unlikely(!__pyx_cur_scope->__pyx_v_charts_mod)) { __Pyx_RaiseClosureNameError("charts_mod"); __PYX_ERR(0, 136, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_v_charts_mod)) { __Pyx_RaiseClosureNameError("charts_mod"); __PYX_ERR(0, 129, __pyx_L1_error) }
     __pyx_t_6 = __pyx_cur_scope->__pyx_v_charts_mod;
     __Pyx_INCREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_GetAttr3(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_render_series, Py_None); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetAttr3(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_render_series, Py_None); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_8 = 1;
@@ -5996,14 +5991,14 @@ static PyObject *__pyx_lambda_funcdef_lambda5(PyObject *__pyx_self, PyObject *__
       __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_8, (2-__pyx_t_8) | (__pyx_t_8*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 136, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     }
     __pyx_t_2 = __pyx_t_3;
     __pyx_t_3 = 0;
   } else {
 
-    /* "core/wiring.py":137
+    /* "wiring.py":130
  *         lambda series, **kw: {"ok": True, "output": str(
  *             getattr(charts_mod, "render_series", None)(series)
  *             if hasattr(charts_mod, "render_series") else series), "error": ""})             # <<<<<<<<<<<<<<
@@ -6014,19 +6009,19 @@ static PyObject *__pyx_lambda_funcdef_lambda5(PyObject *__pyx_self, PyObject *__
     __pyx_t_2 = __pyx_v_series;
   }
 
-  /* "core/wiring.py":135
+  /* "wiring.py":128
  *         "Chart data. args: series",
  *         {"series": {"type": "string"}}, ["series"]),
  *         lambda series, **kw: {"ok": True, "output": str(             # <<<<<<<<<<<<<<
  *             getattr(charts_mod, "render_series", None)(series)
  *             if hasattr(charts_mod, "render_series") else series), "error": ""})
 */
-  __pyx_t_3 = __Pyx_PyObject_Unicode(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Unicode(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_output, __pyx_t_3) < (0)) __PYX_ERR(0, 135, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_output, __pyx_t_3) < (0)) __PYX_ERR(0, 128, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_) < (0)) __PYX_ERR(0, 135, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_) < (0)) __PYX_ERR(0, 128, __pyx_L1_error)
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
@@ -6039,7 +6034,7 @@ static PyObject *__pyx_lambda_funcdef_lambda5(PyObject *__pyx_self, PyObject *__
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("core.wiring.register_all.lambda5", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all.lambda5", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -6047,7 +6042,7 @@ static PyObject *__pyx_lambda_funcdef_lambda5(PyObject *__pyx_self, PyObject *__
   return __pyx_r;
 }
 
-/* "core/wiring.py":9
+/* "wiring.py":9
  * 
  * 
  * def register_all() -> int:             # <<<<<<<<<<<<<<
@@ -6055,8 +6050,8 @@ static PyObject *__pyx_lambda_funcdef_lambda5(PyObject *__pyx_self, PyObject *__
  *         return len(registry.list_tools())
 */
 
-static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__pyx_self) {
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
+static PyObject *__pyx_pf_6wiring_register_all(CYTHON_UNUSED PyObject *__pyx_self) {
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *__pyx_cur_scope;
   PyObject *__pyx_v__spawn = NULL;
   PyObject *__pyx_v_files_mod = NULL;
   PyObject *__pyx_v_search_mod = NULL;
@@ -6065,7 +6060,6 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   PyObject *__pyx_v_web_fetch = 0;
   PyObject *__pyx_v_browser_mod = NULL;
   PyObject *__pyx_v_Store = NULL;
-  PyObject *__pyx_v_bank_query = NULL;
   PyObject *__pyx_v__parse_doc = NULL;
   PyObject *__pyx_v_vision = 0;
   PyObject *__pyx_v_system_status = 0;
@@ -6088,16 +6082,16 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("register_all", 0);
-  __pyx_cur_scope = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *)__pyx_tp_new_4core_6wiring___pyx_scope_struct__register_all(__pyx_mstate_global->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all, __pyx_mstate_global->__pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *)__pyx_tp_new_6wiring___pyx_scope_struct__register_all(__pyx_mstate_global->__pyx_ptype_6wiring___pyx_scope_struct__register_all, __pyx_mstate_global->__pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_6wiring___pyx_scope_struct__register_all *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(0, 9, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
 
-  /* "core/wiring.py":10
+  /* "wiring.py":10
  * 
  * def register_all() -> int:
  *     if _state["done"]:             # <<<<<<<<<<<<<<
@@ -6113,7 +6107,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_3) {
 
-    /* "core/wiring.py":11
+    /* "wiring.py":11
  * def register_all() -> int:
  *     if _state["done"]:
  *         return len(registry.list_tools())             # <<<<<<<<<<<<<<
@@ -6156,7 +6150,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
     __pyx_t_2 = 0;
     goto __pyx_L0;
 
-    /* "core/wiring.py":10
+    /* "wiring.py":10
  * 
  * def register_all() -> int:
  *     if _state["done"]:             # <<<<<<<<<<<<<<
@@ -6165,7 +6159,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
 */
   }
 
-  /* "core/wiring.py":12
+  /* "wiring.py":12
  *     if _state["done"]:
  *         return len(registry.list_tools())
  *     from core.subagent import spawn as _spawn             # <<<<<<<<<<<<<<
@@ -6195,7 +6189,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":13
+  /* "wiring.py":13
  *         return len(registry.list_tools())
  *     from core.subagent import spawn as _spawn
  *     registry.register_tool("spawn_subagent", _schema(             # <<<<<<<<<<<<<<
@@ -6212,7 +6206,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
 
-  /* "core/wiring.py":15
+  /* "wiring.py":15
  *     registry.register_tool("spawn_subagent", _schema(
  *         "Run a sub-task with the local model.",
  *         {"prompt": {"type": "string"}}, ["prompt"]), _spawn)             # <<<<<<<<<<<<<<
@@ -6276,7 +6270,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":17
+  /* "wiring.py":17
  *         {"prompt": {"type": "string"}}, ["prompt"]), _spawn)
  * 
  *     from tools import files as files_mod             # <<<<<<<<<<<<<<
@@ -6306,7 +6300,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":18
+  /* "wiring.py":18
  * 
  *     from tools import files as files_mod
  *     registry.register_tool("files_read", _schema(             # <<<<<<<<<<<<<<
@@ -6323,7 +6317,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
 
-  /* "core/wiring.py":19
+  /* "wiring.py":19
  *     from tools import files as files_mod
  *     registry.register_tool("files_read", _schema(
  *         "Read file. args: path", {"path": {"type": "string"}}, ["path"]),             # <<<<<<<<<<<<<<
@@ -6365,7 +6359,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
     __Pyx_GOTREF(__pyx_t_1);
   }
 
-  /* "core/wiring.py":20
+  /* "wiring.py":20
  *     registry.register_tool("files_read", _schema(
  *         "Read file. args: path", {"path": {"type": "string"}}, ["path"]),
  *         files_mod.read_file)             # <<<<<<<<<<<<<<
@@ -6398,7 +6392,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":21
+  /* "wiring.py":21
  *         "Read file. args: path", {"path": {"type": "string"}}, ["path"]),
  *         files_mod.read_file)
  *     registry.register_tool("files_write", _schema(             # <<<<<<<<<<<<<<
@@ -6415,7 +6409,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
 
-  /* "core/wiring.py":23
+  /* "wiring.py":23
  *     registry.register_tool("files_write", _schema(
  *         "Write file. args: path, content",
  *         {"path": {"type": "string"}, "content": {"type": "string"}},             # <<<<<<<<<<<<<<
@@ -6435,7 +6429,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_content, __pyx_t_10) < (0)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "core/wiring.py":24
+  /* "wiring.py":24
  *         "Write file. args: path, content",
  *         {"path": {"type": "string"}, "content": {"type": "string"}},
  *         ["path", "content"]), files_mod.write_file)             # <<<<<<<<<<<<<<
@@ -6498,7 +6492,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":25
+  /* "wiring.py":25
  *         {"path": {"type": "string"}, "content": {"type": "string"}},
  *         ["path", "content"]), files_mod.write_file)
  *     registry.register_tool("files_edit", _schema(             # <<<<<<<<<<<<<<
@@ -6515,7 +6509,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
 
-  /* "core/wiring.py":27
+  /* "wiring.py":27
  *     registry.register_tool("files_edit", _schema(
  *         "Edit file. args: path, old, new",
  *         {"path": {"type": "string"}, "old": {"type": "string"},             # <<<<<<<<<<<<<<
@@ -6535,7 +6529,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_old, __pyx_t_4) < (0)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/wiring.py":28
+  /* "wiring.py":28
  *         "Edit file. args: path, old, new",
  *         {"path": {"type": "string"}, "old": {"type": "string"},
  *          "new": {"type": "string"}}, ["path", "old", "new"]),             # <<<<<<<<<<<<<<
@@ -6581,7 +6575,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
     __Pyx_GOTREF(__pyx_t_9);
   }
 
-  /* "core/wiring.py":29
+  /* "wiring.py":29
  *         {"path": {"type": "string"}, "old": {"type": "string"},
  *          "new": {"type": "string"}}, ["path", "old", "new"]),
  *         files_mod.edit_file)             # <<<<<<<<<<<<<<
@@ -6614,7 +6608,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":30
+  /* "wiring.py":30
  *          "new": {"type": "string"}}, ["path", "old", "new"]),
  *         files_mod.edit_file)
  *     registry.register_tool("files_list", _schema(             # <<<<<<<<<<<<<<
@@ -6631,7 +6625,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "core/wiring.py":31
+  /* "wiring.py":31
  *         files_mod.edit_file)
  *     registry.register_tool("files_list", _schema(
  *         "List dir. args: path", {"path": {"type": "string"}}, ["path"]),             # <<<<<<<<<<<<<<
@@ -6673,7 +6667,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
     __Pyx_GOTREF(__pyx_t_10);
   }
 
-  /* "core/wiring.py":32
+  /* "wiring.py":32
  *     registry.register_tool("files_list", _schema(
  *         "List dir. args: path", {"path": {"type": "string"}}, ["path"]),
  *         files_mod.list_dir)             # <<<<<<<<<<<<<<
@@ -6706,7 +6700,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":33
+  /* "wiring.py":33
  *         "List dir. args: path", {"path": {"type": "string"}}, ["path"]),
  *         files_mod.list_dir)
  *     registry.register_tool("files_delete", _schema(             # <<<<<<<<<<<<<<
@@ -6723,7 +6717,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
 
-  /* "core/wiring.py":35
+  /* "wiring.py":35
  *     registry.register_tool("files_delete", _schema(
  *         "Delete path.",
  *         {"path": {"type": "string"}}, ["path"]), files_mod.delete_file)             # <<<<<<<<<<<<<<
@@ -6790,7 +6784,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":37
+  /* "wiring.py":37
  *         {"path": {"type": "string"}}, ["path"]), files_mod.delete_file)
  * 
  *     from tools import search as search_mod             # <<<<<<<<<<<<<<
@@ -6820,7 +6814,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":38
+  /* "wiring.py":38
  * 
  *     from tools import search as search_mod
  *     registry.register_tool("search_files", _schema(             # <<<<<<<<<<<<<<
@@ -6837,7 +6831,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "core/wiring.py":40
+  /* "wiring.py":40
  *     registry.register_tool("search_files", _schema(
  *         "Glob files. args: pattern",
  *         {"pattern": {"type": "string"}, "base": {"type": "string"}},             # <<<<<<<<<<<<<<
@@ -6857,7 +6851,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_base, __pyx_t_12) < (0)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "core/wiring.py":41
+  /* "wiring.py":41
  *         "Glob files. args: pattern",
  *         {"pattern": {"type": "string"}, "base": {"type": "string"}},
  *         ["pattern"]), search_mod.glob)             # <<<<<<<<<<<<<<
@@ -6917,7 +6911,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":42
+  /* "wiring.py":42
  *         {"pattern": {"type": "string"}, "base": {"type": "string"}},
  *         ["pattern"]), search_mod.glob)
  *     registry.register_tool("search_grep", _schema(             # <<<<<<<<<<<<<<
@@ -6934,7 +6928,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
 
-  /* "core/wiring.py":44
+  /* "wiring.py":44
  *     registry.register_tool("search_grep", _schema(
  *         "Grep files. args: pattern",
  *         {"pattern": {"type": "string"}, "base": {"type": "string"},             # <<<<<<<<<<<<<<
@@ -6954,7 +6948,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_base, __pyx_t_9) < (0)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "core/wiring.py":45
+  /* "wiring.py":45
  *         "Grep files. args: pattern",
  *         {"pattern": {"type": "string"}, "base": {"type": "string"},
  *          "glob_filter": {"type": "string"}}, ["pattern"]), search_mod.grep)             # <<<<<<<<<<<<<<
@@ -7019,7 +7013,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":47
+  /* "wiring.py":47
  *          "glob_filter": {"type": "string"}}, ["pattern"]), search_mod.grep)
  * 
  *     def shell_kw(**kw) -> dict:             # <<<<<<<<<<<<<<
@@ -7029,14 +7023,14 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_dict) < (0)) __PYX_ERR(0, 47, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_1shell_kw, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_shell_kw, NULL, __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_1shell_kw, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_shell_kw, NULL, __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_shell_kw = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "core/wiring.py":55
+  /* "wiring.py":55
  *         return registry._run_command(str(cmd), int(kw.get("timeout") or 3600))
  * 
  *     registry.register_tool("shell", _schema(             # <<<<<<<<<<<<<<
@@ -7053,7 +7047,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
 
-  /* "core/wiring.py":57
+  /* "wiring.py":57
  *     registry.register_tool("shell", _schema(
  *         "Bash. args: command",
  *         {"command": {"type": "string"}}, ["command"]), shell_kw)             # <<<<<<<<<<<<<<
@@ -7117,7 +7111,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":59
+  /* "wiring.py":59
  *         {"command": {"type": "string"}}, ["command"]), shell_kw)
  * 
  *     def web_search(query: str = "", max_results: int = 12, **kw) -> dict:             # <<<<<<<<<<<<<<
@@ -7129,7 +7123,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_query, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 59, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_max_results, __pyx_mstate_global->__pyx_n_u_int) < (0)) __PYX_ERR(0, 59, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_dict) < (0)) __PYX_ERR(0, 59, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_3web_search, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_web_search, NULL, __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_3web_search, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_web_search, NULL, __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_5);
@@ -7137,7 +7131,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __pyx_v_web_search = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "core/wiring.py":68
+  /* "wiring.py":68
  *         return r
  * 
  *     def web_fetch(url: str = "", max_chars: int = 20000, **kw) -> dict:             # <<<<<<<<<<<<<<
@@ -7149,7 +7143,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_url, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 68, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_max_chars, __pyx_mstate_global->__pyx_n_u_int) < (0)) __PYX_ERR(0, 68, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_dict) < (0)) __PYX_ERR(0, 68, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_5web_fetch, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_web_fetch, NULL, __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_5web_fetch, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_web_fetch, NULL, __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_1);
@@ -7157,7 +7151,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __pyx_v_web_fetch = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "core/wiring.py":77
+  /* "wiring.py":77
  *         return r
  * 
  *     registry.register_tool("web_search", _schema(             # <<<<<<<<<<<<<<
@@ -7174,7 +7168,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
 
-  /* "core/wiring.py":80
+  /* "wiring.py":80
  *         "Web search via local lanes and the browser scraper; results are "
  *         "cleaned and relevance-filtered. Parameter: query (string).",
  *         {"query": {"type": "string"}}, ["query"]), web_search)             # <<<<<<<<<<<<<<
@@ -7238,7 +7232,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":81
+  /* "wiring.py":81
  *         "cleaned and relevance-filtered. Parameter: query (string).",
  *         {"query": {"type": "string"}}, ["query"]), web_search)
  *     registry.register_tool("web_fetch", _schema(             # <<<<<<<<<<<<<<
@@ -7255,7 +7249,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "core/wiring.py":84
+  /* "wiring.py":84
  *         "Fetch one URL in the headless browser; returns cleaned text. "
  *         "Parameter: url (string).",
  *         {"url": {"type": "string"}}, ["url"]), web_fetch)             # <<<<<<<<<<<<<<
@@ -7319,7 +7313,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":86
+  /* "wiring.py":86
  *         {"url": {"type": "string"}}, ["url"]), web_fetch)
  * 
  *     from tools import browser_tools as browser_mod             # <<<<<<<<<<<<<<
@@ -7349,7 +7343,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":87
+  /* "wiring.py":87
  * 
  *     from tools import browser_tools as browser_mod
  *     browser_mod.register_browser_tools()             # <<<<<<<<<<<<<<
@@ -7368,7 +7362,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":89
+  /* "wiring.py":89
  *     browser_mod.register_browser_tools()
  * 
  *     from services import memory_thin             # <<<<<<<<<<<<<<
@@ -7399,7 +7393,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":90
+  /* "wiring.py":90
  * 
  *     from services import memory_thin
  *     registry.register_tool("memory_append", _schema(             # <<<<<<<<<<<<<<
@@ -7416,7 +7410,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
 
-  /* "core/wiring.py":92
+  /* "wiring.py":92
  *     registry.register_tool("memory_append", _schema(
  *         "Save memory. args: content",
  *         {"content": {"type": "string"}}, ["content"]),             # <<<<<<<<<<<<<<
@@ -7458,14 +7452,14 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
     __Pyx_GOTREF(__pyx_t_12);
   }
 
-  /* "core/wiring.py":93
+  /* "wiring.py":93
  *         "Save memory. args: content",
  *         {"content": {"type": "string"}}, ["content"]),
  *         lambda content, role="user", **kw:             # <<<<<<<<<<<<<<
  *         {"ok": True, "output": memory_thin.append(content, role), "error": ""})
  *     registry.register_tool("memory_search", _schema(
 */
-  __pyx_t_9 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_12lambda, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_12lambda, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_9, __pyx_mstate_global->__pyx_tuple[3]);
   __pyx_t_6 = 1;
@@ -7492,7 +7486,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":95
+  /* "wiring.py":95
  *         lambda content, role="user", **kw:
  *         {"ok": True, "output": memory_thin.append(content, role), "error": ""})
  *     registry.register_tool("memory_search", _schema(             # <<<<<<<<<<<<<<
@@ -7509,7 +7503,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
 
-  /* "core/wiring.py":97
+  /* "wiring.py":97
  *     registry.register_tool("memory_search", _schema(
  *         "Search memory. args: query",
  *         {"query": {"type": "string"}}, ["query"]),             # <<<<<<<<<<<<<<
@@ -7551,14 +7545,14 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
     __Pyx_GOTREF(__pyx_t_9);
   }
 
-  /* "core/wiring.py":98
+  /* "wiring.py":98
  *         "Search memory. args: query",
  *         {"query": {"type": "string"}}, ["query"]),
  *         lambda query, **kw: {"ok": True, "output": memory_thin.search(query),             # <<<<<<<<<<<<<<
  *                              "error": ""})
  *     registry.register_tool("memory_read", _schema(
 */
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_13lambda1, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_13lambda1, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -7584,7 +7578,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":100
+  /* "wiring.py":100
  *         lambda query, **kw: {"ok": True, "output": memory_thin.search(query),
  *                              "error": ""})
  *     registry.register_tool("memory_read", _schema(             # <<<<<<<<<<<<<<
@@ -7601,7 +7595,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "core/wiring.py":101
+  /* "wiring.py":101
  *                              "error": ""})
  *     registry.register_tool("memory_read", _schema(
  *         "Recent memory.", {}, []),             # <<<<<<<<<<<<<<
@@ -7635,14 +7629,14 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
     __Pyx_GOTREF(__pyx_t_10);
   }
 
-  /* "core/wiring.py":102
+  /* "wiring.py":102
  *     registry.register_tool("memory_read", _schema(
  *         "Recent memory.", {}, []),
  *         lambda n=5, **kw: {"ok": True, "output": memory_thin.read_last(n),             # <<<<<<<<<<<<<<
  *                            "error": ""})
  * 
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_14lambda2, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_14lambda2, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_mstate_global->__pyx_tuple[4]);
   __pyx_t_6 = 1;
@@ -7669,7 +7663,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":105
+  /* "wiring.py":105
  *                            "error": ""})
  * 
  *     from services.scheduler_store import Store             # <<<<<<<<<<<<<<
@@ -7699,7 +7693,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":106
+  /* "wiring.py":106
  * 
  *     from services.scheduler_store import Store
  *     _sched = Store()             # <<<<<<<<<<<<<<
@@ -7733,7 +7727,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __pyx_cur_scope->__pyx_v__sched = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "core/wiring.py":107
+  /* "wiring.py":107
  *     from services.scheduler_store import Store
  *     _sched = Store()
  *     registry.register_tool("scheduler_add", _schema(             # <<<<<<<<<<<<<<
@@ -7750,7 +7744,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "core/wiring.py":109
+  /* "wiring.py":109
  *     registry.register_tool("scheduler_add", _schema(
  *         "Schedule task. args: title, prompt",
  *         {"title": {"type": "string"}, "kind": {"type": "string"},             # <<<<<<<<<<<<<<
@@ -7770,7 +7764,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_kind, __pyx_t_2) < (0)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":110
+  /* "wiring.py":110
  *         "Schedule task. args: title, prompt",
  *         {"title": {"type": "string"}, "kind": {"type": "string"},
  *          "prompt": {"type": "string"}}, ["title"]),             # <<<<<<<<<<<<<<
@@ -7810,14 +7804,14 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
     __Pyx_GOTREF(__pyx_t_9);
   }
 
-  /* "core/wiring.py":111
+  /* "wiring.py":111
  *         {"title": {"type": "string"}, "kind": {"type": "string"},
  *          "prompt": {"type": "string"}}, ["title"]),
  *         lambda title, kind="user", prompt="", **kw: {"ok": True,             # <<<<<<<<<<<<<<
  *             "output": str(_sched.create(title=title, kind=kind,
  *                                         payload={"prompt": prompt} if prompt else None)),
 */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_15lambda3, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_15lambda3, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_mstate_global->__pyx_tuple[5]);
   __pyx_t_6 = 1;
@@ -7844,7 +7838,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":115
+  /* "wiring.py":115
  *                                         payload={"prompt": prompt} if prompt else None)),
  *             "error": ""})
  *     registry.register_tool("scheduler_list", _schema(             # <<<<<<<<<<<<<<
@@ -7861,7 +7855,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "core/wiring.py":116
+  /* "wiring.py":116
  *             "error": ""})
  *     registry.register_tool("scheduler_list", _schema(
  *         "List scheduler tasks.", {}, []),             # <<<<<<<<<<<<<<
@@ -7895,14 +7889,14 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
     __Pyx_GOTREF(__pyx_t_1);
   }
 
-  /* "core/wiring.py":117
+  /* "wiring.py":117
  *     registry.register_tool("scheduler_list", _schema(
  *         "List scheduler tasks.", {}, []),
  *         lambda **kw: {"ok": True, "output": str(_sched.list()), "error": ""})             # <<<<<<<<<<<<<<
  * 
- *     from tools.kali_bank import bank_query
+ *     from tools.document_adapter import parse_document as _parse_doc
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_16lambda4, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_16lambda4, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -7928,28 +7922,28 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":119
+  /* "wiring.py":119
  *         lambda **kw: {"ok": True, "output": str(_sched.list()), "error": ""})
  * 
- *     from tools.kali_bank import bank_query             # <<<<<<<<<<<<<<
- *     registry.register_tool("kali_bank", _schema(
- *         "Query the Kali playbook command bank: 847 tools documented with "
+ *     from tools.document_adapter import parse_document as _parse_doc             # <<<<<<<<<<<<<<
+ *     registry.register_tool("parse_document", _schema(
+ *         "Parse doc. args: file",
 */
   {
-    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_bank_query};
-    __pyx_t_8 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_tools_kali_bank, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 119, __pyx_L1_error)
+    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_parse_document};
+    __pyx_t_8 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_tools_document_adapter, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 119, __pyx_L1_error)
   }
   __pyx_t_5 = __pyx_t_8;
   __Pyx_GOTREF(__pyx_t_5);
   {
-    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_bank_query};
+    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_parse_document};
     __pyx_t_7 = 0; {
       __pyx_t_9 = __Pyx_ImportFrom(__pyx_t_5, __pyx_imported_names[__pyx_t_7]); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 119, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       switch (__pyx_t_7) {
         case 0:
         __Pyx_INCREF(__pyx_t_9);
-        __pyx_v_bank_query = __pyx_t_9;
+        __pyx_v__parse_doc = __pyx_t_9;
         break;
         default:;
       }
@@ -7958,12 +7952,12 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":120
+  /* "wiring.py":120
  * 
- *     from tools.kali_bank import bank_query
- *     registry.register_tool("kali_bank", _schema(             # <<<<<<<<<<<<<<
- *         "Query the Kali playbook command bank: 847 tools documented with "
- *         "exact forms. Parameter: query (string) or tool (string name).",
+ *     from tools.document_adapter import parse_document as _parse_doc
+ *     registry.register_tool("parse_document", _schema(             # <<<<<<<<<<<<<<
+ *         "Parse doc. args: file",
+ *         {"file": {"type": "string"}}, ["file"]), _parse_doc)
 */
   __pyx_t_9 = NULL;
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_registry); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
@@ -7975,27 +7969,25 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
 
-  /* "core/wiring.py":123
- *         "Query the Kali playbook command bank: 847 tools documented with "
- *         "exact forms. Parameter: query (string) or tool (string name).",
- *         {"query": {"type": "string"}, "tool": {"type": "string"}}, []),             # <<<<<<<<<<<<<<
- *         bank_query)
+  /* "wiring.py":122
+ *     registry.register_tool("parse_document", _schema(
+ *         "Parse doc. args: file",
+ *         {"file": {"type": "string"}}, ["file"]), _parse_doc)             # <<<<<<<<<<<<<<
  * 
+ *     import tools.charts as charts_mod
 */
-  __pyx_t_11 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_string) < (0)) __PYX_ERR(0, 123, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_query, __pyx_t_4) < (0)) __PYX_ERR(0, 123, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_string) < (0)) __PYX_ERR(0, 122, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_file, __pyx_t_4) < (0)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_string) < (0)) __PYX_ERR(0, 123, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_tool, __pyx_t_4) < (0)) __PYX_ERR(0, 123, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_INCREF(__pyx_mstate_global->__pyx_n_u_file);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_n_u_file);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_4, 0, __pyx_mstate_global->__pyx_n_u_file) != (0)) __PYX_ERR(0, 122, __pyx_L1_error);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_12))) {
@@ -8009,7 +8001,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   #endif
   {
-    PyObject *__pyx_callargs[4] = {__pyx_t_10, __pyx_mstate_global->__pyx_kp_u_Query_the_Kali_playbook_command, __pyx_t_11, __pyx_t_4};
+    PyObject *__pyx_callargs[4] = {__pyx_t_10, __pyx_mstate_global->__pyx_kp_u_Parse_doc_args_file, __pyx_t_11, __pyx_t_4};
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_12, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -8018,14 +8010,6 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
     if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-
-  /* "core/wiring.py":124
- *         "exact forms. Parameter: query (string) or tool (string name).",
- *         {"query": {"type": "string"}, "tool": {"type": "string"}}, []),
- *         bank_query)             # <<<<<<<<<<<<<<
- * 
- *     from tools.document_adapter import parse_document as _parse_doc
-*/
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -8039,7 +8023,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   #endif
   {
-    PyObject *__pyx_callargs[4] = {__pyx_t_9, __pyx_mstate_global->__pyx_n_u_kali_bank, __pyx_t_2, __pyx_v_bank_query};
+    PyObject *__pyx_callargs[4] = {__pyx_t_9, __pyx_mstate_global->__pyx_n_u_parse_document, __pyx_t_2, __pyx_v__parse_doc};
     __pyx_t_5 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_1, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8049,72 +8033,60 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":126
- *         bank_query)
+  /* "wiring.py":124
+ *         {"file": {"type": "string"}}, ["file"]), _parse_doc)
  * 
- *     from tools.document_adapter import parse_document as _parse_doc             # <<<<<<<<<<<<<<
- *     registry.register_tool("parse_document", _schema(
- *         "Parse doc. args: file",
+ *     import tools.charts as charts_mod             # <<<<<<<<<<<<<<
+ *     registry.register_tool("charts", _schema(
+ *         "Chart data. args: series",
 */
-  {
-    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_parse_document};
-    __pyx_t_8 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_tools_document_adapter, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 126, __pyx_L1_error)
-  }
+  __pyx_t_8 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_tools_charts, 0, 0, NULL, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_ImportFrom(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_charts);
+  Py_DECREF(__pyx_t_8);
+  if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_8 = __pyx_t_13;
   __pyx_t_5 = __pyx_t_8;
   __Pyx_GOTREF(__pyx_t_5);
-  {
-    PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_parse_document};
-    __pyx_t_7 = 0; {
-      __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_5, __pyx_imported_names[__pyx_t_7]); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      switch (__pyx_t_7) {
-        case 0:
-        __Pyx_INCREF(__pyx_t_1);
-        __pyx_v__parse_doc = __pyx_t_1;
-        break;
-        default:;
-      }
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    }
-  }
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_GIVEREF(__pyx_t_5);
+  __pyx_cur_scope->__pyx_v_charts_mod = __pyx_t_5;
+  __pyx_t_5 = 0;
 
-  /* "core/wiring.py":127
+  /* "wiring.py":125
  * 
- *     from tools.document_adapter import parse_document as _parse_doc
- *     registry.register_tool("parse_document", _schema(             # <<<<<<<<<<<<<<
- *         "Parse doc. args: file",
- *         {"file": {"type": "string"}}, ["file"]), _parse_doc)
+ *     import tools.charts as charts_mod
+ *     registry.register_tool("charts", _schema(             # <<<<<<<<<<<<<<
+ *         "Chart data. args: series",
+ *         {"series": {"type": "string"}}, ["series"]),
 */
   __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_registry); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_registry); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_register_tool); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_register_tool); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_12 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "core/wiring.py":129
- *     registry.register_tool("parse_document", _schema(
- *         "Parse doc. args: file",
- *         {"file": {"type": "string"}}, ["file"]), _parse_doc)             # <<<<<<<<<<<<<<
- * 
- *     import tools.charts as charts_mod
+  /* "wiring.py":127
+ *     registry.register_tool("charts", _schema(
+ *         "Chart data. args: series",
+ *         {"series": {"type": "string"}}, ["series"]),             # <<<<<<<<<<<<<<
+ *         lambda series, **kw: {"ok": True, "output": str(
+ *             getattr(charts_mod, "render_series", None)(series)
 */
-  __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  if (PyDict_SetItem(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_string) < (0)) __PYX_ERR(0, 129, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_file, __pyx_t_10) < (0)) __PYX_ERR(0, 129, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_string) < (0)) __PYX_ERR(0, 127, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_series, __pyx_t_10) < (0)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_10 = PyList_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __Pyx_INCREF(__pyx_mstate_global->__pyx_n_u_file);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_n_u_file);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_10, 0, __pyx_mstate_global->__pyx_n_u_file) != (0)) __PYX_ERR(0, 129, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_mstate_global->__pyx_n_u_series);
+  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_n_u_series);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_10, 0, __pyx_mstate_global->__pyx_n_u_series) != (0)) __PYX_ERR(0, 127, __pyx_L1_error);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -8128,15 +8100,25 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   #endif
   {
-    PyObject *__pyx_callargs[4] = {__pyx_t_12, __pyx_mstate_global->__pyx_kp_u_Parse_doc_args_file, __pyx_t_11, __pyx_t_10};
+    PyObject *__pyx_callargs[4] = {__pyx_t_12, __pyx_mstate_global->__pyx_kp_u_Chart_data_args_series, __pyx_t_11, __pyx_t_10};
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 127, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
+
+  /* "wiring.py":128
+ *         "Chart data. args: series",
+ *         {"series": {"type": "string"}}, ["series"]),
+ *         lambda series, **kw: {"ok": True, "output": str(             # <<<<<<<<<<<<<<
+ *             getattr(charts_mod, "render_series", None)(series)
+ *             if hasattr(charts_mod, "render_series") else series), "error": ""})
+*/
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_17lambda5, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_9))) {
@@ -8150,263 +8132,154 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   }
   #endif
   {
-    PyObject *__pyx_callargs[4] = {__pyx_t_1, __pyx_mstate_global->__pyx_n_u_parse_document, __pyx_t_2, __pyx_v__parse_doc};
+    PyObject *__pyx_callargs[4] = {__pyx_t_1, __pyx_mstate_global->__pyx_n_u_charts, __pyx_t_2, __pyx_t_4};
     __pyx_t_5 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_9, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 127, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 125, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":131
- *         {"file": {"type": "string"}}, ["file"]), _parse_doc)
- * 
- *     import tools.charts as charts_mod             # <<<<<<<<<<<<<<
- *     registry.register_tool("charts", _schema(
- *         "Chart data. args: series",
-*/
-  __pyx_t_8 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_tools_charts, 0, 0, NULL, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 131, __pyx_L1_error)
-  __pyx_t_13 = __Pyx_ImportFrom(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_charts);
-  Py_DECREF(__pyx_t_8);
-  if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 131, __pyx_L1_error)
-  __pyx_t_8 = __pyx_t_13;
-  __pyx_t_5 = __pyx_t_8;
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GIVEREF(__pyx_t_5);
-  __pyx_cur_scope->__pyx_v_charts_mod = __pyx_t_5;
-  __pyx_t_5 = 0;
-
-  /* "core/wiring.py":132
- * 
- *     import tools.charts as charts_mod
- *     registry.register_tool("charts", _schema(             # <<<<<<<<<<<<<<
- *         "Chart data. args: series",
- *         {"series": {"type": "string"}}, ["series"]),
-*/
-  __pyx_t_9 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_registry); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_register_tool); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-
-  /* "core/wiring.py":134
- *     registry.register_tool("charts", _schema(
- *         "Chart data. args: series",
- *         {"series": {"type": "string"}}, ["series"]),             # <<<<<<<<<<<<<<
- *         lambda series, **kw: {"ok": True, "output": str(
- *             getattr(charts_mod, "render_series", None)(series)
-*/
-  __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  if (PyDict_SetItem(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_string) < (0)) __PYX_ERR(0, 134, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_series, __pyx_t_12) < (0)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __Pyx_INCREF(__pyx_mstate_global->__pyx_n_u_series);
-  __Pyx_GIVEREF(__pyx_mstate_global->__pyx_n_u_series);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_12, 0, __pyx_mstate_global->__pyx_n_u_series) != (0)) __PYX_ERR(0, 134, __pyx_L1_error);
-  __pyx_t_6 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_10))) {
-    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_10);
-    assert(__pyx_t_4);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_10);
-    __Pyx_INCREF(__pyx_t_4);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_10, __pyx__function);
-    __pyx_t_6 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[4] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_Chart_data_args_series, __pyx_t_11, __pyx_t_12};
-    __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_10, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-  }
-
-  /* "core/wiring.py":135
- *         "Chart data. args: series",
- *         {"series": {"type": "string"}}, ["series"]),
- *         lambda series, **kw: {"ok": True, "output": str(             # <<<<<<<<<<<<<<
- *             getattr(charts_mod, "render_series", None)(series)
- *             if hasattr(charts_mod, "render_series") else series), "error": ""})
-*/
-  __pyx_t_10 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_17lambda5, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_6 = 1;
-  #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_1))) {
-    __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_1);
-    assert(__pyx_t_9);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_1);
-    __Pyx_INCREF(__pyx_t_9);
-    __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_1, __pyx__function);
-    __pyx_t_6 = 0;
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[4] = {__pyx_t_9, __pyx_mstate_global->__pyx_n_u_charts, __pyx_t_2, __pyx_t_10};
-    __pyx_t_5 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_1, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-  }
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-  /* "core/wiring.py":139
+  /* "wiring.py":132
  *             if hasattr(charts_mod, "render_series") else series), "error": ""})
  * 
  *     def vision(image_path: str = "", question: str = "Describe this image.", **kw) -> dict:             # <<<<<<<<<<<<<<
  *         import base64
  *         from core.llm import _post
 */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_image_path, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 139, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_question, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 139, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_dict) < (0)) __PYX_ERR(0, 139, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_7vision, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_vision, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_mstate_global->__pyx_tuple[6]);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_1, __pyx_t_5);
+  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_image_path, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 132, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_question, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 132, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_dict) < (0)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_7vision, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_vision, ((PyObject*)__pyx_cur_scope), __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_9, __pyx_mstate_global->__pyx_tuple[6]);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_9, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_v_vision = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __pyx_v_vision = __pyx_t_9;
+  __pyx_t_9 = 0;
 
-  /* "core/wiring.py":158
+  /* "wiring.py":151
  *                 "error": ""}
  * 
  *     def _safe_img(path: str):             # <<<<<<<<<<<<<<
  *         from pathlib import Path as _Path
  *         p = _Path(path).expanduser()
 */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_path, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 158, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_9_safe_img, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals__safe_img, NULL, __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 158, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  if (PyDict_SetItem(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_path, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_9_safe_img, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals__safe_img, NULL, __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_1);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_9);
+  __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_GIVEREF(__pyx_t_5);
   __pyx_cur_scope->__pyx_v__safe_img = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "core/wiring.py":168
+  /* "wiring.py":161
  *         return None
  * 
  *     registry.register_tool("vision", _schema(             # <<<<<<<<<<<<<<
  *         "Vision. args: image_path",
  *         {"image_path": {"type": "string"}}, ["image_path"]), vision)
 */
-  __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_registry); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 168, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_register_tool); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __pyx_t_9 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 168, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_registry); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_register_tool); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_1 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_10);
 
-  /* "core/wiring.py":170
+  /* "wiring.py":163
  *     registry.register_tool("vision", _schema(
  *         "Vision. args: image_path",
  *         {"image_path": {"type": "string"}}, ["image_path"]), vision)             # <<<<<<<<<<<<<<
  * 
  *     def system_status(**kw) -> dict:
 */
-  __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_string) < (0)) __PYX_ERR(0, 170, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_image_path, __pyx_t_4) < (0)) __PYX_ERR(0, 170, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  if (PyDict_SetItem(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_type, __pyx_mstate_global->__pyx_n_u_string) < (0)) __PYX_ERR(0, 163, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_image_path, __pyx_t_12) < (0)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_12 = PyList_New(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
   __Pyx_INCREF(__pyx_mstate_global->__pyx_n_u_image_path);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_n_u_image_path);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_4, 0, __pyx_mstate_global->__pyx_n_u_image_path) != (0)) __PYX_ERR(0, 170, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_12, 0, __pyx_mstate_global->__pyx_n_u_image_path) != (0)) __PYX_ERR(0, 163, __pyx_L1_error);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_12))) {
-    __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_12);
-    assert(__pyx_t_9);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_12);
-    __Pyx_INCREF(__pyx_t_9);
+  if (unlikely(PyMethod_Check(__pyx_t_10))) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_10);
+    assert(__pyx_t_1);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_10);
+    __Pyx_INCREF(__pyx_t_1);
     __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_12, __pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_10, __pyx__function);
     __pyx_t_6 = 0;
   }
   #endif
   {
-    PyObject *__pyx_callargs[4] = {__pyx_t_9, __pyx_mstate_global->__pyx_kp_u_Vision_args_image_path, __pyx_t_11, __pyx_t_4};
-    __pyx_t_10 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_12, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    PyObject *__pyx_callargs[4] = {__pyx_t_1, __pyx_mstate_global->__pyx_kp_u_Vision_args_image_path, __pyx_t_11, __pyx_t_12};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_10, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 168, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
-    assert(__pyx_t_1);
+    __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_2);
+    assert(__pyx_t_9);
     PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
-    __Pyx_INCREF(__pyx_t_1);
+    __Pyx_INCREF(__pyx_t_9);
     __Pyx_INCREF(__pyx__function);
     __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
     __pyx_t_6 = 0;
   }
   #endif
   {
-    PyObject *__pyx_callargs[4] = {__pyx_t_1, __pyx_mstate_global->__pyx_n_u_vision, __pyx_t_10, __pyx_v_vision};
+    PyObject *__pyx_callargs[4] = {__pyx_t_9, __pyx_mstate_global->__pyx_n_u_vision, __pyx_t_4, __pyx_v_vision};
     __pyx_t_5 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "core/wiring.py":172
+  /* "wiring.py":165
  *         {"image_path": {"type": "string"}}, ["image_path"]), vision)
  * 
  *     def system_status(**kw) -> dict:             # <<<<<<<<<<<<<<
  *         from model.server import is_ready, server_url
  *         from core import llm as llm_mod
 */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_dict) < (0)) __PYX_ERR(0, 172, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_12register_all_11system_status, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_system_statu, NULL, __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_dict) < (0)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_12register_all_11system_status, 0, __pyx_mstate_global->__pyx_n_u_register_all_locals_system_statu, NULL, __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_system_status = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "core/wiring.py":179
+  /* "wiring.py":172
  *             llm_mod.USAGE["calls"]), "error": ""}
  * 
  *     registry.register_tool("system", _schema(             # <<<<<<<<<<<<<<
@@ -8414,124 +8287,124 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
  *         {}, []), system_status)
 */
   __pyx_t_5 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_registry); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 179, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_register_tool); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_12 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_registry); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_register_tool); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_10 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_schema); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 172, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
 
-  /* "core/wiring.py":181
+  /* "wiring.py":174
  *     registry.register_tool("system", _schema(
  *         "Status.",
  *         {}, []), system_status)             # <<<<<<<<<<<<<<
  * 
  *     _state["done"] = True
 */
-  __pyx_t_11 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 174, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 181, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_4);
-    assert(__pyx_t_12);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_4);
-    __Pyx_INCREF(__pyx_t_12);
+  if (unlikely(PyMethod_Check(__pyx_t_12))) {
+    __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_12);
+    assert(__pyx_t_10);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_12);
+    __Pyx_INCREF(__pyx_t_10);
     __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_4, __pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_12, __pyx__function);
     __pyx_t_6 = 0;
   }
   #endif
   {
-    PyObject *__pyx_callargs[4] = {__pyx_t_12, __pyx_mstate_global->__pyx_kp_u_Status, __pyx_t_11, __pyx_t_9};
-    __pyx_t_10 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+    PyObject *__pyx_callargs[4] = {__pyx_t_10, __pyx_mstate_global->__pyx_kp_u_Status, __pyx_t_11, __pyx_t_1};
+    __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_12, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 179, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
-  if (unlikely(PyMethod_Check(__pyx_t_1))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_1);
+  if (unlikely(PyMethod_Check(__pyx_t_9))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_9);
     assert(__pyx_t_5);
-    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_1);
+    PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_9);
     __Pyx_INCREF(__pyx_t_5);
     __Pyx_INCREF(__pyx__function);
-    __Pyx_DECREF_SET(__pyx_t_1, __pyx__function);
+    __Pyx_DECREF_SET(__pyx_t_9, __pyx__function);
     __pyx_t_6 = 0;
   }
   #endif
   {
-    PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_mstate_global->__pyx_n_u_system, __pyx_t_10, __pyx_v_system_status};
-    __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_1, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    PyObject *__pyx_callargs[4] = {__pyx_t_5, __pyx_mstate_global->__pyx_n_u_system, __pyx_t_4, __pyx_v_system_status};
+    __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_9, __pyx_callargs+__pyx_t_6, (4-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":183
+  /* "wiring.py":176
  *         {}, []), system_status)
  * 
  *     _state["done"] = True             # <<<<<<<<<<<<<<
  *     return len(registry.list_tools())
 */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_state); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_state); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (unlikely((PyObject_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_done, Py_True) < 0))) __PYX_ERR(0, 183, __pyx_L1_error)
+  if (unlikely((PyObject_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_done, Py_True) < 0))) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":184
+  /* "wiring.py":177
  * 
  *     _state["done"] = True
  *     return len(registry.list_tools())             # <<<<<<<<<<<<<<
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_registry); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 184, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_list_tools); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_9 = NULL;
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_registry); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_list_tools); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
   if (unlikely(PyMethod_Check(__pyx_t_5))) {
-    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_5);
-    assert(__pyx_t_1);
+    __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_5);
+    assert(__pyx_t_9);
     PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_5);
-    __Pyx_INCREF(__pyx_t_1);
+    __Pyx_INCREF(__pyx_t_9);
     __Pyx_INCREF(__pyx__function);
     __Pyx_DECREF_SET(__pyx_t_5, __pyx__function);
     __pyx_t_6 = 0;
   }
   #endif
   {
-    PyObject *__pyx_callargs[2] = {__pyx_t_1, NULL};
+    PyObject *__pyx_callargs[2] = {__pyx_t_9, NULL};
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_5, __pyx_callargs+__pyx_t_6, (1-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_7 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_2 = PyLong_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_PyInt_FromNumber(&__pyx_t_2, NULL, 0) < (0)) __PYX_ERR(0, 184, __pyx_L1_error)
+  if (__Pyx_PyInt_FromNumber(&__pyx_t_2, NULL, 0) < (0)) __PYX_ERR(0, 177, __pyx_L1_error)
   __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "core/wiring.py":9
+  /* "wiring.py":9
  * 
  * 
  * def register_all() -> int:             # <<<<<<<<<<<<<<
@@ -8549,7 +8422,7 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
-  __Pyx_AddTraceback("core.wiring.register_all", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wiring.register_all", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v__spawn);
@@ -8560,7 +8433,6 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
   __Pyx_XDECREF(__pyx_v_web_fetch);
   __Pyx_XDECREF(__pyx_v_browser_mod);
   __Pyx_XDECREF(__pyx_v_Store);
-  __Pyx_XDECREF(__pyx_v_bank_query);
   __Pyx_XDECREF(__pyx_v__parse_doc);
   __Pyx_XDECREF(__pyx_v_vision);
   __Pyx_XDECREF(__pyx_v_system_status);
@@ -8571,16 +8443,16 @@ static PyObject *__pyx_pf_4core_6wiring_register_all(CYTHON_UNUSED PyObject *__p
 }
 /* #### Code section: module_exttypes ### */
 
-static PyObject *__pyx_tp_new_4core_6wiring___pyx_scope_struct__register_all(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_6wiring___pyx_scope_struct__register_all(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_4core_6wiring___pyx_scope_struct__register_all > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all, sizeof(struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_6wiring___pyx_scope_struct__register_all > 0) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(t, __pyx_mstate_global->__pyx_ptype_6wiring___pyx_scope_struct__register_all, sizeof(struct __pyx_obj_6wiring___pyx_scope_struct__register_all))))
   {
-    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_4core_6wiring___pyx_scope_struct__register_all[--__pyx_mstate_global->__pyx_freecount_4core_6wiring___pyx_scope_struct__register_all];
+    o = (PyObject*)__pyx_mstate_global->__pyx_freelist_6wiring___pyx_scope_struct__register_all[--__pyx_mstate_global->__pyx_freecount_6wiring___pyx_scope_struct__register_all];
     #if CYTHON_USE_TYPE_SPECS
     Py_DECREF(Py_TYPE(o));
     #endif
-    memset(o, 0, sizeof(struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all));
+    memset(o, 0, sizeof(struct __pyx_obj_6wiring___pyx_scope_struct__register_all));
     #if CYTHON_COMPILING_IN_LIMITED_API
     (void) PyObject_Init(o, t);
     #else
@@ -8596,11 +8468,11 @@ static PyObject *__pyx_tp_new_4core_6wiring___pyx_scope_struct__register_all(PyT
   return o;
 }
 
-static void __pyx_tp_dealloc_4core_6wiring___pyx_scope_struct__register_all(PyObject *o) {
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *p = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *)o;
+static void __pyx_tp_dealloc_6wiring___pyx_scope_struct__register_all(PyObject *o) {
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *p = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(__Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_4core_6wiring___pyx_scope_struct__register_all) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_6wiring___pyx_scope_struct__register_all) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -8611,9 +8483,9 @@ static void __pyx_tp_dealloc_4core_6wiring___pyx_scope_struct__register_all(PyOb
   Py_CLEAR(p->__pyx_v_charts_mod);
   Py_CLEAR(p->__pyx_v_memory_thin);
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_mstate_global->__pyx_freecount_4core_6wiring___pyx_scope_struct__register_all < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all, sizeof(struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all))))
+  if (likely((int)(__pyx_mstate_global->__pyx_freecount_6wiring___pyx_scope_struct__register_all < 8) & __PYX_CHECK_FINAL_TYPE_FOR_FREELISTS(Py_TYPE(o), __pyx_mstate_global->__pyx_ptype_6wiring___pyx_scope_struct__register_all, sizeof(struct __pyx_obj_6wiring___pyx_scope_struct__register_all))))
   {
-    __pyx_mstate_global->__pyx_freelist_4core_6wiring___pyx_scope_struct__register_all[__pyx_mstate_global->__pyx_freecount_4core_6wiring___pyx_scope_struct__register_all++] = ((struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *)o);
+    __pyx_mstate_global->__pyx_freelist_6wiring___pyx_scope_struct__register_all[__pyx_mstate_global->__pyx_freecount_6wiring___pyx_scope_struct__register_all++] = ((struct __pyx_obj_6wiring___pyx_scope_struct__register_all *)o);
   } else
   #endif
   {
@@ -8632,9 +8504,9 @@ static void __pyx_tp_dealloc_4core_6wiring___pyx_scope_struct__register_all(PyOb
   }
 }
 
-static int __pyx_tp_traverse_4core_6wiring___pyx_scope_struct__register_all(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_6wiring___pyx_scope_struct__register_all(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *p = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *)o;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *p = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *)o;
   {
     e = __Pyx_call_type_traverse(o, 1, v, a);
     if (e) return e;
@@ -8654,9 +8526,9 @@ static int __pyx_tp_traverse_4core_6wiring___pyx_scope_struct__register_all(PyOb
   return 0;
 }
 
-static int __pyx_tp_clear_4core_6wiring___pyx_scope_struct__register_all(PyObject *o) {
+static int __pyx_tp_clear_6wiring___pyx_scope_struct__register_all(PyObject *o) {
   PyObject* tmp;
-  struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *p = (struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all *)o;
+  struct __pyx_obj_6wiring___pyx_scope_struct__register_all *p = (struct __pyx_obj_6wiring___pyx_scope_struct__register_all *)o;
   tmp = ((PyObject*)p->__pyx_v__safe_img);
   p->__pyx_v__safe_img = Py_None; Py_INCREF(Py_None);
   Py_XDECREF(tmp);
@@ -8672,28 +8544,28 @@ static int __pyx_tp_clear_4core_6wiring___pyx_scope_struct__register_all(PyObjec
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_4core_6wiring___pyx_scope_struct__register_all_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_4core_6wiring___pyx_scope_struct__register_all},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_4core_6wiring___pyx_scope_struct__register_all},
-  {Py_tp_clear, (void *)__pyx_tp_clear_4core_6wiring___pyx_scope_struct__register_all},
-  {Py_tp_new, (void *)__pyx_tp_new_4core_6wiring___pyx_scope_struct__register_all},
+static PyType_Slot __pyx_type_6wiring___pyx_scope_struct__register_all_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_6wiring___pyx_scope_struct__register_all},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_6wiring___pyx_scope_struct__register_all},
+  {Py_tp_clear, (void *)__pyx_tp_clear_6wiring___pyx_scope_struct__register_all},
+  {Py_tp_new, (void *)__pyx_tp_new_6wiring___pyx_scope_struct__register_all},
   {0, 0},
 };
-static PyType_Spec __pyx_type_4core_6wiring___pyx_scope_struct__register_all_spec = {
-  "core.wiring.__pyx_scope_struct__register_all",
-  sizeof(struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all),
+static PyType_Spec __pyx_type_6wiring___pyx_scope_struct__register_all_spec = {
+  "wiring.__pyx_scope_struct__register_all",
+  sizeof(struct __pyx_obj_6wiring___pyx_scope_struct__register_all),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC,
-  __pyx_type_4core_6wiring___pyx_scope_struct__register_all_slots,
+  __pyx_type_6wiring___pyx_scope_struct__register_all_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_4core_6wiring___pyx_scope_struct__register_all = {
+static PyTypeObject __pyx_type_6wiring___pyx_scope_struct__register_all = {
   PyVarObject_HEAD_INIT(0, 0)
-  "core.wiring.""__pyx_scope_struct__register_all", /*tp_name*/
-  sizeof(struct __pyx_obj_4core_6wiring___pyx_scope_struct__register_all), /*tp_basicsize*/
+  "wiring.""__pyx_scope_struct__register_all", /*tp_name*/
+  sizeof(struct __pyx_obj_6wiring___pyx_scope_struct__register_all), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_4core_6wiring___pyx_scope_struct__register_all, /*tp_dealloc*/
+  __pyx_tp_dealloc_6wiring___pyx_scope_struct__register_all, /*tp_dealloc*/
   0, /*tp_vectorcall_offset*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -8710,8 +8582,8 @@ static PyTypeObject __pyx_type_4core_6wiring___pyx_scope_struct__register_all = 
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_4core_6wiring___pyx_scope_struct__register_all, /*tp_traverse*/
-  __pyx_tp_clear_4core_6wiring___pyx_scope_struct__register_all, /*tp_clear*/
+  __pyx_tp_traverse_6wiring___pyx_scope_struct__register_all, /*tp_traverse*/
+  __pyx_tp_clear_6wiring___pyx_scope_struct__register_all, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
@@ -8728,7 +8600,7 @@ static PyTypeObject __pyx_type_4core_6wiring___pyx_scope_struct__register_all = 
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_4core_6wiring___pyx_scope_struct__register_all, /*tp_new*/
+  __pyx_tp_new_6wiring___pyx_scope_struct__register_all, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -8815,22 +8687,22 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_4core_6wiring___pyx_scope_struct__register_all_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all)) __PYX_ERR(0, 9, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_4core_6wiring___pyx_scope_struct__register_all_spec, __pyx_mstate->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all) < (0)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_6wiring___pyx_scope_struct__register_all = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_6wiring___pyx_scope_struct__register_all_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_6wiring___pyx_scope_struct__register_all)) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_6wiring___pyx_scope_struct__register_all_spec, __pyx_mstate->__pyx_ptype_6wiring___pyx_scope_struct__register_all) < (0)) __PYX_ERR(0, 9, __pyx_L1_error)
   #else
-  __pyx_mstate->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all = &__pyx_type_4core_6wiring___pyx_scope_struct__register_all;
+  __pyx_mstate->__pyx_ptype_6wiring___pyx_scope_struct__register_all = &__pyx_type_6wiring___pyx_scope_struct__register_all;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all) < (0)) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_6wiring___pyx_scope_struct__register_all) < (0)) __PYX_ERR(0, 9, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all);
+  PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_6wiring___pyx_scope_struct__register_all);
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all->tp_dictoffset && __pyx_mstate->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_mstate->__pyx_ptype_4core_6wiring___pyx_scope_struct__register_all->tp_getattro = PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_6wiring___pyx_scope_struct__register_all->tp_dictoffset && __pyx_mstate->__pyx_ptype_6wiring___pyx_scope_struct__register_all->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_mstate->__pyx_ptype_6wiring___pyx_scope_struct__register_all->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
   __Pyx_RefNannyFinishContext();
@@ -9111,13 +8983,13 @@ __Pyx_RefNannySetupContext("PyInit_wiring", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_core__wiring) {
+  if (__pyx_module_is_main_wiring) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "core.wiring")) {
-      if (unlikely((PyDict_SetItemString(modules, "core.wiring", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "wiring")) {
+      if (unlikely((PyDict_SetItemString(modules, "wiring", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -9135,7 +9007,7 @@ __Pyx_RefNannySetupContext("PyInit_wiring", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "core/wiring.py":3
+  /* "wiring.py":3
  * from __future__ import annotations
  * 
  * from core import registry             # <<<<<<<<<<<<<<
@@ -9159,7 +9031,7 @@ __Pyx_RefNannySetupContext("PyInit_wiring", 0);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":4
+  /* "wiring.py":4
  * 
  * from core import registry
  * from core.registry import _schema             # <<<<<<<<<<<<<<
@@ -9183,7 +9055,7 @@ __Pyx_RefNannySetupContext("PyInit_wiring", 0);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":6
+  /* "wiring.py":6
  * from core.registry import _schema
  * 
  * _state = {"done": False}             # <<<<<<<<<<<<<<
@@ -9196,7 +9068,7 @@ __Pyx_RefNannySetupContext("PyInit_wiring", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_state, __pyx_t_2) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "core/wiring.py":9
+  /* "wiring.py":9
  * 
  * 
  * def register_all() -> int:             # <<<<<<<<<<<<<<
@@ -9206,7 +9078,7 @@ __Pyx_RefNannySetupContext("PyInit_wiring", 0);
   __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_int) < (0)) __PYX_ERR(0, 9, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_4core_6wiring_1register_all, 0, __pyx_mstate_global->__pyx_n_u_register_all, NULL, __pyx_mstate_global->__pyx_n_u_core_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_6wiring_1register_all, 0, __pyx_mstate_global->__pyx_n_u_register_all, NULL, __pyx_mstate_global->__pyx_n_u_wiring, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_4);
@@ -9216,7 +9088,7 @@ __Pyx_RefNannySetupContext("PyInit_wiring", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_register_all, __pyx_t_4) < (0)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "core/wiring.py":1
+  /* "wiring.py":1
  * from __future__ import annotations             # <<<<<<<<<<<<<<
  * 
  * from core import registry
@@ -9234,7 +9106,7 @@ __Pyx_RefNannySetupContext("PyInit_wiring", 0);
   __Pyx_XDECREF(__pyx_t_4);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init core.wiring", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init wiring", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -9248,7 +9120,7 @@ __Pyx_RefNannySetupContext("PyInit_wiring", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init core.wiring");
+    PyErr_SetString(PyExc_ImportError, "init wiring");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -9282,7 +9154,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "core/wiring.py":65
+  /* "wiring.py":65
  *             return {"ok": False, "output": "", "error": "missing argument: query"}
  *         r = research_search(q, max_results=max_results)
  *         r.setdefault("trust", "high")             # <<<<<<<<<<<<<<
@@ -9293,7 +9165,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
-  /* "core/wiring.py":59
+  /* "wiring.py":59
  *         {"command": {"type": "string"}}, ["command"]), shell_kw)
  * 
  *     def web_search(query: str = "", max_results: int = 12, **kw) -> dict:             # <<<<<<<<<<<<<<
@@ -9304,7 +9176,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
 
-  /* "core/wiring.py":68
+  /* "wiring.py":68
  *         return r
  * 
  *     def web_fetch(url: str = "", max_chars: int = 20000, **kw) -> dict:             # <<<<<<<<<<<<<<
@@ -9315,7 +9187,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
 
-  /* "core/wiring.py":93
+  /* "wiring.py":93
  *         "Save memory. args: content",
  *         {"content": {"type": "string"}}, ["content"]),
  *         lambda content, role="user", **kw:             # <<<<<<<<<<<<<<
@@ -9326,7 +9198,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[3]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[3]);
 
-  /* "core/wiring.py":102
+  /* "wiring.py":102
  *     registry.register_tool("memory_read", _schema(
  *         "Recent memory.", {}, []),
  *         lambda n=5, **kw: {"ok": True, "output": memory_thin.read_last(n),             # <<<<<<<<<<<<<<
@@ -9337,7 +9209,7 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[4]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[4]);
 
-  /* "core/wiring.py":111
+  /* "wiring.py":111
  *         {"title": {"type": "string"}, "kind": {"type": "string"},
  *          "prompt": {"type": "string"}}, ["title"]),
  *         lambda title, kind="user", prompt="", **kw: {"ok": True,             # <<<<<<<<<<<<<<
@@ -9348,14 +9220,14 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[5]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[5]);
 
-  /* "core/wiring.py":139
+  /* "wiring.py":132
  *             if hasattr(charts_mod, "render_series") else series), "error": ""})
  * 
  *     def vision(image_path: str = "", question: str = "Describe this image.", **kw) -> dict:             # <<<<<<<<<<<<<<
  *         import base64
  *         from core.llm import _post
 */
-  __pyx_mstate_global->__pyx_tuple[6] = PyTuple_Pack(2, ((PyObject*)__pyx_mstate_global->__pyx_kp_u_), ((PyObject*)__pyx_mstate_global->__pyx_kp_u_Describe_this_image)); if (unlikely(!__pyx_mstate_global->__pyx_tuple[6])) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[6] = PyTuple_Pack(2, ((PyObject*)__pyx_mstate_global->__pyx_kp_u_), ((PyObject*)__pyx_mstate_global->__pyx_kp_u_Describe_this_image)); if (unlikely(!__pyx_mstate_global->__pyx_tuple[6])) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[6]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[6]);
   #if CYTHON_IMMORTAL_CONSTANTS
@@ -9392,34 +9264,34 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 10; } index[] = {{0},{3},{19},{24},{12},{20},{31},{85},{25},{25},{20},{21},{179},{21},{125},{21},{14},{36},{26},{34},{26},{7},{24},{122},{31},{1},{1},{8},{7},{14},{18},{7},{6},{2},{4},{9},{5},{4},{25},{23},{21},{25},{6},{4},{11},{5},{18},{5},{8},{4},{5},{20},{5},{5},{12},{6},{4},{18},{3},{9},{10},{4},{6},{4},{11},{13},{5},{6},{10},{7},{18},{3},{7},{7},{4},{8},{13},{13},{11},{6},{1},{4},{6},{11},{4},{4},{4},{9},{5},{6},{10},{4},{8},{5},{12},{10},{10},{9},{10},{11},{8},{3},{4},{11},{4},{4},{5},{10},{9},{3},{3},{11},{13},{8},{5},{9},{4},{2},{8},{4},{8},{10},{3},{7},{5},{8},{9},{11},{10},{13},{11},{13},{11},{7},{8},{5},{12},{10},{1},{8},{3},{2},{3},{6},{1},{4},{6},{10},{14},{4},{7},{7},{7},{3},{5},{6},{1},{12},{5},{8},{1},{10},{9},{9},{12},{31},{30},{30},{35},{28},{31},{32},{22},{13},{8},{13},{15},{15},{7},{6},{4},{12},{9},{6},{13},{14},{7},{6},{6},{12},{11},{10},{6},{10},{8},{24},{12},{10},{5},{8},{5},{6},{14},{6},{3},{6},{6},{6},{6},{13},{8},{4},{7},{5},{4},{5},{12},{22},{15},{26},{5},{4},{1},{3},{3},{4},{6},{6},{9},{10},{10},{23},{99},{217},{97},{97},{22},{889},{135},{45},{22},{51},{65},{26}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2590 bytes) */
-const char* const cstring = "BZh91AY&SY\031\312*y\000\001\177\377\377\377\377\377\377\377\377\377\377\277\377\377\374\277\377\377\376@@@@@@@@@@@@@\000@\000`\t}\276\275m\253\275\2359\267\241\335\026\353\231\215\263\247D\207x\001\336\2744D\211\250\3204d\321\265\033L\231\210\312\236\214\246\312hh\314\247\264\320\232G\223FI\241\352d6\247\241\221\251\3524\330\246\020\364j\006D\000 \322#I\264\304J\177\252\237\251\351G\251\352\003\3242` \001\200\200\001\240\r\003\023F\203#\006\240\320&I4eO(\332G\251\2402=@z\232\000\r\001\240\000\000\000\000\000\000\320\000\001\246\232\200\221\204\025?$\304\365F\305?T=C\365@\000\310\r\000\000\000\r\000\000\0004\006e\032 \311\200\023\000\0010\004i\204`\000\000\000\2314\304\320`\004`\000\000\000\004\222\022d1557\244\323Si4\304\3204\000\001\240\003@\003@\000\001\240\006\232\r\017P\001,/\317\233\030:\370\377\300:\035\036> \240`8\213q\240\227\033\273\312C\375\377\200%\213\000P\242\020\223\010\210\346\316\344\006x\0206\234\276\n4<P\222M\021\002\033EEQ\014\314\300A\230/\225d\322\026\036\017\0016\014o\036\302\257RD'\242\000\001\005\235\3210$C\336\r\220\340$\036\3026\243\336\350np\341\236\2142\0304\342nf\030\231\224\315\202\005Ed\262,@\024\204+J\004\355\210\207\005\"fU\001*\030js\354Nt\306x\013T\3634I\231DE\240\3149\330\001p\005C^(\022\017\2101*\315+\245=9\377\226i\370\367\2647\361\35099\331y\327\210\220\275\352\364#\213\340\341\3379L\266\231\217%\327)\032\207\370}\032R\207\357\333\302\312\201M\ro\355]&\355\304\273hX0f>p\200V?\010\267&\216\317\265|\205a4Y=\260\312\017\222:?~\221\017\021\177.\315\335<8\202zGW\036'G}\\\001\014%)j\335\\\302*\356({\341\262D\033\250\032\243m\366<\361\2702\005r\262\037\031\240H\006<t#\355+\346(\031\025.\027\331\261)\240\356\300@\323\360\177'\303s\315zF=\373w\377\215\353\007\001\240\217S\277\353{\034\356\301\232\333l\331\211\337\024\240\246\373\r\370jU\347'B\264D\003\017\261\302\027\010\247\347@\216\206UzK+\226\360\310\320b\001\271B\212\373z\216\022\243\345\024\302t\255S\222\227\202\340~\3454\353D\2368v~6\206\310e-!x\021(\037\305\030\311\326\353\333""\305\010\035\201\025\002\257f\221&\263x\321\246\255\377\327\00047\205C\007*\223P\300\036\207\326\3615\001\227\2578\210,\231\234b* \327\302\270\226\314_\274\356(\017]Z|<\003\037\305&\024U\330\265\231\226\004=\377\252?\r\355\310\300\252\311\255\210\347o\202\376\277\223O\227\023*\217k\t\330\202\021\007\251oa\013\267\300\366\34113|\306\346\206\246\374\\\003\265\177~\366\032u\254\340\375\274\316x\335\325\236B\\\372\265\331\3314h\252\312.\316\270FxU\264\267\3521\200\223\207wph,!f\247\026\033ks\000;\236\267\247)\317D\266\274D\305\200\260nx\241uwYAJ\207\354\305\212\023WB($\304\354\022\2617\010\203\363\014T\033\244\305\366\3079\326u<\357m,S:\320\352\244e\236\260\312\302,\264=\034*\266\331}\360\031\r%\004\254\260\255U\013\177\232M\207\305I\014\211H\rk\356\267`\370\333+\200\363\222\311g\307d\262\026T\366\342\226\224\301b\"J\002n]a\305\254\225\032\014\344\204\026\241k\005H\244\317\254\234\205\326:\3412\352Y`\r\002\000\254R\247\342\347\334i\300\325v\361\343\304vw\273\254\354z\240z\"=D\025\257N\027\373{\371~\203C\220\363\270\"\355\036b\365\301\343P\353\022\361\000|\0331\273u`\325\276W\275{9\324GE%\223\303\003\273r\023\204Gq7!\r\315\352Q'>\221a\016\267Y\242\263R\214\344\344\257\322Hc\235E\320cs\210E\271/|A\016H\345\020\351\257|\241>L#Q\2222\241\2018\026XUH\312L%\265\300\302\036\021\016\"\342%\025N\016\315\010f\005\r^~\361^\304\016t\346\256\242\215\"m^\372a\242\034%\245J\262!\302J\216\t\220F\"\003X\304\363\023=\245\000\306Z\003U@e\374\367@[\246*\252C\212\321\246\350cy<y\006\340\305\n\306\\0\240\014\260\232\223~\2049\253\0313\31332\n\353\356\352\255\260\360e\255\214Lq\004\231\"+|@\232\323vR \r\252EP\330l\320\322S#*\215\010_\"\270\201\340U\214\200\244\272`[\212\316\r\310\"\301\264G\205\240\357v\202\304\310\315`,\266\035-\205?\332?\243\253\374\371\032\214s\014\321L\023<\034MRS\004\211p\033\002\231\037\223\220\262)A]\255\271\324\002\216\266\236\243\300;\261\346\223]y %\250{\307\343\307pDA\255\001PQ=\224*\304#F\002\230\254gQdI\0047\016\246\336\306\341\365\035\355\330\201]{[\241\230j""\300zgjC\r7\230\252\255q\200\316\326\234\356\032\263\273<\204\311\006X\r`\333YV\350\344\315\336\021\270\0074\276T\010a\215\314\205\205\260u\004\344\032\\c\033\tQ\212B\355\243J4-\302\344N\211\323\340\030\361X\302)Jd\306?\310\2739[\016\261\211jE\246d\370FB\014\315\000p\213\r*\202-\212\360\306O\253\023\355@\230\r\374\232\332[\240\212+6\375=\343X\344&\361\326\nD\225U\232\260\350SQs\230+\337\202\210\023|\310b\344$\037\251@\300\266\303^\000\323\232\221,9\303J\214\210\300Y\225\263@\241/\031\255S\302\332\314\236\354B\205\200d]\3001\362\026\312\3231[\244\341\2114.(\234UV\020/Gf\033\206\000\0222\210c\2333U\252\300\243\202g8\270>`\262\310\030))\030\t\357\344\222\263\241vW\2445\211\020\301\032\230QC\212\r\264\000\335\341\3040$x(\300\227\334\367u\300WM\025\2042\331\313\251\272\355\220*.\271\240\226\207/\221A\3123\014\252\307~v\254C\224CSR\353L\342\010\314\350\304\320\026.)g\264\314\241@f\300$F\272\0263\2235\353du\241\000Xfy\203,\300K\311\347\330\354\314b\371:[x\364\317\237\242\210\315\220\3306g\306\241\360\264\243\233\027%\022 \014\354\302\200f\021\237'1\360\213\220\306\005E\367\215n\034\010k\352\005QK\\\220\002LH\005\310<\235\264\262\322\335&1\213\215Dpa0\026\226\014\371\013\0266AL\220*&\002b-\203\321\332\370\r\214{Uo\252\n\024;e\037\202\010\232$m\310F3v\014\302\203\004\017x\235(!\006\300\n\000\341\232;\027\336\\\211\213*\314\"\242HB\n\002\250\\{EI\014GM\334\265\216_`\014g3WK5\032\336e\027v\367\233\221\033zkws\254U@\023\265\030\243)$M\033e\3434\017j\342m0k\032\247\252G4\241\007y\210\224\323\213 \303@\320\326\351\321e\317\212\225q\020\004@\006.\341\351\031T2IX>\263\017h\232\"(\317kM-\223\351e\222\343\026\220\034\2025\240{Z\031\201\274\235P\323Lk\341\033\370\361!\007\264\204Y\235\033\201Z&\323s\337\276?\022\353\222&\313\201\\\026+\230\326\203V\334\336\305\223\004(\243\347\356\323\352Om\035\316\235\264\346\307\313e\206A\251\031j\223\210f\367\227\233\241\260\354\352=\315CZ\001\343 2N^f3\226\374\305\201\207\177~R\243\024\237R\234:\204\324<\271\232\336K\375\3043\022\315\356 \316\355""\205F\314\031\2313\002c\032\032\251*\231\225\213dK3#0a\341\342jmG\226\361%\2177\034\214\307\003\355c\255=\r\330\3027\000\030\260\3229\217$\300\342\333\025\264w\310\t\017\351n\360\353\325\333]@\022 \235q\365((\205\n\310\252\341\312\223\370\364\014P<\304*8\016\335\037\245t\337\236\207\"c\004\010~\t\221\014\206\340\331I\223\"v\010a\000\311\002\301\004\020\032\322\"0L\2271e\017\340\037\273\334\237\320\262\\\276\345\3303V\371\324\336\350^U\333r\362!\030I\016\220\272\370\007\251c_A\253h\303\377d\277\007\227\203\253\320$\364\tr\023(\313\244\030;\203\303u\204I`%\001Ar\241\301\312\220\310n\350\250p{\t\246\237\260d\"SG\316\315\362\272\006\372\221\"8\315&\242r\022&\305D\255\210\202o\312:\010.\033N#\235\206\357\024\\\350d\336u\302\231\032f\277\336\234f\343\016!\0311Q\270fC\237\244\014\303\317\002\031\370\250f\357\007\020\317\34781N\023\005\005c`\032\2451h\rJ\274\025^Zpm@\202s\027if\241\244I\343!\335\243&\211F\177\245\201\375}%p\351p\372U\345[wOF\205\007v]\371_\275\030\330\275v\361l\347\232\354\352M\245\n^5lmX^\207\203Ns\223{\206\234\205\335\001j\320\026\235\000**\357X\267\335\0367Hs\372\341\220e\3649Y\263\354\221E\362<\023\222\"m\223\274\240\034:AQ\345(\t\020\031\016D\341\343\t\036a\317\324\323\203i\274\022-\006\207\013\nM@)\026h\306P\225\022\t>\335y\252d\"\014\344\254wV\013\010Q\016\310\262\210\234\345\377\305\334\221N\024$\006r\212\236@";
-    PyObject *data = __Pyx_DecompressString(cstring, 2590, 2);
+    const struct { const unsigned int length: 10; } index[] = {{0},{3},{19},{24},{12},{20},{31},{85},{25},{25},{20},{21},{179},{21},{21},{14},{36},{26},{34},{26},{7},{24},{122},{31},{1},{1},{8},{7},{18},{7},{6},{2},{4},{9},{5},{4},{25},{23},{21},{25},{6},{4},{11},{5},{18},{5},{9},{8},{4},{5},{20},{5},{5},{12},{6},{4},{18},{3},{9},{4},{6},{4},{11},{13},{5},{6},{10},{7},{18},{3},{7},{7},{4},{8},{13},{13},{6},{1},{4},{6},{11},{4},{4},{4},{9},{5},{6},{10},{4},{8},{5},{12},{10},{10},{9},{10},{11},{8},{3},{4},{11},{4},{4},{5},{10},{9},{3},{3},{11},{13},{8},{5},{4},{2},{8},{4},{8},{10},{3},{7},{5},{8},{9},{11},{10},{13},{11},{13},{11},{7},{8},{5},{12},{10},{1},{8},{3},{2},{3},{6},{1},{4},{6},{10},{14},{4},{7},{7},{7},{3},{5},{6},{1},{12},{5},{8},{1},{10},{9},{9},{12},{31},{30},{30},{35},{28},{31},{32},{22},{13},{8},{13},{15},{15},{7},{6},{4},{12},{9},{6},{13},{14},{7},{6},{6},{12},{11},{10},{6},{10},{8},{24},{12},{10},{5},{8},{5},{6},{14},{6},{3},{6},{6},{6},{6},{13},{8},{4},{7},{5},{5},{12},{22},{26},{5},{4},{1},{3},{3},{4},{6},{6},{9},{10},{6},{10},{23},{99},{217},{97},{97},{22},{847},{135},{45},{22},{51},{65},{26}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2486 bytes) */
+const char* const cstring = "BZh91AY&SY\354M\003\032\000\001l\377\377\377\377\377\377\377\377\377\377\277\377\377\374\277\377\377\376@@@@@@@@@@@@@\000@\000`\010\374j\327}\353v\216\353\253\235n-\255\261UR\252\036\000<\r\021\021&jh\321\352=OSM\251\350\236\236M4\247\243I\26544\323d\314\210#i\246D\320\310\321\214Q\352yOQ\217P\233jF\032\201\241\000\023F\202\003SS\325=OS\304\200\000\000\006\200\000\000\000\000\000\032\000\000\rL\004JO\323SI\265\000\320zG\250\032i\240\000\001\240\000\000\032\032\003@\000\000\000\001\210B\032\020#Jy\252lS\304#\3242\000\006\200\000\000\000\000\000\000\r\000fQ\242\014\230\0010\000\023\000F\230F\000\000\000\t\223LM\006\000F\000\000\000\000J\231&BO&\232(\366\251\246\324\364\231\352\233(\364\312\r\003i\001\246\200\000\000\000\000\000\000\000\001<\2715\264^\027+\217\374\003\241\321\343\342xP8\221\343p\357\306\314\323\230\377\177\340\022\010\000\221H\205pIJ.\316@~\222\021]\216\225bb\244\022j\220G\013\030^\201H\001\t\034\306\342\254\031\034\270$-\2328t\rga\005\310\202J\030K\202 @\203Z\n\303*\010\006\250\206f\326\261\333\2307\327\005\024\005\026V\225\370\254\226\265%\001\203\263\303^.\240\025\014psfaJL\031\030\207p\033\021\216\264\247\2015\225\261\240\262e\255b\n\271\341\353\005\020\306P\013\300\023\013h\22075\200o\205\223G\302\317\007=\373\274\222\371\014=D\377\323\241R\005\302N\275Q\304\004R\023\315\362Nj\241\027\252\360\334UG\252\373\266\341\317p\374$\277\332\2216W\031\210\0303\0142\260z\"XU\226\351\272\202N\211\244\024\3525\250MS\205\017\364\271\237\302\273!,!\240\273vXz4p\004(flWG h\233z>\031\006y\n=\241} \320\301\026\237z\341\227\246a\227\001\0305\343\244\212z\305A\260\253\034Ogij\3208h(k\353}S\246\334\315\373\227\356\341\277\373\357\\7\325\202\\\033\376\237\253\356u\204\341\205\336\205Z\263x![\3515kq\365\225\\G\023P\023&\203R'/\n\233\005\277s!\227nS\216\214Fe#\325\267\2724d[\252\261;\331\024)8\223\ts\257\260t\244UYk\252\201&,\236\006\241\300\233\313\251\020\366Oo\021\220\034\323C\010\234\332\270\212Ph\252\304\227\374\\\000X_2aY!\024\302\200\364g\247\r\200\2575\245RDD""\207J\325Sc\013^;4\271\216\367\221\217\232\255\3520\032\337\003\226!OZ\315L\241\006\267\334\177D\325\334N$H-o\033\177\353\376\273\345\325\270\2371\372R3\000\201\230\370\351\366\230f\347\023` U\270f\260\263\340\243\000f\037wM\305\207\035\322{\263\326\306\215]\005\365\020\331\216V2\375\025\202\257\024\305\\\243\025\300\264\227<L\005)\002\" 7\210\230V\017\376\256\330\372\262\201\332p\356'e\321G\223T\244@\270jnV\026\320R\300\334\321k\305\037\010\223\207y\021b\006\252n\014\307\346\026T'9\216\n\210\254\253h\315l\351T\355\031W|,{AQE/\2015!{a\247\241\267A\224g\266\212\373q\252E\376\305k\236\351X2\222\2505\233\212(#\001\016\n1\236\267LL\311\211,\272\2731\002W\021I\303\214R\305\341\354\031\034H\300\3020\342\244]\230\375\353X\313\003\242\227\031W\006\2405\010\006v,xsu0q+\026\232i.\340\313m\327\252\017DG\251\n\300\364\267?\237\036\316t\003\221\230\3168\255\034\322r\221\335\220\010\327\215\273y\215ZV\332\326\\\232\320>\364\"Tl\241g\231\221Q\343\224\3632\013\253P\214\343\035\342\300\356\371\226.qB5e\315\233it\202\314\\O\013\031\245\242\300\206|&\r%Y\337\204;1\332\202\375\236d\244U\224\222\312#\223\262\206\332\352\224C\301\231D[(Q\3569\301\014\300\202\355\337\260\266f\323\226\255\010\241\312\233mM+WFd\307<\224\201H\247(\211@\324q\001p\304XHS2 \221\031\001n0c~\231\241,\02465y\372\224\330z\3436\226\312\304\024\342\331O\206,\000\276Z<\317\346\203+J\231i\350%\303\343\223\036^\027.\014\366\334R\225]8vB\334\2226=t\312D\005\030\263\270\215\210\212D\235\024qLG,\014\354'A\217\003\003'\321\211\214\215u#(MH\252\230j\216n\320X\231\031Qa%YF\276\247\315\035k#\341\270\260Ri\212\371A+AI_!\2129\231\351FI\322\361\227\036DQ=Ip\004\350r1\200\026\352k\202\331|\014\021,\310\372\202\352w\010\031\215d\013\002\227=\026t\006\227\005\312{\326\332.\222\010\036\035\353\367\003m\255\356\236@C\217V`\210n\270y\207\251\242\3556\233\025\005q\261c\0201\241\010:\230\2648\314\033n\027\004\2267\307U\323\330\316C\0304\t\331X`\202\030b&fb\326\252@\222RSh\255\222F\270\323\310d\257\327\034\030j\032\t\251C\203\2365^-\274nh""\241\344\242\3611\020\222\200\020\020\241\310\234h|\024{\"\243\361-\"p\317\034\026K\274<\321Z\371\331\214FDW\277 \r\344H\211\024Q`X\223\030\261>\275\310\034E}@R\\ \033\212\025\tv\014\250B\\\262xQU\330L\\\005\005\212\235\213\002DM\007#\345\330\253X\312\004\t\200S\331\270<\346%z\230\263\0311\t*&\024v\026>1\t\254`\006\37203\210\276\210\316\0202 \345\221\242\r\201V\001y\220\006Y\014\201\200)\213\242\256)\310\001\220\200\016,\274\322\254$P\270\001\232P\\*!y2\312z\335\023\027f\314\316C\344\263yXN\200\220\\\226\230\335y]\325Hh\025\n\232n\255\223p\232\007b\263\311t\202=\344q\325\272w\267\216\337\0148s\021\314\022)\372\210JQ\033Y\316T\0008\347\033!\360pL\310\333\255\225'\275\260d3\342\337\034\370$j\324\355CUx\246\032\353 \372\251.A\002\000V\305\022\031\222~\3030\3370\214\312\031\367F\275G \210\235\340^\231\034]\301\231H\006`\271\033N\371\354\300DC\001\277\217L_I\005\262\242^,\014lA\222\300Z,\212L\331\216\361\245MZ%pr\004\014\323&\320\303\312F\3732!lYERB\206\032\321\031TR\221@*\004\206\352\226I\347\267J\310\367\27660\265\020\205Addv\213\022\024l\2134\315\367xB\330\304\246\310U\006M(=\235\017\tke\231Y\202E\352\000\317NlQ\266n\351Xy\231\006\210]\223\n\032\005l\255v\265\335hw\233PI9\244\203\2024\215\005f\235\021\242I\360F\000\030DlD\r7\302aP9\271\263\210j\304B\n\241N\325\302H\344\243\226D\303\026J!\253XU\205X2ae*O\220\253\333\274\201\220\232m\314\022D\366\025G]Zt\225KL\364T\t\321\036\227\014La\262\255RAA\322A\330\347\207:<2f\303\341=v\334\273.\0137\303\rL \256\006\223F\006T\034\233\307.Z\014\273Z\240-rH\035\250$\220\222\205\223\326|B\030\277\\\220\021\331#@\203T\367\237\345)H\212\256\321\001od\007\207H\031\2303\000\214\307\242\212J\243\273\245\260\0323#0b\021\340r\374\2455\t%\002\204\0023\026p\351\236\366\212\033\260\364\325\000\305\211\310t\341\031pm\215\354\337\261\0012%*\366\251\355m\305P\004\206\016\260\252L\"4o\270\331U\342\232Ne\230\323<d,,\237\347S\351Y=\032Hx'\262\001\r\362\216$\020\334\033\t2\2163\356\310\010\006H\026\000@\002\234\311,\224rt\241\217\350\037\316N^p\272^b""\\\366\231\255\320u\372W\233\307m\250,\030I\016\240\272\367Fr\306\276\\\353h\276\377ax\201\342]\275\351\023:CR\3234\313\250\0307\006\027\024dL\214\022\200\243\232\307\026\034\266C|CX\330\277MD\333\216\0216q\363G\350. +\251&J\270\345:O\354\221C!\023u\344\212\033~T\020\212\033N\003\315v\370\313#&A7\222\341O\225>\236\375IM\312\345\022\223\220\215\300\\\335@c\037\230\t\007\343\323\307\256\025\220\177=\000\315H\314\223\013\233 \326*\013\342\2659\300\264V\323w\343\212\301\320\212\322\355HNs\204;\272\231\332\205*$\273\261*\313Z\373V\317\251k\213\326\321\315\243G\006\306\017\236&\030\356?\353\366\354e\032\354\372\350j\260\323\375\327\364\230\364\302\032\031\357\016\035\362`\257xV\255\001j\360\001\257\213F\360\257\2568_\341\360\304\026\306\0073E\203\212\305p\216\331\252\031\020b\255\314\335A\203D\t6h8\200\246Q'\017\027\r\346\034\275\0138%\233\304\215(FP\220\222Z\t1JL\316\2574@\210y\312c\244\020B\005\016\225\031\245U\020F\006\020\244\214\"\252\177\305\334\221N\024$;\023@\306\200";
+    PyObject *data = __Pyx_DecompressString(cstring, 2486, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2476 bytes) */
-const char* const cstring = "x\332\215VMs\323H\032&K\000{\010$&\220\t\t\231\221\201%\004\0221\206\014\t\t0\225\204$\014\260L\034\3639C\225\252-\265m\021}Y-\3076\303Vq\324QG\035\373\250\243\216>\372\230\243\217>\346'\344'\354\333-\311q6ak\253\254v\267\272\337\317\347y\337\226\230+\255\"R\021\005d\227\311\222 \233\272\216\014e\255\202lGP\220\203\222\r\202m\025\223gX\303\016\026,\344T\304g\230\310\266Z\304\202SQ\211\240\352\250\214\305uEu\204\222\252\341D\214\235\234\025LM\231\025\014\\\337\300\216\\\021L\003\013o\267_\t\252\001\242X\250`\244h\230\020\241h\233u0\263,\330\330\251\331\006\021d\r#\003+\202\203\033\216(l!\033\351`\335^\022j\266&\334&\216\255\032\345\031qS3\213\334&\3513\n\307\214M\033['n\274R\t\004\247\332\375N\362wD\256`\245\246a[p\020\331!\342k\323a\341!GXk:\025\323\020 P\005k\020\264\215\034\2545\005\346\203\354\260\363\025d\010[\353[s\363\213\363\002$\020b\370\214e\207\010\244V\2245D\010&\202Y\022\2125UsX\334M\213y\365{Ih\2325\310\014\013\322\004?\310\021\001\310\216\001\211wx\232\246\221a\230\016rT\323\220@\034B\237f1\200\021u\0273\351\r\244\021,B\226\010\026\024SN\202c\t\310\327\260\335\344Z^\"M\025,\r5\213\246\271\223\240-\024\221\261\263$,\316/\200\036S#L\274\246c\303\001\267\352\252S\021p\003\311\200\253i\353\344\010\016U\2567AB0m.\237\274\020\01487#n\003\276\3078\261\215e\320/\350X7\355\246\270]3\004\304\"\237cy\217l2o5SF\232\240\233\220s\261\200 \314\370|\217\254\340\242\341\024b\3248h\311\236\243:\032\236\025,\333\324-\247\200\221\r\304;*\315\235/@FkD|\247\022\310k\262\303\271,17\337\343\"\000\300\205wU\024\373\243\001)\t\007\231\371\030\263\026\270c#+b/\251i\200<\262q\217\301\021#4\274\213\014\031\317A2 }X\371\037\271\024\337\333*p\357x)\3051\213\277!E\221\014\306OpI#Od\323\306\367\352*\023\026\255&\253\334%\036\306r\021\021\374p~VQ\t*j\030\033l,\313bY-\251$Z)\342g\013\227a(\353*!\01480\310\361\357\365\203\343\033\334\335\343\257\2412\223\227\300\206\" \317\275\340\316s\034\237\210\226Q\256\326\261\361@\\\234\273\277P\024\034\213<\331\345\351\027j\006\332E\252\306|\022""\353\270h\275Z)\274\221\336l\025\266@X\342\203\264\325l\300\363\014\212Nz\r]a\033\227\n\016D\376\266\260\262\271.Iq\211`\230Y\0266\024\2268D\232\206\254\232\"$\310\254A\355aR|8\017?l\310\340\017c\276\304cay\212r\005c%FU\002\237\223)/\r\236l\231u\307xd'\344\212\251\312\320\r5\320.\251P\2366\222A\227\274#\353J\234\300\0306\206\022{DM\323\371\277\215\313\320x\354&_@\001@\256\242Sb\204\245lc\210Gax*\2309\254\360\016,1b(\220\005\005\232\251b\326aP\035\376\022\3336H7@)\301\r\013,\327\300w\266!I\207#\341\203\024\351\212\346LA4\323@6\232Ah\321\004\234\210guFKPR3dI*c\247\014\315\227=R\304\3512\264\334\212Z\256p\320\017\313(\232\0017T\275\254\032\216J$T$\246V\003U0\357!\243F\226\232`B';\320\251$\006\317\216j(;\365\307\032\322\213\nz\312\274c\217\004\275\217\377sX \235\360c\016kf\035\260\222t\0048\300\330\220\030L\204M\342\272dS\307\334\301\006\211\332AL\225x\301\354\307\323\250\356\343\005\304`\350pIA\034\361\037\341t\216z\023\244x\227[5Y\037\222$0\315z\037\214\270n\356\300\355\007\361Y\360\263@\316\202\276`8\220\026\350\323\0224\332\336\204W\020\313\026{\340\216\211/+\01355\023)\226iI\226I\234\250\241U% -\322\"#\234\2760\020v7\330,\002\251\330t0\3413\006\033\237\300\235\342Dl\003O\201\305\375s\3611\357l\344\251(\021T\002P\364\362\311\333\t\n'\357\222\n\3264i\247\376\235\335&\274\323%\302;\356\311G\242>p\362\0364\004\251\304\276\037\276\277\035!\326\333?R\270\275\267l\225T\035 \241\300\253\350\333\006\370\301\345\245\270\223\367\226\261V ,\200\314?Ml\023P\266k\206\024Ww/k\022\377\202\350}FH\320\244\017\027\234\256l\251#\366\345d9\221\346\330\014\257\257x\316\312(\236\002\245\"\367b\216A\021\261\031\3537\311\277xh\202\260f(\201\313NL@\230)\270\204\030\361\0318\tB\304BuC\342c<\215[\017\207\007\230d3\262 =\272\215H\255TR\033\021~GP\224$v\226\215\r\307Qu\0144\347\367.\3131\317:\037\304\250SF\363\204\350\220\032d\001\036\321\333^\261G\313^\356\241Y\340\262\315?z\034\273F\034\366\335T\253\331*d\201\365\265]\244\001\355#\326\364\370q\310\204\250Y\261\304\272\347\334\257\376C:F\277""\204\223\255\027m\324\256v'o\322\225\316\340\270?\320M]p%\177\245\233\032r\327\275\214\367O\357o\232\355\246\316\273\363n\325\033\202\367C#\336\031/\357\251~\203\332\301\217a\252\365\217\026\337\317\271\233\336\003O\361\263\376\002\275\025\234\016\346\203F\330hU\273\367\026[\003\335\241Q/\327M\r\273\325o/\301\362\022\375\263s\357]\347\335\373\356\360\010\230\353\\\230\362\363\335\324Ew\307\037\365W}\205f\351\243`-\260\303\313a>D\314\221\337\301 bF\356\273\005\017\264]\3666\374i:\0016\232\240\034$K\336\013\037\371Uz>x\020\224\303<3U\363V\301\311jw\354:\275N\237\007\317\303\227\340\314\344\r\272\030,\20696\201a&\370\261\363\313z{\033\342\037\273I\327\203\211p\261\225\213\203=fe\304;\353\225\374\027T\t\262\301\022xVl\r\264&\332\271\366Jw\344\252\237\371\366\032R\365\205NvfW\333Y\036\324\275\240\312|\177\346\235\366\356{o\374\014\350\032\245\253\\\374\2736\206\334?\374\234\277\346\177\t2\335T\332\235\364V\274\217>\2122\367\207\267\340\337\241\377\352\344\236\201\311>\003\033\336\ro\333s@n\375\3777\360\225\0359j\240\223\232\362\337\321\207\220\204\345V\271\235o\243\356\324-\212:\247\306 \365\203\347\276\355\272y\227\037$^\326[\364\227)\274Mw\322?\201\364\340\220\373\332\317v&\347\202\367!\270\226\356\246/{\317\375W\301@p-\314\357\017\246\335)/9\344?\005\316\200\037\327\351\014\340\360\270Um\303\"\343e\222\355\337\202\3510\303U\\\362n\373w\351\247p\274\305S1\356M\371*\255\376\227\232\336\271\017\301\007\200=\235\361\306\375k4O+\021\013\372\024\307\002Yz5\270\035\316\266\020\220\241o\2733y7X\010\263=\205\263\024Am\\me\217z\337\177\354\212\367\301\377+H'\376My\237\351\300\361(\372O\245\257\372\343\364Z\220\017\364\326R\033\3622\341g\017FN\235\271\300E\036\321M\016I$\362)\310\004sau\177p\264\017\364\203K\247\316\214\366\261\214\255/\034\311\306~z\024\240yL\253\301y\340x\354\314\223\340\034#\nl&\331Q\203j/\256\341\3160\240\274\317\240\004\026\367\342\234\r6\303\243\356\260\250\367\217o'\006\007\016\267\223\360'\374\233\214Z\351\203\263\247\316\374\320I\317\000\247\007/\270o""\275l\367d5\313\340X#\254\036\262\207\245\360 \025\007\331\243W\226^\246yn\r|\026\016\223~\030\347\241\262\257\355\\rr\272G\236~\242\036\202\235\331\077\077\224\250Z\242\357\203\243DN\\\031\351o_\007\267\030 \267\374\201\203\313\t\022\207\222\343~\212\016\005+\235\271'-\300\372g\277zp\361\330\241\250\307\356\017\376\340f\335%/\337\035<\357>p\221\333`=\267\303\370\301z[\321\033\204*\375\213\236\246\367\351\033\000b:\034\rWC\245\225m-\266\037\264\213{\203{+{\371\250\336\t\260\303\001\365yZ\014\006\203\225\340#\264\317\241K\336u\220\357\235\310\036\353\t\303`\360\337t\205\026 \316\261\200\204\331\360~\370\246\225i\335m\027\366\006:\251\237\374\022\335\010\356\204k\000\r\353\343\336\253\216\220\013\257\204\010\326\303\320\034\274\257\235\033\217ZW\3333{9\367\"t\310\rz\007\272w5<\033\342\326\257\355\364^\006\336\352\235\033\277\206\357\240\267\016\215y2\264\302[\364\034p\346,T\351[\270=n\377\022\016\204\023\255\345\266\326\331.t\207\256x\371\016K\030orY\3603\307\356\244O\300\316^\017F,\2105\036k\001\356\232\305p\001\324\200s\017A\367]\3721@\235\024\273\312\322\303\356\256\367\247\3777\343c8\323Z`>\376\007rb\374\225";
-    PyObject *data = __Pyx_DecompressString(cstring, 2476, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2383 bytes) */
+const char* const cstring = "x\332\215V\315W\023\311\026\227'j2\242\020Q\006A\347u\324'\242\320\016\312\010\202:\007\020p\034\237C\210\2373\236\323\247\322]IZ\372+]\025\2228\276s\\\366\262\227\275\254e/{\231e\226,\263\314\222?\201?\341\335\252\356\204\360\300s\3369I\345\326\327\375\370\335\337\275\025y\256\270\212HY\226\220[\"K\222j\233&\262\264\2652r\251\244!\212\272\033\004\273:&\317\261\201)\226\034D\313\362sLTW/`\211\226u\"\351&*ay]\323\251T\324\r\334\275\306O\316H\266\241\315H\026\256m`\252\226%\333\302\322\333\355W\222n\301U,\2251\322\014L\210Tp\355\032\230Y\226\\L\253\256E$\325\300\310\302\232Dq\235\312\322\026r\221\t\326\335%\251\352\032\322\035B]\335*M\313\233\206]\0206I\237Q8fm\272\3309q\343\225N 8\335\355wR\254\021\265\214\265\252\201]\211\"\262C\344\3276\345\341!*\2555h\331\266$\010T\303\006\004\355\"\212\215\206\304}P)?_F\226\264\265\2765;\2778/\001\200\020\303g\254R\"\221jA5\020!\230HvQ*Tu\203\362\270\033\016\367\352\267\242\324\260\253\200\014\017\322\006?\310\221\013\200\216\005\300S\001\323\024\262,\233\"\252\333\226\002\327!\364)\036\003\030\321w1\277\275\201\014\202e@\211`I\263\325np\034\200m\200\370XZ\266\261\212-*\231\330\264\335\206\274]\265$\304\215\317\362\320\245\232N\313\302\254a\253\310\220L\033\302\226\363\010,%\347{|\261(h\311'\300\t\334\272{T\247\006\236\221\034\3276\035\232\307\310\205\334\037\275]\251b\267\221\207\240\252D~\247\023\010\255\273#\350\244p7\337\343\002` .\357\352(\361\307\000^\020\2013\3671!\016\244\317ENL R5\000|\344\342\036\211\342\244\030x\027Y*\236\0050 mX;B+\341\316!\261\336\273:\244\3778\233\223\230\345_\221\246)\026\247\010\270d\220\247\274\\\226\204\343\313\005D\360\243\371\031M'\250``l\361\261\244\312%\275\250\223x\246\311\237\035\\\202\241d\352\204\200=n\242j\202\336^\021\036\337\020\016\036_\206r\350.\332\256T\200\\\013/\204\273\"sOe\307*Uj\330z(/\316>X(H\324!Ow\005\340R\325B\273H7\270Or\r\027\234\232\316\243\227\235\306\253\225\374\033\345\315V~\013\264(bP\266\032u\370>\007\312+\257\241&\267q1Om\027\277\315\257l\256+JBP\014\222\343`K""\343\230!\322\260T\335\226U\333\265\253\300|L\n\217\346\341\203-\025\034\3430\305P\301XN\322\250\200\313]\221\332\266A\004\272*\357H\311\310O\250e[W\241\003\031\240S\321\241$\\\244\202.uG5\265\004\277$O`\032\363\257l\030\246\370uq\t\212\335m\210\t0\036\240\202S.\006\3275\236C\rs\3374\321\352\024\236~\r\002\326\240kiv\r\006\235\212E\354\272p\277\016\232\010\256;`\256\n\016\363\rE9\034\211\030\224XW,s\005\261d\300\335X\202xb\001\234H\244\032'\037(\251Z\252\242\2240-A\227\343_%fn\tz[Y/\225E\242\017\213%\226\200\017\272Y\322-\252\023\005\025\210mTA\025\310\275$\350\261\245\006\2300\311\216ni;\265'\0062\013\032z\306\235\342_\005z\213\370\025)\000\350\340\303\3754\354\032\344E1\021`\016c]\341)!\\H\212\216\213\324\336\301\026\211k=!C2\341f\0231.\352d\002\256[&<\002\340~\362C\004s\343\306\003\310\356\n\2536o2\212\002\246-(Z\030q\315\336\201\327\005\302r\340\343\300=\007\212\336\242\200\006\364A\005\372`O\020\305\302A\342_\350\341\311c\340\240\206a#\315\261\035\305\261\t\215\273UEQ*Ud\304FD\325\301@x\357uy\004J\241A1\021\022\317\226\020\240g\323\230Y\340)0\266_\226\237\210\266E\236\311\nAE\310\205Y:y\273\233\205\223wI\031\033\206\262S\373\316n\003\326L\205\210vz\362\221\270\344O\336\203\332W\212\374}\376\376v\234\261\336\376\221\"\355\255\362Y\267\302 \023\032,\305\377\035\200\037\342\276\222\264\351\3364\321\n<\205$\213\247\337\265!\313n\325R\222J\356\241\246\210\027\272\367L+\320\201\017'\202\256|j\"\376\317\304\241\261\346\304\214(\253D\346\325\223\210@\251\330\275\204cP;\\\342\275\245\373+\037\232 \274\335)\3402M\010\010\222\206\213\210\023\237'\247\233!\342\240\232\245\2101\021\2236#\322\003Lr9Y\220\031?5\244Z,\352\3658\177G\262\250(\374,\037\353\224\352&\006\232\213GU .\0069\356\210\261\334%9\300\202\034\310E\274\332\003\032\032\002.\271\342\037\004u\253\204\362?!\325\252\253C\310\274w\355\"\0038\036S\244G\206\303\264\307\357B\334\2268\226\3369\357k\360\210\215\261/\321d\363e\013\265*\235\311[l\245=8\036\014tR\027<%X\351\244\206\274u?\343\377\313\377\233e;\251\363\336""\274W\361\207`}h\304?\343\347|=\25037\3741J5\377\321\024\373s\336\246\377\320\327\202l\260\300n\207\247\303\371\260\036\325\233\225\316\375\305\346@gh\324\237\353\244\206\275\312\267\337\301\362\022\373\263}\377]\373\335\373\316\360\010\230k_\270\036\344:\251\213\336N0\032\254\006\032\313\262\307\341Z\350F\227\243\\\204\270#\277\201A\304\215<\360\362>h\273\354o\004Sl\002l4@9\334,\372/\003\024T\330\371\360aX\212r\334T\325_\005'+\235\261\033\354\006{\021\276\210~\007g&o\262\305p1\232\343\002\014\323\341\217\355\237\327[\333\020\377\330-\266\036ND\213\315\271$\330cVF\374\263~1x\311\2640\033.\201g\205\346@s\2425\327Z\351\214\\\r2\337^\003T_\330d{f\265\225\025A\335\017+\334\367\347\376i\377\201\377&\310\200\256Q\266*\256\177\327\306\220\367G0\027\254\005_\302L'\225\366&\375\025\377c\200b\344\376\360\027\202\273\354\337\355\271\347`\262\317\300\206\177\323\337\366)\334[\377\377\r|\345G\216\032h\247\256\007\357\330#\000a\271Yj\345Z\250s\3756C\355Sc\000\375\340\271o\273^\316\023\007\211\237\365\027\203e\006\253\351v\372'\270=8\344\275\016\262\355\311\331\360}\004\256\245;\351\313\376\213\340U8\020^\213r\373\203i\357\272\337=\024<\003\316\200\0377\3304\344\341I\263\322\202I\306\317t\267\177\r\247\242\214Pq\311\277\023\334c\237\242\361\246\200b\334\277\036\350\254\362?jz\347>\204\037 \355\351\214?\036\\c9V\216Y\320\2478\271\220eW\303;\321L\023\001\031\372\266\333\223\367\302\205(\333S8\303\020\324\306\325f\366\250\367\375\307\256\370\037\202\277\302t\327\277\353\376g6p<\212\376S\351\253\3018\273\026\346B\263\271\324\002\\&\202\354\301\310\2513\027\304\225\307lS\244$\276\362)\314\204\263Qe\177p\264/\351\007\227N\235\031\355c\031\237_8\202\306~z\024R\363\204U\302\363\300\361\304\231\247\3419N\024\330\354\242\243\207\225^\\\303\355a\310\362>O%\260\270\027\347L\270\031\035u\207G\275\177|\273kp\340p\273\033\376Dp\213S+}p\366\324\231\037\332\351i\340\364\340\005\357\255\237\355\234\254f\031\034\253G\225C\366p\010\017RI\220=ze\331e\226\023\326\300\347\251\036%\372\351w\230\302\314""\376\371\241.\020K\354}x\224\236]\003#\375M\351\3406\207\371v0pp\271\213\357\341\315\361 \305\206\302\225\366\354\323&d\360\237A\345\340\342\261Cq\347\334\037\374\301\313zK~\2563x\336{\350!\257\316;i\233g\235w\254\202?\010\265\367\027;\315\036\2607\000\357T4\032\255FZ3\333\\l=l\025\366\006\367V\366rq\025\023\3109\005\3659V\010\007\303\225\360#4\305\241K\376\r\270\337;\221=V\351\303`\360?l\205\345!\316\261\220D\331\350A\364\246\231i\336k\345\367\006\332\251\237\202\"\333\010\357Fk\0008\357\316\376\253\2664\027]\211\020\314\207\241\344\375\257\355\233\217\233W[\323{s\336E\350{\033\354.\364\344Jt6\302\315_Z\351\275\014\254\232\355\233\277D\357\240c\016\215\371*4\270\333\354\0340\341,\324\336[x\023\356\374\034\rD\023\315\345\226\321\336\316w\206\256\370\2716\007L\264\256,\3709\307_\232O\300\271^gE<\2105\021k\036^\220\305h\001\324\200s\217@\367=\3661D\355\024\177\240\322\303\336\256\377g\3607gY4\335\\\340>\376\027\346\006\254w";
+    PyObject *data = __Pyx_DecompressString(cstring, 2383, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (4578 bytes) */
-const char* const bytes = ".1fBash. args: commandChart data. args: seriesDelete path.Describe this image.Edit file. args: path, old, newFetch one URL in the headless browser; returns cleaned text. Parameter: url (string).Glob files. args: patternGrep files. args: patternList dir. args: pathList scheduler tasks.Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Parse doc. args: fileQuery the Kali playbook command bank: 847 tools documented with exact forms. Parameter: query (string) or tool (string name).Read file. args: pathRecent memory.Run a sub-task with the local model.Save memory. args: contentSchedule task. args: title, promptSearch memory. args: queryStatus.Vision. args: image_pathWeb search via local lanes and the browser scraper; results are cleaned and relevance-filtered. Parameter: query (string).Write file. args: path, content.?add_note calls=core/wiring.pydata:image;base64,disableenablegc.gifisenabled.jpeg.jpgmissing argument: commandmissing argument: querymissing argument: urlmissing or bad image pathmodel=.pngqwen3.8-27b tps=vision unavailable.webpLAST_TPSPath_Path__Pyx_PyDict_NextRefStoreUSAGE__annotate__appendargsasyncio.coroutinesb64b64encodebank_querybasebase64bashbrowser_modbrowser_toolscallschartscharts_modchoicescline_in_tracebackcmdcommandcontentcorecore.llmcore.registrycore.subagentcore.wiringcreateddatadecodedelete_filedictdonedownedit_fileerrorexistsexpanduserfile__file__filesfiles_deletefiles_editfiles_listfiles_modfiles_readfiles_write__func__getglobglob_filtergrephighimageimage_pathimage_urlimgintis_absolute_is_coroutineis_readyitemskali_bankkindkw<lambda>listlist_dirlist_toolsllmllm_modlower__main__max_charsmax_resultsmax_tokensmemory_appendmemory_readmemory_searchmemory_thinmessagemessagesmodelmodel.server__module__n__name__newokoldoutputppageparent_parse_docparse_documentpathpathlibpatternpayloadpop_postpromptq__qualname__queryquestion""rread_bytesread_fileread_lastregister_allregister_all.<locals>._safe_imgregister_all.<locals>.<lambda>register_all.<locals>.shell_kwregister_all.<locals>.system_statusregister_all.<locals>.visionregister_all.<locals>.web_fetchregister_all.<locals>.web_searchregister_browser_toolsregister_toolregistryrender_seriesresearch_scraperesearch_searchresolvereturnrole_run_command_safe_img_schedscheduler_addscheduler_list_schemascriptsearchsearch_filessearch_grepsearch_modseriesserver_urlservicesservices.scheduler_store__set_name__setdefaultshellshell_kwspawn_spawnspawn_subagent_statestrstreamstringsuffixsystemsystem_status__test__texttimeouttitletooltoolstools.chartstools.document_adaptertools.kali_banktools.research_integrationtrusttypeuuriurluservaluesvisionweb_fetchweb_searchwrite_file\210\007\210|\2306\240\026\240z\260\033\270J\300a\300q\330\033$\240A\320\004\030\230\001\330\010\r\210_\230A\330\010\014\210E\220\021\220%\220{\240!\330\010\013\2104\210q\220\014\230A\330\014\020\220\005\220Q\220i\230x\240r\250\027\260\010\270\002\270!\330\010\013\2101\210G\2203\220d\230!\2307\240&\250\003\2504\250x\260x\270q\330/8\270\001\330\014\023\2201\330\010\017\210q\200K\210|\230:\240Z\320/V\320VW\330\017\020\330\010\r\320\r\035\230Q\330\010\016\210k\230\023\230B\230d\240!\2409\250C\250r\260\024\260Q\260a\330\010\014\210I\220Q\220a\330\010\013\2102\210S\220\001\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\016\210f\220J\230a\230q\240\013\2503\250g\260Q\330\010\017\210u\220B\220i\230q\330\026\"\240\"\240H\250H\260K\270q\330\033#\2408\2508\2601\330\033#\2401\330\033)\250\027\3200E\300R\300q\330\026$\240E\250\032\2608\2701\330\010\013\2104\210q\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\020\220\006\220f\230J\240d\250!\250:\260Q\260b\270\001\270\032\3001\300A\330\020\031\230\021\200N\220%\220z\240\033\320,B\300!\330\010\r\320\r/\250q\330\010\014\210D\220\003\2202\220T\230\021\230'\240\023\240B\240d\250!\2501\330\010\013\2104\210q\330\014\024\220F\230'\240\032\2504""\250y\270\001\330\010\014\210O\2301\230C\230z\250\021\330\010\t\210\033\220A\220Y\230a\330\010\017\210q\200O\2207\230*\240M\3201D\300A\330\010\r\320\r/\250q\330\010\014\210F\220#\220R\220t\2301\230E\240\023\240B\240d\250!\2501\330\010\013\2104\210q\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\014\210O\2301\230C\230|\2501\330\010\t\210\033\220A\220Y\230a\330\010\017\210q\320\010\035\230V\2406\250\032\260;\270g\300Q\300a\330\035&\240a\320\000\026\220a\330\004\007\200v\210Q\210a\330\010\017\210s\220!\2208\230;\240a\330\004\t\320\t\036\230a\330\004\014\210N\230!\320\033-\250W\260A\330\010\t\330\t\024\220H\230L\250\001\250\034\260Q\340\004\t\210\035\220a\330\004\014\210N\230!\230>\250\027\260\001\330\010\"\240)\2508\260<\270q\300\001\330\010\021\220\021\330\004\014\210N\230!\230?\250'\260\021\330\010\t\330\t\022\220(\230+\240\\\260\030\270\021\330\010\t\210\030\220\035\230i\240q\330\004\014\210N\230!\230>\250\027\260\001\330\010\t\330\t\022\220(\230+\240X\250X\260Q\330\t\021\220\030\230\034\240Q\240h\250g\260Q\330\010\021\220\021\330\004\014\210N\230!\230>\250\027\260\001\330\010!\240\031\250(\260,\270a\270q\330\010\021\220\021\330\004\014\210N\230!\320\033+\2507\260!\330\010\t\330\t\022\220(\230,\240a\240z\260\031\270!\340\004\t\210\035\220a\330\004\014\210N\230!\320\033+\2507\260!\330\010\t\330\t\025\220X\230[\250\t\260\030\270\021\330\010\t\210\035\220j\240\001\330\004\014\210N\230!\230?\250'\260\021\330\010\t\330\t\025\220X\230[\250\t\260\030\270\021\330\t\031\230\030\240\034\250Q\250m\270:\300Q\340\004\032\230!\360\020\000\005\r\210N\230!\2309\240G\2501\330\010\t\330\t\025\220X\230\\\250\021\250-\260q\340\004\023\2207\230*\240M\3201D\300A\360\022\000\005\023\220%\220z\240\033\320,B\300!\360\022\000\005\r\210N\230!\230>\250\027\260\001\330\010\t\340\t\023\2208\230<\240q\250\013\2601\330\004\014\210N\230!\230=\250\007\250q\330\010\t\340\t\021\220\030\230\034\240Q\240i\250q\340\004\t\210\035\220a\330\004\017\320\017&\240a\340\004\t\320\t\031\230\021\330\004""\014\210N\230!\320\033,\250G\2601\330\010\t\330\t\025\220X\230\\\250\021\250!\330\010\t\340\004\014\210N\230!\320\033,\250G\2601\330\010\t\330\t\023\2208\230<\240q\250\001\330\010\t\340\004\014\210N\230!\230?\250'\260\021\330\010\032\230$\230a\330\010\t\360\006\000\005\n\320\t)\250\021\330\004\r\210U\220!\330\004\014\210N\230!\320\033,\250G\2601\330\010\t\330\t\023\2208\230;\240i\250x\260q\330\t\024\220H\230L\250\001\250\021\330\010\t\360\010\000\005\r\210N\230!\320\033-\250W\260A\330\010!\240\024\240Q\330\010\t\340\004\t\320\t \240\001\330\004\014\210N\230!\230=\250\007\250q\330\010\t\340\t\023\2208\230;\240i\250x\260|\3001\330\010\t\340\004\t\320\t'\240q\330\004\014\210N\230!\320\033-\250W\260A\330\010\t\330\t\022\220(\230,\240a\240z\260\021\340\013\014\330\004\014\210N\230!\230:\240W\250A\330\010\t\330\t\024\220H\230L\250\001\250\021\330\010\t\360\010\000\005\020\210|\230:\240Z\320/V\320VW\360&\000\005\023\220&\230\001\360\024\000\005\r\210N\230!\230:\240W\250A\330\010\t\330\t\030\230\010\240\014\250A\320-=\270Q\340\004\037\230q\360\016\000\005\r\210N\230!\230:\240W\250A\330\010\t\330\010\014\210E\220\021\340\004\n\210!\210:\220Q\330\004\013\2103\210a\210x\220{\240!\320\004\032\230!\330\010\016\210b\220\004\220A\220[\240\003\2402\240T\250\021\250'\260\023\260B\260d\270!\2708\3003\300b\310\004\310A\310Q\330\010\013\2104\210s\220%\220t\230:\240Q\240b\250\004\250A\250Y\260a\330\014\022\220\"\220A\220Q\330\010\013\2104\210s\220!\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\017\210x\220}\240A\240S\250\001\250\026\250s\260!\2602\260T\270\021\270+\300S\310\001\320\010\036\230f\240F\250*\260C\260q\330\014\023\2201\220L\320 1\260\025\260a\260q\330\017\026\220a\220|\320#9\270\031\300)\3101\210\016\220f\230F\240*\250C\250q\260\006\260e\2705\300\t\310\021\210\016\220m\320#5\260V\2701\330\014\026\220c\230\021\230&\240\007\240q\250\006\250g\260U\270!\330(0\260\001\260\032\270;\300l\320RS\330\014\025\220Q\320\004\037\230q\330\010\r\320\r!\240\032\2501\330\010\r\210""\\\230\021\330\010\020\220\006\220f\230J\240a\330\014\024\220C\220t\230:\240S\250\003\2508\2607\270!\330\014\023\2206\230\021\230+\240Y\250a\320\010\030\230\001\330\t\017\210v\220Z\230{\250'\260\021\260)\2707\300)\3101";
+    #else /* compression: none (4363 bytes) */
+const char* const bytes = ".1fBash. args: commandChart data. args: seriesDelete path.Describe this image.Edit file. args: path, old, newFetch one URL in the headless browser; returns cleaned text. Parameter: url (string).Glob files. args: patternGrep files. args: patternList dir. args: pathList scheduler tasks.Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Parse doc. args: fileRead file. args: pathRecent memory.Run a sub-task with the local model.Save memory. args: contentSchedule task. args: title, promptSearch memory. args: queryStatus.Vision. args: image_pathWeb search via local lanes and the browser scraper; results are cleaned and relevance-filtered. Parameter: query (string).Write file. args: path, content.?add_note calls=data:image;base64,disableenablegc.gifisenabled.jpeg.jpgmissing argument: commandmissing argument: querymissing argument: urlmissing or bad image pathmodel=.pngqwen3.8-27b tps=vision unavailable.webpwiring.pyLAST_TPSPath_Path__Pyx_PyDict_NextRefStoreUSAGE__annotate__appendargsasyncio.coroutinesb64b64encodebasebase64bashbrowser_modbrowser_toolscallschartscharts_modchoicescline_in_tracebackcmdcommandcontentcorecore.llmcore.registrycore.subagentcreateddatadecodedelete_filedictdonedownedit_fileerrorexistsexpanduserfile__file__filesfiles_deletefiles_editfiles_listfiles_modfiles_readfiles_write__func__getglobglob_filtergrephighimageimage_pathimage_urlimgintis_absolute_is_coroutineis_readyitemskindkw<lambda>listlist_dirlist_toolsllmllm_modlower__main__max_charsmax_resultsmax_tokensmemory_appendmemory_readmemory_searchmemory_thinmessagemessagesmodelmodel.server__module__n__name__newokoldoutputppageparent_parse_docparse_documentpathpathlibpatternpayloadpop_postpromptq__qualname__queryquestionrread_bytesread_fileread_lastregister_allregister_all.<locals>._safe_imgregister_all.<locals>.<lambda>register_all.<locals>.shell_kwregister_all.<locals>.system""_statusregister_all.<locals>.visionregister_all.<locals>.web_fetchregister_all.<locals>.web_searchregister_browser_toolsregister_toolregistryrender_seriesresearch_scraperesearch_searchresolvereturnrole_run_command_safe_img_schedscheduler_addscheduler_list_schemascriptsearchsearch_filessearch_grepsearch_modseriesserver_urlservicesservices.scheduler_store__set_name__setdefaultshellshell_kwspawn_spawnspawn_subagent_statestrstreamstringsuffixsystemsystem_status__test__texttimeouttitletoolstools.chartstools.document_adaptertools.research_integrationtrusttypeuuriurluservaluesvisionweb_fetchweb_searchwiringwrite_file\210\007\210|\2306\240\026\240z\260\033\270J\300a\300q\330\033$\240A\320\004\030\230\001\330\010\r\210_\230A\330\010\014\210E\220\021\220%\220{\240!\330\010\013\2104\210q\220\014\230A\330\014\020\220\005\220Q\220i\230x\240r\250\027\260\010\270\002\270!\330\010\013\2101\210G\2203\220d\230!\2307\240&\250\003\2504\250x\260x\270q\330/8\270\001\330\014\023\2201\330\010\017\210q\200K\210|\230:\240Z\320/V\320VW\330\017\020\330\010\r\320\r\035\230Q\330\010\016\210k\230\023\230B\230d\240!\2409\250C\250r\260\024\260Q\260a\330\010\014\210I\220Q\220a\330\010\013\2102\210S\220\001\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\016\210f\220J\230a\230q\240\013\2503\250g\260Q\330\010\017\210u\220B\220i\230q\330\026\"\240\"\240H\250H\260K\270q\330\033#\2408\2508\2601\330\033#\2401\330\033)\250\027\3200E\300R\300q\330\026$\240E\250\032\2608\2701\330\010\013\2104\210q\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\020\220\006\220f\230J\240d\250!\250:\260Q\260b\270\001\270\032\3001\300A\330\020\031\230\021\200N\220%\220z\240\033\320,B\300!\330\010\r\320\r/\250q\330\010\014\210D\220\003\2202\220T\230\021\230'\240\023\240B\240d\250!\2501\330\010\013\2104\210q\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\014\210O\2301\230C\230z\250\021\330\010\t\210\033\220A\220Y\230a\330\010\017\210q\200O\2207\230*\240M\3201D\300A\330\010\r\320\r/\250q\330\010\014\210F""\220#\220R\220t\2301\230E\240\023\240B\240d\250!\2501\330\010\013\2104\210q\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\014\210O\2301\230C\230|\2501\330\010\t\210\033\220A\220Y\230a\330\010\017\210q\320\010\035\230V\2406\250\032\260;\270g\300Q\300a\330\035&\240a\320\000\026\220a\330\004\007\200v\210Q\210a\330\010\017\210s\220!\2208\230;\240a\330\004\t\320\t\036\230a\330\004\014\210N\230!\320\033-\250W\260A\330\010\t\330\t\024\220H\230L\250\001\250\034\260Q\340\004\t\210\035\220a\330\004\014\210N\230!\230>\250\027\260\001\330\010\"\240)\2508\260<\270q\300\001\330\010\021\220\021\330\004\014\210N\230!\230?\250'\260\021\330\010\t\330\t\022\220(\230+\240\\\260\030\270\021\330\010\t\210\030\220\035\230i\240q\330\004\014\210N\230!\230>\250\027\260\001\330\010\t\330\t\022\220(\230+\240X\250X\260Q\330\t\021\220\030\230\034\240Q\240h\250g\260Q\330\010\021\220\021\330\004\014\210N\230!\230>\250\027\260\001\330\010!\240\031\250(\260,\270a\270q\330\010\021\220\021\330\004\014\210N\230!\320\033+\2507\260!\330\010\t\330\t\022\220(\230,\240a\240z\260\031\270!\340\004\t\210\035\220a\330\004\014\210N\230!\320\033+\2507\260!\330\010\t\330\t\025\220X\230[\250\t\260\030\270\021\330\010\t\210\035\220j\240\001\330\004\014\210N\230!\230?\250'\260\021\330\010\t\330\t\025\220X\230[\250\t\260\030\270\021\330\t\031\230\030\240\034\250Q\250m\270:\300Q\340\004\032\230!\360\020\000\005\r\210N\230!\2309\240G\2501\330\010\t\330\t\025\220X\230\\\250\021\250-\260q\340\004\023\2207\230*\240M\3201D\300A\360\022\000\005\023\220%\220z\240\033\320,B\300!\360\022\000\005\r\210N\230!\230>\250\027\260\001\330\010\t\340\t\023\2208\230<\240q\250\013\2601\330\004\014\210N\230!\230=\250\007\250q\330\010\t\340\t\021\220\030\230\034\240Q\240i\250q\340\004\t\210\035\220a\330\004\017\320\017&\240a\340\004\t\320\t\031\230\021\330\004\014\210N\230!\320\033,\250G\2601\330\010\t\330\t\025\220X\230\\\250\021\250!\330\010\t\340\004\014\210N\230!\320\033,\250G\2601\330\010\t\330\t\023\2208\230<\240q\250\001""\330\010\t\340\004\014\210N\230!\230?\250'\260\021\330\010\032\230$\230a\330\010\t\360\006\000\005\n\320\t)\250\021\330\004\r\210U\220!\330\004\014\210N\230!\320\033,\250G\2601\330\010\t\330\t\023\2208\230;\240i\250x\260q\330\t\024\220H\230L\250\001\250\021\330\010\t\360\010\000\005\r\210N\230!\320\033-\250W\260A\330\010!\240\024\240Q\330\010\t\340\004\t\320\t'\240q\330\004\014\210N\230!\320\033-\250W\260A\330\010\t\330\t\022\220(\230,\240a\240z\260\021\340\013\014\330\004\014\210N\230!\230:\240W\250A\330\010\t\330\t\024\220H\230L\250\001\250\021\330\010\t\360\010\000\005\020\210|\230:\240Z\320/V\320VW\360&\000\005\023\220&\230\001\360\024\000\005\r\210N\230!\230:\240W\250A\330\010\t\330\t\030\230\010\240\014\250A\320-=\270Q\340\004\037\230q\360\016\000\005\r\210N\230!\230:\240W\250A\330\010\t\330\010\014\210E\220\021\340\004\n\210!\210:\220Q\330\004\013\2103\210a\210x\220{\240!\320\004\032\230!\330\010\016\210b\220\004\220A\220[\240\003\2402\240T\250\021\250'\260\023\260B\260d\270!\2708\3003\300b\310\004\310A\310Q\330\010\013\2104\210s\220%\220t\230:\240Q\240b\250\004\250A\250Y\260a\330\014\022\220\"\220A\220Q\330\010\013\2104\210s\220!\330\014\024\220F\230'\240\032\2504\250y\270\001\330\010\017\210x\220}\240A\240S\250\001\250\026\250s\260!\2602\260T\270\021\270+\300S\310\001\320\010\036\230f\240F\250*\260C\260q\330\014\023\2201\220L\320 1\260\025\260a\260q\330\017\026\220a\220|\320#9\270\031\300)\3101\210\016\220f\230F\240*\250C\250q\260\006\260e\2705\300\t\310\021\210\016\220m\320#5\260V\2701\330\014\026\220c\230\021\230&\240\007\240q\250\006\250g\260U\270!\330(0\260\001\260\032\270;\300l\320RS\330\014\025\220Q\320\004\037\230q\330\010\r\320\r!\240\032\2501\330\010\r\210\\\230\021\330\010\020\220\006\220f\230J\240a\330\014\024\220C\220t\230:\240S\250\003\2508\2607\270!\330\014\023\2206\230\021\230+\240Y\250a\320\010\030\230\001\330\t\017\210v\220Z\230{\250'\260\021\260)\2707\300)\3101";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 231; i++) {
+    for (int i = 0; i < 226; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
-      if (likely(string) && i >= 48) PyUnicode_InternInPlace(&string);
+      if (likely(string) && i >= 47) PyUnicode_InternInPlace(&string);
       if (unlikely(!string)) {
         Py_XDECREF(data);
         __PYX_ERR(0, 1, __pyx_L1_error)
@@ -9427,7 +9299,7 @@ const char* const bytes = ".1fBash. args: commandChart data. args: seriesDelete 
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 231; i < 244; i++) {
+    for (int i = 226; i < 239; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -9438,14 +9310,14 @@ const char* const bytes = ".1fBash. args: commandChart data. args: seriesDelete 
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 244; i++) {
+    for (Py_ssize_t i = 0; i < 239; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 231;
+      PyObject **table = stringtab + 226;
       for (Py_ssize_t i=0; i<13; ++i) {
         #if PY_VERSION_HEX >= 0x030F0000
         PyUnstable_SetImmortal(table[i]);
@@ -9529,67 +9401,67 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 47};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_kw, __pyx_mstate->__pyx_n_u_cmd};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_shell_kw, __pyx_mstate->__pyx_kp_b_iso88591_b_A_2T_Bd_83b_AQ_4s_t_Qb_AYa_AQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_shell_kw, __pyx_mstate->__pyx_kp_b_iso88591_b_A_2T_Bd_83b_AQ_4s_t_Qb_AYa_AQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 59};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_query, __pyx_mstate->__pyx_n_u_max_results, __pyx_mstate->__pyx_n_u_kw, __pyx_mstate->__pyx_n_u_research_search, __pyx_mstate->__pyx_n_u_q, __pyx_mstate->__pyx_n_u_r};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_web_search, __pyx_mstate->__pyx_kp_b_iso88591_O7_M1DA_q_F_Rt1E_Bd_1_4q_F_4y_O1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_web_search, __pyx_mstate->__pyx_kp_b_iso88591_O7_M1DA_q_F_Rt1E_Bd_1_4q_F_4y_O1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 68};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_url, __pyx_mstate->__pyx_n_u_max_chars, __pyx_mstate->__pyx_n_u_kw, __pyx_mstate->__pyx_n_u_research_scrape, __pyx_mstate->__pyx_n_u_u, __pyx_mstate->__pyx_n_u_r};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_web_fetch, __pyx_mstate->__pyx_kp_b_iso88591_N_z_B_q_D_2T_Bd_1_4q_F_4y_O1Cz_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_web_fetch, __pyx_mstate->__pyx_kp_b_iso88591_N_z_B_q_D_2T_Bd_1_4q_F_4y_O1Cz_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 93};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_content, __pyx_mstate->__pyx_n_u_role, __pyx_mstate->__pyx_n_u_kw};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_vZ_7_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_vZ_7_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 98};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_query, __pyx_mstate->__pyx_n_u_kw};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_V6_gQa_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_V6_gQa_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 102};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_n, __pyx_mstate->__pyx_n_u_kw};
-    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_6_z_Jaq_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_6_z_Jaq_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 111};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_title, __pyx_mstate->__pyx_n_u_kind, __pyx_mstate->__pyx_n_u_prompt, __pyx_mstate->__pyx_n_u_kw};
-    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_m_5V1_c_q_gU_0_lRS_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_m_5V1_c_q_gU_0_lRS_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
   {
     const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 117};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_kw};
-    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_fF_Cq_e5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_fF_Cq_e5, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 135};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 128};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_series, __pyx_mstate->__pyx_n_u_kw};
-    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_fF_Cq_1L_1_aq_a_9_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_lambda, __pyx_mstate->__pyx_kp_b_iso88591_fF_Cq_1L_1_aq_a_9_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 9, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 139};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 9, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 132};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_image_path, __pyx_mstate->__pyx_n_u_question, __pyx_mstate->__pyx_n_u_kw, __pyx_mstate->__pyx_n_u_base64, __pyx_mstate->__pyx_n_u_post, __pyx_mstate->__pyx_n_u_img, __pyx_mstate->__pyx_n_u_p, __pyx_mstate->__pyx_n_u_b64, __pyx_mstate->__pyx_n_u_data};
-    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_vision, __pyx_mstate->__pyx_kp_b_iso88591_K_Z_VVW_Q_k_Bd_9Cr_Qa_IQa_2S_F_4, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_vision, __pyx_mstate->__pyx_kp_b_iso88591_K_Z_VVW_Q_k_Bd_9Cr_Qa_IQa_2S_F_4, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 158};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 151};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_path, __pyx_mstate->__pyx_n_u_Path_2, __pyx_mstate->__pyx_n_u_p};
-    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_safe_img, __pyx_mstate->__pyx_kp_b_iso88591_A_E_4q_A_Qixr_1G3d_7_4xxq_8_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_safe_img, __pyx_mstate->__pyx_kp_b_iso88591_A_E_4q_A_Qixr_1G3d_7_4xxq_8_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 172};
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS), 165};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_kw, __pyx_mstate->__pyx_n_u_is_ready, __pyx_mstate->__pyx_n_u_server_url, __pyx_mstate->__pyx_n_u_llm_mod};
-    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_system_status, __pyx_mstate->__pyx_kp_b_iso88591_q_1_fJa_Ct_S_87_6_Ya, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_system_status, __pyx_mstate->__pyx_kp_b_iso88591_q_1_fJa_Ct_S_87_6_Ya, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 22, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 9};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_spawn_2, __pyx_mstate->__pyx_n_u_files_mod, __pyx_mstate->__pyx_n_u_search_mod, __pyx_mstate->__pyx_n_u_shell_kw, __pyx_mstate->__pyx_n_u_shell_kw, __pyx_mstate->__pyx_n_u_web_search, __pyx_mstate->__pyx_n_u_web_search, __pyx_mstate->__pyx_n_u_web_fetch, __pyx_mstate->__pyx_n_u_web_fetch, __pyx_mstate->__pyx_n_u_browser_mod, __pyx_mstate->__pyx_n_u_memory_thin, __pyx_mstate->__pyx_n_u_Store, __pyx_mstate->__pyx_n_u_sched, __pyx_mstate->__pyx_n_u_bank_query, __pyx_mstate->__pyx_n_u_parse_doc, __pyx_mstate->__pyx_n_u_charts_mod, __pyx_mstate->__pyx_n_u_vision, __pyx_mstate->__pyx_n_u_vision, __pyx_mstate->__pyx_n_u_safe_img, __pyx_mstate->__pyx_n_u_safe_img, __pyx_mstate->__pyx_n_u_system_status, __pyx_mstate->__pyx_n_u_system_status};
-    __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_core_wiring_py, __pyx_mstate->__pyx_n_u_register_all, __pyx_mstate->__pyx_kp_b_iso88591_a_vQa_s_8_a_a_N_WA_HL_Q_a_N_8_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {0, 0, 0, 21, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 9};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_spawn_2, __pyx_mstate->__pyx_n_u_files_mod, __pyx_mstate->__pyx_n_u_search_mod, __pyx_mstate->__pyx_n_u_shell_kw, __pyx_mstate->__pyx_n_u_shell_kw, __pyx_mstate->__pyx_n_u_web_search, __pyx_mstate->__pyx_n_u_web_search, __pyx_mstate->__pyx_n_u_web_fetch, __pyx_mstate->__pyx_n_u_web_fetch, __pyx_mstate->__pyx_n_u_browser_mod, __pyx_mstate->__pyx_n_u_memory_thin, __pyx_mstate->__pyx_n_u_Store, __pyx_mstate->__pyx_n_u_sched, __pyx_mstate->__pyx_n_u_parse_doc, __pyx_mstate->__pyx_n_u_charts_mod, __pyx_mstate->__pyx_n_u_vision, __pyx_mstate->__pyx_n_u_vision, __pyx_mstate->__pyx_n_u_safe_img, __pyx_mstate->__pyx_n_u_safe_img, __pyx_mstate->__pyx_n_u_system_status, __pyx_mstate->__pyx_n_u_system_status};
+    __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_wiring_py, __pyx_mstate->__pyx_n_u_register_all, __pyx_mstate->__pyx_kp_b_iso88591_a_vQa_s_8_a_a_N_WA_HL_Q_a_N_8_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

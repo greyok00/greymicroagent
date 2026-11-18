@@ -116,13 +116,6 @@ def register_all() -> int:
         "List scheduler tasks.", {}, []),
         lambda **kw: {"ok": True, "output": str(_sched.list()), "error": ""})
 
-    from tools.kali_bank import bank_query
-    registry.register_tool("kali_bank", _schema(
-        "Query the Kali playbook command bank: 847 tools documented with "
-        "exact forms. Parameter: query (string) or tool (string name).",
-        {"query": {"type": "string"}, "tool": {"type": "string"}}, []),
-        bank_query)
-
     from tools.document_adapter import parse_document as _parse_doc
     registry.register_tool("parse_document", _schema(
         "Parse doc. args: file",
