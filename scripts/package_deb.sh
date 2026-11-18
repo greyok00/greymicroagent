@@ -13,9 +13,10 @@
 #      bin (minus the greyagent family launcher), core (minus the greysearch
 #      dev guides), tools, services, build/src (minus .c intermediates and the
 #      greyagent_run helper), mcp, tui (minus dist sourcemaps), vendor;
-#      config/extensions + config/port_policy.json copied REAL files from the
-#      resolved symlink target (the dev `config` is a symlink; tar of it would
-#      carry a host-locked link); README.md, THIRD-PARTY-NOTICES.txt; the
+#      config-data (TUI extension record, port policy, registry template)
+#      copied REAL files from the repo; the dev `config` symlink is never
+#      staged (a copy of it would carry a host-locked link); README.md,
+#      THIRD-PARTY-NOTICES.txt; the
 #      model card AS model/greylocalrag.txt (the .md dev name never ships);
 #      state/ carries ONLY a manifest regenerated from the staged tree itself,
 #      so every pin matches exactly what the deb installs.
@@ -69,13 +70,10 @@ done
 mkdir -p "$TREE/build"
 cp -a "$ROOT/build/src" "$TREE/build/src"
 
-REAL_CONFIG="$(readlink -f "$ROOT/config")"
-mkdir -p "$TREE/config"
-cp -a "$REAL_CONFIG/extensions" "$TREE/config/extensions"
-cp -a "$REAL_CONFIG/port_policy.json" "$TREE/config/port_policy.json"
-
 cp -a "$ROOT/README.md" "$TREE/README.md"
 cp -a "$ROOT/THIRD-PARTY-NOTICES.txt" "$TREE/THIRD-PARTY-NOTICES.txt"
+# T21: config-data now also carries the shipped extension record and the
+# port policy, so this single copy stages the whole packaged record.
 cp -a "$ROOT/config-data" "$TREE/config-data"
 cp -a "$ROOT/LICENSE" "$TREE/LICENSE"
 
@@ -111,8 +109,8 @@ find "$TREE/tui/packages" -maxdepth 4 -type d \( -name src -o -name test -o -nam
 DANGLING="$(find "$TREE" -xtype l | wc -l)"
 find "$TREE" -xtype l -delete
 echo "pruned: $DANGLING dangling symlinks"
-find "$TREE/config/extensions" -name '*.ga08-bak' -delete
-find "$TREE/config/extensions" -name '*.ts.bak' -delete
+find "$TREE/config-data/extensions" -name '*.ga08-bak' -delete
+find "$TREE/config-data/extensions" -name '*.ts.bak' -delete
 
 echo "== package-time patches on the staged launcher =="
 sed -i 's|model/greylocalrag\.md|model/greylocalrag.txt|' "$TREE/bin/greylocalrag"
@@ -270,7 +268,7 @@ Description: greylocalrag - portable minimized offline agent (2B hybrid)
  7640-7647 port block (:7640 model, :7641 slimtoken lane); Node TUI under the
  @greyagent scope (its compiled scope); frozen, hash-pinned artifacts
  (state/MANIFEST.json) and an on-demand, masked lifecycle. Port policy at
- config/port_policy.json; grounding KB at ~/.greylocalrag/dbs.
+ config-data/port_policy.json; grounding KB at ~/.greylocalrag/dbs.
 EOF
 cat > "$PKGROOT/DEBIAN/postinst" <<'EOF'
 #!/bin/bash
@@ -300,6 +298,6 @@ python3 "$SCRATCH/opt/greylocalrag/bin/verify_compiled.py" \
     && echo "unpacked-tree verify_compiled: PASS"
 python3 "$ROOT/scripts/pre_ship_check.py" "$SCRATCH/opt/greylocalrag" \
     && echo "unpacked-tree pre-ship gate: PASS"
-grep -n "7640-7647" "$SCRATCH/opt/greylocalrag/config/port_policy.json" | head -2
+grep -n "7640-7647" "$SCRATCH/opt/greylocalrag/config-data/port_policy.json" | head -2
 rm -rf "$SCRATCH"
 ls -la "$OUT" | grep deb

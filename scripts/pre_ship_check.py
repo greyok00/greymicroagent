@@ -23,13 +23,18 @@ SERVICE_PY_WHITELIST = [
 ]
 REQUIRED_FILES = [
     ("model/greylocalrag.txt", "model card ships as .txt"),
-    ("config/port_policy.json", "fork port policy ships with the payload"),
+    ("config-data/port_policy.json", "fork port policy ships with the payload"),
     ("README.md", "product README"),
     ("THIRD-PARTY-NOTICES.txt", "third-party license notices"),
     ("state/MANIFEST.json", "frozen-tree manifest"),
     ("bin/greylocalrag", "launcher"),
     ("config-data/mcp-registry-template.json",
      "first-launch MCP registry template"),
+    ("config-data/extensions/rag.ts", "shipped TUI extension record"),
+    ("config-data/extensions/loop-guard.ts", "shipped TUI extension record"),
+    ("config-data/extensions/mcp_client.ts", "shipped TUI extension record"),
+    ("config-data/extensions/lib/shared.ts",
+     "shared extension lib rides with the shipped record"),
 ]
 REGISTRY_TMPL_REL = "config-data/mcp-registry-template.json"
 REGISTRY_SERVER_NAMES = ("memory", "knowledge", "greysearch")
@@ -281,7 +286,7 @@ def main(argv):
             findings.append("launcher still points at the dev card name .md")
         if "GREYLOCALRAG_MODEL_PATH" not in ltxt:
             findings.append("launcher does not export GREYLOCALRAG_MODEL_PATH (home-resolved model path)")
-    policy = root / "config" / "port_policy.json"
+    policy = root / "config-data" / "port_policy.json"
     if policy.is_file():
         ptxt = policy.read_text(encoding="utf-8", errors="ignore")
         if "7640-7647" not in ptxt:

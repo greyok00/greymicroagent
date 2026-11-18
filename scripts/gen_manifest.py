@@ -29,7 +29,11 @@ WALK_DIRS = ["mcp",
              # its registry spawns the standalone tree at /home/grey/greypentest,
              # so there is nothing to pin here and pinning would demand a dir
              # that legitimately never exists.)
-             "config/extensions", "bin"]
+             # T21 (2026-11-17): the pinned path is the tracked record in
+             # config-data/extensions; the dev runtime copy behind the config/
+             # symlink is seeded from that record and is runtime-mutatable, so
+             # it is not a frozen pin (same rule as mcp/data/).
+             "config-data/extensions", "bin"]
 
 # GM-21 (2026-11-03): runtime-mutatable data must never be a frozen pin —
 # mcp/data/ is written by the MCP servers at work time (asvs-seed.json was

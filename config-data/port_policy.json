@@ -1,0 +1,34 @@
+{
+  "name": "greylocalrag port policy",
+  "updated": "2026-11-17",
+  "greylocalrag": {
+    "port_block": "7640-7647 — owner 2026-11-17: completely unique ports never used by anything else; verified free against every port_policy.json and every live listener; below the Linux ephemeral range so the kernel never auto-assigns them",
+    "model_port": 7640,
+    "model_binary": "vendor/greylocalrag-server/greylocalrag-server",
+    "lane_port": 7641,
+    "lane_upstream": "http://127.0.0.1:7640",
+    "lane_kind": "slimtoken — client-side in-front filter (brain traffic only)",
+    "brain_base": "http://127.0.0.1:7641/v1 (lane when up; :7640 direct fallback)",
+    "rag_gate_port": 7641,
+    "model_file": "~/.greylocalrag/models/qwen3-vl-2b-abliterated.gguf (symlink to the immutable ollama store blob); classic 2B/4B ggufs stay linked beside it"
+  },
+  "other_families_off_limits": {
+    "11600": "cloud ollama direct — no listener, proxy, or interceptor ever; direct calls only",
+    "11434": "ollama local — dead forever; never resurrect; no loggers",
+    "11435": "cortexagent-cloud + Claude Code shared CLOUD lane (owner 2026-10-25: one lane for all cloud harnesses) — another family's lane",
+    "11436": "cortexagent local slimtoken proxy — another family's lane",
+    "11598": "RETIRED 2026-10-24 (unit disabled; upstream :11599 dead) — dead forever, never resurrect",
+    "11599": "cortexagent local llama-server — the RAW model port itself, NOT a slimtoken lane",
+    "4444-4447, 4454-4457": "greymini's own historic expansion pairs — left behind entirely; this fork no longer claims them",
+    "7080, 7081": "another family's primary pair — left behind entirely"
+  },
+  "shared_local_infra": {
+    "8888": "local SearXNG (self-hosted; greylocalrag's search stack may use it)"
+  },
+  "rules": [
+    "greylocalrag session slots are 2 live triples (7640,7641,7642) and (7643,7644,7645), each slot a model:lane:slimtoken triple inside its own unique 7640-7647 block, with 7646-7647 held as spare expansion for a future third session; every port of the block is owned by this fork only",
+    "port occupied by anything else = plain refusal or documented direct fallback, never a fight",
+    "lanes are client-side in-front filters of their own upstream only — never listeners on foreign ports",
+    "cleanup kills captured pids/process groups only — never name-pattern sweeps (greylocalrag-server is a fork-unique name so foreign kill sweeps cannot touch it)"
+  ]
+}

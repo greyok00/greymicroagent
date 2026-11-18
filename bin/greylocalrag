@@ -310,12 +310,22 @@ PY
 # populates it. The dead old block copied build/src/greysearch_core.ts — a
 # file that no longer exists — so its guard silently skipped forever and the
 # extension could vanish with zero error output.
+# T21 (2026-11-17): the tracked record in config-data/extensions is the
+# primary copy source; on this machine the dev boot therefore applies the
+# record over the runtime (a runtime edit must be copied back to config-data
+# before the next launch). The self-skip guard stays for the dev-symlink
+# fallback, used only when the record dir is absent.
 _ext_src="$HOME/.greylocalrag/agent/extensions"
-if [ -d "$ROOT/config/extensions" ] && [ "$(realpath "$_ext_src" 2>/dev/null)" != "$(realpath "$ROOT/config/extensions")" ]; then
+_ext_record="$ROOT/config-data/extensions"
+_ext_dev="$ROOT/config/extensions"
+if [ -d "$_ext_record" ] && [ "$(realpath "$_ext_src" 2>/dev/null)" != "$(realpath "$_ext_record")" ]; then
   mkdir -p "$_ext_src"
-  cp -a "$ROOT/config/extensions/." "$_ext_src/"
+  cp -a "$_ext_record/." "$_ext_src/"
+elif [ -d "$_ext_dev" ] && [ "$(realpath "$_ext_src" 2>/dev/null)" != "$(realpath "$_ext_dev")" ]; then
+  mkdir -p "$_ext_src"
+  cp -a "$_ext_dev/." "$_ext_src/"
 elif [ ! -d "$_ext_src" ]; then
-  echo "greylocalrag: config/extensions missing — extensions will not load" >&2
+  echo "greylocalrag: extension record missing - extensions will not load" >&2
 fi
 
 _seed_mcp_registry() {
