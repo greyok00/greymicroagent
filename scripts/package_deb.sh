@@ -67,6 +67,8 @@ echo "== staging payload (real files, no dev symlinks) =="
 for d in bin core tools services mcp tui vendor; do
     cp -a "$ROOT/$d" "$TREE/$d"
 done
+# No MCP servers — tools are baked in as skills, not shipped as MCP servers
+find "$TREE/services" -name '*mcp*.py' -delete
 mkdir -p "$TREE/build"
 cp -a "$ROOT/build/src" "$TREE/build/src"
 
