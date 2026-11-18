@@ -444,10 +444,26 @@ def content_route(ctype, data):
     return "unknown", False, f"unroutable ctype={ct or 'none'}"
 
 
+STOPWORDS = (
+    "a", "about", "after", "all", "also", "am", "an", "and", "any", "are",
+    "as", "at", "be", "because", "been", "before", "being", "between", "both",
+    "but", "by", "can", "could", "did", "do", "does", "doing", "done", "down",
+    "during", "each", "for", "from", "had", "has", "have", "having", "he",
+    "her", "here", "him", "his", "how", "i", "if", "in", "into", "is", "it",
+    "its", "just", "me", "might", "must", "my", "no", "nor", "not", "now",
+    "of", "on", "once", "only", "or", "other", "our", "out", "over", "own",
+    "same", "she", "should", "so", "some", "such", "than", "that", "the",
+    "their", "them", "then", "there", "these", "they", "this", "those", "to",
+    "too", "under", "up", "very", "was", "we", "were", "what", "when",
+    "where", "which", "while", "who", "whom", "whose", "why", "will", "with",
+    "would", "you", "your",
+)
+
+
 def search(path, query, k=5, enc=None):
     with DB_LOCK:
         rows = pack_rows(path)
-        terms = [t.lower() for t in query.split() if len(t) > 2]
+        terms = [t.lower() for t in query.split() if len(t) > 2 and t.lower() not in STOPWORDS]
         lex = {}
         for r in rows:
             loc = r.get("p") or r.get("u", "")
