@@ -31,6 +31,15 @@
         "/opt/greylocalrag/services/search_mcp.py"
       ],
       "note": "The fork-owned public searxng lane (tools search/search_health), keyless, no private-tree dependency."
+    },
+    {
+      "name": "browser",
+      "command": "python3",
+      "enabled": true,
+      "args": [
+        "/opt/greylocalrag/services/browser_mcp.py"
+      ],
+      "note": "The fork-owned browser lane (tools browser_open/browser_close/browser_health): patchright headless chromium, one shared instance per server, fresh page per call, reads the page back as title + text + top-20 links; browser_health never launches the browser and page content is never written to disk."
     }
   ],
   "defaults": {

@@ -37,7 +37,7 @@ REQUIRED_FILES = [
      "shared extension lib rides with the shipped record"),
 ]
 REGISTRY_TMPL_REL = "config-data/mcp-registry-template.json"
-REGISTRY_SERVER_NAMES = ("memory", "knowledge", "greysearch")
+REGISTRY_SERVER_NAMES = ("memory", "knowledge", "greysearch", "browser")
 BINARY_MAX = 512 * 1024 * 1024
 CHUNK = 32 * 1024 * 1024
 OVERLAP = 64

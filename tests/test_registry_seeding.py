@@ -11,7 +11,7 @@ TEMPLATE = ROOT / "config-data" / "mcp-registry-template.json"
 sys.path.insert(0, str(ROOT / "scripts"))
 import pre_ship_check as psc
 
-SERVER_NAMES = {"memory", "knowledge", "greysearch"}
+SERVER_NAMES = {"memory", "knowledge", "greysearch", "browser"}
 
 
 def _seeding_block():
