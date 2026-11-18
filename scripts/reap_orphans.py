@@ -97,6 +97,16 @@ def scan():
     return out
 
 
+def is_dead(pid: int) -> bool:
+    # a Zombie still answers kill(pid, 0) but owns nothing (init reaps it):
+    # read the stat state so zombies count as dead.
+    try:
+        state = Path("/proc/%d/stat" % pid).read_text().rsplit(")", 1)[1].split()[0]
+        return state == "Z"
+    except Exception:
+        return True
+
+
 def reap(apply: bool) -> list:
     lines = []
     orphans = []
@@ -120,9 +130,10 @@ def reap(apply: bool) -> list:
         time.sleep(5)
         for pid, _ in orphans:
             try:
-                os.kill(pid, 0)
-                os.kill(pid, signal.SIGKILL)
-                lines.append("  sigkill survivor %d" % pid)
+                if not is_dead(pid) and os.kill(pid, 0) == 0:
+                    os.kill(pid, signal.SIGKILL)
+                    if not is_dead(pid):
+                        lines.append("  sigkill survivor %d" % pid)
             except Exception:
                 pass
     # stale pid files
