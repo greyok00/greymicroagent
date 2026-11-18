@@ -16,8 +16,7 @@ const ROOT =
 	process.env.GREYAGENT_ROOT ?? path.join(os.homedir(), "greymicroagent");
 const BRIDGE = path.join(ROOT, "services", "internal_tools.py");
 
-function callBridge(
-(tool: string, args: Record<string, unknown>, timeoutMs: number): Promise<string> {
+function callBridge(tool: string, args: Record<string, unknown>, timeoutMs: number): Promise<string> {
 	return new Promise((resolve) => {
 		let done = false;
 		const finish = (text: string): void => {
@@ -50,11 +49,7 @@ function callBridge(
 		proc.on("exit", () => {
 			clearTimeout(timer);
 			try {
-				const r = JSON.parse(out) as {
-					ok?: boolean;
-					output?: string;
-					error?: string;
-				};
+				const r = JSON.parse(out) as { ok?: boolean; output?: string; error?: string };
 				if (r && typeof r.output === "string" && r.output.length) {
 					const tail = r.error ? "\n[error] " + r.error : "";
 					finish(r.output + tail);
@@ -86,7 +81,7 @@ const TOOLS: InternalTool[] = [
 		name: "terminal",
 		description:
 			"Run a terminal command: bash on Linux, PowerShell on Windows. args: command (string), timeout (seconds, optional).",
-		timeout: 3_600_000,
+		timeout: 3600000,
 		params: {
 			type: "object",
 			properties: { command: { type: "string" }, timeout: { type: "integer" } },
@@ -97,7 +92,7 @@ const TOOLS: InternalTool[] = [
 		name: "powershell",
 		description:
 			"Run a PowerShell command (pwsh on Linux, powershell.exe on Windows builds). args: command, timeout (seconds, optional).",
-		timeout: 3_600_000,
+		timeout: 3600000,
 		params: {
 			type: "object",
 			properties: { command: { type: "string" }, timeout: { type: "integer" } },
@@ -107,14 +102,14 @@ const TOOLS: InternalTool[] = [
 	{
 		name: "rag_status",
 		description: "List local knowledge bases with record counts.",
-		timeout: 30_000,
+		timeout: 30000,
 		params: OBJ,
 	},
 	{
 		name: "rag_search",
 		description:
 			"Search a local knowledge base offline. args: db (name), query, k (optional, default 5).",
-		timeout: 60_000,
+		timeout: 60000,
 		params: {
 			type: "object",
 			properties: {
@@ -129,7 +124,7 @@ const TOOLS: InternalTool[] = [
 		name: "rag_ingest_text",
 		description:
 			"Ingest text into a knowledge base. CONSENT-GATED: pass confirm=true. args: db, text, confirm.",
-		timeout: 120_000,
+		timeout: 120000,
 		params: {
 			type: "object",
 			properties: {
@@ -144,7 +139,7 @@ const TOOLS: InternalTool[] = [
 		name: "rag_ingest_pdf",
 		description:
 			"Ingest a PDF into a knowledge base. CONSENT-GATED: pass confirm=true. args: db, path, confirm.",
-		timeout: 300_000,
+		timeout: 300000,
 		params: {
 			type: "object",
 			properties: {
@@ -159,7 +154,7 @@ const TOOLS: InternalTool[] = [
 		name: "rag_ingest_urls",
 		description:
 			"Ingest web pages into a knowledge base. CONSENT-GATED: pass confirm=true. args: db, urls (string list), confirm.",
-		timeout: 300_000,
+		timeout: 300000,
 		params: {
 			type: "object",
 			properties: {
@@ -174,7 +169,7 @@ const TOOLS: InternalTool[] = [
 		name: "rag_remove",
 		description:
 			"Two-step removal: the first call previews matches, the confirmed repeat deletes. args: db, match, confirm.",
-		timeout: 60_000,
+		timeout: 60000,
 		params: {
 			type: "object",
 			properties: {
@@ -188,7 +183,7 @@ const TOOLS: InternalTool[] = [
 	{
 		name: "rag_list_sources",
 		description: "List sources recorded in a knowledge base. args: db.",
-		timeout: 30_000,
+		timeout: 30000,
 		params: {
 			type: "object",
 			properties: { db: { type: "string" } },
@@ -199,7 +194,7 @@ const TOOLS: InternalTool[] = [
 		name: "search",
 		description:
 			"Quick web search over the local search lanes. args: query, k (optional).",
-		timeout: 90_000,
+		timeout: 90000,
 		params: {
 			type: "object",
 			properties: { query: { type: "string" }, k: { type: "integer" } },
@@ -209,14 +204,14 @@ const TOOLS: InternalTool[] = [
 	{
 		name: "search_health",
 		description: "Check the quick-search lane health.",
-		timeout: 30_000,
+		timeout: 30000,
 		params: OBJ,
 	},
 	{
 		name: "greysearch",
 		description:
 			"Deep web research: multi-lane search plus full-page scraping; call ONCE for a research task rather than scraping pages yourself. args: query, max_results (optional).",
-		timeout: 420_000,
+		timeout: 420000,
 		params: {
 			type: "object",
 			properties: {
@@ -231,14 +226,14 @@ const TOOLS: InternalTool[] = [
 	{
 		name: "greysearch_health",
 		description: "Check the deep-research lane health.",
-		timeout: 30_000,
+		timeout: 30000,
 		params: OBJ,
 	},
 	{
 		name: "browser_open",
 		description:
 			"Read ONE web page in a real headless chromium: {title, text, url_final, links, status}. http(s) urls only. args: url.",
-		timeout: 180_000,
+		timeout: 180000,
 		params: {
 			type: "object",
 			properties: { url: { type: "string" } },
@@ -248,13 +243,13 @@ const TOOLS: InternalTool[] = [
 	{
 		name: "browser_close",
 		description: "Free the shared browser opened by browser_open. Idempotent.",
-		timeout: 30_000,
+		timeout: 30000,
 		params: OBJ,
 	},
 	{
 		name: "memory_append",
 		description: "Save memory. args: content (string).",
-		timeout: 15_000,
+		timeout: 15000,
 		params: {
 			type: "object",
 			properties: { content: { type: "string" } },
@@ -264,7 +259,7 @@ const TOOLS: InternalTool[] = [
 	{
 		name: "memory_search",
 		description: "Search memory. args: query (string).",
-		timeout: 15_000,
+		timeout: 15000,
 		params: {
 			type: "object",
 			properties: { query: { type: "string" } },
@@ -274,20 +269,20 @@ const TOOLS: InternalTool[] = [
 	{
 		name: "memory_read",
 		description: "Recent memory entries.",
-		timeout: 15_000,
+		timeout: 15000,
 		params: OBJ,
 	},
 	{
 		name: "skills_list",
 		description: "List the local skill library (methodology playbooks on disk).",
-		timeout: 15_000,
+		timeout: 15000,
 		params: OBJ,
 	},
 	{
 		name: "skill",
 		description:
 			"Read one local skill playbook in full. args: name (from skills_list).",
-		timeout: 15_000,
+		timeout: 15000,
 		params: {
 			type: "object",
 			properties: { name: { type: "string" } },
@@ -298,14 +293,13 @@ const TOOLS: InternalTool[] = [
 
 export default function internalTools(pi: ExtensionAPI): void {
 	for (const t of TOOLS) {
-		pi.registerTool({
+		const spec: Record<string, unknown> = {
 			name: t.name,
 			label: t.name,
 			description: t.description,
-			...(t.snippet ? { promptSnippet: t.snippet } : {}),
 			parameters: t.params as never,
-			prepareArguments: (args) => args as never,
-			execute: async (_id, params) => {
+			prepareArguments: (args: unknown) => args as never,
+			execute: async (_id: unknown, params: unknown) => {
 				const text = await callBridge(
 					t.name,
 					(params ?? {}) as Record<string, unknown>,
@@ -316,6 +310,10 @@ export default function internalTools(pi: ExtensionAPI): void {
 					details: { tool: t.name },
 				};
 			},
-		});
+		};
+		if (t.snippet) {
+			spec.promptSnippet = t.snippet;
+		}
+		pi.registerTool(spec as never);
 	}
 }

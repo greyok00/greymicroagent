@@ -81,7 +81,7 @@ export default function modelsExtension(pi: ExtensionAPI): void {
 	})();
 
 	pi.registerProvider("greymicroagent-local", {
-		name: `Grey Local (:${LANE_PORT} lane)`,
+		name: `greymicroagent (:${LANE_PORT} lane)`,
 		baseUrl: process.env.GREYAGENT_LOCAL_BASE || `http://127.0.0.1:${LANE_PORT}/v1`,
 		apiKey: "none",
 		api: "openai-completions",
