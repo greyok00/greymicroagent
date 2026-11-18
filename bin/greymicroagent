@@ -116,6 +116,11 @@ if ! python3 "$ROOT/bin/verify_compiled.py"; then
   exit 1
 fi
 
+# ORPHAN GUARD (owner 2026-11-18: orphans outlived windows and served stale
+# code + runaway loops to every relaunch): reap family leftovers with no live
+# launcher above them, silently, before this boot builds anything.
+python3 "$ROOT/scripts/reap_orphans.py" --apply >> "$ROOT/state/logs/reaper.log" 2>&1
+
 export GREYAGENT_OFFLINE=1
 export GREYAGENT_SKIP_VERSION_CHECK=1
 export CORTEX_OFFLINE=1
