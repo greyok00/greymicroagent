@@ -73,6 +73,36 @@ NGL = int(os.environ.get("GREYAGENT_NGL", "-1"))
 # OpenAI response came back with EMPTY content (finish_reason "length"), which
 # the TUI renders as no message at all. Thinking off is the correct default for
 # this 2B; GREYAGENT_THINKING=on restores it.
+def physical_cores_default() -> int:
+    # Owner 2026-11-18: "increase to the device limit but don't set a specific
+    # number, it may change per device." Count PHYSICAL cores (hyperthread
+    # siblings decode worse than they count, 2026-11-18 sweep: 8=25.8 tok/s,
+    # 14=28.3), fall back to the OS-granted CPU count, never exceed it.
+    try:
+        cores = set()
+        pkg = None
+        cid = None
+        for line in open("/proc/cpuinfo"):
+            if line.startswith("physical id"):
+                pkg = int(line.split(":")[1])
+            elif line.startswith("core id"):
+                cid = int(line.split(":")[1])
+                if pkg is not None:
+                    cores.add((pkg, cid))
+                    pkg = cid = None
+        n = len(cores)
+    except Exception:
+        n = 0
+    try:
+        logical = len(os.sched_getaffinity(0))
+    except Exception:
+        logical = os.cpu_count() or 4
+    if not (1 <= n <= logical):
+        n = max(1, logical)
+    return max(1, min(n, logical))
+
+
+THREADS = int(os.environ.get("GREYMICROAGENT_THREADS", "") or physical_cores_default())
 THINKING = os.environ.get("GREYAGENT_THINKING", "off").strip().lower()
 # GM-23 (2026-11-03): ONE sampling place — these server defaults only fire for
 # requests that carry no sampling params (lane probes, doctor). The TUI's
@@ -168,10 +198,7 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--temp", str(TEMP),
         "--top-p", str(TOP_P),
         "--top-k", str(TOP_K),
-        # 2026-11-18 CPU sweep (prefill ~4s, decode measured clean with reasoning
-# off at the server): 14 threads = 28.3 tok/s vs 8 = 25.8, 6/12 no better;
-# 14 physical cores (6P+8E) is the best point on this chip.
-        "--threads", os.environ.get("GREYMICROAGENT_THREADS", "14"),
+                "--threads", str(THREADS),
         "--flash-attn", FA,
         "--parallel", os.environ.get("GREYAGENT_PARALLEL", "1"),
         # 2026-11-18 (owner: minutes of silent prefill): the masked family knob
