@@ -171,7 +171,10 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--threads", os.environ.get("GREYMICROAGENT_THREADS", "8"),
         "--flash-attn", FA,
         "--parallel", os.environ.get("GREYAGENT_PARALLEL", "1"),
-        "--ubatch-size", os.environ.get("GREYAGENT_UBATCH", "128"),
+        # 2026-11-18 (owner: minutes of silent prefill): the masked family knob
+# left this at 128, so every TUI prompt prefilled ~50 sequential CPU
+# micro-batches. 4096 is the CPU-safe batch; GREYAGENT_UBATCH still wins.
+        "--ubatch-size", os.environ.get("GREYAGENT_UBATCH", "4096"),
         "--cache-type-k", os.environ.get("GREYAGENT_CTYPE", "q4_0"),
         "--cache-type-v", os.environ.get("GREYAGENT_CTYPE", "q4_0"),
         "--metrics",

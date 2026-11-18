@@ -85,6 +85,9 @@ unset GREYAGENT_CTX GREYAGENT_NGL GREYAGENT_UBATCH GREYAGENT_CTYPE \
 export GREYAGENT_CODING_AGENT_DIR="${GREYAGENT_CODING_AGENT_DIR:-$HOME/.greymicroagent/agent}"
 # Owner 2026-11-16: this fork runs cold — 0.0-0.2 band, baked at 0.1. The RAG
 # gate clamps every request into the band regardless of what arrives.
+# PREFILL SPEED (owner 2026-11-18: TUI first token took minutes at
+# ubatch=128 on CPU): explicit tunable, 4096 = CPU-safe fast batch.
+export GREYAGENT_UBATCH="${GREYAGENT_UBATCH:-4096}"
 export GREYAGENT_TEMP="${GREYAGENT_TEMP:-0.1}"
 export GREYAGENT_TOP_P="${GREYAGENT_TOP_P:-0.95}"
 mkdir -p "$GREYAGENT_CODING_AGENT_DIR/sessions" "$GREYAGENT_CODING_AGENT_DIR/extensions"
@@ -334,5 +337,8 @@ elif [ ! -d "$_ext_src" ]; then
 fi
 
 
-node "$CLI" --append-system-prompt "$ROOT/model/greymicroagent.md" "$@"
+# System prompt = the card, full stop (2026-11-18: the harness built-in
+# coding prompt rode along on every turn and fought the RAG product
+# identity at CPU prefill cost; the card now replaces it).
+node "$CLI" --system-prompt "$(cat "$ROOT/model/greymicroagent.md")" "$@"
 printf '%s\n' "greymicroagent session ended"
