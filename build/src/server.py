@@ -168,7 +168,10 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--temp", str(TEMP),
         "--top-p", str(TOP_P),
         "--top-k", str(TOP_K),
-        "--threads", os.environ.get("GREYMICROAGENT_THREADS", "8"),
+        # 2026-11-18 CPU sweep (prefill ~4s, decode measured clean with reasoning
+# off at the server): 14 threads = 28.3 tok/s vs 8 = 25.8, 6/12 no better;
+# 14 physical cores (6P+8E) is the best point on this chip.
+        "--threads", os.environ.get("GREYMICROAGENT_THREADS", "14"),
         "--flash-attn", FA,
         "--parallel", os.environ.get("GREYAGENT_PARALLEL", "1"),
         # 2026-11-18 (owner: minutes of silent prefill): the masked family knob
