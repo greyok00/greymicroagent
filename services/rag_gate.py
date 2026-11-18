@@ -130,20 +130,26 @@ class SseStripper:
         return changed
 
     def _line(self, raw, final=False):
+        # 2026-11-18 (owner red-error cascade): an UNCHANGED chunk used to be
+        # returned bare, dropping the "data: " prefix and the newline, so two
+        # SSE documents fused on the wire and the client died with
+        # "non-whitespace after JSON at position 48". SSE framing is restored
+        # on every path: changed or not, one framed line out per line in.
+        framed_tail = b"\n"
         try:
             data = json.loads(raw.decode("utf-8", "ignore"))
         except Exception:
-            return raw
+            return b"data: " + raw + framed_tail
         if not isinstance(data, dict):
-            return raw
+            return b"data: " + raw + framed_tail
         changed = False
         for ch in data.get("choices") or []:
             d = ch.get("delta") if isinstance(ch, dict) else None
             if isinstance(d, dict) and self._delta(d, final):
                 changed = True
         if not changed:
-            return raw
-        return b"data: " + json.dumps(data, ensure_ascii=False).encode("utf-8") + b"\n"
+            return b"data: " + raw + framed_tail
+        return b"data: " + json.dumps(data, ensure_ascii=False).encode("utf-8") + framed_tail
 
     def feed(self, chunk):
         if not self.engaged:
