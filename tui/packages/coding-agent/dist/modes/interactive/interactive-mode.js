@@ -2258,14 +2258,16 @@ export class InteractiveMode {
             text = text.trim();
             if (!text)
                 return;
-            const dir = process.env.CORTEXAGENT_MEMORY_DIR ?? path.join(os.homedir(), ".greymini", "memory");
+            const dir = process.env.CORTEXAGENT_MEMORY_DIR ?? path.join(os.homedir(), ".greymicroagent", "memory");
             fs.mkdirSync(path.join(dir, "hot"), { recursive: true });
             const line = JSON.stringify({
                 role: "user",
                 content: text.slice(0, 2000),
                 timestamp: new Date().toISOString().slice(0, 19).replace("T", " "),
             });
-            fs.appendFileSync(path.join(dir, "hot", "greymini.jsonl"), `${line}\n`);
+            // GM-17: the mini server reads hot/greymicroagent.jsonl — name it that,
+            // not the parent fork's greyagent.jsonl (dist already does)
+            fs.appendFileSync(path.join(dir, "hot", "greymicroagent.jsonl"), `${line}\n`);
         }
         catch {
             /* best-effort — memory writes must never break the chat */

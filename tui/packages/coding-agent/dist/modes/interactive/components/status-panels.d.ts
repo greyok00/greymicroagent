@@ -55,7 +55,7 @@ declare function ledgerAgeMs(t: {
  * What the footer's ⚡ capsule should say — the panel's number, or an honest
  * "off".
  *
- * The footer used to read `~/.greyagent/minify_stats.json` on its own, a
+ * The footer used to read `~/.greymicroagent/minify_stats.json` on its own, a
  * different writer from the panel's, so one screen showed two compression
  * figures at once ("0.0%" beside "75.5%", owner report 2026-09-27). Both now
  * come from this one reader, and neither prints a percentage that no live

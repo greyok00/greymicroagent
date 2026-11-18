@@ -309,10 +309,13 @@ async function runLoop(initialContext, newMessages, initialConfig, signal, emit,
     let argsStreakTriggered = false;
     const MAX_ARGS_STREAK_REPEATS = Number.MAX_SAFE_INTEGER; // removed (owner order 2026-10-31)
     // Session blocklist registration on any exit that ended a run mid-loop:
+    // hard guard stop, or a user abort. Guards reset per run; the blocklist
+    // does not — that is the entire point (2026-10-02 incident).
+    // Session blocklist registration on any exit that ended a run mid-loop:
     // REMOVED 2026-10-25 (owner order — "remove the loop guard"). This was the
     // mechanism that turned one aborted repeat into a whole-session ban on an
     // exact call (the paste showed it looping on its own blocks). The hook
-    // stays as a no-op so its two call sites keep their shape.
+    // stays as a no-op so its call sites keep their shape.
     const registerSessionBlocksOnExit = () => {
         return;
     };
