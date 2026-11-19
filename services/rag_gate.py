@@ -437,9 +437,6 @@ class Gate(BaseHTTPRequestHandler):
             whole = None
             if completion_post and "text/event-stream" not in ctype:
                 whole = r.read()
-                stripped = _strip_json_reply(whole)
-                if stripped is not None:
-                    whole = stripped
             self.send_response_only(r.status)
             skip = {"connection", "keep-alive", "transfer-encoding", "content-length"}
             for k, v in r.headers.items():
@@ -458,13 +455,17 @@ class Gate(BaseHTTPRequestHandler):
             if whole is not None:
                 self.wfile.write(whole)
             elif completion_post and "text/event-stream" in ctype:
-                sse = SseStripper()
+                # 2026-11-18 owner order: THIS fork never rewrites its response
+                # stream (the only rewriter in the family, and the only one
+                # that fused). Frames pass through byte-for-byte; grounding,
+                # temperature and max_tokens stay REQUEST-side edits above.
+                # llama (booted with --reasoning off) owns reason separation;
+                # the SDK decoders own their own robustness.
                 while True:
                     b = r.read(8192)
                     if not b:
                         break
-                    self.wfile.write(sse.feed(b))
-                self.wfile.write(sse.flush())
+                    self.wfile.write(b)
             else:
                 while True:
                     b = r.read(8192)
