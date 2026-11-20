@@ -1,0 +1,35 @@
+{
+  "name": "greymicroagent port policy",
+  "updated": "2026-11-20",
+  "greymicroagent": {
+    "port_block": "7640-7647: a dedicated range reserved for this product; verified free against other port policies and live listeners; below the Linux ephemeral range so the kernel never assigns it automatically",
+    "model_port": 7640,
+    "model_binary": "vendor/greymicroagent-server/greymicroagent-server",
+    "lane_port": 7642,
+    "lane_upstream": "http://127.0.0.1:7640",
+    "lane_kind": "slimtoken request filter",
+    "rag_gate_port": 7641,
+    "rag_gate_upstream": "http://127.0.0.1:7642",
+    "brain_base": "http://127.0.0.1:7641/v1 (gate when up; :7640 direct fallback)",
+    "model_file": "~/.greymicroagent/models/qwen3.5-2b-abliterated.gguf (Qwen3.5 2B text model; size and sha256 pinned)"
+  },
+  "other_families_off_limits": {
+    "11600": "cloud model service: direct calls only; no proxy or interceptor",
+    "11434": "retired local model port; do not reuse",
+    "11435": "another application's cloud lane",
+    "11436": "another application's local proxy lane",
+    "11598": "retired port; do not reuse",
+    "11599": "another application's raw model port",
+    "4444-4447, 4454-4457": "historic ports from an earlier project; not claimed here",
+    "7080, 7081": "another application's primary pair"
+  },
+  "shared_local_infra": {
+    "8888": "local SearXNG search service (optional; used by the research stack)"
+  },
+  "rules": [
+    "greymicroagent uses two live triples, (7640,7641,7642) and (7643,7644,7645), each a model:gate:slimtoken triple inside the dedicated 7640-7647 block, with 7646-7647 reserved for a future third session",
+    "a port occupied by anything else means a plain refusal or a documented direct fallback, never a fight",
+    "lanes filter their own upstream traffic only and never listen on foreign ports",
+    "cleanup stops only processes started by this session; it never uses name-pattern sweeps"
+  ]
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="greymicroagent">
+  <rect width="512" height="512" rx="112" fill="#0d1117"/>
+  <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="#30363d" stroke-width="4"/>
+  <g stroke="#6e7681" stroke-width="14" stroke-linecap="round">
+    <path d="M120 176H64"/>
+    <path d="M120 256H56"/>
+    <path d="M120 336H64"/>
+    <path d="M392 176h56"/>
+    <path d="M392 256h56"/>
+    <path d="M392 336h56"/>
+    <path d="M176 120V64"/>
+    <path d="M256 120V56"/>
+    <path d="M336 120V64"/>
+    <path d="M176 392v56"/>
+    <path d="M256 392v56"/>
+    <path d="M336 392v56"/>
+  </g>
+  <rect x="120" y="120" width="272" height="272" rx="48" fill="#c9d1d9"/>
+  <rect x="152" y="152" width="208" height="208" rx="28" fill="#0d1117"/>
+  <path d="M204 216l40 40-40 40" fill="none" stroke="#e6edf3" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M272 296h52" stroke="#e6edf3" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="392" cy="392" r="42" fill="#0d1117"/>
+  <circle cx="392" cy="392" r="24" fill="#3fb950"/>
+</svg>

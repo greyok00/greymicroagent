@@ -1,0 +1,236 @@
+#!/bin/bash
+
+set -uo pipefail
+
+ROOT="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
+CLI="$ROOT/tui/packages/coding-agent/dist/cli.js"
+_ports_free() { ! ss -ltn 2>/dev/null | grep -qE ":$1 |:$2 |:$3 "; }
+_models=(7640 7643 7646)
+_lanes=(7641 7644 7647)
+_slims=(7642 7645)
+MODEL_PORT=""; LANE_PORT=""; SLIM_PORT=""
+for _k in "${!_models[@]}"; do
+  _mp="${_models[$_k]}"; _gp="${_lanes[$_k]}"; _sp="${_slims[$_k]:-}"
+  [ -z "$_sp" ] && continue
+  if _ports_free "$_mp" "$_gp" "$_sp"; then
+    MODEL_PORT="$_mp"; LANE_PORT="$_gp"; SLIM_PORT="$_sp"; break
+  fi
+done
+if [ -z "$MODEL_PORT" ]; then
+  echo "greymicroagent: all sessions in use (7640-7647 block) - close one before opening another" >&2
+  echo "greymicroagent: the spare pair 7646-7647 expands the block for a future third session" >&2
+  exit 1
+fi
+export GREYAGENT_MODEL_PORT="$MODEL_PORT"
+export GREYAGENT_LANE_PORT="$LANE_PORT"
+export RAG_GATE_PORT="$LANE_PORT"
+export GREYAGENT_SLIM_PORT="$SLIM_PORT"
+export GREYMICROAGENT_UPSTREAM="http://127.0.0.1:${SLIM_PORT}"
+export GREYMICROAGENT_DBS="commands,general"
+export GREYMICROAGENT_DBS_ROOT="$HOME/.greymicroagent/dbs"
+export GREYMICROAGENT_RAG_FLOOR="${GREYMICROAGENT_RAG_FLOOR:-7.5}"
+mkdir -p "$GREYMICROAGENT_DBS_ROOT"
+if [ -f "$ROOT/model/qwen3.5-2b-abliterated.gguf" ]; then
+  export GREYMICROAGENT_MODEL_PATH="${GREYMICROAGENT_MODEL_PATH:-$ROOT/model/qwen3.5-2b-abliterated.gguf}"
+else
+  export GREYMICROAGENT_MODEL_PATH="${GREYMICROAGENT_MODEL_PATH:-$HOME/.greymicroagent/models/qwen3.5-2b-abliterated.gguf}"
+fi
+export GREYAGENT_MODEL_HEALTH_URL="http://127.0.0.1:${MODEL_PORT}/health"
+cd "$ROOT"
+
+export GREYAGENT_HOME="$ROOT"
+export GREYAGENT_ROOT="$ROOT"
+unset GREYAGENT_CTX GREYAGENT_NGL GREYAGENT_UBATCH GREYAGENT_CTYPE \
+      GREYAGENT_THINKING GREYAGENT_TEMP GREYAGENT_TOP_P \
+      GREYAGENT_LOCAL_BASE GREYAGENT_MEMORY_DIR GREYAGENT_FA \
+      GREYAGENT_PLATFORM 2>/dev/null || true
+export GREYAGENT_CODING_AGENT_DIR="${GREYAGENT_CODING_AGENT_DIR:-$HOME/.greymicroagent/agent}"
+export GREYAGENT_UBATCH="${GREYAGENT_UBATCH:-4096}"
+export GREYAGENT_TEMP="${GREYAGENT_TEMP:-0.1}"
+export GREYAGENT_TOP_P="${GREYAGENT_TOP_P:-0.95}"
+mkdir -p "$GREYAGENT_CODING_AGENT_DIR/sessions" "$GREYAGENT_CODING_AGENT_DIR/extensions"
+mkdir -p "$ROOT/state/audit" "$ROOT/state/logs"
+mkdir -p "$HOME/.greymicroagent/memory/hot" "$HOME/.greymicroagent/state/scheduler" "$HOME/.greymicroagent/mcp-status"
+
+unset CLAUDE_CONFIG_DIR CLAUDE_MODEL_NAME CLAUDE_CODE_SUBAGENT_MODEL \
+      CLAUDE_CODE_MAX_CONTEXT_TOKENS CLAUDE_CODE_AUTO_COMPACT_WINDOW \
+      CLAUDE_CODE_MAX_OUTPUT_TOKENS CLAUDE_CODE_DISABLE_UPDATE \
+      CLAUDE_CODE_DISABLE_TERMINAL_TITLE CLAUDE_CODE_USE_BEDROCK \
+      CLAUDE_CODE_USE_VERTEX CLAUDE_CODE_ENTRYPOINT CLAUDECODE 2>/dev/null || true
+unset ANTHROPIC_API_KEY ANTHROPIC_BASE_URL ANTHROPIC_AUTH_TOKEN ANTHROPIC_MODEL 2>/dev/null || true
+unset PI_API_KEY PI_BASE_URL PI_DEV_API_KEY 2>/dev/null || true
+unset CORTEXAGENT_CONFIG_DIR CORTEXAGENT_STATE_DIR CORTEXAGENT_MEMORY_DIR \
+      CORTEXAGENT_MEMORY_SOCKET CORTEXAGENT_MCP_CONFIG CORTEXAGENT_REPO \
+      CORTEXAGENT_PLATFORM CORTEXAGENT_CLOUD_LANE CORTEXAGENT_OLLAMA_DIRECT \
+      CORTEXAGENT_LOCAL_BASE CORTEXAGENT_MODEL CORTEXAGENT_MODEL_NAME \
+      CORTEXAGENT_MCP_SERVERS CORTEXAGENT_DISABLED_TOOLS CORTEXAGENT_SKILLS_DIR \
+      CORTEXAGENT_CONTROL_SOCK 2>/dev/null || true
+unset OLLAMA_HOST LLAMA_BASE_URL 2>/dev/null || true
+
+if ! python3 "$ROOT/bin/verify_compiled.py"; then
+  echo "greymicroagent: frozen-tree check FAILED - TUI not started (see lines above)" >&2
+  exit 1
+fi
+
+python3 "$ROOT/scripts/reap_orphans.py" --apply >> "$ROOT/state/logs/reaper.log" 2>&1
+python3 "$ROOT/scripts/reap_hung_ports.py" --product --apply >> "$ROOT/state/logs/reaper.log" 2>&1
+
+export GREYAGENT_OFFLINE=1
+export GREYAGENT_SKIP_VERSION_CHECK=1
+export CORTEX_OFFLINE=1
+export CORTEX_SKIP_VERSION_CHECK=1
+export CORTEX_TELEMETRY=0
+export CORTEXAGENT_MEMORY_DIR="$HOME/.greymicroagent/memory"
+export CORTEXAGENT_STATE_DIR="$HOME/.greymicroagent/state"
+export CORTEXAGENT_STATUS_DIR="$HOME/.greymicroagent/mcp-status"
+export GREYAGENT_PLATFORM="greymicroagent"
+export GREYAGENT_MEMORY_DIR="$HOME/.greymicroagent/memory"
+export GREYAGENT_LOCAL_BASE="${GREYAGENT_LOCAL_BASE:-http://127.0.0.1:${LANE_PORT}/v1}"
+
+MODEL_PID=""
+SLIM_PID=""
+GATE_PID=""
+_up() { curl -s --max-time 2 "http://127.0.0.1:${MODEL_PORT}/health" 2>/dev/null | grep -q '"status":"ok"'; }
+
+_slim_up() { curl -s --max-time 2 "http://127.0.0.1:${SLIM_PORT}/metrics" >/dev/null 2>&1; }
+_gate_up() { curl -s --max-time 2 "http://127.0.0.1:${LANE_PORT}/health" 2>/dev/null | grep -q '"status":"ok"'; }
+_lane_env() {
+  export SLIMTOKEN_MODE="code"
+  export SLIMTOKEN_ARTIFACT_DIR="$ROOT/state/slimtoken-artifacts"
+  export SLIMTOKEN_DISTILL_MAX_CHARS=24000
+  export SLIMTOKEN_MINIFY=1 SLIMTOKEN_MINIFY_MESSAGES=1
+  export SLIMTOKEN_MINIFY_DEDUP=1 SLIMTOKEN_MINIFY_DISTILL=1
+  export SLIMTOKEN_MINIFY_TOOLS=1 SLIMTOKEN_MINIFY_SYSTEM=1
+  export SLIMTOKEN_KEEP_LAST=4 SLIMTOKEN_MINIFY_BUDGET=1000000
+  export SLIMTOKEN_STATS_FILE="$HOME/.local/state/slimtoken/stats-greymicroagent.json"
+  mkdir -p "$HOME/.local/state/slimtoken"
+}
+_gate_direct() { export GREYAGENT_LOCAL_BASE="http://127.0.0.1:${SLIM_PORT}/v1"; }
+_lane_direct() { export GREYAGENT_LOCAL_BASE="http://127.0.0.1:${MODEL_PORT}/v1"; }
+
+if ! _slim_up; then
+  if ss -ltn 2>/dev/null | grep -q ":${SLIM_PORT} "; then
+    echo "greymicroagent: :${SLIM_PORT} occupied by a foreign listener - slimtoken skipped, brain falls back to direct :${MODEL_PORT}" >&2
+    _lane_direct
+  else
+    _lane_env
+    python3 "$ROOT/services/child_wrap.py" "$HOME/.local/bin/slimtoken" serve --upstream "http://127.0.0.1:${MODEL_PORT}" --port "$SLIM_PORT" > "$ROOT/state/logs/lane.log" 2>&1 &  # slot-shared start log; runtime artifacts are env-isolated
+    SLIM_PID=$!
+    for _ in $(seq 1 10); do _slim_up && break; sleep 1; done
+    if _slim_up; then
+      echo "greymicroagent: slimtoken :${SLIM_PORT} up (-> model :${MODEL_PORT})"
+    elif [ -n "$(kill -0 "${SLIM_PID}" 2>/dev/null && echo yes)" ]; then
+      echo "greymicroagent: slimtoken did not come up on :${SLIM_PORT} - brain falls back to direct :${MODEL_PORT}" >&2
+      _lane_direct
+    else
+      echo "greymicroagent: slimtoken failed to start - brain falls back to direct :${MODEL_PORT}" >&2
+      _lane_direct
+    fi
+  fi
+else
+  : # slimtoken already answering (left over or manually started) - use it
+fi
+
+if _slim_up && ! _gate_up; then
+  if ss -ltn 2>/dev/null | grep -q ":${LANE_PORT} "; then
+    echo "greymicroagent: :${LANE_PORT} occupied by a foreign listener - gate skipped, brain on slimtoken :${SLIM_PORT} (grounding off)" >&2
+    _gate_direct
+  else
+    python3 "$ROOT/services/child_wrap.py" python3 "$ROOT/services/rag_gate.py" > "$ROOT/state/logs/gate-${RAG_GATE_PORT}.log" 2>&1 &
+    GATE_PID=$!
+    for _ in $(seq 1 10); do _gate_up && break; sleep 1; done
+    if _gate_up; then
+      echo "greymicroagent: gate :${LANE_PORT} up (RAG grounding -> slimtoken :${SLIM_PORT} -> model :${MODEL_PORT})"
+    elif [ -n "$(kill -0 "${GATE_PID}" 2>/dev/null && echo yes)" ]; then
+      echo "greymicroagent: gate did not come up on :${LANE_PORT} - brain on slimtoken :${SLIM_PORT}, grounding off" >&2
+      _gate_direct
+    else
+      echo "greymicroagent: gate failed to start - brain on slimtoken :${SLIM_PORT}, grounding off" >&2
+      _gate_direct
+    fi
+  fi
+fi
+export GREYAGENT_LOCAL_BASE="${GREYAGENT_LOCAL_BASE:-http://127.0.0.1:${MODEL_PORT}/v1}"
+
+cleanup() {
+  trap '' INT TERM
+  [ -n "$(jobs -p)" ] && jobs -p | xargs -r kill 2>/dev/null
+  if [ -n "${MODEL_PID:-}" ] || [ -n "${SLIM_PID:-}" ] || [ -n "${GATE_PID:-}" ]; then
+    SV_PID="$(cat "$ROOT/state/model-server-${MODEL_PORT}.pid" 2>/dev/null || true)"
+    if [ -n "$SV_PID" ] && kill -0 "$SV_PID" 2>/dev/null; then
+      kill "$SV_PID" 2>/dev/null
+      for _ in $(seq 1 15); do kill -0 "$SV_PID" 2>/dev/null || break; sleep 1; done
+      kill -9 "$SV_PID" 2>/dev/null || true
+    fi
+    [ -n "${SLIM_PID:-}" ] && kill "$SLIM_PID" 2>/dev/null
+    [ -n "${GATE_PID:-}" ] && kill "$GATE_PID" 2>/dev/null
+    rm -f "$ROOT/state/model-server-${MODEL_PORT}.pid"
+  fi
+  printf '\033[?25h'
+}
+trap cleanup EXIT
+trap 'cleanup; exit 130' INT
+trap 'cleanup; exit 143' TERM
+trap 'cleanup; exit 129' HUP
+
+GREY_MODEL_LINE="MODEL: qwen3.5-2b-abliterated - loading on :${MODEL_PORT}..."
+GREYAGENT_MODEL_UP=0
+if ! _up; then
+  export GREYAGENT_NGL="${GREYAGENT_NGL:-0}"
+  python3 - "$ROOT" <<'PY' >> "$ROOT/state/logs/model-boot-${MODEL_PORT}.log" 2>&1 &
+import sys
+sys.path.insert(0, sys.argv[1] + "/build/src")
+import server
+d = server.start_model(timeout=600)
+pid = int(d.get("pid") or 0)
+print(str(pid or ""))
+if not d.get("ok"):
+    sys.stderr.write("model boot failed: %s\n" % d.get("error", "unknown"))
+    sys.exit(0)
+import os, time
+while True:
+    try:
+        os.kill(pid, 0)
+    except (ProcessLookupError, PermissionError):
+        break  # server died on its own - exit quietly
+    time.sleep(5)
+PY
+    MODEL_PID=$!
+    echo "greymicroagent: model loading in background on :${MODEL_PORT}"
+fi
+if _up; then
+  GREY_MODEL_LINE="MODEL: qwen3.5-2b-abliterated  (up :${MODEL_PORT})"
+  GREYAGENT_MODEL_UP=1
+fi
+export GREYAGENT_MODEL_UP
+
+printf '\033]0;GreyMicroagent\007'
+python3 - "$ROOT" "$GREY_MODEL_LINE" <<'PY' 2>/dev/null || true
+import sys, time
+sys.path.insert(0, "%s/build/src" % sys.argv[1])
+import splash
+for ln in splash.splash_lines():
+    sys.stdout.write(ln + "\033[0m\033[K\n")
+sys.stdout.write("\033[38;5;240m" + sys.argv[2] + "\033[0m\033[K\n")
+sys.stdout.write("\033[?25l")
+sys.stdout.flush()
+time.sleep(0.4)
+sys.stdout.write("\033[?25h")
+PY
+
+_ext_src="$HOME/.greymicroagent/agent/extensions"
+_ext_record="$ROOT/config-data/extensions"
+_ext_dev="$ROOT/config/extensions"
+if [ -d "$_ext_record" ] && [ "$(realpath "$_ext_src" 2>/dev/null)" != "$(realpath "$_ext_record")" ]; then
+  mkdir -p "$_ext_src"
+  cp -a "$_ext_record/." "$_ext_src/"
+elif [ -d "$_ext_dev" ] && [ "$(realpath "$_ext_src" 2>/dev/null)" != "$(realpath "$_ext_dev")" ]; then
+  mkdir -p "$_ext_src"
+  cp -a "$_ext_dev/." "$_ext_src/"
+elif [ ! -d "$_ext_src" ]; then
+  echo "greymicroagent: extension record missing - extensions will not load" >&2
+fi
+
+
+node "$CLI" --no-skills --no-builtin-tools --system-prompt "$(cat "$ROOT/model/greymicroagent.txt")" "$@"
+printf '%s\n' "greymicroagent session ended"

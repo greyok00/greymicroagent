@@ -1,0 +1,10 @@
+patchright
+pymupdf
+pypdf
+requests
+beautifulsoup4
+lxml
+lxml_html_clean
+numpy
+onnxruntime
+tokenizers
