@@ -1,0 +1,10 @@
+{
+ "fail": [],
+ "filter_strings": [
+  "core/greyhound/assets/kit-source/theme.css:353: apple",
+  "core/greyhound/research/engine-status.json:1: apple",
+  "core/greyhound/research/engine-status.json:1: apple",
+  "core/greyhound/research/engine-status.json:1: microsoft"
+ ],
+ "provider_endpoints": []
+}
