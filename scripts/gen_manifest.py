@@ -19,7 +19,7 @@ MAX_HASH_BYTES = 64 * 1024 * 1024  # hash everything below this; size-pin above
 WALK_DIRS = ["mcp",
              "core", "tools", "services", "build/src", "model", "ui",
              "vendor/slimtoken/src/slimtoken",
-             "vendor/llamacpp", "vendor/greymicroagent-server",
+             "vendor/greymicroagent-server", "vendor/win",
              "tui/packages/agent/dist", "tui/packages/ai/dist", "tui/packages/client/dist",
              "tui/packages/coding-agent/dist", "tui/packages/protocol/dist", "tui/packages/server/dist",
              "tui/packages/session-backends/sqlite-node/dist",
@@ -35,7 +35,17 @@ WALK_DIRS = ["mcp",
 # mcp/data/ is written by the MCP servers at work time (a stale pin on a
 # work-time data file once BRICKED every boot). Unpinned = the gate
 # watches code, not work products.
-EXCLUDE_PREFIXES = ("mcp/data/",)
+# 2026-11-19: tools/research/*.json are written at work time by the search
+# tool (engine health, fallback roster). Pinning them bricked a boot the first
+# time a search updated them — the same GM-21 class as mcp/data/.
+EXCLUDE_PREFIXES = (
+    "mcp/data/",
+    "tools/research/",
+    # 2026-11-19: greysearch writes engine health, task slots, and generated
+    # guides at work time. Pinning them bricked a boot after a successful run.
+    "core/greysearch/research/",
+    "core/greysearch/guides/",
+)
 
 
 def _sha256(p: Path, chunk: int = 1024 * 1024) -> str:

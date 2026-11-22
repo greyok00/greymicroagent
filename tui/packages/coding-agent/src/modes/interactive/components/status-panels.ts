@@ -1148,11 +1148,13 @@ export class StatusPanelsComponent implements Component {
 	private laneStats: LaneMetrics | null = null;
 	private laneLastPoll = 0;
 	private laneUrl = (process.env.GREYAGENT_LOCAL_BASE ?? "http://127.0.0.1:7081/v1").replace(/\/v1$/, "") + "/metrics";
-	// Realtime speed: stream deltas (one delta ≈ one generated token) are
-	// stamped on arrival; the tok/s line is the count of deltas in the last
-	// second, recomputed every render. The "generating" state lingers 1.2s
-	// after the last delta so brief stalls don't flicker to idle.
+	// Live speed: one content delta per generated token (verified 200 tokens
+	// -> 204 SSE frames including the role and usage frames). Tokens over time
+	// since the first token is the real rate; the final rate is saved.
 	private deltaTimestamps: number[] = [];
+	private genStartAt = 0;
+	private genTokens = 0;
+	private lastGenRate = 0;
 	private generatingUntil = 0;
 
 	constructor(onTick?: () => void, sessionProvider?: StatusPanelSessionProvider) {
@@ -1176,7 +1178,10 @@ export class StatusPanelsComponent implements Component {
 				requests: Number(d.requests ?? 0),
 				promptTokens: Number(d.prompt_tokens ?? 0),
 				completionTokens: Number(d.completion_tokens ?? 0),
-				avgTokS: Number(d.avg_tok_s ?? 0),
+				// Generation-only rate; avg_tok_s includes prefill (2026-11-19).
+				avgTokS: Number(d.gen_tok_s ?? d.avg_tok_s ?? 0),
+				minifyPct: Number((d as { minify?: { last_saved_pct?: number; ratio_pct?: number } }).minify?.last_saved_pct ??
+					(d as { minify?: { last_saved_pct?: number; ratio_pct?: number } }).minify?.ratio_pct ?? 0),
 				epochMs: Date.now(),
 			};
 		} catch {
@@ -1189,6 +1194,8 @@ export class StatusPanelsComponent implements Component {
 	onStreamDelta(): void {
 		const now = Date.now();
 		this.deltaTimestamps.push(now);
+		if (this.genStartAt === 0) this.genStartAt = now;
+		this.genTokens++;
 		this.generatingUntil = Math.max(this.generatingUntil, now + 1200);
 	}
 
@@ -1196,10 +1203,13 @@ export class StatusPanelsComponent implements Component {
 	onGenerationState(active: boolean): void {
 		if (active) {
 			this.deltaTimestamps.length = 0;
+			this.genStartAt = 0;
+			this.genTokens = 0;
 			this.generatingUntil = Math.max(this.generatingUntil, Date.now() + 1200);
-		} else {
-			// End of turn: keep the last window visible for the 1.2s linger
-			// handled by the expiry in the render, then it flips to idle.
+		} else if (this.genStartAt > 0) {
+			// Save the final measured rate so idle keeps the real number.
+			const secs = (Date.now() - this.genStartAt) / 1000;
+			if (secs > 0.3) this.lastGenRate = this.genTokens / secs;
 		}
 	}
 
@@ -1242,7 +1252,7 @@ export class StatusPanelsComponent implements Component {
 			? `${spinner} ${theme.fg(changed ? "accent" : "success", `${lane!.requests} req served${changed ? " ✓" : ""}`)}`
 			: `${spinner} ${theme.fg("warning", "lane down")}`;
 		const compL2 = laneFresh
-			? `${formatNum(lane!.promptTokens)} in → ${formatNum(lane!.completionTokens)} out${lane!.avgTokS > 0 ? ` · ${lane!.avgTokS.toFixed(1)} tok/s avg` : ""}`
+			? `${formatNum(lane!.promptTokens)} in → ${formatNum(lane!.completionTokens)} out · saved ${lane!.minifyPct.toFixed(0)}%`
 			: theme.fg("muted", "no lane on :7081 — traffic goes direct");
 
 		// Panel 2: Memory — recent additions + current topic. User feedback
@@ -1284,9 +1294,17 @@ export class StatusPanelsComponent implements Component {
 			this.deltaTimestamps.shift();
 		}
 		const generating = this.generatingUntil > now;
-		const tokL2 = generating
-			? `${theme.fg("accent", SPINNER[this.frame % SPINNER.length]!)} ${theme.fg("accent", `${this.deltaTimestamps.length} tok/s`)}`
-			: theme.fg("muted", "idle — not generating");
+		const elapsedS = this.genStartAt > 0 ? (now - this.genStartAt) / 1000 : 0;
+		const liveRate = elapsedS > 0.3 ? this.genTokens / elapsedS : 0;
+		if (liveRate > 0) this.lastGenRate = liveRate;
+		const savedRate = this.lastGenRate > 0 ? this.lastGenRate : (this.laneStats?.avgTokS ?? 0);
+		const tokL2 = liveRate > 0
+			? `${theme.fg("accent", SPINNER[this.frame % SPINNER.length]!)} ${theme.fg("accent", `${liveRate.toFixed(1)} tok/s gen`)}`
+			: savedRate > 0
+				? theme.fg("muted", `${savedRate.toFixed(1)} tok/s gen · last`)
+				: generating
+					? theme.fg("muted", "waiting for first token…")
+					: theme.fg("muted", "idle — not generating");
 
 		// Assemble the grid (2026-10-24 owner redesign): three EQUAL-HEIGHT boxes
 		// — the same 4-line height the old Compression/Memory boxes had. Tasks

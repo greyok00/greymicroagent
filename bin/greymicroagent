@@ -120,6 +120,9 @@ fi
 # code + runaway loops to every relaunch): reap family leftovers with no live
 # launcher above them, silently, before this boot builds anything.
 python3 "$ROOT/scripts/reap_orphans.py" --apply >> "$ROOT/state/logs/reaper.log" 2>&1
+# 2026-11-19 (owner: close zombie/hung listeners on ports this product owns):
+# a healthy listener is kept, a launched one is kept, a hung one is closed.
+python3 "$ROOT/scripts/reap_hung_ports.py" --product --apply >> "$ROOT/state/logs/reaper.log" 2>&1
 
 export GREYAGENT_OFFLINE=1
 export GREYAGENT_SKIP_VERSION_CHECK=1
@@ -250,7 +253,7 @@ trap 'cleanup; exit 143' TERM
 trap 'cleanup; exit 129' HUP
 
 # --- model: VRAM-gated, spawned async (TUI FIRST) ----------------------------
-GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated - loading on :${MODEL_PORT}..."
+GREY_MODEL_LINE="MODEL: qwen3.5-2b-abliterated - loading on :${MODEL_PORT}..."
 GREYAGENT_MODEL_UP=0
 if ! _up; then
   # CPU/RAM ONLY (owner law 2026-11-18): no VRAM interlock, no offload
@@ -282,7 +285,7 @@ PY
     echo "greymicroagent: model loading in background on :${MODEL_PORT}"
 fi
 if _up; then
-  GREY_MODEL_LINE="MODEL: qwen3-vl-2b-abliterated  (up :${MODEL_PORT})"
+  GREY_MODEL_LINE="MODEL: qwen3.5-2b-abliterated  (up :${MODEL_PORT})"
   GREYAGENT_MODEL_UP=1
 fi
 export GREYAGENT_MODEL_UP
@@ -332,5 +335,12 @@ fi
 # System prompt = the card, full stop (2026-11-18: the harness built-in
 # coding prompt rode along on every turn and fought the RAG product
 # identity at CPU prefill cost; the card now replaces it).
-node "$CLI" --system-prompt "$(cat "$ROOT/model/greymicroagent.md")" "$@"
+# --no-skills (owner 2026-11-19): the 42-entry <available_skills> catalog rode
+# in every request and was ~4.5k of the ~6.4k prompt tokens, the largest single
+# prefill cost. Tools load lazily through tool_search instead.
+# --no-builtin-tools (2026-11-19): the built-in read/write/edit/bash family
+# duplicated the lazy catalog and still rode in every request. The five hot
+# tools (rag_search, rag_status, terminal, powershell, tool_search) are the
+# whole standing surface; everything else loads on demand.
+node "$CLI" --no-skills --no-builtin-tools --system-prompt "$(cat "$ROOT/model/greymicroagent.md")" "$@"
 printf '%s\n' "greymicroagent session ended"

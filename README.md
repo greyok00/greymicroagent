@@ -1,101 +1,174 @@
+<p align="center"><img src="assets/logo.svg" width="128" alt="greymicroagent logo"></p>
+
 # greymicroagent
 
-greymicroagent is a local, offline, grounded AI assistant for the desktop. It
-runs a fixed 2B hybrid vision-language model (huihui qwen3-vl 2B, abliterated)
-through its own private llama.cpp build, and it grounds every answer in a
-knowledge base you own: web pages and documents enter that base only when you
-say yes, removal is always one command away, and the model is clamped to a
-cool 0.0-0.2 temperature band on every request, whatever it is handed.
+**A private AI assistant that runs on your own computer.**
 
-Everything runs on your machine. There is no cloud lane, no telemetry, no
-analytics, and no account.
+You ask questions in a text window and it answers. It can also read documents you give it, and then answer from those documents. Nothing is sent to a company, there is no account, and no one tracks how you use it. It only goes online when you ask it to look something up on the web.
 
-## What it is
+## Before you start
 
-One session occupies three ports in a private block and wires them in a chain:
+- A 64-bit Linux or Windows computer with about 4 GB of free memory and 2 GB of free disk space.
+- Two free support programs: Python 3.13 or newer, and Node.js 22 or newer. The Windows launcher installs both for you the first time. Many Linux systems come with older versions, so the steps below include how to get the right ones.
+- Two files from the download page, described in step 1 below.
 
-    TUI  ->  RAG gate :7641  ->  slimtoken :7642  ->  model server :7640
+The download page is called Releases. You can reach it from the right side of the project page:
 
-The RAG gate in front of the chain reads your latest message, pulls grounded
-context out of your knowledge base, and appends it to the system block. The
-slimtoken lane distills oversized tool results before the model ever sees
-them. The agent core, tools, and services are Cython-compiled; the terminal UI
-is a Node application with a compiled scope. A frozen, hash-pinned manifest is
-verified on every boot, so a damaged install refuses to start rather than
-behaving strangely.
+    https://github.com/greyok00/greymicroagent/releases
 
-Greymicroagent owns the TCP port block 7640-7647 outright (never used by
-anything else on your machine) and refuses to fight any other listener. The
-policy file ships at config/port_policy.json.
+## The two files you download
 
-## Install (Linux .deb)
+Every release has these:
 
-    sudo dpkg -i greymicroagent_<version>_amd64.deb
+1. The model file, qwen3.5-2b-abliterated.gguf. This is the assistant's "brain" and it is about 1.2 GB. Every release uses the same file, so you only download it once.
+2. The program for your system. On Linux you can take either the .deb package or the .tar.gz folder. On Windows you take the .zip file.
 
-The deb carries no model weights. Fetch the pinned model once:
+The other file, THIRD-PARTY-NOTICES.txt, is a list of licenses. You do not need it to run the program.
 
-    python3 scripts/fetch_model.py download
+## The fastest way: let an AI assistant install it
 
-The command downloads the pinned blob from the ollama registry at
+If you already use a coding assistant such as Claude Code or Codex, you can let it do the whole install. Paste this message into it:
 
-    https://registry.ollama.ai/v2/huihui_ai/qwen3-vl-abliterated/blobs/sha256:20ef83c3cae84e1dc03d3faee31c3c4ddda6ca806a8c99dc89d42e3e43e9c2ff
+    Install greymicroagent from its public release.
+    Release page: https://github.com/greyok00/greymicroagent/releases/tag/v0.7.5.1
+    Download greymicroagent_0.7.5.1_linux-x86_64.tar.gz and qwen3.5-2b-abliterated.gguf.
+    Install Python 3.13 or newer and Node.js 22 or newer if they are missing.
+    Unpack the archive into a folder named greymicroagent, then put the model file
+    in that folder's model directory.
+    Verify the model with: python3 scripts/fetch_model.py verify
+    Stop and tell me if that check fails.
+    Start the program with ./launch.sh and report what you see.
+    Do not edit anything inside the state directory.
 
-verifies its sha256 against the pin, repairs the rope metadata, and writes the
-canonical text model to ~/.greymicroagent/models/qwen3-vl-2b-abliterated.gguf
-(the companion mmproj file for vision is written beside it). A size or hash
-mismatch refuses loudly and writes nothing.
+If you would rather do it yourself, follow the steps for your system.
 
-Dependencies of the deb itself: python3 (3.13 or newer), nodejs (22 or
-newer), and the usual C/C++ runtime libraries.
+## Install on Linux, option 1: the package
 
-## First run
+This is the easiest option on Ubuntu, Debian, or a system based on them.
 
-Start it from a terminal:
+**Step 1. Install the two support programs.** Open a terminal (the text window where you type commands; press Ctrl+Alt+T on most desktops) and run these two groups of commands.
+
+For Node.js 22:
+
+    curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+    sudo apt install -y nodejs
+
+For Python 3.13:
+
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt update
+    sudo apt install -y python3.13
+
+If your system already has Node.js 22 or newer and Python 3.13 or newer, skip this step. You can check with `node --version` and `python3 --version`.
+
+**Step 2. Download the package and the model** from the Releases page.
+
+**Step 3. Install the package.** In the folder where the files downloaded (usually Downloads):
+
+    sudo apt install ./greymicroagent_0.7.5.1_amd64.deb
+
+**Step 4. Put the model where the program looks for it:**
+
+    mkdir -p ~/.greymicroagent/models
+    mv qwen3.5-2b-abliterated.gguf ~/.greymicroagent/models/
+
+**Step 5. Start it:**
 
     greymicroagent
 
-The splash screen shows the model boot line, then the terminal UI opens.
-Sessions live in ~/.greymicroagent, model files in ~/.greymicroagent/models, and
-nothing else on the machine is touched.
+## Install on Linux, option 2: the folder
 
-## The /rag commands
+Use this on any Linux system, or if you prefer not to install a package.
 
-Inside a session, the /rag commands manage the knowledge base:
+**Step 1.** Install Python 3.13 and Node.js 22 as shown in option 1.
 
-| Command | What it does |
+**Step 2.** Download the .tar.gz file and the model file.
+
+**Step 3.** Make a folder and unpack the archive into it:
+
+    mkdir greymicroagent
+    tar -xzf greymicroagent_0.7.5.1_linux-x86_64.tar.gz -C greymicroagent
+
+**Step 4.** Move the model into the folder:
+
+    mv qwen3.5-2b-abliterated.gguf greymicroagent/model/
+
+**Step 5.** Start it:
+
+    cd greymicroagent
+    ./launch.sh
+
+If anything is still missing, run `./package/greymicroagent.sh` once. That script installs the remaining pieces and then starts the program.
+
+## Install on Windows
+
+The Windows download is the full assistant, running natively. It does not need WSL and it never compiles anything.
+
+**Step 1.** Download the .zip file and the model file.
+
+**Step 2.** Extract the archive. On Windows 11 you can right-click the file and choose Extract All. On older versions use 7-Zip.
+
+**Step 3.** Put the model file here:
+
+    %USERPROFILE%\.greymicroagent\models\qwen3.5-2b-abliterated.gguf
+
+Create the folders if they do not exist. You can paste that path into the address bar of File Explorer.
+
+**Step 4.** In the extracted folder, right-click **launch.ps1** and choose **Run with PowerShell**. If Windows blocks it, open PowerShell in that folder and run:
+
+    powershell -ExecutionPolicy Bypass -File .\launch.ps1
+
+**Step 5.** The first start installs Python, Node.js, the Microsoft C++ runtime, and the Python packages automatically if they are missing. It needs an internet connection the first time. Later starts are fast.
+
+The launcher checks for a Vulkan-capable graphics device and, when one is present, runs the model on it with every layer offloaded. Otherwise it runs on the CPU. Integrated graphics share system memory, so there is no VRAM setting to make and nothing is capped by the chip's own memory. The zip carries both x64 and ARM64 engines, and each keeps a matching CPU engine as an automatic fallback. Set GREYAGENT_NGL to pin the number of offloaded layers, or GREYAGENT_THREADS to pin the CPU thread count.
+
+## Talking to it
+
+Type a question and press Enter. The first answer can take a minute because the model is still loading; after that it answers faster.
+
+The bottom of the window shows three small panels: how much the app compressed the conversation, recent activity, and the answer speed. You can ignore them.
+
+## Teaching it your own documents
+
+These commands work in the Linux version. They start with /rag, which is short for retrieval augmented generation, the feature that lets the assistant answer from your own papers and pages.
+
+| Type this | What it does |
 | --- | --- |
-| /rag status | shows what is in your knowledge base |
-| /rag ingest <pdf, txt or md file, or a web address> | adds it to your knowledge base, after you confirm |
-| /rag remove <word or address> | lists what matches, then deletes only when you run the same command again |
-| /rag temp <number 0.0-0.2> | sets how freely the model may answer |
-| /rag offline on/off | keeps answers to your knowledge base only, or lets the model answer freely |
+| /rag status | Shows what the assistant already knows |
+| /rag ingest <web address or file> | Adds one web page, PDF, text file, or markdown file. It asks before saving. |
+| /rag remove <word> | Shows what would be deleted. Run the same command again to delete it. |
+| /rag offline on | Answers only from your own documents |
+| /rag offline off | Also allows the model's general knowledge |
+| /rag temp 0.1 | Sets how adventurous the answers are, from 0.0 (strict) to 0.2 (looser) |
 
-Removal is two-step on purpose: nothing is deleted until you repeat the same
-remove command, and any other /rag command first cancels the pending one.
+A document is only added after you confirm, and a deletion only happens when you repeat the same remove command. Nothing is changed silently.
 
-## Offline behavior
+## Is it private?
 
-The assistant answers from your knowledge base only when the /rag offline
-switch is on; otherwise it answers freely with your knowledge base grounded
-into the system block. Every request is temperature-clamped to 0.0-0.2, baked
-at 0.1, no matter what the client asks for.
+Yes. Answers are produced on your computer. Nothing is sent anywhere unless you ask for a web search. There is no account, no telemetry, and no cloud service.
 
-## The knowledge base seed
+Deep web research needs a local search helper, SearXNG, running on your computer. It works without it, using direct search, but a local SearXNG makes research faster and more reliable.
 
-The commands knowledge base shipped at install is built from the tldr-pages
-project at build time, whose pages are licensed under the Creative Commons
-Attribution 4.0 International License (CC-BY-4.0),
-https://creativecommons.org/licenses/by/4.0/ and
-https://github.com/tldr-pages/tldr. The full list of source pages and licenses
-ships in THIRD-PARTY-NOTICES.txt.
+## If something goes wrong
 
-## Screenshots
+| What you see | What to do |
+| --- | --- |
+| "command not found: greymicroagent" | The package is not installed. Use the folder option, or install the .deb. |
+| "model missing" | The model file is not where the program looks. Put it in ~/.greymicroagent/models/ or in the folder's model/ directory. |
+| "model size" or "hash" mismatch | The download is incomplete. Download the model file again. |
+| "all sessions in use" | Two copies are already running. Close one. |
+| "frozen tree" message | A program file changed after install. Download the release again. |
+| Node.js or Python "too old" | Install Node.js 22 and Python 3.13 as shown above. |
+| launch.ps1 "cannot be loaded" on Windows | Run the PowerShell command shown in the Windows steps. |
 
-A terminal capture of the splash screen and of the /rag status panel is a
-placeholder here and is added to this file at release review.
+## Under the hood, for the curious
+
+The assistant runs entirely on your machine. One session starts three small local services: the model server, a grounding gate that adds your documents to each question, and a compressor that shortens long tool output. They use a private range of local ports, 7640 to 7647, chosen automatically so two copies can run side by side. Every program file is listed in a signed-off inventory (state/MANIFEST.json) that is checked at every start, so a damaged installation refuses to run instead of giving wrong answers. The model runs on the processor only; no graphics card is required.
+
+## Credits
+
+The starter knowledge base is built from tldr-pages, licensed CC-BY-4.0 (https://github.com/tldr-pages/tldr). The model server is llama.cpp (MIT). slimtoken handles request compression, and patchright drives page reading for deep research. Full third-party license texts ship in THIRD-PARTY-NOTICES.txt inside the download.
 
 ## License
 
-greymicroagent is licensed under the Apache License, Version 2.0; the license
-text ships with the source repository as LICENSE. Third-party components are
-listed in THIRD-PARTY-NOTICES.txt.
+Apache License 2.0. The full text is in the LICENSE file.

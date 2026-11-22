@@ -1,0 +1,42 @@
+{
+  "query": "linux systemctl restart service",
+  "candidate_count": 7,
+  "scraped_count": 2,
+  "accepted_count": 2,
+  "quarantined_count": 0,
+  "rejected_count": 0,
+  "accepted_sources": [
+    "https://www.geeksforgeeks.org/linux-unix/start-stop-restart-services-using-systemctl-in-linux/",
+    "https://phoenixnap.com/kb/start-stop-restart-linux-services"
+  ],
+  "skipped_pages": [
+    {
+      "url": "https://www.linode.com/docs/guides/introduction-to-systemctl/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://linuxize.com/post/systemctl-command-in-linux/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://www.akamai.com/cloud/guides/introduction-to-systemctl",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://www.geeksforgeeks.org/linux-unix/systemctl-in-unix/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://linuxize.com/post/reboot-linux-using-command-line/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    }
+  ],
+  "quality_warnings": [
+    "thin run: only 2 accepted page(s) \u2014 the guide reports DATA NOT CAPTURED rather than padding"
+  ]
+}

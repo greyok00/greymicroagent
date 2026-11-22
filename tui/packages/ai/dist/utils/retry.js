@@ -76,6 +76,10 @@ export async function retryAssistantCall(produce, policy, signal, callbacks) {
     const maxAttempts = policy?.enabled ? policy.maxRetries : 0;
     let attempt = 0;
     let lastRetry;
+    // 2026-11-19 (owner: a progress check, not a blind ceiling): the same error
+    // twice in a row with no content means the chain is not recovering.
+    let lastErrorSignature = "";
+    let sameSignature = 0;
     for (;;) {
         const response = await produce();
         if (response.stopReason === "aborted") {
@@ -88,7 +92,15 @@ export async function retryAssistantCall(produce, policy, signal, callbacks) {
                 await callbacks?.onRetryFinished?.(true, lastRetry.attempt);
             return response;
         }
-        if (attempt >= maxAttempts || !isRetryableAssistantError(response)) {
+        const signature = response.errorMessage || "unknown";
+        if (signature === lastErrorSignature)
+            sameSignature++;
+        else {
+            lastErrorSignature = signature;
+            sameSignature = 1;
+        }
+        const noProgress = sameSignature >= 2;
+        if (attempt >= maxAttempts || noProgress || !isRetryableAssistantError(response)) {
             if (lastRetry)
                 await callbacks?.onRetryFinished?.(false, lastRetry.attempt, response.errorMessage);
             return response;

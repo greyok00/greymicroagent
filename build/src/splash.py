@@ -16,6 +16,11 @@ _L = ["██╗     ", "██║     ", "██║     ", "██║     ", "�
 _O = [" ██████╗ ", "██╔═══██╗", "██║   ██║", "██║   ██║", "╚██████╔╝", " ╚═════╝ "]
 _C = [" ██████╗", "██╔════╝", "██║     ", "██║     ", "╚██████╗", " ╚═════╝"]
 _A = [" █████╗ ", "██╔══██╗", "███████║", "██╔══██║", "██║  ██║", "╚═╝  ╚═╝"]
+_M = ["███╗   ███╗", "████╗ ████║", "██╔████╔██║", "██║╚██╔╝██║", "██║ ╚═╝ ██║", "╚═╝     ╚═╝"]
+_I = ["██╗", "██║", "██║", "██║", "██║", "╚═╝"]
+_N = ["███╗   ██╗ ", "████╗  ██║ ", "██╔██╗ ██║ ", "██║╚██╗██║ ", "██║ ╚████║ ", "╚═╝  ╚═══╝ "]
+_T = ["████████╗", "╚══██╔══╝", "   ██║   ", "   ██║   ", "   ██║   ", "   ╚═╝   "]
+_SP = ["    "] * 6
 
 _NAME = "GREYMICROAGENT"
 _BYLINE = "grounded answers from your own knowledge - RAG for CPU-only machines"
@@ -35,9 +40,9 @@ def _word(glyphs) -> list:
     return ["".join(g[i] for g in glyphs) for i in range(6)]
 
 def _layout() -> tuple:
-    art = [_word((_G, _R, _E, _Y)), _word((_L, _O, _C, _A, _L)), _word((_R, _A, _G))]
-    rows = list(art[0]) + list(art[1]) + list(art[2]) + [""]
-    tones = [4] * 6 + [5] * 6 + [6] * 6 + [5]
+    art = [_word((_G, _R, _E, _Y)), _word((_M, _I, _C, _R, _O)), _word((_A, _G, _E, _N, _T))]
+    rows = list(art[0]) + list(art[1]) + list(art[2])
+    tones = [4] * 6 + [5] * 6 + [6] * 6
     rows.append(_NAME)
     rows.append(_BYLINE)
     rows.append("")

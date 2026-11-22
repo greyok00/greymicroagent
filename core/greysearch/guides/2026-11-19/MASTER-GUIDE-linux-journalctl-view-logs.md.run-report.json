@@ -1,0 +1,47 @@
+{
+  "query": "linux journalctl view logs",
+  "candidate_count": 8,
+  "scraped_count": 2,
+  "accepted_count": 2,
+  "quarantined_count": 0,
+  "rejected_count": 0,
+  "accepted_sources": [
+    "https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs",
+    "https://www.howtogeek.com/499623/how-to-use-journalctl-to-read-linux-system-logs/"
+  ],
+  "skipped_pages": [
+    {
+      "url": "https://linuxhandbook.com/journalctl-command/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://www.geeksforgeeks.org/linux-unix/how-to-read-and-edit-systemd-logs-using-journalctl-in-linux/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://man7.org/linux/man-pages/man1/journalctl.1.html",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://linuxize.com/post/journalctl-command-in-linux/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://www.geeksforgeeks.org/linux-unix/how-to-use-journalctl-to-view-and-manipulate-systemd-logs/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://laptopjudge.com/linux-view-log-files/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    }
+  ],
+  "quality_warnings": [
+    "thin run: only 2 accepted page(s) \u2014 the guide reports DATA NOT CAPTURED rather than padding"
+  ]
+}

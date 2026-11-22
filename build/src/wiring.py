@@ -6,6 +6,34 @@ from core.registry import _schema
 _state = {"done": False}
 
 
+def _cap_json(obj, limit: int = 100000) -> str:
+    """Serialize a tool result without ever cutting JSON mid-string.
+
+    A raw [:40000] slice produced "Unterminated string in JSON" whenever a RAG
+    record carried a long page; shorten strings/lists first, and fall back to a
+    valid summary if it still does not fit.
+    """
+    import json as _cj
+
+    def shrink(value):
+        if isinstance(value, str):
+            return value if len(value) <= 2000 else value[:2000] + "..."
+        if isinstance(value, list):
+            return [shrink(item) for item in value[:2000]]
+        if isinstance(value, dict):
+            return {key: shrink(item) for key, item in value.items()}
+        return value
+
+    try:
+        text = _cj.dumps(shrink(obj), default=str)
+    except Exception:
+        return _cj.dumps({"error": "unserializable result"})
+    if len(text) <= limit:
+        return text
+    return _cj.dumps({"truncated": True,
+                      "note": "result too large; strings and lists were shortened"})
+
+
 def register_all() -> int:
     if _state["done"]:
         return len(registry.list_tools())
@@ -66,13 +94,28 @@ def register_all() -> int:
         return r
 
     def web_fetch(url: str = "", max_chars: int = 20000, **kw) -> dict:
-        from tools.research_integration import research_scrape
+        # 2026-11-19: the research stack needs browser-ports.json this fork
+        # does not ship, so web_fetch failed on every URL while browser_open
+        # worked. Route through the browser service that already works.
         u = url or kw.get("uri") or kw.get("page")
         if not u:
             return {"ok": False, "output": "", "error": "missing argument: url"}
-        r = research_scrape(u, max_chars=max_chars)
-        r.setdefault("trust", "high")
-        return r
+        if not (str(u).startswith("http://") or str(u).startswith("https://")):
+            return {"ok": False, "output": "", "error": "web_fetch needs an http(s) url"}
+        from services import browser_mcp as _b
+        try:
+            r = _b.dispatch("browser_open", {"url": str(u)})
+        except Exception as e:
+            return {"ok": False, "output": "", "error": str(e)[:400]}
+        if isinstance(r, dict):
+            err = r.get("error") or ""
+            text = r.get("text") or r.get("output") or ""
+            if isinstance(text, str) and text:
+                text = text[:max_chars]
+            return {"ok": not err, "output": text if isinstance(text, str)
+                    else _json.dumps(r, default=str)[:max_chars],
+                    "error": err, "trust": "high"}
+        return {"ok": True, "output": str(r)[:max_chars], "error": "", "trust": "high"}
 
     registry.register_tool("web_search", _schema(
         "Web search via local lanes and the browser scraper; results are "
@@ -122,6 +165,31 @@ def register_all() -> int:
 
     from tools import browser_tools as browser_mod
     browser_mod.register_browser_tools()
+    # 2026-11-19: the registered schema exposes tag/class_fragment, but the
+    # underlying fill_and_send() accepts only tab/text/iframe_marker/submit.
+    # Passing tag crashed before any browser work; filter at the boundary.
+    _fs = getattr(registry, "TOOLS", {}).get("chrome_fill_send")
+    if _fs and callable(_fs.get("handler")):
+        _orig_fs = _fs["handler"]
+
+        def _fs_filtered(**kw):
+            # The stock wrapper injects its own `tag` default, so filtering the
+            # caller's kwargs is not enough. Call the implementation directly
+            # with only the parameters it actually accepts.
+            from tools import browser_control as _bc
+            try:
+                out = _bc.fill_and_send(
+                    tab=kw.get("tab"),
+                    text=str(kw.get("text", "") or ""),
+                    iframe_marker=str(kw.get("iframe_marker", "") or ""),
+                    submit=bool(kw.get("submit", True)),
+                )
+                return {"ok": True, "output": str(out), "error": ""}
+            except Exception as e:
+                return {"ok": False, "output": "",
+                        "error": "Fill/send failed: %s" % str(e)[:400]}
+
+        _fs["handler"] = _fs_filtered
 
     from services import memory_thin
     registry.register_tool("memory_append", _schema(
@@ -138,6 +206,49 @@ def register_all() -> int:
         "Recent memory.", {}, []),
         lambda n=5, **kw: {"ok": True, "output": memory_thin.read_last(n),
                            "error": ""})
+
+    def memory_report(**kw) -> dict:
+        # 2026-11-19 (owner: memory must check BOTH internal memory and the
+        # RAG). A 2B answers after the first read and never issues the second
+        # call, so one tool returns both in a single round-trip. The report is
+        # a compact summary: collections, counts, and a sample of sources.
+        import os as _os
+        out = {"internal_memory": [], "rag_collections": [], "rag_sources": {}}
+
+        def _unpack(res):
+            payload = res.get("output") if isinstance(res, dict) else res
+            if isinstance(payload, str):
+                try:
+                    payload = _json.loads(payload)
+                except Exception:
+                    pass
+            return payload if isinstance(payload, dict) else {}
+
+        try:
+            out["internal_memory"] = memory_thin.read_last(10)
+        except Exception as e:
+            out["internal_memory"] = "unavailable: %s" % e
+        try:
+            st = _unpack(rag_pass("rag_status", {}))
+            out["rag_collections"] = st.get("dbs") or []
+            out["rag_total_records"] = st.get("records")
+            dbs = [d.strip() for d in
+                   (_os.environ.get("GREYMICROAGENT_DBS") or "commands,general").split(",")
+                   if d.strip()]
+            for d in dbs:
+                pay = _unpack(rag_pass("rag_list_sources", {"db": d}))
+                urls = [s.get("url") for s in (pay.get("sources") or [])
+                        if isinstance(s, dict)][:10]
+                out["rag_sources"][d] = {"distinct": pay.get("distinct"),
+                                         "sample": urls}
+        except Exception as e:
+            out["rag"] = "unavailable: %s" % e
+        return {"ok": True, "output": _json.dumps(out, default=str)[:8000],
+                "error": ""}
+
+    registry.register_tool("memory_report", _schema(
+        "Report BOTH stores: recent internal memory and the RAG collections and sources.",
+        {}, []), memory_report)
 
     from services.scheduler_store import Store
     _sched = Store()
@@ -218,7 +329,7 @@ def register_all() -> int:
         except Exception as e:
             return {"ok": False, "output": "", "error": str(e)[:400]}
         return {"ok": True, "output": (r if isinstance(r, str)
-                                       else _json.dumps(r, default=str))[:40000], "error": ""}
+                                       else _cap_json(r)), "error": ""}
 
     def rag_search(db: str = "", query: str = "", k: int = 5, **kw) -> dict:
         if not (db and query):
@@ -241,17 +352,33 @@ def register_all() -> int:
         if not confirm:
             return {"ok": False, "output": "",
                     "error": "consent required: pass confirm=true to ingest"}
+        # 2026-11-19: the model tried to paste whole documents into this tool
+        # argument, which blew the output cap, so the call arrived truncated
+        # and was refused. Refuse oversized text with the correct path.
+        body = str(text or "")
+        if len(body) > 8000:
+            return {
+                "ok": False,
+                "output": "",
+                "error": (
+                    "text too large for a tool call (%d chars). Never paste "
+                    "documents into tool arguments. Use greysearch or search to "
+                    "find the page, then call rag_ingest_urls with its URL."
+                    % len(body)
+                ),
+            }
         from services import rag_mcp as _r
         try:
-            r = _r.dispatch("rag_ingest_text", {"db": str(db), "text": str(text)})
+            r = _r.dispatch("rag_ingest_text", {"db": str(db), "text": body})
         except Exception as e:
             return {"ok": False, "output": "", "error": str(e)[:400]}
         return {"ok": True, "output": (r if isinstance(r, str)
                                        else _json.dumps(r, default=str))[:20000], "error": ""}
 
     registry.register_tool("rag_ingest_text", _schema(
-        "Ingest text into a knowledge base. CONSENT-GATED: requires confirm=true. "
-        "args: db, text, confirm.",
+        "Ingest a SHORT note (max 8000 chars) into a knowledge base. For web "
+        "pages use greysearch/search and then rag_ingest_urls. "
+        "CONSENT-GATED: requires confirm=true. args: db, text, confirm.",
         {"db": {"type": "string"}, "text": {"type": "string"},
          "confirm": {"type": "boolean"}}, ["db", "text", "confirm"]), rag_ingest_text)
 
@@ -260,10 +387,19 @@ def register_all() -> int:
     def search(query: str = "", k: int = 5, **kw) -> dict:
         if not query:
             return {"ok": False, "output": "", "error": "missing argument: query"}
+        # 2026-11-19: the plain search lane pointed at public SearXNG instances
+        # that return nothing here (search_health was literally "0.0"), so every
+        # "search this" got an empty list. The greysearch lane has working
+        # direct backends (bing-rss / ddg-html); use it first, fall back to the
+        # old client only if the deep lane fails outright.
         try:
-            r = _sm.search(str(query), max(1, int(k or 5)))
-        except Exception as e:
-            return {"ok": False, "output": "", "error": str(e)[:400]}
+            from core.greysearch import greysearch_mcp as _gs
+            r = _gs.research_search(str(query), max_results=max(1, int(k or 5)))
+        except Exception:
+            try:
+                r = _sm.search(str(query), max(1, int(k or 5)))
+            except Exception as e:
+                return {"ok": False, "output": "", "error": str(e)[:400]}
         return {"ok": True, "output": (r if isinstance(r, str)
                                        else _json.dumps(r, default=str))[:20000], "error": ""}
 
@@ -286,13 +422,82 @@ def register_all() -> int:
         from core.greysearch import greysearch_mcp as _gs
         if not query:
             return {"ok": False, "output": "", "error": "missing argument: query"}
+        # 2026-11-19: the deep path is the product. It runs in a subprocess so a
+        # wedged engine or browser can never hang the tool; on failure or
+        # timeout the search lanes still answer. The browser page scraping and
+        # the semantic judge stay in the deep path (they are what make it
+        # research rather than a link list).
+        import os as _os
+        import subprocess as _sp
+        import sys as _sys
+
+        script = r'''
+import json, os, socket, subprocess, sys
+socket.setdefaulttimeout(15)
+# Owner order 2026-11-19: any zombie/hung listener on a port this product uses
+# is closed before the run, but the process this run launches is kept.
+root = os.getcwd()
+if os.name != "nt":
+    subprocess.run([sys.executable, os.path.join(root, "scripts", "reap_hung_ports.py"),
+                    "--slots", "--searx", "--apply"], cwd=root, timeout=180)
+from core.greysearch import greysearch_mcp as g
+q = sys.argv[1]
+pages = int(sys.argv[2])
+r = g.research_deep(q, max_pages=pages, max_total_seconds=240,
+                    enable_semantic_judge=True, min_accept_score=35)
+out = {k: r.get(k) for k in ("sources", "facts", "rejected_pages",
+                             "quarantined_pages", "run_report", "budget_hit",
+                             "judge_ran")}
+try:
+    r = g._attach_guide(r, q, g._resolve_guide_path(None, q))
+    out["master_guide"] = {"path": (r.get("master_guide") or {}).get("path")}
+except Exception as exc:
+    out["guide_error"] = str(exc)[:200]
+print("__GMA__" + json.dumps(out, default=str))
+'''
+        pages_wanted = max(1, min(int(max_results or 10), 2))
+        root = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+        cwd = root if _os.path.isdir(_os.path.join(root, "core")) else _os.getcwd()
         try:
-            r = _gs.dispatch("greysearch", {"query": str(query),
-                                            "max_results": int(max_results or 10)})
+            proc = _sp.run(
+                [_sys.executable, "-c", script, str(query), str(pages_wanted)],
+                cwd=cwd, capture_output=True, text=True, timeout=300,
+            )
+            marker = "__GMA__"
+            line = next(
+                (ln for ln in (proc.stdout or "").splitlines() if ln.startswith(marker)),
+                "",
+            )
+            if line:
+                deep = _json.loads(line[len(marker):])
+                sources = deep.get("sources") or []
+                if sources:
+                    payload = {
+                        "mode": "deep",
+                        "query": str(query),
+                        "sources": sources,
+                        "accepted": len(sources),
+                        "facts": len(deep.get("facts") or []),
+                        "guide": (deep.get("master_guide") or {}).get("path", ""),
+                        "budget_hit": deep.get("budget_hit"),
+                    }
+                    return {"ok": True,
+                            "output": _json.dumps(payload, default=str)[:40000],
+                            "error": ""}
+        except Exception:
+            pass
+        try:
+            r = _gs.research_search(str(query), max_results=max(1, int(max_results or 10)))
         except Exception as e:
             return {"ok": False, "output": "", "error": str(e)[:400]}
-        return {"ok": True, "output": (r if isinstance(r, str)
-                                       else _json.dumps(r, default=str))[:40000], "error": ""}
+        results = (r or {}).get("results") or []
+        payload = {
+            "mode": "search-lanes",
+            "query": str(query),
+            "results": results,
+            "note": "Deep scraping did not complete; these are ranked sources with snippets.",
+        }
+        return {"ok": True, "output": _json.dumps(payload, default=str)[:40000], "error": ""}
 
     def greysearch_health(**kw) -> dict:
         from core.greysearch import greysearch_mcp as _gs
@@ -319,7 +524,7 @@ def register_all() -> int:
         except Exception as e:
             return {"ok": False, "output": "", "error": str(e)[:400]}
         return {"ok": True, "output": (r if isinstance(r, str)
-                                       else _json.dumps(r, default=str))[:40000], "error": ""}
+                                       else _cap_json(r)), "error": ""}
 
     def rag_ingest_pdf(db: str = "", path: str = "", confirm: bool = False, **kw) -> dict:
         if not confirm:
@@ -402,45 +607,40 @@ def register_all() -> int:
         {"file": {"type": "string"}}, ["file"]), _parse_doc)
 
     import tools.charts as charts_mod
+
+    def charts_tool(series: str = "", **kw) -> dict:
+        # 2026-11-19: the old lambda looked for a render_series() that does not
+        # exist, so it echoed its input. tools.charts has real renderers.
+        import re as _re
+        raw = str(series or "").strip()
+        pairs = {}
+        for part in raw.split(","):
+            if ":" in part:
+                k, v = part.split(":", 1)
+                try:
+                    pairs[k.strip()] = float(v)
+                except ValueError:
+                    pass
+        if pairs:
+            return {"ok": True, "output": charts_mod.bar_chart(pairs), "error": ""}
+        try:
+            nums = [float(x) for x in _re.split(r"[,\s]+", raw) if x]
+        except ValueError:
+            nums = []
+        if nums:
+            fn = charts_mod.line_chart if len(nums) <= 40 else charts_mod.sparkline
+            return {"ok": True, "output": fn(nums), "error": ""}
+        return {"ok": False, "output": "",
+                "error": "series must be numbers (1,2,3) or label:value pairs"}
+
     registry.register_tool("charts", _schema(
-        "Chart data. args: series",
-        {"series": {"type": "string"}}, ["series"]),
-        lambda series, **kw: {"ok": True, "output": str(
-            getattr(charts_mod, "render_series", None)(series)
-            if hasattr(charts_mod, "render_series") else series), "error": ""})
+        "Render a text chart. args: series (numbers like 1,2,3 or label:value pairs)",
+        {"series": {"type": "string"}}, ["series"]), charts_tool)
 
-    def vision(image_path: str = "", question: str = "Describe this image.", **kw) -> dict:
-        import base64
-        from core.llm import _post
-        img = image_path or kw.get("image") or kw.get("file")
-        p = _safe_img(img)
-        if p is None:
-            return {"ok": False, "output": "", "error": "missing or bad image path"}
-        b64 = base64.b64encode(p.read_bytes()).decode()
-        data = _post({"model": "qwen3.8-27b",
-                      "messages": [{"role": "user", "content": [
-                          {"type": "text", "text": question},
-                          {"type": "image_url",
-                           "image_url": {"url": "data:image;base64," + b64}}]}],
-                      "max_tokens": 512, "stream": False}, 120)
-        if not data:
-            return {"ok": False, "output": "", "error": "vision unavailable"}
-        return {"ok": True, "output": data["choices"][0]["message"]["content"],
-                "error": ""}
-
-    def _safe_img(path: str):
-        from pathlib import Path as _Path
-        p = _Path(path).expanduser()
-        if not p.is_absolute():
-            p = _Path(__file__).resolve().parent.parent / p
-        if p.exists() and p.suffix.lower() in (".png", ".jpg", ".jpeg",
-                                               ".webp", ".gif"):
-            return p
-        return None
-
-    registry.register_tool("vision", _schema(
-        "Vision. args: image_path",
-        {"image_path": {"type": "string"}}, ["image_path"]), vision)
+    # 2026-11-19 (owner: vision either fully works or is out): removed. The
+    # vendored engine segfaults building the Qwen3-VL vision graph and the
+    # shipped projector uses a fused patch tensor this loader does not split,
+    # so the product ships the text model and offers no vision tool.
 
     def system_status(**kw) -> dict:
         from model.server import is_ready, server_url

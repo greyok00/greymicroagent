@@ -731,7 +731,7 @@ async function failToolCallsFromTruncatedMessage(toolCalls, emit) {
         });
         const finalized = {
             toolCall,
-            result: createErrorToolResult(`Tool call "${toolCall.name}" was not executed: the response hit the output token limit, so its arguments may be truncated. Re-issue the tool call with complete arguments.`),
+            result: createErrorToolResult(`Tool call "${toolCall.name}" was not executed: the response hit the output token limit, so its arguments may be truncated. Re-issue the tool call with complete arguments. If the arguments are large, do not repeat them: make a smaller call instead (for example ingest URLs instead of pasted document text).`),
             isError: true,
         };
         await emitToolExecutionEnd(finalized, emit);

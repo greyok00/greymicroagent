@@ -16,9 +16,27 @@ sys.path.insert(0, str(ROOT))
 
 
 def main() -> int:
+    if len(sys.argv) >= 2 and sys.argv[1] == "list":
+        # Lazy tool loading: the TUI asks once for the catalog (name +
+        # description + parameters) and registers only what the turn needs.
+        import core.wiring as wiring
+        wiring.register_all()
+        import core.registry as registry
+        out = []
+        for schema in registry.list_tools():
+            name = schema.get("name")
+            if not name:
+                continue
+            out.append({
+                "name": name,
+                "description": schema.get("description", ""),
+                "parameters": schema.get("parameters") or {"type": "object", "properties": {}},
+            })
+        print(json.dumps(out))
+        return 0
     if len(sys.argv) < 3 or sys.argv[1] != "call":
         print(json.dumps({"ok": False, "output": "",
-                          "error": "usage: internal_tools.py call <tool> (args JSON on stdin)"}))
+                          "error": "usage: internal_tools.py call <tool> (args JSON on stdin) | list"}))
         return 2
     tool = sys.argv[2]
     try:

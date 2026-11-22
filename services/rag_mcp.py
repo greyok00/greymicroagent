@@ -157,7 +157,11 @@ def tool_search(a):
 def tool_ingest_pdf(a):
     path = kb.db_dir(a["db"])
     kb.init_db(path)
-    src = os.path.expanduser(str(a.get("path", "")))
+    # 2026-11-19: the TUI/wiring bridge passes a plural "paths" list while the
+    # MCP caller sends "path". Accept both or every PDF ingest silently says
+    # "not a readable pdf" with an empty path.
+    _raw = a.get("path") or (a.get("paths") or [""])[0]
+    src = os.path.expanduser(str(_raw or ""))
     if not src.lower().endswith(".pdf") or not os.path.isfile(src):
         return {"db": a["db"], "added": 0, "note": f"not a readable pdf: {src}"}
     title = os.path.splitext(os.path.basename(src))[0]

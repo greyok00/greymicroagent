@@ -1106,11 +1106,14 @@ export class StatusPanelsComponent {
     laneStats = null;
     laneLastPoll = 0;
     laneUrl = (process.env.GREYAGENT_LOCAL_BASE ?? "http://127.0.0.1:7081/v1").replace(/\/v1$/, "") + "/metrics";
-    // Realtime speed: stream deltas (one delta ≈ one generated token) are
-    // stamped on arrival; the tok/s line is the count of deltas in the last
-    // second, recomputed every render. The "generating" state lingers 1.2s
-    // after the last delta so brief stalls don't flicker to idle.
+    // Live speed: llama.cpp streams one content delta per generated token
+    // (verified: 200 tokens -> 204 SSE events including the role and usage
+    // frames). Tokens over time SINCE THE FIRST TOKEN is the real generation
+    // rate; a one-second sliding window is what made the old number jump.
     deltaTimestamps = [];
+    genStartAt = 0;
+    genTokens = 0;
+    lastGenRate = 0;
     generatingUntil = 0;
     constructor(onTick, sessionProvider) {
         this.onTick = onTick;
@@ -1134,7 +1137,11 @@ export class StatusPanelsComponent {
                 requests: Number(d.requests ?? 0),
                 promptTokens: Number(d.prompt_tokens ?? 0),
                 completionTokens: Number(d.completion_tokens ?? 0),
-                avgTokS: Number(d.avg_tok_s ?? 0),
+                // Generation-only rate; avg_tok_s includes prefill and
+                // under-reports badly on long prompts (2026-11-19).
+                avgTokS: Number(d.gen_tok_s ?? d.avg_tok_s ?? 0),
+                // Compression rate from the lane's minify ledger.
+                minifyPct: Number(d.minify?.last_saved_pct ?? d.minify?.ratio_pct ?? 0),
                 epochMs: Date.now(),
             };
         }
@@ -1147,17 +1154,25 @@ export class StatusPanelsComponent {
     onStreamDelta() {
         const now = Date.now();
         this.deltaTimestamps.push(now);
+        if (this.genStartAt === 0)
+            this.genStartAt = now;
+        this.genTokens++;
         this.generatingUntil = Math.max(this.generatingUntil, now + 1200);
     }
     /** Session-level generate/idle transition (agent_start / agent_end). */
     onGenerationState(active) {
         if (active) {
             this.deltaTimestamps.length = 0;
+            this.genStartAt = 0;
+            this.genTokens = 0;
             this.generatingUntil = Math.max(this.generatingUntil, Date.now() + 1200);
         }
-        else {
-            // End of turn: keep the last window visible for the 1.2s linger
-            // handled by the expiry in the render, then it flips to idle.
+        else if (this.genStartAt > 0) {
+            // Save the final measured rate so the idle panel keeps the real
+            // number instead of falling back to a guess.
+            const secs = (Date.now() - this.genStartAt) / 1000;
+            if (secs > 0.3)
+                this.lastGenRate = this.genTokens / secs;
         }
     }
     dispose() {
@@ -1198,7 +1213,7 @@ export class StatusPanelsComponent {
             ? `${spinner} ${theme.fg(changed ? "accent" : "success", `${lane.requests} req served${changed ? " ✓" : ""}`)}`
             : `${spinner} ${theme.fg("warning", "lane down")}`;
         const compL2 = laneFresh
-            ? `${formatNum(lane.promptTokens)} in → ${formatNum(lane.completionTokens)} out${lane.avgTokS > 0 ? ` · ${lane.avgTokS.toFixed(1)} tok/s avg` : ""}`
+            ? `${formatNum(lane.promptTokens)} in → ${formatNum(lane.completionTokens)} out · saved ${lane.minifyPct.toFixed(0)}%`
             : theme.fg("muted", "no lane on :7081 — traffic goes direct");
         // Panel 2: Memory — recent additions + current topic. User feedback
         // 2026-08-20: "30 cold, 29 hot, that doesn't help at all. I don't
@@ -1236,9 +1251,18 @@ export class StatusPanelsComponent {
             this.deltaTimestamps.shift();
         }
         const generating = this.generatingUntil > now;
-        const tokL2 = generating
-            ? `${theme.fg("accent", SPINNER[this.frame % SPINNER.length])} ${theme.fg("accent", `${this.deltaTimestamps.length} tok/s`)}`
-            : theme.fg("muted", "idle — not generating");
+        const elapsedS = this.genStartAt > 0 ? (now - this.genStartAt) / 1000 : 0;
+        const liveRate = elapsedS > 0.3 ? this.genTokens / elapsedS : 0;
+        if (liveRate > 0)
+            this.lastGenRate = liveRate;
+        const savedRate = this.lastGenRate > 0 ? this.lastGenRate : (this.laneStats?.avgTokS ?? 0);
+        const tokL2 = liveRate > 0
+            ? `${theme.fg("accent", SPINNER[this.frame % SPINNER.length])} ${theme.fg("accent", `${liveRate.toFixed(1)} tok/s gen`)}`
+            : savedRate > 0
+                ? theme.fg("muted", `${savedRate.toFixed(1)} tok/s gen · last`)
+                : generating
+                    ? theme.fg("muted", "waiting for first token…")
+                    : theme.fg("muted", "idle — not generating");
         // Assemble the grid (2026-10-24 owner redesign): three EQUAL-HEIGHT boxes
         // — the same 4-line height the old Compression/Memory boxes had. Tasks
         // and Services are gone entirely (owner: "none of them work").

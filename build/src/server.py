@@ -31,12 +31,27 @@ STATE.mkdir(exist_ok=True)
 LLAMA_SERVER = str(ROOT / "vendor" / "greymicroagent-server" / "greymicroagent-server")
 LLAMA_LIB_DIR = str(Path(LLAMA_SERVER).parent)
 LANE_PORT = int(os.environ.get("GREYAGENT_LANE_PORT", "7641"))
-# Owner 2026-11-16: RAG default model = huihui qwen3-vl 2B (abliterated), served
-# from the fork-own gguf (weights are a symlink to the immutable ollama store
-# blob). The classic 2B stays available via GREYMICROAGENT_MODEL_PATH override.
+# 2026-11-19 (owner: vision is either fully working or out): the engine build
+# crashes in the Qwen3-VL vision graph (ggml_conv_2d inside
+# build_inp_temporal_merge) and its projector uses a fused patch tensor this
+# loader does not split. Rather than ship a model whose advertised capability
+# cannot run, the default is the 2B text model. GREYMICROAGENT_MODEL_PATH can
+# still select any GGUF this engine loads.
 MODEL_PATH = os.environ.get(
     "GREYMICROAGENT_MODEL_PATH",
-    "/home/grey/.greymicroagent/models/qwen3-vl-2b-abliterated.gguf",
+    "/home/grey/.greymicroagent/models/qwen3.5-2b-abliterated.gguf",
+)
+# 2026-11-19 (owner: cortex uses a real Qwen3 template and reasoning-off works
+# there): this 2B's GGUF carries a bare ChatML template with no thinking
+# control and no tools section, so --reasoning off and the per-request
+# enable_thinking kwarg were both inert, and the tool schemas were never
+# rendered in the form the model was trained on. A tracked Qwen3 template
+# fixes both: it renders <tools>/<tool_call> and pre-fills an empty think
+# block when enable_thinking is false. GREYAGENT_CHAT_TEMPLATE overrides the
+# path; GREYAGENT_THINKING=on skips the kwarg.
+CHAT_TEMPLATE = os.environ.get(
+    "GREYAGENT_CHAT_TEMPLATE",
+    str(ROOT / "model" / "qwen3-chat-template.jinja"),
 )
 PORT = int(os.environ.get("GREYAGENT_MODEL_PORT", "7640"))
 HOST = "127.0.0.1"
@@ -171,6 +186,11 @@ def _boot_server(ctx_size: int, timeout: float) -> dict:
         "--cache-type-v", os.environ.get("GREYAGENT_CTYPE", "q4_0"),
         "--metrics",
         "--jinja",
+        # 2026-11-19: the template, not the sampler, owns thinking control.
+        # Present only when the file exists so a mispackaged tree fails loudly
+        # at boot instead of silently falling back to the bare template.
+        *(["--chat-template-file", CHAT_TEMPLATE] if os.path.exists(CHAT_TEMPLATE) else []),
+        *([] if THINKING == "on" else ["--chat-template-kwargs", '{"enable_thinking": false}']),
         *([] if THINKING == "on" else ["--reasoning", "off"]),
         *SPEC_ARGS,
         *([] if _RP in ("", "off", "none", "0") else ["--repeat-penalty", _RP]),

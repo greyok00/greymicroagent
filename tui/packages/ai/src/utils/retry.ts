@@ -123,6 +123,11 @@ export async function retryAssistantCall(
 
 	let attempt = 0;
 	let lastRetry: { attempt: number; errorMessage: string } | undefined;
+	// 2026-11-19 (owner: a progress check, not a blind ceiling): the same error
+	// twice in a row with no content means the chain is not recovering. Stop
+	// and surface it instead of burning twenty attempts on the same failure.
+	let lastErrorSignature = "";
+	let sameSignature = 0;
 	for (;;) {
 		const response = await produce();
 
@@ -136,7 +141,15 @@ export async function retryAssistantCall(
 			return response;
 		}
 
-		if (attempt >= maxAttempts || !isRetryableAssistantError(response)) {
+		const signature = response.errorMessage || "unknown";
+		if (signature === lastErrorSignature) sameSignature++;
+		else {
+			lastErrorSignature = signature;
+			sameSignature = 1;
+		}
+		const noProgress = sameSignature >= 2;
+
+		if (attempt >= maxAttempts || noProgress || !isRetryableAssistantError(response)) {
 			if (lastRetry) await callbacks?.onRetryFinished?.(false, lastRetry.attempt, response.errorMessage);
 			return response;
 		}

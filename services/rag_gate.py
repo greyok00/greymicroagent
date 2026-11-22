@@ -290,6 +290,10 @@ def _grounding(req):
     body = "GROUNDING:\n" + "\n".join(blocks) if blocks else "[NO-KB-GROUNDING]"
     if _offline():
         body += "\n[OFFLINE-MODE] answering from your KB only"
+    # 2026-11-19: this message lands LAST in the request, so it carries the
+    # Qwen3 no-think soft switch too. Without it the card's switch is diluted
+    # and the 2B writes its reasoning into visible content on tool turns.
+    body += "\n/no_think"
     return {"role": "system", "content": body}
 
 

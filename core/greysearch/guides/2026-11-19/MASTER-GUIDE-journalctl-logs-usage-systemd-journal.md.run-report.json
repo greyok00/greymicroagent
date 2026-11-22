@@ -1,0 +1,52 @@
+{
+  "query": "journalctl logs usage systemd journal",
+  "candidate_count": 8,
+  "scraped_count": 2,
+  "accepted_count": 1,
+  "quarantined_count": 1,
+  "rejected_count": 0,
+  "accepted_sources": [
+    "https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs"
+  ],
+  "skipped_pages": [
+    {
+      "url": "https://docs.rackspace.com/docs/how-to-use-journalctl-to-view-and-manipulate-systemd-logs",
+      "decision": "quarantine",
+      "reason": "off-topic drift: the question's focal tail term(s) usage, journal never appear while the broader head terms (journalctl, logs, systemd) do \u2014 the page answers the head of the question, not the subject ...",
+      "relevance_score": 54
+    },
+    {
+      "url": "https://velog.io/",
+      "decision": "reject",
+      "reason": "homepage (no article signal)"
+    },
+    {
+      "url": "https://uptimerobot.com/knowledge-hub/logging/journalctl-explained-how-to-view-and-analyze-systemd-logs/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://www.geeksforgeeks.org/linux-unix/how-to-read-and-edit-systemd-logs-using-journalctl-in-linux/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://www.loggly.com/ultimate-guide/using-journalctl/",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://askubuntu.com/questions/1012912/systemd-logs-journalctl-are-too-large-and-slow",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    },
+    {
+      "url": "https://unix.stackexchange.com/questions/225401/how-to-see-full-log-from-systemctl-status-service",
+      "decision": "deprioritized",
+      "reason": "page cap 2 reached"
+    }
+  ],
+  "quality_warnings": [
+    "thin run: only 1 accepted page(s) \u2014 the guide reports DATA NOT CAPTURED rather than padding"
+  ]
+}
