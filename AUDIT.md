@@ -94,13 +94,13 @@ Harness: `state/bench/model_bench.py` — 9-task agent suite (tool-call JSON, mu
 ```bash
 # 4B as default (same slot, CPU):
 # replace MODEL_PATH in build/src/server.py with:
-#   /home/grey/.greymicroagent/models/Huihui-Qwen3.5-4B-abliterated-Q4_K_M.gguf
+#   ~/.greymicroagent/models/Huihui-Qwen3.5-4B-abliterated-Q4_K_M.gguf
 # then: greymicroagent   (launcher picks up the new path)
 
 # 35B-A3B as a SECOND model (batch/think-hard slot):
 cd ~/greymicroagent && nohup env LD_LIBRARY_PATH="$PWD/vendor/greymini-server" \
   CUDA_VISIBLE_DEVICES="" vendor/greymini-server/greymini-server \
-  --model /home/grey/models/huihui-qwen36-35b-opus-abliterated/Huihui-Qwen3.6-35B-A3B-Claude-4.7-Opus-abliterated.i1-IQ3_XXS.gguf \
+  --model ~/models/huihui-qwen36-35b-opus-abliterated/Huihui-Qwen3.6-35B-A3B-Claude-4.7-Opus-abliterated.i1-IQ3_XXS.gguf \
   --host 127.0.0.1 --port 7082 --ctx-size 32768 --n-gpu-layers 0 --threads 8 \
   --flash-attn off --reasoning off --jinja --alias greymicroagent --metrics \
   > state/model-boot-7082.log 2>&1 &

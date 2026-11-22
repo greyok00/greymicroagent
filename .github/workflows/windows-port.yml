@@ -1,0 +1,57 @@
+name: windows-port
+
+on:
+  push:
+    paths:
+      - "core/**"
+      - "tools/**"
+      - "services/**"
+      - "package/run.ps1"
+      - "package/requirements.txt"
+      - ".github/workflows/windows-port.yml"
+  workflow_dispatch:
+
+jobs:
+  tool-layer:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install runtime packages
+        run: python -m pip install --quiet -r package/requirements.txt
+      - name: List the tool surface on Windows
+        shell: pwsh
+        run: |
+          $tools = python services/internal_tools.py list | ConvertFrom-Json
+          if ($tools.Count -ne 47) { throw "expected 47 tools, got $($tools.Count)" }
+          $tools.name | Sort-Object | Out-File tools.txt
+          Get-Content tools.txt
+      - name: Exercise the portable tools
+        shell: pwsh
+        run: |
+          '{"path":"ci.txt","content":"windows tool layer"}' | python services/internal_tools.py call files_write
+          $read = '{"path":"ci.txt"}' | python services/internal_tools.py call files_read
+          if ($read -notmatch "windows tool layer") { throw "file round trip failed: $read" }
+          '{"series":"a:1,b:2"}' | python services/internal_tools.py call charts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Parse the terminal UI bundle
+        run: node --check tui/packages/coding-agent/dist/cli.js
+      - name: Check the Windows engines load
+        shell: pwsh
+        run: |
+          $cpu = & .\vendor\win\x64-cpu\llama-server.exe --list-devices 2>&1 | Out-String
+          if ($LASTEXITCODE -ne 0) { throw "cpu engine failed: $cpu" }
+          "cpu engine: $cpu"
+          $vulkan = & .\vendor\win\x64-vulkan\llama-server.exe --list-devices 2>&1 | Out-String
+          $vulkanExit = $LASTEXITCODE
+          "vulkan probe (no GPU expected on CI): exit $vulkanExit $vulkan"
+          exit 0
+      - name: Parse the launcher
+        shell: pwsh
+        run: |
+          $null = [scriptblock]::Create((Get-Content -Raw package/run.ps1))
+          "run.ps1 parses"
