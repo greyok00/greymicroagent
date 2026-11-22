@@ -30,7 +30,7 @@ def main() -> int:
     root = find_root(ROOT)
     model_path = Path(os.environ.get("GREYMICROAGENT_MODEL_PATH")
                       or (Path.home() / ".greymicroagent"
-                          / "models" / "qwen3-vl-2b-abliterated.gguf"))
+                          / "models" / "qwen3.5-2b-abliterated.gguf"))
     if not model_path.exists():
         print("greymicroagent: model missing at %s" % model_path)
         print("set GREYMICROAGENT_MODEL_PATH or place the gguf there.")
@@ -61,6 +61,10 @@ def main() -> int:
             r = requests.get(base + "/health", timeout=2)
             if r.status_code == 200:
                 break
+            # llama.cpp answers 503 while the gguf is still loading, which is
+            # a successful HTTP call - wait like a failed probe, or the loop
+            # burns all 300 tries in under a second and kills the server.
+            time.sleep(1.0)
         except Exception:
             time.sleep(1.0)
     else:
