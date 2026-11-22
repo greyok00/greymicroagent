@@ -52,7 +52,7 @@ PKGROOT="$OUT/greymicroagent"
 TREE="$PKGROOT/opt/greymicroagent"
 VERSION="$(python3 "$ROOT/bin/version.sh" 2>/dev/null || true)"
 [ -n "$VERSION" ] || VERSION="$(node "$ROOT/tui/packages/coding-agent/dist/cli.js" --version 2>/dev/null | tail -1 | tr -dc '0-9.')"
-[ -n "$VERSION" ] || VERSION="0.7.5.1"
+[ -n "$VERSION" ] || VERSION="0.7.5.2"
 
 echo "== packaging greymicroagent $VERSION =="
 echo "== dev-tree sanity: gen_manifest + verify_compiled =="
@@ -64,11 +64,18 @@ rm -f "$OUT/greymicroagent_${VERSION}_amd64.deb"
 mkdir -p "$TREE" "$PKGROOT/DEBIAN" "$PKGROOT/usr/local/bin" "$TREE/state"
 
 echo "== staging payload (real files, no dev symlinks) =="
-for d in bin core tools services mcp tui vendor; do
+for d in bin core tools services mcp tui; do
     cp -a "$ROOT/$d" "$TREE/$d"
 done
-# No MCP servers — tools are baked in as skills, not shipped as MCP servers
-find "$TREE/services" -name '*mcp*.py' -delete
+# The runtime links vendor/greymicroagent-server only. vendor/llamacpp is
+# unused build residue, so the payload carries the engine it actually runs.
+mkdir -p "$TREE/vendor"
+cp -a "$ROOT/vendor/greymicroagent-server" "$TREE/vendor/"
+cp -a "$ROOT/vendor/slimtoken" "$TREE/vendor/"
+cp -a "$ROOT/vendor/win" "$TREE/vendor/"
+# The local service sources ship for the portable Windows path, where the
+# compiled modules cannot load. pre_ship_check.py vets this set by name.
+
 mkdir -p "$TREE/build"
 cp -a "$ROOT/build/src" "$TREE/build/src"
 
@@ -79,9 +86,19 @@ cp -a "$ROOT/THIRD-PARTY-NOTICES.txt" "$TREE/THIRD-PARTY-NOTICES.txt"
 cp -a "$ROOT/config-data" "$TREE/config-data"
 cp -a "$ROOT/LICENSE" "$TREE/LICENSE"
 
+echo "== staging the launchers and the Windows build helper =="
+cp -a "$ROOT/launch.sh" "$ROOT/launch.ps1" "$TREE/"
+mkdir -p "$TREE/package" "$TREE/scripts"
+cp -a "$ROOT/package/." "$TREE/package/"
+rm -rf "$TREE/package/__pycache__"
+cp -a "$ROOT/scripts/fetch_model.py" "$TREE/scripts/fetch_model.py"
+mkdir -p "$TREE/assets"
+cp -a "$ROOT/assets/logo.svg" "$ROOT/assets/logo.png" "$TREE/assets/"
+chmod 755 "$TREE/launch.sh"
+
 echo "== staging the model package (import closure of build/src) =="
 mkdir -p "$TREE/model"
-for f in "$ROOT"/model/*.py "$ROOT"/model/*.so; do
+for f in "$ROOT"/model/*.py "$ROOT"/model/*.so "$ROOT"/model/*.jinja; do
     cp -a "$f" "$TREE/model/"
 done
 cp -a "$ROOT/model/greymicroagent.md" "$TREE/model/greymicroagent.txt"
@@ -122,8 +139,11 @@ p = sys.argv[1]
 t = open(p).read()
 anchor = 'mkdir -p "$GREYMICROAGENT_DBS_ROOT"'
 assert anchor in t, "launcher anchor missing: %s" % anchor
-line = ('export GREYMICROAGENT_MODEL_PATH="${GREYMICROAGENT_MODEL_PATH:-'
-        '$HOME/.greymicroagent/models/qwen3-vl-2b-abliterated.gguf}"')
+line = '''if [ -f "$ROOT/model/qwen3.5-2b-abliterated.gguf" ]; then
+  export GREYMICROAGENT_MODEL_PATH="${GREYMICROAGENT_MODEL_PATH:-$ROOT/model/qwen3.5-2b-abliterated.gguf}"
+else
+  export GREYMICROAGENT_MODEL_PATH="${GREYMICROAGENT_MODEL_PATH:-$HOME/.greymicroagent/models/qwen3.5-2b-abliterated.gguf}"
+fi'''
 if "GREYMICROAGENT_MODEL_PATH" not in t:
     t = t.replace(anchor, anchor + "\n" + line, 1)
 open(p, "w").write(t)
@@ -259,20 +279,23 @@ Version: $VERSION
 Section: utils
 Priority: optional
 Architecture: amd64
-Depends: python3 (>= 3.13), nodejs (>= 22), libc6, libstdc++6, libgcc-s1, libnvidia-ml1 | libcuda1
+Depends: python3.13, nodejs (>= 22), libc6, libstdc++6, libgcc-s1
 Maintainer: grey <local>
-Description: greymicroagent - portable minimized offline agent (2B hybrid)
- Fully Cython-compiled agent core/tools/services; fork-unique private
- llama-server (greymicroagent-server) with session slots inside the fork-owned
- 7640-7647 port block (:7640 model, :7641 slimtoken lane); Node TUI under the
- @greyagent scope (its compiled scope); frozen, hash-pinned artifacts
- (state/MANIFEST.json) and an on-demand, masked lifecycle. Port policy at
- config-data/port_policy.json; grounding KB at ~/.greymicroagent/dbs.
+Description: greymicroagent - local grounded assistant (2B text model)
+ Compiled agent core, tools and services; fork-private CPU model server
+ (greymicroagent-server); Node terminal UI. One session takes a free triple
+ from the fork-owned 7640-7647 port block (model 7640, RAG gate 7641,
+ slimtoken 7642). Frozen, hash-pinned artifacts (state/MANIFEST.json).
+ Port policy at config-data/port_policy.json; knowledge base at
+ ~/.greymicroagent/dbs.
 EOF
 cat > "$PKGROOT/DEBIAN/postinst" <<'EOF'
 #!/bin/bash
 set -e
-if ! python3 /opt/greymicroagent/bin/verify_compiled.py; then
+# The frozen tree ships cpython-313-tagged extensions, and python3.13 is the
+# package the Depends line guarantees (deadsnakes ships it without moving the
+# distro's `python3` metapackage).
+if ! python3.13 /opt/greymicroagent/bin/verify_compiled.py; then
   echo "greymicroagent: frozen-tree verification FAILED after install" >&2
   exit 1
 fi
@@ -299,4 +322,10 @@ python3 "$ROOT/scripts/pre_ship_check.py" "$SCRATCH/opt/greymicroagent" \
     && echo "unpacked-tree pre-ship gate: PASS"
 grep -n "7640-7647" "$SCRATCH/opt/greymicroagent/config-data/port_policy.json" | head -2
 rm -rf "$SCRATCH"
+
+echo "== portable tarball (same verified tree, launch.sh at the root) =="
+TARBALL="$OUT/greymicroagent_${VERSION}_linux-x86_64.tar.gz"
+rm -f "$TARBALL"
+tar -C "$TREE" --owner=0 --group=0 --numeric-owner -czf "$TARBALL" .
+ls -la "$TARBALL"
 ls -la "$OUT" | grep deb
