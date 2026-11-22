@@ -329,14 +329,14 @@ def add_records(path, records, enc, src="web"):
                 except ValueError:
                     pass
             keys.add(r.get("k") or _norm_key(r.get("t", ""), r.get("x", "")))
-            u = r.get("u") or r.get("p") or ""
+            u = r.get("url") or r.get("u") or r.get("p") or ""
             if u:
                 urls.add(u)
         fresh, added = [], []
         for rec in records:
             k = rec.get("k") or _norm_key(rec.get("t", ""), rec.get("x", ""))
             rec["k"] = k
-            u = rec.get("u") or rec.get("p") or ""
+            u = rec.get("url") or rec.get("u") or rec.get("p") or ""
             if k in keys or (u and u in urls):
                 continue
             i = rec.get("i")
@@ -466,7 +466,7 @@ def search(path, query, k=5, enc=None):
         terms = [t.lower() for t in query.split() if len(t) > 2 and t.lower() not in STOPWORDS]
         lex = {}
         for r in rows:
-            loc = r.get("p") or r.get("u", "")
+            loc = r.get("url") or r.get("p") or r.get("u", "")
             bt = (r["t"].lower() + " " + r.get("d", "").lower() + " " + loc.lower())
             bx = r["x"].lower()
             st = sum(1 for t in terms if t in bt)
@@ -499,7 +499,7 @@ def search(path, query, k=5, enc=None):
             c = cos[i][0] if i in cos else 0.0
             band = "firm" if c >= FIRM else ("soft" if c >= FLOOR else "lex-only")
             res.append({"i": r["i"], "t": r["t"], "d": r.get("d", ""), "src": r.get("src", "library"),
-                        "u": r.get("p") or r.get("u", ""), "cos": round(c, 3), "band": band,
+                        "u": r.get("url") or r.get("p") or r.get("u", ""), "cos": round(c, 3), "band": band,
                         "lex": round(lex.get(i, 0.0), 2), "x": r["x"]})
         return res
 

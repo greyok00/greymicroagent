@@ -59,3 +59,22 @@ def test_shareword_off_topic_query_scores_below_floor():
         top = max((float(h.get("lex") or 0.0) for h in hits), default=0.0)
         assert top < FLOOR, f"{q!r} leaked lexical score {top} over floor {FLOOR}"
     import shutil; shutil.rmtree(db, ignore_errors=True)
+
+def test_same_url_reingest_dedups_and_url_text_is_searchable(tmp_path):
+    db = kb.db_dir("t-urldedup")
+    kb.init_db(db, note="probe")
+    first = kb.add_records(db, kb.records_from(
+        "Robocopy mirrors directories exactly.\n\nUsage: robocopy source destination /MIR mirrors a full tree.",
+        {"t": "mirror page", "src": "web", "url": "https://example.com/mirror", "date": "d"}), enc=None)
+    assert first
+    # The page's text changed, so the content key differs and only the url
+    # can catch the re-ingest; before the url key was normalized this
+    # appended a full duplicate set for one source.
+    second = kb.add_records(db, kb.records_from(
+        "The mirror page changed its wording entirely, so the stored content no longer matches it.\n\nRobocopy still ships with every Windows install today.",
+        {"t": "mirror page", "src": "web", "url": "https://example.com/mirror", "date": "d"}), enc=None)
+    assert second == [], f"re-ingest of the same url appended {len(second)} duplicate records"
+    assert len(kb.pack_rows(db)) == len(first)
+    hits = kb.search(db, "https://example.com/mirror", 5, enc=None)
+    assert hits and hits[0]["i"] == first[0]
+    import shutil; shutil.rmtree(db, ignore_errors=True)

@@ -126,7 +126,9 @@ def reap(apply: bool) -> list:
             os.kill(pid, signal.SIGTERM)
         except Exception as e:
             lines.append("  term failed: %r" % e)
-    if apply:
+    if apply and orphans:
+        # SIGTERM grace period - pointless on a clean machine, where it
+        # otherwise stalls every boot for five seconds before the splash.
         time.sleep(5)
         for pid, _ in orphans:
             try:

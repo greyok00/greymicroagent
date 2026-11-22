@@ -114,7 +114,10 @@ def _descendants(root):
 
 
 def _record():
-    pids = dict(_state["pids"])
+    # Drop entries whose process is gone or zombied so the pool only ever
+    # holds pids that were alive as of this record.
+    pids = {pid: sig for pid, sig in _state["pids"].items()
+            if _proc_stat(pid) and _proc_stat(pid) != "Z"}
     for pid in sorted(_descendants(os.getpid())):
         if _proc_stat(pid) == "Z":
             continue
@@ -137,8 +140,11 @@ def _record():
 
 def _alive_pids(pid_map, chrome_only=False):
     live = []
-    for pid, base in pid_map.items():
-        if chrome_only and not _chrome_like(base):
+    for pid in pid_map:
+        if chrome_only and not _chrome_like(_signature(pid)):
+            # The stored signature was captured at record time; the OS may
+            # have recycled this pid for an unrelated process, so only
+            # re-signal pids whose current cmdline is still chrome-like.
             continue
         if _proc_stat(pid) and _proc_stat(pid) != "Z":
             live.append(pid)
