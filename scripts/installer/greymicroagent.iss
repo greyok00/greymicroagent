@@ -1,5 +1,5 @@
 #define AppName "greymicroagent"
-#define AppVersion "0.7.5.3"
+#define AppVersion "0.7.5.4"
 #define AppPublisher "grey"
 #define AppExeName "greymicroagent.exe"
 #define BootstrapName "%WAVE_B_BOOTSTRAP_PS1%"

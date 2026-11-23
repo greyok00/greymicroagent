@@ -30,8 +30,8 @@ The other file, THIRD-PARTY-NOTICES.txt, is a list of licenses. You do not need 
 If you already use a coding assistant such as Claude Code or Codex, you can let it do the whole install. Paste this message into it:
 
     Install greymicroagent from its public release.
-    Release page: https://github.com/greyok00/greymicroagent/releases/tag/v0.7.5.3
-    Download greymicroagent_0.7.5.3_linux-x86_64.tar.gz and qwen3.5-2b-abliterated.gguf.
+    Release page: https://github.com/greyok00/greymicroagent/releases/tag/v0.7.5.4
+    Download greymicroagent_0.7.5.4_linux-x86_64.tar.gz and qwen3.5-2b-abliterated.gguf.
     Install Python 3.13 or newer and Node.js 22 or newer if they are missing.
     Unpack the archive into a folder named greymicroagent, then put the model file
     in that folder's model directory.
@@ -65,7 +65,7 @@ If your system already has Node.js 22 or newer and Python 3.13 or newer, skip th
 
 **Step 3. Install the package.** In the folder where the files downloaded (usually Downloads):
 
-    sudo apt install ./greymicroagent_0.7.5.3_amd64.deb
+    sudo apt install ./greymicroagent_0.7.5.4_amd64.deb
 
 **Step 4. Put the model where the program looks for it:**
 
@@ -87,7 +87,7 @@ Use this on any Linux system, or if you prefer not to install a package.
 **Step 3.** Make a folder and unpack the archive into it:
 
     mkdir greymicroagent
-    tar -xzf greymicroagent_0.7.5.3_linux-x86_64.tar.gz -C greymicroagent
+    tar -xzf greymicroagent_0.7.5.4_linux-x86_64.tar.gz -C greymicroagent
 
 **Step 4.** Move the model into the folder:
 
@@ -119,6 +119,8 @@ Create the folders if they do not exist. You can paste that path into the addres
     powershell -ExecutionPolicy Bypass -File .\launch.ps1
 
 **Step 5.** The first start installs Python, Node.js, the Microsoft C++ runtime, and the Python packages automatically if they are missing. It needs an internet connection the first time. Later starts are fast.
+
+The first start also installs a starter knowledge base of about a thousand command references, so /rag has something to answer from out of the box.
 
 The launcher checks for a Vulkan-capable graphics device and, when one is present, runs the model on it with every layer offloaded. Otherwise it runs on the CPU. Integrated graphics share system memory, so there is no VRAM setting to make and nothing is capped by the chip's own memory. The zip carries both x64 and ARM64 engines, and each keeps a matching CPU engine as an automatic fallback. Set GREYAGENT_NGL to pin the number of offloaded layers, or GREYAGENT_THREADS to pin the CPU thread count.
 

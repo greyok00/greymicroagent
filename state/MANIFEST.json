@@ -5,8 +5,8 @@
    "size": 9286
   },
   "bin/greymicroagent": {
-   "sha256": "2efcbaab06feb7883214fb3c3eb277dfff94d8369dc90e3b1a8b9ba18de01f78",
-   "size": 18536
+   "sha256": "90bf74a256e4e3ca22d10d3deab1c6cbe0b2f019c5050836c6540e4d8c993eae",
+   "size": 18883
   },
   "bin/verify_compiled.py": {
    "sha256": "3a6ba689bec93418d84e085f0575c76b30e3a0b6bcabb4adefb244bb5fa5c204",

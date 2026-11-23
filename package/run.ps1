@@ -156,6 +156,17 @@ if (Test-Path $extSrc) {
     Copy-Item -Path (Join-Path $extSrc "*") -Destination $extDst -Recurse -Force
 }
 
+$seedSrc = Join-Path $projRoot "package\seed-dbs"
+if (Test-Path $seedSrc) {
+    foreach ($db in @("commands", "general")) {
+        $dst = Join-Path $env:GREYMICROAGENT_DBS_ROOT $db
+        if (-not (Test-Path (Join-Path $dst "pack.jsonl"))) {
+            New-Item -ItemType Directory -Force -Path $dst | Out-Null
+            Copy-Item -Path (Join-Path $seedSrc "$db\*") -Destination $dst -Recurse -Force
+        }
+    }
+}
+
 $threads = [Math]::Max(2, [Environment]::ProcessorCount - 2)
 if ($env:GREYAGENT_THREADS -and $env:GREYAGENT_THREADS.Trim() -ne "") {
     $threads = [int]$env:GREYAGENT_THREADS

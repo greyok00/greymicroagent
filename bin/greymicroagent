@@ -60,6 +60,13 @@ export GREYMICROAGENT_DBS="commands,general"
 export GREYMICROAGENT_DBS_ROOT="$HOME/.greymicroagent/dbs"
 export GREYMICROAGENT_RAG_FLOOR="${GREYMICROAGENT_RAG_FLOOR:-7.5}"
 mkdir -p "$GREYMICROAGENT_DBS_ROOT"
+# Seed the starter knowledge bases on first run (shipped under package/seed-dbs).
+for _db in commands general; do
+  if [ -d "$ROOT/package/seed-dbs/$_db" ] && [ ! -f "$GREYMICROAGENT_DBS_ROOT/$_db/pack.jsonl" ]; then
+    mkdir -p "$GREYMICROAGENT_DBS_ROOT/$_db"
+    cp -a "$ROOT/package/seed-dbs/$_db/." "$GREYMICROAGENT_DBS_ROOT/$_db/"
+  fi
+done
 # the TUI's while-loading health poll must watch THIS session's model port
 export GREYAGENT_MODEL_HEALTH_URL="http://127.0.0.1:${MODEL_PORT}/health"
 # TOOL-DIR-SEPARATION (owner order 2026-10-24): agent's own home = cwd.

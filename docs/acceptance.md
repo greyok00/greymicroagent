@@ -44,7 +44,7 @@ Verdict: ACCEPTANCE GATE PASSED. greyagent is frozen at this state.
 | Full strings audit: 0 external URLs, 0 telemetry SDKs, 0 banned words, 0 path escapes | PASS |
 | build/src/audit.py core+tools+services+mcp+model | CLEAN |
 | Gates at release: verify_compiled PASS, pytest 29 passed, MANIFEST 1562 (0 fail) | PASS |
-| Release artifact: dist/deb/greyagent_0.7.5.3_amd64.deb (postinst runs verify_compiled) | BUILT |
+| Release artifact: dist/deb/greyagent_0.7.5.4_amd64.deb (postinst runs verify_compiled) | BUILT |
 
 Publishing: NOT pushed anywhere (git remote empty by design); .deb is the release
 artifact. New tools are admitted ONLY through the pipeline (DISABLED -> hash ->
