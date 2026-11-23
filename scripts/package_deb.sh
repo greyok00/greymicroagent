@@ -52,7 +52,7 @@ PKGROOT="$OUT/greymicroagent"
 TREE="$PKGROOT/opt/greymicroagent"
 VERSION="$(python3 "$ROOT/bin/version.sh" 2>/dev/null || true)"
 [ -n "$VERSION" ] || VERSION="$(node "$ROOT/tui/packages/coding-agent/dist/cli.js" --version 2>/dev/null | tail -1 | tr -dc '0-9.')"
-[ -n "$VERSION" ] || VERSION="0.7.5.2"
+[ -n "$VERSION" ] || VERSION="0.7.5.3"
 
 echo "== packaging greymicroagent $VERSION =="
 echo "== dev-tree sanity: gen_manifest + verify_compiled =="

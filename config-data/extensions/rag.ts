@@ -8,6 +8,7 @@ import * as path from "node:path";
 // one shot per call, python3 services/internal_tools.py call <tool>.
 const ROOT = process.env.GREYAGENT_ROOT ?? path.join(os.homedir(), "greymicroagent");
 const BRIDGE = path.join(ROOT, "services", "internal_tools.py");
+const PY = process.platform === "win32" ? "python" : "python3";
 const STATE_DIR = path.join(os.homedir(), ".greymicroagent", "state");
 const TEMP_FILE = path.join(STATE_DIR, "rag-temp");
 const OFFLINE_FILE = path.join(STATE_DIR, "rag-offline");
@@ -38,7 +39,7 @@ async function ragCall(tool: string, args: Record<string, unknown>, timeoutMs: n
 		};
 		let proc: childProcess.ChildProcess;
 		try {
-			proc = childProcess.spawn("python3", [BRIDGE, "call", tool], { cwd: ROOT, stdio: ["pipe", "pipe", "pipe"] });
+			proc = childProcess.spawn(PY, [BRIDGE, "call", tool], { cwd: ROOT, stdio: ["pipe", "pipe", "pipe"] });
 		} catch (e) {
 			reject(new Error("could not start the knowledge service: " + String(e)));
 			return;

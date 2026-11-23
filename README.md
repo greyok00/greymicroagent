@@ -30,8 +30,8 @@ The other file, THIRD-PARTY-NOTICES.txt, is a list of licenses. You do not need 
 If you already use a coding assistant such as Claude Code or Codex, you can let it do the whole install. Paste this message into it:
 
     Install greymicroagent from its public release.
-    Release page: https://github.com/greyok00/greymicroagent/releases/tag/v0.7.5.1
-    Download greymicroagent_0.7.5.1_linux-x86_64.tar.gz and qwen3.5-2b-abliterated.gguf.
+    Release page: https://github.com/greyok00/greymicroagent/releases/tag/v0.7.5.3
+    Download greymicroagent_0.7.5.3_linux-x86_64.tar.gz and qwen3.5-2b-abliterated.gguf.
     Install Python 3.13 or newer and Node.js 22 or newer if they are missing.
     Unpack the archive into a folder named greymicroagent, then put the model file
     in that folder's model directory.
@@ -65,7 +65,7 @@ If your system already has Node.js 22 or newer and Python 3.13 or newer, skip th
 
 **Step 3. Install the package.** In the folder where the files downloaded (usually Downloads):
 
-    sudo apt install ./greymicroagent_0.7.5.1_amd64.deb
+    sudo apt install ./greymicroagent_0.7.5.3_amd64.deb
 
 **Step 4. Put the model where the program looks for it:**
 
@@ -87,7 +87,7 @@ Use this on any Linux system, or if you prefer not to install a package.
 **Step 3.** Make a folder and unpack the archive into it:
 
     mkdir greymicroagent
-    tar -xzf greymicroagent_0.7.5.1_linux-x86_64.tar.gz -C greymicroagent
+    tar -xzf greymicroagent_0.7.5.3_linux-x86_64.tar.gz -C greymicroagent
 
 **Step 4.** Move the model into the folder:
 
@@ -130,7 +130,7 @@ The bottom of the window shows three small panels: how much the app compressed t
 
 ## Teaching it your own documents
 
-These commands work in the Linux version. They start with /rag, which is short for retrieval augmented generation, the feature that lets the assistant answer from your own papers and pages.
+These commands work on both Linux and Windows. They start with /rag, which is short for retrieval augmented generation, the feature that lets the assistant answer from your own papers and pages.
 
 | Type this | What it does |
 | --- | --- |

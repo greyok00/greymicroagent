@@ -149,6 +149,13 @@ foreach ($dir in @(
     New-Item -ItemType Directory -Force -Path $dir | Out-Null
 }
 
+$extSrc = Join-Path $projRoot "config-data\extensions"
+$extDst = Join-Path $env:GREYAGENT_CODING_AGENT_DIR "extensions"
+if (Test-Path $extSrc) {
+    New-Item -ItemType Directory -Force -Path $extDst | Out-Null
+    Copy-Item -Path (Join-Path $extSrc "*") -Destination $extDst -Recurse -Force
+}
+
 $threads = [Math]::Max(2, [Environment]::ProcessorCount - 2)
 if ($env:GREYAGENT_THREADS -and $env:GREYAGENT_THREADS.Trim() -ne "") {
     $threads = [int]$env:GREYAGENT_THREADS

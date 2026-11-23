@@ -1,6 +1,6 @@
 {
   "name": "@greyagent/coding-agent",
-  "version": "0.7.5.2",
+  "version": "0.7.5.3",
   "description": "greyagent \u2014 hardened, fully offline agent wired to its own local models (compiled core, frozen tree)",
   "type": "module",
   "cortexConfig": {
